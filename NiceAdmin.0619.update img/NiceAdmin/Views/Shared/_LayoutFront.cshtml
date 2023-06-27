@@ -1,0 +1,377 @@
+﻿
+@{
+    ViewBag.Title = "_LayoutFront";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sierra</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+          rel="stylesheet"
+          integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM"
+          crossorigin="anonymous" />
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+          integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+          crossorigin="anonymous"
+          referrerpolicy="no-referrer" />
+    <style>
+        /* Reset default margin, padding, and box-sizing */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Normalize heading font weight */
+        h1, h2, h3, h4, h5, h6 {
+            font-weight: normal;
+        }
+
+        /* Header Styles */
+        header {
+            background-color: #faf0e6;
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        /* Logo Section */
+        section.logo {
+            flex: 2 1 400px;
+            display: flex;
+            align-items: center;
+        }
+
+            section.logo h1 {
+                font-size: 2.5rem;
+            }
+
+        header section.logo img {
+            width: 6vw;
+            height: 6vh;
+        }
+
+        /* Navigation Styles */
+        nav {
+            flex: 5 1 500px;
+            margin-top: 20px;
+        }
+
+            nav ul {
+                display: flex;
+                list-style-type: none;
+                justify-content: space-around;
+            }
+
+                nav ul li a {
+                    color: black;
+                    text-decoration: none;
+                    font-size: 1.35rem;
+                    transition: all 0.2s ease;
+                    padding-bottom: 0.3rem;
+                }
+
+                    nav ul li a:hover {
+                        color: #efc396;
+                        border-bottom: 3px solid #efc396;
+                    }
+
+        /* Main Content Styles */
+        main h2 {
+            margin: 20px 0 0 150px;
+        }
+
+        /* Card Styles */
+        .card img{
+            height: 100%;
+            width: 100%;
+            object-fit: cover;
+            transition: all 0.2s;
+        }
+
+            .card:hover img {
+                transform: scale(1.1);
+            }
+
+        /* Utility Classes */
+        .w-200px {
+            width: 200px;
+        }
+
+        .h-620px {
+            height: 620px;
+        }
+
+        .fz40px {
+            font-size: 40px;
+        }
+
+        .w-16px {
+            width: 16px;
+        }
+
+        .w-35px {
+            width: 35px;
+        }
+
+        .txt-shadow {
+            text-shadow: 0.1em 0.1em 0.2em black;
+        }
+
+        .mar-negtive {
+            margin-bottom: -40px;
+        }
+
+        .nomo {
+            --title: #011627;
+        }
+
+        .marginbot {
+            margin: -40px;
+        }
+
+        .h200px {
+            height: 200px;
+        }
+    </style>
+    @*<style>
+            * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+            }
+
+            h1,
+            h2,
+            h3,
+            h4,
+            h5,
+            h6 {
+                font-weight: normal;
+            }
+
+            header {
+                background-color: #faf0e6;
+                display: flex;
+                flex-wrap: wrap;
+            }
+
+            .w-200px {
+                width: 200px;
+            }
+
+            .h-620px {
+                height: 620px;
+            }
+
+            .fz40px {
+                font-size: 40px;
+            }
+
+            .top-5px {
+                top: 5px;
+            }
+
+            .top-150 {
+                top: 150px;
+            }
+
+            .left-5px {
+                left: 5px;
+            }
+
+            .left-10px {
+                left: 10px;
+            }
+
+            .w-16px {
+                width: 16px;
+            }
+
+            .w-35px {
+                width: 35px;
+            }
+
+            .txt-shadow {
+                text-shadow: 0.1em 0.1em 0.2em black;
+            }
+
+            .mar-negtive {
+                margin-bottom: -40px;
+            }
+
+            .nomo {
+                --title: #011627;
+            }
+
+            .marginbot {
+                margin: -40px;
+            }
+
+            section.logo {
+                flex: 2 1 400px;
+                display: flex;
+                align-items: center;
+            }
+
+                section.logo h1 {
+                    font-size: 2.5rem;
+                }
+
+            header section.logo img {
+                width: 6vw;
+                height: 6vh;
+            }
+
+            nav {
+                flex: 5 1 500px;
+                margin-top: 20px;
+                /* border: 2px solid red; */
+            }
+
+                nav ul {
+                    display: flex;
+                    list-style-type: none;
+                    justify-content: space-around;
+                }
+
+                    nav ul li a {
+                        color: black;
+                        text-decoration: none;
+                        font-size: 1.35rem;
+                        transition: all 0.2s ease;
+                        padding-bottom: 0.3rem;
+                    }
+
+                        nav ul li a:hover {
+                            color: #efc396;
+                            border-bottom: 3px solid #efc396;
+                        }
+
+            main h2 {
+                margin: 20px 0 0 150px;
+            }
+
+            .nav-link {
+                font-size: 1.5rem;
+            }
+            .h-620px {
+                height: 620px;
+            }
+
+            .fz30px {
+                font-size: 30px;
+            }
+
+            .top-5px {
+                top: 5px;
+            }
+
+            .top-150 {
+                top: 150px;
+            }
+
+            .left-5px {
+                left: 5px;
+            }
+
+            .left-10px {
+                left: 10px;
+            }
+
+            .w-16px {
+                width: 16px;
+            }
+
+            .w-35px {
+                width: 35px;
+            }
+
+            .txt-shadow {
+                text-shadow: 0.1em 0.1em 0.2em black;
+            }
+
+            .mar-negtive {
+                margin-bottom: -40px;
+            }
+
+            .h200px {
+                height: 200px;
+            }
+
+            .card1 img {
+                height: 100%;
+                width: 100%;
+                object-fit: cover;
+                transition: all 0.2s;
+            }
+
+            .card1:hover img {
+                transform: scale(1.1);
+            }
+
+            .card-tag:hover span {
+                transform: scale(1.1);
+            }
+        </style>*@
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-sm">
+            <div class="container">
+                <a href="#" class="navbar-brand fz40px">Sierra 甜點</a>
+                <ul class="navbar-nav">
+                    <li class="nav-item dropdown">
+                        <a href="#"
+                           class="nav-link dropdown-toggle"
+                           data-bs-toggle="dropdown">課程</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#" class="dropdown-item">最新課程</a></li>
+                            <li><a href="#" class="dropdown-item">熱門課程</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a href="#"
+                           class="nav-link dropdown-toggle"
+                           data-bs-toggle="dropdown">甜點</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#" class="dropdown-item">新品上市</a></li>
+                            <li><a href="#" class="dropdown-item">整模蛋糕</a></li>
+                            <li><a href="#" class="dropdown-item">常溫蛋糕</a></li>
+                            <li><a href="#" class="dropdown-item">甜點</a></li>
+                            <li><a href="#" class="dropdown-item">禮盒</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a href="#"
+                           class="nav-link dropdown-toggle"
+                           data-bs-toggle="dropdown">常見問題</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#" class="dropdown-item">運費相關</a></li>
+                            <li><a href="#" class="dropdown-item">宅配需求</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a href="#"
+                           class="nav-link dropdown-toggle"
+                           data-bs-toggle="dropdown">文章</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#" class="dropdown-item">部落格文章</a></li>
+                            <li><a href="#" class="dropdown-item">熱門文章</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+   @RenderBody()
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
+            crossorigin="anonymous"></script>
+</body>
+</html>

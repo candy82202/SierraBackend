@@ -1,0 +1,955 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+
+    <title>Dashboard - NiceAdmin Bootstrap Template</title>
+    <meta content="" name="description" />
+    <meta content="" name="keywords" />
+
+    <!-- Favicons -->
+    <link href="~/img/favicon.png" rel="icon" />
+    <link href="~/img/apple-touch-icon.png" rel="apple-touch-icon" />
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.gstatic.com" rel="preconnect" />
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
+          rel="stylesheet" />
+
+    <!-- Vendor CSS Files -->
+    <link href="~/Scripts/vendor/bootstrap/css/bootstrap.min.css"
+          rel="stylesheet" />
+    <link href="~/Scripts/vendor/bootstrap-icons/bootstrap-icons.css"
+          rel="stylesheet" />
+    <link href="~/Scripts/vendor/boxicons/css/boxicons.min.css" rel="stylesheet" />
+    <link href="~/Scripts/vendor/quill/quill.snow.css" rel="stylesheet" />
+    <link href="~/Scripts/vendor/quill/quill.bubble.css" rel="stylesheet" />
+    <link href="~/Scripts/vendor/remixicon/remixicon.css" rel="stylesheet" />
+    <link href="~/Scripts/vendor/simple-datatables/style.css" rel="stylesheet" />
+
+    @*dataTable Css*@
+
+    @*<link rel="stylesheet" href="https://cdn.datatables.net/1.11.3/css/jquery.dataTables.min.css">*@
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.2.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/dataTables.bootstrap5.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/select/1.6.2/css/select.dataTables.min.css">
+
+    @* sweetalert *@
+    <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.3/dist/sweetalert2.min.css" rel="stylesheet">
+    @*<link href="https://cdn.jsdelivr.net/npm/@sweetalert2/theme-dark@4/dark.css" rel="stylesheet">*@
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.js"></script>
+
+    <!-- Template Main CSS File -->
+    <link href="~/Content/style.css" rel="stylesheet" />
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        /* body {
+            font: 16px Arial;
+        }*/
+
+        .autocomplete {
+            /*the container must be positioned relative:*/
+            position: relative;
+            /* display: inline-block;*/
+        }
+
+        #s_name {
+            border: 1px solid transparent;
+            background-color: #f1f1f1;
+            padding: 10px;
+            font-size: 16px;
+        }
+
+        .autocomplete input[type=text] {
+            /*background-color: #f1f1f1;*/
+            width: 100%;
+        }
+
+        .autocomplete input[type=submit] {
+            background-color: DodgerBlue;
+            color: #fff;
+        }
+
+
+
+        /* input {
+            border: 1px solid transparent;
+            background-color: #f1f1f1;
+            padding: 10px;
+            font-size: 16px;
+        }
+
+            input[type=text] {
+                background-color: #f1f1f1;
+                width: 100%;
+            }
+
+            input[type=submit] {
+                background-color: DodgerBlue;
+                color: #fff;
+            }*/
+
+        .autocomplete .autocomplete-items {
+            position: absolute;
+            border: 1px solid #d4d4d4;
+            border-bottom: none;
+            border-top: none;
+            z-index: 99;
+            /*position the autocomplete items to be the same width as the container:*/
+            top: 100%;
+            left: 0;
+            right: 0;
+        }
+
+            .autocomplete .autocomplete-items div {
+                padding: 10px;
+                cursor: pointer;
+                background-color: #fff;
+                border-bottom: 1px solid #d4d4d4;
+            }
+
+                .autocomplete .autocomplete-items div:hover {
+                    /*when hovering an item:*/
+                    background-color: #e9e9e9;
+                }
+
+        .autocomplete .autocomplete-active {
+            /*when navigating through the items using the arrow keys:*/
+            background-color: DodgerBlue !important;
+            color: #ffffff;
+        }
+    </style>
+
+    <!-- =======================================================
+    * Template Name: NiceAdmin
+    * Updated: May 30 2023 with Bootstrap v5.3.0
+    * Template URL: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/
+    * Author: BootstrapMade.com
+    * License: https://bootstrapmade.com/license/
+    ======================================================== -->
+</head>
+
+<body>
+    <!-- ======= Header ======= -->
+    <header id="header" class="header fixed-top d-flex align-items-center">
+        <div class="d-flex align-items-center justify-content-between">
+            <a href="@Url.Action("Index","Home")" class="logo d-flex align-items-center">
+                <img src="assets/img/logo.png" alt="" />
+                <span class="d-none d-lg-block">Sierra</span>
+            </a>
+            <i class="bi bi-list toggle-sidebar-btn"></i>
+        </div>
+        <!-- End Logo -->
+
+        <div class="search-bar">
+            <form class="search-form d-flex align-items-center"
+                  method="POST"
+                  action="#">
+                <input type="text"
+                       name="query"
+                       placeholder="Search"
+                       title="Enter search keyword" id="tags" />
+                <button type="submit" title="Search">
+                    <i class="bi bi-search"></i>
+                </button>
+            </form>
+        </div>
+        <!-- End Search Bar -->
+
+        <nav class="header-nav ms-auto">
+            <ul class="d-flex align-items-center">
+                <li class="nav-item d-block d-lg-none">
+                    <a class="nav-link nav-icon search-bar-toggle" href="#">
+                        <i class="bi bi-search"></i>
+                    </a>
+                </li>
+                <!-- End Search Icon-->
+
+                <li class="nav-item dropdown">
+                    <a class="nav-link nav-icon" href="#" data-bs-toggle="dropdown">
+                        <i class="bi bi-bell"></i>
+                        <span class="badge bg-primary badge-number">4</span>
+                    </a><!-- End Notification Icon -->
+
+                    <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow notifications">
+                        <li class="dropdown-header">
+                            您有4條新通知
+                            <a href="#">
+                                <span class="badge rounded-pill bg-primary p-2 ms-2">查看全部</span>
+                            </a>
+                        </li>
+                        <li>
+                            <hr class="dropdown-divider" />
+                        </li>
+
+                        <li class="notification-item">
+                            <i class="bi bi-exclamation-circle text-warning"></i>
+                            <div>
+                                <h4>登入警告</h4>
+                                <p>有人意圖登入您的帳戶，請確保您帳戶的安全</p>
+                                <p>30 min. ago</p>
+                            </div>
+                        </li>
+
+                        <li>
+                            <hr class="dropdown-divider" />
+                        </li>
+
+                        <li class="notification-item">
+                            <i class="bi bi-x-circle text-danger"></i>
+                            <div>
+                                <h4>產品上架失敗</h4>
+                                <p>請重新上架</p>
+                                <p>1 hr. ago</p>
+                            </div>
+                        </li>
+
+                        <li>
+                            <hr class="dropdown-divider" />
+                        </li>
+
+                        <li class="notification-item">
+                            <i class="bi bi-check-circle text-success"></i>
+                            <div>
+                                <h4>9487號訂單已完成</h4>
+                                <p>確認詳細9487號訂單</p>
+                                <p>2 hrs. ago</p>
+                            </div>
+                        </li>
+
+                        <li>
+                            <hr class="dropdown-divider" />
+                        </li>
+
+                        <li class="notification-item">
+                            <i class="bi bi-info-circle text-primary"></i>
+                            <div>
+                                <h4>訂單資訊</h4>
+                                <p>查詢訂單資訊</p>
+                                <p>4 hrs. ago</p>
+                            </div>
+                        </li>
+
+                        <li>
+                            <hr class="dropdown-divider" />
+                        </li>
+                        <li class="dropdown-footer">
+                            <a href="#">顯示所有通知</a>
+                        </li>
+                    </ul>
+                    <!-- End Notification Dropdown Items -->
+                </li>
+                <!-- End Notification Nav -->
+
+                <li class="nav-item dropdown">
+                    <a class="nav-link nav-icon" href="#" data-bs-toggle="dropdown">
+                        <i class="bi bi-chat-left-text"></i>
+                        <span class="badge bg-success badge-number">3</span>
+                    </a><!-- End Messages Icon -->
+
+                    <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow messages">
+                        <li class="dropdown-header">
+                            您有新的3筆訊息
+                            <a href="#">
+                                <span class="badge rounded-pill bg-primary p-2 ms-2">查看全部</span>
+                            </a>
+                        </li>
+                        <li>
+                            <hr class="dropdown-divider" />
+                        </li>
+
+                        <li class="message-item">
+                            <a href="#">
+                                <img src="assets/img/messages-1.jpg"
+                                     alt=""
+                                     class="rounded-circle" />
+                                <div>
+                                    <h4>Maria Hudson</h4>
+                                    <p>今晚有空嗎?</p>
+                                    <p>4 hrs. ago</p>
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <hr class="dropdown-divider" />
+                        </li>
+
+                        <li class="message-item">
+                            <a href="#">
+                                <img src="assets/img/messages-2.jpg"
+                                     alt=""
+                                     class="rounded-circle" />
+                                <div>
+                                    <h4>Anna Nelson</h4>
+                                    <p>晚上吃飯嗎?</p>
+                                    <p>6 hrs. ago</p>
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <hr class="dropdown-divider" />
+                        </li>
+
+                        <li class="message-item">
+                            <a href="#">
+                                <img src="assets/img/messages-3.jpg"
+                                     alt=""
+                                     class="rounded-circle" />
+                                <div>
+                                    <h4>David Muldon</h4>
+                                    <p>兄弟 晚上吃飯先取消，有兩個漂亮妹子約我吃飯</p>
+                                    <p>8 hrs. ago</p>
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <hr class="dropdown-divider" />
+                        </li>
+
+                        <li class="dropdown-footer">
+                            <a href="#">顯示全部訊息</a>
+                        </li>
+                    </ul>
+                    <!-- End Messages Dropdown Items -->
+                </li>
+                <!-- End Messages Nav -->
+
+                <li class="nav-item dropdown pe-3">
+                    <a class="nav-link nav-profile d-flex align-items-center pe-0"
+                       href="#"
+                       data-bs-toggle="dropdown">
+                        <img src="assets/img/profile-img.jpg"
+                             alt="Profile"
+                             class="rounded-circle" />
+                        <span class="d-none d-md-block dropdown-toggle ps-2">K. Anderson</span>
+                    </a><!-- End Profile Iamge Icon -->
+
+                    <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
+                        <li class="dropdown-header">
+                            <h6>Kevin Anderson</h6>
+                            <span>全端網頁工程師</span>
+                        </li>
+                        <li>
+                            <hr class="dropdown-divider" />
+                        </li>
+
+                        <li>
+                            <a class="dropdown-item d-flex align-items-center"
+                               href="users-profile.html">
+                                <i class="bi bi-person"></i>
+                                <span>個人簡介</span>
+                            </a>
+                        </li>
+                        <li>
+                            <hr class="dropdown-divider" />
+                        </li>
+
+                        <li>
+                            <a class="dropdown-item d-flex align-items-center"
+                               href="users-profile.html">
+                                <i class="bi bi-gear"></i>
+                                <span>帳戶設定</span>
+                            </a>
+                        </li>
+                        <li>
+                            <hr class="dropdown-divider" />
+                        </li>
+
+                        <li>
+                            <a class="dropdown-item d-flex align-items-center"
+                               href="pages-faq.html">
+                                <i class="bi bi-question-circle"></i>
+                                <span>需要幫助?</span>
+                            </a>
+                        </li>
+                        <li>
+                            <hr class="dropdown-divider" />
+                        </li>
+
+                        <li>
+                            <a class="dropdown-item d-flex align-items-center" href="#">
+                                <i class="bi bi-box-arrow-right"></i>
+                                <span>登出</span>
+                            </a>
+                        </li>
+                    </ul>
+                    <!-- End Profile Dropdown Items -->
+                </li>
+                <!-- End Profile Nav -->
+            </ul>
+        </nav>
+        <!-- End Icons Navigation -->
+    </header>
+    <!-- End Header -->
+    <!-- ======= Sidebar ======= -->
+    <aside id="sidebar" class="sidebar">
+        <ul class="sidebar-nav" id="sidebar-nav">
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="index.html">
+                    <i class="bi bi-grid"></i>
+                    <span>首頁</span>
+                </a>
+            </li>
+            @*End Dashboard Nav*@
+            <li class="nav-item">
+                <a class="nav-link collapsed"
+                   data-bs-target="#members-nav"
+                   data-bs-toggle="collapse"
+                   href="@Url.Action("Index","Default")">
+                    <i class="bi bi-layout-text-window-reverse"></i><span>會員管理</span><i class="bi bi-chevron-down ms-auto"></i>
+                </a>
+                <ul id="members-nav"
+                    class="nav-content collapse"
+                    data-bs-parent="#sidebar-nav">
+                    <li>
+                        <a href="@Url.Action("Index","Default")">
+                            <i class="bi bi-circle"></i><span>會員帳號管理</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="@Url.Action("Index","Default")">
+                            <i class="bi bi-circle"></i><span>會員權限管理</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="@Url.Action("FormsLayouts","Default")">
+                            <i class="bi bi-circle"></i><span>員工帳號管理</span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            @*End Members Nav*@
+            <li class="nav-item">
+                <a class="nav-link collapsed"
+                   data-bs-target="#tables-nav"
+                   data-bs-toggle="collapse"
+                   href="@Url.Action("Index","Desserts")">
+                    <i class="bi bi-layout-text-window-reverse"></i><span>甜點管理</span><i class="bi bi-chevron-down ms-auto"></i>
+                </a>
+                <ul id="tables-nav"
+                    class="nav-content collapse"
+                    data-bs-parent="#sidebar-nav">
+                    <li>
+                        <a href="@Url.Action("Create","Desserts")">
+                            <i class="bi bi-circle"></i><span>新增商品</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="@Url.Action("Index","Desserts")">
+                            <i class="bi bi-circle"></i><span>查詢商品</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="@Url.Action("Index","Categories")">
+                            <i class="bi bi-circle"></i><span>類別管理</span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            @*End Tables Nav*@
+            <li class="nav-item">
+                <a class="nav-link collapsed"
+                   data-bs-target="#class-nav"
+                   data-bs-toggle="collapse"
+                   href="@Url.Action("Index","Default")">
+                    <i class="bi bi-layout-text-window-reverse"></i><span>課程管理</span><i class="bi bi-chevron-down ms-auto"></i>
+                </a>
+                <ul id="class-nav"
+                    class="nav-content collapse"
+                    data-bs-parent="#sidebar-nav">
+                    <li>
+                        <a href="@Url.Action("Index","Default")">
+                            <i class="bi bi-circle"></i><span>新增課程</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="@Url.Action("Index","Default")">
+                            <i class="bi bi-circle"></i><span>查詢課程</span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            @*End class Nav*@
+            <li class="nav-item">
+                <a class="nav-link collapsed"
+                   data-bs-target="#teacher-nav"
+                   data-bs-toggle="collapse"
+                   href="@Url.Action("Index","Default")">
+                    <i class="bi bi-layout-text-window-reverse"></i><span>師資管理</span><i class="bi bi-chevron-down ms-auto"></i>
+                </a>
+                <ul id="teacher-nav"
+                    class="nav-content collapse"
+                    data-bs-parent="#sidebar-nav">
+                    <li>
+                        <a href="@Url.Action("Index","Default")">
+                            <i class="bi bi-circle"></i><span>新增教師</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="@Url.Action("Index","Default")">
+                            <i class="bi bi-circle"></i><span>教師清單</span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            @*End class Nav*@
+            <li class="nav-item">
+                <a class="nav-link collapsed"
+                   data-bs-target="#orders-nav"
+                   data-bs-toggle="collapse"
+                   href="#">
+                    <i class="bi bi-layout-text-window-reverse"></i><span>訂單管理</span><i class="bi bi-chevron-down ms-auto"></i>
+                </a>
+                <ul id="orders-nav"
+                    class="nav-content collapse"
+                    data-bs-parent="#sidebar-nav">
+                    <li>
+                        <a href="@Url.Action("Index","Default")">
+                            <i class="bi bi-circle"></i><span>訂單查詢</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="@Url.Action("Index","Default")">
+                            <i class="bi bi-circle"></i><span>訂單</span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            @*End Orders Nav*@
+            <li class="nav-item">
+                <a class="nav-link collapsed"
+                   data-bs-target="#discounts-nav"
+                   data-bs-toggle="collapse"
+                   href="@Url.Action("Index","Default")">
+                    <i class="bi bi-layout-text-window-reverse"></i><span>行銷管理</span><i class="bi bi-chevron-down ms-auto"></i>
+                </a>
+                <ul id="discounts-nav"
+                    class="nav-content collapse"
+                    data-bs-parent="#sidebar-nav">
+                    <li>
+                        <a href="@Url.Action("Index","Default")">
+                            <i class="bi bi-circle"></i><span>新增優惠</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="@Url.Action("Index","Default")">
+                            <i class="bi bi-circle"></i><span>優惠查詢</span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            @*End Discounts Nav*@
+            <li class="nav-item">
+                <a class="nav-link collapsed"
+                   data-bs-target="#blogs-nav"
+                   data-bs-toggle="collapse"
+                   href="@Url.Action("Index","Default")">
+                    <i class="bi bi-layout-text-window-reverse"></i><span>小編管理</span><i class="bi bi-chevron-down ms-auto"></i>
+                </a>
+                <ul id="blogs-nav"
+                    class="nav-content collapse"
+                    data-bs-parent="#sidebar-nav">
+                    <li>
+                        <a href="@Url.Action("Index","Default")">
+                            <i class="bi bi-circle"></i><span>新增貼文</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="@Url.Action("Index","Default")">
+                            <i class="bi bi-circle"></i><span>查詢貼文</span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            @*End blogs Nav*@
+
+            <li class="nav-heading">Pages</li>
+
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="users-profile.html">
+                    <i class="bi bi-person"></i>
+                    <span>簡介</span>
+                </a>
+            </li>
+            @*End Profile Page Nav*@
+
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="pages-faq.html">
+                    <i class="bi bi-question-circle"></i>
+                    <span>F.A.Q</span>
+                </a>
+            </li>
+            @*End F.A.Q Page Nav*@
+
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="pages-contact.html">
+                    <i class="bi bi-envelope"></i>
+                    <span>聯絡我們</span>
+                </a>
+            </li>
+            @*End Contact Page Nav*@
+
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="pages-register.html">
+                    <i class="bi bi-card-list"></i>
+                    <span>註冊</span>
+                </a>
+            </li>
+            @*End Register Page Nav*@
+
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="pages-login.html">
+                    <i class="bi bi-box-arrow-in-right"></i>
+                    <span>登入</span>
+                </a>
+            </li>
+            @*End Login Page Nav*@
+
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="pages-error-404.html">
+                    <i class="bi bi-dash-circle"></i>
+                    <span>Error 404</span>
+                </a>
+            </li>
+            @*End Error 404 Page Nav*@
+
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="pages-blank.html">
+                    <i class="bi bi-file-earmark"></i>
+                    <span>Blank</span>
+                </a>
+            </li>
+            @*End Blank Page Nav*@
+        </ul>
+    </aside>
+    <!-- End Sidebar-->
+
+    @RenderBody()
+
+    <!-- End #main -->
+    <!-- ======= Footer ======= -->
+    <footer id="footer" class="footer">
+        <div class="copyright">
+            &copy; 2023 Copyright <strong><span>Sierra</span></strong>. All Rights Reserved
+        </div>
+        <div class="credits">
+            <!-- All the links in the footer should remain intact. -->
+            <!-- You can delete the links only if you purchased the pro version. -->
+            <!-- Licensing information: https://bootstrapmade.com/license/ -->
+            <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/ -->
+            Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
+        </div>
+    </footer>
+    <!-- End Footer -->
+
+    <a href="#"
+       class="back-to-top d-flex align-items-center justify-content-center">
+        <i class="bi bi-arrow-up-short"></i>
+    </a>
+    @RenderSection("scripts", required: false)
+    @*AutoComplete*@
+    @*<script src="//apps.bdimg.com/libs/jquery/1.10.2/jquery.min.js"></script>
+        <script src="//apps.bdimg.com/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>*@
+
+    @*<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+        <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>*@
+    <!-- Vendor JS Files -->
+    <script src="~/Scripts/vendor/apexcharts/apexcharts.amd.js"></script>
+    <script src="~/Scripts/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="~/Scripts/vendor/chart.js/chart.umd.js"></script>
+    <script src="~/Scripts/vendor/echarts/echarts.min.js"></script>
+    <script src="~/Scripts/vendor/quill/quill.min.js"></script>
+    @*<script src="~/Scripts/vendor/simple-datatables/simple-datatables.js"></script>*@
+    <script src="~/Scripts/vendor/tinymce/tinymce.min.js"></script>
+    <script src="~/Scripts/vendor/php-email-form/validate.js"></script>
+
+    @*連結DataTable*@
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.4/js/dataTables.bootstrap5.min.js"></script>
+    <script src="https://cdn.datatables.net/select/1.6.2/js/dataTables.select.min.js"></script>
+
+
+    <!-- Template Main JS File -->
+    <script src="~/Scripts/js/main.js"></script>
+    <script>
+        //$(document).ready(function () {
+           
+        //});
+
+
+        $(document).ready(function () {
+            $('.datatable').DataTable({
+                "lengthMenu": [5, 10, 20],
+                "language": {
+                    "processing": "處理中...",
+                    "loadingrecords": "載入中...",
+                    "lengthmenu": "顯示 _MENU_ 項結果",
+                    "zerorecords": "沒有符合的結果",
+                    "info": "顯示第 _START_ 至 _END_ 項結果，共 _TOTAL_ 項",
+                    "infoempty": "顯示第 0 至 0 項結果，共 0 項",
+                    "infofiltered": "(從 _MAX_ 項結果中過濾)",
+                    "search": "搜尋:",
+                    "paginate": {
+                        "first": "第一頁",
+                        "previous": "上一頁",
+                        "next": "下一頁",
+                        "last": "最後一頁"
+                    },
+                    "aria": {
+                        "sortascending": ": 升冪排列",
+                        "sortdescending": ": 降冪排列"
+                    },
+                    columnDefs: [{
+                        orderable: false,
+                        className: 'select-checkbox',
+                        targets: 0
+                    }],
+                    select: {
+                        style: 'os',
+                        selector: 'td:first-child'
+                    },
+                    order: [[1, 'asc']]
+
+                }
+            });
+            var DT1 = $('.datatable').DataTable();
+            $(".selectAll").on("click", function (e) {
+                if ($(this).is(":checked")) {
+                    DT1.rows().select();
+                } else {
+                    DT1.rows().deselect();
+                }
+            });
+        });
+
+        var selectAllCheckbox = $('#selectAllCheckbox');
+        var checkboxes = $('tbody input[type="checkbox"][data-checkbox="childCheckbox"]');
+
+        // 全選 checkbox 的變更事件監聽器
+        selectAllCheckbox.on('change', function () {
+            checkboxes.prop('checked', $(this).is(':checked'));
+        });
+
+        // 下方 checkbox 的變更事件監聽器
+        checkboxes.on('change', function () {
+            selectAllCheckbox.prop('checked', checkboxes.length === checkboxes.filter(':checked').length);
+        });
+
+
+        //這段是要做AutoComplete
+        var desserts = ["cake", "甜點", "chocolate", "cheese", "desserts", "dessert", "伯爵", "芒果", "草莓","香草","香蕉","磅蛋糕"]
+        /*function autocomplete(inp, arr) { ... }：這是一個自訂的自動完成函式。
+        它接收兩個參數，inp代表文字輸入框的元素，arr代表建議項目的陣列。*/
+        function autocomplete(inp, arr) {
+
+            var currentFocus;
+
+            /*inp.addEventListener("input", function (e) { ... })：
+            這是一個事件監聽器，當使用者在輸入框中輸入文字時觸發。它會根據輸入的文字篩選建議項目並顯示。*/
+            inp.addEventListener("input", function (e) {
+                var a, b, i, val = this.value;
+
+                /*closeAllLists() 函式：
+                這個函式用於關閉所有已打開的建議清單，以便在選擇建議項目後或點擊其他地方時關閉它們。*/
+                closeAllLists();
+                if (!val) { return false; }
+                currentFocus = -1;
+                /*create a DIV element that will contain the items (values):*/
+                a = document.createElement("DIV");
+                a.setAttribute("id", this.id + "autocomplete-list");
+                a.setAttribute("class", "autocomplete-items");
+                /*append the DIV element as a child of the autocomplete container:*/
+                this.parentNode.appendChild(a);
+                /*for each item in the array...*/
+                for (i = 0; i < arr.length; i++) {
+                    /*check if the item starts with the same letters as the text field value:*/
+                    if (arr[i].substr(0, val.length).toUpperCase() == val.toUpperCase()) {
+                        /*create a DIV element for each matching element:*/
+                        b = document.createElement("DIV");
+                        /*make the matching letters bold:*/
+                        b.innerHTML = "<strong>" + arr[i].substr(0, val.length) + "</strong>";
+                        b.innerHTML += arr[i].substr(val.length);
+                        /*insert a input field that will hold the current array item's value:*/
+                        b.innerHTML += "<input type='hidden' value='" + arr[i] + "'>";
+                        /*execute a function when someone clicks on the item value (DIV element):*/
+                        b.addEventListener("click", function (e) {
+                            /*insert the value for the autocomplete text field:*/
+                            inp.value = this.getElementsByTagName("input")[0].value;
+                            /*close the list of autocompleted values,
+                            (or any other open lists of autocompleted values:*/
+                            closeAllLists();
+                        });
+                        a.appendChild(b);
+                    }
+                }
+            });
+            /*execute a function presses a key on the keyboard:*/
+            inp.addEventListener("keydown", function (e) {
+                var x = document.getElementById(this.id + "autocomplete-list");
+                if (x) x = x.getElementsByTagName("div");
+                if (e.keyCode == 40) {
+                    /*If the arrow DOWN key is pressed,
+                    increase the currentFocus variable:*/
+                    currentFocus++;
+
+
+                    /*and and make the current item more visible:*/
+                    addActive(x);
+                } else if (e.keyCode == 38) { //up
+                    /*If the arrow UP key is pressed,
+                    decrease the currentFocus variable:*/
+                    currentFocus--;
+                    /*and and make the current item more visible:*/
+                    addActive(x);
+                } else if (e.keyCode == 13) {
+                    /*If the ENTER key is pressed, prevent the form from being submitted,*/
+                    e.preventDefault();
+                    if (currentFocus > -1) {
+                        /*and simulate a click on the "active" item:*/
+                        if (x) x[currentFocus].click();
+                    }
+                }
+            });
+
+            //addActive() 函式：這個函式用於將某個建議項目標記為選中狀態，以便使用者可以使用鍵盤的上下鍵選擇不同的項目。
+            function addActive(x) {
+                /*a function to classify an item as "active":*/
+                if (!x) return false;
+
+
+                /*start by removing the "active" class on all items:*/
+                removeActive(x);
+                if (currentFocus >= x.length) currentFocus = 0;
+                if (currentFocus < 0) currentFocus = (x.length - 1);
+                /*add class "autocomplete-active":*/
+                x[currentFocus].classList.add("autocomplete-active");
+            }
+
+            //removeActive() 函式：這個函式用於移除所有建議項目的選中狀態。
+            function removeActive(x) {
+                /*a function to remove the "active" class from all autocomplete items:*/
+                for (var i = 0; i < x.length; i++) {
+                    x[i].classList.remove("autocomplete-active");
+                }
+            }
+            function closeAllLists(elmnt) {
+                /*close all autocomplete lists in the document,
+                except the one passed as an argument:*/
+                var x = document.getElementsByClassName("autocomplete-items");
+                for (var i = 0; i < x.length; i++) {
+                    if (elmnt != x[i] && elmnt != inp) {
+                        x[i].parentNode.removeChild(x[i]);
+                    }
+                }
+            }
+            /*execute a function when someone clicks in the document:*/
+            document.addEventListener("click", function (e) {
+                closeAllLists(e.target);
+            });
+        }
+
+        //autocomplete() 函式的餘下部分處理事件監聽和與建議項目相關的邏輯，包括創建建議項目的 DIV 元素、將它們添加到 DOM 中、監聽建議項目的點擊事件等。
+        autocomplete(document.getElementById("s_name"), desserts);
+
+
+
+        //這裡是使用sweetAlert的方式
+        function confirmDelete(event) {
+
+            /*阻止默認的表單提交行為，確認在對話框顯示時候不會直接提交表單
+            https://developer.mozilla.org/zh-TW/docs/Web/API/Event/preventDefault */
+            event.preventDefault();
+
+            //Swal.mixin({...})：創建一個SweetAlert2實例，並自定義確認按鈕和取消按鈕的樣式。
+            const swalWithBootstrapButtons = Swal.mixin({
+                customClass: {
+                    confirmButton: 'btn btn-success',
+                    cancelButton: 'btn btn-danger'
+                },
+                buttonsStyling: false
+            });
+
+
+            //顯示英文版內容
+            //調用SweetAlert2的fire方法，配置對話框的標題、消息內容、圖標和按鈕。
+            swalWithBootstrapButtons.fire({
+                title: 'Are you sure?',
+                text: "You won't be able to revert this!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonText: 'Yes, delete it!',
+                cancelButtonText: 'No, cancel!',
+                reverseButtons: true
+            })
+                //.then((result) => {...})：使用 Promise 的then方法，當用戶點擊對話框上的按鈕後執行相應的操作。
+                .then((result) => {
+
+                    //result.isConfirmed：如果用戶點擊了確認按鈕，則執行提交表單的操作。
+                    if (result.isConfirmed) {
+                        $('form').submit();
+                    } //result.dismiss === Swal.DismissReason.cancel：如果用戶點擊了取消按鈕，則顯示一個取消的提示消息。
+                    else if (result.dismiss === Swal.DismissReason.cancel) {
+                        swalWithBootstrapButtons.fire(
+                            'Cancelled',
+                            'Your imaginary file is safe :)',
+                            'error'
+                        );
+                    }
+                });
+
+
+            //顯示中文內容
+            swalWithBootstrapButtons.fire({
+                title: '你確定嗎？',
+                text: '刪除後將無法復原！',
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonText: '刪除',
+                cancelButtonText: '取消',
+                reverseButtons: true
+            })
+                //.then((result) => {...})：使用 Promise 的then方法，當用戶點擊對話框上的按鈕後執行相應的操作。
+                .then((result) => {
+
+                    //result.isConfirmed：如果用戶點擊了確認按鈕，則執行提交表單的操作。
+                    if (result.isConfirmed) {
+                        $('form').submit();
+                    }
+                    //result.dismiss === Swal.DismissReason.cancel：如果用戶點擊了取消按鈕，則顯示一個取消的提示消息。
+                    else if (result.dismiss === Swal.DismissReason.cancel) {
+                        swalWithBootstrapButtons.fire(
+                            '已取消',
+                            '刪除未成功 :)',
+                            'error'
+                        );
+                    }
+                });
+
+        }
+        //// 获取全选复选框和下方复选框的引用
+        //const selectAllCheckbox = document.getElementById('selectAllCheckbox');
+        //const checkboxes = document.querySelectorAll('tbody input[type="checkbox"]');
+
+        //// 添加全选复选框的点击事件监听器
+        //selectAllCheckbox.addEventListener('click', function () {
+        //    checkboxes.forEach(function (checkbox) {
+        //        checkbox.checked = selectAllCheckbox.checked;
+        //    });
+        //});
+
+        //// 添加下方复选框的点击事件监听器
+        //checkboxes.forEach(function (checkbox) {
+        //    checkbox.addEventListener('click', function () {
+        //        // 检查是否还有未选中的复选框
+        //        const uncheckedCheckboxes = document.querySelectorAll('tbody input[type="checkbox"][data-checkbox="childCheckbox"]:not(:checked)');
+        //        selectAllCheckbox.checked = uncheckedCheckboxes.length === 0;
+        //    });
+        //});
+    </script>
+</body>
+</html>

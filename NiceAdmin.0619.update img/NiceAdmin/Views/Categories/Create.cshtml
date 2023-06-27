@@ -1,0 +1,51 @@
+﻿@model NiceAdmin.Models.EFModels.Category
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<main id="main" class="main">
+    <div class="pagetitle">
+        <h1>新增類別</h1>
+        <nav>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="@Url.Action("Index","Home")">首頁</a></li>
+                <li class="breadcrumb-item"><a href="@Url.Action("Index","Categories")">類別管理</a></li>
+                <li class="breadcrumb-item active"><a href="@Url.Action("Create","Categories")">新增類別</a></li>
+            </ol>
+        </nav>
+    </div>
+    <!-- End Page Title -->
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="row">
+           
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <div class="mb-3">
+                @Html.LabelFor(model => model.CategoryName, htmlAttributes: new { @class = "form-label col-md-2" })
+              
+                    @Html.EditorFor(model => model.CategoryName, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.CategoryName, "", new { @class = "text-danger" })
+              
+            </div>
+
+            <div class="mb-3">
+                
+
+                    <input type="submit" value="Create" class="btn btn-outline-primary" />
+                
+            </div>
+        </div>
+    }
+
+    <div>
+        @Html.ActionLink("Back to List", "Index")
+    </div>
+</main>
+    @section Scripts {
+        @Scripts.Render("~/bundles/jqueryval")
+    }

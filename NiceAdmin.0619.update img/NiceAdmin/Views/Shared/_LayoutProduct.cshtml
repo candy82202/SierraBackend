@@ -1,0 +1,118 @@
+﻿<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="js/jquery.3.6.4.js"></script>
+    <style>
+        .container {
+            width: 100%;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .card {
+            width: 200px;
+            height: 300px;
+            margin: 20px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            box-shadow: 0 0 10px #ccc;
+        }
+
+            .card .info {
+                padding: 10px;
+                /* 內容向上對齊 */
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+                align-items: flex-start;
+                /* border:1px solid #ccc; */
+            }
+
+            .card h3, .card p {
+                margin-top: 0px;
+                margin-bottom: 5px;
+            }
+
+        .container .row .productsPanel {
+            width: 100%;
+            margin: 0 auto;
+            display: flex;
+            justify-content: flex-start;
+            flex-wrap: wrap; /* 設置為 wrap，讓 items 換列 */
+        }
+
+        .category {
+            margin-bottom: 15px;
+        }
+    </style>
+</head>
+<body>
+    @RenderBody()
+  
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+        <script>
+            $(function () {
+                let cardTemplate = `<div class="card" data-category_id="1" data-product_id="101">
+                <img src="https://via.placeholder.com/200x150" alt="">
+                <div class="info">
+                    <h3>{name}</h3>
+                    <p class="description">{description}</p>
+                    <p class="price">NT$ 100</p>
+                    <div class="add2Cart">
+                        <button>加入購物車</button>
+                    </div>
+                </div>
+            </div>`;
+
+                let products = null;
+
+                // 取回商品內容productFilter.json
+                $.ajax({
+                    url: './Home/productFilter.json',
+                    type: 'GET',
+                    dataType: 'json',
+                    success: function (data) {
+                        console.log("data", data);
+                        products = data;
+                        // 顯示商品內容
+                        showProduct(products);
+                    },
+                    error: function () {
+                        alert('商品內容取得失敗');
+                    }
+                });
+
+                // 針對 category 裡的每一個button設定click事件
+                $(".category").on('click', 'button', function () {
+                    let category_id = $(this).data('category_id');
+                    console.log("category_id", category_id);
+                    // 顯示篩選後的商品內容
+                    if (category_id === "") {
+                        showProduct(products);
+                    } else {
+                        showProduct(products.filter(function (item) {
+                            return item.category_id == category_id;
+                        }));
+                    }
+                });
+
+                // 顯示商品內容
+                function showProduct(data) {
+                    let content = "";
+                    $.each(data, function (index, item) {
+                        console.log("item", item);
+                        let cardContent = cardTemplate.replace('{name}', item.name).replace('{description}', item.description);
+                        content += cardContent;
+                    });
+                    $('.productsPanel').html(content);
+                }
+            });
+          
+    </script>
+</body>
+</html>

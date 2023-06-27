@@ -1,0 +1,50 @@
+﻿@model IEnumerable<NiceAdmin.Models.EFModels.DessertImage>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<main id="main" class="main">
+    <div class="pagetitle">
+        <h1>甜點圖片清單</h1>
+        <nav>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="@Url.Action("Index","Home")">首頁</a></li>
+                <li class="breadcrumb-item"><a href="@Url.Action("Index","Desserts")">甜點管理</a></li>
+                <li class="breadcrumb-item active">甜點圖片清單</li>
+            </ol>
+        </nav>
+    </div>
+    <!-- End Page Title -->
+    
+    <button class="btn btn-outline-primary text-light fw-bold"> @Html.ActionLink("新增甜點圖片", "Create")</button>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.DessertId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DessertImage1)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DessertId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DessertImage1)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.ImageId }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.ImageId }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.ImageId })
+                </td>
+            </tr>
+        }
+
+    </table>
+</main>
