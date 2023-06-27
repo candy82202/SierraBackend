@@ -748,20 +748,3 @@
     </section>
 </main>
 
-
-@model List<NiceAdmin.Controllers.HomeController.DessertFrontIndexVM>
-
-@foreach (var dessert in Model)
-{
-    <div class="card">
-        <div class="card-body">
-            <h5 class="card-title">@dessert.DessertName</h5>
-            <p class="card-text">@dessert.CategoryName</p>
-            <p class="card-text">@dessert.Description</p>
-            <img class="card-img" />
-            <p class="card-text"> @dessert.DessertImage1</p>
-          
-            <!-- 其他商品相關信息的呈現 -->
-        </div>
-    </div>
-}
