@@ -17,7 +17,7 @@ namespace NiceAdmin.Controllers
             return View();
         }
         private AppDbContext db = new AppDbContext();
-        public ActionResult Products(int? cId)
+        public ActionResult Sierras(int? cId)
         {
             List<DessertFrontIndexVM> dvm = new List<DessertFrontIndexVM>();
 

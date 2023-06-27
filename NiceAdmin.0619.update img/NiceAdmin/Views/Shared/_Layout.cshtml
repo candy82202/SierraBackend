@@ -169,6 +169,15 @@
                 </li>
                 <!-- End Search Icon-->
 
+                <li>
+                    <a class="nav-link nav-icon" href="@Url.Action("Sierras","Home",new { cId = "" })" data-bs-toggle="dropdown">
+                        @*<i class="bi bi-bell"></i>*@
+                        <i class="bi bi-arrow-up-left-square"></i>
+                        @*<span class="badge bg-primary badge-number">4</span>*@
+                    </a><!-- End Notification Icon -->
+                    <!-- End Notification Dropdown Items -->
+                </li>
+
                 <li class="nav-item dropdown">
                     <a class="nav-link nav-icon" href="#" data-bs-toggle="dropdown">
                         <i class="bi bi-bell"></i>
@@ -389,7 +398,7 @@
     <aside id="sidebar" class="sidebar">
         <ul class="sidebar-nav" id="sidebar-nav">
             <li class="nav-item">
-                <a class="nav-link collapsed" href="@Url.Action("Index","Default")">
+                <a class="nav-link collapsed" href="@Url.Action("Index","Home")">
                     <i class="bi bi-grid"></i>
                     <span>首頁</span>
                 </a>
@@ -399,7 +408,7 @@
                 <a class="nav-link collapsed"
                    data-bs-target="#members-nav"
                    data-bs-toggle="collapse"
-                   href="@Url.Action("Index","Default")">
+                   href="@Url.Action("Index","Home")">
                     <i class="bi bi-layout-text-window-reverse"></i><span>會員管理</span><i class="bi bi-chevron-down ms-auto"></i>
                 </a>
                 <ul id="members-nav"
@@ -678,7 +687,7 @@
     <script src="~/Scripts/js/main.js"></script>
     <script>
         //$(document).ready(function () {
-           
+
         //});
 
 
@@ -741,122 +750,112 @@
         });
 
 
-        //這段是要做AutoComplete
-        var desserts = ["cake", "甜點", "chocolate", "cheese", "desserts", "dessert", "伯爵", "芒果", "草莓","香草","香蕉","磅蛋糕"]
-        /*function autocomplete(inp, arr) { ... }：這是一個自訂的自動完成函式。
-        它接收兩個參數，inp代表文字輸入框的元素，arr代表建議項目的陣列。*/
-        function autocomplete(inp, arr) {
+        
 
+        var sierras = ["課程管理", "新增甜點", "會員管理", "會員清單", "新增會員", "甜點管理", "甜點清單", "類別管理", "訂單管理", "課程管理", "師資管理", "行銷活動"];
+
+        function autocomplete(inp, arr) {
             var currentFocus;
 
-            /*inp.addEventListener("input", function (e) { ... })：
-            這是一個事件監聽器，當使用者在輸入框中輸入文字時觸發。它會根據輸入的文字篩選建議項目並顯示。*/
             inp.addEventListener("input", function (e) {
-                var a, b, i, val = this.value;
-
-                /*closeAllLists() 函式：
-                這個函式用於關閉所有已打開的建議清單，以便在選擇建議項目後或點擊其他地方時關閉它們。*/
+                var val = this.value;
                 closeAllLists();
-                if (!val) { return false; }
-                currentFocus = -1;
-                /*create a DIV element that will contain the items (values):*/
-                a = document.createElement("DIV");
-                a.setAttribute("id", this.id + "autocomplete-list");
-                a.setAttribute("class", "autocomplete-items");
-                /*append the DIV element as a child of the autocomplete container:*/
-                this.parentNode.appendChild(a);
-                /*for each item in the array...*/
-                for (i = 0; i < arr.length; i++) {
-                    /*check if the item starts with the same letters as the text field value:*/
-                    if (arr[i].substr(0, val.length).toUpperCase() == val.toUpperCase()) {
-                        /*create a DIV element for each matching element:*/
-                        b = document.createElement("DIV");
-                        /*make the matching letters bold:*/
-                        b.innerHTML = "<strong>" + arr[i].substr(0, val.length) + "</strong>";
-                        b.innerHTML += arr[i].substr(val.length);
-                        /*insert a input field that will hold the current array item's value:*/
-                        b.innerHTML += "<input type='hidden' value='" + arr[i] + "'>";
-                        /*execute a function when someone clicks on the item value (DIV element):*/
-                        b.addEventListener("click", function (e) {
-                            /*insert the value for the autocomplete text field:*/
-                            inp.value = this.getElementsByTagName("input")[0].value;
-                            /*close the list of autocompleted values,
-                            (or any other open lists of autocompleted values:*/
-                            closeAllLists();
-                        });
-                        a.appendChild(b);
-                    }
+
+                if (!val) {
+                    return false;
                 }
+
+                currentFocus = -1;
+                var matches = arr.filter(function (item) {
+                    return item.substr(0, val.length).toUpperCase() === val.toUpperCase();
+                });
+
+                var autocompleteList = document.createElement("div");
+                autocompleteList.setAttribute("class", "autocomplete-items");
+                this.parentNode.appendChild(autocompleteList);
+
+           for (var i = 0; i < matches.length; i++) {
+    var autocompleteItem = document.createElement("div");
+    if (matches[i] === "會員清單") {
+        autocompleteItem.innerHTML = "<a href='https://localhost:44320/Members/Index'>" + matches[i] + "</a>";
+    } else if (matches[i] === "甜點清單") {
+        autocompleteItem.innerHTML = "<a href='https://localhost:44320/Desserts/Index'>" + matches[i] + "</a>";
+    } else if (matches[i] === "類別管理") {
+        autocompleteItem.innerHTML = "<a href='https://localhost:44320/Categories/Index'>" + matches[i] + "</a>";
+    } else if (matches[i] === "新增甜點") {
+        autocompleteItem.innerHTML = "<a href='https://localhost:44320/Desserts/Create'>" + matches[i] + "</a>";
+    } else {
+        autocompleteItem.innerHTML = "<a href='#'>" + matches[i] + "</a>";
+    }
+    autocompleteItem.innerHTML += "<input type='hidden' value='" + matches[i] + "'>";
+    autocompleteItem.addEventListener("click", function (e) {
+        inp.value = this.getElementsByTagName("input")[0].value;
+        closeAllLists();
+    });
+    autocompleteList.appendChild(autocompleteItem);
+}
             });
-            /*execute a function presses a key on the keyboard:*/
+
             inp.addEventListener("keydown", function (e) {
-                var x = document.getElementById(this.id + "autocomplete-list");
-                if (x) x = x.getElementsByTagName("div");
-                if (e.keyCode == 40) {
-                    /*If the arrow DOWN key is pressed,
-                    increase the currentFocus variable:*/
+                var autocompleteItems = document.getElementsByClassName("autocomplete-items");
+
+                if (e.key === "ArrowDown") {
                     currentFocus++;
-
-
-                    /*and and make the current item more visible:*/
-                    addActive(x);
-                } else if (e.keyCode == 38) { //up
-                    /*If the arrow UP key is pressed,
-                    decrease the currentFocus variable:*/
+                    addActive(autocompleteItems);
+                } else if (e.key === "ArrowUp") {
                     currentFocus--;
-                    /*and and make the current item more visible:*/
-                    addActive(x);
-                } else if (e.keyCode == 13) {
-                    /*If the ENTER key is pressed, prevent the form from being submitted,*/
+                    addActive(autocompleteItems);
+                } else if (e.key === "Enter") {
                     e.preventDefault();
                     if (currentFocus > -1) {
-                        /*and simulate a click on the "active" item:*/
-                        if (x) x[currentFocus].click();
+                        if (autocompleteItems) {
+                            autocompleteItems[currentFocus].click();
+                        }
                     }
                 }
             });
 
-            //addActive() 函式：這個函式用於將某個建議項目標記為選中狀態，以便使用者可以使用鍵盤的上下鍵選擇不同的項目。
-            function addActive(x) {
-                /*a function to classify an item as "active":*/
-                if (!x) return false;
+            function addActive(autocompleteItems) {
+                if (!autocompleteItems) {
+                    return false;
+                }
 
+                removeActive(autocompleteItems);
 
-                /*start by removing the "active" class on all items:*/
-                removeActive(x);
-                if (currentFocus >= x.length) currentFocus = 0;
-                if (currentFocus < 0) currentFocus = (x.length - 1);
-                /*add class "autocomplete-active":*/
-                x[currentFocus].classList.add("autocomplete-active");
+                if (currentFocus >= autocompleteItems.length) {
+                    currentFocus = 0;
+                }
+
+                if (currentFocus < 0) {
+                    currentFocus = autocompleteItems.length - 1;
+                }
+
+                autocompleteItems[currentFocus].classList.add("autocomplete-active");
             }
 
-            //removeActive() 函式：這個函式用於移除所有建議項目的選中狀態。
-            function removeActive(x) {
-                /*a function to remove the "active" class from all autocomplete items:*/
-                for (var i = 0; i < x.length; i++) {
-                    x[i].classList.remove("autocomplete-active");
+            function removeActive(autocompleteItems) {
+                for (var i = 0; i < autocompleteItems.length; i++) {
+                    autocompleteItems[i].classList.remove("autocomplete-active");
                 }
             }
-            function closeAllLists(elmnt) {
-                /*close all autocomplete lists in the document,
-                except the one passed as an argument:*/
-                var x = document.getElementsByClassName("autocomplete-items");
-                for (var i = 0; i < x.length; i++) {
-                    if (elmnt != x[i] && elmnt != inp) {
-                        x[i].parentNode.removeChild(x[i]);
-                    }
+
+            function closeAllLists() {
+                var autocompleteItems = document.getElementsByClassName("autocomplete-items");
+
+                for (var i = 0; i < autocompleteItems.length; i++) {
+                    autocompleteItems[i].parentNode.removeChild(autocompleteItems[i]);
                 }
             }
-            /*execute a function when someone clicks in the document:*/
+
             document.addEventListener("click", function (e) {
                 closeAllLists(e.target);
             });
         }
 
-        //autocomplete() 函式的餘下部分處理事件監聽和與建議項目相關的邏輯，包括創建建議項目的 DIV 元素、將它們添加到 DOM 中、監聽建議項目的點擊事件等。
-        autocomplete(document.getElementById("s_name"), desserts);
-
-
+        window.addEventListener("DOMContentLoaded", function () {
+            var input = document.getElementById("tags");
+            autocomplete(input, sierras);
+        });
 
         //這裡是使用sweetAlert的方式
         function confirmDelete(event) {

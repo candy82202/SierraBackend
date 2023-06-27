@@ -670,11 +670,9 @@
     <Content Include="CodeTemplates\ApiControllerEmpty\Controller.cs.t4" />
     <Content Include="Content\productFilter.json" />
     <None Include="packages.config" />
-    <Content Include="Views\Home\Products.cshtml" />
+    <Content Include="Views\Home\Sierras.cshtml" />
     <Content Include="Views\Shared\_LayoutFront.cshtml" />
-    <Content Include="Views\Home\Sierra.cshtml" />
     <Content Include="Views\Shared\_LayoutProduct.cshtml" />
-    <Content Include="Views\Home\productFilter.json" />
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="Scripts\vendor\chart.js\controllers\controller.bar.d.ts" />
