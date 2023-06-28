@@ -20,7 +20,7 @@ namespace NiceAdmin.Models.EFModels
 
         public int DessertOrderStatusId { get; set; }
 
-        public int CouponId { get; set; }
+        public int? CouponId { get; set; }
 
         public DateTime CreateTime { get; set; }
 
@@ -49,6 +49,9 @@ namespace NiceAdmin.Models.EFModels
 
         [StringLength(200)]
         public string OrderCancellationReason { get; set; }
+
+        [StringLength(200)]
+        public string DiscountInfo { get; set; }
 
         public virtual Coupon Coupon { get; set; }
 

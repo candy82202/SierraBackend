@@ -51,16 +51,6 @@ namespace NiceAdmin.Models.EFModels
                 .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<Coupon>()
-                .HasMany(e => e.CourseOrders)
-                .WithRequired(e => e.Coupon)
-                .WillCascadeOnDelete(false);
-
-            modelBuilder.Entity<Coupon>()
-                .HasMany(e => e.DessertOrders)
-                .WithRequired(e => e.Coupon)
-                .WillCascadeOnDelete(false);
-
-            modelBuilder.Entity<Coupon>()
                 .HasMany(e => e.MemberCoupons)
                 .WithRequired(e => e.Coupon)
                 .WillCascadeOnDelete(false);
