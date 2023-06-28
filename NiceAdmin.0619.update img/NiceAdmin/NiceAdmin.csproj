@@ -132,6 +132,7 @@
     <Compile Include="Controllers\CategoriesController.cs" />
     <Compile Include="Controllers\DessertImagesController.cs" />
     <Compile Include="Controllers\DessertsController.cs" />
+    <Compile Include="Controllers\DiscountGroupsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -170,6 +171,9 @@
     <Compile Include="Models\ViewModels\DessertFrontIndexVM.cs" />
     <Compile Include="Models\ViewModels\DessertIndexVM.cs" />
     <Compile Include="Models\ViewModels\DessertCriteria.cs" />
+    <Compile Include="Models\ViewModels\DiscountGroupEditVM.cs" />
+    <Compile Include="Models\ViewModels\DiscountGroupExts.cs" />
+    <Compile Include="Models\ViewModels\DiscountGroupIndexVM.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -572,6 +576,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\DiscountGroups\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.rtl.min.css.map" />
@@ -676,6 +681,8 @@
     <Content Include="Views\Home\UsersProfile.cshtml" />
     <Content Include="Views\Home\FormEdit.cshtml" />
     <Content Include="Views\Home\DataTable.cshtml" />
+    <Content Include="Views\DiscountGroup\Index.cshtml" />
+    <Content Include="Views\DiscountGroup\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="Scripts\vendor\chart.js\controllers\controller.bar.d.ts" />
