@@ -1,0 +1,109 @@
+﻿@model IEnumerable<NiceAdmin.Models.EFModels.Member>
+
+@{
+    ViewBag.Title = "Index";
+}
+<main id="main" class="main">
+	<div class="pagetitle">
+		<h1>Form Elements</h1>
+		<nav>
+			<ol class="breadcrumb">
+				<li class="breadcrumb-item"><a href="@Url.Action("Index","Default")">首頁</a></li>
+				<li class="breadcrumb-item">   這裡是會員管理  </li>
+				<li class="breadcrumb-item active">  這裡是會員頁面  </li>
+			</ol>
+		</nav>
+	</div>
+	<!-- End Page Title -->
+	<section class="section">
+		這裡是頁面的內容
+	</section>
+</main>
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.MemberName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Email)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EncryptedPassword)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Address)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Phone)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CreateAt)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Birth)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Gender)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ImagePath)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IsBan)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.cancelTimes)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.MemberName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Email)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EncryptedPassword)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Address)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Phone)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CreateAt)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Birth)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Gender)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ImagePath)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IsBan)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.cancelTimes)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.MemberId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.MemberId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.MemberId })
+        </td>
+    </tr>
+}
+
+</table>

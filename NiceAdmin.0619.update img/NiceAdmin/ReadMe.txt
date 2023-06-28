@@ -12,7 +12,7 @@
 [working on] 創建EFModels
 			 --新增 各自的Controller (View Models)
 			 --cshtml可以從/Default/Index 裡面的Index.cshtml 更改版型內容。
-			 --在自己的Index.cshtml @{BiewBag.Title = "Index";}下面加上
+			 --在自己的Index.cshtml @{ViewBag.Title = "Index";}下面加上
 					<main id="main" class="main">
                         <div class="pagetitle">
                             <h1>Form Elements</h1>
@@ -57,7 +57,8 @@ Desserts 部分
 ==========================================================
 Member 部分
 
-
+[V] - 建立資料夾Views/Members
+[V] - 建立控制器MembersController.cs & 建立檢視Views/Members
 
 
 

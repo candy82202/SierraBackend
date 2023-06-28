@@ -134,6 +134,7 @@
     <Compile Include="Controllers\DessertImagesController.cs" />
     <Compile Include="Controllers\DessertsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\MembersController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -673,6 +674,11 @@
     <Content Include="Views\Home\Sierras.cshtml" />
     <Content Include="Views\Shared\_LayoutFront.cshtml" />
     <Content Include="Views\Shared\_LayoutProduct.cshtml" />
+    <Content Include="Views\Members\Create.cshtml" />
+    <Content Include="Views\Members\Delete.cshtml" />
+    <Content Include="Views\Members\Details.cshtml" />
+    <Content Include="Views\Members\Edit.cshtml" />
+    <Content Include="Views\Members\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="Scripts\vendor\chart.js\controllers\controller.bar.d.ts" />
