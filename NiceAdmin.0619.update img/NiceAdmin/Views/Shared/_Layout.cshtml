@@ -415,17 +415,17 @@
                     class="nav-content collapse"
                     data-bs-parent="#sidebar-nav">
                     <li>
-                        <a href="@Url.Action("Index","Default")">
+                        <a href="@Url.Action("DataTable","Home")">
                             <i class="bi bi-circle"></i><span>會員帳號管理</span>
                         </a>
                     </li>
                     <li>
-                        <a href="@Url.Action("Index","Default")">
+                        <a href="@Url.Action("Index","Home")">
                             <i class="bi bi-circle"></i><span>會員權限管理</span>
                         </a>
                     </li>
                     <li>
-                        <a href="@Url.Action("FormsLayouts","Default")">
+                        <a href="@Url.Action("FormsLayouts","Home")">
                             <i class="bi bi-circle"></i><span>員工帳號管理</span>
                         </a>
                     </li>
@@ -464,48 +464,48 @@
                 <a class="nav-link collapsed"
                    data-bs-target="#class-nav"
                    data-bs-toggle="collapse"
-                   href="@Url.Action("Index","Default")">
+                   href="@Url.Action("Index","Home")">
                     <i class="bi bi-layout-text-window-reverse"></i><span>課程管理</span><i class="bi bi-chevron-down ms-auto"></i>
                 </a>
                 <ul id="class-nav"
                     class="nav-content collapse"
                     data-bs-parent="#sidebar-nav">
                     <li>
-                        <a href="@Url.Action("Index","Default")">
+                        <a href="@Url.Action("DataTable","Home")">
                             <i class="bi bi-circle"></i><span>新增課程</span>
                         </a>
                     </li>
                     <li>
-                        <a href="@Url.Action("Index","Default")">
+                        <a href="@Url.Action("FormsLayouts","Home")">
                             <i class="bi bi-circle"></i><span>查詢課程</span>
                         </a>
                     </li>
                 </ul>
             </li>
-            @*End class Nav*@
+            @*End Class Nav*@
             <li class="nav-item">
                 <a class="nav-link collapsed"
                    data-bs-target="#teacher-nav"
                    data-bs-toggle="collapse"
-                   href="@Url.Action("Index","Default")">
+                   href="@Url.Action("Index","Home")">
                     <i class="bi bi-layout-text-window-reverse"></i><span>師資管理</span><i class="bi bi-chevron-down ms-auto"></i>
                 </a>
                 <ul id="teacher-nav"
                     class="nav-content collapse"
                     data-bs-parent="#sidebar-nav">
                     <li>
-                        <a href="@Url.Action("Index","Default")">
+                        <a href="@Url.Action("FormsLayouts","Home")">
                             <i class="bi bi-circle"></i><span>新增教師</span>
                         </a>
                     </li>
                     <li>
-                        <a href="@Url.Action("Index","Default")">
+                        <a href="@Url.Action("FormsLayouts","Home")">
                             <i class="bi bi-circle"></i><span>教師清單</span>
                         </a>
                     </li>
                 </ul>
             </li>
-            @*End class Nav*@
+            @*End Teacher Nav*@
             <li class="nav-item">
                 <a class="nav-link collapsed"
                    data-bs-target="#orders-nav"
@@ -517,12 +517,12 @@
                     class="nav-content collapse"
                     data-bs-parent="#sidebar-nav">
                     <li>
-                        <a href="@Url.Action("Index","Default")">
+                        <a href="@Url.Action("DataTable","Home")">
                             <i class="bi bi-circle"></i><span>訂單查詢</span>
                         </a>
                     </li>
                     <li>
-                        <a href="@Url.Action("Index","Default")">
+                        <a href="@Url.Action("FormsLayouts","Home")">
                             <i class="bi bi-circle"></i><span>訂單</span>
                         </a>
                     </li>
@@ -533,19 +533,19 @@
                 <a class="nav-link collapsed"
                    data-bs-target="#discounts-nav"
                    data-bs-toggle="collapse"
-                   href="@Url.Action("Index","Default")">
+                   href="@Url.Action("Index","Home")">
                     <i class="bi bi-layout-text-window-reverse"></i><span>行銷管理</span><i class="bi bi-chevron-down ms-auto"></i>
                 </a>
                 <ul id="discounts-nav"
                     class="nav-content collapse"
                     data-bs-parent="#sidebar-nav">
                     <li>
-                        <a href="@Url.Action("Index","Default")">
+                        <a href="@Url.Action("FormsLayouts","Home")">
                             <i class="bi bi-circle"></i><span>新增優惠</span>
                         </a>
                     </li>
                     <li>
-                        <a href="@Url.Action("Index","Default")">
+                        <a href="@Url.Action("FormsLayouts","Home")">
                             <i class="bi bi-circle"></i><span>優惠查詢</span>
                         </a>
                     </li>
@@ -556,19 +556,19 @@
                 <a class="nav-link collapsed"
                    data-bs-target="#blogs-nav"
                    data-bs-toggle="collapse"
-                   href="@Url.Action("Index","Default")">
+                   href="@Url.Action("Index","Home")">
                     <i class="bi bi-layout-text-window-reverse"></i><span>小編管理</span><i class="bi bi-chevron-down ms-auto"></i>
                 </a>
                 <ul id="blogs-nav"
                     class="nav-content collapse"
                     data-bs-parent="#sidebar-nav">
                     <li>
-                        <a href="@Url.Action("Index","Default")">
+                        <a href="@Url.Action("FormEdit","Home")">
                             <i class="bi bi-circle"></i><span>新增貼文</span>
                         </a>
                     </li>
                     <li>
-                        <a href="@Url.Action("Index","Default")">
+                        <a href="@Url.Action("FormsLayouts","Home")">
                             <i class="bi bi-circle"></i><span>查詢貼文</span>
                         </a>
                     </li>
@@ -579,23 +579,17 @@
             <li class="nav-heading">Pages</li>
 
             <li class="nav-item">
-                <a class="nav-link collapsed" href="users-profile.html">
+                <a class="nav-link collapsed" href="@Url.Action("UsersProfile","Home")">
                     <i class="bi bi-person"></i>
                     <span>簡介</span>
                 </a>
             </li>
             @*End Profile Page Nav*@
 
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="pages-faq.html">
-                    <i class="bi bi-question-circle"></i>
-                    <span>F.A.Q</span>
-                </a>
-            </li>
-            @*End F.A.Q Page Nav*@
+
 
             <li class="nav-item">
-                <a class="nav-link collapsed" href="pages-contact.html">
+                <a class="nav-link collapsed" href="@Url.Action("Contact","Home")">
                     <i class="bi bi-envelope"></i>
                     <span>聯絡我們</span>
                 </a>
@@ -641,18 +635,15 @@
 
     <!-- End #main -->
     <!-- ======= Footer ======= -->
-    <footer id="footer" class="footer">
-        <div class="copyright">
-            &copy; 2023 Copyright <strong><span>Sierra</span></strong>. All Rights Reserved
-        </div>
-        <div class="credits">
-            <!-- All the links in the footer should remain intact. -->
-            <!-- You can delete the links only if you purchased the pro version. -->
-            <!-- Licensing information: https://bootstrapmade.com/license/ -->
-            <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/ -->
-            Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
-        </div>
-    </footer>
+<footer id="footer" class="footer">
+    <div class="copyright">
+        &copy; 2023 Copyright <strong><span>Sierra</span></strong>. All Rights Reserved
+    </div>
+    <div class="credits">
+        <!-- All the links in the footer should remain intact. -->
+        Designed by <a href="@Url.Action("Index","Home")">Sierra</a>
+    </div>
+</footer>
     <!-- End Footer -->
 
     <a href="#"
@@ -876,30 +867,30 @@
 
             //顯示英文版內容
             //調用SweetAlert2的fire方法，配置對話框的標題、消息內容、圖標和按鈕。
-            swalWithBootstrapButtons.fire({
-                title: 'Are you sure?',
-                text: "You won't be able to revert this!",
-                icon: 'warning',
-                showCancelButton: true,
-                confirmButtonText: 'Yes, delete it!',
-                cancelButtonText: 'No, cancel!',
-                reverseButtons: true
-            })
-                //.then((result) => {...})：使用 Promise 的then方法，當用戶點擊對話框上的按鈕後執行相應的操作。
-                .then((result) => {
+            //swalWithBootstrapButtons.fire({
+            //    title: 'Are you sure?',
+            //    text: "You won't be able to revert this!",
+            //    icon: 'warning',
+            //    showCancelButton: true,
+            //    confirmButtonText: 'Yes, delete it!',
+            //    cancelButtonText: 'No, cancel!',
+            //    reverseButtons: true
+            //})
+            //    //.then((result) => {...})：使用 Promise 的then方法，當用戶點擊對話框上的按鈕後執行相應的操作。
+            //    .then((result) => {
 
-                    //result.isConfirmed：如果用戶點擊了確認按鈕，則執行提交表單的操作。
-                    if (result.isConfirmed) {
-                        $('form').submit();
-                    } //result.dismiss === Swal.DismissReason.cancel：如果用戶點擊了取消按鈕，則顯示一個取消的提示消息。
-                    else if (result.dismiss === Swal.DismissReason.cancel) {
-                        swalWithBootstrapButtons.fire(
-                            'Cancelled',
-                            'Your imaginary file is safe :)',
-                            'error'
-                        );
-                    }
-                });
+            //        //result.isConfirmed：如果用戶點擊了確認按鈕，則執行提交表單的操作。
+            //        if (result.isConfirmed) {
+            //            $('form').submit();
+            //        } //result.dismiss === Swal.DismissReason.cancel：如果用戶點擊了取消按鈕，則顯示一個取消的提示消息。
+            //        else if (result.dismiss === Swal.DismissReason.cancel) {
+            //            swalWithBootstrapButtons.fire(
+            //                'Cancelled',
+            //                'Your imaginary file is safe :)',
+            //                'error'
+            //            );
+            //        }
+            //    });
 
 
             //顯示中文內容

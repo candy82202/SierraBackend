@@ -130,7 +130,6 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\CategoriesController.cs" />
-    <Compile Include="Controllers\DefaultController.cs" />
     <Compile Include="Controllers\DessertImagesController.cs" />
     <Compile Include="Controllers\DessertsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -168,6 +167,7 @@
     <Compile Include="Models\ViewModels\DessertEditImageVM.cs" />
     <Compile Include="Models\ViewModels\DessertEditVM.cs" />
     <Compile Include="Models\ViewModels\DessertExts.cs" />
+    <Compile Include="Models\ViewModels\DessertFrontIndexVM.cs" />
     <Compile Include="Models\ViewModels\DessertIndexVM.cs" />
     <Compile Include="Models\ViewModels\DessertCriteria.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -559,7 +559,6 @@
     <Content Include="Scripts\vendor\tinymce\composer.json" />
     <Content Include="Scripts\vendor\tinymce\package.json" />
     <Content Include="Scripts\vendor\tinymce\README.md" />
-    <Content Include="Views\Default\Index.cshtml" />
     <Content Include="Views\Desserts\Create.cshtml" />
     <Content Include="Views\Desserts\Delete.cshtml" />
     <Content Include="Views\Desserts\Details.cshtml" />
@@ -570,11 +569,6 @@
     <Content Include="Views\Categories\Details.cshtml" />
     <Content Include="Views\Categories\Edit.cshtml" />
     <Content Include="Views\Categories\Index.cshtml" />
-    <Content Include="Views\DessertImages\Create.cshtml" />
-    <Content Include="Views\DessertImages\Delete.cshtml" />
-    <Content Include="Views\DessertImages\Details.cshtml" />
-    <Content Include="Views\DessertImages\Edit.cshtml" />
-    <Content Include="Views\DessertImages\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -673,6 +667,15 @@
     <Content Include="Views\Home\Sierras.cshtml" />
     <Content Include="Views\Shared\_LayoutFront.cshtml" />
     <Content Include="Views\Shared\_LayoutProduct.cshtml" />
+    <Content Include="Views\DessertImages\Create.cshtml" />
+    <Content Include="Views\DessertImages\Delete.cshtml" />
+    <Content Include="Views\DessertImages\Details.cshtml" />
+    <Content Include="Views\DessertImages\Edit.cshtml" />
+    <Content Include="Views\DessertImages\Index.cshtml" />
+    <Content Include="Views\Home\FormsLayouts.cshtml" />
+    <Content Include="Views\Home\UsersProfile.cshtml" />
+    <Content Include="Views\Home\FormEdit.cshtml" />
+    <Content Include="Views\Home\DataTable.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="Scripts\vendor\chart.js\controllers\controller.bar.d.ts" />
