@@ -7,6 +7,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Xml.Linq;
+using NiceAdmin.Models.ViewModels;
 
 namespace NiceAdmin.Controllers
 {
@@ -36,7 +37,7 @@ namespace NiceAdmin.Controllers
                             DessertName = dessert.DessertName,
                             CategoryName = result.CategoryName,
                             Description = dessert.Description,
-                            DessertImage1 = db.DessertImages.FirstOrDefault(di => di.DessertId == dessert.DessertId)?.DessertImage1
+                            DessertImageName = db.DessertImages.FirstOrDefault(di => di.DessertId == dessert.DessertId)?.DessertImageName
                         };
                         dvm.Add(item);
                     }
@@ -56,7 +57,7 @@ namespace NiceAdmin.Controllers
                         DessertName = dessert.DessertName,
                         CategoryName = dessert.Category.CategoryName,
                         Description = dessert.Description,
-                        DessertImage1 = dessert.DessertImages.FirstOrDefault()?.DessertImage1
+                        DessertImageName = dessert.DessertImages.FirstOrDefault()?.DessertImageName
                     };
                     dvm.Add(item);
                 }
@@ -66,37 +67,37 @@ namespace NiceAdmin.Controllers
 
             return View(dvm);
         }
-        public class DessertFrontIndexVM
-        {
-            public int DessertId { get; set; }
-            [Display(Name = "甜點名稱")]
-            [StringLength(50)]
-            public string DessertName { get; set; }
-            [Display(Name = "甜點類別")]
+ //       public class DessertFrontIndexVM
+ //       {
+ //           public int DessertId { get; set; }
+ //           [Display(Name = "甜點名稱")]
+ //           [StringLength(50)]
+ //           public string DessertName { get; set; }
+ //           [Display(Name = "甜點類別")]
 
-            public string CategoryName { get; set; }
-            [DisplayFormat(DataFormatString = "{0:#,#}")]
-            [Display(Name = "售價")]
+ //           public string CategoryName { get; set; }
+ //           [DisplayFormat(DataFormatString = "{0:#,#}")]
+ //           [Display(Name = "售價")]
 
-            public string Description { get; set; }
-            [Display(Name = "描述")]
- public string DescriptionText
-            {
-                get
-                {
-                    return this.Description.Length > 10
-                            ? this.Description.Substring(0, 10) + "..."
-                            : this.Description;
-                }
-            }
-            [Column("DessertImage")]
-            [StringLength(255)]
-            [Display(Name = "照片")]
-            public string DessertImage1 { get; set; }
+ //           public string Description { get; set; }
+ //           [Display(Name = "描述")]
+ //public string DescriptionText
+ //           {
+ //               get
+ //               {
+ //                   return this.Description.Length > 10
+ //                           ? this.Description.Substring(0, 10) + "..."
+ //                           : this.Description;
+ //               }
+ //           }
+ //           [Column("DessertImage")]
+ //           [StringLength(255)]
+ //           [Display(Name = "照片")]
+ //           public string DessertImage1 { get; set; }
            
 
 
-        }
+ //       }
         public ActionResult About()
         {
             ViewBag.Message = "Your application description page.";
@@ -115,5 +116,9 @@ namespace NiceAdmin.Controllers
         {
             return View();
         }
+        public ActionResult FormsLayouts() { return View(); }
+        public ActionResult UsersProfile() { return View(); }
+        public ActionResult FormEdit() { return View(); }
+        public ActionResult DataTable() { return View(); }
     }
 }

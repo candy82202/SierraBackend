@@ -1,19 +1,105 @@
-﻿@{
-    ViewBag.Title = "Contact";
+﻿
+@{
+    ViewBag.Title = "ContactUs";
 }
-<main aria-labelledby="title">
-    <h2 id="title">@ViewBag.Title.</h2>
-    <h3>@ViewBag.Message</h3>
 
-    <address>
-        One Microsoft Way<br />
-        Redmond, WA 98052-6399<br />
-        <abbr title="Phone">P:</abbr>
-        425.555.0100
-    </address>
+<main id="main" class="main">
+    <div class="pagetitle">
+        <h1>聯絡我們</h1>
+        <nav>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="@Url.Action("Index","Home")">首頁</a></li>
 
-    <address>
-        <strong>Support:</strong>   <a href="mailto:Support@example.com">Support@example.com</a><br />
-        <strong>Marketing:</strong> <a href="mailto:Marketing@example.com">Marketing@example.com</a>
-    </address>
+                <li class="breadcrumb-item active">聯絡我們</li>
+            </ol>
+        </nav>
+    </div>
+    <!-- End Page Title -->
+
+    <section class="section contact">
+        <div class="row gy-4">
+            <div class="col-xl-6">
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="info-box card">
+                            <i class="bi bi-geo-alt"></i>
+                            <h3>地址</h3>
+                            <p>新生路二段421號,<br />中壢區,桃園市320</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="info-box card">
+                            <i class="bi bi-telephone"></i>
+                            <h3>聯絡我們</h3>
+                            <p>04 4260162<br />0938487538</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="info-box card">
+                            <i class="bi bi-envelope"></i>
+                            <h3>聯絡信箱</h3>
+                            <p>FUEN28@example.com<br />contact@example.com</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="info-box card">
+                            <i class="bi bi-clock"></i>
+                            <h3>營業時間</h3>
+                            <p>星期一 - 星期五<br />9:00AM - 05:00PM</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-xl-6">
+                <div class="card p-4">
+                    <form action="forms/contact.php"
+                          method="post"
+                          class="php-email-form">
+                        <div class="row gy-4">
+                            <div class="col-md-6">
+                                <input type="text"
+                                       name="name"
+                                       class="form-control"
+                                       placeholder="您的姓名"
+                                       required />
+                            </div>
+
+                            <div class="col-md-6">
+                                <input type="email"
+                                       class="form-control"
+                                       name="email"
+                                       placeholder="您的信箱"
+                                       required />
+                            </div>
+
+                            <div class="col-md-12">
+                                <input type="text"
+                                       class="form-control"
+                                       name="subject"
+                                       placeholder="主旨"
+                                       required />
+                            </div>
+
+                            <div class="col-md-12">
+                                <textarea class="form-control"
+                                          name="message"
+                                          rows="6"
+                                          placeholder="訊息"
+                                          required></textarea>
+                            </div>
+
+                            <div class="col-md-12 text-center">
+                                <div class="loading">加載中</div>
+                                <div class="error-message"></div>
+                                <div class="sent-message">您的訊息已發送。 感謝你！</div>
+
+                                <button type="submit">傳送訊息</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
 </main>

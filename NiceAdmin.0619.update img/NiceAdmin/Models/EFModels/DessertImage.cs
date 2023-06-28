@@ -15,7 +15,7 @@ namespace NiceAdmin.Models.EFModels
 
         [Column("DessertImage")]
         [StringLength(255)]
-        public string DessertImage1 { get; set; }
+        public string DessertImageName { get; set; }
 
         public virtual Dessert Dessert { get; set; }
     }

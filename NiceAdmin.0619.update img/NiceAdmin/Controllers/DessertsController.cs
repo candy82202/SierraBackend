@@ -114,11 +114,11 @@ namespace NiceAdmin.Controllers
             {
 
                 //將file1存檔，用server.MapPath並取得最後存檔的檔案名稱
-                string path = Server.MapPath("/img");//檔案要存放的資料夾位置
+                string path = Server.MapPath("/Uploads");//檔案要存放的資料夾位置
                 foreach (var file in files)
                 {
                     string fileName = SaveUploadedFile(path, file);
-                    dessertCreateVM.Images.Add(fileName);
+                    dessertCreateVM.DessertImageName.Add(fileName);
                 }
 
                 //將檔名存入vm裡面
@@ -132,11 +132,11 @@ namespace NiceAdmin.Controllers
                 Dessert dessert = dessertCreateVM.ToEntity();
                 dessert.CreateTime = DateTime.Now;
                 // 創建 DessertImage 对象并将其与 Dessert 对象关联
-                foreach (string imageFileName in dessertCreateVM.Images)
+                foreach (string imageFileName in dessertCreateVM.DessertImageName)
                 {
                     DessertImage dessertImage = new DessertImage
                     {
-                        DessertImage1 = imageFileName
+                        DessertImageName = imageFileName
                     };
                     dessert.DessertImages.Add(dessertImage);
                 }
@@ -146,10 +146,10 @@ namespace NiceAdmin.Controllers
                 if (dessert.Status) // 檢查商品是否上架
                 {
                     List<Dessert> onShelfDesserts = GetOnShelfDesserts(dessert); // 獲取所有上架的商品
-                    return RedirectToAction("Products", "Home", new { desserts = onShelfDesserts });
+                    return RedirectToAction("Sierras", "Home", new { desserts = onShelfDesserts });
                 }
 
-                return RedirectToAction("Products");
+                return RedirectToAction("Sierras");
             //} 
         }
               
