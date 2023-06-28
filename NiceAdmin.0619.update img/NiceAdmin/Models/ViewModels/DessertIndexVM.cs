@@ -35,7 +35,8 @@ namespace NiceAdmin.Models.ViewModels
             {
                 return this.Status == true
                     ? "上架中" : "已下架";
-            } }
+            }
+        }
 
         [Display(Name = "創建時間")]
         public DateTime? CreateTime { get; set; }

@@ -1,0 +1,120 @@
+﻿@model NiceAdmin.Models.EFModels.Cours
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Cours</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.CoursesCategory.CoursesCategoryName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CoursesCategory.CoursesCategoryName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Teacher.TeacherName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Teacher.TeacherName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CourseTitle)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CourseTitle)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CourseInfo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CourseInfo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CourseDetail)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CourseDetail)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CourseDessert)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CourseDessert)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CourseTime)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CourseTime)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CourseHours)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CourseHours)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MaximumCapacity)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MaximumCapacity)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CoursePrice)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CoursePrice)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CourseStatus)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CourseStatus)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CreateTime)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CreateTime)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>
