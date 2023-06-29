@@ -36,7 +36,7 @@
 [V] - 修改DataTable 的模板樣式，更改成中文版本
 
 [V] - 加裝sweet alert delete的部分。
-    - 資料庫使用Sierras 0627
+    - 資料庫使用Sierras 0629
     - 版本 4.7.2 
 
 [working on] - 針對404錯誤訊息畫面 修改web.config畫面，圖片尚未抓到
