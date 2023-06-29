@@ -51,7 +51,8 @@ Desserts 部分
 
 [working on] - AJAX 甜點清單頁面
 
-[working on] - 照片更改成圖示 <img>
+[working on] - 編輯照片新增欄位(簡易編輯)
+             - 照片更改成圖示 <img>
              
 
 

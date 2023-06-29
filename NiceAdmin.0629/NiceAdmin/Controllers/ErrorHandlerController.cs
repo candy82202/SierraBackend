@@ -13,5 +13,7 @@ namespace NiceAdmin.Controllers
         {
             return View();
         }
+        
+      
     }
 }

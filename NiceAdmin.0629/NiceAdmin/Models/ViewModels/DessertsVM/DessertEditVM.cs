@@ -21,9 +21,12 @@ namespace NiceAdmin.Models.ViewModels
         [StringLength(200)]
         public string Description { get; set; }
         [Display(Name = "圖片")]
-        public List<string> DessertImageName { get; set; }
+        public List<string> DessertImageNames { get; set; }
         [Display(Name = "是否上架")]
         public bool Status { get; set; }
-
+        public DessertEditVM()
+        {
+            DessertImageNames = new List<string>();
+        }
     }
 }
