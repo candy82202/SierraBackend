@@ -135,9 +135,7 @@
     <Compile Include="Controllers\Lessons\LessonImagesController.cs" />
     <Compile Include="Controllers\Lessons\LessonsController.cs" />
     <Compile Include="Controllers\Lessons\LessonTagsController.cs" />
-    <Compile Include="Controllers\Members\EmployeesController.cs" />
     <Compile Include="Controllers\Members\MembersController.cs" />
-    <Compile Include="Controllers\Members\PermissionsController.cs" />
     <Compile Include="Controllers\Orders\DessertOrderDetailsController.cs" />
     <Compile Include="Controllers\Orders\DessertOrdersController.cs" />
     <Compile Include="Controllers\Orders\LessonOrderDetailsController.cs" />
@@ -597,6 +595,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Employees\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.rtl.min.css.map" />
@@ -728,16 +727,6 @@
     <Content Include="Views\Teachers\Details.cshtml" />
     <Content Include="Views\Teachers\Edit.cshtml" />
     <Content Include="Views\Teachers\Index.cshtml" />
-    <Content Include="Views\Employees\Create.cshtml" />
-    <Content Include="Views\Employees\Delete.cshtml" />
-    <Content Include="Views\Employees\Details.cshtml" />
-    <Content Include="Views\Employees\Edit.cshtml" />
-    <Content Include="Views\Employees\Index.cshtml" />
-    <Content Include="Views\Permissions\Create.cshtml" />
-    <Content Include="Views\Permissions\Delete.cshtml" />
-    <Content Include="Views\Permissions\Details.cshtml" />
-    <Content Include="Views\Permissions\Edit.cshtml" />
-    <Content Include="Views\Permissions\Index.cshtml" />
     <Content Include="Views\Members\Create.cshtml" />
     <Content Include="Views\Members\Delete.cshtml" />
     <Content Include="Views\Members\Details.cshtml" />
