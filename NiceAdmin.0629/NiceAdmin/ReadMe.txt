@@ -63,7 +63,8 @@ Member 部分
       刪除連線字串
       刪除相關控制器和檢視(Employees和Permissions)
 
-
+[V] - 重建EFModels
+      重建相關控制器和檢視
 
 
 

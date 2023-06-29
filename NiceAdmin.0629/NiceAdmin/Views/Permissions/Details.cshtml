@@ -1,0 +1,26 @@
+﻿@model NiceAdmin.Models.EFModels.Permission
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Permission</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.PermissionName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PermissionName)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.PermissionId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
