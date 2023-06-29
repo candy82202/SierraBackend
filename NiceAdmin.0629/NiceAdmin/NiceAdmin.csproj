@@ -182,6 +182,8 @@
     <Compile Include="Models\EFModels\Promotion.cs" />
     <Compile Include="Models\EFModels\Specification.cs" />
     <Compile Include="Models\EFModels\Teacher.cs" />
+    <Compile Include="Models\ViewModels\LessonsVM\LessonCriteria.cs" />
+    <Compile Include="Models\ViewModels\LessonsVM\LessonExts.cs" />
     <Compile Include="Models\ViewModels\LessonsVM\LessonIndexVM.cs" />
     <Compile Include="Models\ViewModels\DessertsVM\CategoryIndexVM.cs" />
     <Compile Include="Models\ViewModels\DessertsVM\DessertCreateVM.cs" />
