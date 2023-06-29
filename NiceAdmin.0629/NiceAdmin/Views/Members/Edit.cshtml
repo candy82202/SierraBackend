@@ -1,0 +1,90 @@
+﻿@model NiceAdmin.Models.EFModels.Member
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Edit</h2>
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="row">
+        <h4>Member</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.MemberId)
+        <div class="mb-3">
+            @Html.LabelFor(model => model.MemberName, htmlAttributes: new { @class = "form-label" })
+            @Html.EditorFor(model => model.MemberName, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.MemberName, "", new { @class = "text-danger" })
+        </div>
+        <div class="mb-3">
+            @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "form-label" })
+            @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+        </div>
+        <div class="mb-3">
+            @Html.LabelFor(model => model.EncryptedPassword, htmlAttributes: new { @class = "form-label" })
+            @Html.EditorFor(model => model.EncryptedPassword, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.EncryptedPassword, "", new { @class = "text-danger" })
+        </div>
+        <div class="mb-3">
+            @Html.LabelFor(model => model.Address, htmlAttributes: new { @class = "form-label" })
+            @Html.EditorFor(model => model.Address, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Address, "", new { @class = "text-danger" })
+        </div>
+        <div class="mb-3">
+            @Html.LabelFor(model => model.Phone, htmlAttributes: new { @class = "form-label" })
+            @Html.EditorFor(model => model.Phone, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Phone, "", new { @class = "text-danger" })
+        </div>
+        <div class="mb-3">
+            @Html.LabelFor(model => model.CreateAt, htmlAttributes: new { @class = "form-label" })
+            @Html.EditorFor(model => model.CreateAt, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.CreateAt, "", new { @class = "text-danger" })
+        </div>
+        <div class="mb-3">
+            @Html.LabelFor(model => model.Birth, htmlAttributes: new { @class = "form-label" })
+            @Html.EditorFor(model => model.Birth, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Birth, "", new { @class = "text-danger" })
+        </div>
+        <div class="mb-3">
+            @Html.LabelFor(model => model.Gender, htmlAttributes: new { @class = "form-label" })
+                <div class="checkbox">
+                @Html.EditorFor(model => model.Gender)
+                @Html.ValidationMessageFor(model => model.Gender, "", new { @class = "text-danger" })
+                </div>
+        </div>
+        <div class="mb-3">
+            @Html.LabelFor(model => model.ImageName, htmlAttributes: new { @class = "form-label" })
+            @Html.EditorFor(model => model.ImageName, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.ImageName, "", new { @class = "text-danger" })
+        </div>
+        <div class="mb-3">
+            @Html.LabelFor(model => model.IsBan, htmlAttributes: new { @class = "form-label" })
+                <div class="checkbox">
+                @Html.EditorFor(model => model.IsBan)
+                @Html.ValidationMessageFor(model => model.IsBan, "", new { @class = "text-danger" })
+                </div>
+        </div>
+        <div class="mb-3">
+            @Html.LabelFor(model => model.CancelTimes, htmlAttributes: new { @class = "form-label" })
+            @Html.EditorFor(model => model.CancelTimes, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.CancelTimes, "", new { @class = "text-danger" })
+        </div>
+        <div class="mb-3">
+            <input type="submit" value="Save" class="btn btn-primary" />
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

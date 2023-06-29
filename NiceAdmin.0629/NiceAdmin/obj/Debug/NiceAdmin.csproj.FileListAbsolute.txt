@@ -1,0 +1,540 @@
+C:\Users\USER\Desktop\資策會\C#題目練習\宜萱(存放GPT)\基礎練習題庫\0609\NiceAdmin\NiceAdmin\bin\NiceAdmin.dll.config
+C:\Users\USER\Desktop\資策會\C#題目練習\宜萱(存放GPT)\基礎練習題庫\0609\NiceAdmin\NiceAdmin\bin\NiceAdmin.dll
+C:\Users\USER\Desktop\資策會\C#題目練習\宜萱(存放GPT)\基礎練習題庫\0609\NiceAdmin\NiceAdmin\bin\NiceAdmin.pdb
+C:\Users\USER\Desktop\資策會\C#題目練習\宜萱(存放GPT)\基礎練習題庫\0609\NiceAdmin\NiceAdmin\bin\roslyn\csc.exe
+C:\Users\USER\Desktop\資策會\C#題目練習\宜萱(存放GPT)\基礎練習題庫\0609\NiceAdmin\NiceAdmin\bin\roslyn\csc.exe.config
+C:\Users\USER\Desktop\資策會\C#題目練習\宜萱(存放GPT)\基礎練習題庫\0609\NiceAdmin\NiceAdmin\bin\roslyn\csc.rsp
+C:\Users\USER\Desktop\資策會\C#題目練習\宜萱(存放GPT)\基礎練習題庫\0609\NiceAdmin\NiceAdmin\bin\roslyn\csi.exe
+C:\Users\USER\Desktop\資策會\C#題目練習\宜萱(存放GPT)\基礎練習題庫\0609\NiceAdmin\NiceAdmin\bin\roslyn\csi.exe.config
+C:\Users\USER\Desktop\資策會\C#題目練習\宜萱(存放GPT)\基礎練習題庫\0609\NiceAdmin\NiceAdmin\bin\roslyn\csi.rsp
+C:\Users\USER\Desktop\資策會\C#題目練習\宜萱(存放GPT)\基礎練習題庫\0609\NiceAdmin\NiceAdmin\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+C:\Users\USER\Desktop\資策會\C#題目練習\宜萱(存放GPT)\基礎練習題庫\0609\NiceAdmin\NiceAdmin\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+C:\Users\USER\Desktop\資策會\C#題目練習\宜萱(存放GPT)\基礎練習題庫\0609\NiceAdmin\NiceAdmin\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
+C:\Users\USER\Desktop\資策會\C#題目練習\宜萱(存放GPT)\基礎練習題庫\0609\NiceAdmin\NiceAdmin\bin\roslyn\Microsoft.CodeAnalysis.dll
+C:\Users\USER\Desktop\資策會\C#題目練習\宜萱(存放GPT)\基礎練習題庫\0609\NiceAdmin\NiceAdmin\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
+C:\Users\USER\Desktop\資策會\C#題目練習\宜萱(存放GPT)\基礎練習題庫\0609\NiceAdmin\NiceAdmin\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+C:\Users\USER\Desktop\資策會\C#題目練習\宜萱(存放GPT)\基礎練習題庫\0609\NiceAdmin\NiceAdmin\bin\roslyn\Microsoft.CSharp.Core.targets
+C:\Users\USER\Desktop\資策會\C#題目練習\宜萱(存放GPT)\基礎練習題庫\0609\NiceAdmin\NiceAdmin\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
+C:\Users\USER\Desktop\資策會\C#題目練習\宜萱(存放GPT)\基礎練習題庫\0609\NiceAdmin\NiceAdmin\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
+C:\Users\USER\Desktop\資策會\C#題目練習\宜萱(存放GPT)\基礎練習題庫\0609\NiceAdmin\NiceAdmin\bin\roslyn\Microsoft.Managed.Core.targets
+C:\Users\USER\Desktop\資策會\C#題目練習\宜萱(存放GPT)\基礎練習題庫\0609\NiceAdmin\NiceAdmin\bin\roslyn\Microsoft.VisualBasic.Core.targets
+C:\Users\USER\Desktop\資策會\C#題目練習\宜萱(存放GPT)\基礎練習題庫\0609\NiceAdmin\NiceAdmin\bin\roslyn\Microsoft.Win32.Primitives.dll
+C:\Users\USER\Desktop\資策會\C#題目練習\宜萱(存放GPT)\基礎練習題庫\0609\NiceAdmin\NiceAdmin\bin\roslyn\System.AppContext.dll
+C:\Users\USER\Desktop\資策會\C#題目練習\宜萱(存放GPT)\基礎練習題庫\0609\NiceAdmin\NiceAdmin\bin\roslyn\System.Collections.Immutable.dll
+C:\Users\USER\Desktop\資策會\C#題目練習\宜萱(存放GPT)\基礎練習題庫\0609\NiceAdmin\NiceAdmin\bin\roslyn\System.Console.dll
+C:\Users\USER\Desktop\資策會\C#題目練習\宜萱(存放GPT)\基礎練習題庫\0609\NiceAdmin\NiceAdmin\bin\roslyn\System.Diagnostics.DiagnosticSource.dll
+C:\Users\USER\Desktop\資策會\C#題目練習\宜萱(存放GPT)\基礎練習題庫\0609\NiceAdmin\NiceAdmin\bin\roslyn\System.Diagnostics.FileVersionInfo.dll
+C:\Users\USER\Desktop\資策會\C#題目練習\宜萱(存放GPT)\基礎練習題庫\0609\NiceAdmin\NiceAdmin\bin\roslyn\System.Diagnostics.StackTrace.dll
+C:\Users\USER\Desktop\資策會\C#題目練習\宜萱(存放GPT)\基礎練習題庫\0609\NiceAdmin\NiceAdmin\bin\roslyn\System.Globalization.Calendars.dll
+C:\Users\USER\Desktop\資策會\C#題目練習\宜萱(存放GPT)\基礎練習題庫\0609\NiceAdmin\NiceAdmin\bin\roslyn\System.IO.Compression.dll
+C:\Users\USER\Desktop\資策會\C#題目練習\宜萱(存放GPT)\基礎練習題庫\0609\NiceAdmin\NiceAdmin\bin\roslyn\System.IO.Compression.ZipFile.dll
+C:\Users\USER\Desktop\資策會\C#題目練習\宜萱(存放GPT)\基礎練習題庫\0609\NiceAdmin\NiceAdmin\bin\roslyn\System.IO.FileSystem.dll
+C:\Users\USER\Desktop\資策會\C#題目練習\宜萱(存放GPT)\基礎練習題庫\0609\NiceAdmin\NiceAdmin\bin\roslyn\System.IO.FileSystem.Primitives.dll
+C:\Users\USER\Desktop\資策會\C#題目練習\宜萱(存放GPT)\基礎練習題庫\0609\NiceAdmin\NiceAdmin\bin\roslyn\System.Net.Http.dll
+C:\Users\USER\Desktop\資策會\C#題目練習\宜萱(存放GPT)\基礎練習題庫\0609\NiceAdmin\NiceAdmin\bin\roslyn\System.Net.Sockets.dll
+C:\Users\USER\Desktop\資策會\C#題目練習\宜萱(存放GPT)\基礎練習題庫\0609\NiceAdmin\NiceAdmin\bin\roslyn\System.Reflection.Metadata.dll
+C:\Users\USER\Desktop\資策會\C#題目練習\宜萱(存放GPT)\基礎練習題庫\0609\NiceAdmin\NiceAdmin\bin\roslyn\System.Runtime.InteropServices.RuntimeInformation.dll
+C:\Users\USER\Desktop\資策會\C#題目練習\宜萱(存放GPT)\基礎練習題庫\0609\NiceAdmin\NiceAdmin\bin\roslyn\System.Security.Cryptography.Algorithms.dll
+C:\Users\USER\Desktop\資策會\C#題目練習\宜萱(存放GPT)\基礎練習題庫\0609\NiceAdmin\NiceAdmin\bin\roslyn\System.Security.Cryptography.Encoding.dll
+C:\Users\USER\Desktop\資策會\C#題目練習\宜萱(存放GPT)\基礎練習題庫\0609\NiceAdmin\NiceAdmin\bin\roslyn\System.Security.Cryptography.Primitives.dll
+C:\Users\USER\Desktop\資策會\C#題目練習\宜萱(存放GPT)\基礎練習題庫\0609\NiceAdmin\NiceAdmin\bin\roslyn\System.Security.Cryptography.X509Certificates.dll
+C:\Users\USER\Desktop\資策會\C#題目練習\宜萱(存放GPT)\基礎練習題庫\0609\NiceAdmin\NiceAdmin\bin\roslyn\System.Text.Encoding.CodePages.dll
+C:\Users\USER\Desktop\資策會\C#題目練習\宜萱(存放GPT)\基礎練習題庫\0609\NiceAdmin\NiceAdmin\bin\roslyn\System.Threading.Tasks.Extensions.dll
+C:\Users\USER\Desktop\資策會\C#題目練習\宜萱(存放GPT)\基礎練習題庫\0609\NiceAdmin\NiceAdmin\bin\roslyn\System.ValueTuple.dll
+C:\Users\USER\Desktop\資策會\C#題目練習\宜萱(存放GPT)\基礎練習題庫\0609\NiceAdmin\NiceAdmin\bin\roslyn\System.Xml.ReaderWriter.dll
+C:\Users\USER\Desktop\資策會\C#題目練習\宜萱(存放GPT)\基礎練習題庫\0609\NiceAdmin\NiceAdmin\bin\roslyn\System.Xml.XmlDocument.dll
+C:\Users\USER\Desktop\資策會\C#題目練習\宜萱(存放GPT)\基礎練習題庫\0609\NiceAdmin\NiceAdmin\bin\roslyn\System.Xml.XPath.dll
+C:\Users\USER\Desktop\資策會\C#題目練習\宜萱(存放GPT)\基礎練習題庫\0609\NiceAdmin\NiceAdmin\bin\roslyn\System.Xml.XPath.XDocument.dll
+C:\Users\USER\Desktop\資策會\C#題目練習\宜萱(存放GPT)\基礎練習題庫\0609\NiceAdmin\NiceAdmin\bin\roslyn\vbc.exe
+C:\Users\USER\Desktop\資策會\C#題目練習\宜萱(存放GPT)\基礎練習題庫\0609\NiceAdmin\NiceAdmin\bin\roslyn\vbc.exe.config
+C:\Users\USER\Desktop\資策會\C#題目練習\宜萱(存放GPT)\基礎練習題庫\0609\NiceAdmin\NiceAdmin\bin\roslyn\vbc.rsp
+C:\Users\USER\Desktop\資策會\C#題目練習\宜萱(存放GPT)\基礎練習題庫\0609\NiceAdmin\NiceAdmin\bin\roslyn\VBCSCompiler.exe
+C:\Users\USER\Desktop\資策會\C#題目練習\宜萱(存放GPT)\基礎練習題庫\0609\NiceAdmin\NiceAdmin\bin\roslyn\VBCSCompiler.exe.config
+C:\Users\USER\Desktop\資策會\C#題目練習\宜萱(存放GPT)\基礎練習題庫\0609\NiceAdmin\NiceAdmin\bin\Antlr3.Runtime.dll
+C:\Users\USER\Desktop\資策會\C#題目練習\宜萱(存放GPT)\基礎練習題庫\0609\NiceAdmin\NiceAdmin\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+C:\Users\USER\Desktop\資策會\C#題目練習\宜萱(存放GPT)\基礎練習題庫\0609\NiceAdmin\NiceAdmin\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\USER\Desktop\資策會\C#題目練習\宜萱(存放GPT)\基礎練習題庫\0609\NiceAdmin\NiceAdmin\bin\Newtonsoft.Json.dll
+C:\Users\USER\Desktop\資策會\C#題目練習\宜萱(存放GPT)\基礎練習題庫\0609\NiceAdmin\NiceAdmin\bin\System.Web.Helpers.dll
+C:\Users\USER\Desktop\資策會\C#題目練習\宜萱(存放GPT)\基礎練習題庫\0609\NiceAdmin\NiceAdmin\bin\System.Web.Mvc.dll
+C:\Users\USER\Desktop\資策會\C#題目練習\宜萱(存放GPT)\基礎練習題庫\0609\NiceAdmin\NiceAdmin\bin\System.Web.Optimization.dll
+C:\Users\USER\Desktop\資策會\C#題目練習\宜萱(存放GPT)\基礎練習題庫\0609\NiceAdmin\NiceAdmin\bin\System.Web.Razor.dll
+C:\Users\USER\Desktop\資策會\C#題目練習\宜萱(存放GPT)\基礎練習題庫\0609\NiceAdmin\NiceAdmin\bin\System.Web.WebPages.Deployment.dll
+C:\Users\USER\Desktop\資策會\C#題目練習\宜萱(存放GPT)\基礎練習題庫\0609\NiceAdmin\NiceAdmin\bin\System.Web.WebPages.dll
+C:\Users\USER\Desktop\資策會\C#題目練習\宜萱(存放GPT)\基礎練習題庫\0609\NiceAdmin\NiceAdmin\bin\System.Web.WebPages.Razor.dll
+C:\Users\USER\Desktop\資策會\C#題目練習\宜萱(存放GPT)\基礎練習題庫\0609\NiceAdmin\NiceAdmin\bin\WebGrease.dll
+C:\Users\USER\Desktop\資策會\C#題目練習\宜萱(存放GPT)\基礎練習題庫\0609\NiceAdmin\NiceAdmin\bin\System.Web.Helpers.xml
+C:\Users\USER\Desktop\資策會\C#題目練習\宜萱(存放GPT)\基礎練習題庫\0609\NiceAdmin\NiceAdmin\bin\System.Web.Mvc.xml
+C:\Users\USER\Desktop\資策會\C#題目練習\宜萱(存放GPT)\基礎練習題庫\0609\NiceAdmin\NiceAdmin\bin\System.Web.Optimization.xml
+C:\Users\USER\Desktop\資策會\C#題目練習\宜萱(存放GPT)\基礎練習題庫\0609\NiceAdmin\NiceAdmin\bin\System.Web.Razor.xml
+C:\Users\USER\Desktop\資策會\C#題目練習\宜萱(存放GPT)\基礎練習題庫\0609\NiceAdmin\NiceAdmin\bin\System.Web.WebPages.xml
+C:\Users\USER\Desktop\資策會\C#題目練習\宜萱(存放GPT)\基礎練習題庫\0609\NiceAdmin\NiceAdmin\bin\System.Web.WebPages.Deployment.xml
+C:\Users\USER\Desktop\資策會\C#題目練習\宜萱(存放GPT)\基礎練習題庫\0609\NiceAdmin\NiceAdmin\bin\System.Web.WebPages.Razor.xml
+C:\Users\USER\Desktop\資策會\C#題目練習\宜萱(存放GPT)\基礎練習題庫\0609\NiceAdmin\NiceAdmin\bin\Newtonsoft.Json.xml
+C:\Users\USER\Desktop\資策會\C#題目練習\宜萱(存放GPT)\基礎練習題庫\0609\NiceAdmin\NiceAdmin\bin\Antlr3.Runtime.pdb
+C:\Users\USER\Desktop\資策會\C#題目練習\宜萱(存放GPT)\基礎練習題庫\0609\NiceAdmin\NiceAdmin\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\Users\USER\Desktop\資策會\C#題目練習\宜萱(存放GPT)\基礎練習題庫\0609\NiceAdmin\NiceAdmin\bin\zh-Hant\System.Web.Helpers.resources.dll
+C:\Users\USER\Desktop\資策會\C#題目練習\宜萱(存放GPT)\基礎練習題庫\0609\NiceAdmin\NiceAdmin\bin\zh-Hant\System.Web.Mvc.resources.dll
+C:\Users\USER\Desktop\資策會\C#題目練習\宜萱(存放GPT)\基礎練習題庫\0609\NiceAdmin\NiceAdmin\bin\zh-Hant\System.Web.Optimization.resources.dll
+C:\Users\USER\Desktop\資策會\C#題目練習\宜萱(存放GPT)\基礎練習題庫\0609\NiceAdmin\NiceAdmin\bin\zh-Hant\System.Web.Razor.resources.dll
+C:\Users\USER\Desktop\資策會\C#題目練習\宜萱(存放GPT)\基礎練習題庫\0609\NiceAdmin\NiceAdmin\bin\zh-Hant\System.Web.WebPages.resources.dll
+C:\Users\USER\Desktop\資策會\C#題目練習\宜萱(存放GPT)\基礎練習題庫\0609\NiceAdmin\NiceAdmin\bin\zh-Hant\System.Web.WebPages.Deployment.resources.dll
+C:\Users\USER\Desktop\資策會\C#題目練習\宜萱(存放GPT)\基礎練習題庫\0609\NiceAdmin\NiceAdmin\bin\zh-Hant\System.Web.WebPages.Razor.resources.dll
+C:\Users\USER\Desktop\資策會\C#題目練習\宜萱(存放GPT)\基礎練習題庫\0609\NiceAdmin\NiceAdmin\obj\Debug\NiceAdmin.csproj.AssemblyReference.cache
+C:\Users\USER\Desktop\資策會\C#題目練習\宜萱(存放GPT)\基礎練習題庫\0609\NiceAdmin\NiceAdmin\obj\Debug\NiceAdmin.csproj.CoreCompileInputs.cache
+C:\Users\USER\Desktop\資策會\C#題目練習\宜萱(存放GPT)\基礎練習題庫\0609\NiceAdmin\NiceAdmin\obj\Debug\NiceAdmin.csproj.CopyComplete
+C:\Users\USER\Desktop\資策會\C#題目練習\宜萱(存放GPT)\基礎練習題庫\0609\NiceAdmin\NiceAdmin\obj\Debug\NiceAdmin.dll
+C:\Users\USER\Desktop\資策會\C#題目練習\宜萱(存放GPT)\基礎練習題庫\0609\NiceAdmin\NiceAdmin\obj\Debug\NiceAdmin.pdb
+C:\Users\USER\Desktop\資策會\C#題目練習\宜萱(存放GPT)\基礎練習題庫\0609\NiceAdmin\NiceAdmin\bin\EntityFramework.dll
+C:\Users\USER\Desktop\資策會\C#題目練習\宜萱(存放GPT)\基礎練習題庫\0609\NiceAdmin\NiceAdmin\bin\EntityFramework.SqlServer.dll
+C:\Users\USER\Desktop\資策會\C#題目練習\宜萱(存放GPT)\基礎練習題庫\0609\NiceAdmin\NiceAdmin\bin\EntityFramework.xml
+C:\Users\USER\Desktop\資策會\C#題目練習\宜萱(存放GPT)\基礎練習題庫\0609\NiceAdmin\NiceAdmin\bin\EntityFramework.SqlServer.xml
+C:\Users\USER\Desktop\資策會\ASP\ASP練習\NiceAdmin\NiceAdmin\bin\NiceAdmin.dll.config
+C:\Users\USER\Desktop\資策會\ASP\ASP練習\NiceAdmin\NiceAdmin\bin\NiceAdmin.dll
+C:\Users\USER\Desktop\資策會\ASP\ASP練習\NiceAdmin\NiceAdmin\bin\NiceAdmin.pdb
+C:\Users\USER\Desktop\資策會\ASP\ASP練習\NiceAdmin\NiceAdmin\bin\roslyn\csc.exe
+C:\Users\USER\Desktop\資策會\ASP\ASP練習\NiceAdmin\NiceAdmin\bin\roslyn\csc.exe.config
+C:\Users\USER\Desktop\資策會\ASP\ASP練習\NiceAdmin\NiceAdmin\bin\roslyn\csc.rsp
+C:\Users\USER\Desktop\資策會\ASP\ASP練習\NiceAdmin\NiceAdmin\bin\roslyn\csi.exe
+C:\Users\USER\Desktop\資策會\ASP\ASP練習\NiceAdmin\NiceAdmin\bin\roslyn\csi.exe.config
+C:\Users\USER\Desktop\資策會\ASP\ASP練習\NiceAdmin\NiceAdmin\bin\roslyn\csi.rsp
+C:\Users\USER\Desktop\資策會\ASP\ASP練習\NiceAdmin\NiceAdmin\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+C:\Users\USER\Desktop\資策會\ASP\ASP練習\NiceAdmin\NiceAdmin\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+C:\Users\USER\Desktop\資策會\ASP\ASP練習\NiceAdmin\NiceAdmin\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
+C:\Users\USER\Desktop\資策會\ASP\ASP練習\NiceAdmin\NiceAdmin\bin\roslyn\Microsoft.CodeAnalysis.dll
+C:\Users\USER\Desktop\資策會\ASP\ASP練習\NiceAdmin\NiceAdmin\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
+C:\Users\USER\Desktop\資策會\ASP\ASP練習\NiceAdmin\NiceAdmin\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+C:\Users\USER\Desktop\資策會\ASP\ASP練習\NiceAdmin\NiceAdmin\bin\roslyn\Microsoft.CSharp.Core.targets
+C:\Users\USER\Desktop\資策會\ASP\ASP練習\NiceAdmin\NiceAdmin\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
+C:\Users\USER\Desktop\資策會\ASP\ASP練習\NiceAdmin\NiceAdmin\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
+C:\Users\USER\Desktop\資策會\ASP\ASP練習\NiceAdmin\NiceAdmin\bin\roslyn\Microsoft.Managed.Core.targets
+C:\Users\USER\Desktop\資策會\ASP\ASP練習\NiceAdmin\NiceAdmin\bin\roslyn\Microsoft.VisualBasic.Core.targets
+C:\Users\USER\Desktop\資策會\ASP\ASP練習\NiceAdmin\NiceAdmin\bin\roslyn\Microsoft.Win32.Primitives.dll
+C:\Users\USER\Desktop\資策會\ASP\ASP練習\NiceAdmin\NiceAdmin\bin\roslyn\System.AppContext.dll
+C:\Users\USER\Desktop\資策會\ASP\ASP練習\NiceAdmin\NiceAdmin\bin\roslyn\System.Collections.Immutable.dll
+C:\Users\USER\Desktop\資策會\ASP\ASP練習\NiceAdmin\NiceAdmin\bin\roslyn\System.Console.dll
+C:\Users\USER\Desktop\資策會\ASP\ASP練習\NiceAdmin\NiceAdmin\bin\roslyn\System.Diagnostics.DiagnosticSource.dll
+C:\Users\USER\Desktop\資策會\ASP\ASP練習\NiceAdmin\NiceAdmin\bin\roslyn\System.Diagnostics.FileVersionInfo.dll
+C:\Users\USER\Desktop\資策會\ASP\ASP練習\NiceAdmin\NiceAdmin\bin\roslyn\System.Diagnostics.StackTrace.dll
+C:\Users\USER\Desktop\資策會\ASP\ASP練習\NiceAdmin\NiceAdmin\bin\roslyn\System.Globalization.Calendars.dll
+C:\Users\USER\Desktop\資策會\ASP\ASP練習\NiceAdmin\NiceAdmin\bin\roslyn\System.IO.Compression.dll
+C:\Users\USER\Desktop\資策會\ASP\ASP練習\NiceAdmin\NiceAdmin\bin\roslyn\System.IO.Compression.ZipFile.dll
+C:\Users\USER\Desktop\資策會\ASP\ASP練習\NiceAdmin\NiceAdmin\bin\roslyn\System.IO.FileSystem.dll
+C:\Users\USER\Desktop\資策會\ASP\ASP練習\NiceAdmin\NiceAdmin\bin\roslyn\System.IO.FileSystem.Primitives.dll
+C:\Users\USER\Desktop\資策會\ASP\ASP練習\NiceAdmin\NiceAdmin\bin\roslyn\System.Net.Http.dll
+C:\Users\USER\Desktop\資策會\ASP\ASP練習\NiceAdmin\NiceAdmin\bin\roslyn\System.Net.Sockets.dll
+C:\Users\USER\Desktop\資策會\ASP\ASP練習\NiceAdmin\NiceAdmin\bin\roslyn\System.Reflection.Metadata.dll
+C:\Users\USER\Desktop\資策會\ASP\ASP練習\NiceAdmin\NiceAdmin\bin\roslyn\System.Runtime.InteropServices.RuntimeInformation.dll
+C:\Users\USER\Desktop\資策會\ASP\ASP練習\NiceAdmin\NiceAdmin\bin\roslyn\System.Security.Cryptography.Algorithms.dll
+C:\Users\USER\Desktop\資策會\ASP\ASP練習\NiceAdmin\NiceAdmin\bin\roslyn\System.Security.Cryptography.Encoding.dll
+C:\Users\USER\Desktop\資策會\ASP\ASP練習\NiceAdmin\NiceAdmin\bin\roslyn\System.Security.Cryptography.Primitives.dll
+C:\Users\USER\Desktop\資策會\ASP\ASP練習\NiceAdmin\NiceAdmin\bin\roslyn\System.Security.Cryptography.X509Certificates.dll
+C:\Users\USER\Desktop\資策會\ASP\ASP練習\NiceAdmin\NiceAdmin\bin\roslyn\System.Text.Encoding.CodePages.dll
+C:\Users\USER\Desktop\資策會\ASP\ASP練習\NiceAdmin\NiceAdmin\bin\roslyn\System.Threading.Tasks.Extensions.dll
+C:\Users\USER\Desktop\資策會\ASP\ASP練習\NiceAdmin\NiceAdmin\bin\roslyn\System.ValueTuple.dll
+C:\Users\USER\Desktop\資策會\ASP\ASP練習\NiceAdmin\NiceAdmin\bin\roslyn\System.Xml.ReaderWriter.dll
+C:\Users\USER\Desktop\資策會\ASP\ASP練習\NiceAdmin\NiceAdmin\bin\roslyn\System.Xml.XmlDocument.dll
+C:\Users\USER\Desktop\資策會\ASP\ASP練習\NiceAdmin\NiceAdmin\bin\roslyn\System.Xml.XPath.dll
+C:\Users\USER\Desktop\資策會\ASP\ASP練習\NiceAdmin\NiceAdmin\bin\roslyn\System.Xml.XPath.XDocument.dll
+C:\Users\USER\Desktop\資策會\ASP\ASP練習\NiceAdmin\NiceAdmin\bin\roslyn\vbc.exe
+C:\Users\USER\Desktop\資策會\ASP\ASP練習\NiceAdmin\NiceAdmin\bin\roslyn\vbc.exe.config
+C:\Users\USER\Desktop\資策會\ASP\ASP練習\NiceAdmin\NiceAdmin\bin\roslyn\vbc.rsp
+C:\Users\USER\Desktop\資策會\ASP\ASP練習\NiceAdmin\NiceAdmin\bin\roslyn\VBCSCompiler.exe
+C:\Users\USER\Desktop\資策會\ASP\ASP練習\NiceAdmin\NiceAdmin\bin\roslyn\VBCSCompiler.exe.config
+C:\Users\USER\Desktop\資策會\ASP\ASP練習\NiceAdmin\NiceAdmin\bin\Antlr3.Runtime.dll
+C:\Users\USER\Desktop\資策會\ASP\ASP練習\NiceAdmin\NiceAdmin\bin\EntityFramework.dll
+C:\Users\USER\Desktop\資策會\ASP\ASP練習\NiceAdmin\NiceAdmin\bin\EntityFramework.SqlServer.dll
+C:\Users\USER\Desktop\資策會\ASP\ASP練習\NiceAdmin\NiceAdmin\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+C:\Users\USER\Desktop\資策會\ASP\ASP練習\NiceAdmin\NiceAdmin\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\USER\Desktop\資策會\ASP\ASP練習\NiceAdmin\NiceAdmin\bin\Newtonsoft.Json.dll
+C:\Users\USER\Desktop\資策會\ASP\ASP練習\NiceAdmin\NiceAdmin\bin\System.Web.Helpers.dll
+C:\Users\USER\Desktop\資策會\ASP\ASP練習\NiceAdmin\NiceAdmin\bin\System.Web.Mvc.dll
+C:\Users\USER\Desktop\資策會\ASP\ASP練習\NiceAdmin\NiceAdmin\bin\System.Web.Optimization.dll
+C:\Users\USER\Desktop\資策會\ASP\ASP練習\NiceAdmin\NiceAdmin\bin\System.Web.Razor.dll
+C:\Users\USER\Desktop\資策會\ASP\ASP練習\NiceAdmin\NiceAdmin\bin\System.Web.WebPages.Deployment.dll
+C:\Users\USER\Desktop\資策會\ASP\ASP練習\NiceAdmin\NiceAdmin\bin\System.Web.WebPages.dll
+C:\Users\USER\Desktop\資策會\ASP\ASP練習\NiceAdmin\NiceAdmin\bin\System.Web.WebPages.Razor.dll
+C:\Users\USER\Desktop\資策會\ASP\ASP練習\NiceAdmin\NiceAdmin\bin\WebGrease.dll
+C:\Users\USER\Desktop\資策會\ASP\ASP練習\NiceAdmin\NiceAdmin\bin\EntityFramework.xml
+C:\Users\USER\Desktop\資策會\ASP\ASP練習\NiceAdmin\NiceAdmin\bin\EntityFramework.SqlServer.xml
+C:\Users\USER\Desktop\資策會\ASP\ASP練習\NiceAdmin\NiceAdmin\bin\System.Web.Helpers.xml
+C:\Users\USER\Desktop\資策會\ASP\ASP練習\NiceAdmin\NiceAdmin\bin\System.Web.Mvc.xml
+C:\Users\USER\Desktop\資策會\ASP\ASP練習\NiceAdmin\NiceAdmin\bin\System.Web.Optimization.xml
+C:\Users\USER\Desktop\資策會\ASP\ASP練習\NiceAdmin\NiceAdmin\bin\System.Web.Razor.xml
+C:\Users\USER\Desktop\資策會\ASP\ASP練習\NiceAdmin\NiceAdmin\bin\System.Web.WebPages.xml
+C:\Users\USER\Desktop\資策會\ASP\ASP練習\NiceAdmin\NiceAdmin\bin\System.Web.WebPages.Deployment.xml
+C:\Users\USER\Desktop\資策會\ASP\ASP練習\NiceAdmin\NiceAdmin\bin\System.Web.WebPages.Razor.xml
+C:\Users\USER\Desktop\資策會\ASP\ASP練習\NiceAdmin\NiceAdmin\bin\Newtonsoft.Json.xml
+C:\Users\USER\Desktop\資策會\ASP\ASP練習\NiceAdmin\NiceAdmin\bin\Antlr3.Runtime.pdb
+C:\Users\USER\Desktop\資策會\ASP\ASP練習\NiceAdmin\NiceAdmin\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\Users\USER\Desktop\資策會\ASP\ASP練習\NiceAdmin\NiceAdmin\bin\zh-Hant\System.Web.Helpers.resources.dll
+C:\Users\USER\Desktop\資策會\ASP\ASP練習\NiceAdmin\NiceAdmin\bin\zh-Hant\System.Web.Mvc.resources.dll
+C:\Users\USER\Desktop\資策會\ASP\ASP練習\NiceAdmin\NiceAdmin\bin\zh-Hant\System.Web.Optimization.resources.dll
+C:\Users\USER\Desktop\資策會\ASP\ASP練習\NiceAdmin\NiceAdmin\bin\zh-Hant\System.Web.Razor.resources.dll
+C:\Users\USER\Desktop\資策會\ASP\ASP練習\NiceAdmin\NiceAdmin\bin\zh-Hant\System.Web.WebPages.resources.dll
+C:\Users\USER\Desktop\資策會\ASP\ASP練習\NiceAdmin\NiceAdmin\bin\zh-Hant\System.Web.WebPages.Deployment.resources.dll
+C:\Users\USER\Desktop\資策會\ASP\ASP練習\NiceAdmin\NiceAdmin\bin\zh-Hant\System.Web.WebPages.Razor.resources.dll
+C:\Users\USER\Desktop\資策會\ASP\ASP練習\NiceAdmin\NiceAdmin\obj\Debug\NiceAdmin.csproj.AssemblyReference.cache
+C:\Users\USER\Desktop\資策會\ASP\ASP練習\NiceAdmin\NiceAdmin\obj\Debug\NiceAdmin.csproj.CoreCompileInputs.cache
+C:\Users\USER\Desktop\資策會\ASP\ASP練習\NiceAdmin\NiceAdmin\obj\Debug\NiceAdmin.csproj.CopyComplete
+C:\Users\USER\Desktop\資策會\ASP\ASP練習\NiceAdmin\NiceAdmin\obj\Debug\NiceAdmin.dll
+C:\Users\USER\Desktop\資策會\ASP\ASP練習\NiceAdmin\NiceAdmin\obj\Debug\NiceAdmin.pdb
+C:\Users\USER\Desktop\資策會\ASP\ASP練習\NiceAdmin.0619.update img\NiceAdmin\bin\NiceAdmin.dll.config
+C:\Users\USER\Desktop\資策會\ASP\ASP練習\NiceAdmin.0619.update img\NiceAdmin\bin\NiceAdmin.dll
+C:\Users\USER\Desktop\資策會\ASP\ASP練習\NiceAdmin.0619.update img\NiceAdmin\bin\NiceAdmin.pdb
+C:\Users\USER\Desktop\資策會\ASP\ASP練習\NiceAdmin.0619.update img\NiceAdmin\bin\roslyn\csc.exe
+C:\Users\USER\Desktop\資策會\ASP\ASP練習\NiceAdmin.0619.update img\NiceAdmin\bin\roslyn\csc.exe.config
+C:\Users\USER\Desktop\資策會\ASP\ASP練習\NiceAdmin.0619.update img\NiceAdmin\bin\roslyn\csc.rsp
+C:\Users\USER\Desktop\資策會\ASP\ASP練習\NiceAdmin.0619.update img\NiceAdmin\bin\roslyn\csi.exe
+C:\Users\USER\Desktop\資策會\ASP\ASP練習\NiceAdmin.0619.update img\NiceAdmin\bin\roslyn\csi.exe.config
+C:\Users\USER\Desktop\資策會\ASP\ASP練習\NiceAdmin.0619.update img\NiceAdmin\bin\roslyn\csi.rsp
+C:\Users\USER\Desktop\資策會\ASP\ASP練習\NiceAdmin.0619.update img\NiceAdmin\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+C:\Users\USER\Desktop\資策會\ASP\ASP練習\NiceAdmin.0619.update img\NiceAdmin\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+C:\Users\USER\Desktop\資策會\ASP\ASP練習\NiceAdmin.0619.update img\NiceAdmin\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
+C:\Users\USER\Desktop\資策會\ASP\ASP練習\NiceAdmin.0619.update img\NiceAdmin\bin\roslyn\Microsoft.CodeAnalysis.dll
+C:\Users\USER\Desktop\資策會\ASP\ASP練習\NiceAdmin.0619.update img\NiceAdmin\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
+C:\Users\USER\Desktop\資策會\ASP\ASP練習\NiceAdmin.0619.update img\NiceAdmin\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+C:\Users\USER\Desktop\資策會\ASP\ASP練習\NiceAdmin.0619.update img\NiceAdmin\bin\roslyn\Microsoft.CSharp.Core.targets
+C:\Users\USER\Desktop\資策會\ASP\ASP練習\NiceAdmin.0619.update img\NiceAdmin\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
+C:\Users\USER\Desktop\資策會\ASP\ASP練習\NiceAdmin.0619.update img\NiceAdmin\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
+C:\Users\USER\Desktop\資策會\ASP\ASP練習\NiceAdmin.0619.update img\NiceAdmin\bin\roslyn\Microsoft.Managed.Core.targets
+C:\Users\USER\Desktop\資策會\ASP\ASP練習\NiceAdmin.0619.update img\NiceAdmin\bin\roslyn\Microsoft.VisualBasic.Core.targets
+C:\Users\USER\Desktop\資策會\ASP\ASP練習\NiceAdmin.0619.update img\NiceAdmin\bin\roslyn\Microsoft.Win32.Primitives.dll
+C:\Users\USER\Desktop\資策會\ASP\ASP練習\NiceAdmin.0619.update img\NiceAdmin\bin\roslyn\System.AppContext.dll
+C:\Users\USER\Desktop\資策會\ASP\ASP練習\NiceAdmin.0619.update img\NiceAdmin\bin\roslyn\System.Collections.Immutable.dll
+C:\Users\USER\Desktop\資策會\ASP\ASP練習\NiceAdmin.0619.update img\NiceAdmin\bin\roslyn\System.Console.dll
+C:\Users\USER\Desktop\資策會\ASP\ASP練習\NiceAdmin.0619.update img\NiceAdmin\bin\roslyn\System.Diagnostics.DiagnosticSource.dll
+C:\Users\USER\Desktop\資策會\ASP\ASP練習\NiceAdmin.0619.update img\NiceAdmin\bin\roslyn\System.Diagnostics.FileVersionInfo.dll
+C:\Users\USER\Desktop\資策會\ASP\ASP練習\NiceAdmin.0619.update img\NiceAdmin\bin\roslyn\System.Diagnostics.StackTrace.dll
+C:\Users\USER\Desktop\資策會\ASP\ASP練習\NiceAdmin.0619.update img\NiceAdmin\bin\roslyn\System.Globalization.Calendars.dll
+C:\Users\USER\Desktop\資策會\ASP\ASP練習\NiceAdmin.0619.update img\NiceAdmin\bin\roslyn\System.IO.Compression.dll
+C:\Users\USER\Desktop\資策會\ASP\ASP練習\NiceAdmin.0619.update img\NiceAdmin\bin\roslyn\System.IO.Compression.ZipFile.dll
+C:\Users\USER\Desktop\資策會\ASP\ASP練習\NiceAdmin.0619.update img\NiceAdmin\bin\roslyn\System.IO.FileSystem.dll
+C:\Users\USER\Desktop\資策會\ASP\ASP練習\NiceAdmin.0619.update img\NiceAdmin\bin\roslyn\System.IO.FileSystem.Primitives.dll
+C:\Users\USER\Desktop\資策會\ASP\ASP練習\NiceAdmin.0619.update img\NiceAdmin\bin\roslyn\System.Net.Http.dll
+C:\Users\USER\Desktop\資策會\ASP\ASP練習\NiceAdmin.0619.update img\NiceAdmin\bin\roslyn\System.Net.Sockets.dll
+C:\Users\USER\Desktop\資策會\ASP\ASP練習\NiceAdmin.0619.update img\NiceAdmin\bin\roslyn\System.Reflection.Metadata.dll
+C:\Users\USER\Desktop\資策會\ASP\ASP練習\NiceAdmin.0619.update img\NiceAdmin\bin\roslyn\System.Runtime.InteropServices.RuntimeInformation.dll
+C:\Users\USER\Desktop\資策會\ASP\ASP練習\NiceAdmin.0619.update img\NiceAdmin\bin\roslyn\System.Security.Cryptography.Algorithms.dll
+C:\Users\USER\Desktop\資策會\ASP\ASP練習\NiceAdmin.0619.update img\NiceAdmin\bin\roslyn\System.Security.Cryptography.Encoding.dll
+C:\Users\USER\Desktop\資策會\ASP\ASP練習\NiceAdmin.0619.update img\NiceAdmin\bin\roslyn\System.Security.Cryptography.Primitives.dll
+C:\Users\USER\Desktop\資策會\ASP\ASP練習\NiceAdmin.0619.update img\NiceAdmin\bin\roslyn\System.Security.Cryptography.X509Certificates.dll
+C:\Users\USER\Desktop\資策會\ASP\ASP練習\NiceAdmin.0619.update img\NiceAdmin\bin\roslyn\System.Text.Encoding.CodePages.dll
+C:\Users\USER\Desktop\資策會\ASP\ASP練習\NiceAdmin.0619.update img\NiceAdmin\bin\roslyn\System.Threading.Tasks.Extensions.dll
+C:\Users\USER\Desktop\資策會\ASP\ASP練習\NiceAdmin.0619.update img\NiceAdmin\bin\roslyn\System.ValueTuple.dll
+C:\Users\USER\Desktop\資策會\ASP\ASP練習\NiceAdmin.0619.update img\NiceAdmin\bin\roslyn\System.Xml.ReaderWriter.dll
+C:\Users\USER\Desktop\資策會\ASP\ASP練習\NiceAdmin.0619.update img\NiceAdmin\bin\roslyn\System.Xml.XmlDocument.dll
+C:\Users\USER\Desktop\資策會\ASP\ASP練習\NiceAdmin.0619.update img\NiceAdmin\bin\roslyn\System.Xml.XPath.dll
+C:\Users\USER\Desktop\資策會\ASP\ASP練習\NiceAdmin.0619.update img\NiceAdmin\bin\roslyn\System.Xml.XPath.XDocument.dll
+C:\Users\USER\Desktop\資策會\ASP\ASP練習\NiceAdmin.0619.update img\NiceAdmin\bin\roslyn\vbc.exe
+C:\Users\USER\Desktop\資策會\ASP\ASP練習\NiceAdmin.0619.update img\NiceAdmin\bin\roslyn\vbc.exe.config
+C:\Users\USER\Desktop\資策會\ASP\ASP練習\NiceAdmin.0619.update img\NiceAdmin\bin\roslyn\vbc.rsp
+C:\Users\USER\Desktop\資策會\ASP\ASP練習\NiceAdmin.0619.update img\NiceAdmin\bin\roslyn\VBCSCompiler.exe
+C:\Users\USER\Desktop\資策會\ASP\ASP練習\NiceAdmin.0619.update img\NiceAdmin\bin\roslyn\VBCSCompiler.exe.config
+C:\Users\USER\Desktop\資策會\ASP\ASP練習\NiceAdmin.0619.update img\NiceAdmin\bin\Antlr3.Runtime.dll
+C:\Users\USER\Desktop\資策會\ASP\ASP練習\NiceAdmin.0619.update img\NiceAdmin\bin\EntityFramework.dll
+C:\Users\USER\Desktop\資策會\ASP\ASP練習\NiceAdmin.0619.update img\NiceAdmin\bin\EntityFramework.SqlServer.dll
+C:\Users\USER\Desktop\資策會\ASP\ASP練習\NiceAdmin.0619.update img\NiceAdmin\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+C:\Users\USER\Desktop\資策會\ASP\ASP練習\NiceAdmin.0619.update img\NiceAdmin\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\USER\Desktop\資策會\ASP\ASP練習\NiceAdmin.0619.update img\NiceAdmin\bin\Newtonsoft.Json.dll
+C:\Users\USER\Desktop\資策會\ASP\ASP練習\NiceAdmin.0619.update img\NiceAdmin\bin\System.Web.Helpers.dll
+C:\Users\USER\Desktop\資策會\ASP\ASP練習\NiceAdmin.0619.update img\NiceAdmin\bin\System.Web.Mvc.dll
+C:\Users\USER\Desktop\資策會\ASP\ASP練習\NiceAdmin.0619.update img\NiceAdmin\bin\System.Web.Optimization.dll
+C:\Users\USER\Desktop\資策會\ASP\ASP練習\NiceAdmin.0619.update img\NiceAdmin\bin\System.Web.Razor.dll
+C:\Users\USER\Desktop\資策會\ASP\ASP練習\NiceAdmin.0619.update img\NiceAdmin\bin\System.Web.WebPages.Deployment.dll
+C:\Users\USER\Desktop\資策會\ASP\ASP練習\NiceAdmin.0619.update img\NiceAdmin\bin\System.Web.WebPages.dll
+C:\Users\USER\Desktop\資策會\ASP\ASP練習\NiceAdmin.0619.update img\NiceAdmin\bin\System.Web.WebPages.Razor.dll
+C:\Users\USER\Desktop\資策會\ASP\ASP練習\NiceAdmin.0619.update img\NiceAdmin\bin\WebGrease.dll
+C:\Users\USER\Desktop\資策會\ASP\ASP練習\NiceAdmin.0619.update img\NiceAdmin\bin\EntityFramework.xml
+C:\Users\USER\Desktop\資策會\ASP\ASP練習\NiceAdmin.0619.update img\NiceAdmin\bin\EntityFramework.SqlServer.xml
+C:\Users\USER\Desktop\資策會\ASP\ASP練習\NiceAdmin.0619.update img\NiceAdmin\bin\System.Web.Helpers.xml
+C:\Users\USER\Desktop\資策會\ASP\ASP練習\NiceAdmin.0619.update img\NiceAdmin\bin\System.Web.Mvc.xml
+C:\Users\USER\Desktop\資策會\ASP\ASP練習\NiceAdmin.0619.update img\NiceAdmin\bin\System.Web.Optimization.xml
+C:\Users\USER\Desktop\資策會\ASP\ASP練習\NiceAdmin.0619.update img\NiceAdmin\bin\System.Web.Razor.xml
+C:\Users\USER\Desktop\資策會\ASP\ASP練習\NiceAdmin.0619.update img\NiceAdmin\bin\System.Web.WebPages.xml
+C:\Users\USER\Desktop\資策會\ASP\ASP練習\NiceAdmin.0619.update img\NiceAdmin\bin\System.Web.WebPages.Deployment.xml
+C:\Users\USER\Desktop\資策會\ASP\ASP練習\NiceAdmin.0619.update img\NiceAdmin\bin\System.Web.WebPages.Razor.xml
+C:\Users\USER\Desktop\資策會\ASP\ASP練習\NiceAdmin.0619.update img\NiceAdmin\bin\Newtonsoft.Json.xml
+C:\Users\USER\Desktop\資策會\ASP\ASP練習\NiceAdmin.0619.update img\NiceAdmin\bin\Antlr3.Runtime.pdb
+C:\Users\USER\Desktop\資策會\ASP\ASP練習\NiceAdmin.0619.update img\NiceAdmin\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\Users\USER\Desktop\資策會\ASP\ASP練習\NiceAdmin.0619.update img\NiceAdmin\bin\zh-Hant\System.Web.Helpers.resources.dll
+C:\Users\USER\Desktop\資策會\ASP\ASP練習\NiceAdmin.0619.update img\NiceAdmin\bin\zh-Hant\System.Web.Mvc.resources.dll
+C:\Users\USER\Desktop\資策會\ASP\ASP練習\NiceAdmin.0619.update img\NiceAdmin\bin\zh-Hant\System.Web.Optimization.resources.dll
+C:\Users\USER\Desktop\資策會\ASP\ASP練習\NiceAdmin.0619.update img\NiceAdmin\bin\zh-Hant\System.Web.Razor.resources.dll
+C:\Users\USER\Desktop\資策會\ASP\ASP練習\NiceAdmin.0619.update img\NiceAdmin\bin\zh-Hant\System.Web.WebPages.resources.dll
+C:\Users\USER\Desktop\資策會\ASP\ASP練習\NiceAdmin.0619.update img\NiceAdmin\bin\zh-Hant\System.Web.WebPages.Deployment.resources.dll
+C:\Users\USER\Desktop\資策會\ASP\ASP練習\NiceAdmin.0619.update img\NiceAdmin\bin\zh-Hant\System.Web.WebPages.Razor.resources.dll
+C:\Users\USER\Desktop\資策會\ASP\ASP練習\NiceAdmin.0619.update img\NiceAdmin\obj\Debug\NiceAdmin.csproj.AssemblyReference.cache
+C:\Users\USER\Desktop\資策會\ASP\ASP練習\NiceAdmin.0619.update img\NiceAdmin\obj\Debug\NiceAdmin.csproj.CoreCompileInputs.cache
+C:\Users\USER\Desktop\資策會\ASP\ASP練習\NiceAdmin.0619.update img\NiceAdmin\obj\Debug\NiceAdmin.csproj.CopyComplete
+C:\Users\USER\Desktop\資策會\ASP\ASP練習\NiceAdmin.0619.update img\NiceAdmin\obj\Debug\NiceAdmin.dll
+C:\Users\USER\Desktop\資策會\ASP\ASP練習\NiceAdmin.0619.update img\NiceAdmin\obj\Debug\NiceAdmin.pdb
+C:\Users\USER\Desktop\Sierra\NiceAdmin.0619.update img\NiceAdmin\bin\NiceAdmin.dll.config
+C:\Users\USER\Desktop\Sierra\NiceAdmin.0619.update img\NiceAdmin\bin\NiceAdmin.dll
+C:\Users\USER\Desktop\Sierra\NiceAdmin.0619.update img\NiceAdmin\bin\NiceAdmin.pdb
+C:\Users\USER\Desktop\Sierra\NiceAdmin.0619.update img\NiceAdmin\bin\roslyn\csc.exe
+C:\Users\USER\Desktop\Sierra\NiceAdmin.0619.update img\NiceAdmin\bin\roslyn\csc.exe.config
+C:\Users\USER\Desktop\Sierra\NiceAdmin.0619.update img\NiceAdmin\bin\roslyn\csc.rsp
+C:\Users\USER\Desktop\Sierra\NiceAdmin.0619.update img\NiceAdmin\bin\roslyn\csi.exe
+C:\Users\USER\Desktop\Sierra\NiceAdmin.0619.update img\NiceAdmin\bin\roslyn\csi.exe.config
+C:\Users\USER\Desktop\Sierra\NiceAdmin.0619.update img\NiceAdmin\bin\roslyn\csi.rsp
+C:\Users\USER\Desktop\Sierra\NiceAdmin.0619.update img\NiceAdmin\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+C:\Users\USER\Desktop\Sierra\NiceAdmin.0619.update img\NiceAdmin\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+C:\Users\USER\Desktop\Sierra\NiceAdmin.0619.update img\NiceAdmin\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
+C:\Users\USER\Desktop\Sierra\NiceAdmin.0619.update img\NiceAdmin\bin\roslyn\Microsoft.CodeAnalysis.dll
+C:\Users\USER\Desktop\Sierra\NiceAdmin.0619.update img\NiceAdmin\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
+C:\Users\USER\Desktop\Sierra\NiceAdmin.0619.update img\NiceAdmin\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+C:\Users\USER\Desktop\Sierra\NiceAdmin.0619.update img\NiceAdmin\bin\roslyn\Microsoft.CSharp.Core.targets
+C:\Users\USER\Desktop\Sierra\NiceAdmin.0619.update img\NiceAdmin\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
+C:\Users\USER\Desktop\Sierra\NiceAdmin.0619.update img\NiceAdmin\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
+C:\Users\USER\Desktop\Sierra\NiceAdmin.0619.update img\NiceAdmin\bin\roslyn\Microsoft.Managed.Core.targets
+C:\Users\USER\Desktop\Sierra\NiceAdmin.0619.update img\NiceAdmin\bin\roslyn\Microsoft.VisualBasic.Core.targets
+C:\Users\USER\Desktop\Sierra\NiceAdmin.0619.update img\NiceAdmin\bin\roslyn\Microsoft.Win32.Primitives.dll
+C:\Users\USER\Desktop\Sierra\NiceAdmin.0619.update img\NiceAdmin\bin\roslyn\System.AppContext.dll
+C:\Users\USER\Desktop\Sierra\NiceAdmin.0619.update img\NiceAdmin\bin\roslyn\System.Collections.Immutable.dll
+C:\Users\USER\Desktop\Sierra\NiceAdmin.0619.update img\NiceAdmin\bin\roslyn\System.Console.dll
+C:\Users\USER\Desktop\Sierra\NiceAdmin.0619.update img\NiceAdmin\bin\roslyn\System.Diagnostics.DiagnosticSource.dll
+C:\Users\USER\Desktop\Sierra\NiceAdmin.0619.update img\NiceAdmin\bin\roslyn\System.Diagnostics.FileVersionInfo.dll
+C:\Users\USER\Desktop\Sierra\NiceAdmin.0619.update img\NiceAdmin\bin\roslyn\System.Diagnostics.StackTrace.dll
+C:\Users\USER\Desktop\Sierra\NiceAdmin.0619.update img\NiceAdmin\bin\roslyn\System.Globalization.Calendars.dll
+C:\Users\USER\Desktop\Sierra\NiceAdmin.0619.update img\NiceAdmin\bin\roslyn\System.IO.Compression.dll
+C:\Users\USER\Desktop\Sierra\NiceAdmin.0619.update img\NiceAdmin\bin\roslyn\System.IO.Compression.ZipFile.dll
+C:\Users\USER\Desktop\Sierra\NiceAdmin.0619.update img\NiceAdmin\bin\roslyn\System.IO.FileSystem.dll
+C:\Users\USER\Desktop\Sierra\NiceAdmin.0619.update img\NiceAdmin\bin\roslyn\System.IO.FileSystem.Primitives.dll
+C:\Users\USER\Desktop\Sierra\NiceAdmin.0619.update img\NiceAdmin\bin\roslyn\System.Net.Http.dll
+C:\Users\USER\Desktop\Sierra\NiceAdmin.0619.update img\NiceAdmin\bin\roslyn\System.Net.Sockets.dll
+C:\Users\USER\Desktop\Sierra\NiceAdmin.0619.update img\NiceAdmin\bin\roslyn\System.Reflection.Metadata.dll
+C:\Users\USER\Desktop\Sierra\NiceAdmin.0619.update img\NiceAdmin\bin\roslyn\System.Runtime.InteropServices.RuntimeInformation.dll
+C:\Users\USER\Desktop\Sierra\NiceAdmin.0619.update img\NiceAdmin\bin\roslyn\System.Security.Cryptography.Algorithms.dll
+C:\Users\USER\Desktop\Sierra\NiceAdmin.0619.update img\NiceAdmin\bin\roslyn\System.Security.Cryptography.Encoding.dll
+C:\Users\USER\Desktop\Sierra\NiceAdmin.0619.update img\NiceAdmin\bin\roslyn\System.Security.Cryptography.Primitives.dll
+C:\Users\USER\Desktop\Sierra\NiceAdmin.0619.update img\NiceAdmin\bin\roslyn\System.Security.Cryptography.X509Certificates.dll
+C:\Users\USER\Desktop\Sierra\NiceAdmin.0619.update img\NiceAdmin\bin\roslyn\System.Text.Encoding.CodePages.dll
+C:\Users\USER\Desktop\Sierra\NiceAdmin.0619.update img\NiceAdmin\bin\roslyn\System.Threading.Tasks.Extensions.dll
+C:\Users\USER\Desktop\Sierra\NiceAdmin.0619.update img\NiceAdmin\bin\roslyn\System.ValueTuple.dll
+C:\Users\USER\Desktop\Sierra\NiceAdmin.0619.update img\NiceAdmin\bin\roslyn\System.Xml.ReaderWriter.dll
+C:\Users\USER\Desktop\Sierra\NiceAdmin.0619.update img\NiceAdmin\bin\roslyn\System.Xml.XmlDocument.dll
+C:\Users\USER\Desktop\Sierra\NiceAdmin.0619.update img\NiceAdmin\bin\roslyn\System.Xml.XPath.dll
+C:\Users\USER\Desktop\Sierra\NiceAdmin.0619.update img\NiceAdmin\bin\roslyn\System.Xml.XPath.XDocument.dll
+C:\Users\USER\Desktop\Sierra\NiceAdmin.0619.update img\NiceAdmin\bin\roslyn\vbc.exe
+C:\Users\USER\Desktop\Sierra\NiceAdmin.0619.update img\NiceAdmin\bin\roslyn\vbc.exe.config
+C:\Users\USER\Desktop\Sierra\NiceAdmin.0619.update img\NiceAdmin\bin\roslyn\vbc.rsp
+C:\Users\USER\Desktop\Sierra\NiceAdmin.0619.update img\NiceAdmin\bin\roslyn\VBCSCompiler.exe
+C:\Users\USER\Desktop\Sierra\NiceAdmin.0619.update img\NiceAdmin\bin\roslyn\VBCSCompiler.exe.config
+C:\Users\USER\Desktop\Sierra\NiceAdmin.0619.update img\NiceAdmin\bin\Antlr3.Runtime.dll
+C:\Users\USER\Desktop\Sierra\NiceAdmin.0619.update img\NiceAdmin\bin\EntityFramework.dll
+C:\Users\USER\Desktop\Sierra\NiceAdmin.0619.update img\NiceAdmin\bin\EntityFramework.SqlServer.dll
+C:\Users\USER\Desktop\Sierra\NiceAdmin.0619.update img\NiceAdmin\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+C:\Users\USER\Desktop\Sierra\NiceAdmin.0619.update img\NiceAdmin\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\USER\Desktop\Sierra\NiceAdmin.0619.update img\NiceAdmin\bin\Newtonsoft.Json.dll
+C:\Users\USER\Desktop\Sierra\NiceAdmin.0619.update img\NiceAdmin\bin\System.Web.Helpers.dll
+C:\Users\USER\Desktop\Sierra\NiceAdmin.0619.update img\NiceAdmin\bin\System.Web.Mvc.dll
+C:\Users\USER\Desktop\Sierra\NiceAdmin.0619.update img\NiceAdmin\bin\System.Web.Optimization.dll
+C:\Users\USER\Desktop\Sierra\NiceAdmin.0619.update img\NiceAdmin\bin\System.Web.Razor.dll
+C:\Users\USER\Desktop\Sierra\NiceAdmin.0619.update img\NiceAdmin\bin\System.Web.WebPages.Deployment.dll
+C:\Users\USER\Desktop\Sierra\NiceAdmin.0619.update img\NiceAdmin\bin\System.Web.WebPages.dll
+C:\Users\USER\Desktop\Sierra\NiceAdmin.0619.update img\NiceAdmin\bin\System.Web.WebPages.Razor.dll
+C:\Users\USER\Desktop\Sierra\NiceAdmin.0619.update img\NiceAdmin\bin\WebGrease.dll
+C:\Users\USER\Desktop\Sierra\NiceAdmin.0619.update img\NiceAdmin\bin\EntityFramework.xml
+C:\Users\USER\Desktop\Sierra\NiceAdmin.0619.update img\NiceAdmin\bin\EntityFramework.SqlServer.xml
+C:\Users\USER\Desktop\Sierra\NiceAdmin.0619.update img\NiceAdmin\bin\System.Web.Helpers.xml
+C:\Users\USER\Desktop\Sierra\NiceAdmin.0619.update img\NiceAdmin\bin\System.Web.Mvc.xml
+C:\Users\USER\Desktop\Sierra\NiceAdmin.0619.update img\NiceAdmin\bin\System.Web.Optimization.xml
+C:\Users\USER\Desktop\Sierra\NiceAdmin.0619.update img\NiceAdmin\bin\System.Web.Razor.xml
+C:\Users\USER\Desktop\Sierra\NiceAdmin.0619.update img\NiceAdmin\bin\System.Web.WebPages.xml
+C:\Users\USER\Desktop\Sierra\NiceAdmin.0619.update img\NiceAdmin\bin\System.Web.WebPages.Deployment.xml
+C:\Users\USER\Desktop\Sierra\NiceAdmin.0619.update img\NiceAdmin\bin\System.Web.WebPages.Razor.xml
+C:\Users\USER\Desktop\Sierra\NiceAdmin.0619.update img\NiceAdmin\bin\Newtonsoft.Json.xml
+C:\Users\USER\Desktop\Sierra\NiceAdmin.0619.update img\NiceAdmin\bin\Antlr3.Runtime.pdb
+C:\Users\USER\Desktop\Sierra\NiceAdmin.0619.update img\NiceAdmin\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\Users\USER\Desktop\Sierra\NiceAdmin.0619.update img\NiceAdmin\bin\zh-Hant\System.Web.Helpers.resources.dll
+C:\Users\USER\Desktop\Sierra\NiceAdmin.0619.update img\NiceAdmin\bin\zh-Hant\System.Web.Mvc.resources.dll
+C:\Users\USER\Desktop\Sierra\NiceAdmin.0619.update img\NiceAdmin\bin\zh-Hant\System.Web.Optimization.resources.dll
+C:\Users\USER\Desktop\Sierra\NiceAdmin.0619.update img\NiceAdmin\bin\zh-Hant\System.Web.Razor.resources.dll
+C:\Users\USER\Desktop\Sierra\NiceAdmin.0619.update img\NiceAdmin\bin\zh-Hant\System.Web.WebPages.resources.dll
+C:\Users\USER\Desktop\Sierra\NiceAdmin.0619.update img\NiceAdmin\bin\zh-Hant\System.Web.WebPages.Deployment.resources.dll
+C:\Users\USER\Desktop\Sierra\NiceAdmin.0619.update img\NiceAdmin\bin\zh-Hant\System.Web.WebPages.Razor.resources.dll
+C:\Users\USER\Desktop\Sierra\NiceAdmin.0619.update img\NiceAdmin\obj\Debug\NiceAdmin.csproj.AssemblyReference.cache
+C:\Users\USER\Desktop\Sierra\NiceAdmin.0619.update img\NiceAdmin\obj\Debug\NiceAdmin.csproj.CoreCompileInputs.cache
+C:\Users\USER\Desktop\Sierra\NiceAdmin.0619.update img\NiceAdmin\obj\Debug\NiceAdmin.csproj.CopyComplete
+C:\Users\USER\Desktop\Sierra\NiceAdmin.0619.update img\NiceAdmin\obj\Debug\NiceAdmin.dll
+C:\Users\USER\Desktop\Sierra\NiceAdmin.0619.update img\NiceAdmin\obj\Debug\NiceAdmin.pdb
+C:\Users\USER\Desktop\期中\0628資料庫\NiceAdmin.0619.update img\NiceAdmin\bin\NiceAdmin.dll.config
+C:\Users\USER\Desktop\期中\0628資料庫\NiceAdmin.0619.update img\NiceAdmin\bin\NiceAdmin.dll
+C:\Users\USER\Desktop\期中\0628資料庫\NiceAdmin.0619.update img\NiceAdmin\bin\NiceAdmin.pdb
+C:\Users\USER\Desktop\期中\0628資料庫\NiceAdmin.0619.update img\NiceAdmin\bin\roslyn\csc.exe
+C:\Users\USER\Desktop\期中\0628資料庫\NiceAdmin.0619.update img\NiceAdmin\bin\roslyn\csc.exe.config
+C:\Users\USER\Desktop\期中\0628資料庫\NiceAdmin.0619.update img\NiceAdmin\bin\roslyn\csc.rsp
+C:\Users\USER\Desktop\期中\0628資料庫\NiceAdmin.0619.update img\NiceAdmin\bin\roslyn\csi.exe
+C:\Users\USER\Desktop\期中\0628資料庫\NiceAdmin.0619.update img\NiceAdmin\bin\roslyn\csi.exe.config
+C:\Users\USER\Desktop\期中\0628資料庫\NiceAdmin.0619.update img\NiceAdmin\bin\roslyn\csi.rsp
+C:\Users\USER\Desktop\期中\0628資料庫\NiceAdmin.0619.update img\NiceAdmin\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+C:\Users\USER\Desktop\期中\0628資料庫\NiceAdmin.0619.update img\NiceAdmin\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+C:\Users\USER\Desktop\期中\0628資料庫\NiceAdmin.0619.update img\NiceAdmin\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
+C:\Users\USER\Desktop\期中\0628資料庫\NiceAdmin.0619.update img\NiceAdmin\bin\roslyn\Microsoft.CodeAnalysis.dll
+C:\Users\USER\Desktop\期中\0628資料庫\NiceAdmin.0619.update img\NiceAdmin\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
+C:\Users\USER\Desktop\期中\0628資料庫\NiceAdmin.0619.update img\NiceAdmin\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+C:\Users\USER\Desktop\期中\0628資料庫\NiceAdmin.0619.update img\NiceAdmin\bin\roslyn\Microsoft.CSharp.Core.targets
+C:\Users\USER\Desktop\期中\0628資料庫\NiceAdmin.0619.update img\NiceAdmin\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
+C:\Users\USER\Desktop\期中\0628資料庫\NiceAdmin.0619.update img\NiceAdmin\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
+C:\Users\USER\Desktop\期中\0628資料庫\NiceAdmin.0619.update img\NiceAdmin\bin\roslyn\Microsoft.Managed.Core.targets
+C:\Users\USER\Desktop\期中\0628資料庫\NiceAdmin.0619.update img\NiceAdmin\bin\roslyn\Microsoft.VisualBasic.Core.targets
+C:\Users\USER\Desktop\期中\0628資料庫\NiceAdmin.0619.update img\NiceAdmin\bin\roslyn\Microsoft.Win32.Primitives.dll
+C:\Users\USER\Desktop\期中\0628資料庫\NiceAdmin.0619.update img\NiceAdmin\bin\roslyn\System.AppContext.dll
+C:\Users\USER\Desktop\期中\0628資料庫\NiceAdmin.0619.update img\NiceAdmin\bin\roslyn\System.Collections.Immutable.dll
+C:\Users\USER\Desktop\期中\0628資料庫\NiceAdmin.0619.update img\NiceAdmin\bin\roslyn\System.Console.dll
+C:\Users\USER\Desktop\期中\0628資料庫\NiceAdmin.0619.update img\NiceAdmin\bin\roslyn\System.Diagnostics.DiagnosticSource.dll
+C:\Users\USER\Desktop\期中\0628資料庫\NiceAdmin.0619.update img\NiceAdmin\bin\roslyn\System.Diagnostics.FileVersionInfo.dll
+C:\Users\USER\Desktop\期中\0628資料庫\NiceAdmin.0619.update img\NiceAdmin\bin\roslyn\System.Diagnostics.StackTrace.dll
+C:\Users\USER\Desktop\期中\0628資料庫\NiceAdmin.0619.update img\NiceAdmin\bin\roslyn\System.Globalization.Calendars.dll
+C:\Users\USER\Desktop\期中\0628資料庫\NiceAdmin.0619.update img\NiceAdmin\bin\roslyn\System.IO.Compression.dll
+C:\Users\USER\Desktop\期中\0628資料庫\NiceAdmin.0619.update img\NiceAdmin\bin\roslyn\System.IO.Compression.ZipFile.dll
+C:\Users\USER\Desktop\期中\0628資料庫\NiceAdmin.0619.update img\NiceAdmin\bin\roslyn\System.IO.FileSystem.dll
+C:\Users\USER\Desktop\期中\0628資料庫\NiceAdmin.0619.update img\NiceAdmin\bin\roslyn\System.IO.FileSystem.Primitives.dll
+C:\Users\USER\Desktop\期中\0628資料庫\NiceAdmin.0619.update img\NiceAdmin\bin\roslyn\System.Net.Http.dll
+C:\Users\USER\Desktop\期中\0628資料庫\NiceAdmin.0619.update img\NiceAdmin\bin\roslyn\System.Net.Sockets.dll
+C:\Users\USER\Desktop\期中\0628資料庫\NiceAdmin.0619.update img\NiceAdmin\bin\roslyn\System.Reflection.Metadata.dll
+C:\Users\USER\Desktop\期中\0628資料庫\NiceAdmin.0619.update img\NiceAdmin\bin\roslyn\System.Runtime.InteropServices.RuntimeInformation.dll
+C:\Users\USER\Desktop\期中\0628資料庫\NiceAdmin.0619.update img\NiceAdmin\bin\roslyn\System.Security.Cryptography.Algorithms.dll
+C:\Users\USER\Desktop\期中\0628資料庫\NiceAdmin.0619.update img\NiceAdmin\bin\roslyn\System.Security.Cryptography.Encoding.dll
+C:\Users\USER\Desktop\期中\0628資料庫\NiceAdmin.0619.update img\NiceAdmin\bin\roslyn\System.Security.Cryptography.Primitives.dll
+C:\Users\USER\Desktop\期中\0628資料庫\NiceAdmin.0619.update img\NiceAdmin\bin\roslyn\System.Security.Cryptography.X509Certificates.dll
+C:\Users\USER\Desktop\期中\0628資料庫\NiceAdmin.0619.update img\NiceAdmin\bin\roslyn\System.Text.Encoding.CodePages.dll
+C:\Users\USER\Desktop\期中\0628資料庫\NiceAdmin.0619.update img\NiceAdmin\bin\roslyn\System.Threading.Tasks.Extensions.dll
+C:\Users\USER\Desktop\期中\0628資料庫\NiceAdmin.0619.update img\NiceAdmin\bin\roslyn\System.ValueTuple.dll
+C:\Users\USER\Desktop\期中\0628資料庫\NiceAdmin.0619.update img\NiceAdmin\bin\roslyn\System.Xml.ReaderWriter.dll
+C:\Users\USER\Desktop\期中\0628資料庫\NiceAdmin.0619.update img\NiceAdmin\bin\roslyn\System.Xml.XmlDocument.dll
+C:\Users\USER\Desktop\期中\0628資料庫\NiceAdmin.0619.update img\NiceAdmin\bin\roslyn\System.Xml.XPath.dll
+C:\Users\USER\Desktop\期中\0628資料庫\NiceAdmin.0619.update img\NiceAdmin\bin\roslyn\System.Xml.XPath.XDocument.dll
+C:\Users\USER\Desktop\期中\0628資料庫\NiceAdmin.0619.update img\NiceAdmin\bin\roslyn\vbc.exe
+C:\Users\USER\Desktop\期中\0628資料庫\NiceAdmin.0619.update img\NiceAdmin\bin\roslyn\vbc.exe.config
+C:\Users\USER\Desktop\期中\0628資料庫\NiceAdmin.0619.update img\NiceAdmin\bin\roslyn\vbc.rsp
+C:\Users\USER\Desktop\期中\0628資料庫\NiceAdmin.0619.update img\NiceAdmin\bin\roslyn\VBCSCompiler.exe
+C:\Users\USER\Desktop\期中\0628資料庫\NiceAdmin.0619.update img\NiceAdmin\bin\roslyn\VBCSCompiler.exe.config
+C:\Users\USER\Desktop\期中\0628資料庫\NiceAdmin.0619.update img\NiceAdmin\bin\Antlr3.Runtime.dll
+C:\Users\USER\Desktop\期中\0628資料庫\NiceAdmin.0619.update img\NiceAdmin\bin\EntityFramework.dll
+C:\Users\USER\Desktop\期中\0628資料庫\NiceAdmin.0619.update img\NiceAdmin\bin\EntityFramework.SqlServer.dll
+C:\Users\USER\Desktop\期中\0628資料庫\NiceAdmin.0619.update img\NiceAdmin\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+C:\Users\USER\Desktop\期中\0628資料庫\NiceAdmin.0619.update img\NiceAdmin\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\USER\Desktop\期中\0628資料庫\NiceAdmin.0619.update img\NiceAdmin\bin\Newtonsoft.Json.dll
+C:\Users\USER\Desktop\期中\0628資料庫\NiceAdmin.0619.update img\NiceAdmin\bin\System.Web.Helpers.dll
+C:\Users\USER\Desktop\期中\0628資料庫\NiceAdmin.0619.update img\NiceAdmin\bin\System.Web.Mvc.dll
+C:\Users\USER\Desktop\期中\0628資料庫\NiceAdmin.0619.update img\NiceAdmin\bin\System.Web.Optimization.dll
+C:\Users\USER\Desktop\期中\0628資料庫\NiceAdmin.0619.update img\NiceAdmin\bin\System.Web.Razor.dll
+C:\Users\USER\Desktop\期中\0628資料庫\NiceAdmin.0619.update img\NiceAdmin\bin\System.Web.WebPages.Deployment.dll
+C:\Users\USER\Desktop\期中\0628資料庫\NiceAdmin.0619.update img\NiceAdmin\bin\System.Web.WebPages.dll
+C:\Users\USER\Desktop\期中\0628資料庫\NiceAdmin.0619.update img\NiceAdmin\bin\System.Web.WebPages.Razor.dll
+C:\Users\USER\Desktop\期中\0628資料庫\NiceAdmin.0619.update img\NiceAdmin\bin\WebGrease.dll
+C:\Users\USER\Desktop\期中\0628資料庫\NiceAdmin.0619.update img\NiceAdmin\bin\EntityFramework.xml
+C:\Users\USER\Desktop\期中\0628資料庫\NiceAdmin.0619.update img\NiceAdmin\bin\EntityFramework.SqlServer.xml
+C:\Users\USER\Desktop\期中\0628資料庫\NiceAdmin.0619.update img\NiceAdmin\bin\System.Web.Helpers.xml
+C:\Users\USER\Desktop\期中\0628資料庫\NiceAdmin.0619.update img\NiceAdmin\bin\System.Web.Mvc.xml
+C:\Users\USER\Desktop\期中\0628資料庫\NiceAdmin.0619.update img\NiceAdmin\bin\System.Web.Optimization.xml
+C:\Users\USER\Desktop\期中\0628資料庫\NiceAdmin.0619.update img\NiceAdmin\bin\System.Web.Razor.xml
+C:\Users\USER\Desktop\期中\0628資料庫\NiceAdmin.0619.update img\NiceAdmin\bin\System.Web.WebPages.xml
+C:\Users\USER\Desktop\期中\0628資料庫\NiceAdmin.0619.update img\NiceAdmin\bin\System.Web.WebPages.Deployment.xml
+C:\Users\USER\Desktop\期中\0628資料庫\NiceAdmin.0619.update img\NiceAdmin\bin\System.Web.WebPages.Razor.xml
+C:\Users\USER\Desktop\期中\0628資料庫\NiceAdmin.0619.update img\NiceAdmin\bin\Newtonsoft.Json.xml
+C:\Users\USER\Desktop\期中\0628資料庫\NiceAdmin.0619.update img\NiceAdmin\bin\Antlr3.Runtime.pdb
+C:\Users\USER\Desktop\期中\0628資料庫\NiceAdmin.0619.update img\NiceAdmin\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\Users\USER\Desktop\期中\0628資料庫\NiceAdmin.0619.update img\NiceAdmin\bin\zh-Hant\System.Web.Helpers.resources.dll
+C:\Users\USER\Desktop\期中\0628資料庫\NiceAdmin.0619.update img\NiceAdmin\bin\zh-Hant\System.Web.Mvc.resources.dll
+C:\Users\USER\Desktop\期中\0628資料庫\NiceAdmin.0619.update img\NiceAdmin\bin\zh-Hant\System.Web.Optimization.resources.dll
+C:\Users\USER\Desktop\期中\0628資料庫\NiceAdmin.0619.update img\NiceAdmin\bin\zh-Hant\System.Web.Razor.resources.dll
+C:\Users\USER\Desktop\期中\0628資料庫\NiceAdmin.0619.update img\NiceAdmin\bin\zh-Hant\System.Web.WebPages.resources.dll
+C:\Users\USER\Desktop\期中\0628資料庫\NiceAdmin.0619.update img\NiceAdmin\bin\zh-Hant\System.Web.WebPages.Deployment.resources.dll
+C:\Users\USER\Desktop\期中\0628資料庫\NiceAdmin.0619.update img\NiceAdmin\bin\zh-Hant\System.Web.WebPages.Razor.resources.dll
+C:\Users\USER\Desktop\期中\0628資料庫\NiceAdmin.0619.update img\NiceAdmin\obj\Debug\NiceAdmin.csproj.AssemblyReference.cache
+C:\Users\USER\Desktop\期中\0628資料庫\NiceAdmin.0619.update img\NiceAdmin\obj\Debug\NiceAdmin.csproj.CoreCompileInputs.cache
+C:\Users\USER\Desktop\期中\0628資料庫\NiceAdmin.0619.update img\NiceAdmin\obj\Debug\NiceAdmin.csproj.CopyComplete
+C:\Users\USER\Desktop\期中\0628資料庫\NiceAdmin.0619.update img\NiceAdmin\obj\Debug\NiceAdmin.dll
+C:\Users\USER\Desktop\期中\0628資料庫\NiceAdmin.0619.update img\NiceAdmin\obj\Debug\NiceAdmin.pdb
+C:\Sierra\NiceAdmin.0629\NiceAdmin\bin\NiceAdmin.dll.config
+C:\Sierra\NiceAdmin.0629\NiceAdmin\bin\NiceAdmin.dll
+C:\Sierra\NiceAdmin.0629\NiceAdmin\bin\NiceAdmin.pdb
+C:\Sierra\NiceAdmin.0629\NiceAdmin\bin\roslyn\csc.exe
+C:\Sierra\NiceAdmin.0629\NiceAdmin\bin\roslyn\csc.exe.config
+C:\Sierra\NiceAdmin.0629\NiceAdmin\bin\roslyn\csc.rsp
+C:\Sierra\NiceAdmin.0629\NiceAdmin\bin\roslyn\csi.exe
+C:\Sierra\NiceAdmin.0629\NiceAdmin\bin\roslyn\csi.exe.config
+C:\Sierra\NiceAdmin.0629\NiceAdmin\bin\roslyn\csi.rsp
+C:\Sierra\NiceAdmin.0629\NiceAdmin\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+C:\Sierra\NiceAdmin.0629\NiceAdmin\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+C:\Sierra\NiceAdmin.0629\NiceAdmin\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
+C:\Sierra\NiceAdmin.0629\NiceAdmin\bin\roslyn\Microsoft.CodeAnalysis.dll
+C:\Sierra\NiceAdmin.0629\NiceAdmin\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
+C:\Sierra\NiceAdmin.0629\NiceAdmin\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+C:\Sierra\NiceAdmin.0629\NiceAdmin\bin\roslyn\Microsoft.CSharp.Core.targets
+C:\Sierra\NiceAdmin.0629\NiceAdmin\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
+C:\Sierra\NiceAdmin.0629\NiceAdmin\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
+C:\Sierra\NiceAdmin.0629\NiceAdmin\bin\roslyn\Microsoft.Managed.Core.targets
+C:\Sierra\NiceAdmin.0629\NiceAdmin\bin\roslyn\Microsoft.VisualBasic.Core.targets
+C:\Sierra\NiceAdmin.0629\NiceAdmin\bin\roslyn\Microsoft.Win32.Primitives.dll
+C:\Sierra\NiceAdmin.0629\NiceAdmin\bin\roslyn\System.AppContext.dll
+C:\Sierra\NiceAdmin.0629\NiceAdmin\bin\roslyn\System.Collections.Immutable.dll
+C:\Sierra\NiceAdmin.0629\NiceAdmin\bin\roslyn\System.Console.dll
+C:\Sierra\NiceAdmin.0629\NiceAdmin\bin\roslyn\System.Diagnostics.DiagnosticSource.dll
+C:\Sierra\NiceAdmin.0629\NiceAdmin\bin\roslyn\System.Diagnostics.FileVersionInfo.dll
+C:\Sierra\NiceAdmin.0629\NiceAdmin\bin\roslyn\System.Diagnostics.StackTrace.dll
+C:\Sierra\NiceAdmin.0629\NiceAdmin\bin\roslyn\System.Globalization.Calendars.dll
+C:\Sierra\NiceAdmin.0629\NiceAdmin\bin\roslyn\System.IO.Compression.dll
+C:\Sierra\NiceAdmin.0629\NiceAdmin\bin\roslyn\System.IO.Compression.ZipFile.dll
+C:\Sierra\NiceAdmin.0629\NiceAdmin\bin\roslyn\System.IO.FileSystem.dll
+C:\Sierra\NiceAdmin.0629\NiceAdmin\bin\roslyn\System.IO.FileSystem.Primitives.dll
+C:\Sierra\NiceAdmin.0629\NiceAdmin\bin\roslyn\System.Net.Http.dll
+C:\Sierra\NiceAdmin.0629\NiceAdmin\bin\roslyn\System.Net.Sockets.dll
+C:\Sierra\NiceAdmin.0629\NiceAdmin\bin\roslyn\System.Reflection.Metadata.dll
+C:\Sierra\NiceAdmin.0629\NiceAdmin\bin\roslyn\System.Runtime.InteropServices.RuntimeInformation.dll
+C:\Sierra\NiceAdmin.0629\NiceAdmin\bin\roslyn\System.Security.Cryptography.Algorithms.dll
+C:\Sierra\NiceAdmin.0629\NiceAdmin\bin\roslyn\System.Security.Cryptography.Encoding.dll
+C:\Sierra\NiceAdmin.0629\NiceAdmin\bin\roslyn\System.Security.Cryptography.Primitives.dll
+C:\Sierra\NiceAdmin.0629\NiceAdmin\bin\roslyn\System.Security.Cryptography.X509Certificates.dll
+C:\Sierra\NiceAdmin.0629\NiceAdmin\bin\roslyn\System.Text.Encoding.CodePages.dll
+C:\Sierra\NiceAdmin.0629\NiceAdmin\bin\roslyn\System.Threading.Tasks.Extensions.dll
+C:\Sierra\NiceAdmin.0629\NiceAdmin\bin\roslyn\System.ValueTuple.dll
+C:\Sierra\NiceAdmin.0629\NiceAdmin\bin\roslyn\System.Xml.ReaderWriter.dll
+C:\Sierra\NiceAdmin.0629\NiceAdmin\bin\roslyn\System.Xml.XmlDocument.dll
+C:\Sierra\NiceAdmin.0629\NiceAdmin\bin\roslyn\System.Xml.XPath.dll
+C:\Sierra\NiceAdmin.0629\NiceAdmin\bin\roslyn\System.Xml.XPath.XDocument.dll
+C:\Sierra\NiceAdmin.0629\NiceAdmin\bin\roslyn\vbc.exe
+C:\Sierra\NiceAdmin.0629\NiceAdmin\bin\roslyn\vbc.exe.config
+C:\Sierra\NiceAdmin.0629\NiceAdmin\bin\roslyn\vbc.rsp
+C:\Sierra\NiceAdmin.0629\NiceAdmin\bin\roslyn\VBCSCompiler.exe
+C:\Sierra\NiceAdmin.0629\NiceAdmin\bin\roslyn\VBCSCompiler.exe.config
+C:\Sierra\NiceAdmin.0629\NiceAdmin\bin\Antlr3.Runtime.dll
+C:\Sierra\NiceAdmin.0629\NiceAdmin\bin\EntityFramework.dll
+C:\Sierra\NiceAdmin.0629\NiceAdmin\bin\EntityFramework.SqlServer.dll
+C:\Sierra\NiceAdmin.0629\NiceAdmin\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+C:\Sierra\NiceAdmin.0629\NiceAdmin\bin\Microsoft.Web.Infrastructure.dll
+C:\Sierra\NiceAdmin.0629\NiceAdmin\bin\Newtonsoft.Json.dll
+C:\Sierra\NiceAdmin.0629\NiceAdmin\bin\System.Web.Helpers.dll
+C:\Sierra\NiceAdmin.0629\NiceAdmin\bin\System.Web.Mvc.dll
+C:\Sierra\NiceAdmin.0629\NiceAdmin\bin\System.Web.Optimization.dll
+C:\Sierra\NiceAdmin.0629\NiceAdmin\bin\System.Web.Razor.dll
+C:\Sierra\NiceAdmin.0629\NiceAdmin\bin\System.Web.WebPages.Deployment.dll
+C:\Sierra\NiceAdmin.0629\NiceAdmin\bin\System.Web.WebPages.dll
+C:\Sierra\NiceAdmin.0629\NiceAdmin\bin\System.Web.WebPages.Razor.dll
+C:\Sierra\NiceAdmin.0629\NiceAdmin\bin\WebGrease.dll
+C:\Sierra\NiceAdmin.0629\NiceAdmin\bin\EntityFramework.xml
+C:\Sierra\NiceAdmin.0629\NiceAdmin\bin\EntityFramework.SqlServer.xml
+C:\Sierra\NiceAdmin.0629\NiceAdmin\bin\System.Web.Helpers.xml
+C:\Sierra\NiceAdmin.0629\NiceAdmin\bin\System.Web.Mvc.xml
+C:\Sierra\NiceAdmin.0629\NiceAdmin\bin\System.Web.Optimization.xml
+C:\Sierra\NiceAdmin.0629\NiceAdmin\bin\System.Web.Razor.xml
+C:\Sierra\NiceAdmin.0629\NiceAdmin\bin\System.Web.WebPages.xml
+C:\Sierra\NiceAdmin.0629\NiceAdmin\bin\System.Web.WebPages.Deployment.xml
+C:\Sierra\NiceAdmin.0629\NiceAdmin\bin\System.Web.WebPages.Razor.xml
+C:\Sierra\NiceAdmin.0629\NiceAdmin\bin\Newtonsoft.Json.xml
+C:\Sierra\NiceAdmin.0629\NiceAdmin\bin\Antlr3.Runtime.pdb
+C:\Sierra\NiceAdmin.0629\NiceAdmin\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\Sierra\NiceAdmin.0629\NiceAdmin\bin\zh-Hant\System.Web.Helpers.resources.dll
+C:\Sierra\NiceAdmin.0629\NiceAdmin\bin\zh-Hant\System.Web.Mvc.resources.dll
+C:\Sierra\NiceAdmin.0629\NiceAdmin\bin\zh-Hant\System.Web.Optimization.resources.dll
+C:\Sierra\NiceAdmin.0629\NiceAdmin\bin\zh-Hant\System.Web.Razor.resources.dll
+C:\Sierra\NiceAdmin.0629\NiceAdmin\bin\zh-Hant\System.Web.WebPages.resources.dll
+C:\Sierra\NiceAdmin.0629\NiceAdmin\bin\zh-Hant\System.Web.WebPages.Deployment.resources.dll
+C:\Sierra\NiceAdmin.0629\NiceAdmin\bin\zh-Hant\System.Web.WebPages.Razor.resources.dll
+C:\Sierra\NiceAdmin.0629\NiceAdmin\obj\Debug\NiceAdmin.csproj.AssemblyReference.cache
+C:\Sierra\NiceAdmin.0629\NiceAdmin\obj\Debug\NiceAdmin.csproj.CoreCompileInputs.cache
+C:\Sierra\NiceAdmin.0629\NiceAdmin\obj\Debug\NiceAdmin.csproj.CopyComplete
+C:\Sierra\NiceAdmin.0629\NiceAdmin\obj\Debug\NiceAdmin.dll
+C:\Sierra\NiceAdmin.0629\NiceAdmin\obj\Debug\NiceAdmin.pdb

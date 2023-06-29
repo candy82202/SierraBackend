@@ -1,0 +1,114 @@
+﻿@model NiceAdmin.Models.EFModels.Coupon
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Create</h2>
+
+
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="row">
+        <h4>Coupon</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="mb-3">
+            @Html.LabelFor(model => model.CouponCategoryId, "CouponCategoryId", htmlAttributes: new { @class = "form-label" })
+            @Html.DropDownList("CouponCategoryId", null, htmlAttributes: new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.CouponCategoryId, "", new { @class = "text-danger" })
+
+        </div>
+
+        <div class="mb-3">
+            @Html.LabelFor(model => model.DiscountGroupId, "DiscountGroupId", htmlAttributes: new { @class = "form-label" })
+            @Html.DropDownList("DiscountGroupId", null, htmlAttributes: new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.DiscountGroupId, "", new { @class = "text-danger" })
+
+        </div>
+
+        <div class="mb-3">
+            @Html.LabelFor(model => model.CouponName, htmlAttributes: new { @class = "form-label" })
+            @Html.EditorFor(model => model.CouponName, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.CouponName, "", new { @class = "text-danger" })
+
+        </div>
+
+        <div class="mb-3">
+            @Html.LabelFor(model => model.CouponCode, htmlAttributes: new { @class = "form-label" })
+            @Html.EditorFor(model => model.CouponCode, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.CouponCode, "", new { @class = "text-danger" })
+
+        </div>
+
+        <div class="mb-3">
+            @Html.LabelFor(model => model.LimitType, htmlAttributes: new { @class = "form-label" })
+            @Html.EditorFor(model => model.LimitType, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.LimitType, "", new { @class = "text-danger" })
+
+        </div>
+
+        <div class="mb-3">
+            @Html.LabelFor(model => model.LimitValue, htmlAttributes: new { @class = "form-label" })
+            @Html.EditorFor(model => model.LimitValue, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.LimitValue, "", new { @class = "text-danger" })
+
+        </div>
+
+        <div class="mb-3">
+            @Html.LabelFor(model => model.DiscountType, htmlAttributes: new { @class = "form-label" })
+            @Html.EditorFor(model => model.DiscountType, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.DiscountType, "", new { @class = "text-danger" })
+
+        </div>
+
+        <div class="mb-3">
+            @Html.LabelFor(model => model.DiscountValue, htmlAttributes: new { @class = "form-label" })
+            @Html.EditorFor(model => model.DiscountValue, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.DiscountValue, "", new { @class = "text-danger" })
+
+        </div>
+
+        <div class="mb-3">
+            @Html.LabelFor(model => model.StartAt, htmlAttributes: new { @class = "form-label" })
+            @Html.EditorFor(model => model.StartAt, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.StartAt, "", new { @class = "text-danger" })
+
+        </div>
+
+        <div class="mb-3">
+            @Html.LabelFor(model => model.EndAt, htmlAttributes: new { @class = "form-label" })
+            @Html.EditorFor(model => model.EndAt, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.EndAt, "", new { @class = "text-danger" })
+
+        </div>
+
+        <div class="mb-3">
+            @Html.LabelFor(model => model.Expiration, htmlAttributes: new { @class = "form-label" })
+            @Html.EditorFor(model => model.Expiration, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Expiration, "", new { @class = "text-danger" })
+
+        </div>
+
+        <div class="mb-3">
+            @Html.LabelFor(model => model.CreateAt, htmlAttributes: new { @class = "form-label" })
+            @Html.EditorFor(model => model.CreateAt, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.CreateAt, "", new { @class = "text-danger" })
+
+        </div>
+
+        <div class="mb-3">
+                <input type="submit" value="Create" class="btn btn-primary" />
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

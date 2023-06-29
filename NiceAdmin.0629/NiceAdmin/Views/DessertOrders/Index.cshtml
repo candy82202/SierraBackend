@@ -1,0 +1,105 @@
+﻿@model IEnumerable<NiceAdmin.Models.EFModels.DessertOrder>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Coupon.CouponName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Member.MemberName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.OrderStatus.StatusName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CreateTime)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Recipient)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RecipientPhone)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RecipientAddress)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ShippingFee)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DessertOrderTotal)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DeliveryMethod)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Note)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.OrderCancellationReason)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DiscountInfo)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Coupon.CouponName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Member.MemberName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.OrderStatus.StatusName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CreateTime)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Recipient)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.RecipientPhone)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.RecipientAddress)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ShippingFee)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DessertOrderTotal)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DeliveryMethod)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Note)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.OrderCancellationReason)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DiscountInfo)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.DessertOrderId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.DessertOrderId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.DessertOrderId })
+        </td>
+    </tr>
+}
+
+</table>

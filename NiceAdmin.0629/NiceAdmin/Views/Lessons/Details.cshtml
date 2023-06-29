@@ -1,0 +1,114 @@
+﻿@model NiceAdmin.Models.EFModels.Lesson
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Lesson</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.LessonCategory.LessonCategoryName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LessonCategory.LessonCategoryName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Teacher.TeacherName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Teacher.TeacherName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LessonTitle)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LessonTitle)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LessonInfo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LessonInfo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LessonDetail)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LessonDetail)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LessonDessert)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LessonDessert)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LessonTime)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LessonTime)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LessonHours)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LessonHours)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MaximumCapacity)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MaximumCapacity)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LessonPrice)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LessonPrice)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LessonStatus)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LessonStatus)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CreateTime)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CreateTime)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.LessonId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

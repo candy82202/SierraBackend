@@ -1,0 +1,72 @@
+﻿@model NiceAdmin.Models.EFModels.LessonOrderDetail
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Create</h2>
+
+
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="row">
+        <h4>LessonOrderDetail</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="mb-3">
+            @Html.LabelFor(model => model.LessonOrderId, "LessonOrderId", htmlAttributes: new { @class = "form-label" })
+            @Html.DropDownList("LessonOrderId", null, htmlAttributes: new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.LessonOrderId, "", new { @class = "text-danger" })
+
+        </div>
+
+        <div class="mb-3">
+            @Html.LabelFor(model => model.LessonId, "LessonId", htmlAttributes: new { @class = "form-label" })
+            @Html.DropDownList("LessonId", null, htmlAttributes: new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.LessonId, "", new { @class = "text-danger" })
+
+        </div>
+
+        <div class="mb-3">
+            @Html.LabelFor(model => model.LessonTitle, htmlAttributes: new { @class = "form-label" })
+            @Html.EditorFor(model => model.LessonTitle, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.LessonTitle, "", new { @class = "text-danger" })
+
+        </div>
+
+        <div class="mb-3">
+            @Html.LabelFor(model => model.NumberOfPeople, htmlAttributes: new { @class = "form-label" })
+            @Html.EditorFor(model => model.NumberOfPeople, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.NumberOfPeople, "", new { @class = "text-danger" })
+
+        </div>
+
+        <div class="mb-3">
+            @Html.LabelFor(model => model.LessonUnitPrice, htmlAttributes: new { @class = "form-label" })
+            @Html.EditorFor(model => model.LessonUnitPrice, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.LessonUnitPrice, "", new { @class = "text-danger" })
+
+        </div>
+
+        <div class="mb-3">
+            @Html.LabelFor(model => model.Subtotal, htmlAttributes: new { @class = "form-label" })
+            @Html.EditorFor(model => model.Subtotal, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Subtotal, "", new { @class = "text-danger" })
+
+        </div>
+
+        <div class="mb-3">
+                <input type="submit" value="Create" class="btn btn-primary" />
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

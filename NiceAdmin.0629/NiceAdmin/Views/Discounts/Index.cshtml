@@ -1,0 +1,81 @@
+﻿@model IEnumerable<NiceAdmin.Models.EFModels.Discount>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table>
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.DiscountGroup.DiscountGroupName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DiscountName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LimitType)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LimitValue)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DiscountType)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DiscountValue)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.StartAt)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EndAt)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CreateAt)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.DiscountGroup.DiscountGroupName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DiscountName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LimitType)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LimitValue)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DiscountType)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DiscountValue)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.StartAt)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EndAt)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CreateAt)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.DiscountId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.DiscountId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.DiscountId })
+        </td>
+    </tr>
+}
+
+</table>

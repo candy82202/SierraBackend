@@ -1,0 +1,74 @@
+﻿@model NiceAdmin.Models.EFModels.MemberCoupon
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>MemberCoupon</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Coupon.CouponName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Coupon.CouponName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Member.MemberName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Member.MemberName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Status)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Status)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CreateAt)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CreateAt)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UseAt)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UseAt)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ExpireAt)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ExpireAt)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CouponName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CouponName)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.MemberCouponId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -1,0 +1,66 @@
+﻿@model NiceAdmin.Models.EFModels.DessertOrderDetail
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>DessertOrderDetail</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Dessert.DessertName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Dessert.DessertName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DessertOrder.Recipient)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DessertOrder.Recipient)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DessertName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DessertName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Quantity)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Quantity)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DessertUnitPrice)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DessertUnitPrice)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Subtotal)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Subtotal)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.DessertOrderDetailId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

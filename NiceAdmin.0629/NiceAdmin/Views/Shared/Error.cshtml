@@ -1,0 +1,31 @@
+﻿@*<!DOCTYPE html>
+    <html>
+    <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+        <meta name="viewport" content="width=device-width" />
+        <title>錯誤</title>
+    </head>
+    <body>
+        <hgroup>
+            <h1>錯誤。</h1>
+            <h2>處理您的要求時發生錯誤。</h2>
+        </hgroup>
+    </body>
+    </html>*@
+<main>
+    <div class="container">
+        <section class="section error-404 min-vh-100 d-flex flex-column align-items-center justify-content-center">
+            <h1>404</h1>
+            <h2>您要查找的頁面不存在。</h2>
+            <a class="btn" href="@Url.Action("Index","Home")">返回首頁</a>
+            <img src="~assets/img/not-found.svg"
+                 class="img-fluid py-5"
+                 alt="Page Not Found" />
+            <div class="credits">
+               
+                Designed by <a href="https://bootstrapmade.com/">Sierra</a>
+            </div>
+        </section>
+    </div>
+</main>
+<!-- End #main -->

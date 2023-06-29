@@ -1,0 +1,34 @@
+﻿@model NiceAdmin.Models.EFModels.LessonTag
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>LessonTag</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Lesson.LessonTitle)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Lesson.LessonTitle)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LessonTagName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LessonTagName)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.LessonTagId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

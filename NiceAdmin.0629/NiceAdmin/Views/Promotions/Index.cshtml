@@ -1,0 +1,75 @@
+﻿@model IEnumerable<NiceAdmin.Models.EFModels.Promotion>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Coupon.CouponName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PromotionImage)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PromotionName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Description)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LaunchAt)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.StartAt)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EndAt)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CreateAt)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Coupon.CouponName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PromotionImage)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PromotionName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Description)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LaunchAt)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.StartAt)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EndAt)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CreateAt)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.PromotionId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.PromotionId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.PromotionId })
+        </td>
+    </tr>
+}
+
+</table>

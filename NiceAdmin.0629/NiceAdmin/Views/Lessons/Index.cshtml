@@ -1,0 +1,99 @@
+﻿@model IEnumerable<NiceAdmin.Models.EFModels.Lesson>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.LessonCategory.LessonCategoryName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Teacher.TeacherName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LessonTitle)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LessonInfo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LessonDetail)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LessonDessert)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LessonTime)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LessonHours)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MaximumCapacity)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LessonPrice)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LessonStatus)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CreateTime)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.LessonCategory.LessonCategoryName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Teacher.TeacherName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LessonTitle)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LessonInfo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LessonDetail)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LessonDessert)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LessonTime)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LessonHours)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MaximumCapacity)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LessonPrice)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LessonStatus)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CreateTime)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.LessonId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.LessonId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.LessonId })
+        </td>
+    </tr>
+}
+
+</table>

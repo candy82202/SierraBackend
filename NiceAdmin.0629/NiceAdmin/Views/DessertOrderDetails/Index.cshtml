@@ -1,0 +1,63 @@
+﻿@model IEnumerable<NiceAdmin.Models.EFModels.DessertOrderDetail>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Dessert.DessertName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DessertOrder.Recipient)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DessertName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Quantity)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DessertUnitPrice)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Subtotal)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Dessert.DessertName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DessertOrder.Recipient)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DessertName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Quantity)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DessertUnitPrice)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Subtotal)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.DessertOrderDetailId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.DessertOrderDetailId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.DessertOrderDetailId })
+        </td>
+    </tr>
+}
+
+</table>

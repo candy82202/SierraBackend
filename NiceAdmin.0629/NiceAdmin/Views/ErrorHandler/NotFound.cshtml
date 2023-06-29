@@ -1,0 +1,29 @@
+﻿
+@{
+    ViewBag.Title = "NotFound";
+    Layout = "~/Views/Shared/_LayoutError.cshtml";
+}
+
+<main>
+    <div class="container mt-5">
+        <section class="section error-404 min-vh-100 d-flex flex-column align-items-center justify-content-center">
+            <h1>404</h1>
+            <h2>您要查找的頁面不存在。</h2>
+            <button class="btn btn-outline-primary"> <a class="btn" href="@Url.Action("Index","Home")">返回首頁</a></button>
+
+            <img src="~/img/not-found.svg"
+                 class="img-fluid py-5"
+                 alt="Page Not Found" />
+            <div class="credits">
+            
+                Designed by <strong>Sierra</strong>
+            </div>
+        </section>
+    </div>
+</main>
+<!-- End #main -->
+
+<a href="@Url.Action("Index","Home")"
+   class="back-to-top d-flex align-items-center justify-content-center">
+    <i class="bi bi-arrow-up-short"></i>
+</a>

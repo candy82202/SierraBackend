@@ -1,9 +1,0 @@
-diff a/NiceAdmin.0619.update img/NiceAdmin/Web.config b/NiceAdmin.0619.update img/NiceAdmin/Web.config	(rejected hunks)
-@@ -72,5 +72,5 @@
-   </entityFramework>
-   <connectionStrings>
-   
--  <add name="AppDbContext" connectionString="data source=.;initial catalog=Sierra;persist security info=True;user id=sa5;password=456;MultipleActiveResultSets=True;App=EntityFramework" providerName="System.Data.SqlClient" /></connectionStrings>
-+  <add name="AppDbContext" connectionString="data source=.;initial catalog=Sierra;persist security info=True;user id=sa5;password=sa5;MultipleActiveResultSets=True;App=EntityFramework" providerName="System.Data.SqlClient" /></connectionStrings>
- </configuration>
-\ No newline at end of file

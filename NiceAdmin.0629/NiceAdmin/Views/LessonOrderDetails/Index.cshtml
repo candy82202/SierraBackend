@@ -1,0 +1,63 @@
+﻿@model IEnumerable<NiceAdmin.Models.EFModels.LessonOrderDetail>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Lesson.LessonTitle)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LessonOrder.Note)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LessonTitle)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NumberOfPeople)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LessonUnitPrice)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Subtotal)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Lesson.LessonTitle)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LessonOrder.Note)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LessonTitle)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NumberOfPeople)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LessonUnitPrice)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Subtotal)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.LessonOrderDetailId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.LessonOrderDetailId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.LessonOrderDetailId })
+        </td>
+    </tr>
+}
+
+</table>

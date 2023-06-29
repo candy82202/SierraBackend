@@ -1,0 +1,42 @@
+﻿@model IEnumerable<NiceAdmin.Models.EFModels.DessertImage>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<main class="mt-5 ms-3">
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+    <table class="table datatable table-striped table-hover justify-content-center">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Dessert.DessertName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.DessertImageName)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Dessert.DessertName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DessertImageName)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { id = item.ImageId }) |
+                        @Html.ActionLink("Details", "Details", new { id = item.ImageId }) |
+                        @Html.ActionLink("Delete", "Delete", new { id = item.ImageId })
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</main>

@@ -1,0 +1,74 @@
+﻿@model NiceAdmin.Models.EFModels.Teacher
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Teacher</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.TeacherName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TeacherName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TeacherImage)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TeacherImage)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Specialty)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Specialty)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Experience)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Experience)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.License)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.License)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Academic)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Academic)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TeacherStatus)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TeacherStatus)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.TeacherId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

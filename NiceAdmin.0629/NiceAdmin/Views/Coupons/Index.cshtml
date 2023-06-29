@@ -1,0 +1,102 @@
+﻿@model IEnumerable<NiceAdmin.Models.EFModels.Coupon>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table datatable table-striped table-hover" >
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.CouponCategory.CouponCategoryName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DiscountGroup.DiscountGroupName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CouponName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CouponCode)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LimitType)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LimitValue)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DiscountType)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DiscountValue)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StartAt)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EndAt)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Expiration)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CreateAt)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CouponCategory.CouponCategoryName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DiscountGroup.DiscountGroupName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CouponName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CouponCode)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LimitType)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LimitValue)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DiscountType)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DiscountValue)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.StartAt)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.EndAt)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Expiration)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CreateAt)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.CouponId }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.CouponId }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.CouponId })
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
