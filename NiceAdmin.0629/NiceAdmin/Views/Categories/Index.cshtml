@@ -24,9 +24,10 @@
                 <tr>
                     <th scope="col">
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="" id="selectAllCheckbox" />
+                            <input type="checkbox" class="selectAllCategory" name="selectAllCategory" value="all">
+                            @*<input class="form-check-input" type="checkbox" value="" id="selectAllCheckbox" />*@
                             <label class="form-check-label" for="selectAllCheckbox">
-                                下架
+                                全選/全取消
                             </label>
                         </div>
                     </th>
@@ -46,7 +47,8 @@
                     <tr>
                         <td>
                             <label class="form-check">
-                                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault1" data-checkbox="childCheckbox" />
+                                <input class="form-check-input childCheckboxCategory" type="checkbox" value="" id="flexCheckDefault1" data-checkbox="childCheckbox" />
+                                @*<input class="form-check-input" type="checkbox" value="" id="flexCheckDefault1" data-checkbox="childCheckbox" />*@
                             </label>
                             @*<div class="form-check">
                                     <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault1" data-checkbox="childCheckbox" />
@@ -66,3 +68,20 @@
         </table>
     </div>
 </main>
+@section Scripts{
+    <script>
+        var selectAllCheckboxCategory = $('.selectAllCategory');
+        var checkboxesCategory = $('tbody .childCheckboxCategory');
+
+        // 全選 checkbox 的變更事件監聽器
+        selectAllCheckboxCategory.on('change', function () {
+            checkboxesCategory.prop('checked', $(this).is(':checked'));
+        });
+
+        // 下方 checkbox 的變更事件監聽器
+        checkboxesCategory.on('change', function () {
+            selectAllCheckboxCategory.prop('checked', checkboxesCategory.length === checkboxesCategory.filter(':checked').length);
+        });
+
+    </script>
+}
