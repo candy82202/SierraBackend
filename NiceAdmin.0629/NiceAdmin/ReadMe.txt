@@ -46,21 +46,26 @@ Desserts 部分
 [V] - 新增前台商品上架的頁面 LayoutFront , Sierras.cshtml
     - 新增多張圖顯示， 編輯照片(照片的新增 / 刪除)
 
-[V] - 全選 checkbox 的變更事件監聽器 
+[V] - 全選 checkbox 的變更事件監聽器 (Desserts & Categories 的 Index 頁面 抓到分頁數量的checkbox )
     - AutoComplete 甜點清單頁面
 
 [working on] - AJAX 甜點清單頁面
 
-[working on] - 照片更改成圖示 <img>
-             
+[working on] - 編輯照片新增欄位(簡易編輯)
+             - 照片更改成圖示 <img>
+             - 清單的編輯新增 icon
 
 
 ==========================================================
 Member 部分
 
-do something yo
+[V] - 因Permission表拆成4個表，
+      刪除EFModels裡所有檔案
+      刪除連線字串
+      刪除相關控制器和檢視(Employees和Permissions)
 
-
+[V] - 重建EFModels
+      重建相關控制器和檢視
 
 
 
