@@ -200,6 +200,7 @@
     <Compile Include="Models\ViewModels\DessertsVM\DessertCriteria.cs" />
     <Compile Include="Models\ViewModels\MembersVM\MemberIndexVM.cs" />
     <Compile Include="Models\ViewModels\OrdersVM\LessonOrderIndexVM.cs" />
+    <Compile Include="Models\ViewModels\PromotionsVM\CouponIndexVM.cs" />
     <Compile Include="Models\ViewModels\PromotionsVM\DiscountGroupEditVM.cs" />
     <Compile Include="Models\ViewModels\PromotionsVM\DiscountGroupIndexVM.cs" />
     <Compile Include="Models\ViewModels\PromotionsVM\DiscountGroupExts.cs" />
