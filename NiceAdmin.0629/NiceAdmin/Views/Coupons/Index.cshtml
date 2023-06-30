@@ -1,102 +1,77 @@
-﻿@model IEnumerable<NiceAdmin.Models.EFModels.Coupon>
+﻿@model IEnumerable<NiceAdmin.Models.ViewModels.PromotionsVM.CouponIndexVM>
 
 @{
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<main id="main" class="main">
+    <div class="pagetitle">
+        <h1>優惠券清單</h1>
+        <nav>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="@Url.Action("Index","Home")">首頁</a></li>
+                <li class="breadcrumb-item">   行銷管理  </li>
+                <li class="breadcrumb-item active">  優惠券清單  </li>
+            </ol>
+        </nav>
+    </div>
+    <!-- End Page Title -->
+    <section class="section">
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table datatable table-striped table-hover" >
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.CouponCategory.CouponCategoryName)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.DiscountGroup.DiscountGroupName)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.CouponName)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.CouponCode)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.LimitType)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.LimitValue)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.DiscountType)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.DiscountValue)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.StartAt)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.EndAt)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Expiration)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.CreateAt)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var item in Model)
-        {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.CouponCategory.CouponCategoryName)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.DiscountGroup.DiscountGroupName)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.CouponName)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.CouponCode)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.LimitType)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.LimitValue)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.DiscountType)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.DiscountValue)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.StartAt)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.EndAt)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Expiration)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.CreateAt)
-                </td>
-                <td>
-                    @Html.ActionLink("Edit", "Edit", new { id = item.CouponId }) |
-                    @Html.ActionLink("Details", "Details", new { id = item.CouponId }) |
-                    @Html.ActionLink("Delete", "Delete", new { id = item.CouponId })
-                </td>
-            </tr>
-        }
-    </tbody>
-</table>
+        <p>
+            @Html.ActionLink("Create New", "Create")
+        </p>
+        <table class="table table-hover datatable">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.CouponName)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.CouponCategoryName)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.DiscountTarget)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.CreateAt)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.StatusText)
+                    </th>
+                    <th>
+                        功能
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.CouponName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.CouponCategoryName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.DiscountTarget)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.CreateAt)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.StatusText)
+                        </td>
+                        <td>
+                            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+                        </td>
+                    </tr>
+
+                }
+            </tbody>
+        </table>
+    </section>
+</main>

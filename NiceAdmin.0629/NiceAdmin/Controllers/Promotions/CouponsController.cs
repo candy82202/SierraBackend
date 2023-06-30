@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using NiceAdmin.Models.EFModels;
+using NiceAdmin.Models.ViewModels.PromotionsVM;
 
 namespace NiceAdmin.Controllers
 {
@@ -17,8 +18,12 @@ namespace NiceAdmin.Controllers
         // GET: Coupons
         public ActionResult Index()
         {
-            var coupons = db.Coupons.Include(c => c.CouponCategory).Include(c => c.DiscountGroup);
-            return View(coupons.ToList());
+            IEnumerable<CouponIndexVM> coupons = db.Coupons.Include(c => c.CouponCategory)
+                                                           .Include(c => c.DiscountGroup)
+                                                           .ToList()
+                                                           .Select(c => c.ToIndexVM());
+                                                           
+            return View(coupons);
         }
 
         // GET: Coupons/Details/5

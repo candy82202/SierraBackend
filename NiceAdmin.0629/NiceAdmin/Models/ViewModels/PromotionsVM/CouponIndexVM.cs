@@ -14,14 +14,20 @@ namespace NiceAdmin.Models.ViewModels.PromotionsVM
 		public string CouponName { get; set; }
 		[Display(Name = "優惠券類別")]
 		public string CouponCategoryName { get; set; }
-		[Display(Name = "優惠對象")]
+		
 		public string DiscountGroupName { get; set; }
-		[Display(Name = "創建時間")]
+        [Display(Name = "優惠對象")]
+		public string DiscountTarget
+		{
+			get { return this.DiscountGroupName == null ? "全部商品" : this.DiscountGroupName; }
+		}
+        [Display(Name = "創建時間")]
 		[DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}")]
 		public DateTime CreateAt { get; set; }
-		[Display(Name = "是否上架")]
+		
 		public DateTime? EndAt { get; set; }
-		public string StatusText {
+        [Display(Name = "是否上架")]
+        public string StatusText {
 			get
 			{
 				if (EndAt == null) return "上架中";
