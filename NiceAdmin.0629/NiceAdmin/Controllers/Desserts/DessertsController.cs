@@ -207,23 +207,73 @@ namespace NiceAdmin.Controllers
         // 如需詳細資料，請參閱 https://go.microsoft.com/fwlink/?LinkId=317598。
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(DessertEditVM vm)//[Bind(Include = "DessertId,DessertName,CategoryId,UnitPrice,Description,Status,CreateTime")] Dessert dessert)
+        //public ActionResult Edit(DessertEditVM vm)//[Bind(Include = "DessertId,DessertName,CategoryId,UnitPrice,Description,Status,CreateTime")] Dessert dessert)
+        //{
+        //    if (ModelState.IsValid)
+        //    {
+        //        var dessertInDb = db.Desserts.Find(vm.DessertId);
+        //        if (dessertInDb == null) { return HttpNotFound(); }
+        //        dessertInDb.CategoryId = vm.CategoryId;
+        //        dessertInDb.Status = vm.Status;
+        //        dessertInDb.UnitPrice = vm.UnitPrice;
+        //        dessertInDb.DessertName = vm.DessertName;
+        //        dessertInDb.Description = vm.Description;
+        //      //  dessertInDb.DessertImages = vm.DessertImageName;
+        //        //db.Entry(dessert).State = EntityState.Modified;
+        //        db.SaveChanges();
+        //        return RedirectToAction("Index");
+        //    }
+        //    //ViewBag.CategoryId = new SelectList(db.Categories, "CategoryId", "CategoryName", dessert.CategoryId);
+        //    PrepareCategoryDataSource(vm.CategoryId);
+        //    return View(vm);
+        //}
+        public ActionResult Edit(DessertEditVM vm, List<HttpPostedFileBase> images)//, List<HttpPostedFileBase> images)
         {
-            if (ModelState.IsValid)
+            var dessert = db.Desserts.Include(d => d.DessertImages).FirstOrDefault(d => d.DessertId == vm.DessertId);
+            if (dessert == null)
             {
+                return HttpNotFound();
+            }
+            var files = images;
+            //Request.Files["file"];
+            if (ModelState.IsValid && files != null)
+            {
+
+                //將file1存檔，用server.MapPath並取得最後存檔的檔案名稱
+                string path = Server.MapPath("/Uploads");//檔案要存放的資料夾位置
+                vm.DessertImageNames = new List<string>();
+                foreach (var file in files)
+                {
+                    string fileName = SaveUploadedFile(path, file);
+                    if (!string.IsNullOrEmpty(fileName))
+                    {
+                        vm.DessertImageNames.Add(fileName);
+                    }
+                }
+
+
                 var dessertInDb = db.Desserts.Find(vm.DessertId);
-                if (dessertInDb == null) { return HttpNotFound(); }
+                if (dessertInDb == null)
+                {
+                    return HttpNotFound();
+                }
+
                 dessertInDb.CategoryId = vm.CategoryId;
                 dessertInDb.Status = vm.Status;
                 dessertInDb.UnitPrice = vm.UnitPrice;
                 dessertInDb.DessertName = vm.DessertName;
                 dessertInDb.Description = vm.Description;
-              //  dessertInDb.DessertImages = vm.DessertImageName;
-                //db.Entry(dessert).State = EntityState.Modified;
+
+                dessertInDb.DessertImages.Clear(); // 清除现有的图片
+                foreach (var imageName in vm.DessertImageNames)
+                {
+                    dessertInDb.DessertImages.Add(new DessertImage { DessertImageName = imageName });
+                }
+
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            //ViewBag.CategoryId = new SelectList(db.Categories, "CategoryId", "CategoryName", dessert.CategoryId);
+
             PrepareCategoryDataSource(vm.CategoryId);
             return View(vm);
         }
