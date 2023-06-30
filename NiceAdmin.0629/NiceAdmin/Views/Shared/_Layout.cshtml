@@ -673,34 +673,12 @@
             @*End Blank Page Nav*@
         </ul>
     </aside>
-    
-        <!-- End Sidebar-->
 
-        @RenderBody()
+    <!-- End Sidebar-->
 
-<<<<<<< HEAD
-        <!-- End #main -->
-        <!-- ======= Footer ======= -->
-        <footer id="footer" class="footer">
-            <div class="copyright">
-                &copy; 2023 Copyright <strong><span>Sierra</span></strong>. All Rights Reserved
-            </div>
-            <div class="credits">
-                <!-- All the links in the footer should remain intact. -->
-                Designed by <a href="@Url.Action("Index","Home")">Sierra</a>
-            </div>
-        </footer>
-        <!-- End Footer -->
+    @RenderBody()
 
-        <a href="#"
-           class="back-to-top d-flex align-items-center justify-content-center">
-            <i class="bi bi-arrow-up-short"></i>
-        </a>
-        @RenderSection("scripts", required: false)
-        @*AutoComplete*@
-        @*<script src="//apps.bdimg.com/libs/jquery/1.10.2/jquery.min.js"></script>
-            <script src="//apps.bdimg.com/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>*@
-=======
+
     <!-- End #main -->
     <!-- ======= Footer ======= -->
     <footer id="footer" class="footer">
@@ -718,418 +696,374 @@
        class="back-to-top d-flex align-items-center justify-content-center">
         <i class="bi bi-arrow-up-short"></i>
     </a>
-
+    @*@RenderSection("scripts", required: false)*@
     @*AutoComplete*@
     @*<script src="//apps.bdimg.com/libs/jquery/1.10.2/jquery.min.js"></script>
         <script src="//apps.bdimg.com/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>*@
->>>>>>> origin/promotion07
 
-        @*<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
-            <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>*@
-        <!-- Vendor JS Files -->
-        <script src="~/Scripts/vendor/apexcharts/apexcharts.amd.js"></script>
-        <script src="~/Scripts/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-        <script src="~/Scripts/vendor/chart.js/chart.umd.js"></script>
-        <script src="~/Scripts/vendor/echarts/echarts.min.js"></script>
-        <script src="~/Scripts/vendor/quill/quill.min.js"></script>
-        @*<script src="~/Scripts/vendor/simple-datatables/simple-datatables.js"></script>*@
-        <script src="~/Scripts/vendor/tinymce/tinymce.min.js"></script>
-        <script src="~/Scripts/vendor/php-email-form/validate.js"></script>
 
-        @*連結DataTable*@
-        <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
-        <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
-        <script src="https://cdn.datatables.net/1.13.4/js/dataTables.bootstrap5.min.js"></script>
-        <script src="https://cdn.datatables.net/select/1.6.2/js/dataTables.select.min.js"></script>
 
-<<<<<<< HEAD
+  
+ 
 
-        <!-- Template Main JS File -->
-        <script src="~/Scripts/js/main.js"></script>
-        <script>
-            //$(document).ready(function () {
+    @*<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+        <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>*@
+    <!-- Vendor JS Files -->
+    <script src="~/Scripts/vendor/apexcharts/apexcharts.amd.js"></script>
+    <script src="~/Scripts/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="~/Scripts/vendor/chart.js/chart.umd.js"></script>
+    <script src="~/Scripts/vendor/echarts/echarts.min.js"></script>
+    <script src="~/Scripts/vendor/quill/quill.min.js"></script>
+    @*<script src="~/Scripts/vendor/simple-datatables/simple-datatables.js"></script>*@
+    <script src="~/Scripts/vendor/tinymce/tinymce.min.js"></script>
+    <script src="~/Scripts/vendor/php-email-form/validate.js"></script>
 
-=======
+    @*連結DataTable*@
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.4/js/dataTables.bootstrap5.min.js"></script>
+    <script src="https://cdn.datatables.net/select/1.6.2/js/dataTables.select.min.js"></script>
+   
     @RenderSection("scripts", required: false)
     <!-- Template Main JS File -->
     <script src="~/Scripts/js/main.js"></script>
     <script>
         //$(document).ready(function () {
 
-        //});
+  
+                    //$(document).ready(function () {
 
-
-        $(document).ready(function () {
-            $('.datatable').DataTable({
-                "lengthMenu": [5, 10, 20],
-                language: {
-                    url: '//cdn.datatables.net/plug-ins/1.13.4/i18n/zh-HANT.json',
-                },
-
-            });
-            //var DT1 = $('.datatable').DataTable();
-            //$(".selectAll").on("click", function (e) {
-            //    if ($(this).is(":checked")) {
-            //        DT1.rows().select();
-            //    } else {
-            //        DT1.rows().deselect();
-            //    }
->>>>>>> origin/promotion07
-            //});
-
-
-            $(document).ready(function () {
-                var dataTable = $('.datatable').DataTable({
-                    "lengthMenu": [5, 10, 20],
-                    language: {
-                        url: '//cdn.datatables.net/plug-ins/1.13.4/i18n/zh-HANT.json',
-                    },
-
-                });
-                //var DT1 = $('.datatable').DataTable();
-                //$(".selectAll").on("click", function (e) {
-                //    if ($(this).is(":checked")) {
-                //        DT1.rows().select();
-                //    } else {
-                //        DT1.rows().deselect();
-                //    }
                 //});
 
-                var selectAllCheckboxDessert = $('.selectAllDessert');
-                var checkboxesDessert = $('tbody .childCheckboxDessert');
-
-                // 全选 checkbox 的变更事件监听器
-                selectAllCheckboxDessert.on('change', function () {
-                    checkboxesDessert.prop('checked', $(this).is(':checked'));
-                });
-
-                // 下方 checkbox 的变更事件监听器
-                checkboxesDessert.on('change', function () {
-                    var currentPageRecords = dataTable.rows({ page: 'current' }).nodes();
-                    var allRecordsSelected = Array.from(currentPageRecords).every(function (record) {
-                        return !record.querySelector('.childCheckboxDessert:not(:checked)');
-                    });
-
-                    selectAllCheckboxDessert.prop('checked', allRecordsSelected);
-                });
-            });
-
-            var selectAllCheckbox = $('#selectAllCheckbox');
-            var checkboxes = $('tbody input[type="checkbox"][data-checkbox="childCheckbox"]');
-
-            // 全選 checkbox 的變更事件監聽器
-            selectAllCheckbox.on('change', function () {
-                checkboxes.prop('checked', $(this).is(':checked'));
-            });
-
-            // 下方 checkbox 的變更事件監聽器
-            checkboxes.on('change', function () {
-                selectAllCheckbox.prop('checked', checkboxes.length === checkboxes.filter(':checked').length);
-            });
 
 
-<<<<<<< HEAD
-=======
 
->>>>>>> origin/promotion07
+                    $(document).ready(function () {
+                        var dataTable = $('.datatable').DataTable({
+                            "lengthMenu": [5, 10, 20],
+                            language: {
+                                url: '//cdn.datatables.net/plug-ins/1.13.4/i18n/zh-HANT.json',
+                            },
 
-
-            var sierras = ["會員管理", "會員清單", "權限清單", "員工清單", "新增會員", "甜點管理", "甜點清單", "新增甜點", "甜點類別", "課程管理", "新增課程", "課程類別", "師資管理", "新增教師", "教師清單", "訂單管理", "課程訂單", "甜點訂單", "行銷管理", "優惠群組清單", "優惠券清單", "新增優惠券", "折扣清單", "新增折扣", "會員優惠券清單", "發送優惠券", "優惠活動清單", "新增優惠活動"];
-
-            function autocomplete(inp, arr) {
-                var currentFocus;
-
-                inp.addEventListener("input", function (e) {
-                    var val = this.value;
-                    closeAllLists();
-
-                    if (!val) {
-                        return false;
-                    }
-
-                    currentFocus = -1;
-                    var matches = arr.filter(function (item) {
-                        return item.substr(0, val.length).toUpperCase() === val.toUpperCase();
-                    });
-
-                    var autocompleteList = document.createElement("div");
-                    autocompleteList.setAttribute("class", "autocomplete-items");
-                    this.parentNode.appendChild(autocompleteList);
-
-                    for (var i = 0; i < matches.length; i++) {
-                        var autocompleteItem = document.createElement("div");
-                        if (matches[i] === "會員清單") {
-                            autocompleteItem.innerHTML = "<a class='text-dark text-decoration-none' href='https://localhost:44320/Members/Index'>" + matches[i] + "</a>";
-                        } else if (matches[i] === "權限清單") {
-                            autocompleteItem.innerHTML = "<a href='https://localhost:44320/Permissions/Index'>" + matches[i] + "</a>";
-                        } else if (matches[i] === "員工清單") {
-                            autocompleteItem.innerHTML = "<a href='https://localhost:44320/Employees/Index'>" + matches[i] + "</a>";
-                        } else if (matches[i] === "甜點清單") {
-                            autocompleteItem.innerHTML = "<a href='https://localhost:44320/Desserts/Index'>" + matches[i] + "</a>";
-                        } else if (matches[i] === "甜點類別") {
-                            autocompleteItem.innerHTML = "<a href='https://localhost:44320/Categories/Index'>" + matches[i] + "</a>";
-                        } else if (matches[i] === "新增甜點") {
-                            autocompleteItem.innerHTML = "<a href='https://localhost:44320/Desserts/Create'>" + matches[i] + "</a>";
-                        } else if (matches[i] === "課程清單") {
-                            autocompleteItem.innerHTML = "<a href='https://localhost:44320/Lessons/Index'>" + matches[i] + "</a>";
-                        } else if (matches[i] === "新增課程") {
-                            autocompleteItem.innerHTML = "<a href='https://localhost:44320/Lessons/Create'>" + matches[i] + "</a>";
-                        } else if (matches[i] === "課程類別") {
-                            autocompleteItem.innerHTML = "<a href='https://localhost:44320/LessonCategories/Index'>" + matches[i] + "</a>";
-                        } else if (matches[i] === "教師清單") {
-                            autocompleteItem.innerHTML = "<a href='https://localhost:44320/Teachers/Index'>" + matches[i] + "</a>";
-                        } else if (matches[i] === "新增教師") {
-                            autocompleteItem.innerHTML = "<a href='https://localhost:44320/Teachers/Create'>" + matches[i] + "</a>";
-                        } else if (matches[i] === "課程訂單") {
-                            autocompleteItem.innerHTML = "<a href='https://localhost:44320/LessonOrders/Index'>" + matches[i] + "</a>";
-                        } else if (matches[i] === "甜點訂單") {
-                            autocompleteItem.innerHTML = "<a href='https://localhost:44320/DessertOrders/Index'>" + matches[i] + "</a>";
-                        } else if (matches[i] === "優惠群組清單") {
-                            autocompleteItem.innerHTML = "<a href='https://localhost:44320/DiscountGroups/Index'>" + matches[i] + "</a>";
-                        } else if (matches[i] === "優惠券清單") {
-                            autocompleteItem.innerHTML = "<a href='https://localhost:44320/Coupons/Index'>" + matches[i] + "</a>";
-                        } else if (matches[i] === "新增優惠券") {
-                            autocompleteItem.innerHTML = "<a href='https://localhost:44320/Coupons/Create'>" + matches[i] + "</a>";
-                        } else if (matches[i] === "折扣清單") {
-                            autocompleteItem.innerHTML = "<a href='https://localhost:44320/Discounts/Index'>" + matches[i] + "</a>";
-                        } else if (matches[i] === "新增折扣") {
-                            autocompleteItem.innerHTML = "<a href='https://localhost:44320/Discounts/Create'>" + matches[i] + "</a>";
-                        } else if (matches[i] === "會員優惠券清單") {
-                            autocompleteItem.innerHTML = "<a href='https://localhost:44320/MemberCoupons/Index'>" + matches[i] + "</a>";
-                        } else if (matches[i] === "發送優惠券") {
-                            autocompleteItem.innerHTML = "<a href='https://localhost:44320/MemberCoupons/Create'>" + matches[i] + "</a>";
-                        } else if (matches[i] === "優惠活動清單") {
-                            autocompleteItem.innerHTML = "<a href='https://localhost:44320/Promotions/Index'>" + matches[i] + "</a>";
-                        } else if (matches[i] === "新增優惠活動") {
-                            autocompleteItem.innerHTML = "<a href='https://localhost:44320/Promotions/Create'>" + matches[i] + "</a>";
-                        } else {
-                            autocompleteItem.innerHTML = "<a href='#'>" + matches[i] + "</a>";
-                        }
-                        autocompleteItem.innerHTML += "<input type='hidden' value='" + matches[i] + "'>";
-                        autocompleteItem.addEventListener("click", function (e) {
-                            inp.value = this.getElementsByTagName("input")[0].value;
-                            closeAllLists();
                         });
-                        autocompleteList.appendChild(autocompleteItem);
-                    }
-                });
+                        //var DT1 = $('.datatable').DataTable();
+                        //$(".selectAll").on("click", function (e) {
+                        //    if ($(this).is(":checked")) {
+                        //        DT1.rows().select();
+                        //    } else {
+                        //        DT1.rows().deselect();
+                        //    }
+                        //});
 
-                inp.addEventListener("keydown", function (e) {
-                    var autocompleteItems = document.getElementsByClassName("autocomplete-items");
+                        var selectAllCheckboxDessert = $('.selectAllDessert');
+                        var checkboxesDessert = $('tbody .childCheckboxDessert');
 
-<<<<<<< HEAD
-                    if (e.key === "ArrowDown") {
-                        currentFocus++;
-                        addActive(autocompleteItems);
-                    } else if (e.key === "ArrowUp") {
-                        currentFocus--;
-                        addActive(autocompleteItems);
-                    } else if (e.key === "Enter") {
-                        e.preventDefault();
-                        if (currentFocus > -1) {
-                            if (autocompleteItems) {
-                                autocompleteItems[currentFocus].click();
+                        // 全选 checkbox 的变更事件监听器
+                        selectAllCheckboxDessert.on('change', function () {
+                            checkboxesDessert.prop('checked', $(this).is(':checked'));
+                        });
+
+                        // 下方 checkbox 的变更事件监听器
+                        checkboxesDessert.on('change', function () {
+                            var currentPageRecords = dataTable.rows({ page: 'current' }).nodes();
+                            var allRecordsSelected = Array.from(currentPageRecords).every(function (record) {
+                                return !record.querySelector('.childCheckboxDessert:not(:checked)');
+                            });
+
+                            selectAllCheckboxDessert.prop('checked', allRecordsSelected);
+                        });
+                    });
+
+                    var selectAllCheckbox = $('#selectAllCheckbox');
+                    var checkboxes = $('tbody input[type="checkbox"][data-checkbox="childCheckbox"]');
+
+                    // 全選 checkbox 的變更事件監聽器
+                    selectAllCheckbox.on('change', function () {
+                        checkboxes.prop('checked', $(this).is(':checked'));
+                    });
+
+                    // 下方 checkbox 的變更事件監聽器
+                    checkboxes.on('change', function () {
+                        selectAllCheckbox.prop('checked', checkboxes.length === checkboxes.filter(':checked').length);
+                    });
+
+
+
+
+                    var sierras = ["會員管理", "會員清單", "權限清單", "員工清單", "新增會員", "甜點管理", "甜點清單", "新增甜點", "甜點類別", "課程管理", "新增課程", "課程類別", "師資管理", "新增教師", "教師清單", "訂單管理", "課程訂單", "甜點訂單", "行銷管理", "優惠群組清單", "優惠券清單", "新增優惠券", "折扣清單", "新增折扣", "會員優惠券清單", "發送優惠券", "優惠活動清單", "新增優惠活動"];
+
+                    function autocomplete(inp, arr) {
+                        var currentFocus;
+
+                        inp.addEventListener("input", function (e) {
+                            var val = this.value;
+                            closeAllLists();
+
+                            if (!val) {
+                                return false;
                             }
-=======
-                for (var i = 0; i < matches.length; i++) {
-                    var autocompleteItem = document.createElement("div");
-                    if (matches[i] === "會員清單") {
-                        autocompleteItem.innerHTML = "<a href='https://localhost:44320/Members/Index'>" + matches[i] + "</a>";
-                    } else if (matches[i] === "甜點清單") {
-                        autocompleteItem.innerHTML = "<a href='https://localhost:44320/Desserts/Index'>" + matches[i] + "</a>";
-                    } else if (matches[i] === "類別管理") {
-                        autocompleteItem.innerHTML = "<a href='https://localhost:44320/Categories/Index'>" + matches[i] + "</a>";
-                    } else if (matches[i] === "新增甜點") {
-                        autocompleteItem.innerHTML = "<a href='https://localhost:44320/Desserts/Create'>" + matches[i] + "</a>";
-                    } else {
-                        autocompleteItem.innerHTML = "<a href='#'>" + matches[i] + "</a>";
+
+                            currentFocus = -1;
+                            var matches = arr.filter(function (item) {
+                                return item.substr(0, val.length).toUpperCase() === val.toUpperCase();
+                            });
+
+                            var autocompleteList = document.createElement("div");
+                            autocompleteList.setAttribute("class", "autocomplete-items");
+                            this.parentNode.appendChild(autocompleteList);
+
+                            for (var i = 0; i < matches.length; i++) {
+                                var autocompleteItem = document.createElement("div");
+                                if (matches[i] === "會員清單") {
+                                    autocompleteItem.innerHTML = "<a class='text-dark text-decoration-none' href='https://localhost:44320/Members/Index'>" + matches[i] + "</a>";
+                                } else if (matches[i] === "權限清單") {
+                                    autocompleteItem.innerHTML = "<a href='https://localhost:44320/Permissions/Index'>" + matches[i] + "</a>";
+                                } else if (matches[i] === "員工清單") {
+                                    autocompleteItem.innerHTML = "<a href='https://localhost:44320/Employees/Index'>" + matches[i] + "</a>";
+                                } else if (matches[i] === "甜點清單") {
+                                    autocompleteItem.innerHTML = "<a href='https://localhost:44320/Desserts/Index'>" + matches[i] + "</a>";
+                                } else if (matches[i] === "甜點類別") {
+                                    autocompleteItem.innerHTML = "<a href='https://localhost:44320/Categories/Index'>" + matches[i] + "</a>";
+                                } else if (matches[i] === "新增甜點") {
+                                    autocompleteItem.innerHTML = "<a href='https://localhost:44320/Desserts/Create'>" + matches[i] + "</a>";
+                                } else if (matches[i] === "課程清單") {
+                                    autocompleteItem.innerHTML = "<a href='https://localhost:44320/Lessons/Index'>" + matches[i] + "</a>";
+                                } else if (matches[i] === "新增課程") {
+                                    autocompleteItem.innerHTML = "<a href='https://localhost:44320/Lessons/Create'>" + matches[i] + "</a>";
+                                } else if (matches[i] === "課程類別") {
+                                    autocompleteItem.innerHTML = "<a href='https://localhost:44320/LessonCategories/Index'>" + matches[i] + "</a>";
+                                } else if (matches[i] === "教師清單") {
+                                    autocompleteItem.innerHTML = "<a href='https://localhost:44320/Teachers/Index'>" + matches[i] + "</a>";
+                                } else if (matches[i] === "新增教師") {
+                                    autocompleteItem.innerHTML = "<a href='https://localhost:44320/Teachers/Create'>" + matches[i] + "</a>";
+                                } else if (matches[i] === "課程訂單") {
+                                    autocompleteItem.innerHTML = "<a href='https://localhost:44320/LessonOrders/Index'>" + matches[i] + "</a>";
+                                } else if (matches[i] === "甜點訂單") {
+                                    autocompleteItem.innerHTML = "<a href='https://localhost:44320/DessertOrders/Index'>" + matches[i] + "</a>";
+                                } else if (matches[i] === "優惠群組清單") {
+                                    autocompleteItem.innerHTML = "<a href='https://localhost:44320/DiscountGroups/Index'>" + matches[i] + "</a>";
+                                } else if (matches[i] === "優惠券清單") {
+                                    autocompleteItem.innerHTML = "<a href='https://localhost:44320/Coupons/Index'>" + matches[i] + "</a>";
+                                } else if (matches[i] === "新增優惠券") {
+                                    autocompleteItem.innerHTML = "<a href='https://localhost:44320/Coupons/Create'>" + matches[i] + "</a>";
+                                } else if (matches[i] === "折扣清單") {
+                                    autocompleteItem.innerHTML = "<a href='https://localhost:44320/Discounts/Index'>" + matches[i] + "</a>";
+                                } else if (matches[i] === "新增折扣") {
+                                    autocompleteItem.innerHTML = "<a href='https://localhost:44320/Discounts/Create'>" + matches[i] + "</a>";
+                                } else if (matches[i] === "會員優惠券清單") {
+                                    autocompleteItem.innerHTML = "<a href='https://localhost:44320/MemberCoupons/Index'>" + matches[i] + "</a>";
+                                } else if (matches[i] === "發送優惠券") {
+                                    autocompleteItem.innerHTML = "<a href='https://localhost:44320/MemberCoupons/Create'>" + matches[i] + "</a>";
+                                } else if (matches[i] === "優惠活動清單") {
+                                    autocompleteItem.innerHTML = "<a href='https://localhost:44320/Promotions/Index'>" + matches[i] + "</a>";
+                                } else if (matches[i] === "新增優惠活動") {
+                                    autocompleteItem.innerHTML = "<a href='https://localhost:44320/Promotions/Create'>" + matches[i] + "</a>";
+                                } else {
+                                    autocompleteItem.innerHTML = "<a href='#'>" + matches[i] + "</a>";
+                                }
+                                autocompleteItem.innerHTML += "<input type='hidden' value='" + matches[i] + "'>";
+                                autocompleteItem.addEventListener("click", function (e) {
+                                    inp.value = this.getElementsByTagName("input")[0].value;
+                                    closeAllLists();
+                                });
+                                autocompleteList.appendChild(autocompleteItem);
+                            }
+                        });
+
+//                        inp.addEventListener("keydown", function (e) {
+//                            var autocompleteItems = document.getElementsByClassName("autocomplete-items");
+
+
+//                            if (e.key === "ArrowDown") {
+//                                currentFocus++;
+//                                addActive(autocompleteItems);
+//                            } else if (e.key === "ArrowUp") {
+//                                currentFocus--;
+//                                addActive(autocompleteItems);
+//                            } else if (e.key === "Enter") {
+//                                e.preventDefault();
+//                                if (currentFocus > -1) {
+//                                    if (autocompleteItems) {
+//                                        autocompleteItems[currentFocus].click();
+//                                    }
+
+//                            for (var i = 0; i < matches.length; i++) {
+//                                var autocompleteItem = document.createElement("div");
+//                                if (matches[i] === "會員清單") {
+//                                    autocompleteItem.innerHTML = "<a href='https://localhost:44320/Members/Index'>" + matches[i] + "</a>";
+//                                } else if (matches[i] === "甜點清單") {
+//                                    autocompleteItem.innerHTML = "<a href='https://localhost:44320/Desserts/Index'>" + matches[i] + "</a>";
+//                                } else if (matches[i] === "類別管理") {
+//                                    autocompleteItem.innerHTML = "<a href='https://localhost:44320/Categories/Index'>" + matches[i] + "</a>";
+//                                } else if (matches[i] === "新增甜點") {
+//                                    autocompleteItem.innerHTML = "<a href='https://localhost:44320/Desserts/Create'>" + matches[i] + "</a>";
+//                                } else {
+//                                    autocompleteItem.innerHTML = "<a href='#'>" + matches[i] + "</a>";
+//                                }
+//                                autocompleteItem.innerHTML += "<input type='hidden' value='" + matches[i] + "'>";
+//                                autocompleteItem.addEventListener("click", function (e) {
+//                                    inp.value = this.getElementsByTagName("input")[0].value;
+//                                    closeAllLists();
+//                                });
+//                                autocompleteList.appendChild(autocompleteItem);
+//                            }
+//                        });
+
+//                        inp.addEventListener("keydown", function (e) {
+//                            var autocompleteItems = document.getElementsByClassName("autocomplete-items");
+
+//                            if (e.key === "ArrowDown") {
+//                                currentFocus++;
+//                                addActive(autocompleteItems);
+//                            } else if (e.key === "ArrowUp") {
+//                                currentFocus--;
+//                                addActive(autocompleteItems);
+//                            } else if (e.key === "Enter") {
+//                                e.preventDefault();
+//                                if (currentFocus > -1) {
+//                                    if (autocompleteItems) {
+//                                        autocompleteItems[currentFocus].click();
+//>>>>>>> origin/promotion07
+//                                }
+//                            }
+//                        });
+
+//<<<<<<< HEAD
+                        function addActive(autocompleteItems) {
+                            if (!autocompleteItems) {
+                                return false;
+                            }
+
+                            removeActive(autocompleteItems);
+
+                            if (currentFocus >= autocompleteItems.length) {
+                                currentFocus = 0;
+                            }
+
+                            if (currentFocus < 0) {
+                                currentFocus = autocompleteItems.length - 1;
+                            }
+
+                            autocompleteItems[currentFocus].classList.add("autocomplete-active");
+                        }
+
+                        function removeActive(autocompleteItems) {
+                            for (var i = 0; i < autocompleteItems.length; i++) {
+                                autocompleteItems[i].classList.remove("autocomplete-active");
+                            }
+                        }
+
+                        function closeAllLists() {
+                            var autocompleteItems = document.getElementsByClassName("autocomplete-items");
+
+                            for (var i = 0; i < autocompleteItems.length; i++) {
+                                autocompleteItems[i].parentNode.removeChild(autocompleteItems[i]);
+                            }
+                        }
+
+                        document.addEventListener("click", function (e) {
+                            closeAllLists(e.target);
+                        });
                     }
-                    autocompleteItem.innerHTML += "<input type='hidden' value='" + matches[i] + "'>";
-                    autocompleteItem.addEventListener("click", function (e) {
-                        inp.value = this.getElementsByTagName("input")[0].value;
-                        closeAllLists();
+
+                    window.addEventListener("DOMContentLoaded", function () {
+                        var input = document.getElementById("tags");
+                        autocomplete(input, sierras);
                     });
-                    autocompleteList.appendChild(autocompleteItem);
-                }
-            });
 
-            inp.addEventListener("keydown", function (e) {
-                var autocompleteItems = document.getElementsByClassName("autocomplete-items");
+                    //這裡是使用sweetAlert的方式
+                    function confirmDelete(event) {
 
-                if (e.key === "ArrowDown") {
-                    currentFocus++;
-                    addActive(autocompleteItems);
-                } else if (e.key === "ArrowUp") {
-                    currentFocus--;
-                    addActive(autocompleteItems);
-                } else if (e.key === "Enter") {
-                    e.preventDefault();
-                    if (currentFocus > -1) {
-                        if (autocompleteItems) {
-                            autocompleteItems[currentFocus].click();
->>>>>>> origin/promotion07
-                        }
+                        /*阻止默認的表單提交行為，確認在對話框顯示時候不會直接提交表單
+                        https://developer.mozilla.org/zh-TW/docs/Web/API/Event/preventDefault */
+                        event.preventDefault();
+
+                        //Swal.mixin({...})：創建一個SweetAlert2實例，並自定義確認按鈕和取消按鈕的樣式。
+                        const swalWithBootstrapButtons = Swal.mixin({
+                            customClass: {
+                                confirmButton: 'btn btn-success',
+                                cancelButton: 'btn btn-danger'
+                            },
+                            buttonsStyling: false
+                        });
+
+
+                        //顯示英文版內容
+                        //調用SweetAlert2的fire方法，配置對話框的標題、消息內容、圖標和按鈕。
+                        //swalWithBootstrapButtons.fire({
+                        //    title: 'Are you sure?',
+                        //    text: "You won't be able to revert this!",
+                        //    icon: 'warning',
+                        //    showCancelButton: true,
+                        //    confirmButtonText: 'Yes, delete it!',
+                        //    cancelButtonText: 'No, cancel!',
+                        //    reverseButtons: true
+                        //})
+                        //    //.then((result) => {...})：使用 Promise 的then方法，當用戶點擊對話框上的按鈕後執行相應的操作。
+                        //    .then((result) => {
+
+                        //        //result.isConfirmed：如果用戶點擊了確認按鈕，則執行提交表單的操作。
+                        //        if (result.isConfirmed) {
+                        //            $('form').submit();
+                        //        } //result.dismiss === Swal.DismissReason.cancel：如果用戶點擊了取消按鈕，則顯示一個取消的提示消息。
+                        //        else if (result.dismiss === Swal.DismissReason.cancel) {
+                        //            swalWithBootstrapButtons.fire(
+                        //                'Cancelled',
+                        //                'Your imaginary file is safe :)',
+                        //                'error'
+                        //            );
+                        //        }
+                        //    });
+
+
+                        //顯示中文內容
+                        swalWithBootstrapButtons.fire({
+                            title: '你確定嗎？',
+                            text: '刪除後將無法復原！',
+                            icon: 'warning',
+                            showCancelButton: true,
+                            confirmButtonText: '刪除',
+                            cancelButtonText: '取消',
+                            reverseButtons: true
+                        })
+                            //.then((result) => {...})：使用 Promise 的then方法，當用戶點擊對話框上的按鈕後執行相應的操作。
+                            .then((result) => {
+
+                                //result.isConfirmed：如果用戶點擊了確認按鈕，則執行提交表單的操作。
+                                if (result.isConfirmed) {
+                                    $('form').submit();
+                                }
+                                //result.dismiss === Swal.DismissReason.cancel：如果用戶點擊了取消按鈕，則顯示一個取消的提示消息。
+                                else if (result.dismiss === Swal.DismissReason.cancel) {
+                                    swalWithBootstrapButtons.fire(
+                                        '已取消',
+                                        '刪除未成功 :)',
+                                        'error'
+                                    );
+                                }
+                            });
+
                     }
-                });
+                            //// 获取全选复选框和下方复选框的引用
+                            //const selectAllCheckbox = document.getElementById('selectAllCheckbox');
+                            //const checkboxes = document.querySelectorAll('tbody input[type="checkbox"]');
 
-<<<<<<< HEAD
-                function addActive(autocompleteItems) {
-                    if (!autocompleteItems) {
-                        return false;
-                    }
+                            //// 添加全选复选框的点击事件监听器
+                            //selectAllCheckbox.addEventListener('click', function () {
+                            //    checkboxes.forEach(function (checkbox) {
+                            //        checkbox.checked = selectAllCheckbox.checked;
+                            //    });
+                            //});
 
-                    removeActive(autocompleteItems);
+                            //// 添加下方复选框的点击事件监听器
+                            //checkboxes.forEach(function (checkbox) {
+                            //    checkbox.addEventListener('click', function () {
+                            //        // 检查是否还有未选中的复选框
+                            //        const uncheckedCheckboxes = document.querySelectorAll('tbody input[type="checkbox"][data-checkbox="childCheckbox"]:not(:checked)');
+                            //        selectAllCheckbox.checked = uncheckedCheckboxes.length === 0;
+                            //    });
+                            //});
+                            </script>
 
-                    if (currentFocus >= autocompleteItems.length) {
-                        currentFocus = 0;
-                    }
-
-                    if (currentFocus < 0) {
-                        currentFocus = autocompleteItems.length - 1;
-                    }
-
-                    autocompleteItems[currentFocus].classList.add("autocomplete-active");
-                }
-
-                function removeActive(autocompleteItems) {
-                    for (var i = 0; i < autocompleteItems.length; i++) {
-                        autocompleteItems[i].classList.remove("autocomplete-active");
-                    }
-                }
-
-                function closeAllLists() {
-                    var autocompleteItems = document.getElementsByClassName("autocomplete-items");
-
-                    for (var i = 0; i < autocompleteItems.length; i++) {
-                        autocompleteItems[i].parentNode.removeChild(autocompleteItems[i]);
-                    }
-                }
-
-                document.addEventListener("click", function (e) {
-                    closeAllLists(e.target);
-                });
-            }
-
-            window.addEventListener("DOMContentLoaded", function () {
-                var input = document.getElementById("tags");
-                autocomplete(input, sierras);
-            });
-
-            //這裡是使用sweetAlert的方式
-            function confirmDelete(event) {
-
-                /*阻止默認的表單提交行為，確認在對話框顯示時候不會直接提交表單
-                https://developer.mozilla.org/zh-TW/docs/Web/API/Event/preventDefault */
-                event.preventDefault();
-
-                //Swal.mixin({...})：創建一個SweetAlert2實例，並自定義確認按鈕和取消按鈕的樣式。
-                const swalWithBootstrapButtons = Swal.mixin({
-                    customClass: {
-                        confirmButton: 'btn btn-success',
-                        cancelButton: 'btn btn-danger'
-                    },
-                    buttonsStyling: false
-                });
-
-
-                //顯示英文版內容
-                //調用SweetAlert2的fire方法，配置對話框的標題、消息內容、圖標和按鈕。
-                //swalWithBootstrapButtons.fire({
-                //    title: 'Are you sure?',
-                //    text: "You won't be able to revert this!",
-                //    icon: 'warning',
-                //    showCancelButton: true,
-                //    confirmButtonText: 'Yes, delete it!',
-                //    cancelButtonText: 'No, cancel!',
-                //    reverseButtons: true
-                //})
-                //    //.then((result) => {...})：使用 Promise 的then方法，當用戶點擊對話框上的按鈕後執行相應的操作。
-                //    .then((result) => {
-
-                //        //result.isConfirmed：如果用戶點擊了確認按鈕，則執行提交表單的操作。
-                //        if (result.isConfirmed) {
-                //            $('form').submit();
-                //        } //result.dismiss === Swal.DismissReason.cancel：如果用戶點擊了取消按鈕，則顯示一個取消的提示消息。
-                //        else if (result.dismiss === Swal.DismissReason.cancel) {
-                //            swalWithBootstrapButtons.fire(
-                //                'Cancelled',
-                //                'Your imaginary file is safe :)',
-                //                'error'
-                //            );
-                //        }
-                //    });
-
-
-                //顯示中文內容
-                swalWithBootstrapButtons.fire({
-                    title: '你確定嗎？',
-                    text: '刪除後將無法復原！',
-                    icon: 'warning',
-                    showCancelButton: true,
-                    confirmButtonText: '刪除',
-                    cancelButtonText: '取消',
-                    reverseButtons: true
-                })
-                    //.then((result) => {...})：使用 Promise 的then方法，當用戶點擊對話框上的按鈕後執行相應的操作。
-                    .then((result) => {
-
-                        //result.isConfirmed：如果用戶點擊了確認按鈕，則執行提交表單的操作。
-                        if (result.isConfirmed) {
-                            $('form').submit();
-                        }
-                        //result.dismiss === Swal.DismissReason.cancel：如果用戶點擊了取消按鈕，則顯示一個取消的提示消息。
-                        else if (result.dismiss === Swal.DismissReason.cancel) {
-                            swalWithBootstrapButtons.fire(
-                                '已取消',
-                                '刪除未成功 :)',
-                                'error'
-                            );
-                        }
-                    });
-
-            }
-                //// 获取全选复选框和下方复选框的引用
-                //const selectAllCheckbox = document.getElementById('selectAllCheckbox');
-                //const checkboxes = document.querySelectorAll('tbody input[type="checkbox"]');
-
-                //// 添加全选复选框的点击事件监听器
-                //selectAllCheckbox.addEventListener('click', function () {
-                //    checkboxes.forEach(function (checkbox) {
-                //        checkbox.checked = selectAllCheckbox.checked;
-                //    });
-                //});
-
-                //// 添加下方复选框的点击事件监听器
-                //checkboxes.forEach(function (checkbox) {
-                //    checkbox.addEventListener('click', function () {
-                //        // 检查是否还有未选中的复选框
-                //        const uncheckedCheckboxes = document.querySelectorAll('tbody input[type="checkbox"][data-checkbox="childCheckbox"]:not(:checked)');
-                //        selectAllCheckbox.checked = uncheckedCheckboxes.length === 0;
-                //    });
-                //});
-        </script>
-=======
-        }
-            //// 获取全选复选框和下方复选框的引用
-            //const selectAllCheckbox = document.getElementById('selectAllCheckbox');
-            //const checkboxes = document.querySelectorAll('tbody input[type="checkbox"]');
-
-            //// 添加全选复选框的点击事件监听器
-            //selectAllCheckbox.addEventListener('click', function () {
-            //    checkboxes.forEach(function (checkbox) {
-            //        checkbox.checked = selectAllCheckbox.checked;
-            //    });
-            //});
-
-            //// 添加下方复选框的点击事件监听器
-            //checkboxes.forEach(function (checkbox) {
-            //    checkbox.addEventListener('click', function () {
-            //        // 检查是否还有未选中的复选框
-            //        const uncheckedCheckboxes = document.querySelectorAll('tbody input[type="checkbox"][data-checkbox="childCheckbox"]:not(:checked)');
-            //        selectAllCheckbox.checked = uncheckedCheckboxes.length === 0;
-            //    });
-            //});
-    </script>
->>>>>>> origin/promotion07
 </body>
 </html>
