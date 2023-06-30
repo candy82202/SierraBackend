@@ -1,0 +1,9 @@
+﻿################################################################################
+# 這個 .gitignore 檔案由 Microsoft(R) Visual Studio 自動建立。
+################################################################################
+
+/NiceAdmin.0629/.vs/NiceAdmin/FileContentIndex/d7ee8c7b-014b-4ec3-a5dc-8d8ec31f56e3.vsidx
+/NiceAdmin.0629/.vs/NiceAdmin/FileContentIndex/8daa1622-c7cf-4e86-9614-bc247db176a6.vsidx
+/NiceAdmin.0629/.vs/NiceAdmin/FileContentIndex/2c368e9d-54a0-4076-8b3e-f0c4333846f7.vsidx
+
+NiceAdmin.0629/.vs/

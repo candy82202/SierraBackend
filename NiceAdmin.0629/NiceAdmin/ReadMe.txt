@@ -36,7 +36,7 @@
 [V] - 修改DataTable 的模板樣式，更改成中文版本
 
 [V] - 加裝sweet alert delete的部分。
-    - 資料庫使用Sierras 0627
+    - 資料庫使用Sierras 0629
     - 版本 4.7.2 
 
 [working on] - 針對404錯誤訊息畫面 修改web.config畫面，圖片尚未抓到
@@ -46,21 +46,26 @@ Desserts 部分
 [V] - 新增前台商品上架的頁面 LayoutFront , Sierras.cshtml
     - 新增多張圖顯示， 編輯照片(照片的新增 / 刪除)
 
-[V] - 全選 checkbox 的變更事件監聽器 
+[V] - 全選 checkbox 的變更事件監聽器 (Desserts & Categories 的 Index 頁面 抓到分頁數量的checkbox )
     - AutoComplete 甜點清單頁面
 
 [working on] - AJAX 甜點清單頁面
 
-[working on] - 照片更改成圖示 <img>
-             
+[working on] - 編輯照片新增欄位(簡易編輯)
+             - 照片更改成圖示 <img>
+             - 清單的編輯新增 icon
 
 
 ==========================================================
 Member 部分
 
+[V] - 因Permission表拆成4個表，
+      刪除EFModels裡所有檔案
+      刪除連線字串
+      刪除相關控制器和檢視(Employees和Permissions)
 
-
-
+[V] - 重建EFModels
+      重建相關控制器和檢視
 
 
 
@@ -77,11 +82,15 @@ Member 部分
 
 
 ==========================================================
-Courses 部分
+Lesson 部分
 
 [V]將sa5的密碼修改和Web.config相同
-[working on]完善Course CRUD、Courses的多張照片上傳和修改
+[V]初步修改Lessons、LessonCategories CRUD版面調整
 
+
+
+[working on]完善Course CRUD、Courses的多張照片上傳和修改
+[working on]CRUD頁面需要補上<main> ⇒ 版型調整、table部分更改成datatable(有需要使用的)
 
 
 
