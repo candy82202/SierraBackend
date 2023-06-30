@@ -199,9 +199,8 @@
     <Compile Include="Models\ViewModels\DessertsVM\DessertCriteria.cs" />
     <Compile Include="Models\ViewModels\MembersVM\MemberIndexVM.cs" />
     <Compile Include="Models\ViewModels\OrdersVM\LessonOrderIndexVM.cs" />
-    <Compile Include="Models\ViewModels\PromotionsVM\DiscountGroupEditVM.cs" />
-    <Compile Include="Models\ViewModels\PromotionsVM\DiscountGroupExts.cs" />
     <Compile Include="Models\ViewModels\PromotionsVM\DiscountGroupIndexVM.cs" />
+    <Compile Include="Models\ViewModels\PromotionsVM\DiscountGroupExts.cs" />
     <Compile Include="Models\ViewModels\TeachersVM\TeacherIndexVM.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
