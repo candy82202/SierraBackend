@@ -25,6 +25,10 @@ namespace NiceAdmin.Models.ViewModels
         //public List<string> DessertImageName { get; set; }
         [Display(Name = "是否上架")]
         public bool Status { get; set; }
+        public DessertEditVM()
+        {
+            DessertImageNames = new List<string>();
+        }
 
     }
 }

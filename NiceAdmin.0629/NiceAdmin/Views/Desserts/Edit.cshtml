@@ -29,7 +29,7 @@
             @Html.HiddenFor(model => model.DessertId)
 
             <div class="mb-3">
-                @Html.LabelFor(model => model.CategoryId, "CategoryId", htmlAttributes: new { @class = "form-label" })
+                @Html.LabelFor(model => model.CategoryId, htmlAttributes: new { @class = "form-label" })
 
                 @Html.DropDownList("CategoryId", null, htmlAttributes: new { @class = "form-select" })
                 @Html.ValidationMessageFor(model => model.CategoryId, "", new { @class = "text-danger" })
