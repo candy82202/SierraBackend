@@ -34,7 +34,7 @@ namespace NiceAdmin.Models.ViewModels
         public string StatusText { get 
             {
                 return this.Status == true
-                    ? "上架中" : "已下架";
+                    ? "上架" : "下架";
             } }
 
         [Display(Name = "創建時間")]

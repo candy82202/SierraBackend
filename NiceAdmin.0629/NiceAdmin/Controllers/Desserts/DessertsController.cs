@@ -227,7 +227,7 @@ namespace NiceAdmin.Controllers
         //    PrepareCategoryDataSource(vm.CategoryId);
         //    return View(vm);
         //}
-        public ActionResult Edit(DessertEditVM vm, List<HttpPostedFileBase> images)//, List<HttpPostedFileBase> images)
+        public ActionResult Edit(DessertEditVM vm, List<HttpPostedFileBase> images)
         {
             var dessert = db.Desserts.Include(d => d.DessertImages).FirstOrDefault(d => d.DessertId == vm.DessertId);
             if (dessert == null)
