@@ -58,9 +58,13 @@ Desserts 部分
 ==========================================================
 Member 部分
 
-do something yo
+[V] - 因Permission表拆成4個表，
+      刪除EFModels裡所有檔案
+      刪除連線字串
+      刪除相關控制器和檢視(Employees和Permissions)
 
-
+[V] - 重建EFModels
+      重建相關控制器和檢視
 
 
 

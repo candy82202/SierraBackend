@@ -12,9 +12,6 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.Permission.PermissionName)
-        </th>
-        <th>
             @Html.DisplayNameFor(model => model.EmployeeName)
         </th>
         <th>
@@ -28,9 +25,6 @@
 
 @foreach (var item in Model) {
     <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Permission.PermissionName)
-        </td>
         <td>
             @Html.DisplayFor(modelItem => item.EmployeeName)
         </td>
