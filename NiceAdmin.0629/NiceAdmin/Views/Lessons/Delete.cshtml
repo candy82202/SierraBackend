@@ -4,117 +4,123 @@
     ViewBag.Title = "Delete";
 }
 
-<h2>Delete</h2>
+<main id="main" class="main">
 
-<h3>Are you sure you want to delete this?</h3>
-<div>
-    <h4>Lesson</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.LessonCategory.LessonCategoryName)
-        </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.LessonCategory.LessonCategoryName)
-        </dd>
+    <h3>你確定要刪除嗎?</h3>
+    <div>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Teacher.TeacherName)
-        </dt>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.LessonCategory.LessonCategoryName)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Teacher.TeacherName)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.LessonCategory.LessonCategoryName)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.LessonTitle)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.Teacher.TeacherName)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.LessonTitle)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.Teacher.TeacherName)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.LessonInfo)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.LessonTitle)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.LessonInfo)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.LessonTitle)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.LessonDetail)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.LessonInfo)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.LessonDetail)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.LessonInfo)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.LessonDessert)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.LessonDetail)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.LessonDessert)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.LessonDetail)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.LessonTime)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.LessonDessert)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.LessonTime)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.LessonDessert)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.LessonHours)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.LessonTime)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.LessonHours)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.LessonTime)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.MaximumCapacity)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.LessonHours)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.MaximumCapacity)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.LessonHours)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.LessonPrice)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.MaximumCapacity)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.LessonPrice)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.MaximumCapacity)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.LessonStatus)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.LessonPrice)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.LessonStatus)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.LessonPrice)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.CreateTime)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.LessonStatus)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.CreateTime)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.LessonStatus)
+            </dd>
 
-    </dl>
+            <dt>
+                @Html.DisplayNameFor(model => model.CreateTime)
+            </dt>
 
-    @using (Html.BeginForm()) {
-        @Html.AntiForgeryToken()
+            <dd>
+                @Html.DisplayFor(model => model.CreateTime)
+            </dd>
 
-        <div class="form-actions no-color">
-            <input type="submit" value="Delete" class="btn btn-default" /> |
-            @Html.ActionLink("Back to List", "Index")
-        </div>
-    }
-</div>
+        </dl>
+
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+
+            <div class="form-actions no-color">
+                @*<input type="submit" value="刪除" class="btn btn-outline-primary" />*@
+                <button type="button" class="btn btn-outline-primary" onclick="confirmDelete(event)">刪除</button>
+
+                @Html.ActionLink("Back to List", "Index")
+            </div>
+        }
+    </div>
+</main>

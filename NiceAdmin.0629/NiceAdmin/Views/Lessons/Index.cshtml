@@ -1,99 +1,285 @@
-﻿@model IEnumerable<NiceAdmin.Models.EFModels.Lesson>
+﻿@model IEnumerable<NiceAdmin.Models.ViewModels.LessonsVM.LessonIndexVM>
 
 @{
     ViewBag.Title = "Index";
+
+
+    var categories = ViewBag.LessonCategoryId as SelectList;
+    var criteria = ViewBag.Criteria as NiceAdmin.Models.ViewModels.LessonsVM.LessonCriteria;
+    string s_courseCategoryName = criteria.LessonCategoryId.HasValue ? criteria.LessonCategoryId.Value.ToString() : "";
 }
 
-<h2>Index</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.LessonCategory.LessonCategoryName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Teacher.TeacherName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.LessonTitle)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.LessonInfo)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.LessonDetail)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.LessonDessert)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.LessonTime)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.LessonHours)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.MaximumCapacity)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.LessonPrice)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.LessonStatus)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.CreateTime)
-        </th>
-        <th></th>
-    </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.LessonCategory.LessonCategoryName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Teacher.TeacherName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.LessonTitle)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.LessonInfo)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.LessonDetail)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.LessonDessert)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.LessonTime)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.LessonHours)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.MaximumCapacity)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.LessonPrice)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.LessonStatus)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.CreateTime)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.LessonId }) |
-            @Html.ActionLink("Details", "Details", new { id=item.LessonId }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.LessonId })
-        </td>
-    </tr>
+<main id="main" class="main">
+    <div class="pagetitle">
+        <h1>課程清單</h1>
+        <nav>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="@Url.Action("Index","Home")">首頁</a></li>
+                <li class="breadcrumb-item"><a href="@Url.Action("Index","Lessons")">課程管理</a></li>
+                <li class="breadcrumb-item active"><a href="@Url.Action("Index","Lessons")">課程清單</a></li>
+            </ol>
+        </nav>
+    </div>
+
+
+
+    <button class="btn btn-outline-primary text-light fw-bold"> @Html.ActionLink("新增課程", "Create")</button>
+    <section class="container">
+        <form method="get" autocomplete="off" action="@Url.Action("Index", "Lessons")">
+            <div class="row autocomplete" style="width:100%;">
+                <div class="mb-3 col-md-3">
+                    <label for="s_name">課程名稱</label>
+                    <input type="text" class="form-control" name="name" id="s_name" value="@criteria.LessonTitle">
+
+                </div>
+                <div class="mb-3 col-md-3">
+                    <label for="s_categoryId">分類</label>
+                    <select name="categoryId" id="s_categoryId" class="form-select">
+                        @foreach (var item in categories)
+                        {
+                            <option value="@item.Value" @(s_courseCategoryName == item.Value ? "selected" : "")>@item.Text</option>
+                        }
+                    </select>
+
+                </div>
+                <div class="mb-3 col-md-4">
+                    <label for="s_minPrice" style="display: block">金額</label>
+                    <input type="number" class="form-control" name="minPrice" id="s_minPrice" style="width: 40%; display: inline" value="@criteria.MinPrice"> ~
+                    <input type="number" class="form-control" name="maxPrice" id="s_maxPrice" style="width: 40%; display: inline" value="@criteria.MaxPrice">
+
+                </div>
+                <div class="mb-3 col-md-2 align-self-end">
+                    <button class="btn btn-outline-primary">查詢</button>
+                </div>
+            </div>
+        </form>
+    </section>
+
+
+    <div class="table-responsive">
+        <table class="table table-striped table-hover datatable" id="example">
+            <thead>
+                <tr>
+                    <th>
+                        @*課程分類*@
+                        @Html.DisplayNameFor(model => model.LessonCategoryName)
+                    </th>
+                    <th>
+                        @* 教師姓名 *@
+                        @Html.DisplayNameFor(model => model.TeacherName)
+                    </th>
+                    <th>
+                        @* 課程名稱 *@
+                        @Html.DisplayNameFor(model => model.LessonTitle)
+                    </th>
+                    <th>
+                        @* 課程簡介 *@
+                        @Html.DisplayNameFor(model => model.LessonInfo)
+                    </th>
+                    <th>
+                        @* 課程內容 *@
+                        @Html.DisplayNameFor(model => model.LessonDetailText)
+                    </th>
+                    <th>
+                        @* 課程成品 *@
+                        @Html.DisplayNameFor(model => model.LessonDessert)
+                    </th>
+                    <th>
+                        @* 開課時間 *@
+                        @Html.DisplayNameFor(model => model.LessonTime)
+                    </th>
+                    <th>
+                        @* 課程時數 *@
+                        @Html.DisplayNameFor(model => model.LessonHours)
+                    </th>
+                    <th>
+                        @* 報名人數上限 *@
+                        @Html.DisplayNameFor(model => model.MaximumCapacity)
+                    </th>
+                    <th>
+                        @* 課程售價 *@
+                        @Html.DisplayNameFor(model => model.LessonPrice)
+                    </th>
+                    <th>
+                        @* 課程狀態 *@
+                        @Html.DisplayNameFor(model => model.LessonStatus)
+                    </th>
+                    <th>
+                        @* 發布時間 *@
+                        @Html.DisplayNameFor(model => model.CreateTime)
+                    </th>
+                    <th>功能</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.LessonCategoryName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.TeacherName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.LessonTitle)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.LessonInfo)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.LessonDetailText)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.LessonDessert)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.LessonTime)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.LessonHours)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.MaximumCapacity)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.LessonPrice)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.LessonStatus)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.CreateTime)
+                        </td>
+                        <td>
+                            @Html.ActionLink("Edit", "Edit", new { id = item.LessonId }) |
+                            @Html.ActionLink("Details", "Details", new { id = item.LessonId }) |
+                            @Html.ActionLink("Delete", "Delete", new { id = item.LessonId })
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</main>
+
+@section Scripts{
+    <script>
+        //這段是要做AutoComplete
+        var lessons = ["餅乾", "手工製作", "慕斯", "蛋糕", "巧克力", "馬卡龍", "檸檬", "派", "冰淇淋", "草莓", "布丁", "塔"]
+        /*function autocomplete(inp, arr) { ... }：這是一個自訂的自動完成函式。
+        它接收兩個參數，inp代表文字輸入框的元素，arr代表建議項目的陣列。*/
+        function autocompleteLessons(inp, arr) {
+
+            var currentFocus;
+
+            /*inp.addEventListener("input", function (e) { ... })：
+            這是一個事件監聽器，當使用者在輸入框中輸入文字時觸發。它會根據輸入的文字篩選建議項目並顯示。*/
+            inp.addEventListener("input", function (e) {
+                var a, b, i, val = this.value;
+
+                /*closeAllLists() 函式：
+                這個函式用於關閉所有已打開的建議清單，以便在選擇建議項目後或點擊其他地方時關閉它們。*/
+                closeAllLists();
+                if (!val) { return false; }
+                currentFocus = -1;
+                /*create a DIV element that will contain the items (values):*/
+                a = document.createElement("DIV");
+                a.setAttribute("id", this.id + "autocomplete-list");
+                a.setAttribute("class", "autocomplete-items");
+                /*append the DIV element as a child of the autocomplete container:*/
+                this.parentNode.appendChild(a);
+                /*for each item in the array...*/
+                for (i = 0; i < arr.length; i++) {
+                    /*check if the item starts with the same letters as the text field value:*/
+                    if (arr[i].substr(0, val.length).toUpperCase() == val.toUpperCase()) {
+                        /*create a DIV element for each matching element:*/
+                        b = document.createElement("DIV");
+                        /*make the matching letters bold:*/
+                        b.innerHTML = "<strong>" + arr[i].substr(0, val.length) + "</strong>";
+                        b.innerHTML += arr[i].substr(val.length);
+                        /*insert a input field that will hold the current array item's value:*/
+                        b.innerHTML += "<input type='hidden' value='" + arr[i] + "'>";
+                        /*execute a function when someone clicks on the item value (DIV element):*/
+                        b.addEventListener("click", function (e) {
+                            /*insert the value for the autocomplete text field:*/
+                            inp.value = this.getElementsByTagName("input")[0].value;
+                            /*close the list of autocompleted values,
+                            (or any other open lists of autocompleted values:*/
+                            closeAllLists();
+                        });
+                        a.appendChild(b);
+                    }
+                }
+            });
+            /*execute a function presses a key on the keyboard:*/
+            inp.addEventListener("keydown", function (e) {
+                var x = document.getElementById(this.id + "autocomplete-list");
+                if (x) x = x.getElementsByTagName("div");
+                if (e.keyCode == 40) {
+                    /*If the arrow DOWN key is pressed,
+                    increase the currentFocus variable:*/
+                    currentFocus++;
+
+
+                    /*and and make the current item more visible:*/
+                    addActive(x);
+                } else if (e.keyCode == 38) { //up
+                    /*If the arrow UP key is pressed,
+                    decrease the currentFocus variable:*/
+                    currentFocus--;
+                    /*and and make the current item more visible:*/
+                    addActive(x);
+                } else if (e.keyCode == 13) {
+                    /*If the ENTER key is pressed, prevent the form from being submitted,*/
+                    e.preventDefault();
+                    if (currentFocus > -1) {
+                        /*and simulate a click on the "active" item:*/
+                        if (x) x[currentFocus].click();
+                    }
+                }
+            });
+
+            //addActive() 函式：這個函式用於將某個建議項目標記為選中狀態，以便使用者可以使用鍵盤的上下鍵選擇不同的項目。
+            function addActive(x) {
+                /*a function to classify an item as "active":*/
+                if (!x) return false;
+
+
+                /*start by removing the "active" class on all items:*/
+                removeActive(x);
+                if (currentFocus >= x.length) currentFocus = 0;
+                if (currentFocus < 0) currentFocus = (x.length - 1);
+                /*add class "autocomplete-active":*/
+                x[currentFocus].classList.add("autocomplete-active");
+            }
+
+            //removeActive() 函式：這個函式用於移除所有建議項目的選中狀態。
+            function removeActive(x) {
+                /*a function to remove the "active" class from all autocomplete items:*/
+                for (var i = 0; i < x.length; i++) {
+                    x[i].classList.remove("autocomplete-active");
+                }
+            }
+            function closeAllLists(elmnt) {
+                /*close all autocomplete lists in the document,
+                except the one passed as an argument:*/
+                var x = document.getElementsByClassName("autocomplete-items");
+                for (var i = 0; i < x.length; i++) {
+                    if (elmnt != x[i] && elmnt != inp) {
+                        x[i].parentNode.removeChild(x[i]);
+                    }
+                }
+            }
+            /*execute a function when someone clicks in the document:*/
+            document.addEventListener("click", function (e) {
+                closeAllLists(e.target);
+            });
+        }
+
+        //autocomplete() 函式的餘下部分處理事件監聽和與建議項目相關的邏輯，包括創建建議項目的 DIV 元素、將它們添加到 DOM 中、監聽建議項目的點擊事件等。
+        autocompleteLessons(document.getElementById("s_name"), lessons);
+    </script>
 }
-
-</table>

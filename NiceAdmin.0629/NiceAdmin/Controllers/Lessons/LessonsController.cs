@@ -7,6 +7,8 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using NiceAdmin.Models.EFModels;
+using NiceAdmin.Models.ViewModels;
+using NiceAdmin.Models.ViewModels.LessonsVM;
 
 namespace NiceAdmin.Controllers.Lessons
 {
@@ -15,10 +17,37 @@ namespace NiceAdmin.Controllers.Lessons
         private AppDbContext db = new AppDbContext();
 
         // GET: Lessons
-        public ActionResult Index()
+        public ActionResult Index(LessonCriteria lessonCriteria)
         {
-            var lessons = db.Lessons.Include(l => l.LessonCategory).Include(l => l.Teacher);
-            return View(lessons.ToList());
+            PrepareCategoryDataSource(lessonCriteria.LessonCategoryId);
+            //ViewBag.DessertCriteria = dessertCriteria;
+            ViewBag.Criteria = lessonCriteria;
+            var query = db.Lessons.Include(d => d.LessonCategory);
+            #region where
+            if (string.IsNullOrEmpty(lessonCriteria.LessonTitle) == false)
+            {
+                query = query.Where(d => d.LessonTitle.Contains(lessonCriteria.LessonTitle));
+            }
+            if (lessonCriteria.LessonCategoryId != null && lessonCriteria.LessonCategoryId.Value > 0)
+            {
+                query = query.Where(d => d.LessonCategoryId == lessonCriteria.LessonCategoryId.Value);
+            }
+            if (lessonCriteria.MinPrice.HasValue)
+            {
+                query = query.Where(d => d.LessonPrice >= lessonCriteria.MinPrice.Value);
+            }
+            if (lessonCriteria.MaxPrice.HasValue)
+            {
+                query = query.Where(d => d.LessonPrice <= lessonCriteria.MaxPrice.Value);
+            }
+            #endregion
+            var lessons = query.ToList().Select(d => d.ToIndexVM());
+            return View(lessons);
+        }
+
+        private void PrepareCategoryDataSource(int? lessonCategoryName)
+        {
+            ViewBag.LessonCategoryId = new SelectList(db.LessonCategories, "LessonCategoryId", "LessonCategoryName", lessonCategoryName);
         }
 
         // GET: Lessons/Details/5
