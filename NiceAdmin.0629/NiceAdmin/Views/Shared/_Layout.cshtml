@@ -678,6 +678,7 @@
 
         @RenderBody()
 
+<<<<<<< HEAD
         <!-- End #main -->
         <!-- ======= Footer ======= -->
         <footer id="footer" class="footer">
@@ -699,6 +700,29 @@
         @*AutoComplete*@
         @*<script src="//apps.bdimg.com/libs/jquery/1.10.2/jquery.min.js"></script>
             <script src="//apps.bdimg.com/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>*@
+=======
+    <!-- End #main -->
+    <!-- ======= Footer ======= -->
+    <footer id="footer" class="footer">
+        <div class="copyright">
+            &copy; 2023 Copyright <strong><span>Sierra</span></strong>. All Rights Reserved
+        </div>
+        <div class="credits">
+            <!-- All the links in the footer should remain intact. -->
+            Designed by <a href="@Url.Action("Index","Home")">Sierra</a>
+        </div>
+    </footer>
+    <!-- End Footer -->
+
+    <a href="#"
+       class="back-to-top d-flex align-items-center justify-content-center">
+        <i class="bi bi-arrow-up-short"></i>
+    </a>
+
+    @*AutoComplete*@
+    @*<script src="//apps.bdimg.com/libs/jquery/1.10.2/jquery.min.js"></script>
+        <script src="//apps.bdimg.com/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>*@
+>>>>>>> origin/promotion07
 
         @*<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
             <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>*@
@@ -718,12 +742,39 @@
         <script src="https://cdn.datatables.net/1.13.4/js/dataTables.bootstrap5.min.js"></script>
         <script src="https://cdn.datatables.net/select/1.6.2/js/dataTables.select.min.js"></script>
 
+<<<<<<< HEAD
 
         <!-- Template Main JS File -->
         <script src="~/Scripts/js/main.js"></script>
         <script>
             //$(document).ready(function () {
 
+=======
+    @RenderSection("scripts", required: false)
+    <!-- Template Main JS File -->
+    <script src="~/Scripts/js/main.js"></script>
+    <script>
+        //$(document).ready(function () {
+
+        //});
+
+
+        $(document).ready(function () {
+            $('.datatable').DataTable({
+                "lengthMenu": [5, 10, 20],
+                language: {
+                    url: '//cdn.datatables.net/plug-ins/1.13.4/i18n/zh-HANT.json',
+                },
+
+            });
+            //var DT1 = $('.datatable').DataTable();
+            //$(".selectAll").on("click", function (e) {
+            //    if ($(this).is(":checked")) {
+            //        DT1.rows().select();
+            //    } else {
+            //        DT1.rows().deselect();
+            //    }
+>>>>>>> origin/promotion07
             //});
 
 
@@ -777,6 +828,10 @@
             });
 
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> origin/promotion07
 
 
             var sierras = ["會員管理", "會員清單", "權限清單", "員工清單", "新增會員", "甜點管理", "甜點清單", "新增甜點", "甜點類別", "課程管理", "新增課程", "課程類別", "師資管理", "新增教師", "教師清單", "訂單管理", "課程訂單", "甜點訂單", "行銷管理", "優惠群組清單", "優惠券清單", "新增優惠券", "折扣清單", "新增折扣", "會員優惠券清單", "發送優惠券", "優惠活動清單", "新增優惠活動"];
@@ -862,6 +917,7 @@
                 inp.addEventListener("keydown", function (e) {
                     var autocompleteItems = document.getElementsByClassName("autocomplete-items");
 
+<<<<<<< HEAD
                     if (e.key === "ArrowDown") {
                         currentFocus++;
                         addActive(autocompleteItems);
@@ -874,10 +930,49 @@
                             if (autocompleteItems) {
                                 autocompleteItems[currentFocus].click();
                             }
+=======
+                for (var i = 0; i < matches.length; i++) {
+                    var autocompleteItem = document.createElement("div");
+                    if (matches[i] === "會員清單") {
+                        autocompleteItem.innerHTML = "<a href='https://localhost:44320/Members/Index'>" + matches[i] + "</a>";
+                    } else if (matches[i] === "甜點清單") {
+                        autocompleteItem.innerHTML = "<a href='https://localhost:44320/Desserts/Index'>" + matches[i] + "</a>";
+                    } else if (matches[i] === "類別管理") {
+                        autocompleteItem.innerHTML = "<a href='https://localhost:44320/Categories/Index'>" + matches[i] + "</a>";
+                    } else if (matches[i] === "新增甜點") {
+                        autocompleteItem.innerHTML = "<a href='https://localhost:44320/Desserts/Create'>" + matches[i] + "</a>";
+                    } else {
+                        autocompleteItem.innerHTML = "<a href='#'>" + matches[i] + "</a>";
+                    }
+                    autocompleteItem.innerHTML += "<input type='hidden' value='" + matches[i] + "'>";
+                    autocompleteItem.addEventListener("click", function (e) {
+                        inp.value = this.getElementsByTagName("input")[0].value;
+                        closeAllLists();
+                    });
+                    autocompleteList.appendChild(autocompleteItem);
+                }
+            });
+
+            inp.addEventListener("keydown", function (e) {
+                var autocompleteItems = document.getElementsByClassName("autocomplete-items");
+
+                if (e.key === "ArrowDown") {
+                    currentFocus++;
+                    addActive(autocompleteItems);
+                } else if (e.key === "ArrowUp") {
+                    currentFocus--;
+                    addActive(autocompleteItems);
+                } else if (e.key === "Enter") {
+                    e.preventDefault();
+                    if (currentFocus > -1) {
+                        if (autocompleteItems) {
+                            autocompleteItems[currentFocus].click();
+>>>>>>> origin/promotion07
                         }
                     }
                 });
 
+<<<<<<< HEAD
                 function addActive(autocompleteItems) {
                     if (!autocompleteItems) {
                         return false;
@@ -1013,5 +1108,28 @@
                 //    });
                 //});
         </script>
+=======
+        }
+            //// 获取全选复选框和下方复选框的引用
+            //const selectAllCheckbox = document.getElementById('selectAllCheckbox');
+            //const checkboxes = document.querySelectorAll('tbody input[type="checkbox"]');
+
+            //// 添加全选复选框的点击事件监听器
+            //selectAllCheckbox.addEventListener('click', function () {
+            //    checkboxes.forEach(function (checkbox) {
+            //        checkbox.checked = selectAllCheckbox.checked;
+            //    });
+            //});
+
+            //// 添加下方复选框的点击事件监听器
+            //checkboxes.forEach(function (checkbox) {
+            //    checkbox.addEventListener('click', function () {
+            //        // 检查是否还有未选中的复选框
+            //        const uncheckedCheckboxes = document.querySelectorAll('tbody input[type="checkbox"][data-checkbox="childCheckbox"]:not(:checked)');
+            //        selectAllCheckbox.checked = uncheckedCheckboxes.length === 0;
+            //    });
+            //});
+    </script>
+>>>>>>> origin/promotion07
 </body>
 </html>
