@@ -17,7 +17,8 @@ namespace NiceAdmin.Controllers.Members
         // GET: Employees
         public ActionResult Index()
         {
-            return View(db.Employees.ToList());
+            var employees = db.Employees.Include(e => e.Permission);
+            return View(employees.ToList());
         }
 
         // GET: Employees/Details/5
@@ -38,6 +39,7 @@ namespace NiceAdmin.Controllers.Members
         // GET: Employees/Create
         public ActionResult Create()
         {
+            ViewBag.PermissionId = new SelectList(db.Permissions, "PermissionId", "PermissionName");
             return View();
         }
 
@@ -46,7 +48,7 @@ namespace NiceAdmin.Controllers.Members
         // 如需詳細資料，請參閱 https://go.microsoft.com/fwlink/?LinkId=317598。
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "EmployeeId,EmployeeName,EncryptedPassword,CreateAt")] Employee employee)
+        public ActionResult Create([Bind(Include = "EmployeeId,EmployeeName,EncryptedPassword,CreateAt,PermissionId")] Employee employee)
         {
             if (ModelState.IsValid)
             {
@@ -55,6 +57,7 @@ namespace NiceAdmin.Controllers.Members
                 return RedirectToAction("Index");
             }
 
+            ViewBag.PermissionId = new SelectList(db.Permissions, "PermissionId", "PermissionName", employee.PermissionId);
             return View(employee);
         }
 
@@ -70,6 +73,7 @@ namespace NiceAdmin.Controllers.Members
             {
                 return HttpNotFound();
             }
+            ViewBag.PermissionId = new SelectList(db.Permissions, "PermissionId", "PermissionName", employee.PermissionId);
             return View(employee);
         }
 
@@ -78,7 +82,7 @@ namespace NiceAdmin.Controllers.Members
         // 如需詳細資料，請參閱 https://go.microsoft.com/fwlink/?LinkId=317598。
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "EmployeeId,EmployeeName,EncryptedPassword,CreateAt")] Employee employee)
+        public ActionResult Edit([Bind(Include = "EmployeeId,EmployeeName,EncryptedPassword,CreateAt,PermissionId")] Employee employee)
         {
             if (ModelState.IsValid)
             {
@@ -86,6 +90,7 @@ namespace NiceAdmin.Controllers.Members
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
+            ViewBag.PermissionId = new SelectList(db.Permissions, "PermissionId", "PermissionName", employee.PermissionId);
             return View(employee);
         }
 

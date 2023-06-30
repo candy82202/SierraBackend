@@ -19,5 +19,9 @@ namespace NiceAdmin.Models.EFModels
         public string EncryptedPassword { get; set; }
 
         public DateTime CreateAt { get; set; }
+
+        public int PermissionId { get; set; }
+
+        public virtual Permission Permission { get; set; }
     }
 }
