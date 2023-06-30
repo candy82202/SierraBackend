@@ -1,68 +1,79 @@
 ﻿@model NiceAdmin.Models.EFModels.Teacher
 
 @{
-    ViewBag.Title = "Edit";
+    ViewBag.Title = "編輯師資";
 }
 
-<h2>Edit</h2>
-
-
-@using (Html.BeginForm())
-{
-    @Html.AntiForgeryToken()
-    
-    <div class="row">
-        <h4>Teacher</h4>
-        <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        @Html.HiddenFor(model => model.TeacherId)
-        <div class="mb-3">
-            @Html.LabelFor(model => model.TeacherName, htmlAttributes: new { @class = "form-label" })
-            @Html.EditorFor(model => model.TeacherName, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.TeacherName, "", new { @class = "text-danger" })
-        </div>
-        <div class="mb-3">
-            @Html.LabelFor(model => model.TeacherImage, htmlAttributes: new { @class = "form-label" })
-            @Html.EditorFor(model => model.TeacherImage, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.TeacherImage, "", new { @class = "text-danger" })
-        </div>
-        <div class="mb-3">
-            @Html.LabelFor(model => model.Specialty, htmlAttributes: new { @class = "form-label" })
-            @Html.EditorFor(model => model.Specialty, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.Specialty, "", new { @class = "text-danger" })
-        </div>
-        <div class="mb-3">
-            @Html.LabelFor(model => model.Experience, htmlAttributes: new { @class = "form-label" })
-            @Html.EditorFor(model => model.Experience, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.Experience, "", new { @class = "text-danger" })
-        </div>
-        <div class="mb-3">
-            @Html.LabelFor(model => model.License, htmlAttributes: new { @class = "form-label" })
-            @Html.EditorFor(model => model.License, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.License, "", new { @class = "text-danger" })
-        </div>
-        <div class="mb-3">
-            @Html.LabelFor(model => model.Academic, htmlAttributes: new { @class = "form-label" })
-            @Html.EditorFor(model => model.Academic, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.Academic, "", new { @class = "text-danger" })
-        </div>
-        <div class="mb-3">
-            @Html.LabelFor(model => model.TeacherStatus, htmlAttributes: new { @class = "form-label" })
-                <div class="checkbox">
-                @Html.EditorFor(model => model.TeacherStatus)
-                @Html.ValidationMessageFor(model => model.TeacherStatus, "", new { @class = "text-danger" })
-                </div>
-        </div>
-        <div class="mb-3">
-            <input type="submit" value="Save" class="btn btn-primary" />
-        </div>
+<main id="main" class="main">
+    <div class="pagetitle">
+        <h1>編輯師資</h1>
+        <nav>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="@Url.Action("Index","Home")">首頁</a></li>
+                <li class="breadcrumb-item">   師資管理  </li>
+                <li class="breadcrumb-item active">  師資頁面  </li>
+            </ol>
+        </nav>
     </div>
-}
+    <!-- End Page Title -->
 
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>
 
-@section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
-}
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="row">
+            <h4>Teacher</h4>
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            @Html.HiddenFor(model => model.TeacherId)
+            <div class="mb-3">
+                @Html.LabelFor(model => model.TeacherName, htmlAttributes: new { @class = "form-label" })
+                @Html.EditorFor(model => model.TeacherName, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.TeacherName, "", new { @class = "text-danger" })
+            </div>
+            <div class="mb-3">
+                @Html.LabelFor(model => model.TeacherImage, htmlAttributes: new { @class = "form-label" })
+                @Html.EditorFor(model => model.TeacherImage, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.TeacherImage, "", new { @class = "text-danger" })
+            </div>
+            <div class="mb-3">
+                @Html.LabelFor(model => model.Specialty, htmlAttributes: new { @class = "form-label" })
+                @Html.EditorFor(model => model.Specialty, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Specialty, "", new { @class = "text-danger" })
+            </div>
+            <div class="mb-3">
+                @Html.LabelFor(model => model.Experience, htmlAttributes: new { @class = "form-label" })
+                @Html.EditorFor(model => model.Experience, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Experience, "", new { @class = "text-danger" })
+            </div>
+            <div class="mb-3">
+                @Html.LabelFor(model => model.License, htmlAttributes: new { @class = "form-label" })
+                @Html.EditorFor(model => model.License, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.License, "", new { @class = "text-danger" })
+            </div>
+            <div class="mb-3">
+                @Html.LabelFor(model => model.Academic, htmlAttributes: new { @class = "form-label" })
+                @Html.EditorFor(model => model.Academic, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Academic, "", new { @class = "text-danger" })
+            </div>
+            <div class="mb-3">
+                @Html.LabelFor(model => model.TeacherStatus, htmlAttributes: new { @class = "form-label" })
+                <div class="checkbox">
+                    @Html.EditorFor(model => model.TeacherStatus)
+                    @Html.ValidationMessageFor(model => model.TeacherStatus, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="mb-3">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </div>
+    }
+
+    <div>
+        @Html.ActionLink("Back to List", "Index")
+    </div>
+</main>
+    @section Scripts {
+        @Scripts.Render("~/bundles/jqueryval")
+    }
