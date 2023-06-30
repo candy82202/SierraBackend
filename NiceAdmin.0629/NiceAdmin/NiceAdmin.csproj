@@ -188,6 +188,7 @@
     <Compile Include="Models\EFModels\RoleToPermission.cs" />
     <Compile Include="Models\EFModels\Specification.cs" />
     <Compile Include="Models\EFModels\Teacher.cs" />
+    <Compile Include="Models\ViewModels\DessertsVM\CategoryCreateVM.cs" />
     <Compile Include="Models\ViewModels\LessonsVM\LessonIndexVM.cs" />
     <Compile Include="Models\ViewModels\DessertsVM\CategoryIndexVM.cs" />
     <Compile Include="Models\ViewModels\DessertsVM\DessertCreateVM.cs" />
@@ -200,8 +201,8 @@
     <Compile Include="Models\ViewModels\MembersVM\MemberIndexVM.cs" />
     <Compile Include="Models\ViewModels\OrdersVM\LessonOrderIndexVM.cs" />
     <Compile Include="Models\ViewModels\PromotionsVM\DiscountGroupEditVM.cs" />
-    <Compile Include="Models\ViewModels\PromotionsVM\DiscountGroupExts.cs" />
     <Compile Include="Models\ViewModels\PromotionsVM\DiscountGroupIndexVM.cs" />
+    <Compile Include="Models\ViewModels\PromotionsVM\DiscountGroupExts.cs" />
     <Compile Include="Models\ViewModels\TeachersVM\TeacherIndexVM.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
