@@ -117,6 +117,8 @@ Teacher 部分
 [v]建立VM classes
 [workink on]寫擴充方法轉vm
 [v]index頁轉vm
+[v]修改TeacherIndexVM，增加display
+[v]TeacherIndexVM描述截斷，留前幾個字
 [working on]檢查CRUD
 [v]試推orders04
 
