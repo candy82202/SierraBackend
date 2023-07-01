@@ -857,11 +857,28 @@
                 }
             });
 
-       
+            inp.addEventListener("keydown", function (e) {
+                var autocompleteItems = document.getElementsByClassName("autocomplete-items");
+
+
+                if (e.key === "ArrowDown") {
+                    currentFocus++;
+                    addActive(autocompleteItems);
+                } else if (e.key === "ArrowUp") {
+                    currentFocus--;
+                    addActive(autocompleteItems);
+                } else if (e.key === "Enter") {
+                    e.preventDefault();
+                    if (currentFocus > -1) {
+                        if (autocompleteItems) {
+                            autocompleteItems[currentFocus].click();
+                        }
+
             function addActive(autocompleteItems) {
                 if (!autocompleteItems) {
                     return false;
                 }
+
 
                 removeActive(autocompleteItems);
 
