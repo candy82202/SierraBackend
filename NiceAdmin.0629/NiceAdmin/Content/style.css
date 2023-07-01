@@ -443,16 +443,19 @@ h6 {
   border: 1px solid rgba(1, 41, 112, 0.3);
 }
 
-.header .search-form button {
-  border: 0;
-  padding: 0;
-  margin-left: -30px;
-  background: none;
-}
+    .header .search-form button {
+        border: 0;
+        padding: 0;
+        margin-left: -30px;
+        background: none;
+        top: 50%;
+        transform: translateY(-50%);
+    }
 
-.header .search-form button i {
-  color: #012970;
-}
+        .header .search-form button i {
+            color: #012970;
+            font-size: 16px;
+        }
 
 /*--------------------------------------------------------------
 # Header Nav
