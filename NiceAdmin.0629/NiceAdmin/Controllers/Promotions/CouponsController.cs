@@ -44,8 +44,7 @@ namespace NiceAdmin.Controllers
         // GET: Coupons/Create
         public ActionResult Create()
         {
-            ViewBag.CouponCategoryId = new SelectList(db.CouponCategories, "CouponCategoryId", "CouponCategoryName");
-            ViewBag.DiscountGroupId = new SelectList(db.DiscountGroups, "DiscountGroupId", "DiscountGroupName");
+            PrepareCouponCategoryAndDiscountGroupDataSource(null, null);
             return View();
         }
 
@@ -54,18 +53,24 @@ namespace NiceAdmin.Controllers
         // 如需詳細資料，請參閱 https://go.microsoft.com/fwlink/?LinkId=317598。
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "CouponId,CouponCategoryId,DiscountGroupId,CouponName,CouponCode,LimitType,LimitValue,DiscountType,DiscountValue,StartAt,EndAt,Expiration,CreateAt")] Coupon coupon)
+        public ActionResult Create([Bind(Include = "CouponCategoryId,DiscountGroupId,CouponName,CouponCode,LimitType,LimitValue,DiscountType,DiscountValue,StartAt,EndAt,Expiration")] CouponCreateVM vm)
         {
             if (ModelState.IsValid)
             {
+                Coupon coupon = vm.ToEntity();
+                bool haveSameCouponCode = db.Coupons.Any(c => c.CouponCode== coupon.CouponCode);
+                while (haveSameCouponCode)
+                {
+                    coupon.CouponCode = Guid.NewGuid().ToString();
+                    haveSameCouponCode = db.Coupons.Any(c => c.CouponCode == coupon.CouponCode);
+                }
                 db.Coupons.Add(coupon);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.CouponCategoryId = new SelectList(db.CouponCategories, "CouponCategoryId", "CouponCategoryName", coupon.CouponCategoryId);
-            ViewBag.DiscountGroupId = new SelectList(db.DiscountGroups, "DiscountGroupId", "DiscountGroupName", coupon.DiscountGroupId);
-            return View(coupon);
+            PrepareCouponCategoryAndDiscountGroupDataSource(vm.CouponCategoryId, vm.DiscountGroupId);
+            return View(vm);
         }
 
         // GET: Coupons/Edit/5
@@ -127,6 +132,14 @@ namespace NiceAdmin.Controllers
             db.Coupons.Remove(coupon);
             db.SaveChanges();
             return RedirectToAction("Index");
+        }
+        private void PrepareCouponCategoryAndDiscountGroupDataSource(int? couponCategoryId,int? discountGroupId)
+        {
+            var couponCategories = db.CouponCategories.ToList().Prepend(new CouponCategory());
+            ViewBag.CouponCategoryId = new SelectList(couponCategories, "couponCategoryId", "couponCategoryName", couponCategoryId);
+
+            var discountGroups = db.DiscountGroups.ToList().Prepend(new DiscountGroup());
+            ViewBag.DiscountGroupId = new SelectList(discountGroups, "discountGroupId", "discountGroupName", discountGroupId);
         }
 
         protected override void Dispose(bool disposing)
