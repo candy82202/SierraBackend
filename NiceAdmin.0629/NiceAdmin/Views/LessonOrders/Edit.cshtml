@@ -1,71 +1,84 @@
 ﻿@model NiceAdmin.Models.EFModels.LessonOrder
 
 @{
-    ViewBag.Title = "Edit";
+    ViewBag.Title = "課程訂單編輯";
 }
 
-<h2>Edit</h2>
-
-
-@using (Html.BeginForm())
-{
-    @Html.AntiForgeryToken()
-    
-    <div class="row">
-        <h4>LessonOrder</h4>
-        <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        @Html.HiddenFor(model => model.LessonOrderId)
-        <div class="mb-3">
-            @Html.LabelFor(model => model.MemberId, "MemberId", htmlAttributes: new { @class = "form-label" })
-                @Html.DropDownList("MemberId", null, htmlAttributes: new { @class = "form-control" })
-            @Html.ValidationMessageFor(model => model.MemberId, "", new { @class = "text-danger" })
-        </div>
-        <div class="mb-3">
-            @Html.LabelFor(model => model.LessonOrderStatusId, "LessonOrderStatusId", htmlAttributes: new { @class = "form-label" })
-                @Html.DropDownList("LessonOrderStatusId", null, htmlAttributes: new { @class = "form-control" })
-            @Html.ValidationMessageFor(model => model.LessonOrderStatusId, "", new { @class = "text-danger" })
-        </div>
-        <div class="mb-3">
-            @Html.LabelFor(model => model.CouponId, "CouponId", htmlAttributes: new { @class = "form-label" })
-                @Html.DropDownList("CouponId", null, htmlAttributes: new { @class = "form-control" })
-            @Html.ValidationMessageFor(model => model.CouponId, "", new { @class = "text-danger" })
-        </div>
-        <div class="mb-3">
-            @Html.LabelFor(model => model.CreateTime, htmlAttributes: new { @class = "form-label" })
-            @Html.EditorFor(model => model.CreateTime, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.CreateTime, "", new { @class = "text-danger" })
-        </div>
-        <div class="mb-3">
-            @Html.LabelFor(model => model.LessonOrderTotal, htmlAttributes: new { @class = "form-label" })
-            @Html.EditorFor(model => model.LessonOrderTotal, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.LessonOrderTotal, "", new { @class = "text-danger" })
-        </div>
-        <div class="mb-3">
-            @Html.LabelFor(model => model.Note, htmlAttributes: new { @class = "form-label" })
-            @Html.EditorFor(model => model.Note, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.Note, "", new { @class = "text-danger" })
-        </div>
-        <div class="mb-3">
-            @Html.LabelFor(model => model.OrderCancellationReason, htmlAttributes: new { @class = "form-label" })
-            @Html.EditorFor(model => model.OrderCancellationReason, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.OrderCancellationReason, "", new { @class = "text-danger" })
-        </div>
-        <div class="mb-3">
-            @Html.LabelFor(model => model.DiscountInfo, htmlAttributes: new { @class = "form-label" })
-            @Html.EditorFor(model => model.DiscountInfo, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.DiscountInfo, "", new { @class = "text-danger" })
-        </div>
-        <div class="mb-3">
-            <input type="submit" value="Save" class="btn btn-primary" />
-        </div>
+<main id="main" class="main">
+    <div class="pagetitle">
+        <h1>Form Elements</h1>
+        <nav>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="@Url.Action("Index","Home")">首頁</a></li>
+                <li class="breadcrumb-item">   課程訂單管理  </li>
+                <li class="breadcrumb-item active">  課程訂單編輯  </li>
+            </ol>
+        </nav>
     </div>
-}
+    <!-- End Page Title -->
+   
 
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>
 
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="row">
+            <h4>課程訂單</h4>
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            @Html.HiddenFor(model => model.LessonOrderId)
+            <div class="mb-3">
+                @Html.LabelFor(model => model.MemberId, "MemberId", htmlAttributes: new { @class = "form-label" })
+                @Html.DropDownList("MemberId", null, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.MemberId, "", new { @class = "text-danger" })
+            </div>
+            <div class="mb-3">
+                @Html.LabelFor(model => model.LessonOrderStatusId, "LessonOrderStatusId", htmlAttributes: new { @class = "form-label" })
+                @Html.DropDownList("LessonOrderStatusId", null, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.LessonOrderStatusId, "", new { @class = "text-danger" })
+            </div>
+            <div class="mb-3">
+                @Html.LabelFor(model => model.CouponId, "CouponId", htmlAttributes: new { @class = "form-label" })
+                @Html.DropDownList("CouponId", null, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.CouponId, "", new { @class = "text-danger" })
+            </div>
+            <div class="mb-3">
+                @Html.LabelFor(model => model.CreateTime, htmlAttributes: new { @class = "form-label" })
+                @Html.EditorFor(model => model.CreateTime, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.CreateTime, "", new { @class = "text-danger" })
+            </div>
+            <div class="mb-3">
+                @Html.LabelFor(model => model.LessonOrderTotal, htmlAttributes: new { @class = "form-label" })
+                @Html.EditorFor(model => model.LessonOrderTotal, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.LessonOrderTotal, "", new { @class = "text-danger" })
+            </div>
+            <div class="mb-3">
+                @Html.LabelFor(model => model.Note, htmlAttributes: new { @class = "form-label" })
+                @Html.EditorFor(model => model.Note, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Note, "", new { @class = "text-danger" })
+            </div>
+            <div class="mb-3">
+                @Html.LabelFor(model => model.OrderCancellationReason, htmlAttributes: new { @class = "form-label" })
+                @Html.EditorFor(model => model.OrderCancellationReason, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.OrderCancellationReason, "", new { @class = "text-danger" })
+            </div>
+            <div class="mb-3">
+                @Html.LabelFor(model => model.DiscountInfo, htmlAttributes: new { @class = "form-label" })
+                @Html.EditorFor(model => model.DiscountInfo, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.DiscountInfo, "", new { @class = "text-danger" })
+            </div>
+            <div class="mb-3">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </div>
+    }
+
+    <div>
+        @Html.ActionLink("Back to List", "Index")
+    </div>
+</main>
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
 }

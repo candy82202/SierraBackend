@@ -115,9 +115,8 @@ Teacher 部分
 -add TeacherDto class
 [v]改完版型
 [working on]VM
-[working on]新增資料:抓到當下的創建時間
 [working on]檢查CRUD
-[v]試推orders03
+[v]試推orders04
 
 
 
@@ -137,7 +136,11 @@ Teacher 部分
 
 ==========================================================
 Order 部分
-
+[v]改完版型
+[working on]抓到當下的創建時間
+[working on]VM
+[working on]檢查CRUD
+[working on]課程訂單明細資料庫錯誤，其他都對
 
 
 
