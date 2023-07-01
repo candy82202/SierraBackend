@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using NiceAdmin.Models.EFModels;
+using NiceAdmin.Models.ViewModels.TeachersVM;
 
 namespace NiceAdmin.Controllers
 {
@@ -17,7 +18,10 @@ namespace NiceAdmin.Controllers
         // GET: Teachers
         public ActionResult Index()
         {
-            return View(db.Teachers.ToList());
+            var teachers = db.Teachers.ToList();
+            var teacherViewModels = teachers.Select(t => t.TOIndexVM()).ToList();
+
+            return View(teacherViewModels);
         }
 
         // GET: Teachers/Details/5

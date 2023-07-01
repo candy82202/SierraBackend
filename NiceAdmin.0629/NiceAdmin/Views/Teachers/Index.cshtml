@@ -1,9 +1,9 @@
-﻿@model IEnumerable<NiceAdmin.Models.EFModels.Teacher>
+﻿@model IEnumerable<NiceAdmin.Models.ViewModels.TeachersVM.TeacherIndexVM>
+
 
 @{
     ViewBag.Title = "Index";
 }
-
 <main id="main" class="main">
     <div class="pagetitle">
         <h1>教師清單</h1>
@@ -26,9 +26,9 @@
                 <th>
                     @Html.DisplayNameFor(model => model.TeacherName)
                 </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.TeacherImage)
-                </th>
+                @*<th>
+                        @Html.DisplayNameFor(model => model.TeacherImage)
+                    </th>*@
                 <th>
                     @Html.DisplayNameFor(model => model.Specialty)
                 </th>
@@ -55,9 +55,9 @@
                     <td>
                         @Html.DisplayFor(modelItem => item.TeacherName)
                     </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.TeacherImage)
-                    </td>
+                    @*<td>
+                            @Html.DisplayFor(modelItem => item.TeacherImage)
+                        </td>*@
                     <td>
                         @Html.DisplayFor(modelItem => item.Specialty)
                     </td>
@@ -198,7 +198,8 @@
         }
 
         //autocomplete() 函式的餘下部分處理事件監聽和與建議項目相關的邏輯，包括創建建議項目的 DIV 元素、將它們添加到 DOM 中、監聽建議項目的點擊事件等。
-        autocompleteDesserts(document.getElementById("s_name"), desserts);
+        autocompleteDesserts(document.getElementById("s_name"), teachers);
     </script>
 }
+
 

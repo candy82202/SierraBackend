@@ -114,7 +114,9 @@ Teacher 部分
 [working on]建立三層式
 -add TeacherDto class
 [v]改完版型
-[working on]VM
+[v]建立VM classes
+[workink on]寫擴充方法轉vm
+[v]index頁轉vm
 [working on]檢查CRUD
 [v]試推orders04
 
@@ -137,10 +139,11 @@ Teacher 部分
 ==========================================================
 Order 部分
 [v]改完版型
-[working on]抓到當下的創建時間
-[working on]VM
+[v]EDIT/DELETE抓到當下的創建時間
+[working on]建立VM classes
+[workink on]寫擴充方法轉vm
 [working on]檢查CRUD
-[working on]課程訂單明細資料庫錯誤，其他都對
+[working on]debug課程訂單明細資料庫錯誤
 
 
 

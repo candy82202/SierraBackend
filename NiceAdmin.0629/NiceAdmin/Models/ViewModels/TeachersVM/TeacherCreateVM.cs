@@ -6,7 +6,7 @@ using System.Web;
 
 namespace NiceAdmin.Models.ViewModels.TeachersVM
 {
-    public class TeacherIndexVM
+    public class TeacherCreateVM
     {
         public int TeacherId { get; set; }
 
@@ -14,9 +14,9 @@ namespace NiceAdmin.Models.ViewModels.TeachersVM
         [StringLength(20)]
         public string TeacherName { get; set; }
 
-        //[Required]
-        //[StringLength(255)]
-        //public string TeacherImage { get; set; }
+        [Required]
+        [StringLength(255)]
+        public string TeacherImage { get; set; }
 
         [Required]
         [StringLength(150)]
