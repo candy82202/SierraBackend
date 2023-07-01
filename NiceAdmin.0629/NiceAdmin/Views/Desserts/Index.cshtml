@@ -199,6 +199,7 @@
                     data: { dessertIds: selectedDessertIds },
                     success: function (result) {
                         if (result.success) {
+                            alert(result.message);
                             // Refresh the page to reflect the updated status
                             location.reload();
                         } else {
