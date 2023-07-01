@@ -148,7 +148,7 @@
         </table>
         <form id="downForm" action="@Url.Action("DownDesserts", "Desserts")" method="post">
             <div class="me-3">
-                <button type="submit" class="btn btn-outline-danger" id="downButton">下架</button>
+                <button type="button" class="btn btn-outline-danger" id="downButton">下架</button>
             </div>
         </form>
     </div>
@@ -183,33 +183,33 @@
                 selectAllCheckboxDessert.prop('checked', allRecordsSelected);
             });
 
-            //$('#downButton').click(function () {
-            //    var selectedDessertIds = $('.childCheckboxDessert:checked').map(function () {
-            //        return parseInt($(this).closest('tr').find('.dessertId').text());
-            //    }).get();
+            $('#downButton').click(function () {
+                var selectedDessertIds = $('.childCheckboxDessert:checked').map(function () {
+                    return parseInt($(this).closest('tr').find('.dessertId').text());
+                }).get();
 
-            //    if (selectedDessertIds.length === 0) {
-            //        alert("Please select at least one dessert to mark as down.");
-            //        return;
-            //    }
+                if (selectedDessertIds.length === 0) {
+                    alert("請勾選再提交");
+                    return;
+                }
 
-            //    $.ajax({
-            //        url: '/Desserts/DownDesserts',
-            //        type: 'POST',
-            //        data: { dessertIds: selectedDessertIds },
-            //        success: function (result) {
-            //            if (result.success) {
-            //                // Refresh the page to reflect the updated status
-            //                location.reload();
-            //            } else {
-            //                alert("Failed to mark desserts as down. Error: " + result.errorMessage);
-            //            }
-            //        },
-            //        error: function () {
-            //            alert("An error occurred while marking desserts as down.");
-            //        }
-            //    });
-            //});
+                $.ajax({
+                    url: '@Url.Action("DownDesserts", "Desserts")',
+                    type: 'POST',
+                    data: { dessertIds: selectedDessertIds },
+                    success: function (result) {
+                        if (result.success) {
+                            // Refresh the page to reflect the updated status
+                            location.reload();
+                        } else {
+                            alert("Failed to mark desserts as down. Error: " + result.errorMessage);
+                        }
+                    },
+                    error: function () {
+                        alert("An error occurred while marking desserts as down.");
+                    }
+                });
+            });
 
         });
 

@@ -12,6 +12,7 @@ using System.Web.UI.WebControls;
 using System.Xml.Linq;
 using NiceAdmin.Models.EFModels;
 using NiceAdmin.Models.ViewModels;
+using WebGrease;
 
 namespace NiceAdmin.Controllers
 {
@@ -312,20 +313,30 @@ namespace NiceAdmin.Controllers
             }
             else
             {
-                // 根據選擇的dessertIds進行下架處理
-                var dessertsToUpdate = db.Desserts.Where(d => dessertIds.Contains(d.DessertId)).ToList();
-                foreach (var dessert in dessertsToUpdate)
+                try
                 {
-                    dessert.Status = false; // 下架
-                }
+                    // 根据选择的dessertIds进行下架处理
+                    var dessertsToUpdate = db.Desserts.Where(d => dessertIds.Contains(d.DessertId)).ToList();
+                    foreach (var dessert in dessertsToUpdate)
+                    {
+                        dessert.Status = false; // 下架
+                    }
+                    // 更新数据库
+                    db.SaveChanges();
 
-                // 更新資料庫
-                db.SaveChanges();
+                    return Json(new { success = true });
+                }
+                catch (Exception ex)
+                {
+                    
+                    return Json(new { success = false, errorMessage = "An error occurred while marking desserts as down. Please try again later." });
+                }
             }
 
             // 重新導向回甜點清單
             return RedirectToAction("Index");
         }
+
         protected override void Dispose(bool disposing)
         {
             if (disposing)
