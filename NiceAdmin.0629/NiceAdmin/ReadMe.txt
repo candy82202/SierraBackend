@@ -5,7 +5,8 @@
 	--更改 Script 的 JS位址 bootstrap位址
     - 首頁預覽頁面，icon小圖示
 
-[working on] - search bar 也使用 autocomplete 而且可以連結到網頁( 樣式修改 )
+[working on] - search bar 也使用 autocomplete 而且可以連結到網頁(更改到Index.cshtml部分，簡化Layout下方的JS程式碼)
+             - 連結呈現的樣式修改
 
 [V] HomeController
 	-- 新增頁面  FormEdit / FormLayout / UserProfile / DataTable
@@ -49,7 +50,7 @@ Desserts 部分
 [V] - 全選 checkbox 的變更事件監聽器 (Desserts & Categories 的 Index 頁面 抓到分頁數量的checkbox )
     - AutoComplete 甜點清單頁面
 
-[V] - Checkbox Dessert Index 一鍵下架
+[working on] - Checkbox Dessert Index 一鍵下架
 
 [working on] - AJAX 甜點清單頁面
 

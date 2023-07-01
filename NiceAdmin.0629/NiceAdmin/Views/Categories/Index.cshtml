@@ -18,7 +18,7 @@
     <!-- End Page Title -->
     <button class="btn btn-outline-primary text-light fw-bold mb-3"> @Html.ActionLink("新增類別", "Create")</button>
     <div class="container">
-        <input type="checkbox" class="selectAll" name="selectAll" value="all"> Select All
+        @*<input type="checkbox" class="selectAll" name="selectAll" value="all"> Select All*@
         <table class="table datatable table-striped table-hover" id="searchDessert">
             <thead>
                 <tr>
@@ -66,3 +66,21 @@
         </table>
     </div>
 </main>
+@section scripts{
+   <script>
+
+       var selectAllCheckbox = $('#selectAllCheckbox');
+       var checkboxes = $('tbody input[type="checkbox"][data-checkbox="childCheckbox"]');
+
+       // 全選 checkbox 的變更事件監聽器
+       selectAllCheckbox.on('change', function () {
+           checkboxes.prop('checked', $(this).is(':checked'));
+       });
+
+       // 下方 checkbox 的變更事件監聽器
+       checkboxes.on('change', function () {
+           selectAllCheckbox.prop('checked', checkboxes.length === checkboxes.filter(':checked').length);
+       });
+
+    </script>
+    }
