@@ -307,9 +307,8 @@ namespace NiceAdmin.Controllers
         {
             if (dessertIds == null || dessertIds.Count == 0)
             {
-                             return View("Error");
-                // 如果沒有選擇任何甜點，可以在這裡給出提示或執行相應處理
-                // 例如：ViewBag.ErrorMessage = "請選擇要下架的甜點。";
+                return View("Error");
+                // 如果沒有選擇任何甜點，可以在這裡給出提示或執行相應處理             
             }
             else
             {
@@ -323,18 +322,17 @@ namespace NiceAdmin.Controllers
                     }
                     // 更新数据库
                     db.SaveChanges();
-
-                    return Json(new { success = true });
+                    // 重新導向回甜點清單
+                    //return RedirectToAction("Index");
+                    //return Json(new { success = true });
+                    return Json(new { success = true, message = "下架成功" });
                 }
                 catch (Exception ex)
                 {
                     
                     return Json(new { success = false, errorMessage = "An error occurred while marking desserts as down. Please try again later." });
                 }
-            }
-
-            // 重新導向回甜點清單
-            return RedirectToAction("Index");
+            }           
         }
 
         protected override void Dispose(bool disposing)
