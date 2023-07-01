@@ -149,8 +149,7 @@ namespace NiceAdmin.Controllers
                     return RedirectToAction("Sierras", "Home", new { desserts = onShelfDesserts });
                 }
 
-                return RedirectToAction("Sierras");
-            //} 
+                return RedirectToAction("Sierras");            
         }
               
 
@@ -174,7 +173,6 @@ namespace NiceAdmin.Controllers
             file1.SaveAs(fullName);
             //傳回存放的檔名
             return newFileName;
-
 
         }
 
@@ -303,7 +301,31 @@ namespace NiceAdmin.Controllers
             db.SaveChanges();
             return RedirectToAction("Index");
         }
+        [HttpPost]
+        public ActionResult DownDesserts(List<int> dessertIds)
+        {
+            if (dessertIds == null || dessertIds.Count == 0)
+            {
+                             return View("Error");
+                // 如果沒有選擇任何甜點，可以在這裡給出提示或執行相應處理
+                // 例如：ViewBag.ErrorMessage = "請選擇要下架的甜點。";
+            }
+            else
+            {
+                // 根據選擇的dessertIds進行下架處理
+                var dessertsToUpdate = db.Desserts.Where(d => dessertIds.Contains(d.DessertId)).ToList();
+                foreach (var dessert in dessertsToUpdate)
+                {
+                    dessert.Status = false; // 下架
+                }
 
+                // 更新資料庫
+                db.SaveChanges();
+            }
+
+            // 重新導向回甜點清單
+            return RedirectToAction("Index");
+        }
         protected override void Dispose(bool disposing)
         {
             if (disposing)

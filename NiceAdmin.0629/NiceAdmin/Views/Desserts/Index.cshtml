@@ -70,27 +70,24 @@
                         </div>
                     </th>
                     <th>
-                        @*分類名稱*@
+                        @Html.DisplayNameFor(model => model.DessertId)
+                    </th>
+                    <th>
                         @Html.DisplayNameFor(model => model.CategoryName)
                     </th>
                     <th>
-                        @*甜點名稱*@
                         @Html.DisplayNameFor(model => model.DessertName)
                     </th>
                     <th>
-                        @*售價*@
                         @Html.DisplayNameFor(model => model.UnitPrice)
                     </th>
                     <th>
-                        @*描述*@
                         @Html.DisplayNameFor(model => model.DescriptionText)
                     </th>
                     <th>
-                        @*狀態*@
                         @Html.DisplayNameFor(model => model.StatusText)
                     </th>
                     <th>
-                        @*創建時間*@
                         @Html.DisplayNameFor(model => model.CreateTime)
                     </th>
                     <th>
@@ -109,6 +106,9 @@
                                 @*<input class="form-check-input" type="checkbox" value=""  data-checkbox="childCheckbox" />*@
                             </label>
                         </td>
+                        <td class="dessertId">
+                            @Html.DisplayFor(modelItem => item.DessertId)
+                        </td>
                         <td>
                             @*@Html.DisplayFor(modelItem => item.Category.CategoryName)*@
                             @Html.DisplayFor(modelItem => item.CategoryName)
@@ -123,7 +123,14 @@
                             @Html.DisplayFor(modelItem => item.DescriptionText)
                         </td>
                         <td>
-                            @Html.DisplayFor(modelItem => item.StatusText)
+                            @if (item.StatusText == "上架")
+                            {
+                                <span class="badge bg-success">@Html.DisplayFor(modelItem => item.StatusText)</span>
+                            }
+                            else
+                            {
+                                <span class="badge bg-danger">@Html.DisplayFor(modelItem => item.StatusText)</span>
+                            }
                         </td>
                         <td>
                             @Html.DisplayFor(modelItem => item.CreateTime)
@@ -132,16 +139,57 @@
                             <i class="bi bi-pencil-square">@Html.ActionLink("編輯", "Edit", new { id = item.DessertId }) </i> |
                             @Html.ActionLink("Details", "Details", new { id = item.DessertId }) |<a href="#"><i class="bx bx-x-circle"></i></a>
                             @*@Html.ActionLink("刪除", "Delete", new { id = item.DessertId })*@
+                            <input type="hidden" name="dessertIds[]" value="@item.DessertId" />
                         </td>
                     </tr>
                 }
             </tbody>
         </table>
-
+        <form id="downForm" action="@Url.Action("DownDesserts", "Desserts")" method="post">
+            <div class="me-3">
+                <button type="submit" class="btn btn-outline-danger" id="downButton">下架</button>
+            </div>
+        </form>
     </div>
 </main>
 @section Scripts{
     <script>
+
+        $(document).ready(function () {
+            // "下架"按钮点击事件处理器
+            $('#downButton').click(function () {
+                var selectedDessertIds = $('.childCheckboxDessert:checked').map(function () {
+                    return parseInt($(this).closest('tr').find('.dessertId').val());
+                }).get();
+
+                if (selectedDessertIds.length === 0) {
+                    // 如果没有选择任何甜点，可以在这里给出提示或执行相应处理
+                    alert("请先选择要下架的甜点。");
+                    return;
+                }
+
+                // 使用 AJAX 发送选中的甜点ID列表到服务器
+                $.ajax({
+                    url: '/Desserts/DownDesserts',
+                    type: 'POST',
+                    data: { dessertIds: selectedDessertIds },
+                    success: function (result) {
+                        // 在成功回调中，可以根据需要执行相应的操作
+                        if (result.success) {
+                            // 下架成功，可以刷新页面或执行其他操作
+                            location.reload();
+                        } else {
+                            // 下架失败，可以给出相应的提示
+                            alert("下架甜点失败。");
+                        }
+                    },
+                    error: function () {
+                        // AJAX 请求失败，可以给出相应的提示
+                       // alert("更新失敗")
+                        alert("下架甜点时发生错误。");
+                    }
+                });
+        });
         //這段是要做AutoComplete
         var desserts = ["cake", "甜點", "chocolate", "cheese", "desserts", "dessert", "伯爵", "芒果", "草莓", "香草", "香蕉", "磅蛋糕", "巧克力"]
         /*function autocomplete(inp, arr) { ... }：這是一個自訂的自動完成函式。

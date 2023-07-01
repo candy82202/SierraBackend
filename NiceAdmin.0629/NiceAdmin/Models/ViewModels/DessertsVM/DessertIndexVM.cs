@@ -8,6 +8,7 @@ namespace NiceAdmin.Models.ViewModels
 {
     public class DessertIndexVM
     {
+        [Display(Name = "甜點編號")]
         public int DessertId { get; set; }
         [Display(Name = "甜點名稱")]
         [StringLength(50)]

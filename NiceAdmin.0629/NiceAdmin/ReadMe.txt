@@ -36,7 +36,7 @@
 [V] - 修改DataTable 的模板樣式，更改成中文版本
 
 [V] - 加裝sweet alert delete的部分。
-    - 資料庫使用Sierras 0629
+    - 資料庫使用Sierras 0629 (0630 更新資料庫)
     - 版本 4.7.2 
 
 [working on] - 針對404錯誤訊息畫面 修改web.config畫面，圖片尚未抓到
@@ -48,6 +48,8 @@ Desserts 部分
 
 [V] - 全選 checkbox 的變更事件監聽器 (Desserts & Categories 的 Index 頁面 抓到分頁數量的checkbox )
     - AutoComplete 甜點清單頁面
+
+[V] - Checkbox Dessert Index 一鍵下架
 
 [working on] - AJAX 甜點清單頁面
 
