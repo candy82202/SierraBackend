@@ -24,7 +24,6 @@ namespace NiceAdmin.Controllers
         public ActionResult Index(DessertCriteria dessertCriteria)
         {
             PrepareCategoryDataSource(dessertCriteria.CategoryId);
-            //ViewBag.DessertCriteria = dessertCriteria;
             ViewBag.Criteria = dessertCriteria;
             var query = db.Desserts.Include(d => d.Category);
             #region where
@@ -48,10 +47,6 @@ namespace NiceAdmin.Controllers
             var desserts = query.ToList().Select(d => d.ToIndexVM());
             return View(desserts);
 
-            //var desserts = db.Desserts.Include(d => d.Category)
-            //    .ToList()
-            //    .Select(d=>d.ToIndexVM());
-            //return View(desserts);//.ToList());
         }
 
         private void PrepareCategoryDataSource(int? categoryId)
@@ -132,7 +127,6 @@ namespace NiceAdmin.Controllers
 
                 Dessert dessert = dessertCreateVM.ToEntity();
                 dessert.CreateTime = DateTime.Now;
-                // 創建 DessertImage 对象并将其与 Dessert 对象关联
                 foreach (string imageFileName in dessertCreateVM.DessertImageName)
                 {
                     DessertImage dessertImage = new DessertImage

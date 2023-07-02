@@ -46,19 +46,19 @@
 前台頁面 部分
 [V] - 新增前台商品上架的頁面 LayoutFront , Sierras.cshtml
     - 新增師資下拉清單
+    - 新增Logo
+    - 字體顏色調整
 
 =========================================================
 Desserts 部分
-
-
-[working on] - 新增多張圖顯示， 編輯照片(照片的新增 / 刪除)
 
 [V] - 全選 checkbox 的變更事件監聽器 (Desserts & Categories 的 Index 頁面 抓到分頁數量的checkbox )
     - AutoComplete 甜點清單頁面
 
 [V] - Checkbox Dessert Index 一鍵下架
+    - 一鍵下架通知新增SweetAlert方式
 
-[working on] - Checkbox Dessert Index 一鍵下架通知新增SweetAlert方式
+[working on] - 新增多張圖顯示， 編輯照片(照片的新增 / 刪除)
 
 [working on] - AJAX 甜點清單頁面
 
