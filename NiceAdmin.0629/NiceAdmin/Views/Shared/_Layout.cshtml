@@ -109,7 +109,7 @@
     <header id="header" class="header fixed-top d-flex align-items-center">
         <div class="d-flex align-items-center justify-content-between">
             <a href="@Url.Action("Index","Home")" class="logo d-flex align-items-center">
-                <img src="~/img/logoShadow.png" alt="" />
+                <img src="~/img/logeExtraShadow.png" alt="" />
                 <span class="d-none d-lg-block">Sierra</span>
             </a>
             <i class="bi bi-list toggle-sidebar-btn"></i>
@@ -624,22 +624,8 @@
                 </a>
             </li>
             @*End Login Page Nav*@
-
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="pages-error-404.html">
-                    <i class="bi bi-dash-circle"></i>
-                    <span>Error 404</span>
-                </a>
-            </li>
-            @*End Error 404 Page Nav*@
-
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="pages-blank.html">
-                    <i class="bi bi-file-earmark"></i>
-                    <span>Blank</span>
-                </a>
-            </li>
-            @*End Blank Page Nav*@
+            @{ Html.RenderAction("CurrentTime", "Home"); }
+            @*End CurrentTime*@
         </ul>
     </aside>
 

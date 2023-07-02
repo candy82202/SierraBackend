@@ -15,6 +15,7 @@ namespace NiceAdmin.Controllers
     {
         public ActionResult Index()
         {
+            ViewBag.CurrentTime = DateTime.Now;
             return View();
         }
         private AppDbContext db = new AppDbContext();
@@ -67,37 +68,12 @@ namespace NiceAdmin.Controllers
 
             return View(dvm);
         }
- //       public class DessertFrontIndexVM
- //       {
- //           public int DessertId { get; set; }
- //           [Display(Name = "甜點名稱")]
- //           [StringLength(50)]
- //           public string DessertName { get; set; }
- //           [Display(Name = "甜點類別")]
-
- //           public string CategoryName { get; set; }
- //           [DisplayFormat(DataFormatString = "{0:#,#}")]
- //           [Display(Name = "售價")]
-
- //           public string Description { get; set; }
- //           [Display(Name = "描述")]
- //public string DescriptionText
- //           {
- //               get
- //               {
- //                   return this.Description.Length > 10
- //                           ? this.Description.Substring(0, 10) + "..."
- //                           : this.Description;
- //               }
- //           }
- //           [Column("DessertImage")]
- //           [StringLength(255)]
- //           [Display(Name = "照片")]
- //           public string DessertImage1 { get; set; }
-           
-
-
- //       }
+        public ActionResult CurrentTime()
+        {
+            ViewBag.CurrentTime = DateTime.Now;
+            //這裡刻意取不同名字，來去跳轉到不同的頁面
+            return this.PartialView("_CurrentTimePartial");
+        }
         public ActionResult About()
         {
             ViewBag.Message = "Your application description page.";

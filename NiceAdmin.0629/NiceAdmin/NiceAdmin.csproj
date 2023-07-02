@@ -245,9 +245,9 @@
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="img\favicon.png" />
+    <Content Include="img\logeExtraShadow.png" />
     <Content Include="img\logo.png" />
-    <Content Include="img\logoOrigin.png" />
-    <Content Include="img\logoShadow.png" />
+    <Content Include="img\logoNew.png" />
     <Content Include="img\not-found.svg" />
     <Content Include="img\profile-img.jpg" />
     <Content Include="ReadMe.txt" />
@@ -812,6 +812,7 @@
     <Content Include="Views\Roles1\Details.cshtml" />
     <Content Include="Views\Roles1\Edit.cshtml" />
     <Content Include="Views\Roles1\Index.cshtml" />
+    <Content Include="Views\Shared\_CurrentTimePartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="Scripts\vendor\chart.js\controllers\controller.bar.d.ts" />

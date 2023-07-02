@@ -24,5 +24,21 @@ namespace NiceAdmin.Models.ViewModels.DessertsVM
                 CategoryName = vm.CategoryName,
             };
         }
+        public static CategoryIndexVM ToIndexVM(this Category category) 
+        {
+            return new CategoryIndexVM
+            {
+                CategoryId = category.CategoryId,
+                CategoryName = category.CategoryName,
+            };
+        }
+        public static Category ToEntity(this CategoryIndexVM vm)
+        {
+            return new Category
+            {
+                CategoryId = vm.CategoryId,
+                CategoryName = vm.CategoryName,
+            };
+        }
     }
 }

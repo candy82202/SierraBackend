@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using NiceAdmin.Models.EFModels;
+using NiceAdmin.Models.ViewModels;
 using NiceAdmin.Models.ViewModels.DessertsVM;
 
 namespace NiceAdmin.Controllers
@@ -18,7 +19,9 @@ namespace NiceAdmin.Controllers
         // GET: Categories
         public ActionResult Index()
         {
-            return View(db.Categories.ToList());
+            var categories = db.Categories.ToList();
+            var category = categories.Select(c=>c.ToIndexVM()).ToList();
+            return View(category);
         }
 
         // GET: Categories/Details/5
