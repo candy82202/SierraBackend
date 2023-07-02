@@ -41,6 +41,8 @@
     - 資料庫使用Sierras 0629 (0630 更新資料庫)
     - 版本 4.7.2 
 
+[V] - 新上架的5筆甜點
+
 [working on] - 針對404錯誤訊息畫面 修改web.config畫面，圖片尚未抓到
 =========================================================
 前台頁面 部分
@@ -58,6 +60,10 @@ Desserts 部分
 [V] - 單筆上,下架按鈕
     - Checkbox Dessert Index 一鍵上,下架
     - 上,下架通知新增SweetAlert方式
+
+[V] - Add DessertIndexPartVM & DessertExts
+    - HomeController Add RecentDesserts method
+    - Partial View RecentUpDesserts
 
 [working on] - 新增多張圖顯示， 編輯照片(照片的新增 / 刪除)
 

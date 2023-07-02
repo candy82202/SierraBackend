@@ -1,5 +1,6 @@
 ﻿using Microsoft.Ajax.Utilities;
 using NiceAdmin.Models.EFModels;
+using NiceAdmin.Models.ViewModels.DessertsVM;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -24,6 +25,19 @@ namespace NiceAdmin.Models.ViewModels
 
             };
         
+        }
+        public static DessertIndexPartVM ToIndexPartVM(this Dessert dessert)
+        {
+            return new DessertIndexPartVM
+            {
+                DessertId = dessert.DessertId,
+                DessertName = dessert.DessertName.Trim(),
+                CategoryName = dessert.Category.CategoryName,
+                UnitPrice = dessert.UnitPrice,
+                Status = dessert.Status,
+                CreateTime = dessert.CreateTime,
+
+            };
         }
         public static DessertCreateVM ToCreatVM(this Dessert dessert)
         {

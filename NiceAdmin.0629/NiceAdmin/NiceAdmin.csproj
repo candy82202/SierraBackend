@@ -190,6 +190,7 @@
     <Compile Include="Models\EFModels\Teacher.cs" />
     <Compile Include="Models\ViewModels\DessertsVM\CategoryCreateVM.cs" />
     <Compile Include="Models\ViewModels\DessertsVM\CategoryExts.cs" />
+    <Compile Include="Models\ViewModels\DessertsVM\DessertIndexPartVM.cs" />
     <Compile Include="Models\ViewModels\LessonsVM\LessonCriteria.cs" />
     <Compile Include="Models\ViewModels\LessonsVM\LessonExts.cs" />
     <Compile Include="Models\ViewModels\LessonsVM\LessonIndexVM.cs" />
@@ -813,6 +814,7 @@
     <Content Include="Views\Roles1\Edit.cshtml" />
     <Content Include="Views\Roles1\Index.cshtml" />
     <Content Include="Views\Shared\_CurrentTimePartial.cshtml" />
+    <Content Include="Views\Home\RecentUpDesserts.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="Scripts\vendor\chart.js\controllers\controller.bar.d.ts" />
