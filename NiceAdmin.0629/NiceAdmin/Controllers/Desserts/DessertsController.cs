@@ -328,7 +328,26 @@ namespace NiceAdmin.Controllers
                 }
             }           
         }
+        public ActionResult DownDessert(int dessertId)
+        {
+            try
+            {
+                var dessertToUpdate = db.Desserts.Find(dessertId);
+                if (dessertToUpdate == null)
+                {
+                    return Json(new { success = false, errorMessage = "Invalid dessert ID." });
+                }
 
+                dessertToUpdate.Status = false; // Set status to "down"
+                db.SaveChanges();
+
+                return Json(new { success = true, message = "下架成功" });
+            }
+            catch (Exception ex)
+            {
+                return Json(new { success = false, errorMessage = "An error occurred while marking the dessert as down. Please try again later." });
+            }
+        }
         protected override void Dispose(bool disposing)
         {
             if (disposing)

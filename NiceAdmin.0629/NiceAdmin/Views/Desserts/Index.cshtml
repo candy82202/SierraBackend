@@ -139,7 +139,7 @@
                             <i class="bi bi-pencil-square">@Html.ActionLink("編輯", "Edit", new { id = item.DessertId }) </i> |
                             @Html.ActionLink("Details", "Details", new { id = item.DessertId }) |<a href="#"><i class="bx bx-x-circle"></i></a>
                             @*@Html.ActionLink("刪除", "Delete", new { id = item.DessertId })*@
-                            <button class="btn btn-danger dwDest " data-id="@item.DessertId">下架</button>
+                            <button class="btn btn-outline-danger btn-sm dwDest " data-id="@item.DessertId">下架</button>
                             <input type="hidden" name="dessertIds[]" value="@item.DessertId" />
                         </td>
                     </tr>
@@ -184,6 +184,35 @@
                 selectAllCheckboxDessert.prop('checked', allRecordsSelected);
             });
 
+            $('.dwDest').click(function () {
+                var dessertId = $(this).data('id');
+
+                $.ajax({
+                    url: '@Url.Action("DownDessert", "Desserts")',
+                    type: 'POST',
+                    data: { dessertId: dessertId },
+                    success: function (result) {
+                        if (result.success) {
+                            Swal.fire({
+                                position: 'top-end',
+                                icon: 'success',
+                                title: `${result.message}`,
+                                showConfirmButton: false,
+                                timer: 1500
+                            })
+                           // alert(result.message);
+                            // Refresh the page to reflect the updated status
+                            location.reload();
+                        } else {
+                            alert("Failed to mark desserts as down. Error: " + result.errorMessage);
+                        }
+                    },
+                    error: function () {
+                        alert("An error occurred while marking desserts as down.");
+                    }
+                });
+            });
+
             $('#downButton').click(function () {
                 var selectedDessertIds = $('.childCheckboxDessert:checked').map(function () {
                     return parseInt($(this).closest('tr').find('.dessertId').text());
@@ -203,7 +232,7 @@
                             Swal.fire({
                                 position: 'top-end',
                                 icon: 'success',
-                                title: `${result.message}`, 
+                                title: `${result.message}`,
                                 showConfirmButton: false,
                                 timer: 1500
                             })
