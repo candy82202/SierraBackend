@@ -166,11 +166,16 @@ Promotion部分
 
 [V] - 優惠群組去除商品(同上)  
 
-[V] - 優惠券清單，VM因為有一個關聯的東西是nullable所以要特別處理
+[V] - 優惠券清單，VM因為有一個關聯的東西是nullable所以要特別處理  //todo 可能要新增狀態欄位，複製功能(不編輯了)
 
-[v] - 新增優惠券
+[V] - 新增優惠券
 
-[working on] - 編輯優惠券
+[V] - 優惠券詳情
+
+[V] - 促銷活動清單、新增 //todo dropdownlist只顯示分類為活動的優惠券(不行的話就選完之後ajax檢查)
+                      //jqueryUI datepicker沒法正常顯示  
+
+[working on] - 促銷活動修改、刪除
 
 
 

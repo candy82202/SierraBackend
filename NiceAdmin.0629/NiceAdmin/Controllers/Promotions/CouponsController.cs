@@ -34,17 +34,18 @@ namespace NiceAdmin.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             Coupon coupon = db.Coupons.Find(id);
-            if (coupon == null)
+            CouponDetailVM detailVM = coupon.ToDetailVM();
+            if (detailVM == null)
             {
                 return HttpNotFound();
             }
-            return View(coupon);
+            return View(detailVM);
         }
 
         // GET: Coupons/Create
         public ActionResult Create()
         {
-            PrepareCouponCategoryAndDiscountGroupDataSource(null, null);
+            PrepareCouponCategoryAndDiscountGroupDataSource(null, null); 
             return View();
         }
 
@@ -81,6 +82,7 @@ namespace NiceAdmin.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             Coupon coupon = db.Coupons.Find(id);
+
             if (coupon == null)
             {
                 return HttpNotFound();

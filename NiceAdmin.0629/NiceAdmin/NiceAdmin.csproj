@@ -154,6 +154,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\Promotions\DiscountsController.cs" />
     <Compile Include="Controllers\Promotions\MemberCouponsController.cs" />
+    <Compile Include="Models\ViewModels\PromotionsVM\PromotionCreateVM.cs" />
     <Compile Include="Controllers\Promotions\PromotionsController.cs" />
     <Compile Include="Controllers\TeachersController.cs" />
     <Compile Include="Global.asax.cs">
@@ -204,11 +205,14 @@
     <Compile Include="Models\ViewModels\MembersVM\MemberIndexVM.cs" />
     <Compile Include="Models\ViewModels\OrdersVM\LessonOrderIndexVM.cs" />
     <Compile Include="Models\ViewModels\PromotionsVM\CouponCreateVM.cs" />
+    <Compile Include="Models\ViewModels\PromotionsVM\CouponDetailVM.cs" />
     <Compile Include="Models\ViewModels\PromotionsVM\CouponExts.cs" />
     <Compile Include="Models\ViewModels\PromotionsVM\CouponIndexVM.cs" />
     <Compile Include="Models\ViewModels\PromotionsVM\DiscountGroupEditVM.cs" />
     <Compile Include="Models\ViewModels\PromotionsVM\DiscountGroupIndexVM.cs" />
     <Compile Include="Models\ViewModels\PromotionsVM\DiscountGroupExts.cs" />
+    <Compile Include="Models\ViewModels\PromotionsVM\PromotionExts.cs" />
+    <Compile Include="Models\ViewModels\PromotionsVM\PromotionIndexVM.cs" />
     <Compile Include="Models\ViewModels\TeachersVM\TeacherIndexVM.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -728,11 +732,9 @@
     <Content Include="Views\MemberCoupons\Details.cshtml" />
     <Content Include="Views\MemberCoupons\Edit.cshtml" />
     <Content Include="Views\MemberCoupons\Index.cshtml" />
-    <Content Include="Views\Promotions\Create.cshtml" />
     <Content Include="Views\Promotions\Delete.cshtml" />
     <Content Include="Views\Promotions\Details.cshtml" />
     <Content Include="Views\Promotions\Edit.cshtml" />
-    <Content Include="Views\Promotions\Index.cshtml" />
     <Content Include="Views\Teachers\Create.cshtml" />
     <Content Include="Views\Teachers\Delete.cshtml" />
     <Content Include="Views\Teachers\Details.cshtml" />
@@ -830,6 +832,8 @@
     <Content Include="Views\Roles1\Index.cshtml" />
     <Content Include="Views\Coupons\Index.cshtml" />
     <Content Include="Views\Coupons\Create.cshtml" />
+    <Content Include="Views\Promotions\Index.cshtml" />
+    <Content Include="Views\Promotions\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="Scripts\vendor\chart.js\controllers\controller.bar.d.ts" />

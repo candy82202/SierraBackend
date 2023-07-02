@@ -54,5 +54,26 @@ namespace NiceAdmin.Models.ViewModels.PromotionsVM
                 CreateAt= DateTime.Now
             };
         }
+        public static CouponDetailVM ToDetailVM(this Coupon entity)
+        {
+                return new CouponDetailVM()
+                {
+                    CouponId = entity.CouponId,
+                    CouponName = entity.CouponName,
+                    CouponCategoryId=entity.CouponCategoryId,
+                    CouponCategoryName = entity.CouponCategory.CouponCategoryName,
+                    DiscountGroupName = entity.DiscountGroup==null?null: entity.DiscountGroup.DiscountGroupName,
+                    CouponCode=entity.CouponCode,
+                    LimitType=entity.LimitType,
+                    LimitValue=entity.LimitValue,
+                    DiscountType=entity.DiscountType,
+                    DiscountValue=entity.DiscountValue,
+                    StartAt = entity.StartAt,
+                    EndAt = entity.EndAt,
+                    Expiration = entity.Expiration,
+                    CreateAt = entity.CreateAt
+                };
+        }
+
     }
 }
