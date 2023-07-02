@@ -188,3 +188,6 @@ git rm --cached "healthchecksdb"
 git rm --cached "MigrationBackup/"
 git rm --cached ".ionide/"
 git rm --cached "FodyWeavers.xsd"
+
+#上面都完成又跑出來一個新的東西
+git rm --cached "*/fileList.bin"
