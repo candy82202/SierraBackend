@@ -207,6 +207,7 @@
     <Compile Include="Models\ViewModels\PromotionsVM\DiscountGroupIndexVM.cs" />
     <Compile Include="Models\ViewModels\PromotionsVM\DiscountGroupExts.cs" />
     <Compile Include="Models\ViewModels\TeachersVM\TeacherCreateVM.cs" />
+    <Compile Include="Models\ViewModels\TeachersVM\TeacherEditImageVM.cs" />
     <Compile Include="Models\ViewModels\TeachersVM\TeacherEditVM.cs" />
     <Compile Include="Models\ViewModels\TeachersVM\TeacherExts.cs" />
     <Compile Include="Models\ViewModels\TeachersVM\TeacherIndexVM.cs" />
@@ -830,6 +831,7 @@
     <Content Include="Views\Roles1\Edit.cshtml" />
     <Content Include="Views\Roles1\Index.cshtml" />
     <Content Include="Views\Teachers\Index.cshtml" />
+    <Content Include="Views\Teachers\EditImage.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="Scripts\vendor\chart.js\controllers\controller.bar.d.ts" />

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.Data.Entity.Migrations;
 using System.Linq;
 using System.Net;
 using System.Web;
@@ -50,16 +51,53 @@ namespace NiceAdmin.Controllers
         // 如需詳細資料，請參閱 https://go.microsoft.com/fwlink/?LinkId=317598。
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "TeacherId,TeacherName,TeacherImage,Specialty,Experience,License,Academic,TeacherStatus")] Teacher teacher)
+        public ActionResult Create(TeacherCreateVM vm,HttpPostedFileBase file1)
         {
             if (ModelState.IsValid)
             {
+                //將file1存檔，並取得最後存檔檔案名稱
+                string path = Server.MapPath("/Uploads");
+                string fileName = SaveUploadedFile(path, file1);
+
+                //將換完檔名的fileName存入vm裡
+                vm.TeacherImage = fileName;
+                //將view model轉型為Teacher
+                Teacher teacher = vm.TOEntity();
+
+                //新增一筆紀錄
                 db.Teachers.Add(teacher);
                 db.SaveChanges();
+
+                
                 return RedirectToAction("Index");
+                //如果驗證失敗，停留在本網頁
+
+                
             }
 
-            return View(teacher);
+            
+            return View(vm);
+        }
+
+        private string SaveUploadedFile(string path, HttpPostedFileBase file1)
+        {
+            //如果沒有上傳檔案或檔案是空的，就不處理，傳回string.empty
+            if(file1 == null ||file1.ContentLength == 0) return string.Empty;
+            //取得上傳檔案的副檔名
+            string ext =System.IO.Path.GetExtension(file1.FileName);
+            
+
+            //如果副檔名不在允許的範圍裡，表示上傳不合理的檔案類型，就不處理，傳回string.empty
+            string[] allowedExts = new string[] { ".jpg",".jpeg",".png",".tif"};
+            if(allowedExts.Contains(ext.ToLower())==false) return string.Empty;
+            //生成一個不會重複的檔名(newFileName檔案)
+            string newFileName =Guid.NewGuid().ToString("N")+ext;
+           
+            string fullName =System.IO.Path.Combine(path,newFileName);
+            //將上傳檔案存放到指定位置(fullName路徑)
+            file1.SaveAs(fullName);
+            //傳回存放的檔名(檔案)
+            return newFileName;
         }
 
         // GET: Teachers/Edit/5
@@ -74,7 +112,9 @@ namespace NiceAdmin.Controllers
             {
                 return HttpNotFound();
             }
-            return View(teacher);
+            
+
+            return View(teacher.TOEditVM());
         }
 
         // POST: Teachers/Edit/5
@@ -82,15 +122,90 @@ namespace NiceAdmin.Controllers
         // 如需詳細資料，請參閱 https://go.microsoft.com/fwlink/?LinkId=317598。
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "TeacherId,TeacherName,TeacherImage,Specialty,Experience,License,Academic,TeacherStatus")] Teacher teacher)
+        public ActionResult Edit(TeacherEditVM vm)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(teacher).State = EntityState.Modified;
+
+                var TeacherInDB = db.Teachers.Find(vm.TeacherId);
+                TeacherInDB.TeacherName = vm.TeacherName;
+                TeacherInDB.Specialty = vm.Specialty;
+                TeacherInDB.Experience = vm.Experience;
+                TeacherInDB.License = vm.License;
+                TeacherInDB.Academic = vm.Academic;
+                TeacherInDB.TeacherStatus = vm.TeacherStatus;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(teacher);
+            return View(vm);
+        }
+
+        public ActionResult EditImage(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Teacher teacher = db.Teachers.Find(id);
+            if (teacher == null)
+            {
+                return HttpNotFound();
+            }
+
+
+            return View(teacher.TOEditImageVM());
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult EditImage(TeacherEditImageVM vm, HttpPostedFileBase file2)
+        {
+            if (ModelState.IsValid)
+            {
+                //將file2存檔，並取得最後存檔檔案名稱
+                string path = Server.MapPath("/Uploads");
+
+                string fileName = SaveUploadedFile2(path, file2);
+
+                //將換完檔名的fileName存入vm裡
+                vm.TeacherImage = fileName;
+                //將view model轉型為Teacher
+                Teacher teacher = vm.TOEntity();
+
+                //新增一筆紀錄
+                db.Teachers.Add(teacher);
+                db.SaveChanges();
+
+
+                return RedirectToAction("Index");
+                //如果驗證失敗，停留在本網頁
+
+
+            }
+
+
+            return View(vm);
+        }
+
+        private string SaveUploadedFile2(string path, HttpPostedFileBase file2)
+        {
+            //如果沒有上傳檔案或檔案是空的，就不處理，傳回string.empty
+            if (file2 == null || file2.ContentLength == 0) return string.Empty;
+            //取得上傳檔案的副檔名
+            string ext = System.IO.Path.GetExtension(file2.FileName);
+
+
+            //如果副檔名不在允許的範圍裡，表示上傳不合理的檔案類型，就不處理，傳回string.empty
+            string[] allowedExts = new string[] { ".jpg", ".jpeg", ".png", ".tif" };
+            if (allowedExts.Contains(ext.ToLower()) == false) return string.Empty;
+            //生成一個不會重複的檔名(newFileName檔案)
+            string newFileName = Guid.NewGuid().ToString("N") + ext;
+
+            string fullName = System.IO.Path.Combine(path, newFileName);
+            //將上傳檔案存放到指定位置(fullName路徑)
+            file2.SaveAs(fullName);
+            //傳回存放的檔名(檔案)
+            return newFileName;
         }
 
         // GET: Teachers/Delete/5

@@ -119,7 +119,11 @@ Teacher 部分
 [v]index頁轉vm
 [v]修改TeacherIndexVM，增加display
 [v]TeacherIndexVM描述截斷，留前幾個字
-[working on]檢查CRUD
+[v]修改TeacherCreateVM
+[v]上傳檔案
+[v]edit
+[working on]變更圖片,無法變更controller有問題
+[v]檢查CRUD
 [v]試推orders04
 
 
@@ -142,10 +146,13 @@ Teacher 部分
 Order 部分
 [v]改完版型
 [v]EDIT/DELETE抓到當下的創建時間
+[v]form-select
 [working on]建立VM classes
 [workink on]寫擴充方法轉vm
 [working on]檢查CRUD
-[working on]debug課程訂單明細資料庫錯誤
+[working on]下拉清單寫成一個副程式
+[working on]debug課程訂單明細資料庫錯誤，
+ViewBag.LessonOrderId = new SelectList(db.LessonOrders, "LessonOrderId", "Note", lessonOrderDetail.LessonOrderId);
 
 
 
