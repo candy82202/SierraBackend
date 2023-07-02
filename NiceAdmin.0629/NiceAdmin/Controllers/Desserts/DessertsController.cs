@@ -297,6 +297,37 @@ namespace NiceAdmin.Controllers
             return RedirectToAction("Index");
         }
         [HttpPost]
+        public ActionResult UpDesserts(List<int> dessertIds)
+        {
+            if (dessertIds == null || dessertIds.Count == 0)
+            {
+                return View("Error");
+                // 如果沒有選擇任何甜點，可以在這裡給出提示或執行相應處理             
+            }
+            else
+            {
+                try
+                {
+                    // 根据选择的dessertIds进行上架处理
+                    var dessertsToUpdate = db.Desserts.Where(d => dessertIds.Contains(d.DessertId)).ToList();
+                    foreach (var dessert in dessertsToUpdate)
+                    {
+                        dessert.Status = true; // 上架
+                    }
+                    // 更新数据库
+                    db.SaveChanges();
+                    // 重新導向回甜點清單
+                    //return RedirectToAction("Index");
+                    //return Json(new { success = true });
+                    return Json(new { success = true, message = "上架成功" });
+                }
+                catch (Exception ex)
+                {
+                    return Json(new { success = false, errorMessage = "An error occurred while marking desserts as down. Please try again later." });
+                }
+            }
+        }
+        [HttpPost]
         public ActionResult DownDesserts(List<int> dessertIds)
         {
             if (dessertIds == null || dessertIds.Count == 0)
@@ -322,8 +353,7 @@ namespace NiceAdmin.Controllers
                     return Json(new { success = true, message = "下架成功" });
                 }
                 catch (Exception ex)
-                {
-                    
+                {                    
                     return Json(new { success = false, errorMessage = "An error occurred while marking desserts as down. Please try again later." });
                 }
             }           
@@ -342,6 +372,26 @@ namespace NiceAdmin.Controllers
                 db.SaveChanges();
 
                 return Json(new { success = true, message = "下架成功" });
+            }
+            catch (Exception ex)
+            {
+                return Json(new { success = false, errorMessage = "An error occurred while marking the dessert as down. Please try again later." });
+            }
+        }
+        public ActionResult UpDessert(int dessertId)
+        {
+            try
+            {
+                var dessertToUpdate = db.Desserts.Find(dessertId);
+                if (dessertToUpdate == null)
+                {
+                    return Json(new { success = false, errorMessage = "Invalid dessert ID." });
+                }
+
+                dessertToUpdate.Status = true; // Set status to "down"
+                db.SaveChanges();
+
+                return Json(new { success = true, message = "上架成功" });
             }
             catch (Exception ex)
             {
