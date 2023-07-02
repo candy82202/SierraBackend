@@ -358,7 +358,7 @@ namespace NiceAdmin.Controllers
                 }
             }           
         }
-        public ActionResult DownDessert(int dessertId)
+        public ActionResult UpdateDessertStatus(int dessertId, bool status)
         {
             try
             {
@@ -368,34 +368,26 @@ namespace NiceAdmin.Controllers
                     return Json(new { success = false, errorMessage = "Invalid dessert ID." });
                 }
 
-                dessertToUpdate.Status = false; // Set status to "down"
+                bool previousStatus = dessertToUpdate.Status; // Get the previous status
+                dessertToUpdate.Status = status; // Set status based on the parameter
                 db.SaveChanges();
 
-                return Json(new { success = true, message = "下架成功" });
-            }
-            catch (Exception ex)
-            {
-                return Json(new { success = false, errorMessage = "An error occurred while marking the dessert as down. Please try again later." });
-            }
-        }
-        public ActionResult UpDessert(int dessertId)
-        {
-            try
-            {
-                var dessertToUpdate = db.Desserts.Find(dessertId);
-                if (dessertToUpdate == null)
+                string message = status ? "上架成功" : "下架成功";
+
+                if (status && previousStatus)
                 {
-                    return Json(new { success = false, errorMessage = "Invalid dessert ID." });
+                    message = "此商品已上架";
+                }
+                else if (!status && !previousStatus)
+                {
+                    message = "此商品已下架";
                 }
 
-                dessertToUpdate.Status = true; // Set status to "down"
-                db.SaveChanges();
-
-                return Json(new { success = true, message = "上架成功" });
+                return Json(new { success = true, message });
             }
             catch (Exception ex)
             {
-                return Json(new { success = false, errorMessage = "An error occurred while marking the dessert as down. Please try again later." });
+                return Json(new { success = false, errorMessage = "An error occurred while updating the dessert status. Please try again later." });
             }
         }
         protected override void Dispose(bool disposing)

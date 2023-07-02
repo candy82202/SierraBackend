@@ -69,7 +69,7 @@
                             </label>
                         </div>
                     </th>
-                    <th>
+                    <th class="d-none">
                         @Html.DisplayNameFor(model => model.DessertId)
                     </th>
                     <th>
@@ -102,11 +102,10 @@
                     <tr>
                         <td>
                             <label class="form-check">
-                                <input class="form-check-input childCheckboxDessert" type="checkbox" value="" data-checkbox="childCheckbox" />
-                                @*<input class="form-check-input" type="checkbox" value=""  data-checkbox="childCheckbox" />*@
+                                <input class="form-check-input childCheckboxDessert" type="checkbox" value="" data-checkbox="childCheckbox" />                                
                             </label>
                         </td>
-                        <td class="dessertId">
+                        <td class="dessertId d-none">
                             @Html.DisplayFor(modelItem => item.DessertId)
                         </td>
                         <td>
@@ -140,8 +139,8 @@
                             @*@Html.ActionLink("Details", "Details", new { id = item.DessertId })*@
                            <a href="#"><i class="bx bx-x-circle"></i></a>
                             @*@Html.ActionLink("刪除", "Delete", new { id = item.DessertId })*@
-                            <button class="btn btn-outline-danger btn-sm dwDest " data-id="@item.DessertId">下架</button>
                             <button class="btn btn-outline-success btn-sm upDest " data-id="@item.DessertId">上架</button>
+                            <button class="btn btn-outline-danger btn-sm dwDest " data-id="@item.DessertId">下架</button>
                             <input type="hidden" name="dessertIds[]" value="@item.DessertId" />
                         </td>
                     </tr>
@@ -150,8 +149,8 @@
         </table>
         <form id="downForm" action="@Url.Action("DownDesserts", "Desserts")" method="post">
             <div class="me-3">
-                <button type="button" class="btn btn-outline-danger" id="downButton">下架</button>
                 <button type="button" class="btn btn-outline-success" id="upButton">上架</button>
+                <button type="button" class="btn btn-outline-danger" id="downButton">下架</button>
             </div>
         </form>
     </div>
@@ -188,62 +187,74 @@
             });
 
             $('.dwDest').click(function () {
-                var dessertId = $(this).data('id');
+    var dessertId = $(this).data('id');
 
-                $.ajax({
-                    url: '@Url.Action("DownDessert", "Desserts")',
-                    type: 'POST',
-                    data: { dessertId: dessertId },
-                    success: function (result) {
-                        if (result.success) {
-                            Swal.fire({
-                                position: 'top-end',
-                                icon: 'success',
-                                title: `${result.message}`,
-                                showConfirmButton: false,
-                                timer: 1500
-                            })
-                           // alert(result.message);
-                            // Refresh the page to reflect the updated status
-                            location.reload();
-                        } else {
-                            alert("Failed to mark desserts as down. Error: " + result.errorMessage);
-                        }
-                    },
-                    error: function () {
-                        alert("An error occurred while marking desserts as down.");
-                    }
-                });
-            });
-            $('.upDest').click(function () {
-                var dessertId = $(this).data('id');
+    $.ajax({
+        url: '@Url.Action("UpdateDessertStatus", "Desserts")',
+        type: 'POST',
+        data: { dessertId: dessertId, status: false }, // Pass the status as false for down
+        success: function (result) {
+            if (result.success) {
+                if (result.message === "此商品已下架") {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Oops...',
+                        text: '此商品已下架!'
+                    });
+                } else {
+                    Swal.fire({
+                        position: 'top-end',
+                        icon: 'success',
+                        title: `${result.message}`,
+                        showConfirmButton: false,
+                        timer: 1500
+                    });
+                }
+                location.reload();
+            } else {
+                alert("Failed to mark desserts as down. Error: " + result.errorMessage);
+            }
+        },
+        error: function () {
+            alert("An error occurred while marking desserts as down.");
+        }
+    });
+});
 
-                $.ajax({
-                    url: '@Url.Action("UpDessert", "Desserts")',
-                    type: 'POST',
-                    data: { dessertId: dessertId },
-                    success: function (result) {
-                        if (result.success) {
-                            Swal.fire({
-                                position: 'top-end',
-                                icon: 'success',
-                                title: `${result.message}`,
-                                showConfirmButton: false,
-                                timer: 1500
-                            })
-                           // alert(result.message);
-                            // Refresh the page to reflect the updated status
-                            location.reload();
-                        } else {
-                            alert("Failed to mark desserts as down. Error: " + result.errorMessage);
-                        }
-                    },
-                    error: function () {
-                        alert("An error occurred while marking desserts as down.");
-                    }
-                });
-            });
+    $('.upDest').click(function () {
+    var dessertId = $(this).data('id');
 
+    $.ajax({
+        url: '@Url.Action("UpdateDessertStatus", "Desserts")',
+        type: 'POST',
+        data: { dessertId: dessertId, status: true }, // Pass the status as true for up
+        success: function (result) {
+            if (result.success) {
+                if (result.message === "此商品已上架") {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Oops...',
+                        text: '此商品已上架!'
+                    });
+                } else {
+                    Swal.fire({
+                        position: 'top-end',
+                        icon: 'success',
+                        title: `${result.message}`,
+                        showConfirmButton: false,
+                        timer: 1500
+                    });
+                }
+                location.reload();
+            } else {
+                alert("Failed to mark desserts as down. Error: " + result.errorMessage);
+            }
+        },
+        error: function () {
+            alert("An error occurred while marking desserts as down.");
+        }
+    });
+});
             $('#downButton').click(function () {
                 var selectedDessertIds = $('.childCheckboxDessert:checked').map(function () {
                     return parseInt($(this).closest('tr').find('.dessertId').text());

@@ -55,8 +55,9 @@ Desserts 部分
 [V] - 全選 checkbox 的變更事件監聽器 (Desserts & Categories 的 Index 頁面 抓到分頁數量的checkbox )
     - AutoComplete 甜點清單頁面
 
-[V] - Checkbox Dessert Index 一鍵下架
-    - 一鍵下架通知新增SweetAlert方式
+[V] - 單筆上,下架按鈕
+    - Checkbox Dessert Index 一鍵上,下架
+    - 上,下架通知新增SweetAlert方式
 
 [working on] - 新增多張圖顯示， 編輯照片(照片的新增 / 刪除)
 
