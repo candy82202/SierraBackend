@@ -1,6 +1,6 @@
 ﻿主頁面
 
-[V] _Layout & Index 頁面完成
+[V] _Layout & Index 頁面完成 (新增Logo)
 	--更改 content的css位址
 	--更改 Script 的 JS位址 bootstrap位址
     - 首頁預覽頁面，icon小圖示
@@ -43,10 +43,15 @@
 
 [working on] - 針對404錯誤訊息畫面 修改web.config畫面，圖片尚未抓到
 =========================================================
+前台頁面 部分
+[V] - 新增前台商品上架的頁面 LayoutFront , Sierras.cshtml
+    - 新增師資下拉清單
+
+=========================================================
 Desserts 部分
 
-[V] - 新增前台商品上架的頁面 LayoutFront , Sierras.cshtml
-    - 新增多張圖顯示， 編輯照片(照片的新增 / 刪除)
+
+[working on] - 新增多張圖顯示， 編輯照片(照片的新增 / 刪除)
 
 [V] - 全選 checkbox 的變更事件監聽器 (Desserts & Categories 的 Index 頁面 抓到分頁數量的checkbox )
     - AutoComplete 甜點清單頁面

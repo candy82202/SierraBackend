@@ -168,7 +168,8 @@
             var selectAllCheckboxDessert = $('.selectAllDessert');
             var checkboxesDessert = $('tbody .childCheckboxDessert');
 
-            // 全选 checkbox 的变更事件监听器
+            // 全選 checkbox 的變更事件監聽器
+            //當全選組件的選中狀態更改時，該事件處理程序將所有子組件的選中狀態與全選組件保持一致。
             selectAllCheckboxDessert.on('change', function () {
                 checkboxesDessert.prop('checked', $(this).is(':checked'));
             });
@@ -211,7 +212,6 @@
                     }
                 });
             });
-
         });
 
         //這段是要做AutoComplete

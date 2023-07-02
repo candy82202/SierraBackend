@@ -47,10 +47,6 @@
             box-sizing: border-box;
         }
 
-        /* body {
-            font: 16px Arial;
-        }*/
-
         .autocomplete {
             /*the container must be positioned relative:*/
             position: relative;
@@ -96,6 +92,7 @@
                 .autocomplete .autocomplete-items div:hover {
                     /*when hovering an item:*/
                     background-color: #e9e9e9;
+                    border-bottom: 3px solid #717ff5;
                 }
 
         .autocomplete .autocomplete-active {
@@ -105,13 +102,6 @@
         }
     </style>
 
-    <!-- =======================================================
-    * Template Name: NiceAdmin
-    * Updated: May 30 2023 with Bootstrap v5.3.0
-    * Template URL: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/
-    * Author: BootstrapMade.com
-    * License: https://bootstrapmade.com/license/
-    ======================================================== -->
 </head>
 
 <body>
@@ -119,7 +109,7 @@
     <header id="header" class="header fixed-top d-flex align-items-center">
         <div class="d-flex align-items-center justify-content-between">
             <a href="@Url.Action("Index","Home")" class="logo d-flex align-items-center">
-                <img src="assets/img/logo.png" alt="" />
+                <img src="~/img/logoShadow.png" alt="" />
                 <span class="d-none d-lg-block">Sierra</span>
             </a>
             <i class="bi bi-list toggle-sidebar-btn"></i>
