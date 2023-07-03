@@ -24,54 +24,51 @@
         {
             @Html.AntiForgeryToken()
 
-        <div class="row">
-            <hr />
-            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-            @Html.HiddenFor(model => model.PromotionId)
-            <div class="mb-3">
-                @Html.LabelFor(model => model.PromotionImage, htmlAttributes: new { @class = "form-label" })
-                @Html.EditorFor(model => model.PromotionImage, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.PromotionImage, "", new { @class = "text-danger" })
+            <div class="row">
+                <hr />
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                @Html.HiddenFor(model => model.PromotionId)
+                <div class="mb-3">
+                    @Html.LabelFor(model => model.PromotionImage, htmlAttributes: new { @class = "form-label" })
+                    <div class="mb-3 d-flex justify-content-center align-items-center">
+                        <img src="~/Uploads/@Model.PromotionImage" alt="@Model.PromotionImage" class=" border border-info">
+                    </div>
+                    @Html.ValidationMessageFor(model => model.PromotionImage, "", new { @class = "text-danger" })
+                </div>
+                <div class="mb-3">
+                    <label class="form-label" for="CouponId">相關優惠券</label>
+                    @Html.DropDownList("CouponId", null, htmlAttributes: new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.CouponId, "", new { @class = "text-danger" })
+                </div>
+                <div class="mb-3">
+                    @Html.LabelFor(model => model.PromotionName, htmlAttributes: new { @class = "form-label" })
+                    @Html.EditorFor(model => model.PromotionName, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.PromotionName, "", new { @class = "text-danger" })
+                </div>
+                <div class="mb-3">
+                    @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "form-label" })
+                    @Html.TextAreaFor(model => model.Description, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
+                </div>
+                <div class="mb-3">
+                    @Html.LabelFor(model => model.LaunchAt, htmlAttributes: new { @class = "form-label disabled" })
+                    @Html.EditorFor(model => model.LaunchAt, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.LaunchAt, "", new { @class = "text-danger" })
+                </div>
+                <div class="mb-3">
+                    @Html.LabelFor(model => model.StartAt, htmlAttributes: new { @class = "form-label" })
+                    @Html.EditorFor(model => model.StartAt, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.StartAt, "", new { @class = "text-danger" })
+                </div>
+                <div class="mb-3">
+                    @Html.LabelFor(model => model.EndAt, htmlAttributes: new { @class = "form-label" })
+                    @Html.EditorFor(model => model.EndAt, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.EndAt, "", new { @class = "text-danger" })
+                </div>
+                <div class="mb-3">
+                    <input type="submit" value="Save" class="btn btn-primary" />
+                </div>
             </div>
-            <div class="mb-3">
-                @Html.LabelFor(model => model.CouponId, "CouponId", htmlAttributes: new { @class = "form-label" })
-                @Html.DropDownList("CouponId", null, htmlAttributes: new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.CouponId, "", new { @class = "text-danger" })
-            </div>
-            <div class="mb-3">
-                @Html.LabelFor(model => model.PromotionName, htmlAttributes: new { @class = "form-label" })
-                @Html.EditorFor(model => model.PromotionName, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.PromotionName, "", new { @class = "text-danger" })
-            </div>
-            <div class="mb-3">
-                @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "form-label" })
-                @Html.EditorFor(model => model.Description, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
-            </div>
-            <div class="mb-3">
-                @Html.LabelFor(model => model.LaunchAt, htmlAttributes: new { @class = "form-label" })
-                @Html.EditorFor(model => model.LaunchAt, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.LaunchAt, "", new { @class = "text-danger" })
-            </div>
-            <div class="mb-3">
-                @Html.LabelFor(model => model.StartAt, htmlAttributes: new { @class = "form-label" })
-                @Html.EditorFor(model => model.StartAt, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.StartAt, "", new { @class = "text-danger" })
-            </div>
-            <div class="mb-3">
-                @Html.LabelFor(model => model.EndAt, htmlAttributes: new { @class = "form-label" })
-                @Html.EditorFor(model => model.EndAt, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.EndAt, "", new { @class = "text-danger" })
-            </div>
-            <div class="mb-3">
-                @Html.LabelFor(model => model.CreateAt, htmlAttributes: new { @class = "form-label" })
-                @Html.EditorFor(model => model.CreateAt, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.CreateAt, "", new { @class = "text-danger" })
-            </div>
-            <div class="mb-3">
-                <input type="submit" value="Save" class="btn btn-primary" />
-            </div>
-        </div>
         }
 
         <div>
@@ -81,4 +78,38 @@
 </main>
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
+    <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js" integrity="sha256-6XMVI0zB8cRzfZjqKcD01PBsAy3FlDASrlC8SxCpInY=" crossorigin="anonymous"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            $('#EndAt').datepicker();
+            $('#StartAt').datepicker({
+                onSelect: function (date) {
+                    $("#EndAt").datepicker("option", "minDate", date);
+                }
+            });
+            $('#LaunchAt').datepicker({
+                minDate: 0,
+                onSelect: function (date) {
+                    $("#StartAt").datepicker("option", "minDate", date);
+                }
+            });
+            var launchAt = new Date('@Model.LaunchAt'); // 使用 Razor 語法將日期轉換為 JavaScript Date 物件
+            var startAt = new Date('@Model.StartAt');
+            var endAt = new Date('@Model.EndAt');
+            var now = new Date();
+
+            if (startAt < now) {
+                $('#StartAt').prop('readonly', true); // 如果日期比現在早，將該標籤設為唯讀
+            }
+            if (launchAt < now) {
+                $('#LaunchAt').prop('readonly', true); // 如果日期比現在早，將該標籤設為唯讀
+            }
+            if (endAt < now) {
+                $('#EndAt').prop('readonly', true); // 如果日期比現在早，將該標籤設為唯讀
+            }
+            var firstOption = '<option value="0">無</option>';
+            $('#CouponId').prepend(firstOption);
+        })
+
+    </script>
 }

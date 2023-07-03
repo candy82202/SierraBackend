@@ -63,9 +63,8 @@
                             @Html.DisplayFor(modelItem => item.Status)
                         </td>
                         <td>
-                            @Html.ActionLink("Edit", "Edit", new { id=item.PromotionId }) |
-                            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-                            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+                            @Html.ActionLink("編輯", "Edit", new { id=item.PromotionId }) |
+                            @Html.ActionLink("變更圖片", "ChangeImage", new { id = item.PromotionId })
                         </td>
                     </tr>
                 }

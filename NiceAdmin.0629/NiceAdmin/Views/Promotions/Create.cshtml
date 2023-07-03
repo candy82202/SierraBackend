@@ -22,60 +22,61 @@
         {
             @Html.AntiForgeryToken()
 
-        <div class="row">
-            <hr />
-            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-            <div class="mb-3">
-                @Html.LabelFor(model => model.PromotionName, htmlAttributes: new { @class = "form-label" })
-                @Html.EditorFor(model => model.PromotionName, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.PromotionName, "", new { @class = "text-danger" })
+            <div class="row">
+                <hr />
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                <div class="mb-3">
+                    @Html.LabelFor(model => model.PromotionName, htmlAttributes: new { @class = "form-label" })
+                    @Html.EditorFor(model => model.PromotionName, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.PromotionName, "", new { @class = "text-danger" })
 
+                </div>
+                <div class="mb-3">
+                    @Html.LabelFor(model => model.CouponId, htmlAttributes: new { @class = "form-label" })
+                    @Html.DropDownList("CouponId", null, htmlAttributes: new { @class = "form-select" })
+                    @Html.ValidationMessageFor(model => model.CouponId, "", new { @class = "text-danger" })
+
+                </div>
+
+                <div class="mb-3">
+                    @Html.LabelFor(model => model.PromotionImage, htmlAttributes: new { @class = "form-label" })
+                    <div id="previewImages"></div>
+                    <input type="file" name="PromotionImage" value="" class="form-control" id="PromotionImage" />
+                    @Html.ValidationMessageFor(model => model.PromotionImage, "", new { @class = "text-danger" })
+                </div>
+
+                <div class="mb-3">
+                    @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "form-label" })
+                    @Html.TextAreaFor(model => model.Description, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
+
+                </div>
+
+                <div class="mb-3">
+                    @Html.LabelFor(model => model.LaunchAt, htmlAttributes: new { @class = "form-label" })
+                    @Html.EditorFor(model => model.LaunchAt, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.LaunchAt, "", new { @class = "text-danger" })
+
+                </div>
+
+                <div class="mb-3">
+                    @Html.LabelFor(model => model.StartAt, htmlAttributes: new { @class = "form-label" })
+                    @Html.EditorFor(model => model.StartAt, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.StartAt, "", new { @class = "text-danger" })
+
+                </div>
+
+                <div class="mb-3">
+                    @Html.LabelFor(model => model.EndAt, htmlAttributes: new { @class = "form-label" })
+                    @Html.EditorFor(model => model.EndAt, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.EndAt, "", new { @class = "text-danger" })
+
+                </div>
+                
+                <div class="mb-3">
+                    <input type="submit" value="Create" class="btn btn-primary" />
+                </div>
             </div>
-            <div class="mb-3">
-                @Html.LabelFor(model => model.CouponId, htmlAttributes: new { @class = "form-label" })
-                @Html.DropDownList("CouponId", null, htmlAttributes: new { @class = "form-select" })
-                @Html.ValidationMessageFor(model => model.CouponId, "", new { @class = "text-danger" })
-
-            </div>
-
-            <div class="mb-3">
-                @Html.LabelFor(model => model.PromotionImage, htmlAttributes: new { @class = "form-label" })
-                <input type="file" name="PromotionImage" value="" class="form-control" id="PromotionImage"/>
-                @Html.ValidationMessageFor(model => model.PromotionImage, "", new { @class = "text-danger" })
-            </div>
-
-            <div class="mb-3">
-                @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "form-label" })
-                @Html.TextAreaFor(model => model.Description, new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
-
-            </div>
-
-            <div class="mb-3">
-                @Html.LabelFor(model => model.LaunchAt, htmlAttributes: new { @class = "form-label" })
-                @Html.EditorFor(model => model.LaunchAt, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.LaunchAt, "", new { @class = "text-danger" })
-
-            </div>
-
-            <div class="mb-3">
-                @Html.LabelFor(model => model.StartAt, htmlAttributes: new { @class = "form-label" })
-                @Html.EditorFor(model => model.StartAt, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.StartAt, "", new { @class = "text-danger" })
-
-            </div>
-
-            <div class="mb-3">
-                @Html.LabelFor(model => model.EndAt, htmlAttributes: new { @class = "form-label" })
-                @Html.EditorFor(model => model.EndAt, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.EndAt, "", new { @class = "text-danger" })
-
-            </div>
-
-            <div class="mb-3">
-                <input type="submit" value="Create" class="btn btn-primary" />
-            </div>
-        </div>
         }
 
         <div>
@@ -85,23 +86,78 @@
 </main>
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
-<script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js" integrity="sha256-6XMVI0zB8cRzfZjqKcD01PBsAy3FlDASrlC8SxCpInY=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js" integrity="sha256-6XMVI0zB8cRzfZjqKcD01PBsAy3FlDASrlC8SxCpInY=" crossorigin="anonymous"></script>
     <script>
         document.addEventListener("DOMContentLoaded", function () {
-            
+            checkImg();
+
             $('#EndAt').datepicker();
             $('#StartAt').datepicker({
                 onSelect: function (date) {
-                    $("#EndAt").datepicker("option", "minDate", date); 
+                    $("#EndAt").datepicker("option", "minDate", date);
                 }
             });
             $('#LaunchAt').datepicker({
+                minDate: 0,
                 onSelect: function (date) {
                     $("#StartAt").datepicker("option", "minDate", date);
                 }
             });
             var firstOption = $('#CouponId').children().first();
             firstOption.text("無");
-        })
+
+            function checkImg() {
+                var maxSize = 2 * 1024 * 1024;
+                $('input[type="file"]').change(function (e) {
+                    var files = e.target.files;
+                    if (files && files.length > 0) {
+                        $('#previewImages').empty(); // 清空預覽區域
+                        for (var i = 0; i < files.length; i++) {
+                            if (files[i].size < maxSize) {
+                                var reader = new FileReader();
+                                reader.onload = function (e) {
+                                    var image = $('<img>');
+                                    image.attr('src', e.target.result);
+                                    image.attr('alt', 'Preview');
+                                    image.addClass("mb-2")
+                                    $('#previewImages').append(image);
+                                };
+                                reader.readAsDataURL(files[i]);
+                            }
+                            else {
+                                alert("照片檔案超過2MB");
+                            }
+                        }
+                    }
+                    else {
+                        $('#previewImages').empty(); // 清空預覽區域
+                    }
+                })
+            }
+            $('#CouponId').change(function () {
+                var couponId = $(#CouponId).val();
+                $.ajax({
+                    type: "POST",
+                    url: "/Promotion/GetCouponTime",
+                    data: { couponId: couponId },
+                }).done(function (data) {
+                    if (data === "新增成功") {
+                        var newItem = `<button class="btn btn-success m-1 remove" data-id="${dessertId}">${dessertName}<i class="bi bi-x-lg ms-2"></i></button>`
+                        $('.dessertBox').append(newItem);
+                    }
+                    else {
+                        Swal.fire({
+                            icon: 'error',
+                            title: '錯誤',
+                            text: data
+                        })
+                    }
+                }).fail(function (err) {
+                    alert(err.statusText);
+                });
+            })
+
+            })
+        
     </script>
 }

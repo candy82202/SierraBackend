@@ -725,8 +725,6 @@
     <Content Include="Views\MemberCoupons\Details.cshtml" />
     <Content Include="Views\MemberCoupons\Edit.cshtml" />
     <Content Include="Views\MemberCoupons\Index.cshtml" />
-    <Content Include="Views\Promotions\Delete.cshtml" />
-    <Content Include="Views\Promotions\Details.cshtml" />
     <Content Include="Views\Promotions\Edit.cshtml" />
     <Content Include="Views\Teachers\Create.cshtml" />
     <Content Include="Views\Teachers\Delete.cshtml" />
