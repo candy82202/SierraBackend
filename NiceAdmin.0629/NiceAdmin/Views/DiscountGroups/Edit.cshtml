@@ -29,6 +29,8 @@
                 @Html.EditorFor(model => model.DiscountGroupName, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.DiscountGroupName, "", new { @class = "text-danger" })
             </div>
+            @* 將完成鍵放在這是因為在同個表單的按鈕都會提交表單並執行controller的edit方法
+                先放在這邊之後在看看有沒有辦法讓表單中不同按鈕執行不同動作*@
             <div class="mt-2">
                 <input type="submit" value="完成" class="btn btn-primary" />
             </div>
@@ -85,7 +87,7 @@
     <div>
         @Html.ActionLink("Back to List", "Index")
     </div>
-    @*?DiscountGroupId="+discountGroupId+"&DessertId="+dessertId*@
+    
 </main>
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
@@ -118,7 +120,9 @@
                 });
             });
 
-            $('.remove').click(function () {
+            //('.remove').click()沒辦法將新加入的標籤附加上事件
+            //處理方式為事件委託，將事件附加在其父元素上
+            $('.dessertBox').on('click', '.remove', function () {
                 var self = $(this)
                 var dessertId = self.attr("data-id");
                 $.ajax({
@@ -139,7 +143,29 @@
                 }).fail(function (err) {
                     alert(err.statusText);
                 });
-            });
+            })
+            //$('.remove').click(function () {
+            //    var self = $(this)
+            //    var dessertId = self.attr("data-id");
+            //    $.ajax({
+            //        type: "POST",
+            //        url: "/DiscountGroups/Remove",
+            //        data: { discountGroupId: discountGroupId, DessertId: dessertId },
+            //    }).done(function (data) {
+            //        if (data === "刪除成功") {
+            //            self.remove();
+            //        }
+            //        else {
+            //            Swal.fire({
+            //                icon: 'error',
+            //                title: '錯誤',
+            //                text: data
+            //            })
+            //        }
+            //    }).fail(function (err) {
+            //        alert(err.statusText);
+            //    });
+            //});
         });
     </script>
 }
