@@ -122,7 +122,8 @@ Teacher 部分
 [v]修改TeacherCreateVM
 [v]上傳檔案
 [v]edit
-[working on]變更圖片,無法變更controller有問題
+[v]變更圖片
+[working on]index查詢
 [v]檢查CRUD
 [v]試推orders04
 
@@ -153,6 +154,7 @@ Order 部分
 [working on]下拉清單寫成一個副程式
 [working on]debug課程訂單明細資料庫錯誤，
 ViewBag.LessonOrderId = new SelectList(db.LessonOrders, "LessonOrderId", "Note", lessonOrderDetail.LessonOrderId);
+[working on]查詢
 
 
 

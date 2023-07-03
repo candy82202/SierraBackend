@@ -158,22 +158,24 @@ namespace NiceAdmin.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult EditImage(TeacherEditImageVM vm, HttpPostedFileBase file2)
+        public ActionResult EditImage(TeacherEditImageVM vm, HttpPostedFileBase file1)
         {
             if (ModelState.IsValid)
             {
-                //將file2存檔，並取得最後存檔檔案名稱
+                //將file1存檔，並取得最後存檔檔案名稱
                 string path = Server.MapPath("/Uploads");
 
-                string fileName = SaveUploadedFile2(path, file2);
+
+                string fileName = SaveUploadedFile(path, file1);
 
                 //將換完檔名的fileName存入vm裡
                 vm.TeacherImage = fileName;
                 //將view model轉型為Teacher
                 Teacher teacher = vm.TOEntity();
 
-                //新增一筆紀錄
-                db.Teachers.Add(teacher);
+                //teacher.TeacherImage = fileName;
+
+                db.Entry(teacher).State = EntityState.Modified;
                 db.SaveChanges();
 
 
@@ -187,26 +189,9 @@ namespace NiceAdmin.Controllers
             return View(vm);
         }
 
-        private string SaveUploadedFile2(string path, HttpPostedFileBase file2)
-        {
-            //如果沒有上傳檔案或檔案是空的，就不處理，傳回string.empty
-            if (file2 == null || file2.ContentLength == 0) return string.Empty;
-            //取得上傳檔案的副檔名
-            string ext = System.IO.Path.GetExtension(file2.FileName);
+        
 
 
-            //如果副檔名不在允許的範圍裡，表示上傳不合理的檔案類型，就不處理，傳回string.empty
-            string[] allowedExts = new string[] { ".jpg", ".jpeg", ".png", ".tif" };
-            if (allowedExts.Contains(ext.ToLower()) == false) return string.Empty;
-            //生成一個不會重複的檔名(newFileName檔案)
-            string newFileName = Guid.NewGuid().ToString("N") + ext;
-
-            string fullName = System.IO.Path.Combine(path, newFileName);
-            //將上傳檔案存放到指定位置(fullName路徑)
-            file2.SaveAs(fullName);
-            //傳回存放的檔名(檔案)
-            return newFileName;
-        }
 
         // GET: Teachers/Delete/5
         public ActionResult Delete(int? id)
