@@ -38,5 +38,21 @@ namespace NiceAdmin.Models.ViewModels.PromotionsVM
                 CreateAt = DateTime.Now
             };
         }
-    }
+		public static PromotionEditVM ToEditVM(this Promotion entity)
+		{
+			return new PromotionEditVM()
+			{
+				PromotionImage = entity.PromotionImage,
+                //CouponId= entity.Coupon==null?null:entity.Coupon.CouponId,
+				PromotionId = entity.PromotionId,
+				PromotionName = entity.PromotionName,
+				
+				Description = entity.Description,
+				LaunchAt = entity.LaunchAt,
+				StartAt = entity.StartAt,
+				EndAt = entity.EndAt,
+				
+			};
+		}
+	}
 }

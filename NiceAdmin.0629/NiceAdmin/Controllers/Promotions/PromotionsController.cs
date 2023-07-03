@@ -76,7 +76,8 @@ namespace NiceAdmin.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             Promotion promotion = db.Promotions.Find(id);
-            if (promotion == null)
+            PromotionEditVM vm = promotion.ToEditVM();
+            if (vm == null)
             {
                 return HttpNotFound();
             }
