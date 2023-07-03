@@ -59,6 +59,7 @@ namespace NiceAdmin.Controllers
 				string path = Server.MapPath("/Uploads");//檔案要存放的資料夾位置
 				string fileName = SaveUploadFile(path, PromotionImage);
 				vm.PromotionImage = fileName;
+				vm.CouponId=vm.CouponId==0?null:vm.CouponId;
 				var promotion = vm.ToEntity();
 				db.Promotions.Add(promotion);
 				db.SaveChanges();
@@ -136,15 +137,24 @@ namespace NiceAdmin.Controllers
 			return RedirectToAction("Index");
 		}
 		[HttpPost]
-		public string GetCouponTime(int couponId)
+		public JsonResult GetCouponTime(int? couponId)
 		{
+			if (couponId == 0) return Json("找不到此優惠券");
+			
 			var coupon = db.Coupons.Find(couponId);
-			if (coupon == null) return "找不到此優惠券";
+			if(coupon.CouponCategoryId!=2)return Json("請選擇類別為'活動'之優惠券");
+			//if (coupon.EndAt < DateTime.Now) return Json("此優惠券已過期");
+			if (coupon == null) return Json("找不到此優惠券");
 			else
 			{
-				return $"{coupon.StartAt},{coupon.EndAt}";
+                DateTime startAt =(DateTime)coupon.StartAt;
+				DateTime endAt =(DateTime)coupon.EndAt;
+				string starttext = startAt.ToString("yyyy-MM-dd");
+				string endtext = endAt.ToString("yyyy-MM-dd");
+                return Json($"{starttext},{endtext}");
 			};
-		}
+            
+        }
 		private void PrepareCouponDataSource(int? couponId)
 		{
 			var coupons = db.Coupons.ToList().Prepend(new Coupon());

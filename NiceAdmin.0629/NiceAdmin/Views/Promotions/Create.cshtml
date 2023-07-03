@@ -11,7 +11,7 @@
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="@Url.Action("Index","Home")">首頁</a></li>
                 <li class="breadcrumb-item">   行銷管理  </li>
-                <li class="breadcrumb-item active">  促銷活動清單  </li>
+                <li class="breadcrumb-item">  促銷活動清單  </li>
                 <li class="breadcrumb-item active">  新增促銷活動  </li>
             </ol>
         </nav>
@@ -90,19 +90,25 @@
     <script>
         document.addEventListener("DOMContentLoaded", function () {
             checkImg();
-
-            $('#EndAt').datepicker();
-            $('#StartAt').datepicker({
-                onSelect: function (date) {
-                    $("#EndAt").datepicker("option", "minDate", date);
-                }
-            });
+            
             $('#LaunchAt').datepicker({
                 minDate: 0,
-                onSelect: function (date) {
-                    $("#StartAt").datepicker("option", "minDate", date);
-                }
+                dateFormat: "yy-mm-dd",
             });
+            $('#StartAt').datepicker({
+                dateFormat: "yy-mm-dd",
+            });
+            $('#EndAt').datepicker({
+                dateFormat: "yy-mm-dd"
+            });
+            
+            $('#StartAt').change(function () {
+                var starAt = $('#StartAt').val()
+                $('#EndAt').datepicker("option", "minDate", starAt);
+            })
+            
+
+
             var firstOption = $('#CouponId').children().first();
             firstOption.text("無");
 
@@ -135,26 +141,30 @@
                 })
             }
             $('#CouponId').change(function () {
-                var couponId = $(#CouponId).val();
-                $.ajax({
-                    type: "POST",
-                    url: "/Promotion/GetCouponTime",
-                    data: { couponId: couponId },
-                }).done(function (data) {
-                    if (data === "新增成功") {
-                        var newItem = `<button class="btn btn-success m-1 remove" data-id="${dessertId}">${dessertName}<i class="bi bi-x-lg ms-2"></i></button>`
-                        $('.dessertBox').append(newItem);
-                    }
-                    else {
-                        Swal.fire({
-                            icon: 'error',
-                            title: '錯誤',
-                            text: data
-                        })
-                    }
-                }).fail(function (err) {
-                    alert(err.statusText);
-                });
+                var couponId = $('#CouponId').val();
+                var start = $('#StartAt')
+                var end = $('#EndAt')
+                if (couponId != 0) {
+                    $.ajax({
+                        type: "POST",
+                        url: "/Promotions/GetCouponTime",
+                        data: { couponId: couponId },
+                    }).done(function (data) {
+                        if (data.indexOf(',') == -1) {
+                            Swal.fire({
+                                icon: 'error',
+                                title: '錯誤',
+                                text: data
+                            })
+                            $('#CouponId').val(0);
+                        }
+                        else {
+                            var ary = data.split(',')
+                            start.val(ary[0]);
+                            end.val(ary[1]);
+                        }
+                    })
+                }
             })
 
             })
