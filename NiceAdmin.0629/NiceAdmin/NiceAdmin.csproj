@@ -154,6 +154,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\Promotions\DiscountsController.cs" />
     <Compile Include="Controllers\Promotions\MemberCouponsController.cs" />
+    <Compile Include="Models\ViewModels\LessonsVM\LessonCreateVM.cs" />
     <Compile Include="Models\ViewModels\PromotionsVM\PromotionCreateVM.cs" />
     <Compile Include="Controllers\Promotions\PromotionsController.cs" />
     <Compile Include="Controllers\TeachersController.cs" />
