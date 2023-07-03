@@ -92,6 +92,7 @@ namespace NiceAdmin.Controllers.Orders
         {
             if (ModelState.IsValid)
             {
+                dessertOrder.CreateTime = DateTime.Now;
                 db.Entry(dessertOrder).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -122,7 +123,9 @@ namespace NiceAdmin.Controllers.Orders
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
+
             DessertOrder dessertOrder = db.DessertOrders.Find(id);
+            dessertOrder.CreateTime = DateTime.Now;
             db.DessertOrders.Remove(dessertOrder);
             db.SaveChanges();
             return RedirectToAction("Index");

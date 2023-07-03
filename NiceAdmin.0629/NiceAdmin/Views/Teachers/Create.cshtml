@@ -1,4 +1,4 @@
-﻿@model NiceAdmin.Models.EFModels.Teacher
+﻿@model NiceAdmin.Models.ViewModels.TeachersVM.TeacherCreateVM
 
 @{
     ViewBag.Title = "新增師資";
@@ -21,7 +21,7 @@
 
 
 
-    @using (Html.BeginForm())
+    @using (Html.BeginForm("Create", "Teachers", FormMethod.Post, new {enctype="multipart/form-data"}))
     {
         @Html.AntiForgeryToken()
 
@@ -38,7 +38,7 @@
 
             <div class="mb-3">
                 @Html.LabelFor(model => model.TeacherImage, htmlAttributes: new { @class = "form-label" })
-                @Html.EditorFor(model => model.TeacherImage, new { htmlAttributes = new { @class = "form-control" } })
+                <input type="file" name="file1" class="form-control">
                 @Html.ValidationMessageFor(model => model.TeacherImage, "", new { @class = "text-danger" })
 
             </div>

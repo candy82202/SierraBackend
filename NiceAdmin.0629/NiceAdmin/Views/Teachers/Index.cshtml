@@ -1,9 +1,9 @@
-﻿@model IEnumerable<NiceAdmin.Models.EFModels.Teacher>
+﻿@model IEnumerable<NiceAdmin.Models.ViewModels.TeachersVM.TeacherIndexVM>
+
 
 @{
     ViewBag.Title = "Index";
 }
-
 <main id="main" class="main">
     <div class="pagetitle">
         <h1>教師清單</h1>
@@ -24,25 +24,25 @@
         <thead>
             <tr>
                 <th>
-                    @Html.DisplayNameFor(model => model.TeacherName)
+                    @Html.DisplayNameFor(model => model.TeacherNameText)
+                </th>
+                @*<th>
+                        @Html.DisplayNameFor(model => model.TeacherImage)
+                    </th>*@
+                <th>
+                    @Html.DisplayNameFor(model => model.SpecialtyText)
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.TeacherImage)
+                    @Html.DisplayNameFor(model => model.ExperienceText)
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.Specialty)
+                    @Html.DisplayNameFor(model => model.LicenseText)
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.Experience)
+                    @Html.DisplayNameFor(model => model.AcademicText)
                 </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.License)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Academic)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.TeacherStatus)
+                <th class="text-startr">
+                    @Html.DisplayNameFor(model => model.TeacherStatusText)
                 </th>
                 <th></th>
             </tr>
@@ -53,29 +53,29 @@
             {
                 <tr>
                     <td>
-                        @Html.DisplayFor(modelItem => item.TeacherName)
+                        @Html.DisplayFor(modelItem => item.TeacherNameText)
+                    </td>
+                    @*<td>
+                            @Html.DisplayFor(modelItem => item.TeacherImage)
+                        </td>*@
+                    <td>
+                        @Html.DisplayFor(modelItem => item.SpecialtyText)
                     </td>
                     <td>
-                        @Html.DisplayFor(modelItem => item.TeacherImage)
+                        @Html.DisplayFor(modelItem => item.ExperienceText)
                     </td>
                     <td>
-                        @Html.DisplayFor(modelItem => item.Specialty)
+                        @Html.DisplayFor(modelItem => item.LicenseText)
                     </td>
                     <td>
-                        @Html.DisplayFor(modelItem => item.Experience)
+                        @Html.DisplayFor(modelItem => item.AcademicText)
                     </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.License)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Academic)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.TeacherStatus)
+                    <td class="text-start">
+                        @Html.DisplayFor(modelItem => item.TeacherStatusText)
                     </td>
                     <td>
                         @Html.ActionLink("Edit", "Edit", new { id = item.TeacherId }) |
-                        @Html.ActionLink("Details", "Details", new { id = item.TeacherId }) |
+                        @Html.ActionLink("變更圖片", "EditImage", new { id = item.TeacherId }) |
                         @Html.ActionLink("Delete", "Delete", new { id = item.TeacherId })
                     </td>
                 </tr>
@@ -198,7 +198,8 @@
         }
 
         //autocomplete() 函式的餘下部分處理事件監聽和與建議項目相關的邏輯，包括創建建議項目的 DIV 元素、將它們添加到 DOM 中、監聽建議項目的點擊事件等。
-        autocompleteDesserts(document.getElementById("s_name"), desserts);
+        autocompleteDesserts(document.getElementById("s_name"), teachers);
     </script>
 }
+
 

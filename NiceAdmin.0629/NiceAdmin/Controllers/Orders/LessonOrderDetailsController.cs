@@ -57,7 +57,7 @@ namespace NiceAdmin.Controllers.Orders
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-
+            
             ViewBag.LessonId = new SelectList(db.Lessons, "LessonId", "LessonTitle", lessonOrderDetail.LessonId);
             ViewBag.LessonOrderId = new SelectList(db.LessonOrders, "LessonOrderId", "Note", lessonOrderDetail.LessonOrderId);
             return View(lessonOrderDetail);

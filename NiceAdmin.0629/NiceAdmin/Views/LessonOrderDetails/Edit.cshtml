@@ -1,61 +1,74 @@
 ﻿@model NiceAdmin.Models.EFModels.LessonOrderDetail
 
 @{
-    ViewBag.Title = "Edit";
+    ViewBag.Title = "編輯課程訂單明細";
 }
 
-<h2>Edit</h2>
-
-
-@using (Html.BeginForm())
-{
-    @Html.AntiForgeryToken()
-    
-    <div class="row">
-        <h4>LessonOrderDetail</h4>
-        <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        @Html.HiddenFor(model => model.LessonOrderDetailId)
-        <div class="mb-3">
-            @Html.LabelFor(model => model.LessonOrderId, "LessonOrderId", htmlAttributes: new { @class = "form-label" })
-                @Html.DropDownList("LessonOrderId", null, htmlAttributes: new { @class = "form-control" })
-            @Html.ValidationMessageFor(model => model.LessonOrderId, "", new { @class = "text-danger" })
-        </div>
-        <div class="mb-3">
-            @Html.LabelFor(model => model.LessonId, "LessonId", htmlAttributes: new { @class = "form-label" })
-                @Html.DropDownList("LessonId", null, htmlAttributes: new { @class = "form-control" })
-            @Html.ValidationMessageFor(model => model.LessonId, "", new { @class = "text-danger" })
-        </div>
-        <div class="mb-3">
-            @Html.LabelFor(model => model.LessonTitle, htmlAttributes: new { @class = "form-label" })
-            @Html.EditorFor(model => model.LessonTitle, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.LessonTitle, "", new { @class = "text-danger" })
-        </div>
-        <div class="mb-3">
-            @Html.LabelFor(model => model.NumberOfPeople, htmlAttributes: new { @class = "form-label" })
-            @Html.EditorFor(model => model.NumberOfPeople, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.NumberOfPeople, "", new { @class = "text-danger" })
-        </div>
-        <div class="mb-3">
-            @Html.LabelFor(model => model.LessonUnitPrice, htmlAttributes: new { @class = "form-label" })
-            @Html.EditorFor(model => model.LessonUnitPrice, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.LessonUnitPrice, "", new { @class = "text-danger" })
-        </div>
-        <div class="mb-3">
-            @Html.LabelFor(model => model.Subtotal, htmlAttributes: new { @class = "form-label" })
-            @Html.EditorFor(model => model.Subtotal, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.Subtotal, "", new { @class = "text-danger" })
-        </div>
-        <div class="mb-3">
-            <input type="submit" value="Save" class="btn btn-primary" />
-        </div>
+<main id="main" class="main">
+    <div class="pagetitle">
+        <h1>Form Elements</h1>
+        <nav>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="@Url.Action("Index","Home")">首頁</a></li>
+                <li class="breadcrumb-item">   課程訂單明細管理  </li>
+                <li class="breadcrumb-item active">  課程訂單明細編輯  </li>
+            </ol>
+        </nav>
     </div>
-}
+    <!-- End Page Title -->
+  
 
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>
 
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="row">
+            <h4>編輯課程訂單明細</h4>
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            @Html.HiddenFor(model => model.LessonOrderDetailId)
+            <div class="mb-3">
+                @Html.LabelFor(model => model.LessonOrderId, "LessonOrderId", htmlAttributes: new { @class = "form-label" })
+                @Html.DropDownList("LessonOrderId", null, htmlAttributes: new { @class = "form-select" })
+                @Html.ValidationMessageFor(model => model.LessonOrderId, "", new { @class = "text-danger" })
+            </div>
+            <div class="mb-3">
+                @Html.LabelFor(model => model.LessonId, "LessonId", htmlAttributes: new { @class = "form-label" })
+                @Html.DropDownList("LessonId", null, htmlAttributes: new { @class = "form-select" })
+                @Html.ValidationMessageFor(model => model.LessonId, "", new { @class = "text-danger" })
+            </div>
+            <div class="mb-3">
+                @Html.LabelFor(model => model.LessonTitle, htmlAttributes: new { @class = "form-label" })
+                @Html.EditorFor(model => model.LessonTitle, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.LessonTitle, "", new { @class = "text-danger" })
+            </div>
+            <div class="mb-3">
+                @Html.LabelFor(model => model.NumberOfPeople, htmlAttributes: new { @class = "form-label" })
+                @Html.EditorFor(model => model.NumberOfPeople, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.NumberOfPeople, "", new { @class = "text-danger" })
+            </div>
+            <div class="mb-3">
+                @Html.LabelFor(model => model.LessonUnitPrice, htmlAttributes: new { @class = "form-label" })
+                @Html.EditorFor(model => model.LessonUnitPrice, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.LessonUnitPrice, "", new { @class = "text-danger" })
+            </div>
+            <div class="mb-3">
+                @Html.LabelFor(model => model.Subtotal, htmlAttributes: new { @class = "form-label" })
+                @Html.EditorFor(model => model.Subtotal, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Subtotal, "", new { @class = "text-danger" })
+            </div>
+            <div class="mb-3">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </div>
+    }
+
+    <div>
+        @Html.ActionLink("Back to List", "Index")
+    </div>
+</main>
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
 }
