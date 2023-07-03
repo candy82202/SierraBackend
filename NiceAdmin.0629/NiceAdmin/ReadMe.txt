@@ -93,8 +93,9 @@ Member 部分
       新增 EmployeeIndexVM, EmployeeCreateVM, EmployeeExts
       新增 Views/Employees/Create.cshtml和Index.cshtml
 
-
-
+[working on] - 完成Employees/Edit(含view page)
+[working on] - 修改複合主鍵時遇到錯誤：System.InvalidOperationException: 'The property 'RoleId' is part of the object's key information and cannot be modified. '
+      解決方法：先用變數保存原本資料，再刪除原本資料，最後再新增一筆新資料。
 
 
 
