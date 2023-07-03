@@ -7,7 +7,7 @@
     ViewBag.Title = "Create";
 }
 <main id="main" class="main">
-  
+
     <!-- End Page Title -->
     <div class="row">
         <div class="card">
@@ -63,11 +63,16 @@
                         @Html.TextAreaFor(model => model.Description, new { @class = "form-control" })
                         @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
 
+
+                    </div>
+
+                    <div id="previewContainer">
+                        <!-- 预览图像将在此处动态生成 -->
                     </div>
                     <div class="mb-3">
                         @Html.LabelFor(model => model.DessertImageName, htmlAttributes: new { @class = "form-label col-md-2" })
                         <div class="col-md-10">
-                            <input type="file" name="images" multiple class="form-control" />
+                            <input type="file" id="files" name="images" multiple class="form-control" accept="image/*" />
                         </div>
                     </div>
 
@@ -97,7 +102,28 @@
             </div>
         </div>
     </div>
-    </main>
+</main>
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
+
+    <script>
+        $('#files').change(function () {
+            var files = this.files;
+            var container = $('#previewContainer');
+            container.empty(); // 清空預覽容器
+
+            for (var i = 0; i < files.length; i++) {
+                var file = files[i];
+                var reader = new FileReader();
+                reader.onload = (function (file) {
+                    return function (e) {
+                        var img = $('<img>').attr('src', e.target.result).css({ width: '120px', height: '120px' });
+                        container.append(img); // 將圖片加到容器裡面
+                    };
+                })(file);
+                reader.readAsDataURL(file);
+            }
+        });
+    </script>
+
 }
