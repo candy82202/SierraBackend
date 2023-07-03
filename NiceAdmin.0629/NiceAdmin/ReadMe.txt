@@ -113,6 +113,11 @@ Lesson 部分
 Teacher 部分
 [working on]建立三層式
 -add TeacherDto class
+[v]改完版型
+[working on]VM
+[working on]新增資料:抓到當下的創建時間
+[working on]檢查CRUD
+試推orders03
 
 
 
@@ -157,9 +162,21 @@ Promotion部分
     
 [V] - 編輯優惠群組名稱
 
-[working on] - 實作優惠群組內加入、去除商品功能
+[V] - 實作優惠群組內加入商品(ajax新增一筆後畫面直接多出一個button不刷新)  //todo強化搜尋功能、搜尋畫面一鍵加入
 
-改改看
+[V] - 優惠群組去除商品(同上)  
+
+[V] - 優惠券清單，VM因為有一個關聯的東西是nullable所以要特別處理  //todo 可能要新增狀態欄位，複製功能(不編輯了)
+
+[V] - 新增優惠券
+
+[V] - 優惠券詳情
+
+[V] - 促銷活動清單、新增 //todo dropdownlist只顯示分類為活動的優惠券(不行的話就選完之後ajax檢查)
+                      //jqueryUI datepicker沒法正常顯示  
+
+[working on] - 促銷活動修改、刪除
+
 
 
 

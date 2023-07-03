@@ -1,86 +1,107 @@
-﻿@model NiceAdmin.Models.EFModels.Promotion
+﻿@model NiceAdmin.Models.ViewModels.PromotionsVM.PromotionCreateVM
 
 @{
     ViewBag.Title = "Create";
 }
 
-<h2>Create</h2>
-
-
-@using (Html.BeginForm()) 
-{
-    @Html.AntiForgeryToken()
-    
-    <div class="row">
-        <h4>Promotion</h4>
-        <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        <div class="mb-3">
-            @Html.LabelFor(model => model.CouponId, "CouponId", htmlAttributes: new { @class = "form-label" })
-            @Html.DropDownList("CouponId", null, htmlAttributes: new { @class = "form-control" })
-            @Html.ValidationMessageFor(model => model.CouponId, "", new { @class = "text-danger" })
-
-        </div>
-
-        <div class="mb-3">
-            @Html.LabelFor(model => model.PromotionImage, htmlAttributes: new { @class = "form-label" })
-            @Html.EditorFor(model => model.PromotionImage, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.PromotionImage, "", new { @class = "text-danger" })
-
-        </div>
-
-        <div class="mb-3">
-            @Html.LabelFor(model => model.PromotionName, htmlAttributes: new { @class = "form-label" })
-            @Html.EditorFor(model => model.PromotionName, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.PromotionName, "", new { @class = "text-danger" })
-
-        </div>
-
-        <div class="mb-3">
-            @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "form-label" })
-            @Html.EditorFor(model => model.Description, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
-
-        </div>
-
-        <div class="mb-3">
-            @Html.LabelFor(model => model.LaunchAt, htmlAttributes: new { @class = "form-label" })
-            @Html.EditorFor(model => model.LaunchAt, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.LaunchAt, "", new { @class = "text-danger" })
-
-        </div>
-
-        <div class="mb-3">
-            @Html.LabelFor(model => model.StartAt, htmlAttributes: new { @class = "form-label" })
-            @Html.EditorFor(model => model.StartAt, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.StartAt, "", new { @class = "text-danger" })
-
-        </div>
-
-        <div class="mb-3">
-            @Html.LabelFor(model => model.EndAt, htmlAttributes: new { @class = "form-label" })
-            @Html.EditorFor(model => model.EndAt, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.EndAt, "", new { @class = "text-danger" })
-
-        </div>
-
-        <div class="mb-3">
-            @Html.LabelFor(model => model.CreateAt, htmlAttributes: new { @class = "form-label" })
-            @Html.EditorFor(model => model.CreateAt, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.CreateAt, "", new { @class = "text-danger" })
-
-        </div>
-
-        <div class="mb-3">
-                <input type="submit" value="Create" class="btn btn-primary" />
-        </div>
+<main id="main" class="main">
+    <div class="pagetitle">
+        <h1>新增促銷活動</h1>
+        <nav>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="@Url.Action("Index","Home")">首頁</a></li>
+                <li class="breadcrumb-item">   行銷管理  </li>
+                <li class="breadcrumb-item active">  促銷活動清單  </li>
+                <li class="breadcrumb-item active">  新增促銷活動  </li>
+            </ol>
+        </nav>
     </div>
-}
+    <!-- End Page Title -->
+    <section class="section">
+        @using (Html.BeginForm("Create", "Promotions", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+            @Html.AntiForgeryToken()
 
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>
+        <div class="row">
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <div class="mb-3">
+                @Html.LabelFor(model => model.PromotionName, htmlAttributes: new { @class = "form-label" })
+                @Html.EditorFor(model => model.PromotionName, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.PromotionName, "", new { @class = "text-danger" })
 
+            </div>
+            <div class="mb-3">
+                @Html.LabelFor(model => model.CouponId, htmlAttributes: new { @class = "form-label" })
+                @Html.DropDownList("CouponId", null, htmlAttributes: new { @class = "form-select" })
+                @Html.ValidationMessageFor(model => model.CouponId, "", new { @class = "text-danger" })
+
+            </div>
+
+            <div class="mb-3">
+                @Html.LabelFor(model => model.PromotionImage, htmlAttributes: new { @class = "form-label" })
+                <input type="file" name="PromotionImage" value="" class="form-control" id="PromotionImage"/>
+                @Html.ValidationMessageFor(model => model.PromotionImage, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="mb-3">
+                @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "form-label" })
+                @Html.TextAreaFor(model => model.Description, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
+
+            </div>
+
+            <div class="mb-3">
+                @Html.LabelFor(model => model.LaunchAt, htmlAttributes: new { @class = "form-label" })
+                @Html.EditorFor(model => model.LaunchAt, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.LaunchAt, "", new { @class = "text-danger" })
+
+            </div>
+
+            <div class="mb-3">
+                @Html.LabelFor(model => model.StartAt, htmlAttributes: new { @class = "form-label" })
+                @Html.EditorFor(model => model.StartAt, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.StartAt, "", new { @class = "text-danger" })
+
+            </div>
+
+            <div class="mb-3">
+                @Html.LabelFor(model => model.EndAt, htmlAttributes: new { @class = "form-label" })
+                @Html.EditorFor(model => model.EndAt, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.EndAt, "", new { @class = "text-danger" })
+
+            </div>
+
+            <div class="mb-3">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </div>
+        }
+
+        <div>
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    </section>
+</main>
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
+<script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js" integrity="sha256-6XMVI0zB8cRzfZjqKcD01PBsAy3FlDASrlC8SxCpInY=" crossorigin="anonymous"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            
+            $('#EndAt').datepicker();
+            $('#StartAt').datepicker({
+                onSelect: function (date) {
+                    $("#EndAt").datepicker("option", "minDate", date); 
+                }
+            });
+            $('#LaunchAt').datepicker({
+                onSelect: function (date) {
+                    $("#StartAt").datepicker("option", "minDate", date);
+                }
+            });
+            var firstOption = $('#CouponId').children().first();
+            firstOption.text("無");
+        })
+    </script>
 }
