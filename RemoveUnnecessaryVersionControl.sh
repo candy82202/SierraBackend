@@ -1,6 +1,5 @@
 git rm --cached "*.rsuser"
 git rm --cached "*.suo"
-git rm --cached "*.user"
 git rm --cached "*.userosscache"
 git rm --cached "*.sln.docstates"
 git rm --cached "*.userprefs"
