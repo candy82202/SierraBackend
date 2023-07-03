@@ -145,21 +145,20 @@
                 <!-- End Search Icon-->
 
                 <li>
-                    <a class="nav-link nav-icon" href="@Url.Action("Sierras","Home",new { cId = "" })" data-bs-toggle="dropdown">
-                        @*<i class="bi bi-bell"></i>*@
+                    <a class="nav-link nav-icon" href="@Url.Action("Sierras","Home",new { cId = "" })" data-bs-toggle="dropdown">                        
                         <i class="bi bi-arrow-up-left-square"></i>
                         @*<span class="badge bg-primary badge-number">4</span>*@
-                    </a><!-- End Notification Icon -->
-                    <!-- End Notification Dropdown Items -->
+                    </a>
+                   @*連結前台頁面連結*@
                 </li>
 
-                <li class="nav-item dropdown">
+                @*<li class="nav-item dropdown">
                     <a class="nav-link nav-icon" href="#" data-bs-toggle="dropdown">
                         <i class="bi bi-bell"></i>
                         <span class="badge bg-primary badge-number">4</span>
-                    </a><!-- End Notification Icon -->
+                    </a>*@<!-- End Notification Icon -->
 
-                    <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow notifications">
+                    <!--<ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow notifications">
                         <li class="dropdown-header">
                             您有4條新通知
                             <a href="#">
@@ -224,18 +223,18 @@
                         <li class="dropdown-footer">
                             <a href="#">顯示所有通知</a>
                         </li>
-                    </ul>
+                    </ul>-->
                     <!-- End Notification Dropdown Items -->
-                </li>
+                <!--</li>-->
                 <!-- End Notification Nav -->
 
-                <li class="nav-item dropdown">
+                <!--<li class="nav-item dropdown">
                     <a class="nav-link nav-icon" href="#" data-bs-toggle="dropdown">
                         <i class="bi bi-chat-left-text"></i>
                         <span class="badge bg-success badge-number">3</span>
-                    </a><!-- End Messages Icon -->
+                    </a>--><!-- End Messages Icon -->
 
-                    <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow messages">
+                    <!--<ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow messages">
                         <li class="dropdown-header">
                             您有新的3筆訊息
                             <a href="#">
@@ -297,16 +296,16 @@
                         <li class="dropdown-footer">
                             <a href="#">顯示全部訊息</a>
                         </li>
-                    </ul>
+                    </ul>-->
                     <!-- End Messages Dropdown Items -->
-                </li>
+                <!--</li>-->
                 <!-- End Messages Nav -->
 
                 <li class="nav-item dropdown pe-3">
                     <a class="nav-link nav-profile d-flex align-items-center pe-0"
                        href="#"
                        data-bs-toggle="dropdown">
-                        <img src="assets/img/profile-img.jpg"
+                        <img src="~/img/profile-img.jpg"
                              alt="Profile"
                              class="rounded-circle" />
                         <span class="d-none d-md-block dropdown-toggle ps-2">K. Anderson</span>
