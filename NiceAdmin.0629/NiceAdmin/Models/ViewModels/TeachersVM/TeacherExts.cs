@@ -73,12 +73,19 @@ namespace NiceAdmin.Models.ViewModels.TeachersVM
         }
         public static Teacher TOEntity(this TeacherEditImageVM vm)
         {
+            var db=new AppDbContext();
+           
+            var teacher= db.Teachers.FirstOrDefault(t => t.TeacherId == vm.TeacherId);
             return new Teacher
             {
                 TeacherId = vm.TeacherId,
-                
+                TeacherName = teacher.TeacherName,
                 TeacherImage = vm.TeacherImage,
-               
+                Specialty = teacher.Specialty,
+                Experience = teacher.Experience,
+                License = teacher.License,
+                Academic = teacher.Academic,
+                TeacherStatus = teacher.TeacherStatus
             };
         }
 

@@ -17,35 +17,35 @@
     </div>
     <!-- End Page Title -->
 
-
-    @using (Html.BeginForm(("EditImage", "Teachers", FormMethod.Post, new { enctype = "multipart/form-data" })))
+    @using (Html.BeginForm("EditImage", "Teachers", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    
     {
         @Html.AntiForgeryToken()
 
-<div class="row">
+        <div class="row">
 
-    <hr />
-    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-    @Html.HiddenFor(model => model.TeacherId)
-    @Html.HiddenFor(model => model.TeacherImage)
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            @Html.HiddenFor(model => model.TeacherId)
+            @Html.HiddenFor(model => model.TeacherImage)
 
-    <div class="mb-3 col-md-4">
-        <img src="/Uploads/@Model.TeacherImage" style="width: 100%" />
-    </div>
+            <div class="mb-3 col-md-4">
+                <img src="/Uploads/@Model.TeacherImage" style="width: 100%" />
+            </div>
 
-    <div class="mb-3">
-        @Html.LabelFor(model => model.TeacherImage, htmlAttributes: new { @class = "form-label" })
-        @*@Html.EditorFor(model => model.TeacherImage, new { htmlAttributes = new { @class = "form-control" } })*@
-        <input type="file" name="file2" class="form-control" />
-        @Html.ValidationMessageFor(model => model.TeacherImage, "", new { @class = "text-danger" })
-    </div>
+            <div class="mb-3">
+                @Html.LabelFor(model => model.TeacherImage, htmlAttributes: new { @class = "form-label" })
+
+                <input type="file" name="file1" class="form-control" />
+                @Html.ValidationMessageFor(model => model.TeacherImage, "", new { @class = "text-danger" })
+            </div>
 
 
-    <div class="mb-3">
-        <input type="submit" value="Save" class="btn btn-primary" />
-    </div>
-</div>
- 
+            <div class="mb-3">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </div>
+
     }
 
     <div>

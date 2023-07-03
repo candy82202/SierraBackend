@@ -1,0 +1,37 @@
+﻿@model NiceAdmin.Models.EFModels.DiscountGroup
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Create</h2>
+
+
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="row">
+        <h4>DiscountGroup</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="mb-3">
+            @Html.LabelFor(model => model.DiscountGroupName, htmlAttributes: new { @class = "form-label" })
+            @Html.EditorFor(model => model.DiscountGroupName, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.DiscountGroupName, "", new { @class = "text-danger" })
+
+        </div>
+
+        <div class="mb-3">
+                <input type="submit" value="Create" class="btn btn-primary" />
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
