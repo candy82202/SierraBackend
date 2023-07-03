@@ -202,6 +202,9 @@
     <Compile Include="Models\ViewModels\DessertsVM\DessertFrontIndexVM.cs" />
     <Compile Include="Models\ViewModels\DessertsVM\DessertIndexVM.cs" />
     <Compile Include="Models\ViewModels\DessertsVM\DessertCriteria.cs" />
+    <Compile Include="Models\ViewModels\MembersVM\EmployeeCreateVM.cs" />
+    <Compile Include="Models\ViewModels\MembersVM\EmployeeExts.cs" />
+    <Compile Include="Models\ViewModels\MembersVM\EmployeeIndexVM.cs" />
     <Compile Include="Models\ViewModels\MembersVM\MemberIndexVM.cs" />
     <Compile Include="Models\ViewModels\OrdersVM\LessonOrderIndexVM.cs" />
     <Compile Include="Models\ViewModels\PromotionsVM\CouponIndexVM.cs" />
@@ -808,6 +811,7 @@
     <Content Include="Views\Permissions\Details.cshtml" />
     <Content Include="Views\Permissions\Edit.cshtml" />
     <Content Include="Views\Permissions\Index.cshtml" />
+<<<<<<< HEAD
     <Content Include="Views\Roles1\Create.cshtml" />
     <Content Include="Views\Roles1\Delete.cshtml" />
     <Content Include="Views\Roles1\Details.cshtml" />
@@ -815,6 +819,8 @@
     <Content Include="Views\Roles1\Index.cshtml" />
     <Content Include="Views\Shared\_CurrentTimePartial.cshtml" />
     <Content Include="Views\Home\RecentUpDesserts.cshtml" />
+=======
+>>>>>>> origin/Members03
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="Scripts\vendor\chart.js\controllers\controller.bar.d.ts" />

@@ -6,7 +6,9 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Security;
 using NiceAdmin.Models.EFModels;
+using NiceAdmin.Models.ViewModels.MembersVM;
 
 namespace NiceAdmin.Controllers.Members
 {
@@ -17,7 +19,8 @@ namespace NiceAdmin.Controllers.Members
         // GET: Employees
         public ActionResult Index()
         {
-            return View(db.Employees.ToList());
+            var emp = db.Employees.ToList().Select(e => e.ToIndexVM());
+            return View(emp);
         }
 
         // GET: Employees/Details/5
@@ -38,6 +41,12 @@ namespace NiceAdmin.Controllers.Members
         // GET: Employees/Create
         public ActionResult Create()
         {
+            ViewBag.RoleId = db.Roles.Select(r => new SelectListItem
+            {
+                Value = r.RoleId.ToString(),
+                Text = r.RoleName
+            });
+
             return View();
         }
 
@@ -46,11 +55,16 @@ namespace NiceAdmin.Controllers.Members
         // 如需詳細資料，請參閱 https://go.microsoft.com/fwlink/?LinkId=317598。
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "EmployeeId,EmployeeName,EncryptedPassword,CreateAt")] Employee employee)
+        public ActionResult Create(Employee employee, EmployeeToRole relation)
         {
             if (ModelState.IsValid)
             {
+                employee.CreateAt = DateTime.Now;
                 db.Employees.Add(employee);
+                db.SaveChanges();
+
+                relation.EmployeeId = employee.EmployeeId;
+                db.EmployeeToRoles.Add(relation);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }

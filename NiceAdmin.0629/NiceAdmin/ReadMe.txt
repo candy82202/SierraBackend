@@ -85,9 +85,13 @@ Member 部分
 [V] - 重建EFModels
       重建相關控制器和檢視
 
+[V] - 刪除檢視Roles1(誤創的)
 
-
-
+[V] - 新增VM
+[V] - 修改檢視
+[V] - 完成 EmployeesController 中的 Index(), Create()
+      新增 EmployeeIndexVM, EmployeeCreateVM, EmployeeExts
+      新增 Views/Employees/Create.cshtml和Index.cshtml
 
 
 

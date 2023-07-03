@@ -1,50 +1,59 @@
-﻿@model NiceAdmin.Models.EFModels.Employee
+﻿@model NiceAdmin.Models.ViewModels.MembersVM.EmployeeCreateVM
 
 @{
     ViewBag.Title = "Create";
 }
 
-<h2>Create</h2>
 
-
-@using (Html.BeginForm()) 
-{
-    @Html.AntiForgeryToken()
-    
-    <div class="row">
-        <h4>Employee</h4>
-        <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        <div class="mb-3">
-            @Html.LabelFor(model => model.EmployeeName, htmlAttributes: new { @class = "form-label" })
-            @Html.EditorFor(model => model.EmployeeName, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.EmployeeName, "", new { @class = "text-danger" })
-
-        </div>
-
-        <div class="mb-3">
-            @Html.LabelFor(model => model.EncryptedPassword, htmlAttributes: new { @class = "form-label" })
-            @Html.EditorFor(model => model.EncryptedPassword, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.EncryptedPassword, "", new { @class = "text-danger" })
-
-        </div>
-
-        <div class="mb-3">
-            @Html.LabelFor(model => model.CreateAt, htmlAttributes: new { @class = "form-label" })
-            @Html.EditorFor(model => model.CreateAt, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.CreateAt, "", new { @class = "text-danger" })
-
-        </div>
-
-        <div class="mb-3">
-                <input type="submit" value="Create" class="btn btn-primary" />
-        </div>
+<main id="main" class="main">
+    <div class="pagetitle">
+        <h1>新增員工</h1>
+        <nav>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="@Url.Action("Index","Home")">首頁</a></li>
+                <li class="breadcrumb-item">員工管理</li>
+                <li class="breadcrumb-item active">新建員工</li>
+            </ol>
+        </nav>
     </div>
-}
+    <!-- End Page Title -->
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
 
+        <div class="row">
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <div class="mb-3">
+                @Html.LabelFor(model => model.EmployeeName, htmlAttributes: new { @class = "form-label" })
+                @Html.EditorFor(model => model.EmployeeName, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.EmployeeName, "", new { @class = "text-danger" })
+
+            </div>
+
+            <div class="mb-3">
+                @Html.LabelFor(model => model.EncryptedPassword, htmlAttributes: new { @class = "form-label" })
+                @Html.EditorFor(model => model.EncryptedPassword, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.EncryptedPassword, "", new { @class = "text-danger" })
+
+            </div>
+
+            <div class="mb-3">
+                @Html.LabelFor(model => model.RoleId, htmlAttributes: new { @class = "form-label" })
+                @Html.DropDownList("RoleId", null, htmlAttributes: new { @class = "form-select" })
+                @Html.ValidationMessageFor(model => model.RoleId, "", new { @class = "text-danger" })
+
+            </div>
+
+            <div class="mb-3">
+                <input type="submit" value="新增" class="btn btn-primary" />
+            </div>
+        </div>
+    }
 <div>
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("返回頁面", "Index")
 </div>
+</main>
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
