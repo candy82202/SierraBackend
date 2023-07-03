@@ -6,7 +6,7 @@
 
     var categories = ViewBag.LessonCategoryId as SelectList;
     var criteria = ViewBag.Criteria as NiceAdmin.Models.ViewModels.LessonsVM.LessonCriteria;
-    string s_courseCategoryName = criteria.LessonCategoryId.HasValue ? criteria.LessonCategoryId.Value.ToString() : "";
+    string s_lessonCategoryName = criteria.LessonCategoryId.HasValue ? criteria.LessonCategoryId.Value.ToString() : "";
 }
 
 
@@ -31,15 +31,15 @@
             <div class="row autocomplete" style="width:100%;">
                 <div class="mb-3 col-md-3">
                     <label for="s_name">課程名稱</label>
-                    <input type="text" class="form-control" name="name" id="s_name" value="@criteria.LessonTitle">
+                    <input type="text" class="form-control" name="LessonTitle" id="s_name" value="@criteria.LessonTitle">
 
                 </div>
                 <div class="mb-3 col-md-3">
-                    <label for="s_categoryId">分類</label>
-                    <select name="categoryId" id="s_categoryId" class="form-select">
+                    <label for="s_categoryId">課程分類</label>
+                    <select name="LessonCategoryId" id="s_categoryId" class="form-select">
                         @foreach (var item in categories)
                         {
-                            <option value="@item.Value" @(s_courseCategoryName == item.Value ? "selected" : "")>@item.Text</option>
+                            <option value="@item.Value" @(s_lessonCategoryName == item.Value ? "selected" : "")>@item.Text</option>
                         }
                     </select>
 

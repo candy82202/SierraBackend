@@ -22,23 +22,24 @@ namespace NiceAdmin.Controllers.Lessons
             PrepareCategoryDataSource(lessonCriteria.LessonCategoryId);
             //ViewBag.DessertCriteria = dessertCriteria;
             ViewBag.Criteria = lessonCriteria;
-            var query = db.Lessons.Include(d => d.LessonCategory);
+
+            var query = db.Lessons.Include(l => l.LessonCategory);
             #region where
             if (string.IsNullOrEmpty(lessonCriteria.LessonTitle) == false)
             {
-                query = query.Where(d => d.LessonTitle.Contains(lessonCriteria.LessonTitle));
+                query = query.Where(l => l.LessonTitle.Contains(lessonCriteria.LessonTitle));
             }
             if (lessonCriteria.LessonCategoryId != null && lessonCriteria.LessonCategoryId.Value > 0)
             {
-                query = query.Where(d => d.LessonCategoryId == lessonCriteria.LessonCategoryId.Value);
+                query = query.Where(l => l.LessonCategoryId == lessonCriteria.LessonCategoryId.Value);
             }
             if (lessonCriteria.MinPrice.HasValue)
             {
-                query = query.Where(d => d.LessonPrice >= lessonCriteria.MinPrice.Value);
+                query = query.Where(l => l.LessonPrice >= lessonCriteria.MinPrice.Value);
             }
             if (lessonCriteria.MaxPrice.HasValue)
             {
-                query = query.Where(d => d.LessonPrice <= lessonCriteria.MaxPrice.Value);
+                query = query.Where(l => l.LessonPrice <= lessonCriteria.MaxPrice.Value);
             }
             #endregion
             var lessons = query.ToList().Select(d => d.ToIndexVM());
@@ -47,7 +48,8 @@ namespace NiceAdmin.Controllers.Lessons
 
         private void PrepareCategoryDataSource(int? lessonCategoryName)
         {
-            ViewBag.LessonCategoryId = new SelectList(db.LessonCategories, "LessonCategoryId", "LessonCategoryName", lessonCategoryName);
+            var categories = db.LessonCategories.ToList().Prepend(new LessonCategory());
+            ViewBag.LessonCategoryId = new SelectList(categories, "LessonCategoryId", "LessonCategoryName", lessonCategoryName);
         }
 
         // GET: Lessons/Details/5

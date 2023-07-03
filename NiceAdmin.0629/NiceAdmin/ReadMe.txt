@@ -87,7 +87,7 @@ Lesson 部分
 [V]將sa5的密碼修改和Web.config相同
 [V]初步修改Lessons、LessonCategories CRUD版面調整
 
-
+[V]index進階搜尋 OK
 
 [working on]完善Course CRUD、Courses的多張照片上傳和修改
 [working on]CRUD頁面需要補上<main> ⇒ 版型調整、table部分更改成datatable(有需要使用的)
