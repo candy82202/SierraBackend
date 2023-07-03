@@ -79,7 +79,7 @@ namespace NiceAdmin.Controllers.Lessons
         // 如需詳細資料，請參閱 https://go.microsoft.com/fwlink/?LinkId=317598。
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(LessonCreateVM vm)
+        public ActionResult Create(Lesson lesson)//LessonCreateVM vm)
         {
             if (ModelState.IsValid)
             {
@@ -90,7 +90,7 @@ namespace NiceAdmin.Controllers.Lessons
 
             ViewBag.LessonCategoryId = new SelectList(db.LessonCategories, "LessonCategoryId", "LessonCategoryName", lesson.LessonCategoryId);
             ViewBag.TeacherId = new SelectList(db.Teachers, "TeacherId", "TeacherName", lesson.TeacherId);
-            return View(vm);
+            return View(lesson);
         }
 
         // GET: Lessons/Edit/5
