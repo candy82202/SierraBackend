@@ -87,7 +87,7 @@ namespace NiceAdmin.Models.ViewModels.TeachersVM
         public string TeacherStatusText {
             get
             {
-                return this.TeacherStatus == true ? "上架中" : "已下架";
+                return this.TeacherStatus == true ? "上架" : "下架";
             }
                 }
     }

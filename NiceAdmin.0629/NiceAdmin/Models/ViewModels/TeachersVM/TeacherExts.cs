@@ -9,7 +9,7 @@ namespace NiceAdmin.Models.ViewModels.TeachersVM
 {
     public static class TeacherExts
     {
-        public static TeacherIndexVM TOIndexVM(this Teacher entiey)
+        public static TeacherIndexVM TOIndexVM(this Teacher entiey)//ENTITY(資料庫的資料)轉成VM
         {
             return new TeacherIndexVM
             {
@@ -20,6 +20,19 @@ namespace NiceAdmin.Models.ViewModels.TeachersVM
                 License = entiey.License,
                 Academic = entiey.Academic,
                 TeacherStatus = entiey.TeacherStatus
+            };
+        }
+        public static Teacher TOIndexEntity(this TeacherIndexVM vm)//VM傳回給ENTITY
+        {
+            return new Teacher
+            {
+                TeacherId = vm.TeacherId,
+                TeacherName = vm.TeacherName,
+                Specialty = vm.Specialty,
+                Experience = vm.Experience,
+                License = vm.License,
+                Academic = vm.Academic,
+                TeacherStatus = vm.TeacherStatus
             };
         }
         public static TeacherCreateVM TOCreateVM(this Teacher entiey)

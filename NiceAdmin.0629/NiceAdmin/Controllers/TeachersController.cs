@@ -17,12 +17,20 @@ namespace NiceAdmin.Controllers
         private AppDbContext db = new AppDbContext();
 
         // GET: Teachers
-        public ActionResult Index()
+        public ActionResult Index(TeacherCriteria criteria)
         {
-            var teachers = db.Teachers.ToList();
-            var teacherViewModels = teachers.Select(t => t.TOIndexVM()).ToList();
+            ViewBag.Criteria = criteria;
+            //查詢紀錄，由於第一次進到網頁時，criteria是沒有值的
+            var query = db.Teachers.ToList().Select(t=>t.TOIndexVM());//T指ENTITY
+            if (string.IsNullOrEmpty(criteria.TeacherName) == false)
+            {
+                query = query.Where(t=>t.TeacherName.Contains(criteria.TeacherName)).ToList();
+            }
 
-            return View(teacherViewModels);
+            //var teachers = db.Teachers.ToList();
+            //var teacherViewModels = teachers.Select(t => t.TOIndexVM()).ToList();
+
+            return View(query);
         }
 
         // GET: Teachers/Details/5

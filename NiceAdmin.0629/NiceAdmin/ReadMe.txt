@@ -137,7 +137,7 @@ Teacher 部分
 -add TeacherDto class
 [v]改完版型
 [v]建立VM classes
-[workink on]寫擴充方法轉vm
+[v]寫擴充方法轉vm
 [v]index頁轉vm
 [v]修改TeacherIndexVM，增加display
 [v]TeacherIndexVM描述截斷，留前幾個字
@@ -146,9 +146,13 @@ Teacher 部分
 [v]edit
 [v]變更圖片
 [v]Delete VM
-[working on]index查詢
 [v]檢查CRUD
 [v]試推orders04
+[working on]index查詢
+[working on]index變更圖片icon
+[working on]index一鍵上下架
+[v]index頁上下架更改圖示
+
 
 
 
