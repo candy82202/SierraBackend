@@ -814,20 +814,8 @@
     <Content Include="Views\Permissions\Details.cshtml" />
     <Content Include="Views\Permissions\Edit.cshtml" />
     <Content Include="Views\Permissions\Index.cshtml" />
-<<<<<<< HEAD
     <Content Include="Views\Shared\_CurrentTimePartial.cshtml" />
     <Content Include="Views\Home\RecentUpDesserts.cshtml" />
-=======
-    <Content Include="Views\Roles1\Create.cshtml" />
-    <Content Include="Views\Roles1\Delete.cshtml" />
-    <Content Include="Views\Roles1\Details.cshtml" />
-    <Content Include="Views\Roles1\Edit.cshtml" />
-    <Content Include="Views\Roles1\Index.cshtml" />
-    <Content Include="Views\Coupons\Index.cshtml" />
-    <Content Include="Views\Coupons\Create.cshtml" />
-    <Content Include="Views\Promotions\Index.cshtml" />
-    <Content Include="Views\Promotions\Create.cshtml" />
->>>>>>> Lesson02
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="Scripts\vendor\chart.js\controllers\controller.bar.d.ts" />
