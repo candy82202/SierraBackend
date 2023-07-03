@@ -205,7 +205,9 @@ namespace NiceAdmin.Controllers
             {
                 return HttpNotFound();
             }
-            return View(teacher);
+
+            TeacherDeleteVM vm = teacher.TODeleteVM(); 
+            return View(vm);
         }
 
         // POST: Teachers/Delete/5

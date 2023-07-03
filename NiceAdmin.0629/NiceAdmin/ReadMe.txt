@@ -145,6 +145,7 @@ Teacher 部分
 [v]上傳檔案
 [v]edit
 [v]變更圖片
+[v]Delete VM
 [working on]index查詢
 [v]檢查CRUD
 [v]試推orders04

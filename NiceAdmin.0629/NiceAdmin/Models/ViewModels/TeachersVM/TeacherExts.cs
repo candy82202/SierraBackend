@@ -88,6 +88,19 @@ namespace NiceAdmin.Models.ViewModels.TeachersVM
                 TeacherStatus = teacher.TeacherStatus
             };
         }
-
+        public static TeacherDeleteVM TODeleteVM(this Teacher entiey)
+        {
+            return new TeacherDeleteVM
+            {
+                TeacherId = entiey.TeacherId,
+                TeacherName = entiey.TeacherName,
+                TeacherImage = entiey.TeacherImage,
+                Specialty = entiey.Specialty,
+                Experience = entiey.Experience,
+                License = entiey.License,
+                Academic = entiey.Academic,
+                TeacherStatus = entiey.TeacherStatus
+            };
+        }
     }
 }
