@@ -70,8 +70,7 @@ namespace NiceAdmin.Controllers.Lessons
         // GET: Lessons/Create
         public ActionResult Create()
         {
-            ViewBag.LessonCategoryId = new SelectList(db.LessonCategories, "LessonCategoryId", "LessonCategoryName");
-            ViewBag.TeacherId = new SelectList(db.Teachers, "TeacherId", "TeacherName");
+            PrepareCategoryDataSource(null);
             return View();
         }
 
@@ -80,7 +79,7 @@ namespace NiceAdmin.Controllers.Lessons
         // 如需詳細資料，請參閱 https://go.microsoft.com/fwlink/?LinkId=317598。
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "LessonId,LessonCategoryId,TeacherId,LessonTitle,LessonInfo,LessonDetail,LessonDessert,LessonTime,LessonHours,MaximumCapacity,LessonPrice,LessonStatus,CreateTime")] Lesson lesson)
+        public ActionResult Create(LessonCreateVM vm)
         {
             if (ModelState.IsValid)
             {
@@ -91,7 +90,7 @@ namespace NiceAdmin.Controllers.Lessons
 
             ViewBag.LessonCategoryId = new SelectList(db.LessonCategories, "LessonCategoryId", "LessonCategoryName", lesson.LessonCategoryId);
             ViewBag.TeacherId = new SelectList(db.Teachers, "TeacherId", "TeacherName", lesson.TeacherId);
-            return View(lesson);
+            return View(vm);
         }
 
         // GET: Lessons/Edit/5
