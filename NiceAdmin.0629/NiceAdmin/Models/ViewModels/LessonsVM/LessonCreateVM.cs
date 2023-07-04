@@ -1,4 +1,5 @@
-﻿using System;
+﻿using NiceAdmin.Models.EFModels;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -7,11 +8,12 @@ using System.Xml.Linq;
 
 namespace NiceAdmin.Models.ViewModels.LessonsVM {
     public class LessonCreateVM {
-        public int LessonId { get; set; }
+        //public int LessonId { get; set; }
+
         [Required]
         [Display(Name = "課程分類")]
-        [StringLength(50)]
-        public string LessonCategoryName { get; set; }
+        public int LessonCategoryId { get; set; }
+
         [Required]
         [Display(Name = "課程名稱")]
         [StringLength(50)]
@@ -34,6 +36,8 @@ namespace NiceAdmin.Models.ViewModels.LessonsVM {
 
         [Required]
         [Display(Name = "開課時間")]
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:MM/dd/yyyy}")]
         public DateTime LessonTime { get; set; }
 
         [Required]
@@ -48,6 +52,7 @@ namespace NiceAdmin.Models.ViewModels.LessonsVM {
         [Display(Name = "售價")]
         [DisplayFormat(DataFormatString = "{0:#,#}")]
         public int LessonPrice { get; set; }
+
         [Required]
         [Display(Name = "是否上架")]
         public bool LessonStatus { get; set; }
@@ -55,7 +60,28 @@ namespace NiceAdmin.Models.ViewModels.LessonsVM {
 
         [Required]
         [Display(Name = "教師姓名")]
-        public string TeacherName { get; set; }
+        public int TeacherId { get; set; }
+
+        [Display(Name = "圖片")]
+        public List<string> LessonImageName { get; set; }
+
+        public LessonCreateVM()
+        {
+            LessonImageName = new List<string>();
+        }
+
+        //public virtual LessonCategory LessonCategory { get; set; }
+
+        //[System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        //public virtual ICollection<LessonImage> LessonImages { get; set; }
+
+        //[System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        //public virtual ICollection<LessonOrderDetail> LessonOrderDetails { get; set; }
+
+        //public virtual Teacher Teacher { get; set; }
+
+        //[System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        //public virtual ICollection<LessonTag> LessonTags { get; set; }
 
     }
 }
