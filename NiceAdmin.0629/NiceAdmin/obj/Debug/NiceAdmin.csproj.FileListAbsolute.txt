@@ -625,9 +625,6 @@ C:\Users\User\Desktop\Sierra\NiceAdmin.0629\NiceAdmin\obj\Debug\NiceAdmin.csproj
 C:\Users\User\Desktop\Sierra\NiceAdmin.0629\NiceAdmin\obj\Debug\NiceAdmin.csproj.CopyComplete
 C:\Users\User\Desktop\Sierra\NiceAdmin.0629\NiceAdmin\obj\Debug\NiceAdmin.dll
 C:\Users\User\Desktop\Sierra\NiceAdmin.0629\NiceAdmin\obj\Debug\NiceAdmin.pdb
-C:\Sierra\NiceAdmin.0629\NiceAdmin\bin\roslyn\csc.rsp
-C:\Sierra\NiceAdmin.0629\NiceAdmin\bin\roslyn\csi.rsp
-C:\Sierra\NiceAdmin.0629\NiceAdmin\bin\roslyn\vbc.rsp
 C:\Sierra(0704)\NiceAdmin.0629\NiceAdmin\obj\Debug\NiceAdmin.csproj.AssemblyReference.cache
 C:\Sierra(0704)\NiceAdmin.0629\NiceAdmin\obj\Debug\NiceAdmin.csproj.CoreCompileInputs.cache
 C:\Sierra(0704)\NiceAdmin.0629\NiceAdmin\obj\Debug\NiceAdmin.dll
