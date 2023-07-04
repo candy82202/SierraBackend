@@ -37,6 +37,7 @@ namespace NiceAdmin.Controllers
                             DessertId = dessert.DessertId,
                             DessertName = dessert.DessertName,
                             CategoryName = result.CategoryName,
+                            UnitPrice= dessert.UnitPrice,
                             Description = dessert.Description,
                             DessertImageName = db.DessertImages.FirstOrDefault(di => di.DessertId == dessert.DessertId)?.DessertImageName
                         };
@@ -57,6 +58,7 @@ namespace NiceAdmin.Controllers
                         DessertId = dessert.DessertId,
                         DessertName = dessert.DessertName,
                         CategoryName = dessert.Category.CategoryName,
+                        UnitPrice= dessert.UnitPrice,
                         Description = dessert.Description,
                         DessertImageName = dessert.DessertImages.FirstOrDefault()?.DessertImageName
                     };

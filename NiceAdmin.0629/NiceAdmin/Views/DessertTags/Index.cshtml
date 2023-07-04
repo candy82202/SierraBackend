@@ -3,37 +3,54 @@
 @{
     ViewBag.Title = "Index";
 }
-
-<h2>Index</h2>
-
-<p>
-    @Html.ActionLink("Create New", "Create")
+<main id="main" class="main">
+    <!-- End Page Title -->
+    <div class="row">
+        <div class="card">
+            <div class="card-body">
+                <div class="pagetitle mt-3">
+                    <h1>甜點標籤清單</h1>
+                    <nav>
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="@Url.Action("Index","Home")">首頁</a></li>
+                            <li class="breadcrumb-item"><a href="@Url.Action("Index","DessertTags")">甜點標籤</a></li>
+                           
+                        </ol>
+                    </nav>
+                </div>
+                <p>
+                    <button class="btn btn-outline-primary"> @Html.ActionLink("新增", "Create")</button>    
 </p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Dessert.DessertName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.DessertTagName)
-        </th>
-        <th></th>
-    </tr>
+                <table class="table">
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Dessert.DessertName)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.DessertTagName)
+                        </th>
+                        <th></th>
+                    </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Dessert.DessertName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DessertTagName)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.DessertTagId }) |
-            @Html.ActionLink("Details", "Details", new { id=item.DessertTagId }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.DessertTagId })
-        </td>
-    </tr>
-}
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Dessert.DessertName)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.DessertTagName)
+                            </td>
+                            <td>
+                                @Html.ActionLink("Edit", "Edit", new { id = item.DessertTagId }) |
+                                @Html.ActionLink("Details", "Details", new { id = item.DessertTagId }) |
+                                @Html.ActionLink("Delete", "Delete", new { id = item.DessertTagId })
+                            </td>
+                        </tr>
+                    }
 
-</table>
+                </table>
+            </div>
+        </div>
+    </div>
+   </main>

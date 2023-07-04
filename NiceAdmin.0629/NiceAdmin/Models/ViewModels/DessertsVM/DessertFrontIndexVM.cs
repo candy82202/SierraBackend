@@ -19,7 +19,8 @@ namespace NiceAdmin.Models.ViewModels
         public string CategoryName { get; set; }
         [DisplayFormat(DataFormatString = "{0:#,#}")]
         [Display(Name = "售價")]
-
+        public int CategoryId { get; set; }
+        public int UnitPrice { get; set; }
         public string Description { get; set; }
         [Display(Name = "描述")]
         public string DescriptionText

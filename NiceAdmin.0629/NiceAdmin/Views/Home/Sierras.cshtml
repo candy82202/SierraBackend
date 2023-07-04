@@ -5,8 +5,6 @@
 }
 
 @model List<NiceAdmin.Models.ViewModels.DessertFrontIndexVM>
-           @*.Controllers.HomeController.DessertFrontIndexVM>*@
-
 <main>
     
     <div class="container mt-5  ">
@@ -23,12 +21,14 @@
                         <div class="card-body">
                             <a href="" class="cardlink text-decoration-none text-dark stretched-link">
                                 <h5 class="card-title">@dessert.DessertName</h5>
-                            
-                            </a>
-                            <div class="card-footer bg-white border-top-0 d-flex">
-                                <p class="card-text">@dessert.Description</p>
-                            </div>
 
+                            </a>
+                            @*<div class="card-footer bg-white border-top-0 d-flex">
+                                <p class="card-text">@dessert.Description</p>
+                            </div>*@
+                            <div class="card-footer bg-white border-top-0 d-flex">
+                                <p class="card-text">@dessert.UnitPrice</p>
+                            </div>
 
                         </div>
                     </div>
