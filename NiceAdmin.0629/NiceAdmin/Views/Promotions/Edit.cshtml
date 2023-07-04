@@ -31,7 +31,7 @@
                 <div class="mb-3">
                     @Html.LabelFor(model => model.PromotionImage, htmlAttributes: new { @class = "form-label" })
                     <div class="mb-3 d-flex justify-content-center align-items-center">
-                        <img src="~/Uploads/@Model.PromotionImage" alt="@Model.PromotionImage" class=" border border-info">
+                        <img src="~/Uploads/@Model.PromotionImage" alt="@Model.PromotionImage" class=" border border-info createPromotionImageSize">
                     </div>
                     @Html.ValidationMessageFor(model => model.PromotionImage, "", new { @class = "text-danger" })
                 </div>

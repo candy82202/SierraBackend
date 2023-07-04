@@ -535,3 +535,6 @@ C:\Sierra\NiceAdmin.0629\NiceAdmin\bin\roslyn\vbc.exe
 C:\Sierra\NiceAdmin.0629\NiceAdmin\bin\roslyn\vbc.exe.config
 C:\Sierra\NiceAdmin.0629\NiceAdmin\bin\roslyn\VBCSCompiler.exe
 C:\Sierra\NiceAdmin.0629\NiceAdmin\bin\roslyn\VBCSCompiler.exe.config
+C:\Sierra\NiceAdmin.0629\NiceAdmin\bin\roslyn\csc.rsp
+C:\Sierra\NiceAdmin.0629\NiceAdmin\bin\roslyn\csi.rsp
+C:\Sierra\NiceAdmin.0629\NiceAdmin\bin\roslyn\vbc.rsp

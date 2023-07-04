@@ -47,7 +47,7 @@
                 {
                     <tr>
                         <td>
-                            <img src="~/Uploads/@item.PromotionImage" alt="@item.PromotionImage" class="width350pxheight70px">
+                            <img src="~/Uploads/@item.PromotionImage" alt="@item.PromotionImage" class="w-100 height100px">
                             @*@Html.DisplayFor(modelItem => item.PromotionImage)*@
                         </td>
                         <td>
@@ -64,7 +64,7 @@
                         </td>
                         <td>
                             @Html.ActionLink("編輯", "Edit", new { id=item.PromotionId }) |
-                            @Html.ActionLink("變更圖片", "ChangeImage", new { id = item.PromotionId })
+                            @Html.ActionLink("變更圖片", "EditImage", new { id = item.PromotionId })
                         </td>
                     </tr>
                 }

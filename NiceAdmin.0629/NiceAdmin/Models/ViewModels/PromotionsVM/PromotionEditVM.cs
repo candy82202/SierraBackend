@@ -12,16 +12,13 @@ namespace NiceAdmin.Models.ViewModels.PromotionsVM
 		public int PromotionId { get; set; }
 		[Display(Name = "相關優惠券")]
 		public int? CouponId { get; set; }
-		
 		[StringLength(255)]
 		[Display(Name = "圖片")]
 		public string PromotionImage { get; set; }
-
 		[Required]
 		[StringLength(50)]
 		[Display(Name = "活動名稱")]
 		public string PromotionName { get; set; }
-
 		[Required]
 		[StringLength(300)]
 		[Display(Name = "活動詳情")]

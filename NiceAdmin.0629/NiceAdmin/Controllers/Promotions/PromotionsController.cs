@@ -155,12 +155,30 @@ namespace NiceAdmin.Controllers
 			};
             
         }
+		public ActionResult EditImage(int? id)
+		{
+			if (id == null)
+			{
+				return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+			}
+			Promotion promotion = db.Promotions.FirstOrDefault(p => p.PromotionId == id);
+			if (promotion == null)
+			{
+				return HttpNotFound();
+			}
+			PromotionEditImageVM vm = promotion.ToEditImageVM();
+
+			return View(vm);
+		}
 		private void PrepareCouponDataSource(int? couponId)
 		{
-			var coupons = db.Coupons.ToList().Prepend(new Coupon());
+			var coupons = db.Coupons.Where(c=>c.CouponCategoryId==2)
+									.ToList()
+									.Prepend(new Coupon());
 			ViewBag.CouponId = new SelectList(coupons, "couponId", "couponName", couponId);
 
 		}
+		
 		private string SaveUploadFile(string path, HttpPostedFileBase file1)
 		{
 			//如果沒上船或檔案室空的   回傳string.empty

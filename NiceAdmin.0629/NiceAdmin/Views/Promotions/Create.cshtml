@@ -40,7 +40,9 @@
 
                 <div class="mb-3">
                     @Html.LabelFor(model => model.PromotionImage, htmlAttributes: new { @class = "form-label" })
-                    <div id="previewImages"></div>
+                    <div id="previewImages"class="d-flex justify-content-center mb-3">
+
+                    </div>
                     <input type="file" name="PromotionImage" value="" class="form-control" id="PromotionImage" />
                     @Html.ValidationMessageFor(model => model.PromotionImage, "", new { @class = "text-danger" })
                 </div>
@@ -111,7 +113,8 @@
 
             var firstOption = $('#CouponId').children().first();
             firstOption.text("無");
-
+            
+            
             function checkImg() {
                 var maxSize = 2 * 1024 * 1024;
                 $('input[type="file"]').change(function (e) {
@@ -125,7 +128,7 @@
                                     var image = $('<img>');
                                     image.attr('src', e.target.result);
                                     image.attr('alt', 'Preview');
-                                    image.addClass("mb-2")
+                                    image.addClass("createPromotionImageSize")
                                     $('#previewImages').append(image);
                                 };
                                 reader.readAsDataURL(files[i]);
