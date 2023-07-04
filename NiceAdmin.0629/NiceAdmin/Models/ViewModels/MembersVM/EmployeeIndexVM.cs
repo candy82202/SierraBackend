@@ -20,5 +20,8 @@ namespace NiceAdmin.Models.ViewModels.MembersVM
 
         [Display(Name = "創建時間")]
         public DateTime CreateAt { get; set; }
+
+		[Display(Name = "角色")]
+		public string RoleName{ get; set; }
     }
 }

@@ -24,6 +24,6 @@ namespace NiceAdmin.Models.ViewModels.MembersVM
 
         [Display(Name = "角色")]
         [Required]
-        public IEnumerable<SelectListItem> RoleId { get; set; }
+        public int RoleId { get; set; }
     }
 }

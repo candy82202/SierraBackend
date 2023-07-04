@@ -90,19 +90,24 @@ Member 部分
 [V] - 重建EFModels
       重建相關控制器和檢視
 
-[V] - 刪除檢視Roles1(誤創的)
-
 [V] - 新增VM
 [V] - 修改檢視
 [V] - 完成 EmployeesController 中的 Index(), Create()
       新增 EmployeeIndexVM, EmployeeCreateVM, EmployeeExts
       新增 Views/Employees/Create.cshtml和Index.cshtml
 
+[V] - 完成Employees/Edit(含view page)
+      (修改複合主鍵時遇到錯誤：System.InvalidOperationException: 'The property 'RoleId' is part of the object's key information and cannot be modified. '
+      解決方法：先用變數保存原本資料，再刪除原本資料，最後再新增一筆新資料。)
 
+[V] - 修改資料表結構(員工刪除關聯)
+[V] - complete Employee/Delete(including view page)
 
-
-
-
+[V] - create & complete MemberIndexVM.cs
+    - create & complete MemberExts.cs
+    - modify Index()
+    - modify Index view page
+[working on] - Members/Index（修改MemberIndexVM）
 
 
 

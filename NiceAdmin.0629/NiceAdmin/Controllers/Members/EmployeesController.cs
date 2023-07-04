@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.Diagnostics;
 using System.Linq;
 using System.Net;
 using System.Web;
@@ -19,8 +20,8 @@ namespace NiceAdmin.Controllers.Members
         // GET: Employees
         public ActionResult Index()
         {
-            var emp = db.Employees.ToList().Select(e => e.ToIndexVM());
-            return View(emp);
+            var vm = db.Employees.ToList().Select(e => e.ToIndexVM());
+            return View(vm);
         }
 
         // GET: Employees/Details/5
@@ -41,13 +42,14 @@ namespace NiceAdmin.Controllers.Members
         // GET: Employees/Create
         public ActionResult Create()
         {
-            ViewBag.RoleId = db.Roles.Select(r => new SelectListItem
-            {
-                Value = r.RoleId.ToString(),
-                Text = r.RoleName
-            });
-
-            return View();
+            //// 原本的寫法
+            //ViewBag.RoleId = db.Roles.Select(r => new SelectListItem
+            //{
+            //    Value = r.RoleId.ToString(),
+            //    Text = r.RoleName
+            //});
+            PrepareRolesDataSource(null);
+			return View();
         }
 
         // POST: Employees/Create
@@ -55,21 +57,21 @@ namespace NiceAdmin.Controllers.Members
         // 如需詳細資料，請參閱 https://go.microsoft.com/fwlink/?LinkId=317598。
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(Employee employee, EmployeeToRole relation)
+        public ActionResult Create(Employee emp, EmployeeToRole relation)
         {
             if (ModelState.IsValid)
             {
-                employee.CreateAt = DateTime.Now;
-                db.Employees.Add(employee);
+                emp.CreateAt = DateTime.Now;
+                db.Employees.Add(emp);
                 db.SaveChanges();
 
-                relation.EmployeeId = employee.EmployeeId;
+                relation.EmployeeId = emp.EmployeeId;
                 db.EmployeeToRoles.Add(relation);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(employee);
+            return View(emp);
         }
 
         // GET: Employees/Edit/5
@@ -79,12 +81,16 @@ namespace NiceAdmin.Controllers.Members
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Employee employee = db.Employees.Find(id);
-            if (employee == null)
+           
+            var emp = db.Employees.Find(id).ToEditVM();
+			if (emp == null)
             {
                 return HttpNotFound();
             }
-            return View(employee);
+
+            var roleId = db.EmployeeToRoles.FirstOrDefault(r => r.EmployeeId == id).RoleId;
+            PrepareRolesDataSource(roleId); 
+			return View(emp);
         }
 
         // POST: Employees/Edit/5
@@ -92,15 +98,31 @@ namespace NiceAdmin.Controllers.Members
         // 如需詳細資料，請參閱 https://go.microsoft.com/fwlink/?LinkId=317598。
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "EmployeeId,EmployeeName,EncryptedPassword,CreateAt")] Employee employee)
+        public ActionResult Edit(EmployeeEditVM vm, EmployeeToRole relation)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(employee).State = EntityState.Modified;
+				// 因在有KeyAttribute的欄位無法修改,因此Edit的做法是先找到資料,刪除,再新增
+
+                // 找到資料
+				var relationInDb = db.EmployeeToRoles.FirstOrDefault(e => e.EmployeeId == vm.EmployeeId);
+
+                //刪除
+				db.EmployeeToRoles.Remove(relationInDb);
+				db.SaveChanges();
+
+                //新增
+				relationInDb.RoleId = relation.RoleId; 
+				db.EmployeeToRoles.Add(relationInDb);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+
+				return RedirectToAction("Index");
             }
-            return View(employee);
+
+            // 還要再
+			var roleId = db.EmployeeToRoles.FirstOrDefault(r => r.EmployeeId == vm.EmployeeId).RoleId;
+			PrepareRolesDataSource(roleId);
+			return View(vm);
         }
 
         // GET: Employees/Delete/5
@@ -110,12 +132,13 @@ namespace NiceAdmin.Controllers.Members
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Employee employee = db.Employees.Find(id);
-            if (employee == null)
+            Employee emp = db.Employees.Find(id);
+            if (emp == null)
             {
                 return HttpNotFound();
             }
-            return View(employee);
+            var vm = emp.ToIndexVM();
+            return View(vm);
         }
 
         // POST: Employees/Delete/5
@@ -137,5 +160,10 @@ namespace NiceAdmin.Controllers.Members
             }
             base.Dispose(disposing);
         }
-    }
+		private void PrepareRolesDataSource(int? roleId)
+		{
+            var roleList = db.Roles.ToList().Prepend(new Role());
+			ViewBag.RoleId = new SelectList(roleList, "RoleId", "RoleName", roleId );
+		}
+	}
 }
