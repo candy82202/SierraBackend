@@ -154,15 +154,12 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\Promotions\DiscountsController.cs" />
     <Compile Include="Controllers\Promotions\MemberCouponsController.cs" />
-<<<<<<< HEAD
     <Compile Include="Models\ViewModels\LessonsVM\LessonCreateVM.cs" />
     <Compile Include="Models\ViewModels\MembersVM\EmployeeEditVM.cs" />
     <Compile Include="Models\ViewModels\MembersVM\MemberExts.cs" />
-=======
     <Compile Include="Models\ViewModels\PromotionsVM\MemberCouponDetailVM.cs" />
     <Compile Include="Models\ViewModels\PromotionsVM\MemberCouponExts.cs" />
     <Compile Include="Models\ViewModels\PromotionsVM\MemberCouponIndexVM.cs" />
->>>>>>> origin/promotion10
     <Compile Include="Models\ViewModels\PromotionsVM\PromotionCreateVM.cs" />
     <Compile Include="Controllers\Promotions\PromotionsController.cs" />
     <Compile Include="Controllers\TeachersController.cs" />
@@ -847,14 +844,11 @@
     <Content Include="Views\Coupons\Index.cshtml" />
     <Content Include="Views\Promotions\Create.cshtml" />
     <Content Include="Views\Promotions\Index.cshtml" />
-<<<<<<< HEAD
     <Content Include="Views\Desserts\DownDesserts.cshtml" />
     <Content Include="Views\Home\NewDesserts.cshtml" />
-=======
     <Content Include="Views\Promotions\EditImage.cshtml" />
     <Content Include="Views\MemberCoupons\Index.cshtml" />
     <Content Include="Views\MemberCoupons\Details.cshtml" />
->>>>>>> origin/promotion10
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="Scripts\vendor\chart.js\controllers\controller.bar.d.ts" />
