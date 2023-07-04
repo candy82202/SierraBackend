@@ -390,6 +390,20 @@ namespace NiceAdmin.Controllers
                 return Json(new { success = false, errorMessage = "An error occurred while updating the dessert status. Please try again later." });
             }
         }
+        public ActionResult DownDesserts()
+        {
+            var currentTime = DateTime.Now;
+            var downDesserts = db.Desserts
+      .Where(d => d.Status == false)//&& d.CreateTime <= currentTime) // Filter by status and creation time
+      .OrderByDescending(d => d.CreateTime) // Sort by descending creation time
+                                            //.Take(5) // Get the latest 5 desserts
+      .ToList()
+      .Select(d => d.ToIndexPartVM())
+         .ToList();
+
+            return PartialView("DownDesserts", downDesserts);
+
+        }
         protected override void Dispose(bool disposing)
         {
             if (disposing)
