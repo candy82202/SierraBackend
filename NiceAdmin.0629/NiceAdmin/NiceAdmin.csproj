@@ -155,6 +155,8 @@
     <Compile Include="Controllers\Promotions\DiscountsController.cs" />
     <Compile Include="Controllers\Promotions\MemberCouponsController.cs" />
     <Compile Include="Models\ViewModels\LessonsVM\LessonCreateVM.cs" />
+    <Compile Include="Models\ViewModels\OrdersVM\DessertOrderExts.cs" />
+    <Compile Include="Models\ViewModels\OrdersVM\DessertOrderIndexVM.cs" />
     <Compile Include="Models\ViewModels\PromotionsVM\PromotionCreateVM.cs" />
     <Compile Include="Controllers\Promotions\PromotionsController.cs" />
     <Compile Include="Controllers\TeachersController.cs" />
@@ -595,6 +597,10 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Models\DTOs\" />
+    <Folder Include="Models\Infra\DapperRepositories\" />
+    <Folder Include="Models\Interfaces\" />
+    <Folder Include="Models\Services\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="CodeTemplates\ODataControllerWithContext\Controller.vb.t4" />

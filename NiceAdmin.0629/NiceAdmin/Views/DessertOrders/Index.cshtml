@@ -1,237 +1,243 @@
-﻿@model IEnumerable<NiceAdmin.Models.EFModels.DessertOrder>
+﻿@model IEnumerable<NiceAdmin.Models.ViewModels.OrdersVM.DessertOrderIndexVM>
 
-@{
-    ViewBag.Title = "Index";
-}
+    @{
+        ViewBag.Title = "Index";
+    }
 
-<main id="main" class="main">
-    <div class="pagetitle">
-        <h1>甜點訂單管理</h1>
-        <nav>
-            <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="@Url.Action("Index","Home")">首頁</a></li>
-                <li class="breadcrumb-item">   甜點訂單管理  </li>
-                <li class="breadcrumb-item active">  甜點訂單頁面  </li>
-            </ol>
-        </nav>
-    </div>
-    <!-- End Page Title -->
-    @*<p>
-            @Html.ActionLink("Create New", "Create")
-        </p>*@
-    <table class="table  table-striped table-hover datatable" id="example">
-        <thead>
-            <tr>
-                <th>
-                    @Html.DisplayNameFor(model => model.Coupon.CouponName)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Member.MemberName)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.OrderStatus.StatusName)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.CreateTime)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Recipient)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.RecipientPhone)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.RecipientAddress)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.ShippingFee)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.DessertOrderTotal)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.DeliveryMethod)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Note)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.OrderCancellationReason)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.DiscountInfo)
-                </th>
-                <th></th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var item in Model)
-            {
+    <main id="main" class="main">
+        <div class="pagetitle">
+            <h1>甜點訂單管理</h1>
+            <nav>
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="@Url.Action("Index","Home")">首頁</a></li>
+                    <li class="breadcrumb-item">   甜點訂單管理  </li>
+                    <li class="breadcrumb-item active">  甜點訂單頁面  </li>
+                </ol>
+            </nav>
+        </div>
+        <!-- End Page Title -->
+        @*<p>
+                @Html.ActionLink("Create New", "Create")
+            </p>*@
+        <table class="table  table-striped table-hover datatable" id="example">
+            <thead>
                 <tr>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Coupon.CouponName)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Member.MemberName)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.OrderStatus.StatusName)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.CreateTime)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Recipient)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.RecipientPhone)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.RecipientAddress)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.ShippingFee)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.DessertOrderTotal)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.DeliveryMethod)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Note)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.OrderCancellationReason)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.DiscountInfo)
-                    </td>
-                    <td>
-                        @Html.ActionLink("Edit", "Edit", new { id = item.DessertOrderId }) |
-                        @Html.ActionLink("Details", "Details", new { id = item.DessertOrderId }) |
-                        @Html.ActionLink("Delete", "Delete", new { id = item.DessertOrderId })
-                    </td>
+                    @*<th>
+                            @Html.DisplayNameFor(model => model.Coupon.CouponName)
+                        </th>*@
+                    <th>
+                        @Html.DisplayNameFor(model => model.DessertOrderId)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.MemberName)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.StatusName)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.CreateTime)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Recipient)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.RecipientPhone)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.RecipientAddress)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.ShippingFee)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.DessertOrderTotal)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.DeliveryMethod)
+                    </th>
+                    @*<th>
+                            @Html.DisplayNameFor(model => model.Note)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.OrderCancellationReason)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.DiscountInfo)
+                        </th>*@
+                    <th></th>
                 </tr>
-            }
-        </tbody>
-    </table>
-</main>
-@section Scripts{
-    <script>
-        //這段是要做AutoComplete
-        var teachers = ["訂單", "甜點", "專家", "證書", "宅配", "課程", "烘焙", "吳", "糕點", "巧克力", "法式"]
-        /*function autocomplete(inp, arr) { ... }：這是一個自訂的自動完成函式。
-        它接收兩個參數，inp代表文字輸入框的元素，arr代表建議項目的陣列。*/
-        function autocompleteTeachers(inp, arr) {
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        @*<td>
+                                @Html.DisplayFor(modelItem => item.Coupon.CouponName)
+                            </td>*@
+                        <td>
+                            @Html.DisplayFor(modelItem => item.DessertOrderId)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.MemberName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.StatusName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.CreateTime)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Recipient)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.RecipientPhone)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.RecipientAddress)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.ShippingFee)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.DessertOrderTotal)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.DeliveryMethod)
+                        </td>
+                        @*<td>
+                                @Html.DisplayFor(modelItem => item.Note)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.OrderCancellationReason)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.DiscountInfo)
+                            </td>*@
+                        <td>
+                            @Html.ActionLink("Edit", "Edit", new { id = item.DessertOrderId }) |
+                            @Html.ActionLink("Details", "Details", new { id = item.DessertOrderId }) |
+                            @Html.ActionLink("Delete", "Delete", new { id = item.DessertOrderId })
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </main>
+    @section Scripts{
+        <script>
+            //這段是要做AutoComplete
+            var teachers = ["訂單", "甜點", "專家", "證書", "宅配", "課程", "烘焙", "吳", "糕點", "巧克力", "法式"]
+            /*function autocomplete(inp, arr) { ... }：這是一個自訂的自動完成函式。
+            它接收兩個參數，inp代表文字輸入框的元素，arr代表建議項目的陣列。*/
+            function autocompleteDessertOrders(inp, arr) {
 
-            var currentFocus;
+                var currentFocus;
 
-            /*inp.addEventListener("input", function (e) { ... })：
-            這是一個事件監聽器，當使用者在輸入框中輸入文字時觸發。它會根據輸入的文字篩選建議項目並顯示。*/
-            inp.addEventListener("input", function (e) {
-                var a, b, i, val = this.value;
+                /*inp.addEventListener("input", function (e) { ... })：
+                這是一個事件監聽器，當使用者在輸入框中輸入文字時觸發。它會根據輸入的文字篩選建議項目並顯示。*/
+                inp.addEventListener("input", function (e) {
+                    var a, b, i, val = this.value;
 
-                /*closeAllLists() 函式：
-                這個函式用於關閉所有已打開的建議清單，以便在選擇建議項目後或點擊其他地方時關閉它們。*/
-                closeAllLists();
-                if (!val) { return false; }
-                currentFocus = -1;
-                /*create a DIV element that will contain the items (values):*/
-                a = document.createElement("DIV");
-                a.setAttribute("id", this.id + "autocomplete-list");
-                a.setAttribute("class", "autocomplete-items");
-                /*append the DIV element as a child of the autocomplete container:*/
-                this.parentNode.appendChild(a);
-                /*for each item in the array...*/
-                for (i = 0; i < arr.length; i++) {
-                    /*check if the item starts with the same letters as the text field value:*/
-                    if (arr[i].substr(0, val.length).toUpperCase() == val.toUpperCase()) {
-                        /*create a DIV element for each matching element:*/
-                        b = document.createElement("DIV");
-                        /*make the matching letters bold:*/
-                        b.innerHTML = "<strong>" + arr[i].substr(0, val.length) + "</strong>";
-                        b.innerHTML += arr[i].substr(val.length);
-                        /*insert a input field that will hold the current array item's value:*/
-                        b.innerHTML += "<input type='hidden' value='" + arr[i] + "'>";
-                        /*execute a function when someone clicks on the item value (DIV element):*/
-                        b.addEventListener("click", function (e) {
-                            /*insert the value for the autocomplete text field:*/
-                            inp.value = this.getElementsByTagName("input")[0].value;
-                            /*close the list of autocompleted values,
-                            (or any other open lists of autocompleted values:*/
-                            closeAllLists();
-                        });
-                        a.appendChild(b);
+                    /*closeAllLists() 函式：
+                    這個函式用於關閉所有已打開的建議清單，以便在選擇建議項目後或點擊其他地方時關閉它們。*/
+                    closeAllLists();
+                    if (!val) { return false; }
+                    currentFocus = -1;
+                    /*create a DIV element that will contain the items (values):*/
+                    a = document.createElement("DIV");
+                    a.setAttribute("id", this.id + "autocomplete-list");
+                    a.setAttribute("class", "autocomplete-items");
+                    /*append the DIV element as a child of the autocomplete container:*/
+                    this.parentNode.appendChild(a);
+                    /*for each item in the array...*/
+                    for (i = 0; i < arr.length; i++) {
+                        /*check if the item starts with the same letters as the text field value:*/
+                        if (arr[i].substr(0, val.length).toUpperCase() == val.toUpperCase()) {
+                            /*create a DIV element for each matching element:*/
+                            b = document.createElement("DIV");
+                            /*make the matching letters bold:*/
+                            b.innerHTML = "<strong>" + arr[i].substr(0, val.length) + "</strong>";
+                            b.innerHTML += arr[i].substr(val.length);
+                            /*insert a input field that will hold the current array item's value:*/
+                            b.innerHTML += "<input type='hidden' value='" + arr[i] + "'>";
+                            /*execute a function when someone clicks on the item value (DIV element):*/
+                            b.addEventListener("click", function (e) {
+                                /*insert the value for the autocomplete text field:*/
+                                inp.value = this.getElementsByTagName("input")[0].value;
+                                /*close the list of autocompleted values,
+                                (or any other open lists of autocompleted values:*/
+                                closeAllLists();
+                            });
+                            a.appendChild(b);
+                        }
+                    }
+                });
+                /*execute a function presses a key on the keyboard:*/
+                inp.addEventListener("keydown", function (e) {
+                    var x = document.getElementById(this.id + "autocomplete-list");
+                    if (x) x = x.getElementsByTagName("div");
+                    if (e.keyCode == 40) {
+                        /*If the arrow DOWN key is pressed,
+                        increase the currentFocus variable:*/
+                        currentFocus++;
+
+
+                        /*and and make the current item more visible:*/
+                        addActive(x);
+                    } else if (e.keyCode == 38) { //up
+                        /*If the arrow UP key is pressed,
+                        decrease the currentFocus variable:*/
+                        currentFocus--;
+                        /*and and make the current item more visible:*/
+                        addActive(x);
+                    } else if (e.keyCode == 13) {
+                        /*If the ENTER key is pressed, prevent the form from being submitted,*/
+                        e.preventDefault();
+                        if (currentFocus > -1) {
+                            /*and simulate a click on the "active" item:*/
+                            if (x) x[currentFocus].click();
+                        }
+                    }
+                });
+
+                //addActive() 函式：這個函式用於將某個建議項目標記為選中狀態，以便使用者可以使用鍵盤的上下鍵選擇不同的項目。
+                function addActive(x) {
+                    /*a function to classify an item as "active":*/
+                    if (!x) return false;
+
+
+                    /*start by removing the "active" class on all items:*/
+                    removeActive(x);
+                    if (currentFocus >= x.length) currentFocus = 0;
+                    if (currentFocus < 0) currentFocus = (x.length - 1);
+                    /*add class "autocomplete-active":*/
+                    x[currentFocus].classList.add("autocomplete-active");
+                }
+
+                //removeActive() 函式：這個函式用於移除所有建議項目的選中狀態。
+                function removeActive(x) {
+                    /*a function to remove the "active" class from all autocomplete items:*/
+                    for (var i = 0; i < x.length; i++) {
+                        x[i].classList.remove("autocomplete-active");
                     }
                 }
-            });
-            /*execute a function presses a key on the keyboard:*/
-            inp.addEventListener("keydown", function (e) {
-                var x = document.getElementById(this.id + "autocomplete-list");
-                if (x) x = x.getElementsByTagName("div");
-                if (e.keyCode == 40) {
-                    /*If the arrow DOWN key is pressed,
-                    increase the currentFocus variable:*/
-                    currentFocus++;
-
-
-                    /*and and make the current item more visible:*/
-                    addActive(x);
-                } else if (e.keyCode == 38) { //up
-                    /*If the arrow UP key is pressed,
-                    decrease the currentFocus variable:*/
-                    currentFocus--;
-                    /*and and make the current item more visible:*/
-                    addActive(x);
-                } else if (e.keyCode == 13) {
-                    /*If the ENTER key is pressed, prevent the form from being submitted,*/
-                    e.preventDefault();
-                    if (currentFocus > -1) {
-                        /*and simulate a click on the "active" item:*/
-                        if (x) x[currentFocus].click();
+                function closeAllLists(elmnt) {
+                    /*close all autocomplete lists in the document,
+                    except the one passed as an argument:*/
+                    var x = document.getElementsByClassName("autocomplete-items");
+                    for (var i = 0; i < x.length; i++) {
+                        if (elmnt != x[i] && elmnt != inp) {
+                            x[i].parentNode.removeChild(x[i]);
+                        }
                     }
                 }
-            });
-
-            //addActive() 函式：這個函式用於將某個建議項目標記為選中狀態，以便使用者可以使用鍵盤的上下鍵選擇不同的項目。
-            function addActive(x) {
-                /*a function to classify an item as "active":*/
-                if (!x) return false;
-
-
-                /*start by removing the "active" class on all items:*/
-                removeActive(x);
-                if (currentFocus >= x.length) currentFocus = 0;
-                if (currentFocus < 0) currentFocus = (x.length - 1);
-                /*add class "autocomplete-active":*/
-                x[currentFocus].classList.add("autocomplete-active");
+                /*execute a function when someone clicks in the document:*/
+                document.addEventListener("click", function (e) {
+                    closeAllLists(e.target);
+                });
             }
 
-            //removeActive() 函式：這個函式用於移除所有建議項目的選中狀態。
-            function removeActive(x) {
-                /*a function to remove the "active" class from all autocomplete items:*/
-                for (var i = 0; i < x.length; i++) {
-                    x[i].classList.remove("autocomplete-active");
-                }
-            }
-            function closeAllLists(elmnt) {
-                /*close all autocomplete lists in the document,
-                except the one passed as an argument:*/
-                var x = document.getElementsByClassName("autocomplete-items");
-                for (var i = 0; i < x.length; i++) {
-                    if (elmnt != x[i] && elmnt != inp) {
-                        x[i].parentNode.removeChild(x[i]);
-                    }
-                }
-            }
-            /*execute a function when someone clicks in the document:*/
-            document.addEventListener("click", function (e) {
-                closeAllLists(e.target);
-            });
-        }
-
-        //autocomplete() 函式的餘下部分處理事件監聽和與建議項目相關的邏輯，包括創建建議項目的 DIV 元素、將它們添加到 DOM 中、監聽建議項目的點擊事件等。
-        autocompleteDesserts(document.getElementById("s_name"), desserts);
-    </script>
-}
+            //autocomplete() 函式的餘下部分處理事件監聽和與建議項目相關的邏輯，包括創建建議項目的 DIV 元素、將它們添加到 DOM 中、監聽建議項目的點擊事件等。
+            autocompleteDessertOrders(document.getElementById("s_name"), DessertOrders);
+        </script>
+    }

@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using NiceAdmin.Models.EFModels;
+using NiceAdmin.Models.ViewModels.OrdersVM;
 
 namespace NiceAdmin.Controllers.Orders
 {
@@ -17,8 +18,10 @@ namespace NiceAdmin.Controllers.Orders
         // GET: DessertOrders
         public ActionResult Index()
         {
-            var dessertOrders = db.DessertOrders.Include(d => d.Coupon).Include(d => d.Member).Include(d => d.OrderStatus);
-            return View(dessertOrders.ToList());
+            var dessertOrders = db.DessertOrders.Include(d => d.Member).Include(d => d.OrderStatus)
+                .ToList()
+                .Select(d => d.TOIndexVM());
+            return View(dessertOrders);
         }
 
         // GET: DessertOrders/Details/5
