@@ -793,6 +793,7 @@
     <Content Include="Views\Promotions\Create.cshtml" />
     <Content Include="Views\Promotions\Index.cshtml" />
     <Content Include="Views\Desserts\DownDesserts.cshtml" />
+    <Content Include="Views\Home\NewDesserts.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="Scripts\vendor\chart.js\controllers\controller.bar.d.ts" />

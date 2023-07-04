@@ -8,6 +8,7 @@ using System.Web;
 using System.Web.Mvc;
 using System.Xml.Linq;
 using NiceAdmin.Models.ViewModels;
+using NiceAdmin.Models.ViewModels.DessertsVM;
 
 namespace NiceAdmin.Controllers
 {
@@ -70,7 +71,59 @@ namespace NiceAdmin.Controllers
 
             return View(dvm);
         }
-       
+        public ActionResult NewDesserts(int? cId)
+        {
+            List<DessertIndexPartVM> dvm = new List<DessertIndexPartVM>();
+
+            // 判斷如果有傳入類別編號，就篩選那個類別的商品出來
+            if (cId != null)
+            {
+                var result = db.Categories.SingleOrDefault(x => x.CategoryId == cId);
+                if (result != null)
+                {
+                    var desserts = result.Desserts.Where(d => d.Status==true).ToList();
+                    foreach (var dessert in desserts)
+                    {
+                        DessertIndexPartVM item = new DessertIndexPartVM
+                        {
+                            DessertId = dessert.DessertId,
+                            DessertName = dessert.DessertName,
+                            CategoryName = result.CategoryName,
+                            UnitPrice = dessert.UnitPrice,
+                            //Description = dessert.Description,
+                          //  DessertImageName = db.DessertImages.FirstOrDefault(di => di.DessertId == dessert.DessertId)?.DessertImageName
+                        };
+                        dvm.Add(item);
+                    }
+                }
+            }
+            else
+            {
+                var desserts = db.Desserts.Include("Category")
+                                         .Include("DessertImages")
+                                         .Where(d => d.Status==true)
+                                         .Take(5)
+                                         .ToList();
+                foreach (var dessert in desserts)
+                {
+                    DessertIndexPartVM item = new DessertIndexPartVM
+                    {
+                        DessertId = dessert.DessertId,
+                        DessertName = dessert.DessertName,
+                        CategoryName = dessert.Category.CategoryName,
+                        UnitPrice = dessert.UnitPrice,
+                       // Description = dessert.Description,
+                       // DessertImageName = dessert.DessertImages.FirstOrDefault()?.DessertImageName
+                    };
+                    dvm.Add(item);
+                }
+            }
+
+            ViewBag.count = dvm.Count;
+
+            return View(dvm);
+        }
+
         public ActionResult About()
         {
             ViewBag.Message = "Your application description page.";
@@ -104,10 +157,7 @@ namespace NiceAdmin.Controllers
             return PartialView("RecentUpDesserts", recentDesserts);
 
         }
-        public ActionResult Sierra() 
-        {
-            return View();
-        }
+
         public ActionResult FormsLayouts() { return View(); }
         public ActionResult UsersProfile() { return View(); }
         public ActionResult FormEdit() { return View(); }
