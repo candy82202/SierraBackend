@@ -23,7 +23,6 @@ namespace NiceAdmin.Models.ViewModels.MembersVM
 
 			};
 		}
-
 		public static EmployeeCreateVM ToCreateVM(this Employee emp)
 		{
 			return new EmployeeCreateVM

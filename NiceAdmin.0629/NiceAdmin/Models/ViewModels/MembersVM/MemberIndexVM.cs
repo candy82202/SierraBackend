@@ -54,7 +54,7 @@ namespace NiceAdmin.Models.ViewModels.MembersVM
 
 		[Display(Name = "是否黑名單")]
 		public bool IsBan { get; set; }
-		[Display(Name = "會員狀態")]
+		[Display(Name = "帳號狀態")]
 		public string IsBanText => IsBan ? "黑名單" : "正常";
 
         [Display(Name = "訂單取消次數")]

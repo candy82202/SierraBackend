@@ -102,7 +102,7 @@ Member 部分
     - create & complete MemberExts.cs
     - modify Index()
     - modify Index view page
-[working on] - Members/Index（修改MemberIndexVM）
+[V] - modify Members/Index（修改MemberIndexVM）
 
 
 
