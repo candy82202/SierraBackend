@@ -10,17 +10,16 @@ namespace NiceAdmin.Models.ViewModels.MembersVM
 	{
 		public static EmployeeIndexVM ToIndexVM(this Employee emp)
 		{
-			var db = new AppDbContext();
-			var empId = emp.EmployeeId;
-			var roleId = db.EmployeeToRoles.FirstOrDefault(r => r.EmployeeId == empId).RoleId;
-			var roleName = db.Roles.FirstOrDefault(r => r.RoleId == roleId).RoleName;
+			//var db = new AppDbContext();
+			//var empId = emp.EmployeeId;
+			//var roleId = db.EmployeeToRoles.FirstOrDefault(r => r.EmployeeId == empId).RoleId;
+			//var roleName = db.Roles.FirstOrDefault(r => r.RoleId == roleId).RoleName;
 			return new EmployeeIndexVM
 			{
 				EmployeeId = emp.EmployeeId,
 				EmployeeName = emp.EmployeeName,
 				CreateAt = emp.CreateAt,
-				RoleName = roleName
-
+				Roles = (HashSet<Role>)emp.Roles
 			};
 		}
 		public static EmployeeCreateVM ToCreateVM(this Employee emp)
@@ -38,6 +37,7 @@ namespace NiceAdmin.Models.ViewModels.MembersVM
 			{
 				EmployeeId = emp.EmployeeId,
 				EmployeeName = emp.EmployeeName,
+				Roles = (HashSet<Role>)emp.Roles
 			};
 		}
 		public static Employee ToEntity(this EmployeeCreateVM vm)

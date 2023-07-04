@@ -34,7 +34,7 @@
 					@Html.DisplayNameFor(model => model.CreateAt)
 				</th>
 				<th>
-					@Html.DisplayNameFor(model => model.RoleName)
+					@Html.DisplayNameFor(model => model.Roles)
 				</th>
 				<th>
 					操作
@@ -55,7 +55,10 @@
 						@Html.DisplayFor(modelItem => item.CreateAt)
 					</td>
 					<td>
-						@Html.DisplayFor(modelItem => item.RoleName)
+						@foreach (var role in item.Roles)
+						{
+							@role.RoleName<br />
+						}
 					</td>
 					<td>
 

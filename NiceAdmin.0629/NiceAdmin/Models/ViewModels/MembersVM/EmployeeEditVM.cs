@@ -1,4 +1,5 @@
-﻿using System;
+﻿using NiceAdmin.Models.EFModels;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -18,9 +19,12 @@ namespace NiceAdmin.Models.ViewModels.MembersVM
 		[StringLength(50)]
 		public string EmployeeName { get; set; }
 
+		//[Display(Name = "角色")]
+		//[Required]
+		//[Range(1, int.MaxValue, ErrorMessage = "請選擇有效的角色")]
+		//public int RoleId { get; set; }
 		[Display(Name = "角色")]
 		[Required]
-		[Range(1, int.MaxValue, ErrorMessage = "請選擇有效的角色")]
-		public int RoleId { get; set; }
+		public HashSet<Role> Roles { get; set; }
 	}
 }

@@ -8,6 +8,12 @@ namespace NiceAdmin.Models.EFModels
 
     public partial class Employee
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Employee()
+        {
+            Roles = new HashSet<Role>();
+        }
+
         public int EmployeeId { get; set; }
 
         [Required]
@@ -19,5 +25,8 @@ namespace NiceAdmin.Models.EFModels
         public string EncryptedPassword { get; set; }
 
         public DateTime CreateAt { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Role> Roles { get; set; }
     }
 }

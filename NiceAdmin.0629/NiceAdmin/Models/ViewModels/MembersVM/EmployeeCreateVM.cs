@@ -1,4 +1,5 @@
-﻿using System;
+﻿using NiceAdmin.Models.EFModels;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -10,7 +11,7 @@ namespace NiceAdmin.Models.ViewModels.MembersVM
 {
     public class EmployeeCreateVM
     {
-        public int EmployeeId { get; set; }
+		public int EmployeeId { get; set; }
 
         [Display(Name = "帳號")]
         [Required]
@@ -24,6 +25,6 @@ namespace NiceAdmin.Models.ViewModels.MembersVM
 
         [Display(Name = "角色")]
         [Required]
-        public int RoleId { get; set; }
+        public List<Role> Roles { get; set; }
     }
 }

@@ -20,7 +20,7 @@ namespace NiceAdmin.Models.EFModels
         [StringLength(20)]
         public string TeacherName { get; set; }
 
-       
+        [Required]
         [StringLength(255)]
         public string TeacherImage { get; set; }
 

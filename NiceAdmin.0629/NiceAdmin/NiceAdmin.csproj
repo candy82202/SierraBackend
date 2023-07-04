@@ -154,15 +154,6 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\Promotions\DiscountsController.cs" />
     <Compile Include="Controllers\Promotions\MemberCouponsController.cs" />
-    <Compile Include="Models\ViewModels\LessonsVM\LessonCreateVM.cs" />
-    <Compile Include="Models\ViewModels\MembersVM\EmployeeEditVM.cs" />
-    <Compile Include="Models\ViewModels\MembersVM\MemberExts.cs" />
-    <Compile Include="Models\ViewModels\PromotionsVM\PromotionCreateVM.cs" />
-    <Compile Include="Controllers\Promotions\PromotionsController.cs" />
-    <Compile Include="Controllers\TeachersController.cs" />
-    <Compile Include="Global.asax.cs">
-      <DependentUpon>Global.asax</DependentUpon>
-    </Compile>
     <Compile Include="Models\EFModels\AppDbContext.cs" />
     <Compile Include="Models\EFModels\Category.cs" />
     <Compile Include="Models\EFModels\Coupon.cs" />
@@ -176,7 +167,6 @@
     <Compile Include="Models\EFModels\DiscountGroup.cs" />
     <Compile Include="Models\EFModels\DiscountGroupItem.cs" />
     <Compile Include="Models\EFModels\Employee.cs" />
-    <Compile Include="Models\EFModels\EmployeeToRole.cs" />
     <Compile Include="Models\EFModels\Lesson.cs" />
     <Compile Include="Models\EFModels\LessonCategory.cs" />
     <Compile Include="Models\EFModels\LessonImage.cs" />
@@ -189,9 +179,18 @@
     <Compile Include="Models\EFModels\Permission.cs" />
     <Compile Include="Models\EFModels\Promotion.cs" />
     <Compile Include="Models\EFModels\Role.cs" />
-    <Compile Include="Models\EFModels\RoleToPermission.cs" />
     <Compile Include="Models\EFModels\Specification.cs" />
     <Compile Include="Models\EFModels\Teacher.cs" />
+    <Compile Include="Models\ViewModels\LessonsVM\LessonCreateVM.cs" />
+    <Compile Include="Models\ViewModels\MembersVM\EmployeeEditVM.cs" />
+    <Compile Include="Models\ViewModels\MembersVM\LoginVM.cs" />
+    <Compile Include="Models\ViewModels\MembersVM\MemberExts.cs" />
+    <Compile Include="Models\ViewModels\PromotionsVM\PromotionCreateVM.cs" />
+    <Compile Include="Controllers\Promotions\PromotionsController.cs" />
+    <Compile Include="Controllers\TeachersController.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
     <Compile Include="Models\ViewModels\DessertsVM\CategoryCreateVM.cs" />
     <Compile Include="Models\ViewModels\DessertsVM\CategoryExts.cs" />
     <Compile Include="Models\ViewModels\DessertsVM\DessertIndexPartVM.cs" />
@@ -878,6 +877,7 @@
     <Content Include="Views\Coupons\Index.cshtml" />
     <Content Include="Views\Promotions\Create.cshtml" />
     <Content Include="Views\Promotions\Index.cshtml" />
+    <Content Include="Views\Employees\Login.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="Scripts\vendor\chart.js\controllers\controller.bar.d.ts" />
