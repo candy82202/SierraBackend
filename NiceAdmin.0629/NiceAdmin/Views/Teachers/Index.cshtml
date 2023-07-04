@@ -3,6 +3,7 @@
 
 @{
     ViewBag.Title = "Index";
+    var criteria = ViewBag.Criteria as NiceAdmin.Models.ViewModels.TeachersVM.TeacherCriteria;
 }
 <main id="main" class="main">
     <div class="pagetitle">
@@ -16,24 +17,25 @@
         </nav>
     </div>
     <!-- End Page Title -->
-    @*<section class="container">
-        <form method="get">
-            <div class="row">
-                <div class="mb-3 col-md-3">
-                    <label for="s_name">教師名稱</label>
-                    <input type="text" class="form-control" name="name" id="@s_name">
+    
+            <form method="get" >
+                <div class="row">
+                    <div class="mb-3 col-md-3">
+                        <label for="s_name">教師名稱</label>
+                        <input type="text" class="form-control" name="TeacherName" id="s_name" value="@criteria.TeacherName">
 
+                    </div>
+                    <div class="mb-3 col-md-2 align-self-end">
+                        <button class="btn btn-primary">Search</button>
+                    </div>
                 </div>
-                <div class="mb-3 col-md-2 align-self-end">
-                    <button class="btn btn-primary">Search</button>
-                </div>
-            </div>
-        </form>
-    </section>*@
+            </form>
+    
 
-    <p>
-        @Html.ActionLink("Create New", "Create")
-    </p>
+<p>
+    <button type="button" class="btn btn-outline-primary">@Html.ActionLink("新增師資", "Create")</button>
+    
+</p>
     <table class="table table-striped table-hover datatable" id="example">
         <thead>
             <tr>
@@ -84,11 +86,25 @@
                     <td>
                         @Html.DisplayFor(modelItem => item.AcademicText)
                     </td>
-                    <td class="text-start">
-                        @Html.DisplayFor(modelItem => item.TeacherStatusText)
+                    <td class="status">
+                        @if (item.TeacherStatusText == "上架")
+                        {
+                            <span class="badge bg-success">
+                                @Html.DisplayFor(modelItem => item.TeacherStatusText)
+                            </span>
+                        }
+                        else
+                        {
+                            <span class="badge bg-danger">
+                                @Html.DisplayFor(modelItem => item.TeacherStatusText)
+                            </span>
+                        }
+
                     </td>
                     <td>
-                        @Html.ActionLink("Edit", "Edit", new { id = item.TeacherId }) |
+                        <i class="bi bi-pencil-square"> @Html.ActionLink("Edit", "Edit", new { id = item.TeacherId })  </i>|
+                        <a href="#"><i class="bx bx-x-circle"></i></a>
+                        
                         @Html.ActionLink("變更圖片", "EditImage", new { id = item.TeacherId }) |
                         @Html.ActionLink("Delete", "Delete", new { id = item.TeacherId })
                     </td>
