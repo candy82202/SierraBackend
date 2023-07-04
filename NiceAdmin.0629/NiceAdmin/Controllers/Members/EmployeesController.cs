@@ -129,12 +129,13 @@ namespace NiceAdmin.Controllers.Members
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Employee employee = db.Employees.Find(id);
-            if (employee == null)
+            Employee emp = db.Employees.Find(id);
+            if (emp == null)
             {
                 return HttpNotFound();
             }
-            return View(employee);
+            var vm = emp.ToIndexVM();
+            return View(vm);
         }
 
         // POST: Employees/Delete/5
@@ -142,8 +143,8 @@ namespace NiceAdmin.Controllers.Members
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Employee employee = db.Employees.Find(id);
-            db.Employees.Remove(employee);
+            Employee emp = db.Employees.Find(id);
+            db.Employees.Remove(emp);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

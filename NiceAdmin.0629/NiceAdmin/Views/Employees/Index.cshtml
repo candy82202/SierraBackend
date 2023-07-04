@@ -3,6 +3,7 @@
 @{
     ViewBag.Title = "Index";
 }
+
 <main id="main" class="main">
     <div class="pagetitle">
         <h1>員工管理</h1>
@@ -54,7 +55,7 @@
                         @Html.DisplayFor(modelItem => item.CreateAt)
                     </td>
 					<td>
-						@Html.DisplayNameFor(model => model.RoleName)
+						@Html.DisplayFor(modelItem => item.RoleName)
 					</td>
                     <td>
                         @Html.ActionLink("編輯", "Edit", new { id = item.EmployeeId }) |
