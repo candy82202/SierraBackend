@@ -61,7 +61,7 @@ namespace NiceAdmin.Models.ViewModels.LessonsVM
             get
             {
                 return this.LessonStatus == true
-                    ? "上架中" : "已下架";
+                    ? "上架" : "下架";
             }
         }
 

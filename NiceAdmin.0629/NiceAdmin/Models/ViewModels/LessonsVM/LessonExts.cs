@@ -1,4 +1,5 @@
 ﻿using NiceAdmin.Models.EFModels;
+using NiceAdmin.Models.ViewModels.LessonsVM;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -29,30 +30,42 @@ namespace NiceAdmin.Models.ViewModels.LessonsVM {
             };
 
         }
-        public static DessertCreateVM ToCreatVM(this Dessert dessert)
+        public static LessonCreateVM ToCreatVM(this Lesson lesson)
         {
-            return new DessertCreateVM
+            return new LessonCreateVM
             {
-                DessertId = dessert.DessertId,
-                DessertName = dessert.DessertName.Trim(),
-                CategoryId = dessert.CategoryId,
-                Description = dessert.Description,
-                UnitPrice = dessert.UnitPrice,
-                Status = dessert.Status,
+                //LessonId = lesson.LessonId,
+                LessonTitle = lesson.LessonTitle.Trim(),
+                LessonCategoryId = lesson.LessonCategoryId, // 修改此行
+                LessonInfo = lesson.LessonInfo,
+                LessonDetail = lesson.LessonDetail,
+                LessonPrice = lesson.LessonPrice,
+                LessonStatus = lesson.LessonStatus,
+                LessonHours = lesson.LessonHours,
+                LessonTime = lesson.LessonTime,
+                LessonDessert = lesson.LessonDessert,
+                TeacherId = lesson.TeacherId,
+                MaximumCapacity = lesson.MaximumCapacity,
 
             };
 
         }
-        public static Dessert ToEntity(this DessertCreateVM vm)
+        public static Lesson ToEntity(this LessonCreateVM vm)
         {
-            return new Dessert
+            return new Lesson
             {
-                DessertId = vm.DessertId,
-                DessertName = vm.DessertName.Trim(),
-                CategoryId = vm.CategoryId,
-                Description = vm.Description,
-                UnitPrice = vm.UnitPrice,
-                Status = vm.Status
+                //LessonId = vm.LessonId,
+                LessonTitle = vm.LessonTitle.Trim(),
+                LessonCategoryId = vm.LessonCategoryId, // 修改此行
+                LessonInfo = vm.LessonInfo,
+                LessonDetail = vm.LessonDetail,
+                LessonPrice = vm.LessonPrice,
+                LessonStatus = vm.LessonStatus,
+                LessonHours = vm.LessonHours,
+                LessonTime = vm.LessonTime,
+                LessonDessert = vm.LessonDessert,
+                TeacherId = vm.TeacherId,
+                MaximumCapacity = vm.MaximumCapacity,
             };
 
 

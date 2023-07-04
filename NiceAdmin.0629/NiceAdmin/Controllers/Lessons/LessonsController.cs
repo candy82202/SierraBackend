@@ -46,10 +46,15 @@ namespace NiceAdmin.Controllers.Lessons
             return View(lessons);
         }
 
-        private void PrepareCategoryDataSource(int? lessonCategoryName)
+
+        
+        private void PrepareCategoryDataSource(int? lessonCategoryId)
         {
             var categories = db.LessonCategories.ToList().Prepend(new LessonCategory());
-            ViewBag.LessonCategoryId = new SelectList(categories, "LessonCategoryId", "LessonCategoryName", lessonCategoryName);
+            var teachers = db.Teachers.ToList().Prepend(new Teacher());
+            ViewBag.LessonCategoryId = new SelectList(categories, "LessonCategoryId", "LessonCategoryName", lessonCategoryId);
+            ViewBag.TeacherId = new SelectList(teachers, "TeacherId", "TeacherName", lessonCategoryId);
+
         }
 
         // GET: Lessons/Details/5
@@ -71,7 +76,8 @@ namespace NiceAdmin.Controllers.Lessons
         public ActionResult Create()
         {
             PrepareCategoryDataSource(null);
-            return View();
+            var vm = new LessonCreateVM();
+            return View(vm);
         }
 
         // POST: Lessons/Create
@@ -79,19 +85,73 @@ namespace NiceAdmin.Controllers.Lessons
         // 如需詳細資料，請參閱 https://go.microsoft.com/fwlink/?LinkId=317598。
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(Lesson lesson)//LessonCreateVM vm)
+        public ActionResult Create(LessonCreateVM vm, List<HttpPostedFileBase> images)
         {
-            if (ModelState.IsValid)
+            var files = images;
+            if (ModelState.IsValid && files != null)
             {
+                string path = Server.MapPath("/Uploads");
+
+                foreach (var file in files)
+                {
+                    string fileName = SaveUploadedFile(path, file);
+                    vm.LessonImageName.Add(fileName);
+                }
+
+
+
+                Lesson lesson = vm.ToEntity();
+                lesson.CreateTime = DateTime.Now;
+                foreach (string imageFileName in vm.LessonImageName)
+                {
+                    LessonImage lessonImage = new LessonImage
+                    {
+                        LessonImageName = imageFileName
+                    };
+                    lesson.LessonImages.Add(lessonImage);
+                }
                 db.Lessons.Add(lesson);
                 db.SaveChanges();
+
+                if (lesson.LessonStatus) // 檢查商品是否上架
+                {
+                    List<Lesson> onShelfLessons = GetOnShelfLessons(lesson); // 獲取所有上架的商品
+                    return RedirectToAction("Index", "Lessons", new { lessons = onShelfLessons });
+                }
+
                 return RedirectToAction("Index");
             }
-
-            ViewBag.LessonCategoryId = new SelectList(db.LessonCategories, "LessonCategoryId", "LessonCategoryName", lesson.LessonCategoryId);
-            ViewBag.TeacherId = new SelectList(db.Teachers, "TeacherId", "TeacherName", lesson.TeacherId);
-            return View(lesson);
+            PrepareCategoryDataSource(vm.LessonCategoryId);
+            return View(vm);
         }
+
+        private List<Lesson> GetOnShelfLessons(Lesson lesson)
+        {
+            return db.Lessons.Where(d => d.LessonStatus).ToList();
+        }
+
+        private string SaveUploadedFile(string path, HttpPostedFileBase file1)
+        {
+            List<string> FileNames = new List<string>();
+
+
+            //如果沒有上傳檔案或檔案室空的，就不處理，傳回string empty
+            if (file1 == null || file1.ContentLength == 0) return string.Empty;
+            //取得上傳檔案的附檔名
+            string ext = System.IO.Path.GetExtension(file1.FileName);
+            //如果附檔名不在允許的範圍哩，表示上傳不合理的檔案類型，就不處哩，傳回string.empty
+            string[] allowedExts = new string[] { ".jpg", ".jpeg", ".png", ".tif" };
+            if (allowedExts.Contains(ext.ToLower()) == false) return string.Empty;
+            //生成一個不會重複的檔名
+            string newFileName = Guid.NewGuid().ToString("N") + ext;
+            string fullName = System.IO.Path.Combine(path, newFileName);
+            //將上傳檔案存放到指定位置
+            file1.SaveAs(fullName);
+            //傳回存放的檔名
+            return newFileName;
+        }
+
+
 
         // GET: Lessons/Edit/5
         public ActionResult Edit(int? id)

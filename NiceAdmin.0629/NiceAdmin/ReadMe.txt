@@ -111,6 +111,11 @@ Lesson 部分
 
 [V]index進階搜尋 OK
 
+===========0704==============
+[V]Lessons Create基本完成
+
+
+==================================================================
 [working on]完善Course CRUD、Courses的多張照片上傳和修改
 [working on]CRUD頁面需要補上<main> ⇒ 版型調整、table部分更改成datatable(有需要使用的)
 
