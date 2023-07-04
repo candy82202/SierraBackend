@@ -43,14 +43,21 @@ namespace NiceAdmin.Controllers.Members
 		// GET: Employees/Create
 		public ActionResult Create()
 		{
-			//// 原本的寫法
-			//ViewBag.RoleId = db.Roles.Select(r => new SelectListItem
-			//{
-			//    Value = r.RoleId.ToString(),
-			//    Text = r.RoleName
-			//});
-			PrepareRolesDataSource(null);
-			return View();
+            //// 原本的寫法
+            //ViewBag.RoleId = db.Roles.Select(r => new SelectListItem
+            //{
+            //    Value = r.RoleId.ToString(),
+            //    Text = r.RoleName
+            //});
+
+            //// 後來的寫法
+            //PrepareRolesDataSource(null);
+
+            // 最後的寫法
+            HashSet<Role> roles = db.Roles.ToHashSet();
+            ViewBag.Roles = roles;
+           
+            return View();
 		}
 
 		// POST: Employees/Create
@@ -60,19 +67,20 @@ namespace NiceAdmin.Controllers.Members
 		[ValidateAntiForgeryToken]
 		public ActionResult Create(EmployeeCreateVM vm)
 		{
-			if (ModelState.IsValid == false) return View(vm);
-
-			var emp = new Employee
+			if (ModelState.IsValid == false) 
 			{
-				EmployeeId = vm.EmployeeId,
-				EmployeeName = vm.EmployeeName,
-				EncryptedPassword = vm.EncryptedPassword,
-				CreateAt = DateTime.Now,
-				Roles = vm.Roles
-			};
+                HashSet<Role> roles = db.Roles.ToHashSet();
+                ViewBag.Roles = roles;
+                return View(vm); 
+			}
 
-			db.Employees.Add(emp);
-			db.SaveChanges();
+			var emp = vm.ToEntity();
+			emp.Roles = db.Roles.Where(r => vm.RoleIds.Contains(r.RoleId)).ToList();
+            db.Employees.Add(emp);
+			//var newEmp = db.Employees.OrderByDescending(e => e.EmployeeId).FirstOrDefault();
+   //         newEmp.Roles = db.Roles.Where(r=> vm.RoleIds.Contains(r.RoleId)).ToList();
+
+            db.SaveChanges();
 			return RedirectToAction("Index");
 		}
 
@@ -84,14 +92,16 @@ namespace NiceAdmin.Controllers.Members
 				return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
 			}
 
-			var emp = db.Employees.Find(id).ToEditVM();
-			if (emp == null)
+			var vm = db.Employees.Find(id).ToEditVM();
+			if (vm == null)
 			{
 				return HttpNotFound();
 			}
+
 			HashSet<Role> roles = db.Roles.ToHashSet();
 			ViewBag.Roles = roles;
-			return View(emp);
+
+			return View(vm);
 		}
 
 		// POST: Employees/Edit/5
@@ -101,34 +111,28 @@ namespace NiceAdmin.Controllers.Members
 		[ValidateAntiForgeryToken]
 		public ActionResult Edit(EmployeeEditVM vm)
 		{
-			if (ModelState.IsValid == false) return View(vm);
+			if (ModelState.IsValid == false)
+			{
+                HashSet<Role> roles = db.Roles.ToHashSet();
+                ViewBag.Roles = roles;
+                return View(vm);
+			}
 			var empInDb = db.Employees.Find(vm.EmployeeId);
 
-			// 之後補上Result類別後再補上
+            if (empInDb == null) return HttpNotFound();
+			// 之後補上Result類別後改成下面這行
 			// if (empInDb == null) return Result.Fail("找不到要修改的會員記錄");
 
-			empInDb.Roles = vm.Roles;
+			// 因可能被主鍵約束限制,先清除,再塞資料
+			empInDb.Roles.Clear();
+            empInDb.Roles = db.Roles.Where(r => vm.RoleIds.Contains(r.RoleId)).ToList();
 			db.SaveChanges();
 
-			// 因在有KeyAttribute的欄位無法修改,因此Edit的做法是先找到資料,刪除,再新增
-
-			//// 找到資料
-			//var relationInDb = db.EmployeeToRoles.FirstOrDefault(e => e.EmployeeId == vm.EmployeeId);
-
-			////刪除
-			//db.EmployeeToRoles.Remove(relationInDb);
-			//db.SaveChanges();
-
-			////新增
-			//relationInDb.RoleId = relation.RoleId;
-			//db.EmployeeToRoles.Add(relationInDb);
-			//db.SaveChanges();
-
-			//// 還要再
-			//var roleId = db.EmployeeToRoles.FirstOrDefault(r => r.EmployeeId == vm.EmployeeId).RoleId;
-
-
 			return RedirectToAction("Index");
+
+			// 因post back後, vm繫結不到表單傳回來的RoleId, 因此自己宣告一個來繫結
+			// 也因此下面的原來寫法是不行的(也沒有先Clear掉)
+            // empInDb.Roles = vm.Roles;
 		}
 
 		// GET: Employees/Delete/5

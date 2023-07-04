@@ -1,66 +1,70 @@
 ﻿@model NiceAdmin.Models.ViewModels.MembersVM.EmployeeEditVM
 
 @{
-	ViewBag.Title = "Edit";
+    ViewBag.Title = "Edit";
 }
 
 <main id="main" class="main">
-	<div class="pagetitle">
-		<h1>編輯員工</h1>
-		<nav>
-			<ol class="breadcrumb">
-				<li class="breadcrumb-item"><a href="@Url.Action("Index","Home")">首頁</a></li>
-				<li class="breadcrumb-item"><a href="@Url.Action("Index","Members")">會員清單</a></li>
-				<li class="breadcrumb-item"><a href="@Url.Action("Index","Employees")">員工清單</a></li>
-				<li class="breadcrumb-item"><a href="@Url.Action("Index","Roles")">角色清單</a></li>
-				<li class="breadcrumb-item"><a href="@Url.Action("Index","Permissions")">權限清單</a></li>
-			</ol>
-		</nav>
-	</div>
+    <div class="pagetitle">
+        <h1>編輯員工</h1>
+        <nav>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="@Url.Action("Index","Home")">首頁</a></li>
+                <li class="breadcrumb-item"><a href="@Url.Action("Index","Members")">會員清單</a></li>
+                <li class="breadcrumb-item"><a href="@Url.Action("Index","Employees")">員工清單</a></li>
+                <li class="breadcrumb-item"><a href="@Url.Action("Index","Roles")">角色清單</a></li>
+                <li class="breadcrumb-item"><a href="@Url.Action("Index","Permissions")">權限清單</a></li>
+            </ol>
+        </nav>
+    </div>
 
-	@using (Html.BeginForm())
-	{
-		@Html.AntiForgeryToken()
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
 
-		<div class="row">
-			<hr />
-			@Html.HiddenFor(model => model.EmployeeId)
-			@*@Html.HiddenFor(model => model.em)*@
-			@Html.ValidationSummary(true, "", new { @class = "text-danger" })
-			<div class="mb-3">
-				@Html.LabelFor(model => model.EmployeeName, htmlAttributes: new { @class = "form-label" })
-				@Html.EditorFor(model => model.EmployeeName, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
-				@Html.ValidationMessageFor(model => model.EmployeeName, "", new { @class = "text-danger" })
-			</div>
+        <div class="row">
+            <hr />
+            @Html.HiddenFor(model => model.EmployeeId)
+            @*@Html.HiddenFor(model => model.em)*@
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <div class="mb-3">
+                @Html.LabelFor(model => model.EmployeeName, htmlAttributes: new { @class = "form-label" })
+                @Html.EditorFor(model => model.EmployeeName, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+                @Html.ValidationMessageFor(model => model.EmployeeName, "", new { @class = "text-danger" })
+            </div>
 
-			@*<div class="mb-3">
-					@Html.LabelFor(model => model.RoleId, htmlAttributes: new { @class = "form-label" })
-					@Html.DropDownList("RoleId", null, htmlAttributes: new { @class = "form-select" })
-					@Html.ValidationMessageFor(model => model.RoleId, "", new { @class = "text-danger" })
+            @*<div class="mb-3">
+                    @Html.LabelFor(model => model.RoleId, htmlAttributes: new { @class = "form-label" })
+                    @Html.DropDownList("RoleId", null, htmlAttributes: new { @class = "form-select" })
+                    @Html.ValidationMessageFor(model => model.RoleId, "", new { @class = "text-danger" })
 
-				</div>*@
-			@foreach (var role in ViewBag.Roles)
-			{
-				<div>
-					<label>
-						<input type="checkbox" name="Roles" value="@(@role.RoleId)" />
-						@role.RoleName	@role.RoleId
-					</label>
-				</div>
-			}
+                </div>*@
+        <div class="mb-3">
+            @Html.LabelFor(model => model.Roles, htmlAttributes: new { @class = "form-label" })
+            @foreach (var role in ViewBag.Roles)
+            {
+                <div>
+                    <label>
+                        <input type="checkbox" name="RoleIds" value="@(@role.RoleId)" @(Model.Roles != null && Model.Roles.Contains(role) ? "checked" : "" ) />
+                        @role.RoleName
+                    </label>
+                </div>
+            }
+            @Html.ValidationMessageFor(model => model.RoleIds, "", new { @class = "text-danger" })
+        </div>
 
-			<div class="mb-3">
-				<input type="submit" value="儲存" class="btn btn-primary" />
-			</div>
-		</div>
-		<div>
-			@Html.ActionLink("返回頁面", "Index")
-		</div>
-	}
+            <div class="mb-3">
+                <input type="submit" value="儲存" class="btn btn-primary" />
+            </div>
+        </div>
+        <div>
+            @Html.ActionLink("返回頁面", "Index")
+        </div>
+    }
 
 
 
 </main>
 @section Scripts {
-	@Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/jqueryval")
 }

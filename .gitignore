@@ -361,3 +361,7 @@ MigrationBackup/
 
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
+/NiceAdmin.0629/NiceAdmin/Models/ViewModels/MembersVM/EmployeeEditVM.cs
+/.gitignore
+/.gitignore
+/.gitignore

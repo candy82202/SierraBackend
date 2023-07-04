@@ -24,7 +24,11 @@ namespace NiceAdmin.Models.ViewModels.MembersVM
         public string EncryptedPassword { get; set; }
 
         [Display(Name = "角色")]
+        // [Required]
+        public HashSet<Role> Roles { get; set; }
+
+        [Display(Name = "請填選至少一個角色")]
         [Required]
-        public List<Role> Roles { get; set; }
+        public int[] RoleIds { get; set; }
     }
 }

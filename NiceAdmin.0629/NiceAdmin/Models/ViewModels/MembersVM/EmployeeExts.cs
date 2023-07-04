@@ -29,7 +29,8 @@ namespace NiceAdmin.Models.ViewModels.MembersVM
 				EmployeeId = emp.EmployeeId,
 				EmployeeName = emp.EmployeeName,
 				EncryptedPassword = emp.EncryptedPassword,
-			};
+                Roles = (HashSet<Role>)emp.Roles
+            };
 		}
 		public static EmployeeEditVM ToEditVM(this Employee emp)
 		{
@@ -47,7 +48,8 @@ namespace NiceAdmin.Models.ViewModels.MembersVM
 				EmployeeId = vm.EmployeeId,
 				EmployeeName = vm.EmployeeName,
 				EncryptedPassword = vm.EncryptedPassword,
-				CreateAt = DateTime.Now
+				CreateAt = DateTime.Now,
+				Roles = vm.Roles
 			};
 		}
 		public static Employee ToEntity(this EmployeeEditVM vm)
