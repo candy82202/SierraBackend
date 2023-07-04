@@ -137,7 +137,7 @@ namespace NiceAdmin.Controllers
 
             return View();
         }
- public ActionResult CurrentTime()
+        public ActionResult CurrentTime()
         {
             ViewBag.CurrentTime = DateTime.Now;
             //這裡刻意取不同名字，來去跳轉到不同的頁面
@@ -147,12 +147,12 @@ namespace NiceAdmin.Controllers
         {
             var currentTime = DateTime.Now;
             var recentDesserts = db.Desserts
-      .Where(d => d.Status && d.CreateTime <= currentTime) // Filter by status and creation time
-      .OrderByDescending(d => d.CreateTime) // Sort by descending creation time
-      .Take(5) // Get the latest 5 desserts
-      .ToList()
-      .Select(d => d.ToIndexPartVM())
-         .ToList();
+              .Where(d => d.Status && d.CreateTime <= currentTime) // Filter by status and creation time
+              .OrderByDescending(d => d.CreateTime) // Sort by descending creation time
+              .Take(5) // Get the latest 5 desserts
+              .ToList()
+              .Select(d => d.ToIndexPartVM())
+              .ToList();
 
             return PartialView("RecentUpDesserts", recentDesserts);
 
