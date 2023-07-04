@@ -626,8 +626,9 @@
                     <span>登入</span>
                 </a>
             </li>
-            @*End Login Page Nav*@
-            @{ Html.RenderAction("CurrentTime", "Home"); }
+            <li>
+            <div id="currentTimeContainer"></div>
+            </li>
             @*End CurrentTime*@
         </ul>
     </aside>
@@ -635,7 +636,6 @@
     <!-- End Sidebar-->
 
     @RenderBody()
-
 
     <!-- End #main -->
     <!-- ======= Footer ======= -->
@@ -664,8 +664,8 @@
 
 
 
-    @*<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
-        <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>*@
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+        <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
     <!-- Vendor JS Files -->
     <script src="~/Scripts/vendor/apexcharts/apexcharts.amd.js"></script>
     <script src="~/Scripts/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
@@ -677,7 +677,7 @@
     <script src="~/Scripts/vendor/php-email-form/validate.js"></script>
 
     @*連結DataTable*@
-    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    @*<script src="https://code.jquery.com/jquery-3.5.1.js"></script>*@
     <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.13.4/js/dataTables.bootstrap5.min.js"></script>
     <script src="https://cdn.datatables.net/select/1.6.2/js/dataTables.select.min.js"></script>
@@ -685,7 +685,7 @@
     <script src="~/Scripts/js/main.js"></script>
     @RenderSection("scripts", required: false)
 
-    <script>
+<script>
         //$(document).ready(function () {
 
         $(document).ready(function () {
@@ -698,7 +698,21 @@
             });
         });
 
+         // 定義一個函式來定期從伺服器更新時間
+    function updateTime() {
+        $.ajax({
+            url: "@Url.Action("CurrentTime", "Home")",
+            type: "GET",
+            success: function (result) {
+                // 更新 partial view 中的時間
+                //$("#currentTime").html(result);
+                $("#currentTimeContainer").html(result);
+            }
+        });
+    }
 
+    // 設置定時器，每隔一段時間呼叫一次 updateTime 函式
+    setInterval(updateTime, 1000); // 每秒更新一次時間
 
         //這裡是使用sweetAlert的方式
         function confirmDelete(event) {
@@ -913,6 +927,6 @@
             var input = document.getElementById("tags");
             autocomplete(input, sierras);
         });
-    </script>
+</script>
 </body>
 </html>
