@@ -153,10 +153,13 @@ Teacher 部分
 [v]Delete VM
 [v]檢查CRUD
 [v]試推orders04
-[working on]index查詢
-[working on]index變更圖片icon
+[v]index查詢
+[v]index變更圖片icon
 [working on]index一鍵上下架
 [v]index頁上下架更改圖示
+[v] 所有頁面新增<div class="row">
+        <div class="card">
+            <div class="card-body">
 
 
 
