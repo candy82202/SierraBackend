@@ -7,6 +7,10 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using NiceAdmin.Models.EFModels;
+using NiceAdmin.Models.Infra.DapperRepositories;
+using NiceAdmin.Models.Interfaces;
+using NiceAdmin.Models.Services;
+using NiceAdmin.Models.ViewModels.OrdersVM;
 
 namespace NiceAdmin.Controllers.Orders
 {
@@ -17,8 +21,13 @@ namespace NiceAdmin.Controllers.Orders
         // GET: DessertOrderDetails
         public ActionResult Index()
         {
-            var dessertOrderDetails = db.DessertOrderDetails.Include(d => d.Dessert).Include(d => d.DessertOrder);
-            return View(dessertOrderDetails.ToList());
+            IDessertOrderRepository repo = new DessertOrderDapperRepository { };
+            DessertOrderService service = new DessertOrderService(repo);
+            
+
+
+
+            return View(service.Search().Select(x => x.TOIndexVM()).ToList());
         }
 
         // GET: DessertOrderDetails/Details/5
