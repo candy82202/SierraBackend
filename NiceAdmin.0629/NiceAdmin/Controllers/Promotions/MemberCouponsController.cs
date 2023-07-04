@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using NiceAdmin.Models.EFModels;
+using NiceAdmin.Models.ViewModels.PromotionsVM;
 
 namespace NiceAdmin.Controllers
 {
@@ -17,8 +18,11 @@ namespace NiceAdmin.Controllers
         // GET: MemberCoupons
         public ActionResult Index()
         {
-            var memberCoupons = db.MemberCoupons.Include(m => m.Coupon).Include(m => m.Member);
-            return View(memberCoupons.ToList());
+            var memberCoupons = db.Members.AsNoTracking()
+                                          .Include(m => m.MemberCoupons)
+                                          .ToList()
+										  .Select(m => m.ToMemberCouponIndexVM());
+            return View(memberCoupons);
         }
 
         // GET: MemberCoupons/Details/5
@@ -28,12 +32,22 @@ namespace NiceAdmin.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            MemberCoupon memberCoupon = db.MemberCoupons.Find(id);
-            if (memberCoupon == null)
+            Member member = db.Members.Find(id);
+            if (member == null)
             {
                 return HttpNotFound();
             }
-            return View(memberCoupon);
+            IEnumerable<MemberCouponInDetail> memberCoupons = db.MemberCoupons
+                .Where(mc => mc.MemberId == id)
+                .ToList()
+                .Select(mc => mc.ToMemberCouponInDetail());
+            MemberCouponDetailVM vm = new MemberCouponDetailVM()
+            {
+                MemberId = member.MemberId,
+                MemberName = member.MemberName,
+                MemberCoupons = memberCoupons
+            };
+            return View(vm);
         }
 
         // GET: MemberCoupons/Create

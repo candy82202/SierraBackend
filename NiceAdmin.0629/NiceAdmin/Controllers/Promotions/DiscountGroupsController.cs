@@ -32,9 +32,9 @@ namespace NiceAdmin.Controllers
 
             return new RedirectResult("Index");
         }
+        
         public ActionResult Delete(int discountGroupId)
         {
-
             var discountGroupInDb = db.DiscountGroups.FirstOrDefault(d => d.DiscountGroupId == discountGroupId);
             db.DiscountGroups.Remove(discountGroupInDb);
             db.SaveChanges();

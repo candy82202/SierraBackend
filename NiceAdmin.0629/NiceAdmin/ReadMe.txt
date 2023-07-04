@@ -210,7 +210,7 @@ ViewBag.LessonOrderId = new SelectList(db.LessonOrders, "LessonOrderId", "Note",
 ==========================================================
 Promotion部分
 
-[V] - 優惠群組增刪查
+[V] - 優惠群組增刪查  //todo 改成ajax
         
 [V] - 編輯優惠群組頁面
     - 一個畫面使用多個vm
@@ -227,11 +227,43 @@ Promotion部分
 
 [V] - 優惠券詳情
 
-[V] - 促銷活動清單、新增 //todo dropdownlist只顯示分類為活動的優惠券(不行的話就選完之後ajax檢查)
-                      //jqueryUI datepicker沒法正常顯示  
+[V] - 促銷活動清單、新增 //jqueryUI datepicker沒法正常顯示 
+    - 新增時預覽圖片
+    - dropdownlist只抓取特定類別的優惠券
+    - 選擇關聯優惠券自動填入此優惠券的開始、結束時間
 
-[working on] - 促銷活動修改、刪除
+[V] - 促銷活動修改 //todo 修改圖片還沒
 
+[working on] - 會員優惠券
+
+
+(1)
+discountGroup 增
+              刪
+              查
+              改
+
+coupon        增
+              查
+
+promotion     增
+              查
+              改
+------------------------
+(2)
+promotion     改照片
+
+memberCoupon  查
+              增
+------------------------
+(3)
+discount      增
+              查
+              改
+                
+(1)大概完成，還須修畫面，補一些小功能，檢查bug
+(2)未完成
+(3)可能寫不到嗚嗚
 
 
 
