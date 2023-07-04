@@ -157,6 +157,7 @@
     <Compile Include="Models\ViewModels\LessonsVM\LessonCreateVM.cs" />
     <Compile Include="Models\ViewModels\MembersVM\EmployeeEditVM.cs" />
     <Compile Include="Models\ViewModels\MembersVM\MemberExts.cs" />
+    <Compile Include="Models\ViewModels\PromotionsVM\MemberCouponDeliverVM.cs" />
     <Compile Include="Models\ViewModels\PromotionsVM\MemberCouponDetailVM.cs" />
     <Compile Include="Models\ViewModels\PromotionsVM\MemberCouponExts.cs" />
     <Compile Include="Models\ViewModels\PromotionsVM\MemberCouponIndexVM.cs" />
@@ -740,12 +741,7 @@
     <Content Include="Views\Shared\_LayoutError.cshtml" />
     <Content Include="Views\DiscountGroups\Edit.cshtml" />
     <Content Include="Views\DiscountGroups\Index.cshtml" />
-    <Content Include="Views\Coupons\Delete.cshtml" />
     <Content Include="Views\Coupons\Details.cshtml" />
-    <Content Include="Views\Coupons\Edit.cshtml" />
-    <Content Include="Views\MemberCoupons\Create.cshtml" />
-    <Content Include="Views\MemberCoupons\Delete.cshtml" />
-    <Content Include="Views\MemberCoupons\Edit.cshtml" />
     <Content Include="Views\Promotions\Edit.cshtml" />
     <Content Include="Views\Teachers\Create.cshtml" />
     <Content Include="Views\Teachers\Delete.cshtml" />

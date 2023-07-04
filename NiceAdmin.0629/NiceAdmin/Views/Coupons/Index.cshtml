@@ -5,73 +5,79 @@
 }
 
 <main id="main" class="main">
-    <div class="pagetitle">
-        <h1>優惠券清單</h1>
-        <nav>
-            <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="@Url.Action("Index","Home")">首頁</a></li>
-                <li class="breadcrumb-item">   行銷管理  </li>
-                <li class="breadcrumb-item active">  優惠券清單  </li>
-            </ol>
-        </nav>
+    <div class="row">
+        <div class="card">
+            <div class="card-body">
+                <div class="pagetitle mt-3">
+                    <h1>優惠券清單</h1>
+                    <nav>
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="@Url.Action("Index","Home")">首頁</a></li>
+                            <li class="breadcrumb-item">   行銷管理  </li>
+                            <li class="breadcrumb-item active">  優惠券清單  </li>
+                        </ol>
+                    </nav>
+                </div>
+                <!-- End Page Title -->
+                <section class="section">
+
+                    <p>
+                        @Html.ActionLink("Create New", "Create")
+                    </p>
+                    <table class="table table-hover datatable">
+                        <thead>
+                            <tr>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.CouponName)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.CouponCategoryName)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.DiscountTarget)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.CreateAt)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.StatusText)
+                                </th>
+                                <th>
+                                    功能
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.CouponName)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.CouponCategoryName)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.DiscountTarget)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.CreateAt)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.StatusText)
+                                    </td>
+                                    <td>
+                                        @Html.ActionLink("Edit", "Edit", new { id = item.CouponId }) |
+                                        @Html.ActionLink("Details", "Details", new { id = item.CouponId }) |
+                                        @Html.ActionLink("Delete", "Delete", new { id = item.CouponId })
+                                    </td>
+                                </tr>
+
+                            }
+                        </tbody>
+                    </table>
+                </section>
+            </div><!-- End Default Tabs -->
+        </div>
     </div>
-    <!-- End Page Title -->
-    <section class="section">
-
-        <p>
-            @Html.ActionLink("Create New", "Create")
-        </p>
-        <table class="table table-hover datatable">
-            <thead>
-                <tr>
-                    <th>
-                        @Html.DisplayNameFor(model => model.CouponName)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.CouponCategoryName)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.DiscountTarget)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.CreateAt)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.StatusText)
-                    </th>
-                    <th>
-                        功能
-                    </th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach (var item in Model)
-                {
-                    <tr>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.CouponName)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.CouponCategoryName)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.DiscountTarget)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.CreateAt)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.StatusText)
-                        </td>
-                        <td>
-                            @Html.ActionLink("Edit", "Edit", new { id=item.CouponId }) |
-                            @Html.ActionLink("Details", "Details", new { id = item.CouponId }) |
-                            @Html.ActionLink("Delete", "Delete", new { id = item.CouponId })
-                        </td>
-                    </tr>
-
-                }
-            </tbody>
-        </table>
-    </section>
 </main>

@@ -5,72 +5,78 @@
 }
 
 <main id="main" class="main">
-    <div class="pagetitle">
-        <h1>促銷活動清單</h1>
-        <nav>
-            <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="@Url.Action("Index","Home")">首頁</a></li>
-                <li class="breadcrumb-item">   行銷管理  </li>
-                <li class="breadcrumb-item active">  促銷活動清單  </li>
-            </ol>
-        </nav>
-    </div>
-    <!-- End Page Title -->
-    <section class="section">
+    <div class="row">
+        <div class="card">
+            <div class="card-body">
+                <div class="pagetitle mt-3">
+                    <h1>促銷活動清單</h1>
+                    <nav>
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="@Url.Action("Index","Home")">首頁</a></li>
+                            <li class="breadcrumb-item">   行銷管理  </li>
+                            <li class="breadcrumb-item active">  促銷活動清單  </li>
+                        </ol>
+                    </nav>
+                </div>
+                <!-- End Page Title -->
+                <section class="section">
 
-        <p>
-            @Html.ActionLink("Create New", "Create")
-        </p>
-        <table class="table table-hover datatable">
-            <thead>
-                <tr>
-                    <th>
-                        @Html.DisplayNameFor(model => model.PromotionImage)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.PromotionName)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.CouponName)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.Description)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.Status)
-                    </th>
-                    <th>功能</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach (var item in Model)
-                {
-                    <tr>
-                        <td>
-                            <img src="~/Uploads/@item.PromotionImage" alt="@item.PromotionImage" class="w-100 height100px">
-                            @*@Html.DisplayFor(modelItem => item.PromotionImage)*@
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.PromotionName)
-                        </td>
-                        <td class="CouponName">
-                            @Html.DisplayFor(modelItem => item.CouponName)
-                        </td>
-                        <td class="Description">
-                            @Html.DisplayFor(modelItem => item.Description)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Status)
-                        </td>
-                        <td>
-                            @Html.ActionLink("編輯", "Edit", new { id=item.PromotionId }) |
-                            @Html.ActionLink("變更圖片", "EditImage", new { id = item.PromotionId })
-                        </td>
-                    </tr>
-                }
-            </tbody>
-        </table>
-    </section>
+                    <p>
+                        @Html.ActionLink("Create New", "Create")
+                    </p>
+                    <table class="table table-hover datatable">
+                        <thead>
+                            <tr>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.PromotionImage)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.PromotionName)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.CouponName)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Description)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Status)
+                                </th>
+                                <th>功能</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>
+                                        <img src="~/Uploads/@item.PromotionImage" alt="@item.PromotionImage" class="w-100 height100px">
+                                        @*@Html.DisplayFor(modelItem => item.PromotionImage)*@
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.PromotionName)
+                                    </td>
+                                    <td class="CouponName">
+                                        @Html.DisplayFor(modelItem => item.CouponName)
+                                    </td>
+                                    <td class="Description">
+                                        @Html.DisplayFor(modelItem => item.Description)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Status)
+                                    </td>
+                                    <td>
+                                        @Html.ActionLink("編輯", "Edit", new { id = item.PromotionId }) |
+                                        @Html.ActionLink("變更圖片", "EditImage", new { id = item.PromotionId })
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </section>
+            </div><!-- End Default Tabs -->
+        </div>
+    </div>
 </main>
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
