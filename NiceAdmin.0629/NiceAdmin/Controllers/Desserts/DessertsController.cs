@@ -52,6 +52,7 @@ namespace NiceAdmin.Controllers
             return View(desserts);
 
         }
+        // Three Layer - Index
         public ActionResult Index(DessertCriteria criteria)
         {
             ViewBag.Criteria = criteria;
@@ -107,31 +108,6 @@ namespace NiceAdmin.Controllers
            PrepareCategoryDataSource(null);
             return View();
         }
-
-        // POST: Desserts/Create
-        // 若要避免過量張貼攻擊，請啟用您要繫結的特定屬性。
-        // 如需詳細資料，請參閱 https://go.microsoft.com/fwlink/?LinkId=317598。
-        //[HttpPost]
-        //[ValidateAntiForgeryToken]
-        //public ActionResult Create(DessertCreateVM dessertCreateVM)
-        //    //[Bind(Include = "DessertId,DessertName,CategoryId,UnitPrice,Description,Status,CreateTime")] Dessert dessert)
-        //{
-        //    if (ModelState.IsValid)
-        //    {
-        //        //Dessert dessert = db.Desserts.Find(id);
-        //        //DessertCreateVM CreateVM = dessert.ToEditVM();
-        //        //dessertCreateVM.DessertId = 
-        //        Dessert dessert = dessertCreateVM.ToEntity();
-        //        dessert.CreateTime = DateTime.Now;
-        //        db.Desserts.Add(dessert);
-        //        db.SaveChanges();
-        //        return RedirectToAction("Index");
-        //    }
-
-        //    //ViewBag.CategoryId = new SelectList(db.Categories, "CategoryId", "CategoryName", dessert.CategoryId);
-        //    PrepareCategoryDataSource(dessertCreateVM.CategoryId);
-        //    return View(dessertCreateVM);
-        //}
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create(DessertCreateVM dessertCreateVM, List<HttpPostedFileBase> images)

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
 using System.Xml.Linq;
@@ -35,6 +36,10 @@ namespace NiceAdmin.Models.ViewModels.DessertsVM
 
         [Display(Name = "創建時間")]
         public DateTime? CreateTime { get; set; }
+        [Column("DessertImageName")]
+        [StringLength(255)]
+        [Display(Name = "照片")]
+        public string DessertImageName { get; set; }
 
     }
 }
