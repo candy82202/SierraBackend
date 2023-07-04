@@ -20,6 +20,7 @@ namespace NiceAdmin.Models.ViewModels.MembersVM
 
 		[Display(Name = "角色")]
 		[Required]
+		[Range(1, int.MaxValue, ErrorMessage = "請選擇有效的角色")]
 		public int RoleId { get; set; }
 	}
 }

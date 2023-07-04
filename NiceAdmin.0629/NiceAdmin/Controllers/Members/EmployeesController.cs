@@ -82,14 +82,13 @@ namespace NiceAdmin.Controllers.Members
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
            
-            var relation = db.EmployeeToRoles.FirstOrDefault(r => r.EmployeeId == id);
-            var roleId = relation.RoleId;
             var emp = db.Employees.Find(id).ToEditVM();
-            
 			if (emp == null)
             {
                 return HttpNotFound();
             }
+
+            var roleId = db.EmployeeToRoles.FirstOrDefault(r => r.EmployeeId == id).RoleId;
             PrepareRolesDataSource(roleId); 
 			return View(emp);
         }
@@ -119,6 +118,10 @@ namespace NiceAdmin.Controllers.Members
 
 				return RedirectToAction("Index");
             }
+
+            // 還要再
+			var roleId = db.EmployeeToRoles.FirstOrDefault(r => r.EmployeeId == vm.EmployeeId).RoleId;
+			PrepareRolesDataSource(roleId);
 			return View(vm);
         }
 
@@ -143,8 +146,8 @@ namespace NiceAdmin.Controllers.Members
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Employee emp = db.Employees.Find(id);
-            db.Employees.Remove(emp);
+            Employee employee = db.Employees.Find(id);
+            db.Employees.Remove(employee);
             db.SaveChanges();
             return RedirectToAction("Index");
         }
@@ -159,7 +162,8 @@ namespace NiceAdmin.Controllers.Members
         }
 		private void PrepareRolesDataSource(int? roleId)
 		{
-			ViewBag.RoleId = new SelectList(db.Roles, "RoleId", "RoleName", roleId );
+            var roleList = db.Roles.ToList().Prepend(new Role());
+			ViewBag.RoleId = new SelectList(roleList, "RoleId", "RoleName", roleId );
 		}
 	}
 }

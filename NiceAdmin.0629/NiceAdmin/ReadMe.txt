@@ -98,7 +98,11 @@ Member 部分
 [V] - 修改資料表結構(員工刪除關聯)
 [V] - complete Employee/Delete(including view page)
 
-
+[V] - create & complete MemberIndexVM.cs
+    - create & complete MemberExts.cs
+    - modify Index()
+    - modify Index view page
+[working on] - Members/Index（修改MemberIndexVM）
 
 
 
