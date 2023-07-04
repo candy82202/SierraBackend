@@ -18,8 +18,6 @@
                 <th>
                     @Html.DisplayNameFor(model => model.CreateTime)
                 </th>
-
-
             </tr>
         </thead>
         <tbody>
@@ -37,15 +35,8 @@
                     <td>
                         @Html.DisplayFor(modelItem => item.UnitPrice)
                     </td>
-                    <td class="status">
-                        @if (item.StatusText == "上架")
-                        {
-                            <span class="badge bg-success">@Html.DisplayFor(modelItem => item.StatusText)</span>
-                        }
-                        else
-                        {
-                            <span class="badge bg-danger">@Html.DisplayFor(modelItem => item.StatusText)</span>
-                        }
+                    <td class="status">                      
+                            <span class="badge bg-danger">@Html.DisplayFor(modelItem => item.StatusText)</span>                       
                     </td>
                     <td>
                         @Html.DisplayFor(modelItem => item.CreateTime)

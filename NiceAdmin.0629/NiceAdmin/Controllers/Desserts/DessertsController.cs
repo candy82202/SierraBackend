@@ -321,7 +321,7 @@ namespace NiceAdmin.Controllers
                     //return Json(new { success = true });
                     return Json(new { success = true, message = "上架成功" });
                 }
-                catch (Exception ex)
+                catch 
                 {
                     return Json(new { success = false, errorMessage = "An error occurred while marking desserts as down. Please try again later." });
                 }
@@ -352,7 +352,7 @@ namespace NiceAdmin.Controllers
                     //return Json(new { success = true });
                     return Json(new { success = true, message = "下架成功" });
                 }
-                catch (Exception ex)
+                catch 
                 {                    
                     return Json(new { success = false, errorMessage = "An error occurred while marking desserts as down. Please try again later." });
                 }
@@ -385,7 +385,7 @@ namespace NiceAdmin.Controllers
 
                 return Json(new { success = true, message });
             }
-            catch (Exception ex)
+            catch
             {
                 return Json(new { success = false, errorMessage = "An error occurred while updating the dessert status. Please try again later." });
             }
@@ -394,9 +394,8 @@ namespace NiceAdmin.Controllers
         {
             var currentTime = DateTime.Now;
             var downDesserts = db.Desserts
-      .Where(d => d.Status == false)//&& d.CreateTime <= currentTime) // Filter by status and creation time
-      .OrderByDescending(d => d.CreateTime) // Sort by descending creation time
-                                            //.Take(5) // Get the latest 5 desserts
+      .Where(d => d.Status == false)
+      .OrderByDescending(d => d.CreateTime)
       .ToList()
       .Select(d => d.ToIndexPartVM())
          .ToList();
