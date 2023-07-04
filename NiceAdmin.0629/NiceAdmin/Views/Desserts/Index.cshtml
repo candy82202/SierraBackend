@@ -1,5 +1,6 @@
-﻿@model IEnumerable<NiceAdmin.Models.ViewModels.DessertIndexVM>
-@*EFModels.Dessert>*@
+﻿@model IEnumerable<NiceAdmin.Models.ViewModels.DessertsVM.ThreeLayer.DessertsIndexTVM>
+           @*DessertIndexVM>*@
+
 
 @{
     ViewBag.Title = "Index";
@@ -8,7 +9,7 @@
     //string s_categoryId = criteria.CategoryId.HasValue ? criteria.CategoryId.Value.ToString() : "";
     var categories = ViewBag.CategoryId as SelectList;
     var criteria = ViewBag.Criteria as NiceAdmin.Models.ViewModels.DessertCriteria;
-    string s_categoryId = criteria.CategoryId.HasValue ? criteria.CategoryId.Value.ToString() : "";
+    string s_categoryId = criteria != null && criteria.CategoryId.HasValue ? criteria.CategoryId.Value.ToString() : "";
 }
 
 

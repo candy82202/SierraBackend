@@ -1,6 +1,8 @@
 ﻿using Microsoft.Ajax.Utilities;
+using NiceAdmin.Models.DTOs.Desserts;
 using NiceAdmin.Models.EFModels;
 using NiceAdmin.Models.ViewModels.DessertsVM;
+using NiceAdmin.Models.ViewModels.DessertsVM.ThreeLayer;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -25,6 +27,22 @@ namespace NiceAdmin.Models.ViewModels
 
             };
         
+        }
+        public static DessertsIndexTVM DtoToIndexTVM(this DessertsDto dto)
+        {
+            return new DessertsIndexTVM
+            {
+                DessertId = dto.DessertId,
+                DessertName = dto.DessertName.Trim(),
+                //CategoryName=dessert.Category.CategoryName,
+                CategoryName = dto.Category.CategoryName, // 修改此行
+                Description = dto.Description,
+                UnitPrice = dto.UnitPrice,
+                Status = dto.Status,
+                CreateTime = dto.CreateTime,
+
+            };
+
         }
         public static DessertIndexPartVM ToIndexPartVM(this Dessert dessert)
         {

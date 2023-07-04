@@ -11,7 +11,11 @@ using System.Web.Mvc;
 using System.Web.UI.WebControls;
 using System.Xml.Linq;
 using NiceAdmin.Models.EFModels;
+using NiceAdmin.Models.Infra.EFRepositories;
+using NiceAdmin.Models.Interfaces;
+using NiceAdmin.Models.Services.Desserts;
 using NiceAdmin.Models.ViewModels;
+using NiceAdmin.Models.ViewModels.DessertsVM.ThreeLayer;
 using WebGrease;
 
 namespace NiceAdmin.Controllers
@@ -21,7 +25,7 @@ namespace NiceAdmin.Controllers
         private AppDbContext db = new AppDbContext();
 
         // GET: Desserts
-        public ActionResult Index(DessertCriteria dessertCriteria)
+        public ActionResult Index1(DessertCriteria dessertCriteria)
         {
             PrepareCategoryDataSource(dessertCriteria.CategoryId);
             ViewBag.Criteria = dessertCriteria;
@@ -48,7 +52,35 @@ namespace NiceAdmin.Controllers
             return View(desserts);
 
         }
+        public ActionResult Index(DessertCriteria criteria)
+        {
+            ViewBag.Criteria = criteria;
+            PrepareCategoryDataSource(criteria.CategoryId);
+            IEnumerable<DessertsIndexTVM> desserts = GetDesserts(criteria);
 
+            return View(desserts);
+        }
+
+        private IEnumerable<DessertsIndexTVM> GetDesserts(DessertCriteria criteria)
+        {
+            // IProductRepository repo = new ProductEFRepository();
+            IDessertRepository repo = new DessertEFRepository();
+
+            DessertService service = new DessertService(repo);
+            return service.Search(criteria)
+                .Select(dto => new DessertsIndexTVM
+                {
+                    DessertId = dto.DessertId,
+                    DessertName = dto.DessertName,
+                    Description = dto.Description,
+                    //CategoryId=dto.CategoryId,
+                    CategoryName = dto.CategoryName,
+                    UnitPrice = dto.UnitPrice,
+                    Status = dto.Status,
+                    CreateTime = dto.CreateTime,
+                });
+
+        }
         private void PrepareCategoryDataSource(int? categoryId)
         {
             ViewBag.CategoryId = new SelectList(db.Categories, "CategoryId", "CategoryName", categoryId);
