@@ -4,38 +4,52 @@
     ViewBag.Title = "Edit";
 }
 
-<h2>Edit</h2>
+<main id="main" class="main">
+    <div class="card">
+        <div class="card-body">
+            <div class="pagetitle mt-3">     
+                    <h1>編輯標籤</h1>
+                    <nav>
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="@Url.Action("Index","Home")">首頁</a></li>
+                            <li class="breadcrumb-item"><a href="@Url.Action("Index","DessertTags")">標籤清單</a></li>
+                            <li class="breadcrumb-item active"><a href="@Url.Action("Edit","DessertTags")">編輯標籤</a></li>
+                        </ol>
+                    </nav>
+                </div>
+                <!-- End Page Title -->
 
+                @using (Html.BeginForm())
+                {
+                    @Html.AntiForgeryToken()
 
-@using (Html.BeginForm())
-{
-    @Html.AntiForgeryToken()
-    
-    <div class="row">
-        <h4>DessertTag</h4>
-        <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        @Html.HiddenFor(model => model.DessertTagId)
-        <div class="mb-3">
-            @Html.LabelFor(model => model.DessertId, "DessertId", htmlAttributes: new { @class = "form-label" })
-                @Html.DropDownList("DessertId", null, htmlAttributes: new { @class = "form-control" })
-            @Html.ValidationMessageFor(model => model.DessertId, "", new { @class = "text-danger" })
-        </div>
-        <div class="mb-3">
-            @Html.LabelFor(model => model.DessertTagName, htmlAttributes: new { @class = "form-label" })
-            @Html.EditorFor(model => model.DessertTagName, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.DessertTagName, "", new { @class = "text-danger" })
-        </div>
-        <div class="mb-3">
-            <input type="submit" value="Save" class="btn btn-primary" />
-        </div>
-    </div>
-}
-
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>
-
+                    <div class="row">                      
+                        <hr />
+                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                        @Html.HiddenFor(model => model.DessertTagId)
+                        <div class="mb-3">
+                            @Html.LabelFor(model => model.DessertId, "DessertId", htmlAttributes: new { @class = "form-label" })
+                            @Html.DropDownList("DessertId", null, htmlAttributes: new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.DessertId, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="mb-3">
+                            @Html.LabelFor(model => model.DessertTagName, htmlAttributes: new { @class = "form-label" })
+                            @Html.EditorFor(model => model.DessertTagName, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.DessertTagName, "", new { @class = "text-danger" })
+                        </div>
+                                              
+                            <div class="d-flex">
+                                <input type="submit" value="Save" class="btn btn-outline-primary" />
+                                @Html.ActionLink("Cancel", "Index", "DessertsTags", null, new { @class = "btn btn-outline-secondary" })
+                            </div>              
+                    </div>
+                }
+                <div>
+                    @Html.ActionLink("Back to List", "Index")
+                </div>
+            </div>
+        </div>  
+</main>
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
 }

@@ -3,7 +3,7 @@
 [V] _Layout & Index 頁面完成 (新增Logo)
 	--更改 content的css位址
 	--更改 Script 的 JS位址 bootstrap位址
-    - 首頁預覽頁面，icon小圖示
+    - 首頁預覽頁面，icon小圖示 (刪除message icon)
 
 [V] - search bar 使用 autocomplete 可以連結到子頁面
     - 連結呈現的樣式修改至下方呈現
@@ -57,13 +57,19 @@ Desserts 部分
 [V] - 全選 checkbox 的變更事件監聽器 (Desserts & Categories 的 Index 頁面 抓到分頁數量的checkbox )
     - AutoComplete 甜點清單頁面
 
+[V] - Index 更改成
+
 [V] - 單筆上,下架按鈕
     - Checkbox Dessert Index 一鍵上,下架
     - 上,下架通知新增SweetAlert方式
 
+[V] - DessertTags Index , Edit 頁面 (更換成Cart元件)
+
 [V] - Add DessertIndexPartVM & DessertExts
     - HomeController Add RecentDesserts method
     - Partial View RecentUpDesserts
+
+[V] - Desserts Index Create Update use card style
 
 [working on] - 新增多張圖顯示， 編輯照片(照片的新增 / 刪除)
 
@@ -71,7 +77,6 @@ Desserts 部分
 
 [working on] - 編輯照片新增欄位(簡易編輯)
              - 照片更改成圖示 <img>
-             - 清單的編輯新增 icon
 
 
 ==========================================================
