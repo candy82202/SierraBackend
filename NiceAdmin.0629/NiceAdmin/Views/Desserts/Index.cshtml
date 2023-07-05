@@ -31,13 +31,13 @@
                 <!-- Default Tabs -->
                 <ul class="nav nav-tabs" id="myTab" role="tablist">
                     <li class="nav-item" role="presentation">
-                        <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home" type="button" role="tab" aria-controls="home" aria-selected="true"><i class="bi bi-box-arrow-in-up"></i>上架</button>
+                        <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home" type="button" role="tab" aria-controls="UpDesserts" aria-selected="true"><i class="bi bi-box-arrow-in-up"></i>上架</button>
                     </li>
                     <li class="nav-item" role="presentation">
-                        <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile" type="button" role="tab" aria-controls="profile" aria-selected="false"><i class="bi bi-box-arrow-in-down"></i>下架</button>
+                        <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile" type="button" role="tab" aria-controls="DownDesserts" aria-selected="false"><i class="bi bi-box-arrow-in-down"></i>下架</button>
                     </li>
                     <li class="nav-item" role="presentation">
-                        <button class="nav-link" id="contact-tab" data-bs-toggle="tab" data-bs-target="#contact" type="button" role="tab" aria-controls="contact" aria-selected="false">Contact</button>
+                        <button class="nav-link" id="contact-tab" data-bs-toggle="tab" data-bs-target="#contact" type="button" role="tab" aria-controls="contact" aria-selected="false">類別</button>
                     </li>
                 </ul>
                 <div class="tab-content pt-2" id="myTabContent">
@@ -89,15 +89,16 @@
                                     </select>
 
                                 </div>
-                                <div class="mb-3 col-md-4">
+                                <div class="mb-3 col-md-3">
                                     <label for="s_minPrice" style="display: block">金額</label>
                                     <input type="number" class="form-control" name="minPrice" id="s_minPrice" style="width: 40%; display: inline" value="@criteria.MinPrice"> ~
                                     <input type="number" class="form-control" name="maxPrice" id="s_maxPrice" style="width: 40%; display: inline" value="@criteria.MaxPrice">
 
                                 </div>
-                                <div class="mb-4 col-md-2 align-self-end">
+                                <div class="mb-4 col-md-4 align-self-end">
                                     <button class="btn btn-outline-primary">查詢</button>
                                     <button class="btn btn-outline-primary"> @Html.ActionLink("新增甜點", "Create")</button>
+                                    <button class="btn btn-outline-primary" id="cleanSearchButton">清除搜尋</button>
                                 </div>
                             </div>
                         </form>
@@ -377,6 +378,14 @@
                     }
                 });
             });
+        });
+
+        //這裡是做清空按鈕搜尋的
+        document.getElementById("cleanSearchButton").addEventListener("click", function () {
+            document.getElementById("s_minPrice").value = "";
+            document.getElementById("s_maxPrice").value = "";
+            document.getElementById("s_name").value = "";
+            document.getElementById("s_categoryId").selectedIndex = 0;
         });
 
         //這段是要做AutoComplete
