@@ -18,7 +18,8 @@ namespace NiceAdmin.Models.ViewModels.MembersVM
         [StringLength(50)]
         public string EmployeeName { get; set; }
 
-        [Display(Name = "密碼")]
+		[DataType(DataType.Password)]
+		[Display(Name = "密碼")]
         [Required]
         [StringLength(200)]
         public string EncryptedPassword { get; set; }
