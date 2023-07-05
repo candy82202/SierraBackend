@@ -43,21 +43,21 @@ namespace NiceAdmin.Controllers.Members
 		// GET: Employees/Create
 		public ActionResult Create()
 		{
-            //// 原本的寫法
-            //ViewBag.RoleId = db.Roles.Select(r => new SelectListItem
-            //{
-            //    Value = r.RoleId.ToString(),
-            //    Text = r.RoleName
-            //});
+			//// 原本的寫法
+			//ViewBag.RoleId = db.Roles.Select(r => new SelectListItem
+			//{
+			//    Value = r.RoleId.ToString(),
+			//    Text = r.RoleName
+			//});
 
-            //// 後來的寫法
-            //PrepareRolesDataSource(null);
+			//// 後來的寫法
+			//PrepareRolesDataSource(null);
 
-            // 最後的寫法
-            HashSet<Role> roles = db.Roles.ToHashSet();
-            ViewBag.Roles = roles;
-           
-            return View();
+			// 最後的寫法
+			HashSet<Role> roles = db.Roles.ToHashSet();
+			ViewBag.Roles = roles;
+
+			return View();
 		}
 
 		// POST: Employees/Create
@@ -65,22 +65,40 @@ namespace NiceAdmin.Controllers.Members
 		// 如需詳細資料，請參閱 https://go.microsoft.com/fwlink/?LinkId=317598。
 		[HttpPost]
 		[ValidateAntiForgeryToken]
-		public ActionResult Create(EmployeeCreateVM vm)
+		public ActionResult Create(EmployeeCreateVM vm, int[] RoleId)
 		{
-			if (ModelState.IsValid == false) 
+			if (ModelState.IsValid == false)
 			{
-                HashSet<Role> roles = db.Roles.ToHashSet();
-                ViewBag.Roles = roles;
-                return View(vm); 
+				HashSet<Role> roles = db.Roles.ToHashSet();
+				ViewBag.Roles = roles;
+				return View(); 
 			}
+			// bool isNameExist = db.Employees.ToList().Any(e => e.EmployeeName.ToLower() == vm.EmployeeName.ToLower());
+			bool isNameExist = db.Employees.Any(e => e.EmployeeName.Equals(vm.EmployeeName, StringComparison.OrdinalIgnoreCase));
+			if (isNameExist)
+			{
+				ModelState.AddModelError("EmployeeName", "帳號重複");
+				HashSet<Role> roles = db.Roles.ToHashSet();
+				ViewBag.Roles = roles;
+				return View(vm);
+			}
+			// bool isNameExist = db.Employees.ToList().Select(x => x.EmployeeName).Contains(vm.EmployeeName);
+			//bool isNameExist = db.Employees.ToList().Any(e => e.EmployeeName == vm.EmployeeName);
+			//if (ModelState.IsValid == false || isNameExist)
+			//{
+			//	ModelState.AddModelError("Employee", "帳號重複");
+			//	HashSet<Role> roles = db.Roles.ToHashSet();
+			//	ViewBag.Roles = roles;
+			//	return View(vm);
+			//}
 
 			var emp = vm.ToEntity();
 			emp.Roles = db.Roles.Where(r => vm.RoleIds.Contains(r.RoleId)).ToList();
-            db.Employees.Add(emp);
+			db.Employees.Add(emp);
 			//var newEmp = db.Employees.OrderByDescending(e => e.EmployeeId).FirstOrDefault();
-   //         newEmp.Roles = db.Roles.Where(r=> vm.RoleIds.Contains(r.RoleId)).ToList();
+			//         newEmp.Roles = db.Roles.Where(r=> vm.RoleIds.Contains(r.RoleId)).ToList();
 
-            db.SaveChanges();
+			db.SaveChanges();
 			return RedirectToAction("Index");
 		}
 
@@ -113,26 +131,26 @@ namespace NiceAdmin.Controllers.Members
 		{
 			if (ModelState.IsValid == false)
 			{
-                HashSet<Role> roles = db.Roles.ToHashSet();
-                ViewBag.Roles = roles;
-                return View(vm);
+				HashSet<Role> roles = db.Roles.ToHashSet();
+				ViewBag.Roles = roles;
+				return View(vm);
 			}
 			var empInDb = db.Employees.Find(vm.EmployeeId);
 
-            if (empInDb == null) return HttpNotFound();
+			if (empInDb == null) return HttpNotFound();
 			// 之後補上Result類別後改成下面這行
 			// if (empInDb == null) return Result.Fail("找不到要修改的會員記錄");
 
 			// 因可能被主鍵約束限制,先清除,再塞資料
 			empInDb.Roles.Clear();
-            empInDb.Roles = db.Roles.Where(r => vm.RoleIds.Contains(r.RoleId)).ToList();
+			empInDb.Roles = db.Roles.Where(r => vm.RoleIds.Contains(r.RoleId)).ToList();
 			db.SaveChanges();
 
 			return RedirectToAction("Index");
 
 			// 因post back後, vm繫結不到表單傳回來的RoleId, 因此自己宣告一個來繫結
 			// 也因此下面的原來寫法是不行的(也沒有先Clear掉)
-            // empInDb.Roles = vm.Roles;
+			// empInDb.Roles = vm.Roles;
 		}
 
 		// GET: Employees/Delete/5

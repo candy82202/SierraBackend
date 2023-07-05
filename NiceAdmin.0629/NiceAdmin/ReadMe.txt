@@ -109,7 +109,8 @@ Member 部分
     - modify Index view page
 [V] - modify Members/Index（修改MemberIndexVM）
 [V] - complete Employee CRUD
-
+[V] - bug fix(Employee/Delete取消也會刪除)
+    - bug fix(帳號唯一不會跳錯)
 
 
 

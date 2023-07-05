@@ -34,10 +34,10 @@
 			<div class="mb-3">
 				@Html.LabelFor(model => model.EncryptedPassword, htmlAttributes: new { @class = "form-label" })
 
-				@Html.EditorFor(model => model.EncryptedPassword, new { htmlAttributes = new { @class = "form-control" } })
 				<span id="toggle-password" onclick="togglePasswordVisibility()">
 					<i class="fas fa-eye"></i>
 				</span>
+				@Html.EditorFor(model => model.EncryptedPassword, new { htmlAttributes = new { @class = "form-control" } })
 				@Html.ValidationMessageFor(model => model.EncryptedPassword, "", new { @class = "text-danger" })
 			</div>
 
