@@ -22,7 +22,9 @@ namespace NiceAdmin.Controllers
                                           .Include(m => m.MemberCoupons)
                                           .ToList()
 										  .Select(m => m.ToMemberCouponIndexVM());
-            return View(memberCoupons);
+            PrepareCouponDataSource(null);
+
+			return View(memberCoupons);
         }
 
         // GET: MemberCoupons/Details/5
@@ -137,8 +139,15 @@ namespace NiceAdmin.Controllers
             db.SaveChanges();
             return RedirectToAction("Index");
         }
+		private void PrepareCouponDataSource(int? couponId)
+		{
+			var coupons = db.Coupons.Where(c => c.CouponCategoryId == 1)
+									.ToList()
+									.Prepend(new Coupon());
+			ViewBag.CouponId = new SelectList(coupons, "couponId", "couponName", couponId);
 
-        protected override void Dispose(bool disposing)
+		}
+		protected override void Dispose(bool disposing)
         {
             if (disposing)
             {

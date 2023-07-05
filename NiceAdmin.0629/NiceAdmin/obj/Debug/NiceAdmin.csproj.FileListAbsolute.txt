@@ -85,6 +85,3 @@ C:\Sierra\NiceAdmin.0629\NiceAdmin\obj\Debug\NiceAdmin.csproj.CoreCompileInputs.
 C:\Sierra\NiceAdmin.0629\NiceAdmin\obj\Debug\NiceAdmin.csproj.CopyComplete
 C:\Sierra\NiceAdmin.0629\NiceAdmin\obj\Debug\NiceAdmin.dll
 C:\Sierra\NiceAdmin.0629\NiceAdmin\obj\Debug\NiceAdmin.pdb
-C:\Sierra\NiceAdmin.0629\NiceAdmin\bin\roslyn\csc.rsp
-C:\Sierra\NiceAdmin.0629\NiceAdmin\bin\roslyn\csi.rsp
-C:\Sierra\NiceAdmin.0629\NiceAdmin\bin\roslyn\vbc.rsp

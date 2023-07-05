@@ -50,7 +50,7 @@
                                     </td>
                                     <td>
                                         @Html.ActionLink("詳情", "Details", new { id = item.MemberId }, new { @class = "btn btn-primary" })
-                                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                        <button type="button" class="btn btn-primary btn-deliver" data-bs-toggle="modal" data-bs-target="#deliverModal" data-name="@item.MemberName" data-id="@item.MemberId">
                                             發送
                                         </button>
                                     </td>
@@ -60,19 +60,20 @@
                     </table>
 
                     <!-- Modal -->
-                    <div class="modal-dialog modal-dialog-centered" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal fade" id="deliverModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog">
                             <div class="modal-content">
                                 <div class="modal-header">
-                                    <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+                                    <h1 class="modal-title fs-5" id="deliverModalLabel">Modal title</h1>
                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                 </div>
                                 <div class="modal-body">
-                                    ...
+                                    <p>選擇要發送的優惠券:</p>
+                                    @Html.DropDownList("CouponId", null, htmlAttributes: new { @class = "form-select" })
                                 </div>
                                 <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                    <button type="button" class="btn btn-primary">Save changes</button>
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">關閉</button>
+                                    <button type="button" class="btn btn-primary" id="btn-deliverconfirm">發送</button>
                                 </div>
                             </div>
                         </div>
@@ -98,6 +99,17 @@
                 if ($(this).text().trim() == "") {
                     $(this).text("無");
                 }
+            })
+            $('.btn-deliver').click(function () {
+                var id = $(this).data('id')
+                var name = $(this).data('name')
+                $('#deliverModalLabel').text(`發送優惠券給${name}`)
+                $('#btn-deliverconfirm').attr('data-id', `${id}`)
+            })
+
+            $('btn-deliverconfirm').click(function () {
+                var memberId = $(this).data('id')
+                var couponId = $()
             })
         })
     </script>
