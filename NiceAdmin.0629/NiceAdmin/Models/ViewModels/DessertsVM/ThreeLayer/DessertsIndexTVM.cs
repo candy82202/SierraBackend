@@ -1,14 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
 using System.Xml.Linq;
 
-namespace NiceAdmin.Models.ViewModels.DessertsVM
+namespace NiceAdmin.Models.ViewModels.DessertsVM.ThreeLayer
 {
-    public class DessertIndexPartVM
+    public class DessertsIndexTVM
     {
         [Display(Name = "甜點編號")]
         public int DessertId { get; set; }
@@ -16,11 +15,24 @@ namespace NiceAdmin.Models.ViewModels.DessertsVM
         [StringLength(50)]
         public string DessertName { get; set; }
         [Display(Name = "甜點類別")]
-        //public string CategoryName { get; set; }
+        //public int CategoryId { get; set; }
         public string CategoryName { get; set; }
         [DisplayFormat(DataFormatString = "{0:#,#}")]
         [Display(Name = "售價")]
-        public int UnitPrice { get; set; }
+        public int? UnitPrice { get; set; }
+
+        public string Description { get; set; }
+        [Display(Name = "描述")]
+
+        public string DescriptionText
+        {
+            get
+            {
+                return this.Description.Length > 10
+                        ? this.Description.Substring(0, 10) + "..."
+                        : this.Description;
+            }
+        }
 
         public bool Status { get; set; }
         [Display(Name = "是否上架")]
@@ -31,15 +43,9 @@ namespace NiceAdmin.Models.ViewModels.DessertsVM
                 return this.Status == true
                     ? "上架" : "下架";
             }
-            private set { } // Add a private setter
         }
 
         [Display(Name = "創建時間")]
         public DateTime? CreateTime { get; set; }
-        [Column("DessertImageName")]
-        [StringLength(255)]
-        [Display(Name = "照片")]
-        public string DessertImageName { get; set; }
-
     }
 }

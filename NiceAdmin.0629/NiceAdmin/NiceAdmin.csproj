@@ -154,6 +154,11 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\Promotions\DiscountsController.cs" />
     <Compile Include="Controllers\Promotions\MemberCouponsController.cs" />
+    <Compile Include="Models\DTOs\Desserts\DessertsDto.cs" />
+    <Compile Include="Models\Infra\EFRepositories\DessertEFRepository.cs" />
+    <Compile Include="Models\Interfaces\IDessertRepository.cs" />
+    <Compile Include="Models\Services\Desserts\DessertService.cs" />
+    <Compile Include="Models\ViewModels\DessertsVM\ThreeLayer\DessertsIndexTVM.cs" />
     <Compile Include="Models\ViewModels\LessonsVM\LessonCreateVM.cs" />
     <Compile Include="Models\ViewModels\MembersVM\EmployeeEditVM.cs" />
     <Compile Include="Models\ViewModels\MembersVM\MemberExts.cs" />

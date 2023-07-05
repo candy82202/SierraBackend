@@ -1,5 +1,3 @@
-C:\Sierra\NiceAdmin.0629\NiceAdmin\obj\Debug\NiceAdmin.csproj.AssemblyReference.cache
-C:\Sierra\NiceAdmin.0629\NiceAdmin\obj\Debug\NiceAdmin.csproj.CoreCompileInputs.cache
 C:\Sierra\NiceAdmin.0629\NiceAdmin\bin\NiceAdmin.dll.config
 C:\Sierra\NiceAdmin.0629\NiceAdmin\bin\NiceAdmin.dll
 C:\Sierra\NiceAdmin.0629\NiceAdmin\bin\NiceAdmin.pdb
@@ -85,6 +83,8 @@ C:\Sierra\NiceAdmin.0629\NiceAdmin\bin\zh-Hant\System.Web.Razor.resources.dll
 C:\Sierra\NiceAdmin.0629\NiceAdmin\bin\zh-Hant\System.Web.WebPages.resources.dll
 C:\Sierra\NiceAdmin.0629\NiceAdmin\bin\zh-Hant\System.Web.WebPages.Deployment.resources.dll
 C:\Sierra\NiceAdmin.0629\NiceAdmin\bin\zh-Hant\System.Web.WebPages.Razor.resources.dll
+C:\Sierra\NiceAdmin.0629\NiceAdmin\obj\Debug\NiceAdmin.csproj.AssemblyReference.cache
+C:\Sierra\NiceAdmin.0629\NiceAdmin\obj\Debug\NiceAdmin.csproj.CoreCompileInputs.cache
 C:\Sierra\NiceAdmin.0629\NiceAdmin\obj\Debug\NiceAdmin.csproj.CopyComplete
 C:\Sierra\NiceAdmin.0629\NiceAdmin\obj\Debug\NiceAdmin.dll
 C:\Sierra\NiceAdmin.0629\NiceAdmin\obj\Debug\NiceAdmin.pdb

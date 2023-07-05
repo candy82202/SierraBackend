@@ -9,6 +9,7 @@ using System.Web.Mvc;
 using System.Xml.Linq;
 using NiceAdmin.Models.ViewModels;
 using NiceAdmin.Models.ViewModels.DessertsVM;
+using System.Runtime.InteropServices.ComTypes;
 
 namespace NiceAdmin.Controllers
 {
@@ -123,7 +124,10 @@ namespace NiceAdmin.Controllers
                 var result = db.Categories.SingleOrDefault(x => x.CategoryId == cId);
                 if (result != null)
                 {
-                    var desserts = result.Desserts.Where(d => d.Status==true).ToList();
+                    var currentTime = DateTime.Now;
+                    var desserts = result.Desserts
+                        .Where(d => d.Status== true &&  d.CreateTime <= currentTime)
+                        .ToList();
                     foreach (var dessert in desserts)
                     {
                         DessertIndexPartVM item = new DessertIndexPartVM
@@ -133,7 +137,7 @@ namespace NiceAdmin.Controllers
                             CategoryName = result.CategoryName,
                             UnitPrice = dessert.UnitPrice,
                             //Description = dessert.Description,
-                          //  DessertImageName = db.DessertImages.FirstOrDefault(di => di.DessertId == dessert.DessertId)?.DessertImageName
+                          DessertImageName = db.DessertImages.FirstOrDefault(di => di.DessertId == dessert.DessertId)?.DessertImageName
                         };
                         dvm.Add(item);
                     }
@@ -144,6 +148,7 @@ namespace NiceAdmin.Controllers
                 var desserts = db.Desserts.Include("Category")
                                          .Include("DessertImages")
                                          .Where(d => d.Status==true)
+                                         .OrderByDescending(d => d.CreateTime)
                                          .Take(5)
                                          .ToList();
                 foreach (var dessert in desserts)
@@ -155,7 +160,7 @@ namespace NiceAdmin.Controllers
                         CategoryName = dessert.Category.CategoryName,
                         UnitPrice = dessert.UnitPrice,
                        // Description = dessert.Description,
-                       // DessertImageName = dessert.DessertImages.FirstOrDefault()?.DessertImageName
+                      DessertImageName = dessert.DessertImages.FirstOrDefault()?.DessertImageName
                     };
                     dvm.Add(item);
                 }
