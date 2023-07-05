@@ -1,4 +1,4 @@
-﻿@model IEnumerable<NiceAdmin.Models.EFModels.DessertOrderDetail>
+﻿@model IEnumerable<NiceAdmin.Models.ViewModels.OrdersVM.DessertOrderDetailIndexVM>
 
 @{
     ViewBag.Title = "Index";
@@ -26,11 +26,11 @@
         <thead>
             <tr>
                 <th>
-                    @Html.DisplayNameFor(model => model.Dessert.DessertName)
+                    @Html.DisplayNameFor(model => model.DessertName)
                 </th>
-                <th>
+                @*<th>
                     @Html.DisplayNameFor(model => model.DessertOrder.Recipient)
-                </th>
+                </th>*@
                 <th>
                     @Html.DisplayNameFor(model => model.DessertName)
                 </th>
@@ -51,11 +51,11 @@
             {
                 <tr>
                     <td>
-                        @Html.DisplayFor(modelItem => item.Dessert.DessertName)
+                        @Html.DisplayFor(modelItem => item.DessertName)
                     </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.DessertOrder.Recipient)
-                    </td>
+                    @*<td>
+                        @Html.DisplayFor(modelItem => item.Recipient)
+                    </td>*@
                     <td>
                         @Html.DisplayFor(modelItem => item.DessertName)
                     </td>
