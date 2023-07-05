@@ -2,7 +2,8 @@
 
 namespace NiceAdmin.Models.ViewModels.MembersVM
 {
-    using System;
+	using NiceAdmin.Models.EFModels;
+	using System;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
     using System.Linq;
@@ -22,6 +23,6 @@ namespace NiceAdmin.Models.ViewModels.MembersVM
         public DateTime CreateAt { get; set; }
 
 		[Display(Name = "角色")]
-		public string RoleName{ get; set; }
+		public HashSet<Role> Roles{ get; set; }
     }
 }

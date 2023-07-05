@@ -10,17 +10,16 @@ namespace NiceAdmin.Models.ViewModels.MembersVM
 	{
 		public static EmployeeIndexVM ToIndexVM(this Employee emp)
 		{
-			var db = new AppDbContext();
-			var empId = emp.EmployeeId;
-			var roleId = db.EmployeeToRoles.FirstOrDefault(r => r.EmployeeId == empId).RoleId;
-			var roleName = db.Roles.FirstOrDefault(r => r.RoleId == roleId).RoleName;
+			//var db = new AppDbContext();
+			//var empId = emp.EmployeeId;
+			//var roleId = db.EmployeeToRoles.FirstOrDefault(r => r.EmployeeId == empId).RoleId;
+			//var roleName = db.Roles.FirstOrDefault(r => r.RoleId == roleId).RoleName;
 			return new EmployeeIndexVM
 			{
 				EmployeeId = emp.EmployeeId,
 				EmployeeName = emp.EmployeeName,
 				CreateAt = emp.CreateAt,
-				RoleName = roleName
-
+				Roles = (HashSet<Role>)emp.Roles
 			};
 		}
 
@@ -31,7 +30,8 @@ namespace NiceAdmin.Models.ViewModels.MembersVM
 				EmployeeId = emp.EmployeeId,
 				EmployeeName = emp.EmployeeName,
 				EncryptedPassword = emp.EncryptedPassword,
-			};
+                Roles = (HashSet<Role>)emp.Roles
+            };
 		}
 		public static EmployeeEditVM ToEditVM(this Employee emp)
 		{
@@ -39,6 +39,7 @@ namespace NiceAdmin.Models.ViewModels.MembersVM
 			{
 				EmployeeId = emp.EmployeeId,
 				EmployeeName = emp.EmployeeName,
+				Roles = (HashSet<Role>)emp.Roles
 			};
 		}
 		public static Employee ToEntity(this EmployeeCreateVM vm)
@@ -48,7 +49,8 @@ namespace NiceAdmin.Models.ViewModels.MembersVM
 				EmployeeId = vm.EmployeeId,
 				EmployeeName = vm.EmployeeName,
 				EncryptedPassword = vm.EncryptedPassword,
-				CreateAt = DateTime.Now
+				CreateAt = DateTime.Now,
+				Roles = vm.Roles
 			};
 		}
 		public static Employee ToEntity(this EmployeeEditVM vm)

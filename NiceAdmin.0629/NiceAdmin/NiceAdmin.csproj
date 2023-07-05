@@ -192,9 +192,18 @@
     <Compile Include="Models\EFModels\Permission.cs" />
     <Compile Include="Models\EFModels\Promotion.cs" />
     <Compile Include="Models\EFModels\Role.cs" />
-    <Compile Include="Models\EFModels\RoleToPermission.cs" />
     <Compile Include="Models\EFModels\Specification.cs" />
     <Compile Include="Models\EFModels\Teacher.cs" />
+    <Compile Include="Models\ViewModels\LessonsVM\LessonCreateVM.cs" />
+    <Compile Include="Models\ViewModels\MembersVM\EmployeeEditVM.cs" />
+    <Compile Include="Models\ViewModels\MembersVM\LoginVM.cs" />
+    <Compile Include="Models\ViewModels\MembersVM\MemberExts.cs" />
+    <Compile Include="Models\ViewModels\PromotionsVM\PromotionCreateVM.cs" />
+    <Compile Include="Controllers\Promotions\PromotionsController.cs" />
+    <Compile Include="Controllers\TeachersController.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
     <Compile Include="Models\ViewModels\DessertsVM\CategoryCreateVM.cs" />
     <Compile Include="Models\ViewModels\DessertsVM\CategoryExts.cs" />
     <Compile Include="Models\ViewModels\DessertsVM\DessertIndexPartVM.cs" />
@@ -849,6 +858,7 @@
     <Content Include="Views\Promotions\EditImage.cshtml" />
     <Content Include="Views\MemberCoupons\Index.cshtml" />
     <Content Include="Views\MemberCoupons\Details.cshtml" />
+	<Content Include="Views\Employees\Login.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="Scripts\vendor\chart.js\controllers\controller.bar.d.ts" />
