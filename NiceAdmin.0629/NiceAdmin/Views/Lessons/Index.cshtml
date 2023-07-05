@@ -12,156 +12,162 @@
 
 
 <main id="main" class="main">
-    <div class="pagetitle">
-        <h1>課程清單</h1>
-        <nav>
-            <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="@Url.Action("Index","Home")">首頁</a></li>
-                <li class="breadcrumb-item"><a href="@Url.Action("Index","Lessons")">課程管理</a></li>
-                <li class="breadcrumb-item active"><a href="@Url.Action("Index","Lessons")">課程清單</a></li>
-            </ol>
-        </nav>
-    </div>
-
-
-
-    <button class="btn btn-outline-primary text-light fw-bold"> @Html.ActionLink("新增課程", "Create")</button>
-    <section class="container">
-        <form method="get" autocomplete="off" action="@Url.Action("Index", "Lessons")">
-            <div class="row autocomplete" style="width:100%;">
-                <div class="mb-3 col-md-3">
-                    <label for="s_name">課程名稱</label>
-                    <input type="text" class="form-control" name="LessonTitle" id="s_name" value="@criteria.LessonTitle">
-
+    <div class="row">
+        <div class="card">
+            <div class="card-body">
+                <div class="pagetitle mt-3">
+                    <h1>課程清單</h1>
+                    <nav>
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="@Url.Action("Index","Home")">首頁</a></li>
+                            <li class="breadcrumb-item"><a href="@Url.Action("Index","Lessons")">課程管理</a></li>
+                            <li class="breadcrumb-item active"><a href="@Url.Action("Index","Lessons")">課程清單</a></li>
+                        </ol>
+                    </nav>
                 </div>
-                <div class="mb-3 col-md-3">
-                    <label for="s_categoryId">課程分類</label>
-                    <select name="LessonCategoryId" id="s_categoryId" class="form-select">
-                        @foreach (var item in categories)
-                        {
-                            <option value="@item.Value" @(s_lessonCategoryName == item.Value ? "selected" : "")>@item.Text</option>
-                        }
-                    </select>
 
-                </div>
-                <div class="mb-3 col-md-4">
-                    <label for="s_minPrice" style="display: block">金額</label>
-                    <input type="number" class="form-control" name="minPrice" id="s_minPrice" style="width: 40%; display: inline" value="@criteria.MinPrice"> ~
-                    <input type="number" class="form-control" name="maxPrice" id="s_maxPrice" style="width: 40%; display: inline" value="@criteria.MaxPrice">
 
-                </div>
-                <div class="mb-3 col-md-2 align-self-end">
-                    <button class="btn btn-outline-primary">查詢</button>
+
+                <button class="btn btn-outline-primary text-light fw-bold"> @Html.ActionLink("新增課程", "Create")</button>
+                <section class="container">
+                    <form method="get" autocomplete="off" action="@Url.Action("Index", "Lessons")">
+                        <div class="row autocomplete" style="width:100%;">
+                            <div class="mb-3 col-md-3">
+                                <label for="s_name">課程名稱</label>
+                                <input type="text" class="form-control" name="LessonTitle" id="s_name" value="@criteria.LessonTitle">
+
+                            </div>
+                            <div class="mb-3 col-md-3">
+                                <label for="s_categoryId">課程分類</label>
+                                <select name="LessonCategoryId" id="s_categoryId" class="form-select">
+                                    @foreach (var item in categories)
+                                    {
+                                        <option value="@item.Value" @(s_lessonCategoryName == item.Value ? "selected" : "")>@item.Text</option>
+                                    }
+                                </select>
+
+                            </div>
+                            <div class="mb-3 col-md-4">
+                                <label for="s_minPrice" style="display: block">金額</label>
+                                <input type="number" class="form-control" name="minPrice" id="s_minPrice" style="width: 40%; display: inline" value="@criteria.MinPrice"> ~
+                                <input type="number" class="form-control" name="maxPrice" id="s_maxPrice" style="width: 40%; display: inline" value="@criteria.MaxPrice">
+
+                            </div>
+                            <div class="mb-3 col-md-2 align-self-end">
+                                <button class="btn btn-outline-primary">查詢</button>
+                            </div>
+                        </div>
+                    </form>
+                </section>
+
+
+                <div class="table-responsive">
+                    <table class="table table-striped table-hover datatable" id="example">
+                        <thead>
+                            <tr>
+                                <th>
+                                    @*課程分類*@
+                                    @Html.DisplayNameFor(model => model.LessonCategoryName)
+                                </th>
+                                <th>
+                                    @* 教師姓名 *@
+                                    @Html.DisplayNameFor(model => model.TeacherName)
+                                </th>
+                                <th>
+                                    @* 課程名稱 *@
+                                    @Html.DisplayNameFor(model => model.LessonTitle)
+                                </th>
+                                <th>
+                                    @* 課程簡介 *@
+                                    @Html.DisplayNameFor(model => model.LessonInfo)
+                                </th>
+                                <th>
+                                    @* 課程內容 *@
+                                    @Html.DisplayNameFor(model => model.LessonDetailText)
+                                </th>
+                                <th>
+                                    @* 課程成品 *@
+                                    @Html.DisplayNameFor(model => model.LessonDessert)
+                                </th>
+                                <th>
+                                    @* 開課時間 *@
+                                    @Html.DisplayNameFor(model => model.LessonTime)
+                                </th>
+                                <th>
+                                    @* 課程時數 *@
+                                    @Html.DisplayNameFor(model => model.LessonHours)
+                                </th>
+                                <th>
+                                    @* 報名人數上限 *@
+                                    @Html.DisplayNameFor(model => model.MaximumCapacity)
+                                </th>
+                                <th>
+                                    @* 課程售價 *@
+                                    @Html.DisplayNameFor(model => model.LessonPrice)
+                                </th>
+                                <th>
+                                    @* 課程狀態 *@
+                                    @Html.DisplayNameFor(model => model.StatusText)
+                                </th>
+                                <th>
+                                    @* 發布時間 *@
+                                    @Html.DisplayNameFor(model => model.CreateTime)
+                                </th>
+                                <th>功能</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.LessonCategoryName)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.TeacherName)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.LessonTitle)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.LessonInfo)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.LessonDetailText)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.LessonDessert)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.LessonTime)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.LessonHours)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.MaximumCapacity)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.LessonPrice)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.StatusText)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.CreateTime)
+                                    </td>
+                                    <td>
+                                        @Html.ActionLink("編輯", "Edit", new { id = item.LessonId }) |
+                                        @Html.ActionLink("Details", "Details", new { id = item.LessonId }) |
+                                        @Html.ActionLink("Delete", "Delete", new { id = item.LessonId })
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
                 </div>
             </div>
-        </form>
-    </section>
-
-
-    <div class="table-responsive">
-        <table class="table table-striped table-hover datatable" id="example">
-            <thead>
-                <tr>
-                    <th>
-                        @*課程分類*@
-                        @Html.DisplayNameFor(model => model.LessonCategoryName)
-                    </th>
-                    <th>
-                        @* 教師姓名 *@
-                        @Html.DisplayNameFor(model => model.TeacherName)
-                    </th>
-                    <th>
-                        @* 課程名稱 *@
-                        @Html.DisplayNameFor(model => model.LessonTitle)
-                    </th>
-                    <th>
-                        @* 課程簡介 *@
-                        @Html.DisplayNameFor(model => model.LessonInfo)
-                    </th>
-                    <th>
-                        @* 課程內容 *@
-                        @Html.DisplayNameFor(model => model.LessonDetailText)
-                    </th>
-                    <th>
-                        @* 課程成品 *@
-                        @Html.DisplayNameFor(model => model.LessonDessert)
-                    </th>
-                    <th>
-                        @* 開課時間 *@
-                        @Html.DisplayNameFor(model => model.LessonTime)
-                    </th>
-                    <th>
-                        @* 課程時數 *@
-                        @Html.DisplayNameFor(model => model.LessonHours)
-                    </th>
-                    <th>
-                        @* 報名人數上限 *@
-                        @Html.DisplayNameFor(model => model.MaximumCapacity)
-                    </th>
-                    <th>
-                        @* 課程售價 *@
-                        @Html.DisplayNameFor(model => model.LessonPrice)
-                    </th>
-                    <th>
-                        @* 課程狀態 *@
-                        @Html.DisplayNameFor(model => model.StatusText)
-                    </th>
-                    <th>
-                        @* 發布時間 *@
-                        @Html.DisplayNameFor(model => model.CreateTime)
-                    </th>
-                    <th>功能</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach (var item in Model)
-                {
-                    <tr>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.LessonCategoryName)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.TeacherName)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.LessonTitle)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.LessonInfo)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.LessonDetailText)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.LessonDessert)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.LessonTime)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.LessonHours)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.MaximumCapacity)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.LessonPrice)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.StatusText)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.CreateTime)
-                        </td>
-                        <td>
-                            @Html.ActionLink("Edit", "Edit", new { id = item.LessonId }) |
-                            @Html.ActionLink("Details", "Details", new { id = item.LessonId }) |
-                            @Html.ActionLink("Delete", "Delete", new { id = item.LessonId })
-                        </td>
-                    </tr>
-                }
-            </tbody>
-        </table>
+        </div>
     </div>
 </main>
 

@@ -10,10 +10,8 @@ using NiceAdmin.Models.EFModels;
 using NiceAdmin.Models.ViewModels;
 using NiceAdmin.Models.ViewModels.LessonsVM;
 
-namespace NiceAdmin.Controllers.Lessons
-{
-    public class LessonsController : Controller
-    {
+namespace NiceAdmin.Controllers.Lessons {
+    public class LessonsController : Controller {
         private AppDbContext db = new AppDbContext();
 
         // GET: Lessons
@@ -47,7 +45,7 @@ namespace NiceAdmin.Controllers.Lessons
         }
 
 
-        
+
         private void PrepareCategoryDataSource(int? lessonCategoryId)
         {
             var categories = db.LessonCategories.ToList().Prepend(new LessonCategory());
@@ -165,9 +163,10 @@ namespace NiceAdmin.Controllers.Lessons
             {
                 return HttpNotFound();
             }
-            ViewBag.LessonCategoryId = new SelectList(db.LessonCategories, "LessonCategoryId", "LessonCategoryName", lesson.LessonCategoryId);
-            ViewBag.TeacherId = new SelectList(db.Teachers, "TeacherId", "TeacherName", lesson.TeacherId);
-            return View(lesson);
+
+            PrepareCategoryDataSource(lesson.LessonCategoryId);
+            LessonEditVM lessonEditVM = lesson.ToEditVM();
+            return View(lessonEditVM);
         }
 
         // POST: Lessons/Edit/5
@@ -175,17 +174,42 @@ namespace NiceAdmin.Controllers.Lessons
         // 如需詳細資料，請參閱 https://go.microsoft.com/fwlink/?LinkId=317598。
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "LessonId,LessonCategoryId,TeacherId,LessonTitle,LessonInfo,LessonDetail,LessonDessert,LessonTime,LessonHours,MaximumCapacity,LessonPrice,LessonStatus,CreateTime")] Lesson lesson)
+        public ActionResult Edit(LessonEditVM vm)
         {
+            var lesson = db.Lessons.FirstOrDefault(l => l.LessonId == vm.LessonId);
+
+            if (lesson == null)
+            {
+                return HttpNotFound();
+            }
+
             if (ModelState.IsValid)
             {
-                db.Entry(lesson).State = EntityState.Modified;
+                var lessonInDb = db.Lessons.Find(vm.LessonId);
+                if (lessonInDb == null)
+                {
+                    return HttpNotFound();
+                }
+                lessonInDb.LessonCategoryId = vm.LessonCategoryId;
+                lessonInDb.LessonTitle = vm.LessonTitle;
+                lessonInDb.LessonInfo = vm.LessonInfo;
+                lessonInDb.LessonDetail = vm.LessonDetail;
+                lessonInDb.LessonDessert = vm.LessonDessert;
+                lessonInDb.LessonTime = vm.LessonTime;
+                lessonInDb.LessonHours = vm.LessonHours;
+                lessonInDb.MaximumCapacity = vm.MaximumCapacity;
+                lessonInDb.LessonPrice = vm.LessonPrice;
+                lessonInDb.LessonStatus = vm.LessonStatus;
+                lessonInDb.TeacherId = vm.TeacherId;
+
                 db.SaveChanges();
+
+              
                 return RedirectToAction("Index");
-            }
-            ViewBag.LessonCategoryId = new SelectList(db.LessonCategories, "LessonCategoryId", "LessonCategoryName", lesson.LessonCategoryId);
-            ViewBag.TeacherId = new SelectList(db.Teachers, "TeacherId", "TeacherName", lesson.TeacherId);
-            return View(lesson);
+            } 
+            
+            PrepareCategoryDataSource(vm.LessonCategoryId);
+            return View(vm);
         }
 
         // GET: Lessons/Delete/5
