@@ -10,6 +10,7 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
 using NiceAdmin.Models.EFModels;
+using NiceAdmin.Models.Infra;
 using NiceAdmin.Models.ViewModels.MembersVM;
 
 namespace NiceAdmin.Controllers.Members
@@ -179,11 +180,35 @@ namespace NiceAdmin.Controllers.Members
 			db.SaveChanges();
 			return RedirectToAction("Index");
 		}
-
+		[HttpGet]
 		public ActionResult Login()
 		{
 			return View();
 		}
+		[HttpPost]
+		[ValidateAntiForgeryToken]
+		public ActionResult Login(LoginVM vm)
+		{
+			if (ModelState.IsValid == false) return View(vm);
+			//驗證帳密的正確性
+			Result result = ValidLogin(vm);
+
+			return RedirectToAction("Index");
+		}
+
+		private Result ValidLogin(LoginVM vm)
+		{
+			var emp = db.Employees.FirstOrDefault(e => e.EmployeeName == vm.Account);
+			if (emp == null) return Result.Fail("帳密有誤");
+
+			var salt = HashUtility.GetSalt();
+			var hashPwd = HashUtility.ToSHA256(vm.Password, salt);
+
+			return string.Compare(emp.EncryptedPassword, hashPwd) == 0
+					? Result.Success()
+					: Result.Fail("帳密有誤");
+		}
+
 		protected override void Dispose(bool disposing)
 		{
 			if (disposing)

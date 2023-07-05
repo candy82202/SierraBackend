@@ -106,13 +106,15 @@ Member 部分
 [V] - create & complete MemberIndexVM.cs
     - create & complete MemberExts.cs
     - modify Index()
-    - modify Index view page
+    - modify Index.cshtml
 [V] - modify Members/Index（修改MemberIndexVM）
 [V] - complete Employee CRUD
 [V] - bug fix(Employee/Delete取消也會刪除)
     - bug fix(帳號唯一不會跳錯)
-
-
+[V] - create & complete Login() and Logout() in EmployeesController
+[V] - create & complete LoginVM.cs and Login.cshtml
+[V] - create /Models/Infra/Result.cs & HashUtility.cs
+      add salt to Web.config 
 
 ==========================================================
 Lesson 部分
