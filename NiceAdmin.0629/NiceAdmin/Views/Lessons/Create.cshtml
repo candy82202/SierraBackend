@@ -17,7 +17,7 @@
             </ol>
         </nav>
     </div>
-    @using (Html.BeginForm("Create", "Lessons", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    @using (Html.BeginForm("Create", "Lessons", FormMethod.Post, new {id= "lessonForm", enctype = "multipart/form-data" }))
     {
         @Html.AntiForgeryToken()
 
@@ -135,7 +135,10 @@
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
 
-    <script>
+<script>
+
+     
+
         $('#files').change(function () {
             var files = this.files;
             var container = $('#previewContainer');
@@ -153,5 +156,5 @@
                 reader.readAsDataURL(file);
             }
         });
-    </script>
+</script>
 }
