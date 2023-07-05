@@ -13,15 +13,26 @@ namespace NiceAdmin.Models.ViewModels.PromotionsVM
 	{
 		public static MemberCouponIndexVM ToMemberCouponIndexVM(this Member entity)
 		{
-			
+			if (entity.MemberCoupons.Any()) {
 				return new MemberCouponIndexVM()
 				{
 					MemberId = entity.MemberId,
 					MemberName = entity.MemberName,
-					NewestCouponName = entity.MemberCoupons.Any()? entity.MemberCoupons.OrderByDescending(mc => mc.CreateAt).Last().CouponName:null,
-					LastestUsedCouponName = entity.MemberCoupons.Any() ? entity.MemberCoupons.OrderByDescending(mc => mc.UseAt).Last().CouponName : null
+					NewestCouponName = entity.MemberCoupons.OrderByDescending(mc => mc.CreateAt).Last().CouponName,
+					LastestUsedCouponName = entity.MemberCoupons.Where(mc => mc.UseAt.HasValue).Any() ? entity.MemberCoupons.Where(mc => mc.UseAt.HasValue)
+					.OrderByDescending(mc => mc.UseAt).Last().CouponName : null
 				};
-			
+			}
+			else
+			{
+				return new MemberCouponIndexVM()
+				{
+					MemberId = entity.MemberId,
+					MemberName = entity.MemberName,
+					NewestCouponName = null,
+					LastestUsedCouponName = null
+				};
+			}
 		}
 		public static MemberCouponInDetail ToMemberCouponInDetail(this MemberCoupon entity)
 		{
