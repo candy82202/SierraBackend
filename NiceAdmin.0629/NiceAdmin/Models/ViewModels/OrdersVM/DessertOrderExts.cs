@@ -22,7 +22,8 @@ namespace NiceAdmin.Models.ViewModels.OrdersVM
                 RecipientAddress = entiey.RecipientAddress,
                 ShippingFee= entiey.ShippingFee,
                 DessertOrderTotal= entiey.DessertOrderTotal,
-                DeliveryMethod = entiey.DeliveryMethod
+                DeliveryMethod = entiey.DeliveryMethod,
+                DessertOrderDetails = entiey.DessertOrderDetails.ToList(),
             };
         }
 

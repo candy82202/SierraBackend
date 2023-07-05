@@ -1,4 +1,5 @@
-﻿using System;
+﻿using NiceAdmin.Models.EFModels;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -53,5 +54,7 @@ namespace NiceAdmin.Models.ViewModels.OrdersVM
 
         //[StringLength(200)]
         //public string DiscountInfo { get; set; }
+        [Display(Name = "訂單詳情")]
+        public List <DessertOrderDetail> DessertOrderDetails { get; set; }
     }
 }

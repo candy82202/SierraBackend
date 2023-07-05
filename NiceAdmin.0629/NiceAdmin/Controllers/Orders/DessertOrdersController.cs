@@ -18,7 +18,7 @@ namespace NiceAdmin.Controllers.Orders
         // GET: DessertOrders
         public ActionResult Index()
         {
-            var dessertOrders = db.DessertOrders.Include(d => d.Member).Include(d => d.OrderStatus)
+            var dessertOrders = db.DessertOrders.Include(d=>d.DessertOrderDetails).Include(d => d.Member).Include(d => d.OrderStatus)
                 .ToList()
                 .Select(d => d.TOIndexVM());
             return View(dessertOrders);
