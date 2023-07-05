@@ -185,15 +185,59 @@ namespace NiceAdmin.Controllers.Members
 		{
 			return View();
 		}
+		
 		[HttpPost]
 		[ValidateAntiForgeryToken]
 		public ActionResult Login(LoginVM vm)
 		{
 			if (ModelState.IsValid == false) return View(vm);
-			//驗證帳密的正確性
+
+			// 驗證帳密
 			Result result = ValidLogin(vm);
 
-			return RedirectToAction("Index");
+			// 驗證失敗
+			if (result.ISuccess == false)
+			{
+				ModelState.AddModelError(string.Empty, result.ErrorMessage);
+				return View(vm);
+			}
+
+			const bool rememberMe = true; // 泡麵哥證實不一定會記得
+
+			// 驗證正確, 將登入帳號編碼後, 加入cookie
+			var processResult = ProcessLogin(vm.Account, rememberMe);
+
+			Response.Cookies.Add(processResult.cookie);
+			return RedirectToAction(processResult.returnUrl);
+		}
+
+		private (string returnUrl, HttpCookie cookie) ProcessLogin(string account, bool rememberMe)
+		{
+			var roles = string.Empty; // 在本範例, 沒有用到角色權限,所以存入空白
+
+			// 建立一張認證票
+			var ticket =
+				new FormsAuthenticationTicket(
+					1,          // 版本別, 沒特別用處
+					account,
+					DateTime.Now,   // 發行日
+					DateTime.Now.AddDays(2), // 到期日
+					rememberMe,     // 是否續存
+					roles,          // userdata
+					"/" // cookie位置
+				);
+
+			// 將它加密
+			var value = FormsAuthentication.Encrypt(ticket);
+
+			// 存入cookie
+			var cookie = new HttpCookie(FormsAuthentication.FormsCookieName, value);
+			cookie.Expires = DateTime.Now.AddDays(3);
+
+			// 取得return url
+			var url = FormsAuthentication.GetRedirectUrl(account, true); //第二個引數沒有用處
+
+			return (url, cookie);
 		}
 
 		private Result ValidLogin(LoginVM vm)

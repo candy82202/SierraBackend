@@ -156,6 +156,8 @@
     <Compile Include="Controllers\Promotions\MemberCouponsController.cs" />
     <Compile Include="Models\DTOs\Desserts\DessertsDto.cs" />
     <Compile Include="Models\Infra\EFRepositories\DessertEFRepository.cs" />
+    <Compile Include="Models\Infra\HashUtility.cs" />
+    <Compile Include="Models\Infra\Result.cs" />
     <Compile Include="Models\Interfaces\IDessertRepository.cs" />
     <Compile Include="Models\Services\Desserts\DessertService.cs" />
     <Compile Include="Models\ViewModels\DessertsVM\ThreeLayer\DessertsIndexTVM.cs" />
@@ -166,8 +168,8 @@
     <Compile Include="Models\ViewModels\PromotionsVM\MemberCouponDetailVM.cs" />
     <Compile Include="Models\ViewModels\PromotionsVM\MemberCouponExts.cs" />
     <Compile Include="Models\ViewModels\PromotionsVM\MemberCouponIndexVM.cs" />
-	<Compile Include="Models\ViewModels\OrdersVM\DessertOrderExts.cs" />
-	<Compile Include="Models\ViewModels\OrdersVM\DessertOrderIndexVM.cs" />
+    <Compile Include="Models\ViewModels\OrdersVM\DessertOrderExts.cs" />
+    <Compile Include="Models\ViewModels\OrdersVM\DessertOrderIndexVM.cs" />
     <Compile Include="Models\ViewModels\PromotionsVM\PromotionCreateVM.cs" />
     <Compile Include="Controllers\Promotions\PromotionsController.cs" />
     <Compile Include="Controllers\TeachersController.cs" />
@@ -667,10 +669,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Models\DTOs\" />
     <Folder Include="Models\Infra\DapperRepositories\" />
-    <Folder Include="Models\Interfaces\" />
-    <Folder Include="Models\Services\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="CodeTemplates\ODataControllerWithContext\Controller.vb.t4" />
