@@ -5,117 +5,124 @@
     
 }
 <main id="main" class="main">
-    <div class="pagetitle">
-        <h1>新增優惠券</h1>
-        <nav>
-            <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="@Url.Action("Index","Home")">首頁</a></li>
-                <li class="breadcrumb-item"><a href="@Url.Action("Index","Coupons")">   優惠券管理  </a></li>
-                <li class="breadcrumb-item active">  新增優惠券  </li>
-            </ol>
-        </nav>
+    <div class="row">
+        <div class="card">
+            <div class="card-body">
+                <div class="pagetitle mt-3">
+                    <h1>新增優惠券</h1>
+                    <nav>
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="@Url.Action("Index","Home")">首頁</a></li>
+                            <li class="breadcrumb-item">   行銷管理  </li>
+                            <li class="breadcrumb-item"><a href="@Url.Action("Index","Coupons")">優惠券清單</a></li>
+                            <li class="breadcrumb-item active">新增優惠券</li>
+                        </ol>
+                    </nav>
+                </div>
+                <section class="section">
+                    @using (Html.BeginForm("Create", "Coupons", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                    {
+                        @Html.AntiForgeryToken()
+
+                        <div class="row">
+                            <hr />
+                            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                            @* 優惠券類別 *@
+                            <div class="mb-3">
+                                @Html.LabelFor(model => model.CouponCategoryId, htmlAttributes: new { @class = "form-label" })
+                                @Html.DropDownList("CouponCategoryId", null, htmlAttributes: new { @class = "form-select" })
+                                @Html.ValidationMessageFor(model => model.CouponCategoryId, "", new { @class = "text-danger" })
+                            </div>
+                            @* 優惠對象 *@
+                            <div class="mb-3">
+                                @Html.LabelFor(model => model.DiscountGroupId, htmlAttributes: new { @class = "form-label" })
+                                @Html.DropDownList("DiscountGroupId", null, htmlAttributes: new { @class = "form-select" })
+                                @Html.ValidationMessageFor(model => model.DiscountGroupId, "", new { @class = "text-danger" })
+                            </div>
+                            @* 優惠券名稱 *@
+                            <div class="mb-3">
+                                @Html.LabelFor(model => model.CouponName, htmlAttributes: new { @class = "form-label" })
+                                @Html.EditorFor(model => model.CouponName, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.CouponName, "", new { @class = "text-danger" })
+                            </div>
+                            @* 優惠碼 *@
+                            <div class="mb-3 d-none" id="couponCode">
+                                @Html.LabelFor(model => model.CouponCode, htmlAttributes: new { @class = "form-label" })
+                                @Html.EditorFor(model => model.CouponCode, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.CouponCode, "", new { @class = "text-danger" })
+
+                            </div>
+                            @* 限制類別 *@
+                            <div class="mb-3">
+                                @Html.LabelFor(model => model.LimitType, htmlAttributes: new { @class = "form-label" })
+                                <select class="form-select" id="LimitType" name="LimitType">
+                                    <option disabled selected value>請選擇</option>
+                                    <option value="0">沒有限制</option>
+                                    <option value="1">消費數量</option>
+                                    <option value="2">消費金額</option>
+                                </select>
+                                @Html.ValidationMessageFor(model => model.LimitType, "", new { @class = "text-danger" })
+                            </div>
+                            @* 限制數值 *@
+                            <div class="mb-3 d-none" id="limitValue">
+                                @Html.LabelFor(model => model.LimitValue, htmlAttributes: new { @class = "form-label" })
+                                <i class="bi bi-question-circle"></i>
+                                @Html.EditorFor(model => model.LimitValue, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.LimitValue, "", new { @class = "text-danger" })
+                            </div>
+                            @* 優惠類別 *@
+                            <div class="mb-3">
+                                @Html.LabelFor(model => model.DiscountType, htmlAttributes: new { @class = "form-label" })
+                                <select class="form-select" id="DiscountType" name="DiscountType">
+                                    <option disabled selected value>請選擇</option>
+                                    <option value="1">折價</option>
+                                    <option value="2">折扣</option>
+                                    <option value="3">免運費</option>
+                                </select>
+                                @Html.ValidationMessageFor(model => model.DiscountType, "", new { @class = "text-danger" })
+
+                            </div>
+                            @* 優惠數值 *@
+                            <div class="mb-3" id="discountValue">
+                                @Html.LabelFor(model => model.DiscountValue, htmlAttributes: new { @class = "form-label" })
+                                <i class="bi bi-question-circle"></i>
+                                @Html.EditorFor(model => model.DiscountValue, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.DiscountValue, "", new { @class = "text-danger" })
+
+                            </div>
+                            @* 開始時間 *@
+                            <div class="mb-3 timeRange d-none">
+                                @Html.LabelFor(model => model.StartAt, htmlAttributes: new { @class = "form-label" })
+                                @Html.EditorFor(model => model.StartAt, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.StartAt, "", new { @class = "text-danger" })
+                            </div>
+                            @* 結束時間 *@
+                            <div class="mb-3 timeRange d-none">
+                                @Html.LabelFor(model => model.EndAt, htmlAttributes: new { @class = "form-label" })
+                                @Html.EditorFor(model => model.EndAt, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.EndAt, "", new { @class = "text-danger" })
+
+                            </div>
+                            @* 有效期限 *@
+                            <div class="mb-3 expiration d-none">
+                                @Html.LabelFor(model => model.Expiration, htmlAttributes: new { @class = "form-label" })
+                                @Html.EditorFor(model => model.Expiration, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.Expiration, "", new { @class = "text-danger" })
+                            </div>
+
+                            <div class="mb-3">
+                                <input type="submit" value="Create" class="btn btn-primary" />
+                            </div>
+                        </div>
+                    }
+
+                    <div>
+                        @Html.ActionLink("Back to List", "Index")
+                    </div>
+                </section>
+            </div><!-- End Default Tabs -->
+        </div>
     </div>
-    <section class="section">
-        @using (Html.BeginForm("Create", "Coupons", FormMethod.Post, new { enctype = "multipart/form-data" }))
-        {
-            @Html.AntiForgeryToken()
-
-        <div class="row">
-            <hr />
-            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-            @* 優惠券類別 *@
-            <div class="mb-3">
-                @Html.LabelFor(model => model.CouponCategoryId, htmlAttributes: new { @class = "form-label" })
-                @Html.DropDownList("CouponCategoryId", null, htmlAttributes: new { @class = "form-select" })
-                @Html.ValidationMessageFor(model => model.CouponCategoryId, "", new { @class = "text-danger" })
-            </div>
-            @* 優惠對象 *@
-            <div class="mb-3">
-                @Html.LabelFor(model => model.DiscountGroupId, htmlAttributes: new { @class = "form-label" })
-                @Html.DropDownList("DiscountGroupId", null, htmlAttributes: new { @class = "form-select" })
-                @Html.ValidationMessageFor(model => model.DiscountGroupId, "", new { @class = "text-danger" })
-            </div>
-            @* 優惠券名稱 *@
-            <div class="mb-3">
-                @Html.LabelFor(model => model.CouponName, htmlAttributes: new { @class = "form-label" })
-                @Html.EditorFor(model => model.CouponName, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.CouponName, "", new { @class = "text-danger" })
-            </div>
-            @* 優惠碼 *@
-            <div class="mb-3 d-none"id="couponCode">
-                @Html.LabelFor(model => model.CouponCode, htmlAttributes: new { @class = "form-label" })
-                @Html.EditorFor(model => model.CouponCode, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.CouponCode, "", new { @class = "text-danger" })
-
-            </div>
-            @* 限制類別 *@
-        <div class="mb-3">
-            @Html.LabelFor(model => model.LimitType, htmlAttributes: new { @class = "form-label" })
-            <select class="form-select" id="LimitType" name="LimitType">
-                <option disabled selected value>請選擇</option>
-                <option value="0">沒有限制</option>
-                <option value="1">消費數量</option>
-                <option value="2">消費金額</option>
-            </select>
-            @Html.ValidationMessageFor(model => model.LimitType, "", new { @class = "text-danger" })
-        </div>
-            @* 限制數值 *@
-        <div class="mb-3 d-none" id="limitValue">
-            @Html.LabelFor(model => model.LimitValue, htmlAttributes: new { @class = "form-label" })
-            <i class="bi bi-question-circle"></i>
-            @Html.EditorFor(model => model.LimitValue, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.LimitValue, "", new { @class = "text-danger" })
-        </div>
-            @* 優惠類別 *@
-            <div class="mb-3">
-                @Html.LabelFor(model => model.DiscountType, htmlAttributes: new { @class = "form-label" })
-                <select class="form-select" id="DiscountType" name="DiscountType">
-                    <option disabled selected value>請選擇</option>
-                    <option value="1">折價</option>
-                    <option value="2">折扣</option>
-                    <option value="3">免運費</option>
-                </select>
-                @Html.ValidationMessageFor(model => model.DiscountType, "", new { @class = "text-danger" })
-
-            </div>
-            @* 優惠數值 *@
-        <div class="mb-3" id="discountValue">
-            @Html.LabelFor(model => model.DiscountValue, htmlAttributes: new { @class = "form-label" })
-            <i class="bi bi-question-circle"></i>
-            @Html.EditorFor(model => model.DiscountValue, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.DiscountValue, "", new { @class = "text-danger" })
-
-        </div>
-            @* 開始時間 *@
-            <div class="mb-3 timeRange d-none">
-                @Html.LabelFor(model => model.StartAt, htmlAttributes: new { @class = "form-label" })
-                @Html.EditorFor(model => model.StartAt, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.StartAt, "", new { @class = "text-danger" })
-            </div>
-            @* 結束時間 *@
-            <div class="mb-3 timeRange d-none">
-                @Html.LabelFor(model => model.EndAt, htmlAttributes: new { @class = "form-label" })
-                @Html.EditorFor(model => model.EndAt, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.EndAt, "", new { @class = "text-danger" })
-
-            </div>
-            @* 有效期限 *@
-            <div class="mb-3 expiration d-none">
-                @Html.LabelFor(model => model.Expiration, htmlAttributes: new { @class = "form-label" })
-                @Html.EditorFor(model => model.Expiration, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Expiration, "", new { @class = "text-danger" })
-            </div>
-
-            <div class="mb-3">
-                <input type="submit" value="Create" class="btn btn-primary" />
-            </div>
-        </div>
-        }
-
-        <div>
-            @Html.ActionLink("Back to List", "Index")
-        </div>
-    </section>
 </main>
 
     @section Scripts {

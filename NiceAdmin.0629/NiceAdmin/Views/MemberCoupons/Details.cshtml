@@ -5,74 +5,80 @@
 }
 
 <main id="main" class="main">
-    <div class="pagetitle">
-        <h1>@Model.MemberName 的優惠券</h1>
-        <nav>
-            <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="@Url.Action("Index","Home")">首頁</a></li>
-                <li class="breadcrumb-item">   行銷管理  </li>
-                <li class="breadcrumb-item">  會員優惠券清單  </li>
-                <li class="breadcrumb-item active">  @Model.MemberName 的優惠券  </li>
-            </ol>
-        </nav>
-    </div>
-    <!-- End Page Title -->
-    <section class="section">
+    <div class="row">
+        <div class="card">
+            <div class="card-body">
+                <div class="pagetitle mt-3">
+                    <h1>@Model.MemberName 的優惠券</h1>
+                    <nav>
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="@Url.Action("Index","Home")">首頁</a></li>
+                            <li class="breadcrumb-item">   行銷管理  </li>
+                            <li class="breadcrumb-item"><a href="@Url.Action("Index","MemberCoupons")">  會員優惠券清單</a>  </li>
+                            <li class="breadcrumb-item active">  @Model.MemberName 的優惠券  </li>
+                        </ol>
+                    </nav>
+                </div>
+                <!-- End Page Title -->
+                <section class="section">
 
-        <div>
-            <table class="table table-striped table-hover datatable">
-                <thead>
-                    <tr>
-                        <th>
-                            優惠券名稱
-                        </th>
-                        <th>
-                            取得時間
-                        </th>
-                        <th>
-                            使用時間
-                        </th>
-                        <th>
-                            過期時間
-                        </th>
-                        <th>
-                            狀態
-                        </th>
-                        <th>
-                            功能
-                        </th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach (var item in Model.MemberCoupons)
-                    {
-                        <tr>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.CouponName)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.CreateAt)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.UseAt)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.ExpireAt)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.StatusText)
-                            </td>
-                            <td>
-                                <button class="btn btn-primary add">優惠券詳情</button>
-                            </td>
-                        </tr>
-                    }
-                </tbody>
-            </table>
+                    <div>
+                        <table class="table table-striped table-hover datatable">
+                            <thead>
+                                <tr>
+                                    <th>
+                                        優惠券名稱
+                                    </th>
+                                    <th>
+                                        取得時間
+                                    </th>
+                                    <th>
+                                        使用時間
+                                    </th>
+                                    <th>
+                                        過期時間
+                                    </th>
+                                    <th>
+                                        狀態
+                                    </th>
+                                    <th>
+                                        功能
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model.MemberCoupons)
+                                {
+                                    <tr>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.CouponName)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.CreateAt)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.UseAt)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.ExpireAt)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.StatusText)
+                                        </td>
+                                        <td>
+                                            <button class="btn btn-primary add">優惠券詳情</button>
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                    <p>
+                        @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
+                        @Html.ActionLink("Back to List", "Index")
+                    </p>
+                </section>
+            </div><!-- End Default Tabs -->
         </div>
-        <p>
-            @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
-            @Html.ActionLink("Back to List", "Index")
-        </p>
-    </section>
+    </div>
 </main>
