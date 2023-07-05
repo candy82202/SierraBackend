@@ -16,7 +16,7 @@ namespace NiceAdmin.Models.ViewModels.OrdersVM
         [Display(Name = "訂購狀態")]
         public string StatusName { get; set; }
 
-        //public int? CouponId { get; set; }
+        public int? CouponId { get; set; }
         [Display(Name = "訂單成立時間")]
         public DateTime CreateTime { get; set; }
 

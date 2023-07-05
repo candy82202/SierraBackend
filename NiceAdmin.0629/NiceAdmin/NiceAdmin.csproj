@@ -46,6 +46,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Dapper, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Dapper.2.0.143\lib\net461\Dapper.dll</HintPath>
+    </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
@@ -154,6 +157,10 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\Promotions\DiscountsController.cs" />
     <Compile Include="Controllers\Promotions\MemberCouponsController.cs" />
+    <Compile Include="Models\DTOs\DessertOrderIndexDto.cs" />
+    <Compile Include="Models\Infra\DapperRepositories\DessertOrderDapperRepository.cs" />
+    <Compile Include="Models\Interfaces\IDessertOrderRepository.cs" />
+    <Compile Include="Models\Services\DessertOrderService.cs" />
     <Compile Include="Models\ViewModels\LessonsVM\LessonCreateVM.cs" />
     <Compile Include="Models\ViewModels\OrdersVM\DessertOrderExts.cs" />
     <Compile Include="Models\ViewModels\OrdersVM\DessertOrderIndexVM.cs" />
@@ -597,10 +604,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Models\DTOs\" />
-    <Folder Include="Models\Infra\DapperRepositories\" />
-    <Folder Include="Models\Interfaces\" />
-    <Folder Include="Models\Services\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="CodeTemplates\ODataControllerWithContext\Controller.vb.t4" />
