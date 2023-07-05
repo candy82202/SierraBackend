@@ -125,6 +125,7 @@ Lesson 部分
 [V]Lessons Create基本完成
 ===========0705==============
 [V]Lessons Edit 基本完成
+[V]增加時間判定在Create、Edit中開課時間不能是過去
 [working on]Lessons EditImage
 
 ==================================================================

@@ -31,12 +31,14 @@
                         @Html.HiddenFor(model => model.LessonId)
                         <div class="mb-3">
                             @Html.LabelFor(model => model.LessonCategoryId, "課程類別", htmlAttributes: new { @class = "form-label" })
-                            @Html.EditorFor(model => model.LessonCategoryName, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+                            <br />
+                            @Html.DisplayFor(model => model.LessonCategoryName, new { htmlAttributes = new { @class = "form-control", @disabled = "disabled" } })
                             @Html.ValidationMessageFor(model => model.LessonCategoryId, "", new { @class = "text-danger" })
                         </div>
                         <div class="mb-3">
                             @Html.LabelFor(model => model.TeacherId, "老師", htmlAttributes: new { @class = "form-label" })
-                            @Html.EditorFor(model => model.TeacherName, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+                            <br />
+                            @Html.DisplayFor(model => model.TeacherName, new { htmlAttributes = new { @class = "form-control", @disabled = "disabled" } })
                             @Html.ValidationMessageFor(model => model.TeacherId, "", new { @class = "text-danger" })
                         </div>
                         <div class="mb-3">
