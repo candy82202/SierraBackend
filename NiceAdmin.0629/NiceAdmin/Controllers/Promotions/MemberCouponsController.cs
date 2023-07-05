@@ -139,6 +139,29 @@ namespace NiceAdmin.Controllers
             db.SaveChanges();
             return RedirectToAction("Index");
         }
+        public JsonResult Deliver(int memberid,int couponid)
+        {
+            var couponInDb = db.Coupons.FirstOrDefault(c=>c.CouponId == couponid);
+            if (couponInDb == null||couponInDb.CouponCategoryId!=1)
+            {
+                return Json("優惠券不存在或類別不是'指定發送'");
+            }
+            double expiration = (double)couponInDb.Expiration;
+            var newMemberCoupon = new MemberCoupon()
+            {
+                CouponId = couponid,
+                MemberId = memberid,
+                Status = 2,
+                CreateAt = DateTime.Now,
+                ExpireAt = DateTime.Now.AddDays(expiration),
+                CouponName = couponInDb.CouponName,
+            };
+            db.MemberCoupons.Add(newMemberCoupon);
+            db.SaveChanges();
+            return Json(new {
+                couponName=newMemberCoupon.CouponName,
+            });
+        }
 		private void PrepareCouponDataSource(int? couponId)
 		{
 			var coupons = db.Coupons.Where(c => c.CouponCategoryId == 1)
