@@ -236,6 +236,10 @@
                 });
 
                 selectAllCheckboxDessert.prop('checked', allRecordsSelected);
+                // Uncheck the checkboxes on the current page when navigating to another page
+                if (!$(this).is(':checked')) {
+                    $(this).closest('table').find('.selectAllDessert').prop('checked', false);
+                }
             });
 
             $('.dwDest').click(function () {

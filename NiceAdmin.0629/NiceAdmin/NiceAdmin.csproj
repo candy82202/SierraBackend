@@ -159,19 +159,14 @@
     <Compile Include="Models\Interfaces\IDessertRepository.cs" />
     <Compile Include="Models\Services\Desserts\DessertService.cs" />
     <Compile Include="Models\ViewModels\DessertsVM\ThreeLayer\DessertsIndexTVM.cs" />
-    <Compile Include="Models\ViewModels\LessonsVM\LessonCreateVM.cs" />
     <Compile Include="Models\ViewModels\LessonsVM\LessonEditVM.cs" />
-    <Compile Include="Models\ViewModels\MembersVM\EmployeeEditVM.cs" />
-    <Compile Include="Models\ViewModels\MembersVM\MemberExts.cs" />
     <Compile Include="Models\ViewModels\PromotionsVM\MemberCouponDeliverVM.cs" />
     <Compile Include="Models\ViewModels\PromotionsVM\MemberCouponDetailVM.cs" />
     <Compile Include="Models\ViewModels\PromotionsVM\MemberCouponExts.cs" />
     <Compile Include="Models\ViewModels\PromotionsVM\MemberCouponIndexVM.cs" />
-	<Compile Include="Models\ViewModels\OrdersVM\DessertOrderExts.cs" />
-	<Compile Include="Models\ViewModels\OrdersVM\DessertOrderIndexVM.cs" />
-    <Compile Include="Models\ViewModels\PromotionsVM\PromotionCreateVM.cs" />
+    <Compile Include="Models\ViewModels\OrdersVM\DessertOrderExts.cs" />
+    <Compile Include="Models\ViewModels\OrdersVM\DessertOrderIndexVM.cs" />
     <Compile Include="Controllers\Promotions\PromotionsController.cs" />
-    <Compile Include="Controllers\TeachersController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -207,11 +202,7 @@
     <Compile Include="Models\ViewModels\MembersVM\LoginVM.cs" />
     <Compile Include="Models\ViewModels\MembersVM\MemberExts.cs" />
     <Compile Include="Models\ViewModels\PromotionsVM\PromotionCreateVM.cs" />
-    <Compile Include="Controllers\Promotions\PromotionsController.cs" />
     <Compile Include="Controllers\TeachersController.cs" />
-    <Compile Include="Global.asax.cs">
-      <DependentUpon>Global.asax</DependentUpon>
-    </Compile>
     <Compile Include="Models\ViewModels\DessertsVM\CategoryCreateVM.cs" />
     <Compile Include="Models\ViewModels\DessertsVM\CategoryExts.cs" />
     <Compile Include="Models\ViewModels\DessertsVM\DessertIndexPartVM.cs" />
@@ -668,10 +659,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Models\DTOs\" />
     <Folder Include="Models\Infra\DapperRepositories\" />
-    <Folder Include="Models\Interfaces\" />
-    <Folder Include="Models\Services\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="CodeTemplates\ODataControllerWithContext\Controller.vb.t4" />
