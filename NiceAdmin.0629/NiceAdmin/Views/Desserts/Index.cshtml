@@ -136,8 +136,9 @@
                                     <th>
                                         @Html.DisplayNameFor(model => model.CreateTime)
                                     </th>
-                                    <th>
-                                        功能
+                                    <th class="">
+                                        @*功能*@
+                                        <i class="bi bi-grid fs-4"></i>
                                     </th>
 
                                 </tr>
@@ -379,7 +380,7 @@
         });
 
         //這段是要做AutoComplete
-        var desserts = ["cake", "甜點", "chocolate", "cheese", "desserts", "dessert", "伯爵", "芒果", "草莓", "香草", "香蕉", "磅蛋糕", "巧克力"]
+        var desserts = ["乳酪", "甜點", "起司", "波士頓派", "可麗露", "布丁", "伯爵", "芒果", "草莓", "香草", "香蕉", "磅蛋糕", "巧克力","焦糖","莓果","檸檬"]
         /*function autocomplete(inp, arr) { ... }：這是一個自訂的自動完成函式。
         它接收兩個參數，inp代表文字輸入框的元素，arr代表建議項目的陣列。*/
         function autocompleteDesserts(inp, arr) {
