@@ -33,6 +33,7 @@ namespace NiceAdmin.Controllers
                 if (result != null)
                 {
                     var desserts = result.Desserts.Where(d => d.Status).ToList();
+                    //var desserts = result.Desserts.Where(d => d.Status || (d.ScheduledPublishDate.HasValue && d.ScheduledPublishDate <= DateTime.Now)).ToList();
                     foreach (var dessert in desserts)
                     {
                         DessertFrontIndexVM item = new DessertFrontIndexVM

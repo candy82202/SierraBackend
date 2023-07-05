@@ -55,6 +55,8 @@ namespace NiceAdmin.Controllers
         // Three Layer - Index
         public ActionResult Index(DessertCriteria criteria)
         {
+            //新增判斷甜點上架時間的方法
+            //UpdateScheduledDessertsStatus();
             ViewBag.Criteria = criteria;
             PrepareCategoryDataSource(criteria.CategoryId);
             IEnumerable<DessertsIndexTVM> desserts = GetDesserts(criteria);
@@ -125,12 +127,6 @@ namespace NiceAdmin.Controllers
                     dessertCreateVM.DessertImageName.Add(fileName);
                 }
 
-                //將檔名存入vm裡面
-                //dessertCreateVM.Images = fileName;
-                // 將檔名存入 dessertCreateVM.Images
-                //vm.DessertImageName.Add(fileName);
-
-
                 // 新增一筆記錄
 
                 Dessert dessert = dessertCreateVM.ToEntity();
@@ -143,6 +139,18 @@ namespace NiceAdmin.Controllers
                     };
                     dessert.DessertImages.Add(dessertImage);
                 }
+
+                //判斷預定上架時間
+                //if (dessertCreateVM.ScheduledPublishDate.HasValue)
+                //{
+                //    dessert.ScheduledPublishDate = dessertCreateVM.ScheduledPublishDate.Value;
+                //    dessert.Status = false; // 将状态设置为下架
+                //}
+                //else
+                //{
+                //    dessert.Status = true; // 将状态设置为上架
+                //}
+
                 db.Desserts.Add(dessert);
                 db.SaveChanges();
 
@@ -411,6 +419,20 @@ namespace NiceAdmin.Controllers
             return PartialView("DownDesserts", downDesserts);
 
         }
+
+        //新增預定上架商品時間判斷方法
+        //private void UpdateScheduledDessertsStatus()
+        //{
+        //    var scheduledDesserts = db.Desserts.Where(d => d.ScheduledPublishDate.HasValue && d.Status == false && d.ScheduledPublishDate <= DateTime.Now).ToList();
+
+        //    foreach (var dessert in scheduledDesserts)
+        //    {
+        //        dessert.Status = true; // Set the status to "on shelf"
+        //        db.Entry(dessert).State = EntityState.Modified;
+        //    }
+
+        //    db.SaveChanges();
+        //}
         protected override void Dispose(bool disposing)
         {
             if (disposing)
