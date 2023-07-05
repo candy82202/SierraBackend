@@ -166,6 +166,8 @@
     <Compile Include="Models\ViewModels\PromotionsVM\MemberCouponDetailVM.cs" />
     <Compile Include="Models\ViewModels\PromotionsVM\MemberCouponExts.cs" />
     <Compile Include="Models\ViewModels\PromotionsVM\MemberCouponIndexVM.cs" />
+	<Compile Include="Models\ViewModels\OrdersVM\DessertOrderExts.cs" />
+	<Compile Include="Models\ViewModels\OrdersVM\DessertOrderIndexVM.cs" />
     <Compile Include="Models\ViewModels\PromotionsVM\PromotionCreateVM.cs" />
     <Compile Include="Controllers\Promotions\PromotionsController.cs" />
     <Compile Include="Controllers\TeachersController.cs" />
@@ -240,6 +242,8 @@
     <Compile Include="Models\ViewModels\PromotionsVM\PromotionExts.cs" />
     <Compile Include="Models\ViewModels\PromotionsVM\PromotionIndexVM.cs" />
     <Compile Include="Models\ViewModels\TeachersVM\TeacherCreateVM.cs" />
+    <Compile Include="Models\ViewModels\TeachersVM\TeacherCriteria.cs" />
+    <Compile Include="Models\ViewModels\TeachersVM\TeacherDeleteVM.cs" />
     <Compile Include="Models\ViewModels\TeachersVM\TeacherEditImageVM.cs" />
     <Compile Include="Models\ViewModels\TeachersVM\TeacherEditVM.cs" />
     <Compile Include="Models\ViewModels\TeachersVM\TeacherExts.cs" />
@@ -663,6 +667,10 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Models\DTOs\" />
+    <Folder Include="Models\Infra\DapperRepositories\" />
+    <Folder Include="Models\Interfaces\" />
+    <Folder Include="Models\Services\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="CodeTemplates\ODataControllerWithContext\Controller.vb.t4" />

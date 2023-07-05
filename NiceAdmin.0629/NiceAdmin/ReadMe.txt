@@ -152,7 +152,7 @@ Teacher 部分
 -add TeacherDto class
 [v]改完版型
 [v]建立VM classes
-[workink on]寫擴充方法轉vm
+[v]寫擴充方法轉vm
 [v]index頁轉vm
 [v]修改TeacherIndexVM，增加display
 [v]TeacherIndexVM描述截斷，留前幾個字
@@ -160,9 +160,17 @@ Teacher 部分
 [v]上傳檔案
 [v]edit
 [v]變更圖片
-[working on]index查詢
+[v]Delete VM
 [v]檢查CRUD
 [v]試推orders04
+[v]index查詢
+[v]index變更圖片icon
+[working on]index一鍵上下架
+[v]index頁上下架更改圖示
+[v] 所有頁面新增<div class="row">
+        <div class="card">
+            <div class="card-body">
+
 
 
 
@@ -186,7 +194,11 @@ Order 部分
 [v]改完版型
 [v]EDIT/DELETE抓到當下的創建時間
 [v]form-select
-[working on]建立VM classes
+[working on]dapper
+[working on]訂單(甜點 )畫面需要那些欄位
+[working on]IndexVM 更改
+[working on]建立dessert order VM classes
+[workung on]dessert order index VM
 [workink on]寫擴充方法轉vm
 [working on]檢查CRUD
 [working on]下拉清單寫成一個副程式

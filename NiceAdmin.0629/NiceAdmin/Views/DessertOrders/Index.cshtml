@@ -1,4 +1,4 @@
-﻿@model IEnumerable<NiceAdmin.Models.EFModels.DessertOrder>
+﻿@model IEnumerable<NiceAdmin.Models.ViewModels.OrdersVM.DessertOrderIndexVM>
 
 @{
     ViewBag.Title = "Index";
@@ -15,115 +15,148 @@
             </ol>
         </nav>
     </div>
+  
+
     <!-- End Page Title -->
     @*<p>
             @Html.ActionLink("Create New", "Create")
         </p>*@
-    <table class="table  table-striped table-hover datatable" id="example">
-        <thead>
-            <tr>
-                <th>
-                    @Html.DisplayNameFor(model => model.Coupon.CouponName)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Member.MemberName)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.OrderStatus.StatusName)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.CreateTime)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Recipient)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.RecipientPhone)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.RecipientAddress)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.ShippingFee)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.DessertOrderTotal)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.DeliveryMethod)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Note)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.OrderCancellationReason)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.DiscountInfo)
-                </th>
-                <th></th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var item in Model)
-            {
+    
+
+        <table class="table  table-striped table-hover datatable" id="example">
+            <thead>
                 <tr>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Coupon.CouponName)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Member.MemberName)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.OrderStatus.StatusName)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.CreateTime)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Recipient)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.RecipientPhone)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.RecipientAddress)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.ShippingFee)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.DessertOrderTotal)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.DeliveryMethod)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Note)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.OrderCancellationReason)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.DiscountInfo)
-                    </td>
-                    <td>
-                        @Html.ActionLink("Edit", "Edit", new { id = item.DessertOrderId }) |
-                        @Html.ActionLink("Details", "Details", new { id = item.DessertOrderId }) |
-                        @Html.ActionLink("Delete", "Delete", new { id = item.DessertOrderId })
-                    </td>
+                    @*<th>
+                            @Html.DisplayNameFor(model => model.Coupon.CouponName)
+                        </th>*@
+                    <th>
+                        @Html.DisplayNameFor(model => model.DessertOrderId)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.MemberName)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.StatusName)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.CreateTime)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Recipient)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.RecipientPhone)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.RecipientAddress)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.ShippingFee)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.DessertOrderTotal)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.DeliveryMethod)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.DessertOrderDetails)
+                    </th>
+                    @*<th>
+                            @Html.DisplayNameFor(model => model.Note)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.OrderCancellationReason)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.DiscountInfo)
+                        </th>*@
+
+                    <th></th>
                 </tr>
-            }
-        </tbody>
-    </table>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr >
+                        @*<td>
+                                @Html.DisplayFor(modelItem => item.Coupon.CouponName)
+                            </td>*@
+                        <td>
+                            @Html.DisplayFor(modelItem => item.DessertOrderId)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.MemberName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.StatusName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.CreateTime)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Recipient)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.RecipientPhone)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.RecipientAddress)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.ShippingFee)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.DessertOrderTotal)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.DeliveryMethod)
+                        </td>
+                        <td >
+                           
+                                @foreach (var detail in item.DessertOrderDetails)
+                                {
+                                    @detail.DessertName
+                                    @detail.DessertUnitPrice
+                                    @detail.Quantity
+                                    @detail.Subtotal
+                                }
+                            
+                        </td>
+
+                        @*1.foreach出來
+                            2.套那個網站*@
+                        @*<td>
+                                @Html.DisplayFor(modelItem => item.Note)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.OrderCancellationReason)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.DiscountInfo)
+                            </td>*@
+                        <td>
+                            @Html.ActionLink("Edit", "Edit", new { id = item.DessertOrderId }) |
+                            @*@Html.ActionLink("Details", "Details", new { id = item.DessertOrderId })*@ |
+                            @Html.ActionLink("Delete", "Delete", new { id = item.DessertOrderId })
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    
 </main>
 @section Scripts{
+
+
     <script>
+      
+   
         //這段是要做AutoComplete
         var teachers = ["訂單", "甜點", "專家", "證書", "宅配", "課程", "烘焙", "吳", "糕點", "巧克力", "法式"]
         /*function autocomplete(inp, arr) { ... }：這是一個自訂的自動完成函式。
         它接收兩個參數，inp代表文字輸入框的元素，arr代表建議項目的陣列。*/
-        function autocompleteTeachers(inp, arr) {
+        function autocompleteDessertOrders(inp, arr) {
 
             var currentFocus;
 
@@ -232,6 +265,7 @@
         }
 
         //autocomplete() 函式的餘下部分處理事件監聽和與建議項目相關的邏輯，包括創建建議項目的 DIV 元素、將它們添加到 DOM 中、監聽建議項目的點擊事件等。
-        autocompleteDesserts(document.getElementById("s_name"), desserts);
+        autocompleteDessertOrders(document.getElementById("s_name"), DessertOrders);
     </script>
+
 }

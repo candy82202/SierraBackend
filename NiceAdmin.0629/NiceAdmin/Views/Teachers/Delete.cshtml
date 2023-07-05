@@ -1,94 +1,98 @@
-﻿@model NiceAdmin.Models.EFModels.Teacher
+﻿@model NiceAdmin.Models.ViewModels.TeachersVM.TeacherDeleteVM
 
 @{
     ViewBag.Title = "刪除師資";
 }
 <main id="main" class="main">
-    <div class="pagetitle">
-        <h1>刪除師資</h1>
-        <nav>
-            <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="@Url.Action("Index","Home")">首頁</a></li>
-                <li class="breadcrumb-item">   師資管理  </li>
-                <li class="breadcrumb-item active">  刪除師資  </li>
-            </ol>
-        </nav>
-    </div>
-    <!-- End Page Title -->
+    <div class="row">
+        <div class="card">
+            <div class="card-body">
+                <div class="pagetitle mt-3">
+                    <h1>刪除師資</h1>
+                    <nav>
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="@Url.Action("Index","Home")">首頁</a></li>
+                            <li class="breadcrumb-item">   師資管理  </li>
+                            <li class="breadcrumb-item active">  刪除師資  </li>
+                        </ol>
+                    </nav>
+                </div>
+                <!-- End Page Title -->
 
 
 
-    <h3>確定要刪除此筆資料嗎?</h3>
-    <div>
-        <h4>Teacher</h4>
-        <hr />
-        <dl class="dl-horizontal">
-            <dt>
-                @Html.DisplayNameFor(model => model.TeacherName)
-            </dt>
+                <h3 style="color:red;">確定要刪除此筆資料嗎?</h3>
+                <div>
 
-            <dd>
-                @Html.DisplayFor(model => model.TeacherName)
-            </dd>
+                    <hr />
+                    <dl class="dl-horizontal">
+                        <dt>
+                            @Html.DisplayNameFor(model => model.TeacherName)
+                        </dt>
 
-            <dt>
-                @Html.DisplayNameFor(model => model.TeacherImage)
-            </dt>
+                        <dd>
+                            @Html.DisplayFor(model => model.TeacherName)
+                        </dd>
 
-            <dd>
-                @Html.DisplayFor(model => model.TeacherImage)
-            </dd>
+                        <dt>
+                            @Html.DisplayNameFor(model => model.TeacherImage)
+                        </dt>
 
-            <dt>
-                @Html.DisplayNameFor(model => model.Specialty)
-            </dt>
+                        <dd>
+                            @Html.DisplayFor(model => model.TeacherImage)
+                        </dd>
 
-            <dd>
-                @Html.DisplayFor(model => model.Specialty)
-            </dd>
+                        <dt>
+                            @Html.DisplayNameFor(model => model.Specialty)
+                        </dt>
 
-            <dt>
-                @Html.DisplayNameFor(model => model.Experience)
-            </dt>
+                        <dd>
+                            @Html.DisplayFor(model => model.Specialty)
+                        </dd>
 
-            <dd>
-                @Html.DisplayFor(model => model.Experience)
-            </dd>
+                        <dt>
+                            @Html.DisplayNameFor(model => model.Experience)
+                        </dt>
 
-            <dt>
-                @Html.DisplayNameFor(model => model.License)
-            </dt>
+                        <dd>
+                            @Html.DisplayFor(model => model.Experience)
+                        </dd>
 
-            <dd>
-                @Html.DisplayFor(model => model.License)
-            </dd>
+                        <dt>
+                            @Html.DisplayNameFor(model => model.License)
+                        </dt>
 
-            <dt>
-                @Html.DisplayNameFor(model => model.Academic)
-            </dt>
+                        <dd>
+                            @Html.DisplayFor(model => model.License)
+                        </dd>
 
-            <dd>
-                @Html.DisplayFor(model => model.Academic)
-            </dd>
+                        <dt>
+                            @Html.DisplayNameFor(model => model.Academic)
+                        </dt>
 
-            <dt>
-                @Html.DisplayNameFor(model => model.TeacherStatus)
-            </dt>
+                        <dd>
+                            @Html.DisplayFor(model => model.Academic)
+                        </dd>
 
-            <dd>
-                @Html.DisplayFor(model => model.TeacherStatus)
-            </dd>
+                        <dt>
+                            @Html.DisplayNameFor(model => model.TeacherStatus)
+                        </dt>
 
-        </dl>
+                        <dd>
+                            @Html.DisplayFor(model => model.TeacherStatus)
+                        </dd>
 
-        @using (Html.BeginForm())
-        {
-            @Html.AntiForgeryToken()
+                    </dl>
 
-            <div class="form-actions no-color">
-                <input type="submit" value="Delete" class="btn btn-danger" /> |
-                @Html.ActionLink("Back to List", "Index")
+                    @using (Html.BeginForm())
+                    {
+                        @Html.AntiForgeryToken()
+
+                        <div class="form-actions no-color">
+                            <input type="submit" value="Delete" class="btn btn-danger" /> |
+                            @Html.ActionLink("Back to List", "Index")
+                        </div>
+                    }
+                </div>
             </div>
-        }
-    </div>
 </main>
