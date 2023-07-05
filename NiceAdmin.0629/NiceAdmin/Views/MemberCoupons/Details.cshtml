@@ -56,7 +56,7 @@
                                         <td>
                                             @Html.DisplayFor(modelItem => item.CreateAt)
                                         </td>
-                                        <td>
+                                        <td class="useAt">
                                             @Html.DisplayFor(modelItem => item.UseAt)
                                         </td>
                                         <td>
@@ -66,7 +66,7 @@
                                             @Html.DisplayFor(modelItem => item.StatusText)
                                         </td>
                                         <td>
-                                            <button class="btn btn-primary add">優惠券詳情</button>
+                                            @Html.ActionLink("優惠券詳情", "Details", "Coupons", new { id = item.CouponId }, new { @class = "btn btn-primary" })
                                         </td>
                                     </tr>
                                 }
@@ -74,7 +74,6 @@
                         </table>
                     </div>
                     <p>
-                        @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
                         @Html.ActionLink("Back to List", "Index")
                     </p>
                 </section>
@@ -82,3 +81,17 @@
         </div>
     </div>
 </main>
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    <script>
+        $(document).ready(function () {
+            $('.useAt').each(function () {
+                var useAtText = $(this).text().trim()
+                if (useAtText == "") {
+                    $(this).text("未使用")
+                }
+            })
+
+        })
+    </script>
+}
