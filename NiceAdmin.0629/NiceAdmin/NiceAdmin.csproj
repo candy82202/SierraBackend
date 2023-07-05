@@ -248,6 +248,7 @@
     <Compile Include="Models\ViewModels\TeachersVM\TeacherEditImageVM.cs" />
     <Compile Include="Models\ViewModels\TeachersVM\TeacherEditVM.cs" />
     <Compile Include="Models\ViewModels\TeachersVM\TeacherExts.cs" />
+    <Compile Include="Models\ViewModels\TeachersVM\TeacherIndexPartVM.cs" />
     <Compile Include="Models\ViewModels\TeachersVM\TeacherIndexVM.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -865,6 +866,7 @@
     <Content Include="Views\MemberCoupons\Index.cshtml" />
     <Content Include="Views\MemberCoupons\Details.cshtml" />
     <Content Include="Views\Employees\Login.cshtml" />
+    <Content Include="Views\Teachers\DownTeachers.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="Scripts\vendor\chart.js\controllers\controller.bar.d.ts" />

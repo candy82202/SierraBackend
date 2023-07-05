@@ -7,6 +7,7 @@ namespace NiceAdmin.Models.ViewModels.TeachersVM
 {
     public class TeacherCriteria
     {
+        
         public string TeacherName { get; set; }
         public string TeacherStatusText { get; set; }
     }

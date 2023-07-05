@@ -8,6 +8,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using NiceAdmin.Models.EFModels;
+using NiceAdmin.Models.ViewModels;
 using NiceAdmin.Models.ViewModels.TeachersVM;
 
 namespace NiceAdmin.Controllers
@@ -19,6 +20,7 @@ namespace NiceAdmin.Controllers
         // GET: Teachers
         public ActionResult Index(TeacherCriteria criteria)
         {
+           
             ViewBag.Criteria = criteria;
             //查詢紀錄，由於第一次進到網頁時，criteria是沒有值的
             var query = db.Teachers.ToList().Select(t=>t.TOIndexVM());//T指ENTITY
@@ -30,13 +32,21 @@ namespace NiceAdmin.Controllers
             {
                 query = query.Where(t => t.TeacherStatusText.Contains(criteria.TeacherStatusText)).ToList();
             }
-
+            // 清除搜尋條件
+            if (string.IsNullOrEmpty(criteria.TeacherName) && string.IsNullOrEmpty(criteria.TeacherStatusText))
+            {
+                criteria = new TeacherCriteria();
+            }
             //var teachers = db.Teachers.ToList();
             //var teacherViewModels = teachers.Select(t => t.TOIndexVM()).ToList();
 
             return View(query);
         }
-
+        // 清除搜尋條件的動作方法
+        public ActionResult ClearSearch()
+        {
+            return RedirectToAction("Index", new TeacherCriteria());
+        }
         // GET: Teachers/Details/5
         public ActionResult Details(int? id)
         {
@@ -232,6 +242,118 @@ namespace NiceAdmin.Controllers
             db.SaveChanges();
             return RedirectToAction("Index");
         }
+        [HttpPost]
+        public ActionResult UpTeachers(List<int> teacherIds)
+        {
+            if (teacherIds == null || teacherIds.Count == 0)
+            {
+                return View("Error");
+                // 如果沒有選擇任何老師，可以在這裡給出提示或執行相應處理             
+            }
+            else
+            {
+                try
+                {
+                    // 根据选择的teacherIds进行在職处理
+                    var teachesToUpdate = db.Teachers.Where(t => teacherIds.Contains(t.TeacherId)).ToList();
+                    foreach (var teacher in teachesToUpdate)
+                    {
+                        teacher.TeacherStatus = true; // 在職
+                    }
+                    // 更新数据库
+                    db.SaveChanges();
+                    // 重新導向回教師清單
+                    //return RedirectToAction("Index");
+                    //return Json(new { success = true });
+                    return Json(new { success = true, message = "上架成功" });
+                }
+                catch
+                {
+                    return Json(new { success = false, errorMessage = "查無教師資料" });
+                }
+            }
+        }
+        [HttpPost]
+        public ActionResult DownTeachers(List<int> teacherIds)
+        {
+            if (teacherIds == null || teacherIds.Count == 0)
+            {
+                return View("Error");
+                // 如果沒有選擇任何教師，可以在這裡給出提示或執行相應處理             
+            }
+            else
+            {
+                try
+                {
+                    // 根据选择的teacherIds进行下架处理
+                    var teachersToUpdate = db.Teachers.Where(t => teacherIds.Contains(t.TeacherId)).ToList();
+                    foreach (var teacher in teachersToUpdate)
+                    {
+                        teacher.TeacherStatus = false; // 離職
+                    }
+                    // 更新数据库
+                    db.SaveChanges();
+                    // 重新導向回師資清單
+                    //return RedirectToAction("Index");
+                    //return Json(new { success = true });
+                    return Json(new { success = true, message = "下架成功" });
+                }
+                catch
+                {
+                    return Json(new { success = false, errorMessage = "查無教師資料" });
+                }
+            }
+        }
+        public ActionResult UpdateTeacherStatus(int teacherId, bool teacherStatus)
+        {
+            try
+            {
+                var teacherToUpdate = db.Teachers.Find(teacherId);
+                if (teacherToUpdate == null)
+                {
+                    return Json(new { success = false, errorMessage = "Invalid teacher ID." });
+                }
+
+                bool previousStatus = teacherToUpdate.TeacherStatus; // Get the previous status
+                teacherToUpdate.TeacherStatus = teacherStatus; // Set status based on the parameter
+                db.SaveChanges();
+
+                string message = teacherStatus ? "上架成功" : "下架成功";
+
+                if (teacherStatus && previousStatus)
+                {
+                    message = "此教師已在職";
+                }
+                else if (!teacherStatus && !previousStatus)
+                {
+                    message = "此教師已離職";
+                }
+
+                return Json(new { success = true, message });
+            }
+            catch
+            {
+                return Json(new { success = false, errorMessage = "查無教師資料" });
+            }
+        }
+        public ActionResult DownTeachers()
+        {
+            var downTeachers = db.Teachers
+        .Join(db.Lessons,
+            teacher => teacher.TeacherId,
+            lesson => lesson.TeacherId,
+            (teacher, lesson) => new { Teacher = teacher, Lesson = lesson })
+        .Where(joinResult => joinResult.Teacher.TeacherStatus == false)
+        .OrderByDescending(joinResult => joinResult.Lesson.CreateTime)
+        .ToList() // 执行查询并将结果映射到内存中的列表
+        .Select(joinResult => joinResult.Teacher.ToIndexPartVM(joinResult.Lesson.CreateTime))
+        .ToList();
+
+            return PartialView("DownTeachers", downTeachers);
+            
+        }
+
+
 
         protected override void Dispose(bool disposing)
         {
@@ -242,4 +364,7 @@ namespace NiceAdmin.Controllers
             base.Dispose(disposing);
         }
     }
+    
+
+    
 }

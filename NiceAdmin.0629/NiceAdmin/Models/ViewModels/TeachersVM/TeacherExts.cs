@@ -1,9 +1,11 @@
 ﻿using NiceAdmin.Models.EFModels;
+using NiceAdmin.Models.ViewModels.DessertsVM;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 using System.Web;
+using System.Xml.Linq;
 
 namespace NiceAdmin.Models.ViewModels.TeachersVM
 {
@@ -113,6 +115,21 @@ namespace NiceAdmin.Models.ViewModels.TeachersVM
                 License = entiey.License,
                 Academic = entiey.Academic,
                 TeacherStatus = entiey.TeacherStatus
+            };
+        }
+        public static TeacherIndexPartVM ToIndexPartVM(this Teacher teacher, DateTime createTime)
+        {
+            return new TeacherIndexPartVM
+            {
+                TeacherId = teacher.TeacherId,
+                TeacherName = teacher.TeacherName,
+                TeacherImage = teacher.TeacherImage,
+                Specialty = teacher.Specialty,
+                Experience = teacher.Experience,
+                License = teacher.License,
+                Academic = teacher.Academic,
+                TeacherStatus = teacher.TeacherStatus,
+                CreateTime = createTime
             };
         }
     }

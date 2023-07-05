@@ -174,6 +174,8 @@ Teacher 部分
 [v]改成離職在職
 [v]criteria新增是否在職 controller有改
 [working on]沒有刪除師資，變成老師沒課程(if lessonId==null)和判斷老師開課時間有沒有過期才可以變成上架下架
+[v]join teacher&lesson
+[working on]上架下架好難qq
 
 
 
