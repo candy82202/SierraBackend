@@ -180,7 +180,6 @@
     <Compile Include="Models\EFModels\DiscountGroup.cs" />
     <Compile Include="Models\EFModels\DiscountGroupItem.cs" />
     <Compile Include="Models\EFModels\Employee.cs" />
-    <Compile Include="Models\EFModels\EmployeeToRole.cs" />
     <Compile Include="Models\EFModels\Lesson.cs" />
     <Compile Include="Models\EFModels\LessonCategory.cs" />
     <Compile Include="Models\EFModels\LessonImage.cs" />
@@ -854,7 +853,7 @@
     <Content Include="Views\Promotions\EditImage.cshtml" />
     <Content Include="Views\MemberCoupons\Index.cshtml" />
     <Content Include="Views\MemberCoupons\Details.cshtml" />
-	<Content Include="Views\Employees\Login.cshtml" />
+    <Content Include="Views\Employees\Login.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="Scripts\vendor\chart.js\controllers\controller.bar.d.ts" />

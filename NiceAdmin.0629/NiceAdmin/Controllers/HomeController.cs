@@ -24,7 +24,7 @@ namespace NiceAdmin.Controllers
 		{
 			List<DessertFrontIndexVM> dvm = new List<DessertFrontIndexVM>();
 
-<<<<<<< HEAD
+
             // 判斷如果有傳入類別編號，就篩選那個類別的商品出來
             if (cId != null)
             {
@@ -67,7 +67,7 @@ namespace NiceAdmin.Controllers
                     dvm.Add(item);
                 }
             }
-=======
+
 			// 判斷如果有傳入類別編號，就篩選那個類別的商品出來
 			if (cId != null)
 			{
@@ -108,11 +108,9 @@ namespace NiceAdmin.Controllers
 					dvm.Add(item);
 				}
 			}
->>>>>>> origin/Members05
 
-			ViewBag.count = dvm.Count;
 
-<<<<<<< HEAD
+
             return View(dvm);
         }
         public ActionResult NewDesserts(int? cId)
@@ -171,28 +169,17 @@ namespace NiceAdmin.Controllers
         public ActionResult About()
         {
             ViewBag.Message = "Your application description page.";
-=======
-			return View(dvm);
-		}
->>>>>>> origin/Members05
 
-		public ActionResult About()
-		{
-			ViewBag.Message = "Your application description page.";
-
-			return View();
-		}
-
-<<<<<<< HEAD
             return View();
         }
+
         public ActionResult CurrentTime()
         {
             ViewBag.CurrentTime = DateTime.Now;
             //這裡刻意取不同名字，來去跳轉到不同的頁面
             return this.PartialView("_CurrentTimePartial");
         }
-         public ActionResult RecentDesserts()
+        public ActionResult RecentDesserts()
         {
             var currentTime = DateTime.Now;
             var recentDesserts = db.Desserts
@@ -202,53 +189,24 @@ namespace NiceAdmin.Controllers
               .ToList()
               .Select(d => d.ToIndexPartVM())
               .ToList();
-=======
-		public ActionResult Contact()
-		{
-			ViewBag.Message = "Your contact page.";
->>>>>>> origin/Members05
 
-			return View();
-		}
-		public ActionResult CurrentTime()
-		{
-			ViewBag.CurrentTime = DateTime.Now;
-			//這裡刻意取不同名字，來去跳轉到不同的頁面
-			return this.PartialView("_CurrentTimePartial");
-		}
-		public ActionResult RecentDesserts()
-		{
-			var currentTime = DateTime.Now;
-			var recentDesserts = db.Desserts
-	  .Where(d => d.Status && d.CreateTime <= currentTime) // Filter by status and creation time
-	  .OrderByDescending(d => d.CreateTime) // Sort by descending creation time
-	  .Take(5) // Get the latest 5 desserts
-	  .ToList()
-	  .Select(d => d.ToIndexPartVM())
-		 .ToList();
+            return PartialView("RecentUpDesserts", recentDesserts);
 
-<<<<<<< HEAD
         }
+        public ActionResult Contact()
+        {
+            ViewBag.Message = "Your contact page.";
+
+            return View();
+        }
+
+
 
         public ActionResult FormsLayouts() { return View(); }
         public ActionResult UsersProfile() { return View(); }
         public ActionResult FormEdit() { return View(); }
         public ActionResult DataTable() { return View(); }
-    }
-=======
-			return PartialView("RecentUpDesserts", recentDesserts);
-
-		}
-		public ActionResult Sierra()
-		{
-			return View();
-		}
-		public ActionResult FormsLayouts() { return View(); }
-		public ActionResult UsersProfile() { return View(); }
-		public ActionResult FormEdit() { return View(); }
-		public ActionResult DataTable() { return View(); }
-
-		public ActionResult Login()
+	public ActionResult Login()
 		{
 			return View();
 		}
@@ -257,6 +215,9 @@ namespace NiceAdmin.Controllers
 		{
 			return View();
 		}
+    }
+
+
+	
 	}
->>>>>>> origin/Members05
-}
+
