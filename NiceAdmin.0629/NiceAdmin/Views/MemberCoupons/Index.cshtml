@@ -111,11 +111,10 @@
                 var memberId = $(this).data('id')
                 var couponId = $('#CouponId').val();
 
-                var localmemberId = memberId
                 $.ajax({
                     type: "POST",
                     url: "/MemberCoupons/Deliver",
-                    data: { memberId: localmemberId, couponId: couponId },
+                    data: { memberId: memberId, couponId: couponId },
                 }).done(function (data) {
                     $('#deliverModal').modal('hide');
                     Swal.fire({
