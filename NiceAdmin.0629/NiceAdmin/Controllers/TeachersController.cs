@@ -26,6 +26,10 @@ namespace NiceAdmin.Controllers
             {
                 query = query.Where(t=>t.TeacherName.Contains(criteria.TeacherName)).ToList();
             }
+            if (string.IsNullOrEmpty(criteria.TeacherStatusText) == false)
+            {
+                query = query.Where(t => t.TeacherStatusText.Contains(criteria.TeacherStatusText)).ToList();
+            }
 
             //var teachers = db.Teachers.ToList();
             //var teacherViewModels = teachers.Select(t => t.TOIndexVM()).ToList();

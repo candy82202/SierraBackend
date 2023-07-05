@@ -138,7 +138,7 @@
 
                 </tr>
                 <tr class="collapse" id="DessertOrderId">
-                    <td colspan="5">
+                    <td colspan="9">
                         <div class="input-group">
                             <div class="row">
                                 <div class="col-md-2 fw-bolder">
@@ -157,43 +157,34 @@
                         <br />
 
                                 <table class="table">
-                                    <tr>
-                                        <th>甜點名稱</th>
-                                        <th>單價</th>
-                                        <th>數量</th>
-                                        <th>小計</th>
-                                    </tr>
-                                    @foreach (var detail in item.DessertOrderDetails)
-                                    {
-
+                                    <thead>
                                         <tr>
-                                            <td> @detail.DessertName </td>
-                                            <td>@detail.DessertUnitPrice</td>
-                                            <td>@detail.Quantity</td>
-                                            <td>@detail.Subtotal</td>
-
+                                            <th>甜點名稱</th>
+                                            <th>單價</th>
+                                            <th>數量</th>
+                                            <th>小計</th>
                                         </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach (var detail in item.DessertOrderDetails)
+                                        {
+                                            <tr>
+                                                <td>@detail.DessertName </td>
+                                                <td>@detail.DessertUnitPrice</td>
+                                                <td>@detail.Quantity</td>
+                                                <td>@detail.Subtotal</td>
 
-
-                                    }
-
-
-
-
-
-
-
-
+                                            </tr>
+                                        }
+                                    </tbody>
                                 </table>
-
                         </div>
                     </td>
                 </tr>
 
 
 
-                @*1.foreach出來
-                    2.套那個網站*@
+               
                 @*<td>
                         @Html.DisplayFor(modelItem => item.Note)
                     </td>

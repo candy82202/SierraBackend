@@ -29,8 +29,14 @@
                             <input type="text" class="form-control" name="TeacherName" id="s_name" value="@criteria.TeacherName">
 
                         </div>
+                        <div class="mb-3 col-md-3">
+                            <label for="s_name">是否在職</label>
+                            <input type="text" class="form-control" name="TeacherStatusText" id="s_name" value="@criteria.TeacherStatusText">
+
+                        </div>
                         <div class="mb-3 col-md-9 align-self-end ">
-                            <button class="btn btn-primary">查詢</button>
+                            <button class="btn btn-primary">查詢教師名稱</button>
+                            <button class="btn btn-success">查詢教師是否在職</button>
                             <button type="button" class="btn btn-outline-primary">@Html.ActionLink("新增師資", "Create")</button>
                         </div>
                     </div>
@@ -87,7 +93,7 @@
                                     @Html.DisplayFor(modelItem => item.AcademicText)
                                 </td>
                                 <td class="status">
-                                    @if (item.TeacherStatusText == "上架")
+                                    @if (item.TeacherStatusText == "在職中")
                                     {
                                         <span class="badge bg-success">
                                             @Html.DisplayFor(modelItem => item.TeacherStatusText)
