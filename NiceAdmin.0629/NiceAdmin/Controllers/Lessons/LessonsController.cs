@@ -125,6 +125,10 @@ namespace NiceAdmin.Controllers.Lessons {
                     return RedirectToAction("Index", "Lessons", new { lessons = onShelfLessons });
                 }
 
+
+
+
+
                 return RedirectToAction("Index");
             }
             PrepareCategoryDataSource(vm.LessonCategoryId);

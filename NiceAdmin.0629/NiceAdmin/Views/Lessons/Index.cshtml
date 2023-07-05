@@ -29,6 +29,7 @@
 
 
                 <button class="btn btn-outline-primary text-light fw-bold"> @Html.ActionLink("新增課程", "Create")</button>
+
                 <section class="container">
                     <form method="get" autocomplete="off" action="@Url.Action("Index", "Lessons")">
                         <div class="row autocomplete" style="width:100%;">
@@ -55,6 +56,7 @@
                             </div>
                             <div class="mb-3 col-md-2 align-self-end">
                                 <button class="btn btn-outline-primary">查詢</button>
+                                <button class="btn btn-outline-primary btn-clear" id="btn-clear">查詢清空</button>
                             </div>
                         </div>
                     </form>
@@ -173,6 +175,18 @@
 
 @section Scripts{
     <script>
+
+        $(document).ready(function () {
+            $("#btn-clear").click(function () {
+                // 清空输入框的值
+                $("#s_name").val('');
+                $("#s_categoryId").prop('selectedIndex', 0);
+                $("#s_minPrice").val('');
+                $("#s_maxPrice").val('');
+            });
+        });
+
+
         //這段是要做AutoComplete
         var lessons = ["餅乾", "手工製作", "慕斯", "蛋糕", "巧克力", "馬卡龍", "檸檬", "派", "冰淇淋", "草莓", "布丁", "塔"]
         /*function autocomplete(inp, arr) { ... }：這是一個自訂的自動完成函式。
