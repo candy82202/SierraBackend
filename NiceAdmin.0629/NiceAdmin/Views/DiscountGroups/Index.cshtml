@@ -27,10 +27,10 @@
                             <thead>
                                 <tr>
                                     <th>
-                                        @Html.DisplayNameFor(model => model.DiscountGroupId)
+                                        @Html.DisplayNameFor(model => model.DiscountGroupName)
                                     </th>
                                     <th>
-                                        @Html.DisplayNameFor(model => model.DiscountGroupName)
+                                        @Html.DisplayNameFor(model => model.DiscountGroupItems)
                                     </th>
                                     <th>
                                         功能
@@ -42,10 +42,10 @@
                                 {
                                     <tr>
                                         <td>
-                                            @Html.DisplayFor(modelItem => item.DiscountGroupId)
-                                        </td>
-                                        <td>
                                             @Html.DisplayFor(modelItem => item.DiscountGroupName)
+                                        </td>
+                                        <td class="DiscountGroupItems">
+                                            @Html.DisplayFor(modelItem => item.DiscountGroupItems)
                                         </td>
                                         <td>
                                             @Html.ActionLink("編輯", "Edit", new { discountGroupId = item.DiscountGroupId }, new { @class = "btn btn-primary" }) |
@@ -91,6 +91,20 @@
                             })
                     }
                 })
+            })
+            $('.DiscountGroupItems').each(function () {
+                var text = $(this).text().trim()
+                var index = text.indexOf("]")
+                var text1 = text.slice(0, index+1)
+                var text2 = text.slice(index + 1)
+                if (text2.length > 50) {
+                    var truncatedText2 = text2.substr(0, 50) + "...";
+                    $(this).html(`${text1}<br>${truncatedText2}`)
+                }
+                else {
+                    $(this).html(`${text1}<br>${text2}`)
+                }
+                
             })
         });
 

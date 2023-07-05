@@ -137,11 +137,8 @@ namespace NiceAdmin.Controllers
 
             return db.DiscountGroups
                 .AsNoTracking()
-                .Select(x => new DiscountGroupIndexVM
-                {
-                    DiscountGroupId = x.DiscountGroupId,
-                    DiscountGroupName = x.DiscountGroupName,
-                });
+                .ToList()
+                .Select(x => x.ToIndexVM());
         }
     }
 }

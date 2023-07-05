@@ -12,9 +12,11 @@ namespace NiceAdmin.Models.ViewModels
         [Display(Name = "群組編號")]
         public int DiscountGroupId { get; set; }
 
-        [Required]
-        [StringLength(50)]
+        
         [Display(Name = "群組名稱")]
         public string DiscountGroupName { get; set; }
+
+        [Display(Name = "群組商品")]
+        public string DiscountGroupItems { get; set; }
     }
 }
