@@ -3,7 +3,7 @@
 [V] _Layout & Index 頁面完成 (新增Logo)
 	--更改 content的css位址
 	--更改 Script 的 JS位址 bootstrap位址
-    - 首頁預覽頁面，icon小圖示
+    - 首頁預覽頁面，icon小圖示 (刪除message icon)
 
 [V] - search bar 使用 autocomplete 可以連結到子頁面
     - 連結呈現的樣式修改至下方呈現
@@ -57,13 +57,19 @@ Desserts 部分
 [V] - 全選 checkbox 的變更事件監聽器 (Desserts & Categories 的 Index 頁面 抓到分頁數量的checkbox )
     - AutoComplete 甜點清單頁面
 
+[V] - Index 更改成
+
 [V] - 單筆上,下架按鈕
     - Checkbox Dessert Index 一鍵上,下架
     - 上,下架通知新增SweetAlert方式
 
+[V] - DessertTags Index , Edit 頁面 (更換成Cart元件)
+
 [V] - Add DessertIndexPartVM & DessertExts
     - HomeController Add RecentDesserts method
     - Partial View RecentUpDesserts
+
+[V] - Desserts Index Create Update use card style
 
 [working on] - 新增多張圖顯示， 編輯照片(照片的新增 / 刪除)
 
@@ -71,7 +77,6 @@ Desserts 部分
 
 [working on] - 編輯照片新增欄位(簡易編輯)
              - 照片更改成圖示 <img>
-             - 清單的編輯新增 icon
 
 
 ==========================================================
@@ -85,20 +90,25 @@ Member 部分
 [V] - 重建EFModels
       重建相關控制器和檢視
 
-[V] - 刪除檢視Roles1(誤創的)
-
 [V] - 新增VM
 [V] - 修改檢視
 [V] - 完成 EmployeesController 中的 Index(), Create()
       新增 EmployeeIndexVM, EmployeeCreateVM, EmployeeExts
       新增 Views/Employees/Create.cshtml和Index.cshtml
 
+[V] - 完成Employees/Edit(含view page)
+      (修改複合主鍵時遇到錯誤：System.InvalidOperationException: 'The property 'RoleId' is part of the object's key information and cannot be modified. '
+      解決方法：先用變數保存原本資料，再刪除原本資料，最後再新增一筆新資料。)
 
+[V] - 修改資料表結構(員工刪除關聯)
+[V] - complete Employee/Delete(including view page)
 
-
-
-
-
+[V] - create & complete MemberIndexVM.cs
+    - create & complete MemberExts.cs
+    - modify Index()
+    - modify Index view page
+[V] - modify Members/Index（修改MemberIndexVM）
+[V] - complete Employee CRUD
 
 
 
@@ -212,7 +222,7 @@ ViewBag.LessonOrderId = new SelectList(db.LessonOrders, "LessonOrderId", "Note",
 ==========================================================
 Promotion部分
 
-[V] - 優惠群組增刪查
+[V] - 優惠群組增刪查  //todo 改成ajax
         
 [V] - 編輯優惠群組頁面
     - 一個畫面使用多個vm
@@ -229,11 +239,43 @@ Promotion部分
 
 [V] - 優惠券詳情
 
-[V] - 促銷活動清單、新增 //todo dropdownlist只顯示分類為活動的優惠券(不行的話就選完之後ajax檢查)
-                      //jqueryUI datepicker沒法正常顯示  
+[V] - 促銷活動清單、新增 //jqueryUI datepicker沒法正常顯示 
+    - 新增時預覽圖片
+    - dropdownlist只抓取特定類別的優惠券
+    - 選擇關聯優惠券自動填入此優惠券的開始、結束時間
 
-[working on] - 促銷活動修改、刪除
+[V] - 促銷活動修改 //todo 修改圖片還沒
 
+[working on] - 會員優惠券
+
+
+(1)
+discountGroup 增
+              刪
+              查
+              改
+
+coupon        增
+              查
+
+promotion     增
+              查
+              改
+------------------------
+(2)
+promotion     改照片
+
+memberCoupon  查
+              增
+------------------------
+(3)
+discount      增
+              查
+              改
+                
+(1)大概完成，還須修畫面，補一些小功能，檢查bug
+(2)未完成
+(3)可能寫不到嗚嗚
 
 
 

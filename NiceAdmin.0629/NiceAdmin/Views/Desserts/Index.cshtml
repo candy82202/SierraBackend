@@ -1,5 +1,6 @@
-﻿@model IEnumerable<NiceAdmin.Models.ViewModels.DessertIndexVM>
-@*EFModels.Dessert>*@
+﻿@model IEnumerable<NiceAdmin.Models.ViewModels.DessertsVM.ThreeLayer.DessertsIndexTVM>
+           @*DessertIndexVM>*@
+
 
 @{
     ViewBag.Title = "Index";
@@ -8,7 +9,7 @@
     //string s_categoryId = criteria.CategoryId.HasValue ? criteria.CategoryId.Value.ToString() : "";
     var categories = ViewBag.CategoryId as SelectList;
     var criteria = ViewBag.Criteria as NiceAdmin.Models.ViewModels.DessertCriteria;
-    string s_categoryId = criteria.CategoryId.HasValue ? criteria.CategoryId.Value.ToString() : "";
+    string s_categoryId = criteria != null && criteria.CategoryId.HasValue ? criteria.CategoryId.Value.ToString() : "";
 }
 
 
@@ -78,7 +79,7 @@
                                     <input type="text" class="form-control" name="name" id="s_name" value="@criteria.Name">
 
                                 </div>
-                                <div class="mb-3 col-md-3">
+                                <div class="mb-3 col-md-2">
                                     <label for="s_categoryId">商品分類</label>
                                     <select name="categoryId" id="s_categoryId" class="form-select">
                                         @foreach (var item in categories)

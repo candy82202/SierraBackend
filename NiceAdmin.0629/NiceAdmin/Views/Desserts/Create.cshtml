@@ -1,8 +1,5 @@
 ﻿@model NiceAdmin.Models.ViewModels.DessertCreateVM
 
-@*EFModels.Dessert*@
-
-
 @{
     ViewBag.Title = "Create";
 }
@@ -26,8 +23,6 @@
                 @using (Html.BeginForm("Create", "Desserts", FormMethod.Post, new { enctype = "multipart/form-data" }))
                 {
                     @Html.AntiForgeryToken()
-
-
 
                     <hr />
                     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
@@ -57,17 +52,13 @@
 
                     <div class="mb-3">
                         @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "form-label col-md-2" })
-
-
                         @*@Html.EditorFor(model => model.Description, new { htmlAttributes = new { @class = "form-control" } })*@
                         @Html.TextAreaFor(model => model.Description, new { @class = "form-control" })
                         @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
-
-
                     </div>
 
                     <div id="previewContainer">
-                        <!-- 预览图像将在此处动态生成 -->
+                        <!-- 預覽圖像 動態生成 -->
                     </div>
                     <div class="mb-3">
                         @Html.LabelFor(model => model.DessertImageName, htmlAttributes: new { @class = "form-label col-md-2" })
@@ -86,15 +77,10 @@
 
                         </div>
                     </div>
-
                     <div class="mb-3">
-
                         <input type="submit" value="新增" class="btn btn-outline-primary" />
-
                     </div>
-
                 }
-
                 <div>
                     @Html.ActionLink("Back to List", "Index")
                 </div>

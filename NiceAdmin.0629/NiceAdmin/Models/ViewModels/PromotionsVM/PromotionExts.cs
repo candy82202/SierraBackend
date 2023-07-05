@@ -54,5 +54,14 @@ namespace NiceAdmin.Models.ViewModels.PromotionsVM
 				
 			};
 		}
+		public static PromotionEditImageVM ToEditImageVM(this Promotion entity)
+		{
+			return new PromotionEditImageVM()
+			{
+				PromotionImage = entity.PromotionImage,
+				PromotionId = entity.PromotionId,
+				
+			};
+		}
 	}
 }

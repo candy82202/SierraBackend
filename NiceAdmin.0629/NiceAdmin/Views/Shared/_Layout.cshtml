@@ -100,9 +100,13 @@
             background-color: DodgerBlue !important;
             color: #ffffff;
         }
-        .width350pxheight70px{
-            width:350px;
-            height:70px;
+        .height100px{
+            height:100px;
+        }
+        
+        .createPromotionImageSize {
+            width: 80%;
+            height: 250px;
         }
     </style>
 
@@ -394,15 +398,21 @@
                         </a>
                     </li>
                     <li>
-                        <a href="@Url.Action("Index","Permissions")">
-                            <i class="bi bi-circle"></i><span>權限清單</span>
-                        </a>
-                    </li>
-                    <li>
                         <a href="@Url.Action("Index","Employees")">
                             <i class="bi bi-circle"></i><span>員工清單</span>
                         </a>
                     </li>
+                    <li>
+                        <a href="@Url.Action("Index","Roles")">
+                            <i class="bi bi-circle"></i><span>角色清單</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="@Url.Action("Index","Permissions")">
+                            <i class="bi bi-circle"></i><span>權限清單</span>
+                        </a>
+                    </li>
+
                 </ul>
             </li>
             @*End Members Nav*@
@@ -787,7 +797,7 @@
                 });
         }
         //主頁面的AutoComplete
-        var sierras = [ "會員清單", "權限清單", "員工清單", "新增會員", "甜點清單", "新增甜點", "甜點類別", "課程管理", "新增課程", "課程類別", "師資管理", "新增教師", "教師清單", "訂單管理", "課程訂單", "甜點訂單", "行銷管理", "優惠群組清單", "優惠券清單", "新增優惠券", "折扣清單", "新增折扣", "會員優惠券清單", "發送優惠券", "優惠活動清單", "新增優惠活動"];
+    var sierras = ["會員清單", "權限清單", "員工清單", "新增員工","角色清單", "甜點清單", "新增甜點", "甜點類別", "課程管理", "新增課程", "課程類別", "師資管理", "新增教師", "教師清單", "訂單管理", "課程訂單", "甜點訂單", "行銷管理", "優惠群組清單", "優惠券清單", "新增優惠券", "折扣清單", "新增折扣", "會員優惠券清單", "發送優惠券", "優惠活動清單", "新增優惠活動"];
 
         function autocomplete(inp, arr) {
             var currentFocus;
@@ -817,6 +827,10 @@
                         autocompleteItem.innerHTML = "<a  class='text-dark text-decoration-none' href='https://localhost:44320/Permissions/Index'>" + matches[i] + "</a>";
                     } else if (matches[i] === "員工清單") {
                         autocompleteItem.innerHTML = "<a  class='text-dark text-decoration-none' href='https://localhost:44320/Employees/Index'>" + matches[i] + "</a>";
+                    } else if (matches[i] === "新增員工") {
+                        autocompleteItem.innerHTML = "<a  class='text-dark text-decoration-none' href='https://localhost:44320/Employees/Create'>" + matches[i] + "</a>";
+                    } else if (matches[i] === "角色清單") {
+                        autocompleteItem.innerHTML = "<a  class='text-dark text-decoration-none' href='https://localhost:44320/Roles/Index'>" + matches[i] + "</a>";
                     } else if (matches[i] === "甜點清單") {
                         autocompleteItem.innerHTML = "<a  class='text-dark text-decoration-none' href='https://localhost:44320/Desserts/Index'>" + matches[i] + "</a>";
                     } else if (matches[i] === "甜點類別") {

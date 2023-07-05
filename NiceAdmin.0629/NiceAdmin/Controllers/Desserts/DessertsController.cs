@@ -11,7 +11,11 @@ using System.Web.Mvc;
 using System.Web.UI.WebControls;
 using System.Xml.Linq;
 using NiceAdmin.Models.EFModels;
+using NiceAdmin.Models.Infra.EFRepositories;
+using NiceAdmin.Models.Interfaces;
+using NiceAdmin.Models.Services.Desserts;
 using NiceAdmin.Models.ViewModels;
+using NiceAdmin.Models.ViewModels.DessertsVM.ThreeLayer;
 using WebGrease;
 
 namespace NiceAdmin.Controllers
@@ -21,7 +25,7 @@ namespace NiceAdmin.Controllers
         private AppDbContext db = new AppDbContext();
 
         // GET: Desserts
-        public ActionResult Index(DessertCriteria dessertCriteria)
+        public ActionResult Index1(DessertCriteria dessertCriteria)
         {
             PrepareCategoryDataSource(dessertCriteria.CategoryId);
             ViewBag.Criteria = dessertCriteria;
@@ -48,7 +52,36 @@ namespace NiceAdmin.Controllers
             return View(desserts);
 
         }
+        // Three Layer - Index
+        public ActionResult Index(DessertCriteria criteria)
+        {
+            ViewBag.Criteria = criteria;
+            PrepareCategoryDataSource(criteria.CategoryId);
+            IEnumerable<DessertsIndexTVM> desserts = GetDesserts(criteria);
 
+            return View(desserts);
+        }
+
+        private IEnumerable<DessertsIndexTVM> GetDesserts(DessertCriteria criteria)
+        {
+            // IProductRepository repo = new ProductEFRepository();
+            IDessertRepository repo = new DessertEFRepository();
+
+            DessertService service = new DessertService(repo);
+            return service.Search(criteria)
+                .Select(dto => new DessertsIndexTVM
+                {
+                    DessertId = dto.DessertId,
+                    DessertName = dto.DessertName,
+                    Description = dto.Description,
+                    //CategoryId=dto.CategoryId,
+                    CategoryName = dto.CategoryName,
+                    UnitPrice = dto.UnitPrice,
+                    Status = dto.Status,
+                    CreateTime = dto.CreateTime,
+                });
+
+        }
         private void PrepareCategoryDataSource(int? categoryId)
         {
             ViewBag.CategoryId = new SelectList(db.Categories, "CategoryId", "CategoryName", categoryId);
@@ -75,31 +108,6 @@ namespace NiceAdmin.Controllers
            PrepareCategoryDataSource(null);
             return View();
         }
-
-        // POST: Desserts/Create
-        // 若要避免過量張貼攻擊，請啟用您要繫結的特定屬性。
-        // 如需詳細資料，請參閱 https://go.microsoft.com/fwlink/?LinkId=317598。
-        //[HttpPost]
-        //[ValidateAntiForgeryToken]
-        //public ActionResult Create(DessertCreateVM dessertCreateVM)
-        //    //[Bind(Include = "DessertId,DessertName,CategoryId,UnitPrice,Description,Status,CreateTime")] Dessert dessert)
-        //{
-        //    if (ModelState.IsValid)
-        //    {
-        //        //Dessert dessert = db.Desserts.Find(id);
-        //        //DessertCreateVM CreateVM = dessert.ToEditVM();
-        //        //dessertCreateVM.DessertId = 
-        //        Dessert dessert = dessertCreateVM.ToEntity();
-        //        dessert.CreateTime = DateTime.Now;
-        //        db.Desserts.Add(dessert);
-        //        db.SaveChanges();
-        //        return RedirectToAction("Index");
-        //    }
-
-        //    //ViewBag.CategoryId = new SelectList(db.Categories, "CategoryId", "CategoryName", dessert.CategoryId);
-        //    PrepareCategoryDataSource(dessertCreateVM.CategoryId);
-        //    return View(dessertCreateVM);
-        //}
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create(DessertCreateVM dessertCreateVM, List<HttpPostedFileBase> images)
@@ -321,7 +329,7 @@ namespace NiceAdmin.Controllers
                     //return Json(new { success = true });
                     return Json(new { success = true, message = "上架成功" });
                 }
-                catch (Exception ex)
+                catch 
                 {
                     return Json(new { success = false, errorMessage = "An error occurred while marking desserts as down. Please try again later." });
                 }
@@ -352,7 +360,7 @@ namespace NiceAdmin.Controllers
                     //return Json(new { success = true });
                     return Json(new { success = true, message = "下架成功" });
                 }
-                catch (Exception ex)
+                catch 
                 {                    
                     return Json(new { success = false, errorMessage = "An error occurred while marking desserts as down. Please try again later." });
                 }
@@ -385,7 +393,7 @@ namespace NiceAdmin.Controllers
 
                 return Json(new { success = true, message });
             }
-            catch (Exception ex)
+            catch
             {
                 return Json(new { success = false, errorMessage = "An error occurred while updating the dessert status. Please try again later." });
             }
@@ -394,9 +402,8 @@ namespace NiceAdmin.Controllers
         {
             var currentTime = DateTime.Now;
             var downDesserts = db.Desserts
-      .Where(d => d.Status == false)//&& d.CreateTime <= currentTime) // Filter by status and creation time
-      .OrderByDescending(d => d.CreateTime) // Sort by descending creation time
-                                            //.Take(5) // Get the latest 5 desserts
+      .Where(d => d.Status == false)
+      .OrderByDescending(d => d.CreateTime)
       .ToList()
       .Select(d => d.ToIndexPartVM())
          .ToList();
