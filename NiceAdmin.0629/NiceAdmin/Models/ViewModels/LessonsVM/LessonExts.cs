@@ -70,16 +70,24 @@ namespace NiceAdmin.Models.ViewModels.LessonsVM {
 
 
         }
-        public static DessertEditVM ToEditVM(this Dessert dessert)
+        public static LessonEditVM ToEditVM(this Lesson lesson)
         {
-            return new DessertEditVM
+            return new LessonEditVM
             {
-                DessertId = dessert.DessertId,
-                DessertName = dessert.DessertName,
-                CategoryId = dessert.CategoryId,
-                Description = dessert.Description,
-                UnitPrice = dessert.UnitPrice,
-                Status = dessert.Status,
+                LessonId = lesson.LessonId,
+                LessonTitle = lesson.LessonTitle,
+                LessonCategoryId = lesson.LessonCategoryId,
+                LessonInfo = lesson.LessonInfo,
+                LessonDetail = lesson.LessonDetail,
+                LessonPrice = lesson.LessonPrice,
+                LessonStatus = lesson.LessonStatus,
+                LessonHours = lesson.LessonHours,
+                LessonTime = lesson.LessonTime,
+                LessonDessert = lesson.LessonDessert,
+                TeacherId = lesson.TeacherId,
+                MaximumCapacity = lesson.MaximumCapacity,
+                LessonCategoryName = lesson.LessonCategory.LessonCategoryName,
+                TeacherName = lesson.Teacher.TeacherName
 
 
             };
