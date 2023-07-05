@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.Data.Entity.Core.Common.CommandTrees.ExpressionBuilder;
 using System.Linq;
 using System.Net;
 using System.Web;
@@ -100,6 +101,13 @@ namespace NiceAdmin.Controllers.Lessons {
 
                 Lesson lesson = vm.ToEntity();
                 lesson.CreateTime = DateTime.Now;
+                DateTime now = DateTime.Now;
+                if (vm.LessonTime < now)
+                {
+                    ModelState.AddModelError("LessonTime", "開課時間不能早於現在時間");
+                    PrepareCategoryDataSource(vm.LessonCategoryId);
+                    return View(vm);
+                }
                 foreach (string imageFileName in vm.LessonImageName)
                 {
                     LessonImage lessonImage = new LessonImage
@@ -181,6 +189,14 @@ namespace NiceAdmin.Controllers.Lessons {
             if (lesson == null)
             {
                 return HttpNotFound();
+            }
+
+            DateTime now = DateTime.Now;
+            if (vm.LessonTime < now)
+            {
+                ModelState.AddModelError("LessonTime", "開課時間不能早於現在時間");
+                PrepareCategoryDataSource(vm.LessonCategoryId);
+                return View(vm);
             }
 
             if (ModelState.IsValid)
