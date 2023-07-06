@@ -131,7 +131,9 @@ Lesson 部分
 [V]增加時間判定在Create、Edit中開課時間不能是過去
 [V]Index 進階搜尋可以清空資料
 [working on]Lessons EditImage
-
+===========0706=====================
+[V]Lessons 編輯照片
+[working on]將刪除變成上架或已開課
 ==================================================================
 [working on]完善Course CRUD、Courses的多張照片上傳和修改
 [working on]CRUD頁面需要補上<main> ⇒ 版型調整、table部分更改成datatable(有需要使用的)

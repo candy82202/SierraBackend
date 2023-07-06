@@ -161,6 +161,7 @@
     <Compile Include="Models\Interfaces\IDessertRepository.cs" />
     <Compile Include="Models\Services\Desserts\DessertService.cs" />
     <Compile Include="Models\ViewModels\DessertsVM\ThreeLayer\DessertsIndexTVM.cs" />
+    <Compile Include="Models\ViewModels\LessonsVM\LessonEditImgVM.cs" />
     <Compile Include="Models\ViewModels\LessonsVM\LessonEditVM.cs" />
     <Compile Include="Models\ViewModels\OrdersVM\DessertOrderDetailIndexVM.cs" />
     <Compile Include="Models\ViewModels\PromotionsVM\MemberCouponDeliverVM.cs" />
@@ -203,7 +204,6 @@
     <Compile Include="Models\ViewModels\LessonsVM\LessonCreateVM.cs" />
     <Compile Include="Models\ViewModels\MembersVM\EmployeeEditVM.cs" />
     <Compile Include="Models\ViewModels\MembersVM\LoginVM.cs" />
-    <Compile Include="Models\ViewModels\MembersVM\MemberExts.cs" />
     <Compile Include="Models\ViewModels\PromotionsVM\PromotionCreateVM.cs" />
     <Compile Include="Controllers\TeachersController.cs" />
     <Compile Include="Models\ViewModels\DessertsVM\CategoryCreateVM.cs" />
@@ -860,6 +860,8 @@
     <Content Include="Views\MemberCoupons\Index.cshtml" />
     <Content Include="Views\MemberCoupons\Details.cshtml" />
     <Content Include="Views\Employees\Login.cshtml" />
+	<Content Include="Views\Teachers\DownTeachers.cshtml" />
+	<Content Include="Views\Lessons\EditImg.cshtml" />
     <Content Include="Views\Shared\_LayoutLogin.cshtml" />
 	<Content Include="Views\Teachers\DownTeachers.cshtml" />
   </ItemGroup>

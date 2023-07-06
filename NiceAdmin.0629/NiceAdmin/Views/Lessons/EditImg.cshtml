@@ -1,0 +1,98 @@
+﻿@model NiceAdmin.Models.ViewModels.LessonsVM.LessonEditImgVM
+
+@{
+    ViewBag.Title = "EditImg";
+}
+
+
+<main id="main" class="main">
+    <div class="row">
+        <div class="card">
+            <div class="card-body">
+                <div class="pagetitle mt-3">
+                    <h2>編輯照片</h2>
+                </div>
+
+                @using (Html.BeginForm("EditImg", "Lessons", FormMethod.Post, new { id = "lessonForm", enctype = "multipart/form-data" }))
+                {
+                    @Html.AntiForgeryToken()
+                    @Html.HiddenFor(model => model.LessonId);
+                    //@Html.HiddenFor(model => model.LessonCategoryId)
+                    //@Html.HiddenFor(model => model.TeacherId)
+
+                    <hr />
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                    @*<div class="mb-3">
+                @Html.LabelFor(model => model.LessonImageId, htmlAttributes: new { @class = "form-label" })
+                @Html.EditorFor(model => model.LessonImageId, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.LessonImageId, "", new { @class = "text-danger" })
+            </div>
+            <div class="mb-3">
+                @Html.LabelFor(model => model.LessonId, htmlAttributes: new { @class = "form-label" })
+                @Html.EditorFor(model => model.LessonId, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.LessonId, "", new { @class = "text-danger" })
+            </div>*@
+
+                    <!--<div id="previewContainer">-->
+                    <!-- 预览图像将在此处动态生成 -->
+                    <!--</div>-->
+                   <p>上傳照片:</p>
+                    <div class="mb-3">
+                        <label for="images" id="previewContainer" class="form-label" style="width: 25%"></label>
+                        @*@foreach (var imageName in Model.DessertImageNames)
+                {
+                    <div>
+                        <img src="~/Uploads/@imageName" style="width: 25%" />
+                    </div>
+                }*@
+                        <br />
+                        <p>原始照片:</p>
+                        @foreach (var imageName in Model.LessonImageNames)
+                        {
+                            <div>
+                                <img src="@Url.Content("~/Uploads/" + imageName)" style="width: 15%" />
+                            </div>
+                        }
+                        <input type="file" name="images" id="images" multiple class="form-control" />
+                    </div>
+                    <div class="mb-3">
+                        <input type="submit" value="確認修改" class="btn btn-outline-info" />
+                    </div>
+
+                }
+
+                <div>
+                    @Html.ActionLink("Back to List", "Index")
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+
+    <script>
+
+
+
+        $('#images').change(function () {
+            var files = this.files;
+            var container = $('#previewContainer');
+            container.empty(); // 清空預覽容器
+
+            for (var i = 0; i < files.length; i++) {
+                var file = files[i];
+                var reader = new FileReader();
+                reader.onload = (function (file) {
+                    return function (e) {
+                        var img = $('<img>').attr('src', e.target.result).css({ width: '120px', height: '120px' });
+                        container.append(img); // 將圖片加到容器裡面
+                    };
+                })(file);
+                reader.readAsDataURL(file);
+            }
+        });
+       
+    </script>
+}
