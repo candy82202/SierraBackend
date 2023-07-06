@@ -148,6 +148,6 @@ namespace NiceAdmin.Models.EFModels
 				.WillCascadeOnDelete(false);
 		}
 
-       
+        public System.Data.Entity.DbSet<NiceAdmin.Models.ViewModels.TeachersVM.UpdateTeacherStatusVM> UpdateTeacherStatusVMs { get; set; }
     }
 }

@@ -172,7 +172,7 @@ Teacher 部分
 [v]試推orders04
 [v]index查詢
 [v]index變更圖片icon
-[working on]index一鍵上下架
+
 [v]index頁上下架更改圖示
 [v] 所有頁面新增<div class="row">
         <div class="card">
@@ -180,9 +180,10 @@ Teacher 部分
 [v]師資預覽圖片
 [v]改成離職在職
 [v]criteria新增是否在職 controller有改
-[working on]沒有刪除師資，變成老師沒課程(if lessonId==null)和判斷老師開課時間有沒有過期才可以變成上架下架
+[v]沒有刪除師資
 [v]join teacher&lesson
-[working on]上架下架好難qq
+[v]datatable完成
+[working on]下架沒有錯誤訊息
 
 
 
