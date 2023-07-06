@@ -49,13 +49,15 @@
 
 [V] - 首頁 新上架的5筆甜點呈現
 
-[working on] - 針對404錯誤訊息畫面 修改web.config畫面，圖片尚未抓到
+[V] - 針對404錯誤訊息畫面 修改web.config畫面，圖片更新完成
+    - 跟其他錯誤頁面的圖片更新畫面
 =========================================================
 前台頁面 部分
-[V] - 新增前台商品上架的頁面 LayoutFront , Sierras.cshtml
+[V] - 新增前台商品上架的頁面 LayoutFront , Sierras.cshtml , NewDesserts.cshtml
     - 新增師資下拉清單
     - 新增Logo
     - 字體顏色調整
+    - 顯示CurrentTime去比對
 
 =========================================================
 Desserts 部分
@@ -78,7 +80,7 @@ Desserts 部分
 
 [V] - Desserts Index Create Update use card style
 
-[working on] - 新增多張圖顯示， 編輯照片(照片的新增 / 刪除)
+[V] - 新增多張圖顯示
 
 [working on] - AJAX 甜點清單頁面
 
