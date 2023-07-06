@@ -151,7 +151,7 @@ namespace NiceAdmin.Controllers
             {
                 CouponId = couponid,
                 MemberId = memberid,
-                Status = 2,
+                //Status = 2,
                 CreateAt = DateTime.Now,
                 ExpireAt = DateTime.Now.AddDays(expiration),
                 CouponName = couponInDb.CouponName,

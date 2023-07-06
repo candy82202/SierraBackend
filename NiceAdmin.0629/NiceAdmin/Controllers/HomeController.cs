@@ -32,8 +32,8 @@ namespace NiceAdmin.Controllers
                 var result = db.Categories.SingleOrDefault(x => x.CategoryId == cId);
                 if (result != null)
                 {
-                    var desserts = result.Desserts.Where(d => d.Status).ToList();
-                    //var desserts = result.Desserts.Where(d => d.Status || (d.ScheduledPublishDate.HasValue && d.ScheduledPublishDate <= DateTime.Now)).ToList();
+                    //var desserts = result.Desserts.Where(d => d.Status).ToList();
+                    var desserts = result.Desserts.Where(d => d.Status || (d.ScheduledPublishDate.HasValue && d.ScheduledPublishDate <= DateTime.Now)).ToList();
                     foreach (var dessert in desserts)
                     {
                         DessertFrontIndexVM item = new DessertFrontIndexVM
@@ -70,47 +70,7 @@ namespace NiceAdmin.Controllers
                 }
             }
 
-			// 判斷如果有傳入類別編號，就篩選那個類別的商品出來
-			if (cId != null)
-			{
-				var result = db.Categories.SingleOrDefault(x => x.CategoryId == cId);
-				if (result != null)
-				{
-					var desserts = result.Desserts.Where(d => d.Status).ToList();
-					foreach (var dessert in desserts)
-					{
-						DessertFrontIndexVM item = new DessertFrontIndexVM
-						{
-							DessertId = dessert.DessertId,
-							DessertName = dessert.DessertName,
-							CategoryName = result.CategoryName,
-							Description = dessert.Description,
-							DessertImageName = db.DessertImages.FirstOrDefault(di => di.DessertId == dessert.DessertId)?.DessertImageName
-						};
-						dvm.Add(item);
-					}
-				}
-			}
-			else
-			{
-				var desserts = db.Desserts.Include("Category")
-										 .Include("DessertImages")
-										 .Where(d => d.Status)
-										 .ToList();
-				foreach (var dessert in desserts)
-				{
-					DessertFrontIndexVM item = new DessertFrontIndexVM
-					{
-						DessertId = dessert.DessertId,
-						DessertName = dessert.DessertName,
-						CategoryName = dessert.Category.CategoryName,
-						Description = dessert.Description,
-						DessertImageName = dessert.DessertImages.FirstOrDefault()?.DessertImageName
-					};
-					dvm.Add(item);
-				}
-			}
-
+            ViewBag.count = dvm.Count;
 
 
             return View(dvm);

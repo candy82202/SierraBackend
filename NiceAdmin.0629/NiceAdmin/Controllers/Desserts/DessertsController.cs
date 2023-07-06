@@ -56,7 +56,7 @@ namespace NiceAdmin.Controllers
         public ActionResult Index(DessertCriteria criteria)
         {
             //新增判斷甜點上架時間的方法
-            //UpdateScheduledDessertsStatus();
+            UpdateScheduledDessertsStatus();
             ViewBag.Criteria = criteria;
             PrepareCategoryDataSource(criteria.CategoryId);
             IEnumerable<DessertsIndexTVM> desserts = GetDesserts(criteria);
@@ -141,15 +141,15 @@ namespace NiceAdmin.Controllers
                 }
 
                 //判斷預定上架時間
-                //if (dessertCreateVM.ScheduledPublishDate.HasValue)
-                //{
-                //    dessert.ScheduledPublishDate = dessertCreateVM.ScheduledPublishDate.Value;
-                //    dessert.Status = false; // 将状态设置为下架
-                //}
-                //else
-                //{
-                //    dessert.Status = true; // 将状态设置为上架
-                //}
+                if (dessertCreateVM.ScheduledPublishDate.HasValue)
+                {
+                    dessert.ScheduledPublishDate = dessertCreateVM.ScheduledPublishDate.Value;
+                    dessert.Status = false; // 将状态设置为下架
+                }
+                else
+                {
+                    dessert.Status = true; // 将状态设置为上架
+                }
 
                 db.Desserts.Add(dessert);
                 db.SaveChanges();
@@ -160,8 +160,8 @@ namespace NiceAdmin.Controllers
                     return RedirectToAction("Sierras", "Home", new { desserts = onShelfDesserts });
                 }
 
-                return RedirectToAction("Sierras");            
-        }
+                return RedirectToAction("Sierras", "Home");
+            }
               
 
             PrepareCategoryDataSource(dessertCreateVM.CategoryId);
@@ -421,18 +421,18 @@ namespace NiceAdmin.Controllers
         }
 
         //新增預定上架商品時間判斷方法
-        //private void UpdateScheduledDessertsStatus()
-        //{
-        //    var scheduledDesserts = db.Desserts.Where(d => d.ScheduledPublishDate.HasValue && d.Status == false && d.ScheduledPublishDate <= DateTime.Now).ToList();
+        private void UpdateScheduledDessertsStatus()
+        {
+            var scheduledDesserts = db.Desserts.Where(d => d.ScheduledPublishDate.HasValue && d.Status == false && d.ScheduledPublishDate <= DateTime.Now).ToList();
 
-        //    foreach (var dessert in scheduledDesserts)
-        //    {
-        //        dessert.Status = true; // Set the status to "on shelf"
-        //        db.Entry(dessert).State = EntityState.Modified;
-        //    }
+            foreach (var dessert in scheduledDesserts)
+            {
+                dessert.Status = true; // Set the status to "on shelf"
+                db.Entry(dessert).State = EntityState.Modified;
+            }
 
-        //    db.SaveChanges();
-        //}
+            db.SaveChanges();
+        }
         protected override void Dispose(bool disposing)
         {
             if (disposing)
