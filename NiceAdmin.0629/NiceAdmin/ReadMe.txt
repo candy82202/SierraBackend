@@ -38,10 +38,16 @@
 [V] - 修改DataTable 的模板樣式，更改成中文版本
 
 [V] - 加裝sweet alert delete的部分。
-    - 資料庫使用Sierras 0629 (0630 更新資料庫)
     - 版本 4.7.2 
 
-[V] - 新上架的5筆甜點
+[V]- 資料庫使用Sierras 0629 
+        - (0704 更新資料庫)
+        - 資料庫 Members 新增兩個表格
+        - (0706 更新資料庫)
+        - 資料庫新增欄位 Desserts ScheduledPublishDate && Delete MemberCoupon Status
+        - 
+
+[V] - 首頁 新上架的5筆甜點呈現
 
 [working on] - 針對404錯誤訊息畫面 修改web.config畫面，圖片尚未抓到
 =========================================================
@@ -57,7 +63,7 @@ Desserts 部分
 [V] - 全選 checkbox 的變更事件監聽器 (Desserts & Categories 的 Index 頁面 抓到分頁數量的checkbox )
     - AutoComplete 甜點清單頁面
 
-[V] - Index 更改成
+[V] - Index 更改成 Tags 分頁方式切換 上架5筆 && 全部下架
 
 [V] - 單筆上,下架按鈕
     - Checkbox Dessert Index 一鍵上,下架
@@ -68,6 +74,7 @@ Desserts 部分
 [V] - Add DessertIndexPartVM & DessertExts
     - HomeController Add RecentDesserts method
     - Partial View RecentUpDesserts
+    - Partial View All DownDesserts
 
 [V] - Desserts Index Create Update use card style
 
