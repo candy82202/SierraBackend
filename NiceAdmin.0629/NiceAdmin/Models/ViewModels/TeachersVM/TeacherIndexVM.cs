@@ -10,7 +10,7 @@ namespace NiceAdmin.Models.ViewModels.TeachersVM
     {
         public int TeacherId { get; set; }
 
-       
+
         public string TeacherName { get; set; }
         [Display(Name = "教師姓名")]
         public string TeacherNameText 
