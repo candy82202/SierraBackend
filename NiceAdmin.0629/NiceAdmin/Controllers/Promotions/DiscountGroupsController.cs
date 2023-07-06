@@ -8,6 +8,7 @@ using System.Web;
 using System.Web.Mvc;
 using System.Data.Entity;
 using NiceAdmin.Models.Exts;
+using Microsoft.Ajax.Utilities;
 
 namespace NiceAdmin.Controllers
 {
@@ -20,17 +21,22 @@ namespace NiceAdmin.Controllers
             IEnumerable<DiscountGroupIndexVM> discountGroups = GetDiscountGroup();
             return View(discountGroups);
         }
-        public ActionResult Create()
+        [HttpPost]
+        public JsonResult Create()
         {
 
             var newDiscountGroup = new DiscountGroup()
             {
                 DiscountGroupName = "新的優惠群組"
             };
+            bool haveSame = db.DiscountGroups.Any(dg=>dg.DiscountGroupName == newDiscountGroup.DiscountGroupName);
+            if (haveSame)
+            {
+                return Json("請編輯先前新增的優惠群組");
+            }
             db.DiscountGroups.Add(newDiscountGroup);
             db.SaveChanges();
-
-            return new RedirectResult("Index");
+            return Json("新增成功");
         }
         
         public ActionResult Delete(int discountGroupId)
@@ -118,6 +124,30 @@ namespace NiceAdmin.Controllers
 			return Json("新增成功");
         }
 		[HttpPost]
+		public JsonResult AddAll(int? discountGroupId, int[] dessertIds)
+		{
+			if (discountGroupId == null || dessertIds.Length == 0) return Json("新增失敗");
+			var selectedDiscountGroup = db.DiscountGroups.FirstOrDefault(dg => dg.DiscountGroupId == discountGroupId);
+			if (selectedDiscountGroup == null) return Json("新增失敗");
+            var dessertIdsInSelectedDiscountGroup= selectedDiscountGroup.DiscountGroupItems?.Select(dgi => dgi.Dessert.DessertId).ToArray();
+            var different = dessertIds.Except(dessertIdsInSelectedDiscountGroup);
+            List<ReturnDessert> desserts = new List<ReturnDessert>();
+            foreach(int dessertId in different)
+            {
+                var newDiscountGroupItem = new DiscountGroupItem()
+                {
+                    DiscountGroupId = (int)discountGroupId,
+                    DessertId = dessertId
+                };
+				db.DiscountGroupItems.Add(newDiscountGroupItem);
+				db.SaveChanges();
+				var dessertInDb = db.Desserts.Find(dessertId);
+                var returnDessert = new ReturnDessert(dessertInDb.DessertName, dessertId);
+				desserts.Add(returnDessert);
+			}
+            return Json(desserts);
+		}
+		[HttpPost]
 		public JsonResult Remove(int? discountGroupId, int? dessertId)
 		{
 			if (discountGroupId == null || dessertId == null) return Json("刪除失敗");
@@ -131,12 +161,20 @@ namespace NiceAdmin.Controllers
 			db.SaveChanges();
 			return Json("刪除成功");
 		}
-		private IEnumerable<DiscountGroupIndexVM> GetDiscountGroup()
+        private class ReturnDessert
         {
-
-
+            public string DessertName { get; set; }
+            public int DessertId { get; set; }
+            public ReturnDessert(string _dessertName, int _dessertId)
+            {
+                this.DessertName = _dessertName;
+                this.DessertId = _dessertId;
+            }
+        }
+		
+        private IEnumerable<DiscountGroupIndexVM> GetDiscountGroup()
+        {
             return db.DiscountGroups
-                .AsNoTracking()
                 .ToList()
                 .Select(x => x.ToIndexVM());
         }

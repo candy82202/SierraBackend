@@ -35,7 +35,7 @@
                         @* 將完成鍵放在這是因為在同個表單的按鈕都會提交表單並執行controller的edit方法
                             先放在這邊之後在看看有沒有辦法讓表單中不同按鈕執行不同動作*@
                         <div class="mt-2">
-                            <input type="submit" value="完成" class="btn btn-primary" />
+                            <input type="submit" value="完成" class="btn btn-primary mb-3" />
                         </div>
                     </div>
 
@@ -61,7 +61,7 @@
                     <tbody>
                         @foreach (var item in Model.Desserts)
                         {
-                            <tr>
+                            <tr data-id="@item.DessertId">
                                 <td>
                                     @Html.DisplayFor(modelItem => item.DessertName)
                                 </td>
@@ -78,6 +78,7 @@
                         }
                     </tbody>
                 </table>
+                <button class="btn btn-primary m-3"id="addAll">全部加入</button>
                 <hr />
                 <h5 class="text-primary-emphasis fw-bold">群組中的商品</h5>
                 @* 群組內的商品 *@
@@ -99,6 +100,25 @@
     <script>
         document.addEventListener("DOMContentLoaded", function () {
             var discountGroupId = @discountGroupId;
+            $('#addAll').click(function () {
+                var idArr = [];
+                $('tbody tr').each(function () {
+                    idArr.push($(this).data('id'))
+                })
+                $.ajax({
+                    type: "post",
+                    url: "/DiscountGroups/AddAll",
+                    data: {
+                        discountGroupId: discountGroupId,
+                        dessertIds : idArr
+                    }
+                }).done(data => {
+                    if (typeof (data) === 'string') {
+
+                    }
+                })
+            })
+
 
             $('.add').click(function () {
                 var self = $(this)
