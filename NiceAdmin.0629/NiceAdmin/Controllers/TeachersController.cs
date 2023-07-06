@@ -304,6 +304,7 @@ namespace NiceAdmin.Controllers
                 }
             }
         }
+       
         public ActionResult UpdateTeacherStatus(int teacherId, bool teacherStatus)
         {
             try
@@ -316,6 +317,20 @@ namespace NiceAdmin.Controllers
 
                 bool previousStatus = teacherToUpdate.TeacherStatus; // Get the previous status
                 teacherToUpdate.TeacherStatus = teacherStatus; // Set status based on the parameter
+
+                // Join Lessons table to retrieve LessonTitle
+                var teacherWithLessons = from teacher in db.Teachers
+                                         join lesson in db.Lessons on teacher.TeacherId equals lesson.TeacherId
+                                         where teacher.TeacherId == teacherId
+                                         select new
+                                         {
+                                             Teacher = teacher,
+                                             LessonTitle = lesson.LessonTitle
+                                         };
+
+                // Retrieve the LessonTitle from the joined result
+                string lessonTitle = teacherWithLessons.FirstOrDefault()?.LessonTitle;
+
                 db.SaveChanges();
 
                 string message = teacherStatus ? "上架成功" : "下架成功";
@@ -329,13 +344,15 @@ namespace NiceAdmin.Controllers
                     message = "此教師已離職";
                 }
 
-                return Json(new { success = true, message });
+                return Json(new { success = true, message, lessonTitle });
             }
             catch
             {
                 return Json(new { success = false, errorMessage = "查無教師資料" });
             }
         }
+
+
         public ActionResult DownTeachers()
         {
             var downTeachers = db.Teachers
