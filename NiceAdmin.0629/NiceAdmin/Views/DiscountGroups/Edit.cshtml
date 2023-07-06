@@ -78,8 +78,11 @@
                         }
                     </tbody>
                 </table>
-                <button class="btn btn-primary m-3" id="addAll">全部加入</button>
-                @Html.DropDownList("CategoryId", null, htmlAttributes: new { @class = "form-select col-md-4" ,style = "width: 200px;" })
+                <div class="d-flex">
+                    <button class="btn btn-primary m-3" id="addAll">搜尋畫面全部加入</button>
+                    @Html.DropDownList("CategoryId", null, htmlAttributes: new { @class = "form-select mt-3", style = "width: 200px;height:40px" })
+                    <button class="btn btn-primary m-3 ms-0" id="addCategory">加入類別</button>
+                </div>
                 <hr />
                 <h5 class="text-primary-emphasis fw-bold">群組中的商品</h5>
                 @* 群組內的商品 *@
@@ -89,6 +92,10 @@
                         <button class="btn btn-success m-1 remove" data-id="@item.DessertId">@item.Dessert.DessertName<i class="bi bi-x-lg ms-2"></i></button>
                     }
                 </div>
+                <div class="d-flex justify-content-end">
+                    <button id="removeAll" class="btn btn-danger">清空群組</button>
+                </div>
+                <hr />
                 <div>
                     @Html.ActionLink("Back to List", "Index")
                 </div>
@@ -101,6 +108,8 @@
     <script>
         document.addEventListener("DOMContentLoaded", function () {
             var discountGroupId = @discountGroupId;
+            checkDessert();
+
             $('#addAll').click(function () {
                 var idArr = [];
                 $('tbody tr').each(function () {
@@ -128,11 +137,67 @@
                             var newItem = `<button class="btn btn-success m-1 remove" data-id="${id}">${name}<i class="bi bi-x-lg ms-2"></i></button>`
                             $('.dessertBox').append(newItem);
                         }
+                        $('#removeAll').show()
                     }
                 })
             })
+            $('#removeAll').click(function () {
+                Swal.fire({
+                    title: '確定要清空這個群組嗎?',
+                    text: "刪除後不可復原!",
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: '刪除!',
+                    cancelButtonText: '取消'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        $.ajax({
+                            type: "post",
+                            url: "/DiscountGroups/RemoveAll",
+                            data: {
+                                discountGroupId: discountGroupId,
+                            }
+                        }).done(data => {
+                            $('.dessertBox').empty()
+                            checkDessert()
+                        })
+                    }
+                })
+                
+            })
 
 
+            $('#addCategory').click(function () {
+                var selectedCategoryId = $('#CategoryId').val()
+                $.ajax({
+                    type: "post",
+                    url: "/DiscountGroups/AddCategory",
+                    data: {
+                        discountGroupId: discountGroupId,
+                        categoryId: selectedCategoryId
+                    }
+                }).done(data => {
+                    if (typeof (data) === 'string') {
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Oops...',
+                            text: `${data}`,
+                        })
+                    }
+                    else {
+                        for (let i = 0; i < data.length; i++) {
+                            var id = data[i].DessertId
+                            var name = data[i].DessertName
+                            var newItem = `<button class="btn btn-success m-1 remove" data-id="${id}">${name}<i class="bi bi-x-lg ms-2"></i></button>`
+                            $('.dessertBox').append(newItem);
+                        }
+                        $('#removeAll').show()
+                    }
+                })
+            })
+            
             $('.add').click(function () {
                 var self = $(this)
                 var dessertId = self.attr("data-id");
@@ -145,6 +210,7 @@
                     if (data === "新增成功") {
                         var newItem = `<button class="btn btn-success m-1 remove" data-id="${dessertId}">${dessertName}<i class="bi bi-x-lg ms-2"></i></button>`
                         $('.dessertBox').append(newItem);
+                        $('#removeAll').show()
                     }
                     else {
                         Swal.fire({
@@ -170,6 +236,7 @@
                 }).done(function (data) {
                     if (data === "刪除成功") {
                         self.remove();
+                        checkDessert()
                     }
                     else {
                         Swal.fire({
@@ -204,6 +271,12 @@
             //        alert(err.statusText);
             //    });
             //});
+            function checkDessert() {
+                $('#removeAll').show()
+                if ($('.dessertBox button').length == 0) {
+                    $('#removeAll').hide()
+                }
+            }
         });
     </script>
 }
