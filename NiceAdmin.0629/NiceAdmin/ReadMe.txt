@@ -82,7 +82,7 @@ Desserts 部分
 
 [V] - 新增多張圖顯示
 
-[working on] - AJAX 甜點清單頁面
+[V] - AJAX 甜點清單頁面
 
 [working on] - 編輯照片新增欄位(簡易編輯)
              - 照片更改成圖示 <img>
