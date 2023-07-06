@@ -13,6 +13,7 @@ using System.Runtime.InteropServices.ComTypes;
 
 namespace NiceAdmin.Controllers
 {
+	[Authorize]
 	public class HomeController : Controller
 	{
 		public ActionResult Index()
