@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
 using System.Data.Entity.Core.Common.CommandTrees.ExpressionBuilder;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Net;
 using System.Web;
@@ -225,6 +226,74 @@ namespace NiceAdmin.Controllers.Lessons {
             } 
             
             PrepareCategoryDataSource(vm.LessonCategoryId);
+            return View(vm);
+        }
+
+        //GET:Lessons/EditImg
+        public ActionResult EditImg(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
+            Lesson lesson = db.Lessons.Find(id);
+            if (lesson == null)
+            {
+                return HttpNotFound();
+            }
+
+            LessonEditImgVM vm = new LessonEditImgVM
+            {
+                LessonId = lesson.LessonId,
+                LessonImageNames = lesson.LessonImages.Select(i => i.LessonImageName).ToList(),
+            };
+            return View(vm);
+        }
+
+        //Post:Lessons/EditImg
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult EditImg(LessonEditImgVM vm, List<HttpPostedFileBase> images)
+        {
+            Lesson lesson = db.Lessons.Include(i => i.LessonImages).FirstOrDefault(l => l.LessonId == vm.LessonId);
+
+            if (lesson == null)
+            {
+                return HttpNotFound();
+            }
+
+            if (ModelState.IsValid && images != null)
+            {
+                // 将文件保存到指定位置并更新LessonImageNames
+                string path = Server.MapPath("/Uploads");
+                vm.LessonImageNames = new List<string>();
+
+                foreach (var file in images)
+                {
+                    string fileName = SaveUploadedFile(path, file);
+                    if (!string.IsNullOrEmpty(fileName))
+                    {
+                        vm.LessonImageNames.Add(fileName);
+                    }
+                }
+
+
+                
+
+                db.Database.ExecuteSqlCommand("DELETE FROM LessonImages WHERE LessonId = @LessonId", new SqlParameter("@LessonId", vm.LessonId));
+                    
+
+                foreach (var imageName in vm.LessonImageNames)
+                {
+                    db.LessonImages.Add(new LessonImage { LessonId = lesson.LessonId, LessonImageName = imageName });
+                }
+
+                db.SaveChanges();
+
+                return RedirectToAction("Index");
+            }
+            //PrepareCategoryDataSource(vm.LessonImageId);
             return View(vm);
         }
 
