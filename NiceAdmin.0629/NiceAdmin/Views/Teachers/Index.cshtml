@@ -66,15 +66,15 @@
                     <section class="container">
                         <form method="get" autocomplete="off" action="@Url.Action("Index", "Teachers")">
                             <div class="row" autocomplete" style="width:100%;">
-                                <div class="mb-3 col-md-3">
+                                <div class="mb-3 col-md-2">
                                     <label for="s_name">教師名稱</label>
                                     <input type="text" class="form-control" name="TeacherName" id="s_name" value="@criteria.TeacherName">
                                 </div>
-                                <div class="mb-3 col-md-3">
+                                <div class="mb-3 col-md-2">
                                     <label for="s_name">是否在職</label>
                                     <input type="text" class="form-control" name="TeacherStatusText" id="s_name" value="@criteria.TeacherStatusText">
                                 </div>
-                                <div class="mb-3 col-md-6 align-self-end ">
+                                <div class="mb-3 col-md-8 align-self-end ">
                                     <button class="btn btn-primary">查詢教師名稱</button>
                                     <button class="btn btn-success">查詢教師是否在職</button>
                                     <button type="button" class="btn btn-outline-secondary" onclick="location.href='@Url.Action("ClearSearch")'">清除搜尋</button>
@@ -96,9 +96,9 @@
                                             </label>
                                         </div>
                                     </th>
-                                    @*<th>
+                                    <th class="d-none">
                                         @Html.DisplayNameFor(model => model.TeacherId)
-                                    </th>*@
+                                    </th>
                                     <th>
                                         @Html.DisplayNameFor(model => model.TeacherNameText)
                                     </th>
@@ -134,9 +134,9 @@
                                                 <input class="form-check-input childCheckboxTeacher" type="checkbox" value="" data-checkbox="childCheckbox" />
                                             </label>
                                         </td>
-                                        @*<td>
+                                        <td class="d-none">
                                             @Html.DisplayFor(modelItem => item.TeacherId)
-                                        </td>*@
+                                        </td>
                                         <td>
                                             @Html.DisplayFor(modelItem => item.TeacherNameText)
                                         </td>
@@ -175,6 +175,7 @@
                                             @Html.ActionLink("變更圖片", "EditImage", new { id = item.TeacherId }) |
                                             @*@Html.ActionLink("Delete", "Delete", new { id = item.TeacherId })*@
                                             @Html.ActionLink("下架", "DownTeachers", new { id = item.TeacherId })
+                                            @Html.ActionLink("上架", "UpdateTeacherStatus", new { id = item.TeacherId })
                                             <button class="btn btn-outline-success btn-sm upDest " data-id="@item.TeacherId">上架</button>
                                             <button class="btn btn-outline-danger btn-sm dwDest " data-id="@item.TeacherId">下架</button>
                                             <input type="hidden" name="teacherIds[]" value="@item.TeacherId" />
