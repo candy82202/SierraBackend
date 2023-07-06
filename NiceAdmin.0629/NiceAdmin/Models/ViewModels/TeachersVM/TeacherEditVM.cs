@@ -39,7 +39,7 @@ namespace NiceAdmin.Models.ViewModels.TeachersVM
         [StringLength(150)]
         public string Academic { get; set; }
 
-        [Display(Name = "是否上架")]
+        [Display(Name = "是否在職")]
         public bool TeacherStatus { get; set; }
     }
 }

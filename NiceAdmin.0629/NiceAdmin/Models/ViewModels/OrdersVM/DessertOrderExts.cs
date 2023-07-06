@@ -2,8 +2,10 @@
 using NiceAdmin.Models.ViewModels.TeachersVM;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
+using System.Xml.Linq;
 
 namespace NiceAdmin.Models.ViewModels.OrdersVM
 {
@@ -20,8 +22,8 @@ namespace NiceAdmin.Models.ViewModels.OrdersVM
                 Recipient = entiey.Recipient,
                 RecipientPhone = entiey.RecipientPhone,
                 RecipientAddress = entiey.RecipientAddress,
-                ShippingFee= entiey.ShippingFee,
-                DessertOrderTotal= entiey.DessertOrderTotal,
+                ShippingFee = entiey.ShippingFee,
+                DessertOrderTotal = entiey.DessertOrderTotal,
                 DeliveryMethod = entiey.DeliveryMethod,
                 DessertOrderDetails = entiey.DessertOrderDetails.ToList(),
             };
@@ -41,6 +43,22 @@ namespace NiceAdmin.Models.ViewModels.OrdersVM
                 ShippingFee = vm.ShippingFee,
                 DessertOrderTotal = vm.DessertOrderTotal,
                 DeliveryMethod = vm.DeliveryMethod
+            };
+        }
+
+        public static DessertOrderDetailIndexVM TOIndexVM(this DessertOrderDetail entiey)//ENTITY(資料庫的資料)轉成VM
+        {
+            return new DessertOrderDetailIndexVM
+            {
+
+                DessertName = entiey.DessertName,
+
+
+                Quantity = entiey.Quantity,
+
+                DessertUnitPrice = entiey.DessertUnitPrice,
+
+                Subtotal = entiey.Subtotal
             };
         }
     }

@@ -174,7 +174,12 @@ Teacher 部分
 [v] 所有頁面新增<div class="row">
         <div class="card">
             <div class="card-body">
-
+[v]師資預覽圖片
+[v]改成離職在職
+[v]criteria新增是否在職 controller有改
+[working on]沒有刪除師資，變成老師沒課程(if lessonId==null)和判斷老師開課時間有沒有過期才可以變成上架下架
+[v]join teacher&lesson
+[working on]上架下架好難qq
 
 
 
@@ -198,18 +203,19 @@ Order 部分
 [v]改完版型
 [v]EDIT/DELETE抓到當下的創建時間
 [v]form-select
-[working on]dapper
-[working on]訂單(甜點 )畫面需要那些欄位
-[working on]IndexVM 更改
-[working on]建立dessert order VM classes
-[workung on]dessert order index VM
-[workink on]寫擴充方法轉vm
+
+[v]訂單(甜點 )畫面需要那些欄位
+[v]IndexVM 更改
+[v]建立dessert order VM classes
+[v]dessert order index VM
+[v]寫擴充方法轉vm
 [working on]檢查CRUD
 [working on]下拉清單寫成一個副程式
 [working on]debug課程訂單明細資料庫錯誤，
 ViewBag.LessonOrderId = new SelectList(db.LessonOrders, "LessonOrderId", "Note", lessonOrderDetail.LessonOrderId);
-[working on]查詢
-
+[working on]criteria進階搜尋做清除搜尋
+[working on]最近熱銷的五筆訂單Partial view最近熱銷的五筆甜點
+[working on]訂單狀態編輯
 
 
 

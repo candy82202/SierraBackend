@@ -1,0 +1,83 @@
+﻿@model IEnumerable<NiceAdmin.Models.ViewModels.TeachersVM.TeacherIndexPartVM>
+@{
+    ViewBag.Title = "DownTeachers";
+}
+
+<div class="table-responsive">
+    <table class="table table-striped table-hover datatable">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.TeacherId)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.TeacherNameText)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.TeacherImage)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.SpecialtyText)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ExperienceText)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.LicenseText)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.AcademicText)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.TeacherStatusText)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.CreateTime)
+                </th>
+
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+
+                    <td>
+
+                        @Html.DisplayFor(modelItem => item.TeacherId)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.TeacherNameText)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.TeacherImage)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.SpecialtyText)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ExperienceText)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.LicenseText)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.AcademicText)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.TeacherStatusText)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CreateTime)
+                    </td>
+                    <td class="status">
+                        <span class="badge bg-danger">@Html.DisplayFor(modelItem => item.TeacherStatusText)</span>
+                    </td>
+
+
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+

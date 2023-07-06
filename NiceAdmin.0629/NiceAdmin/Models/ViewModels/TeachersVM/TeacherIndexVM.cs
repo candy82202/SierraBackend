@@ -10,7 +10,7 @@ namespace NiceAdmin.Models.ViewModels.TeachersVM
     {
         public int TeacherId { get; set; }
 
-       
+
         public string TeacherName { get; set; }
         [Display(Name = "教師姓名")]
         public string TeacherNameText 
@@ -83,11 +83,11 @@ namespace NiceAdmin.Models.ViewModels.TeachersVM
       
         public bool TeacherStatus { get; set; }
 
-        [Display(Name = "是否上架")]
+        [Display(Name = "是否在職")]
         public string TeacherStatusText {
             get
             {
-                return this.TeacherStatus == true ? "上架" : "下架";
+                return this.TeacherStatus == true ? "在職中" : "已離職";
             }
                 }
     }
