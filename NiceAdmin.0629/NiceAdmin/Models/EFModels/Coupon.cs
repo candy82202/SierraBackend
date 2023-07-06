@@ -47,6 +47,8 @@ namespace NiceAdmin.Models.EFModels
 
         public DateTime CreateAt { get; set; }
 
+        public bool Status { get; set; }
+
         public virtual CouponCategory CouponCategory { get; set; }
 
         public virtual DiscountGroup DiscountGroup { get; set; }

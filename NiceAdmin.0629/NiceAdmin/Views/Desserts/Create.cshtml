@@ -78,6 +78,13 @@
                         </div>
                     </div>
                     <div class="mb-3">
+                        @Html.LabelFor(model => model.ScheduledPublishDate, htmlAttributes: new { @class = "form-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.TextBoxFor(model => model.ScheduledPublishDate, new { @class = "form-control", type = "datetime-local" })
+                            @Html.ValidationMessageFor(model => model.ScheduledPublishDate, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="mb-3">
                         <input type="submit" value="新增" class="btn btn-outline-primary" />
                     </div>
                 }

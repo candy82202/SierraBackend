@@ -138,7 +138,15 @@
 <script>
 
      
-
+    $('#ScheduledPublishDate').change(function () {
+        var scheduledPublishDate = $(this).val();
+        if (scheduledPublishDate) {
+            var currentDate = new Date().toISOString().substring(0, 16);
+            if (currentDate >= scheduledPublishDate) {
+                location.reload(); // 刷新页面
+            }
+        }
+    });
         $('#files').change(function () {
             var files = this.files;
             var container = $('#previewContainer');
