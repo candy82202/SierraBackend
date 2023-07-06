@@ -2,50 +2,149 @@
 
 @{
 	ViewBag.Title = "Login";
+	Layout = "~/Views/Shared/_LayoutLogin.cshtml";
 }
-<main id="main" class="main">
-	<h1>登入</h1>
-	<div class="pagetitle">
-		<nav>
-			<ol class="breadcrumb">
-				<li class="breadcrumb-item"><a href="@Url.Action("Index","Home")">首頁</a></li>
-				<li class="breadcrumb-item"><a href="@Url.Action("Index","Members")">會員清單</a></li>
-				<li class="breadcrumb-item"><a href="@Url.Action("Index","Employees")">員工清單</a></li>
-				<li class="breadcrumb-item"><a href="@Url.Action("Index","Roles")">角色清單</a></li>
-				<li class="breadcrumb-item"><a href="@Url.Action("Index","Permissions")">權限清單</a></li>
-			</ol>
-		</nav>
+<main>
+	<div class="container">
+		<section class="section register min-vh-100 d-flex flex-column align-items-center justify-content-center py-4">
+			<div class="container">
+				<div class="row justify-content-center">
+					<div class="col-lg-4 col-md-6 d-flex flex-column align-items-center justify-content-center">
+						<div class="d-flex justify-content-center py-4">
+							<a href="index.html"
+							   class="logo d-flex align-items-center w-auto">
+								<img src="assets/img/logo.png" alt="" />
+								<span class="d-none d-lg-block">Sierra</span>
+							</a>
+						</div>
+						<!-- End Logo -->
+
+						<div class="card mb-3">
+							<div class="card-body">
+								<div class="pt-4 pb-2">
+									<h5 class="card-title text-center pb-0 fs-4">
+										登入您的帳戶
+									</h5>
+								</div>
+								@using (Html.BeginForm())
+								{
+									@Html.AntiForgeryToken()
+
+									<div class="row">
+										@Html.ValidationSummary(true, "", new { @class = "text-danger" })
+										<div class="mb-3">
+											@Html.LabelFor(model => model.Account, htmlAttributes: new { @class = "form-label" })
+											@Html.EditorFor(model => model.Account, new { htmlAttributes = new { @class = "form-control" } })
+											@Html.ValidationMessageFor(model => model.Account, "", new { @class = "text-danger" })
+										</div>
+
+										<div class="mb-3">
+											@Html.LabelFor(model => model.Password, htmlAttributes: new { @class = "form-label" })
+											<span id="toggle-password" onclick="togglePasswordVisibility()">
+												<i class="fas fa-eye"></i>
+											</span>
+											@Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control" } })
+											@Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+										</div>
+
+										<div class="col-12">
+											<div class="form-check">
+												<input class="form-check-input"
+													   type="checkbox"
+													   name="remember"
+													   value="true"
+													   id="rememberMe" />
+												<label class="form-check-label" for="rememberMe">記住我(暫時沒用到)</label>
+											</div>
+										</div>
+
+										<div class="mb-3 col-12">
+											<input type="submit" value="登入" class="btn btn-primary w-100" />
+										</div>
+									</div>
+								}
+							</div>
+						</div>
+
+						<div class="credits">
+							Designed by
+							<a href="https://bootstrapmade.com/">Sierra</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
 	</div>
-
-
-
-	@using (Html.BeginForm())
-	{
-		@Html.AntiForgeryToken()
-
-		<div class="row">
-			<hr />
-			@Html.ValidationSummary(true, "", new { @class = "text-danger" })
-			<div class="mb-3">
-				@Html.LabelFor(model => model.Account, htmlAttributes: new { @class = "form-label" })
-				@Html.EditorFor(model => model.Account, new { htmlAttributes = new { @class = "form-control" } })
-				@Html.ValidationMessageFor(model => model.Account, "", new { @class = "text-danger" })
-			</div>
-
-			<div class="mb-3">
-				@Html.LabelFor(model => model.Password, htmlAttributes: new { @class = "form-label" })
-				@Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control" } })
-				@Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
-			</div>
-
-			<div class="mb-3">
-				<input type="submit" value="登入" class="btn btn-primary" />
-				<a class="btn btn-primary" href="@Url.Action("Index", "Employees")">返回</a>
-			</div>
-		</div>
-	}
 </main>
+@*<main id="main" class="main">
+		<h1>登入</h1>
+
+		@using (Html.BeginForm())
+		{
+			@Html.AntiForgeryToken()
+
+			<div class="row">
+				<hr />
+				@Html.ValidationSummary(true, "", new { @class = "text-danger" })
+				<div class="mb-3">
+					@Html.LabelFor(model => model.Account, htmlAttributes: new { @class = "form-label" })
+					@Html.EditorFor(model => model.Account, new { htmlAttributes = new { @class = "form-control" } })
+					@Html.ValidationMessageFor(model => model.Account, "", new { @class = "text-danger" })
+				</div>
+
+				<div class="mb-3">
+					@Html.LabelFor(model => model.Password, htmlAttributes: new { @class = "form-label" })
+					@Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control" } })
+					@Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+				</div>
+
+				<div class="mb-3">
+					<input type="submit" value="登入" class="btn btn-primary" />
+					<a class="btn btn-primary" href="@Url.Action("Index", "Employees")">返回</a>
+				</div>
+			</div>
+		}
+	</main>
+
+	@section Scripts {
+		@Scripts.Render("~/bundles/jqueryval")
+	}*@
 
 @section Scripts {
 	@Scripts.Render("~/bundles/jqueryval")
+	<script src="https://kit.fontawesome.com/d6092fcff6.js" crossorigin="anonymous"></script>
+
+	<script>
+		function togglePasswordVisibility() {
+			var passwordInput = document.getElementById("Password");
+			var toggleIcon = document.getElementById("toggle-password").querySelector("i");
+
+			if (passwordInput.type === "password") {
+				passwordInput.type = "text";
+				toggleIcon.classList.remove("fa-eye");
+				toggleIcon.classList.add("fa-eye-slash");
+			} else {
+				passwordInput.type = "password";
+				toggleIcon.classList.remove("fa-eye-slash");
+				toggleIcon.classList.add("fa-eye");
+			}
+		}
+	</script>
+	@*// jQuery版本
+	<script>
+		function togglePasswordVisibility() {
+			var passwordInput = $("#EncryptedPassword");
+			var toggleIcon = $("#toggle-password i");
+
+			if (passwordInput.attr("type") === "password") {
+				passwordInput.attr("type", "text");
+				toggleIcon.removeClass("fa-eye");
+				toggleIcon.addClass("fa-eye-slash");
+			} else {
+				passwordInput.attr("type", "password");
+				toggleIcon.removeClass("fa-eye-slash");
+				toggleIcon.addClass("fa-eye");
+			}
+		}
+	</script>*@
 }

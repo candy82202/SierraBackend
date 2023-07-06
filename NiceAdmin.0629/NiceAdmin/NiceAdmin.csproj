@@ -866,6 +866,7 @@
     <Content Include="Views\MemberCoupons\Index.cshtml" />
     <Content Include="Views\MemberCoupons\Details.cshtml" />
     <Content Include="Views\Employees\Login.cshtml" />
+    <Content Include="Views\Shared\_LayoutLogin.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="Scripts\vendor\chart.js\controllers\controller.bar.d.ts" />

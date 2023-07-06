@@ -181,13 +181,16 @@ namespace NiceAdmin.Controllers.Members
 			return RedirectToAction("Index");
 		}
 		[HttpGet]
+		[AllowAnonymous]
 		public ActionResult Login()
 		{
-			return View();
+			var vm = new LoginVM() { Account = "Admin", Password = "123" };
+			return View(vm);
 		}
 		
 		[HttpPost]
 		[ValidateAntiForgeryToken]
+		[AllowAnonymous]
 		public ActionResult Login(LoginVM vm)
 		{
 			if (ModelState.IsValid == false) return View(vm);
@@ -208,7 +211,14 @@ namespace NiceAdmin.Controllers.Members
 			var processResult = ProcessLogin(vm.Account, rememberMe);
 
 			Response.Cookies.Add(processResult.cookie);
-			return RedirectToAction(processResult.returnUrl);
+			return Redirect(processResult.returnUrl);
+		}
+
+		public ActionResult Logout()
+		{
+			Session.Abandon();
+			FormsAuthentication.SignOut();
+			return Redirect("/Employees/Login");
 		}
 
 		private (string returnUrl, HttpCookie cookie) ProcessLogin(string account, bool rememberMe)
