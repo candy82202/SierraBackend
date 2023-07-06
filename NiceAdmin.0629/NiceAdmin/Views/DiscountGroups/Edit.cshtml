@@ -33,7 +33,7 @@
                             @Html.ValidationMessageFor(model => model.DiscountGroupName, "", new { @class = "text-danger" })
                         </div>
                         @* 將完成鍵放在這是因為在同個表單的按鈕都會提交表單並執行controller的edit方法
-                            先放在這邊之後在看看有沒有辦法讓表單中不同按鈕執行不同動作*@
+                先放在這邊之後在看看有沒有辦法讓表單中不同按鈕執行不同動作*@
                         <div class="mt-2">
                             <input type="submit" value="完成" class="btn btn-primary mb-3" />
                         </div>
@@ -78,7 +78,8 @@
                         }
                     </tbody>
                 </table>
-                <button class="btn btn-primary m-3"id="addAll">全部加入</button>
+                <button class="btn btn-primary m-3" id="addAll">全部加入</button>
+                @Html.DropDownList("CategoryId", null, htmlAttributes: new { @class = "form-select col-md-4" ,style = "width: 200px;" })
                 <hr />
                 <h5 class="text-primary-emphasis fw-bold">群組中的商品</h5>
                 @* 群組內的商品 *@
@@ -114,7 +115,19 @@
                     }
                 }).done(data => {
                     if (typeof (data) === 'string') {
-
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Oops...',
+                            text: `${data}`,
+                        })
+                    }
+                    else {
+                        for (let i = 0; i < data.length; i++) {
+                            var id = data[i].DessertId
+                            var name = data[i].DessertName
+                            var newItem = `<button class="btn btn-success m-1 remove" data-id="${id}">${name}<i class="bi bi-x-lg ms-2"></i></button>`
+                            $('.dessertBox').append(newItem);
+                        }
                     }
                 })
             })

@@ -86,7 +86,9 @@ namespace NiceAdmin.Controllers
                 Desserts = desserts,
                 DiscountGroupItems = discountGroupItems
             };
-            return View(vm);
+            PrepareCategoryDataSource(null);
+
+			return View(vm);
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -101,6 +103,7 @@ namespace NiceAdmin.Controllers
                 modifiedDiscountGroup.DiscountGroupName = discountGroup.DiscountGroupName;
                 db.SaveChanges();
             }
+
             return new RedirectResult("Index");
         }
         [HttpPost]
@@ -126,9 +129,10 @@ namespace NiceAdmin.Controllers
 		[HttpPost]
 		public JsonResult AddAll(int? discountGroupId, int[] dessertIds)
 		{
-			if (discountGroupId == null || dessertIds.Length == 0) return Json("新增失敗");
+			if (discountGroupId == null) return Json("找不到此群組");
+            if(dessertIds == null) return Json("請輸入適當的搜尋條件");
 			var selectedDiscountGroup = db.DiscountGroups.FirstOrDefault(dg => dg.DiscountGroupId == discountGroupId);
-			if (selectedDiscountGroup == null) return Json("新增失敗");
+			if (selectedDiscountGroup == null) return Json("找不到此群組");
             var dessertIdsInSelectedDiscountGroup= selectedDiscountGroup.DiscountGroupItems?.Select(dgi => dgi.Dessert.DessertId).ToArray();
             var different = dessertIds.Except(dessertIdsInSelectedDiscountGroup);
             List<ReturnDessert> desserts = new List<ReturnDessert>();
@@ -147,6 +151,7 @@ namespace NiceAdmin.Controllers
 			}
             return Json(desserts);
 		}
+
 		[HttpPost]
 		public JsonResult Remove(int? discountGroupId, int? dessertId)
 		{
@@ -161,7 +166,11 @@ namespace NiceAdmin.Controllers
 			db.SaveChanges();
 			return Json("刪除成功");
 		}
-        private class ReturnDessert
+		private void PrepareCategoryDataSource(int? categoryId)
+		{
+			ViewBag.CategoryId = new SelectList(db.Categories, "CategoryId", "CategoryName", categoryId);
+		}
+		private class ReturnDessert
         {
             public string DessertName { get; set; }
             public int DessertId { get; set; }
