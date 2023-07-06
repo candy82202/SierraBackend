@@ -3,10 +3,8 @@ C:\Sierra\NiceAdmin.0629\NiceAdmin\bin\NiceAdmin.dll
 C:\Sierra\NiceAdmin.0629\NiceAdmin\bin\NiceAdmin.pdb
 C:\Sierra\NiceAdmin.0629\NiceAdmin\bin\roslyn\csc.exe
 C:\Sierra\NiceAdmin.0629\NiceAdmin\bin\roslyn\csc.exe.config
-C:\Sierra\NiceAdmin.0629\NiceAdmin\bin\roslyn\csc.rsp
 C:\Sierra\NiceAdmin.0629\NiceAdmin\bin\roslyn\csi.exe
 C:\Sierra\NiceAdmin.0629\NiceAdmin\bin\roslyn\csi.exe.config
-C:\Sierra\NiceAdmin.0629\NiceAdmin\bin\roslyn\csi.rsp
 C:\Sierra\NiceAdmin.0629\NiceAdmin\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
 C:\Sierra\NiceAdmin.0629\NiceAdmin\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
 C:\Sierra\NiceAdmin.0629\NiceAdmin\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
@@ -47,7 +45,6 @@ C:\Sierra\NiceAdmin.0629\NiceAdmin\bin\roslyn\System.Xml.XPath.dll
 C:\Sierra\NiceAdmin.0629\NiceAdmin\bin\roslyn\System.Xml.XPath.XDocument.dll
 C:\Sierra\NiceAdmin.0629\NiceAdmin\bin\roslyn\vbc.exe
 C:\Sierra\NiceAdmin.0629\NiceAdmin\bin\roslyn\vbc.exe.config
-C:\Sierra\NiceAdmin.0629\NiceAdmin\bin\roslyn\vbc.rsp
 C:\Sierra\NiceAdmin.0629\NiceAdmin\bin\roslyn\VBCSCompiler.exe
 C:\Sierra\NiceAdmin.0629\NiceAdmin\bin\roslyn\VBCSCompiler.exe.config
 C:\Sierra\NiceAdmin.0629\NiceAdmin\bin\Antlr3.Runtime.dll
@@ -88,3 +85,6 @@ C:\Sierra\NiceAdmin.0629\NiceAdmin\obj\Debug\NiceAdmin.csproj.CoreCompileInputs.
 C:\Sierra\NiceAdmin.0629\NiceAdmin\obj\Debug\NiceAdmin.csproj.CopyComplete
 C:\Sierra\NiceAdmin.0629\NiceAdmin\obj\Debug\NiceAdmin.dll
 C:\Sierra\NiceAdmin.0629\NiceAdmin\obj\Debug\NiceAdmin.pdb
+C:\Sierra\NiceAdmin.0629\NiceAdmin\bin\roslyn\csc.rsp
+C:\Sierra\NiceAdmin.0629\NiceAdmin\bin\roslyn\csi.rsp
+C:\Sierra\NiceAdmin.0629\NiceAdmin\bin\roslyn\vbc.rsp

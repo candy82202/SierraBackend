@@ -19,18 +19,16 @@
                 </div>
                 <!-- End Page Title -->
                 <section class="section">
-                    <p>
-                        @Html.ActionLink("新增", "Create")
-                    </p>
+                    <button class="btn btn-primary mb-3 "id="create">新增</button>
                     <div class="table-responsive">
                         <table class="table table-striped table-hover datatable">
                             <thead>
                                 <tr>
                                     <th>
-                                        @Html.DisplayNameFor(model => model.DiscountGroupId)
+                                        @Html.DisplayNameFor(model => model.DiscountGroupName)
                                     </th>
                                     <th>
-                                        @Html.DisplayNameFor(model => model.DiscountGroupName)
+                                        @Html.DisplayNameFor(model => model.DiscountGroupItems)
                                     </th>
                                     <th>
                                         功能
@@ -42,13 +40,13 @@
                                 {
                                     <tr>
                                         <td>
-                                            @Html.DisplayFor(modelItem => item.DiscountGroupId)
-                                        </td>
-                                        <td>
                                             @Html.DisplayFor(modelItem => item.DiscountGroupName)
                                         </td>
+                                        <td class="DiscountGroupItems">
+                                            @Html.DisplayFor(modelItem => item.DiscountGroupItems)
+                                        </td>
                                         <td>
-                                            @Html.ActionLink("編輯", "Edit", new { discountGroupId = item.DiscountGroupId }, new { @class = "btn btn-primary" }) |
+                                            @Html.ActionLink("編輯", "Edit", new { discountGroupId = item.DiscountGroupId }, new { @class = "btn btn-primary" }) 
                                             <button class="btn btn-danger delCI" data-id="@item.DiscountGroupId">刪除</button>
                                             @*@Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ }, new { @class = "delCI" })*@
                                         </td>
@@ -64,8 +62,29 @@
 </main>
 @section Scripts{
     @Scripts.Render("~/bundles/jqueryval")
-    <script>
+<script>
         document.addEventListener("DOMContentLoaded", function () {
+            $('#create').click(function () {
+                $.ajax({
+                    type: "post",
+                    url: "/DiscountGroups/Create",
+                }).done(data => {
+                    if (data == "新增成功") {
+                        location.reload();
+                    }
+                    else {
+                        Swal.fire({
+                            title: `${data}`,
+                            showClass: {
+                                popup: 'animate__animated animate__fadeInDown'
+                            },
+                            hideClass: {
+                                popup: 'animate__animated animate__fadeOutUp'
+                            }
+                        })
+                    }
+                })
+            })
             $('.delCI').click(function () {
                 var self = $(this);
                 var DiscountGroupId = self.attr('data-id');
@@ -80,7 +99,7 @@
                     cancelButtonText: '取消'
                 }).then((result) => {
                     if (result.isConfirmed) {
-                        $.get("/DiscountGroup/Delete?discountGroupId=" + DiscountGroupId, null,
+                        $.get("/DiscountGroups/Delete?discountGroupId=" + DiscountGroupId, null,
                             function () {
                                 Swal.fire(
                                     '刪除成功!',
@@ -92,9 +111,25 @@
                     }
                 })
             })
+            $('.DiscountGroupItems').each(function () {
+                
+                var text = $(this).text().trim()
+                if (text != "無") {
+                    var index = text.indexOf("]")
+                    var text1 = text.slice(0, index+1)
+                    var text2 = text.slice(index + 1)
+                    if (text2.length > 50) {
+                        var truncatedText2 = text2.substr(0, 50) + "...";
+                        $(this).html(`${text1}<br>${truncatedText2}`)
+                    }
+                    else {
+                        $(this).html(`${text1}<br>${text2}`)
+                    }
+                }
+            })
         });
 
-    </script>
+</script>
 }
 
 
