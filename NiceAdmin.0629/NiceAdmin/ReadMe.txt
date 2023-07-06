@@ -115,6 +115,7 @@ Member 部分
 [V] - create & complete LoginVM.cs and Login.cshtml
 [V] - create /Models/Infra/Result.cs & HashUtility.cs
       add salt to Web.config 
+[workingo on] - 角色&權限!
 
 ==========================================================
 Lesson 部分

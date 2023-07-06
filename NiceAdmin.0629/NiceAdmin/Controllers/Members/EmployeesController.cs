@@ -66,7 +66,7 @@ namespace NiceAdmin.Controllers.Members
 		// 如需詳細資料，請參閱 https://go.microsoft.com/fwlink/?LinkId=317598。
 		[HttpPost]
 		[ValidateAntiForgeryToken]
-		public ActionResult Create(EmployeeCreateVM vm, int[] RoleId)
+		public ActionResult Create(EmployeeCreateVM vm)
 		{
 			if (ModelState.IsValid == false)
 			{
@@ -106,6 +106,12 @@ namespace NiceAdmin.Controllers.Members
 		// GET: Employees/Edit/5
 		public ActionResult Edit(int? id)
 		{
+			var LT = db.Lessons.ToList();
+			var LT2 = db.Lessons.ToList().Where(l => l.TeacherId == id);
+			var LT22 = db.Lessons.ToList().Select(l => l.LessonTime);
+			var LT23 = db.Lessons.ToList().Select(l => l.TeacherId);
+			var LT3 = db.Lessons.Where(l => l.TeacherId == id).ToList();
+
 			if (id == null)
 			{
 				return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -152,6 +158,7 @@ namespace NiceAdmin.Controllers.Members
 			// 因post back後, vm繫結不到表單傳回來的RoleId, 因此自己宣告一個來繫結
 			// 也因此下面的原來寫法是不行的(也沒有先Clear掉)
 			// empInDb.Roles = vm.Roles;
+
 		}
 
 		// GET: Employees/Delete/5
@@ -223,7 +230,14 @@ namespace NiceAdmin.Controllers.Members
 
 		private (string returnUrl, HttpCookie cookie) ProcessLogin(string account, bool rememberMe)
 		{
-			var roles = string.Empty; // 在本範例, 沒有用到角色權限,所以存入空白
+			// var roles = string.Empty; // 在本範例, 沒有用到角色權限,所以存入空白
+
+			var roles = db.Employees.ToList()
+						.Where(emp => string.Compare(emp.EmployeeName, account, true) == 0)
+						.FirstOrDefault()
+						.Roles.Select(r=>r.RoleName);
+			var rolesAry = string.Join(",", roles);
+
 
 			// 建立一張認證票
 			var ticket =
@@ -233,7 +247,7 @@ namespace NiceAdmin.Controllers.Members
 					DateTime.Now,   // 發行日
 					DateTime.Now.AddDays(2), // 到期日
 					rememberMe,     // 是否續存
-					roles,          // userdata
+					rolesAry,          // userdata
 					"/" // cookie位置
 				);
 
