@@ -40,7 +40,8 @@ namespace NiceAdmin.Controllers
             }
             //var teachers = db.Teachers.ToList();
             //var teacherViewModels = teachers.Select(t => t.TOIndexVM()).ToList();
-           
+            // 從 TempData 中讀取錯誤訊息
+            ViewBag.ErrorMessage = TempData["ErrorMessage"];
             return View(query);
         }
         // 清除搜尋條件的動作方法
@@ -243,7 +244,7 @@ namespace NiceAdmin.Controllers
             db.SaveChanges();
             return RedirectToAction("Index");
         }
-       
+        
         public ActionResult DownTeachers(int? id)
         {
             if (id == null) return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -263,8 +264,8 @@ namespace NiceAdmin.Controllers
             else
             {
                 ModelState.AddModelError("", "發生錯誤訊息");
+                TempData["ErrorMessage"] = "發生錯誤訊息"; // 將錯誤訊息存入 TempData
 
-               
 
                 return RedirectToAction("Index");
             }

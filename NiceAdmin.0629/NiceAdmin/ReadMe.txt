@@ -217,9 +217,10 @@ Order 部分
 [working on]下拉清單寫成一個副程式
 [working on]debug課程訂單明細資料庫錯誤，
 ViewBag.LessonOrderId = new SelectList(db.LessonOrders, "LessonOrderId", "Note", lessonOrderDetail.LessonOrderId);
-[working on]criteria進階搜尋做清除搜尋
+[working on]criteria進階搜尋 做清除搜尋
 [working on]最近熱銷的五筆訂單Partial view最近熱銷的五筆甜點
-[working on]訂單狀態編輯
+[V]手風琴單筆ID做開合
+
 
 
 

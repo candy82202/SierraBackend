@@ -131,13 +131,13 @@
                     <td>
                         <div class="form-check">
                             <input class="form-check-input form-select" name="DessertOrderDetails"
-                                   value="DessertOrderDetails" data-bs-toggle="collapse" data-bs-target="#DessertOrderId">
+                                   value="DessertOrderDetails" data-bs-toggle="collapse" data-bs-target="#DessertOrderId-@item.DessertOrderId">
 
                         </div>
                     </td>
 
                 </tr>
-                <tr class="collapse" id="DessertOrderId">
+                <tr class="collapse" id="DessertOrderId-@item.DessertOrderId">
                     <td colspan="9">
                         <div class="input-group">
                             <div class="row">
@@ -209,7 +209,28 @@
 
 
     <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Get all the input elements with name "DessertOrderDetails"
+            var inputs = document.querySelectorAll('input[name="DessertOrderDetails"]');
 
+            // Add click event listener to each input element
+            inputs.forEach(function (input) {
+                input.addEventListener('click', function () {
+                    // Get the target collapse element ID
+                    var targetId = this.getAttribute('data-bs-target');
+
+                    // Get all the collapse elements
+                    var collapses = document.querySelectorAll('.collapse');
+
+                    // Close all other collapse elements except the target one
+                    collapses.forEach(function (collapse) {
+                        if (collapse.id !== targetId) {
+                            collapse.classList.remove('show');
+                        }
+                    });
+                });
+            });
+        });
 
         //這段是要做AutoComplete
         var DessertOrders = ["訂單", "甜點", "專家", "證書", "宅配", "課程", "烘焙", "吳", "糕點", "巧克力", "法式"]

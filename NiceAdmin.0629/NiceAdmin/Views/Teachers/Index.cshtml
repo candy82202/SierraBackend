@@ -7,7 +7,10 @@
     var criteria = ViewBag.Criteria as NiceAdmin.Models.ViewModels.TeachersVM.TeacherCriteria;
 
 }
-
+@if (!string.IsNullOrEmpty(ViewBag.ErrorMessage))
+{
+    <div class="alert alert-danger">@ViewBag.ErrorMessage</div>
+}
 <main id="main" class="main">
     <div class="row">
         <div class="card">
@@ -128,7 +131,7 @@
                                         <td>
                                             <i class="bi bi-pencil-square">  </i> @Html.ActionLink("Edit", "Edit", new { id = item.TeacherId })|
                                             @Html.ActionLink("變更圖片", "EditImage", new { id = item.TeacherId }) |
-                                            @Html.ActionLink("下架", "DownTeachers", new { id = item.TeacherId })
+                                            @Html.ActionLink("下架", "DownTeachers", new { id = item.TeacherId }) 
                                         </td>
                                     </tr>
                                 }
@@ -151,6 +154,7 @@
                 },
 
             });
+            
 
 
             //這段是要做AutoComplete
