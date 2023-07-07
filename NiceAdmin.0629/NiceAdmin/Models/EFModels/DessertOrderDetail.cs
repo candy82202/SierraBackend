@@ -24,8 +24,8 @@ namespace NiceAdmin.Models.EFModels
 
         public int Subtotal { get; set; }
 
-        public virtual DessertOrder DessertOrder { get; set; }
-
         public virtual Dessert Dessert { get; set; }
+
+        public virtual DessertOrder DessertOrder { get; set; }
     }
 }

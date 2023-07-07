@@ -123,6 +123,8 @@ Member 部分
 [V] - fix little bug in EmployeeCreateVM.cs & Employees/Edit.cshtml
 [working on] - profile user name
 [working on] - members criteria
+[working on] - modify icon size in /Employees/Index
+
 
 ==========================================================
 Lesson 部分

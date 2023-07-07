@@ -156,24 +156,6 @@
     <Compile Include="Controllers\Promotions\MemberCouponsController.cs" />
     <Compile Include="Filters\CustomAuthorizeAttribute.cs" />
     <Compile Include="Models\DTOs\Desserts\DessertsDto.cs" />
-    <Compile Include="Models\Infra\EFRepositories\DessertEFRepository.cs" />
-    <Compile Include="Models\Infra\HashUtility.cs" />
-    <Compile Include="Models\Infra\Result.cs" />
-    <Compile Include="Models\Interfaces\IDessertRepository.cs" />
-    <Compile Include="Models\Services\Desserts\DessertService.cs" />
-    <Compile Include="Models\ViewModels\DessertsVM\ThreeLayer\DessertsIndexTVM.cs" />
-    <Compile Include="Models\ViewModels\LessonsVM\LessonEditVM.cs" />
-    <Compile Include="Models\ViewModels\OrdersVM\DessertOrderDetailIndexVM.cs" />
-    <Compile Include="Models\ViewModels\PromotionsVM\MemberCouponDeliverVM.cs" />
-    <Compile Include="Models\ViewModels\PromotionsVM\MemberCouponDetailVM.cs" />
-    <Compile Include="Models\ViewModels\PromotionsVM\MemberCouponExts.cs" />
-    <Compile Include="Models\ViewModels\PromotionsVM\MemberCouponIndexVM.cs" />
-    <Compile Include="Models\ViewModels\OrdersVM\DessertOrderExts.cs" />
-    <Compile Include="Models\ViewModels\OrdersVM\DessertOrderIndexVM.cs" />
-    <Compile Include="Controllers\Promotions\PromotionsController.cs" />
-    <Compile Include="Global.asax.cs">
-      <DependentUpon>Global.asax</DependentUpon>
-    </Compile>
     <Compile Include="Models\EFModels\AppDbContext.cs" />
     <Compile Include="Models\EFModels\Category.cs" />
     <Compile Include="Models\EFModels\Coupon.cs" />
@@ -201,6 +183,25 @@
     <Compile Include="Models\EFModels\Role.cs" />
     <Compile Include="Models\EFModels\Specification.cs" />
     <Compile Include="Models\EFModels\Teacher.cs" />
+    <Compile Include="Models\Infra\EFRepositories\DessertEFRepository.cs" />
+    <Compile Include="Models\Infra\HashUtility.cs" />
+    <Compile Include="Models\Infra\Result.cs" />
+    <Compile Include="Models\Interfaces\IDessertRepository.cs" />
+    <Compile Include="Models\Services\Desserts\DessertService.cs" />
+    <Compile Include="Models\ViewModels\DessertsVM\ThreeLayer\DessertsIndexTVM.cs" />
+    <Compile Include="Models\ViewModels\LessonsVM\LessonEditVM.cs" />
+    <Compile Include="Models\ViewModels\MembersVM\MemberCriteria.cs" />
+    <Compile Include="Models\ViewModels\OrdersVM\DessertOrderDetailIndexVM.cs" />
+    <Compile Include="Models\ViewModels\PromotionsVM\MemberCouponDeliverVM.cs" />
+    <Compile Include="Models\ViewModels\PromotionsVM\MemberCouponDetailVM.cs" />
+    <Compile Include="Models\ViewModels\PromotionsVM\MemberCouponExts.cs" />
+    <Compile Include="Models\ViewModels\PromotionsVM\MemberCouponIndexVM.cs" />
+    <Compile Include="Models\ViewModels\OrdersVM\DessertOrderExts.cs" />
+    <Compile Include="Models\ViewModels\OrdersVM\DessertOrderIndexVM.cs" />
+    <Compile Include="Controllers\Promotions\PromotionsController.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
     <Compile Include="Models\ViewModels\LessonsVM\LessonCreateVM.cs" />
     <Compile Include="Models\ViewModels\MembersVM\EmployeeEditVM.cs" />
     <Compile Include="Models\ViewModels\MembersVM\LoginVM.cs" />
@@ -268,6 +269,12 @@
     <Content Include="img\logeExtraShadow.png" />
     <Content Include="img\logo.png" />
     <Content Include="img\logoNew.png" />
+    <Content Include="img\Members\adduser1.png" />
+    <Content Include="img\Members\adduser2.png" />
+    <Content Include="img\Members\adduser3.png" />
+    <Content Include="img\Members\adduser4.png" />
+    <Content Include="img\Members\delete.png" />
+    <Content Include="img\Members\edit.png" />
     <Content Include="img\Members\MemberImage001.png" />
     <Content Include="img\Members\MemberImage002.png" />
     <Content Include="img\Members\MemberImage003.png" />

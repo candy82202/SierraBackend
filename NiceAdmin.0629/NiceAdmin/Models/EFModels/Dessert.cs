@@ -36,6 +36,8 @@ namespace NiceAdmin.Models.EFModels
 
         public DateTime CreateTime { get; set; }
 
+        public DateTime? ScheduledPublishDate { get; set; }
+
         public virtual Category Category { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

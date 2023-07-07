@@ -147,7 +147,5 @@ namespace NiceAdmin.Models.EFModels
 				.WithRequired(e => e.Teacher)
 				.WillCascadeOnDelete(false);
 		}
-
-       
-    }
+	}
 }

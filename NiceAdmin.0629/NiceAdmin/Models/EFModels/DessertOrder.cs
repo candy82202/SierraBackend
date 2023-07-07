@@ -1,6 +1,5 @@
 namespace NiceAdmin.Models.EFModels
 {
-    using NiceAdmin.Models.ViewModels.OrdersVM;
     using System;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
@@ -62,6 +61,5 @@ namespace NiceAdmin.Models.EFModels
         public virtual OrderStatus OrderStatus { get; set; }
 
         public virtual Member Member { get; set; }
-       
     }
 }
