@@ -36,8 +36,8 @@ namespace NiceAdmin.Models.ViewModels.LessonsVM {
 
         [Required]
         [Display(Name = "開課時間")]
-        [DataType(DataType.Date)]
-        [DisplayFormat(DataFormatString = "{0:MM/dd/yyyy}")]
+        [DataType(DataType.DateTime)]
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-ddTHH:mm}", ApplyFormatInEditMode = true)]
         public DateTime LessonTime { get; set; }
 
         [Required]

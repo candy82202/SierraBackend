@@ -161,7 +161,7 @@
                                     <td>
                                         @Html.ActionLink("編輯", "Edit", new { id = item.LessonId }) |
                                         @Html.ActionLink("編輯圖片", "EditImg", new { id = item.LessonId }) |
-                                        @Html.ActionLink("刪除", "Delete", new { id = item.LessonId })
+                                        <button class="btn btn-outline-danger btn-sm dwDest " data-id="@item.LessonId">下架</button>
                                     </td>
                                 </tr>
                             }
@@ -175,6 +175,42 @@
 
 @section Scripts{
     <script>
+
+          $('.dwDest').click(function () {
+    var lessonId = $(this).data('id');
+
+    $.ajax({
+        url: '@Url.Action("OffShelveLesson", "Lessons")',
+        type: 'POST',
+        data: { lessonId: lessonId }, // Pass the status as false for down
+        success: function (result) {
+            if (result.success) {
+                if (result.message === "此商品已下架") {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Oops...',
+                        text: '此商品已下架!'
+                    });
+                } else {
+                    Swal.fire({
+                        position: 'top-end',
+                        icon: 'success',
+                        title: `${result.message}`,
+                        showConfirmButton: false,
+                        timer: 1500
+                    });
+                }
+                location.reload();
+            } else {
+                alert("Failed to mark lessons as down. Error: " + result.errorMessage);
+            }
+        },
+        error: function () {
+
+            alert("An error occurred while marking lessons as down.");
+        }
+    });
+});
 
         $(document).ready(function () {
             $("#btn-clear").click(function () {
