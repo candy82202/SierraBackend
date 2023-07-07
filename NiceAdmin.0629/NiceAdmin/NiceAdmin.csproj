@@ -865,6 +865,8 @@
     <Content Include="Views\Lessons\EditImg.cshtml" />
     <Content Include="Views\Shared\_LayoutLogin.cshtml" />
     <Content Include="Views\Teachers\DownTeachers.cshtml" />
+    <Content Include="Views\Home\SierraIndex.cshtml" />
+    <Content Include="Views\Home\HotDessertsPartialView.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="Scripts\vendor\chart.js\controllers\controller.bar.d.ts" />
