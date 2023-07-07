@@ -24,38 +24,41 @@
                     {
                         @Html.AntiForgeryToken()
 
-                        <div class="row">
-                            <hr />
-                            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                    <div class="row">
+                        <hr />
+                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                        <div class="d-flex">
                             @* 優惠券類別 *@
-                            <div class="mb-3">
+                            <div class="mb-3 me-3">
                                 @Html.LabelFor(model => model.CouponCategoryId, htmlAttributes: new { @class = "form-label" })
-                                @Html.DropDownList("CouponCategoryId", null, htmlAttributes: new { @class = "form-select" })
+                                @Html.DropDownList("CouponCategoryId", null, htmlAttributes: new { @class = "form-select", style = "width: 200px" })
                                 @Html.ValidationMessageFor(model => model.CouponCategoryId, "", new { @class = "text-danger" })
                             </div>
                             @* 優惠對象 *@
                             <div class="mb-3">
                                 @Html.LabelFor(model => model.DiscountGroupId, htmlAttributes: new { @class = "form-label" })
-                                @Html.DropDownList("DiscountGroupId", null, htmlAttributes: new { @class = "form-select" })
+                                @Html.DropDownList("DiscountGroupId", null, htmlAttributes: new { @class = "form-select", style = "width: 200px" })
                                 @Html.ValidationMessageFor(model => model.DiscountGroupId, "", new { @class = "text-danger" })
                             </div>
-                            @* 優惠券名稱 *@
-                            <div class="mb-3">
-                                @Html.LabelFor(model => model.CouponName, htmlAttributes: new { @class = "form-label" })
-                                @Html.EditorFor(model => model.CouponName, new { htmlAttributes = new { @class = "form-control" } })
-                                @Html.ValidationMessageFor(model => model.CouponName, "", new { @class = "text-danger" })
-                            </div>
-                            @* 優惠碼 *@
-                            <div class="mb-3 d-none" id="couponCode">
-                                @Html.LabelFor(model => model.CouponCode, htmlAttributes: new { @class = "form-label" })
-                                @Html.EditorFor(model => model.CouponCode, new { htmlAttributes = new { @class = "form-control" } })
-                                @Html.ValidationMessageFor(model => model.CouponCode, "", new { @class = "text-danger" })
+                        </div>
+                        @* 優惠券名稱 *@
+                        <div class="mb-3">
+                            @Html.LabelFor(model => model.CouponName, htmlAttributes: new { @class = "form-label" })
+                            @Html.EditorFor(model => model.CouponName, new { htmlAttributes = new { @class = "form-control", style = "width: 416px" } })
+                            @Html.ValidationMessageFor(model => model.CouponName, "", new { @class = "text-danger" })
+                        </div>
+                        @* 優惠碼 *@
+                        <div class="mb-3 d-none" id="couponCode">
+                            @Html.LabelFor(model => model.CouponCode, htmlAttributes: new { @class = "form-label" })
+                            @Html.EditorFor(model => model.CouponCode, new { htmlAttributes = new { @class = "form-control", style = "width: 200px" } })
+                            @Html.ValidationMessageFor(model => model.CouponCode, "", new { @class = "text-danger" })
 
-                            </div>
-                            @* 限制類別 *@
-                            <div class="mb-3">
+                        </div>
+                        @* 限制類別 *@
+                        <div class="d-flex">
+                            <div class="mb-3 me-3">
                                 @Html.LabelFor(model => model.LimitType, htmlAttributes: new { @class = "form-label" })
-                                <select class="form-select" id="LimitType" name="LimitType">
+                                <select class="form-select" id="LimitType" name="LimitType" style="width: 200px">
                                     <option disabled selected value>請選擇</option>
                                     <option value="0">沒有限制</option>
                                     <option value="1">消費數量</option>
@@ -66,14 +69,16 @@
                             @* 限制數值 *@
                             <div class="mb-3 d-none" id="limitValue">
                                 @Html.LabelFor(model => model.LimitValue, htmlAttributes: new { @class = "form-label" })
-                                <i class="bi bi-question-circle"></i>
-                                @Html.EditorFor(model => model.LimitValue, new { htmlAttributes = new { @class = "form-control" } })
+                                <i class="bi bi-question-circle" data-bs-toggle="popover" data-bs-title="限制數值" data-bs-content="當優惠限制為消費金額時，訂單金額大於或等於限制數值可使用此優惠券;當優惠限制為消費數量時，訂單中有物品數量大於或等於限制數值且存在於優惠對象中可使用此優惠券"></i>
+                                @Html.EditorFor(model => model.LimitValue, new { htmlAttributes = new { @class = "form-control", style = "width: 200px" } })
                                 @Html.ValidationMessageFor(model => model.LimitValue, "", new { @class = "text-danger" })
                             </div>
+                        </div>
+                        <div class="d-flex">
                             @* 優惠類別 *@
-                            <div class="mb-3">
+                            <div class="mb-3 me-3">
                                 @Html.LabelFor(model => model.DiscountType, htmlAttributes: new { @class = "form-label" })
-                                <select class="form-select" id="DiscountType" name="DiscountType">
+                                <select class="form-select" id="DiscountType" name="DiscountType" style="width: 200px">
                                     <option disabled selected value>請選擇</option>
                                     <option value="1">折價</option>
                                     <option value="2">折扣</option>
@@ -85,41 +90,44 @@
                             @* 優惠數值 *@
                             <div class="mb-3" id="discountValue">
                                 @Html.LabelFor(model => model.DiscountValue, htmlAttributes: new { @class = "form-label" })
-                                <i class="bi bi-question-circle"></i>
-                                @Html.EditorFor(model => model.DiscountValue, new { htmlAttributes = new { @class = "form-control" } })
+                                <i class="bi bi-question-circle" data-bs-toggle="popover" data-bs-title="優惠數值" data-bs-content="當優惠類別為折價時，優惠數值為訂單可減去的金額;當優惠類別為折扣時，優惠數值為訂單打的折數"></i>
+                                @Html.EditorFor(model => model.DiscountValue, new { htmlAttributes = new { @class = "form-control", style = "width: 200px" } })
                                 @Html.ValidationMessageFor(model => model.DiscountValue, "", new { @class = "text-danger" })
 
                             </div>
+                        </div>
+                        <div class="d-flex">
                             @* 開始時間 *@
-                            <div class="mb-3 timeRange d-none">
+                            <div class="mb-3 timeRange d-none me-3">
                                 @Html.LabelFor(model => model.StartAt, htmlAttributes: new { @class = "form-label" })
-                                @Html.EditorFor(model => model.StartAt, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.TextBoxFor(model => model.StartAt, new { @class = "form-control", type = "datetime-local" })
                                 @Html.ValidationMessageFor(model => model.StartAt, "", new { @class = "text-danger" })
                             </div>
                             @* 結束時間 *@
-                            <div class="mb-3 timeRange d-none">
-                                @Html.LabelFor(model => model.EndAt, htmlAttributes: new { @class = "form-label" })
-                                @Html.EditorFor(model => model.EndAt, new { htmlAttributes = new { @class = "form-control" } })
-                                @Html.ValidationMessageFor(model => model.EndAt, "", new { @class = "text-danger" })
+                        <div class="mb-3 timeRange d-none">
+                            @Html.LabelFor(model => model.EndAt, htmlAttributes: new { @class = "form-label" })
+                            @Html.TextBoxFor(model => model.EndAt, new { @class = "form-control", type = "datetime-local" })
+                            @Html.ValidationMessageFor(model => model.EndAt, "", new { @class = "text-danger" })
 
-                            </div>
+                        </div>
+                        </div>
                             @* 有效期限 *@
                             <div class="mb-3 expiration d-none">
                                 @Html.LabelFor(model => model.Expiration, htmlAttributes: new { @class = "form-label" })
-                                @Html.EditorFor(model => model.Expiration, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.EditorFor(model => model.Expiration, new { htmlAttributes = new { @class = "form-control", style = "width: 200px" } })
                                 @Html.ValidationMessageFor(model => model.Expiration, "", new { @class = "text-danger" })
                             </div>
 
                             <div class="mb-3">
-                                <input type="submit" value="Create" class="btn btn-primary" />
+                                <input type="submit" value="新增" class="btn btn-primary" />
                             </div>
                         </div>
-                    }
+                        }
 
-                    <div>
-                        @Html.ActionLink("Back to List", "Index")
-                    </div>
-                </section>
+                        <div>
+                            @Html.ActionLink("回到列表", "Index")
+                        </div>
+</section>
             </div><!-- End Default Tabs -->
         </div>
     </div>
@@ -127,7 +135,7 @@
 
     @section Scripts {
         @Scripts.Render("~/bundles/jqueryval")
-<script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js" integrity="sha256-6XMVI0zB8cRzfZjqKcD01PBsAy3FlDASrlC8SxCpInY=" crossorigin="anonymous"></script>
+
         <script>
             document.addEventListener("DOMContentLoaded", function () {
                 $('#CouponCategoryId').change(function () {
@@ -141,6 +149,7 @@
                     else if (selectValue == 4) {
                         $(".timeRange").removeClass("d-none");
                         $("#couponCode").removeClass("d-none");
+                        $('.expiration').removeClass("d-none");
                     }
                     else {
                         $('.expiration').removeClass("d-none");
@@ -171,13 +180,39 @@
                         $('#discountValue').removeClass("d-none")
                     }
                 })
-                $('#EndAt').datepicker()
-                $('#StartAt').datepicker({
-                    onSelect: function (selectedDate) {
-                        $('#EndAt').datepicker('option', 'minDate', selectedDate)
-                    }
-                })
+
+                const popoverTriggerList = document.querySelectorAll('[data-bs-toggle="popover"]')
+                const popoverList = [...popoverTriggerList].map(popoverTriggerEl => new bootstrap.Popover(popoverTriggerEl))
+
+
+                var now = new Date();
+                var year = now.getFullYear();
+                var month = ("0" + (now.getMonth() + 1)).slice(-2);
+                var day = ("0" + now.getDate()).slice(-2);
+                var hour = ("0" + now.getHours()).slice(-2);
+                var minute = ("0" + now.getMinutes()).slice(-2);
+                var currentDateTime = year + "-" + month + "-" + day + "T" + hour + ":" + minute;
+
+                $("#StartAt").attr("min", currentDateTime);
                 
+                $("#StartAt").change(function () {
+                    var startAtValue = $(this).val();
+                    var endAtValue = $('#EndAt').val();
+                    if (startAtValue > endAtValue) {
+                        $('#EndAt').val("");
+                    }
+                    // 設定 EndAt 欄位的最小可選擇時間
+                    $("#EndAt").attr("min", startAtValue);
+
+                })
+
+                //好像是版本問題  樣式會跑掉
+                //$('#EndAt').datepicker()
+                //$('#StartAt').datepicker({
+                //    onSelect: function (selectedDate) {
+                //        $('#EndAt').datepicker('option', 'minDate', selectedDate)
+                //    }
+                //})
             })
         </script>
     }

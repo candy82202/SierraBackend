@@ -26,12 +26,35 @@ namespace NiceAdmin.Models.ViewModels.PromotionsVM
 
         public static Coupon ToEntity(this CouponCreateVM vm)
         {
+            bool status = false;
+            if(vm.CouponCategoryId==1|| vm.CouponCategoryId == 3 || vm.CouponCategoryId == 5 || vm.CouponCategoryId == 6)
+            {
+                vm.StartAt = null;
+                vm.EndAt = null;
+            }
+            if (vm.CouponCategoryId == 2)
+            {
+                vm.Expiration = null;
+			}
+            if (vm.LimitType == 0)
+            {
+                vm.LimitValue = null;
+            }
+            if (vm.DiscountType == 3)
+            {
+                vm.DiscountValue = null;
+            }
+            if(vm.CouponCategoryId == 1 || vm.CouponCategoryId == 4)
+            {
+                status = true;
+			}
+
             return new Coupon()
             {
                 CouponCategoryId = vm.CouponCategoryId,
                 DiscountGroupId = vm.DiscountGroupId==0?null: vm.DiscountGroupId,
                 CouponName = vm.CouponName,
-                CouponCode = vm.CouponCode==null? Guid.NewGuid().ToString(): vm.CouponCode,
+                CouponCode = vm.CouponCode ?? Guid.NewGuid().ToString(),
                 LimitType = vm.LimitType==0?null: vm.LimitType,
                 LimitValue = vm.LimitValue,
                 DiscountType = vm.DiscountType,
@@ -39,7 +62,8 @@ namespace NiceAdmin.Models.ViewModels.PromotionsVM
                 StartAt = vm.StartAt,
                 EndAt = vm.EndAt,
                 Expiration = vm.Expiration,
-                CreateAt= DateTime.Now
+                CreateAt= DateTime.Now,
+                Status = status,
             };
         }
         public static CouponDetailVM ToDetailVM(this Coupon entity)

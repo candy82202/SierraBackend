@@ -28,8 +28,8 @@ namespace NiceAdmin.Models.ViewModels.PromotionsVM
         public string Status
         {
             get { if (LaunchAt > DateTime.Now) return "未上架";
-                else if (StartAt < DateTime.Now && EndAt > DateTime.Now) return "上架中";
-                else return "已下架";
+                else if (DateTime.Now>EndAt) return "已下架";
+                else return "上架中";
             }
         }
         [Display(Name = "創建時間")]
