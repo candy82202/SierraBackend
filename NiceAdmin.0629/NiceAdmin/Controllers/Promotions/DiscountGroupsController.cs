@@ -86,7 +86,9 @@ namespace NiceAdmin.Controllers
                 Desserts = desserts,
                 DiscountGroupItems = discountGroupItems
             };
-            return View(vm);
+            PrepareCategoryDataSource(null);
+
+			return View(vm);
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -101,6 +103,7 @@ namespace NiceAdmin.Controllers
                 modifiedDiscountGroup.DiscountGroupName = discountGroup.DiscountGroupName;
                 db.SaveChanges();
             }
+
             return new RedirectResult("Index");
         }
         [HttpPost]
@@ -126,11 +129,13 @@ namespace NiceAdmin.Controllers
 		[HttpPost]
 		public JsonResult AddAll(int? discountGroupId, int[] dessertIds)
 		{
-			if (discountGroupId == null || dessertIds.Length == 0) return Json("新增失敗");
+			if (discountGroupId == null) return Json("找不到此群組");
+            if(dessertIds == null) return Json("請輸入適當的搜尋條件");
 			var selectedDiscountGroup = db.DiscountGroups.FirstOrDefault(dg => dg.DiscountGroupId == discountGroupId);
-			if (selectedDiscountGroup == null) return Json("新增失敗");
+			if (selectedDiscountGroup == null) return Json("找不到此群組");
             var dessertIdsInSelectedDiscountGroup= selectedDiscountGroup.DiscountGroupItems?.Select(dgi => dgi.Dessert.DessertId).ToArray();
             var different = dessertIds.Except(dessertIdsInSelectedDiscountGroup);
+            if (!different.Any()) return Json("此頁面所有產品都已加入群組");
             List<ReturnDessert> desserts = new List<ReturnDessert>();
             foreach(int dessertId in different)
             {
@@ -140,12 +145,42 @@ namespace NiceAdmin.Controllers
                     DessertId = dessertId
                 };
 				db.DiscountGroupItems.Add(newDiscountGroupItem);
-				db.SaveChanges();
+				
 				var dessertInDb = db.Desserts.Find(dessertId);
                 var returnDessert = new ReturnDessert(dessertInDb.DessertName, dessertId);
 				desserts.Add(returnDessert);
 			}
-            return Json(desserts);
+			db.SaveChanges();
+			return Json(desserts);
+		}
+		[HttpPost]
+		public JsonResult AddCategory(int? discountGroupId, int? categoryId)
+		{
+			if (discountGroupId == null) return Json("找不到此群組");
+			if (categoryId == null) return Json("請選擇類別");
+			var selectedDiscountGroup = db.DiscountGroups.FirstOrDefault(dg => dg.DiscountGroupId == discountGroupId);
+			if (selectedDiscountGroup == null) return Json("找不到此群組");
+			var dessertIdsInSelectedDiscountGroup = selectedDiscountGroup.DiscountGroupItems?.Select(dgi => dgi.Dessert.DessertId).ToArray();
+            var dessertsInCategory = db.Desserts.Where(d => d.CategoryId == categoryId).Select(d=>d.DessertId);
+			var different = dessertsInCategory.Except(dessertIdsInSelectedDiscountGroup);
+            if(!different.Any()) return Json("此類別所有產品都已加入群組");
+			List<ReturnDessert> desserts = new List<ReturnDessert>();
+			
+			foreach (int dessertId in different)
+		    {
+			    var newDiscountGroupItem = new DiscountGroupItem()
+			    {
+				    DiscountGroupId = (int)discountGroupId,
+				    DessertId = dessertId
+			    };
+			    db.DiscountGroupItems.Add(newDiscountGroupItem);
+				
+			    var dessertInDb = db.Desserts.Find(dessertId);
+			    var returnDessert = new ReturnDessert(dessertInDb.DessertName, dessertId);
+			    desserts.Add(returnDessert);
+			}
+			db.SaveChanges();
+			return Json(desserts);
 		}
 		[HttpPost]
 		public JsonResult Remove(int? discountGroupId, int? dessertId)
@@ -161,7 +196,25 @@ namespace NiceAdmin.Controllers
 			db.SaveChanges();
 			return Json("刪除成功");
 		}
-        private class ReturnDessert
+		[HttpPost]
+		public JsonResult RemoveAll(int? discountGroupId)
+		{
+			if (discountGroupId == null) return Json("刪除失敗");
+			var selectedDiscountGroup = db.DiscountGroups.FirstOrDefault(dg => dg.DiscountGroupId == discountGroupId);
+			if (selectedDiscountGroup == null) return Json("刪除失敗");
+            var DiscountGroupItems = db.DiscountGroupItems.Where(dgi => dgi.DiscountGroupId == discountGroupId).ToList();
+            for(int i = 0;i< DiscountGroupItems.Count(); i++)
+            {
+				db.DiscountGroupItems.Remove(DiscountGroupItems[i]); 
+			};
+			db.SaveChanges();
+			return Json("刪除成功");
+		}
+		private void PrepareCategoryDataSource(int? categoryId)
+		{
+			ViewBag.CategoryId = new SelectList(db.Categories, "CategoryId", "CategoryName", categoryId);
+		}
+		private class ReturnDessert
         {
             public string DessertName { get; set; }
             public int DessertId { get; set; }

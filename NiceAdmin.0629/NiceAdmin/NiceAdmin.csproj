@@ -237,6 +237,7 @@
     <Compile Include="Models\ViewModels\PromotionsVM\PromotionEditVM.cs" />
     <Compile Include="Models\ViewModels\PromotionsVM\PromotionExts.cs" />
     <Compile Include="Models\ViewModels\PromotionsVM\PromotionIndexVM.cs" />
+    <Compile Include="Models\ViewModels\PromotionsVM\RequiredIfAttribute.cs" />
     <Compile Include="Models\ViewModels\TeachersVM\TeacherCreateVM.cs" />
     <Compile Include="Models\ViewModels\TeachersVM\TeacherCriteria.cs" />
     <Compile Include="Models\ViewModels\TeachersVM\TeacherDeleteVM.cs" />

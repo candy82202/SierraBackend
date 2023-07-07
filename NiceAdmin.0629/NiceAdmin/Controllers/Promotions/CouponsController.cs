@@ -18,12 +18,14 @@ namespace NiceAdmin.Controllers
         // GET: Coupons
         public ActionResult Index()
         {
-            IEnumerable<CouponIndexVM> coupons = db.Coupons.Include(c => c.CouponCategory)
+            IEnumerable<Coupon> coupons = db.Coupons;
+            UpdateCouponStatus(coupons);
+			IEnumerable<CouponIndexVM> couponVMs = db.Coupons.Include(c => c.CouponCategory)
                                                            .Include(c => c.DiscountGroup)
                                                            .ToList()
                                                            .Select(c => c.ToIndexVM());
                                                            
-            return View(coupons);
+            return View(couponVMs);
         }
 
         // GET: Coupons/Details/5
@@ -56,8 +58,31 @@ namespace NiceAdmin.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "CouponCategoryId,DiscountGroupId,CouponName,CouponCode,LimitType,LimitValue,DiscountType,DiscountValue,StartAt,EndAt,Expiration")] CouponCreateVM vm)
         {
+
             if (ModelState.IsValid)
             {
+                if (vm.DiscountGroupId == 4)
+                {
+					bool sameCouponCode = db.Coupons.Any(c => c.CouponCode == vm.CouponCode);
+                    if (sameCouponCode)
+                    {
+						ModelState.AddModelError(string.Empty, "此優惠碼已經被使用");
+						return View(vm);
+					}
+				}
+                if (vm.StartAt != null)
+                {
+                    if (vm.StartAt < DateTime.Now)
+                    {
+						ModelState.AddModelError(string.Empty, "開始時間不可小於現在時間");
+						return View(vm);
+					}
+                    if (vm.StartAt > vm.EndAt)
+                    {
+						ModelState.AddModelError(string.Empty, "開始時間不可在結束時間以後");
+						return View(vm);
+					}
+                }
                 Coupon coupon = vm.ToEntity();
                 bool haveSameCouponCode = db.Coupons.Any(c => c.CouponCode== coupon.CouponCode);
                 while (haveSameCouponCode)
@@ -143,7 +168,20 @@ namespace NiceAdmin.Controllers
             var discountGroups = db.DiscountGroups.ToList().Prepend(new DiscountGroup());
             ViewBag.DiscountGroupId = new SelectList(discountGroups, "discountGroupId", "discountGroupName", discountGroupId);
         }
-
+        private void UpdateCouponStatus(IEnumerable<Coupon>coupons)
+        {
+            foreach (var coupon in coupons)
+            {
+                if (coupon.DiscountGroupId == 2|| coupon.DiscountGroupId == 4)
+                {
+                    if (coupon.EndAt < DateTime.Now)
+                    {
+                        coupon.Status = false;
+                    }
+                }
+			}
+            db.SaveChanges();
+		}
         protected override void Dispose(bool disposing)
         {
             if (disposing)

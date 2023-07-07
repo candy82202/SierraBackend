@@ -22,7 +22,7 @@
                 <section class="section">
 
                     <p>
-                        @Html.ActionLink("Create New", "Create")
+                        @Html.ActionLink("新增", "Create", null, new {@class="btn btn-primary"})
                     </p>
                     <table class="table table-hover datatable">
                         <thead>
@@ -63,11 +63,22 @@
                                         @Html.DisplayFor(modelItem => item.Description)
                                     </td>
                                     <td>
-                                        @Html.DisplayFor(modelItem => item.Status)
+                                        @if (item.Status == "未上架")
+                                        {
+                                            <span class="badge bg-info">@Html.DisplayFor(modelItem => item.Status)</span>
+                                        }
+                                        else if (item.Status == "已下架")
+                                        {
+                                            <span class="badge bg-danger">@Html.DisplayFor(modelItem => item.Status)</span>
+                                        }
+                                        else
+                                        {
+                                            <span class="badge bg-success">@Html.DisplayFor(modelItem => item.Status)</span>
+                                        }
                                     </td>
                                     <td>
-                                        @Html.ActionLink("編輯", "Edit", new { id = item.PromotionId }) |
-                                        @Html.ActionLink("變更圖片", "EditImage", new { id = item.PromotionId })
+                                        @Html.ActionLink("編輯", "Edit", new { id = item.PromotionId }, new { @class = "btn btn-primary" }) 
+                                        @Html.ActionLink("變更圖片", "EditImage", new { id = item.PromotionId },new { @class = "btn btn-primary" })
                                     </td>
                                 </tr>
                             }
