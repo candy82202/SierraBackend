@@ -151,7 +151,8 @@
                     <!-- End Recent Sales -->
                     <!-- Top Selling -->
                     <div class="col-12">
-                        <div class="card overflow-auto">
+                        <div class="card ">
+                            @*recent-sales overflow-auto">*@
                             <div class="filter">
                                 <a class="icon" href="#" data-bs-toggle="dropdown">
                                     <i class="bi bi-three-dots"></i>
@@ -167,13 +168,16 @@
                                 </ul>
                             </div>
 
-                            <div class="card-body pb-0 topsellImg">
-                                <h5 class="card-title">熱門銷售甜點</h5>
-                                @Html.Partial("TSDessertsIndexPV", hotProducts)
+                            <div class="card-body">
+                                <h5 class="card-title">
+                                    熱門銷售甜點 
+                                </h5>
+                         
 
+                                @Html.Partial("TSDessertsIndexPV", hotProducts)
                             </div>
                         </div>
-                    </div>
+                    </div>                  
                     <!-- End Top Selling -->
                 </div>
             </div>
