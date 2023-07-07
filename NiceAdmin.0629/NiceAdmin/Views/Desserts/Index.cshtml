@@ -188,8 +188,7 @@
                                             @*@Html.ActionLink("Details", "Details", new { id = item.DessertId })*@
                                             @*@Html.ActionLink("刪除", "Delete", new { id = item.DessertId })*@
                                             <button class="btn btn-outline-success btn-sm upDest " data-id="@item.DessertId">上架</button>
-                                            <button class="btn btn-outline-danger btn-sm dwDest " data-id="@item.DessertId">下架</button>
-                                            <button class="btn btn-outline-danger btn-sm dwDest " data-id="@item.DessertId">下架</button>
+                                            <button class="btn btn-outline-danger btn-sm dwDest " data-id="@item.DessertId">下架</button>                                            
                                             <input type="hidden" name="dessertIds[]" value="@item.DessertId" />
                                         </td>
                                     </tr>
