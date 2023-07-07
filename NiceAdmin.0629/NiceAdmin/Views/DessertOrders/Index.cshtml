@@ -3,8 +3,7 @@
 @{
     ViewBag.Title = "Index";
 }
-@*@section customStyles{
-    }*@
+
 
 <main id="main" class="main">
     <div class="pagetitle">
@@ -17,7 +16,94 @@
             </ol>
         </nav>
     </div>
-    
+    <div class="container my-5">
+        <div id="orderGroup" class="accordion">
+            <div id="orderMain" >
+                <div class="input-group row d-flex align-items-center mb-3">
+                    <div class="col-md-2 mb-4">
+                        <input id="order1" name="order" type="button" class="btn btn-primary btn-lg"
+                               data-bs-toggle="collapse" data-bs-target="#orderGroup1" value="查詢訂購人姓名" />
+                    </div>
+                    <div class="col-md-2 mb-4">
+                        <input id="order2" name="order" type="button" class="btn btn-success btn-lg"
+                               data-bs-toggle="collapse" data-bs-target="#orderGroup2" value="訂購狀態" />
+                    </div>
+                    <div class="col-md-2 mb-4">
+                        <input id="order3" name="order" type="button" class="btn btn-danger btn-lg"
+                               data-bs-toggle="collapse" data-bs-target="#orderGroup3" value="收件人" />
+                    </div>
+                    <div class="col-md-2 mb-4">
+                        <input id="order4" name="order" type="button" class="btn btn-warning btn-lg"
+                               data-bs-toggle="collapse" data-bs-target="#orderGroup4" value="總額" />
+                    </div>
+                    <div class="col-md-2 mb-4">
+                        <input id="order5" name="order" type="button" class="btn btn-info btn-lg"
+                               data-bs-toggle="collapse" data-bs-target="#orderGroup5" value="查看明細" />
+                    </div>
+                </div>
+            </div>
+            <div id="orderGroup1" data-bs-parent="#orderGroup" class="accordion-collapse collapse">
+                <div class="input-group mb-2">
+                    <input class="form-control" type="text" placeholder="請輸入訂購人姓名">
+                </div>
+            </div>
+            <div id="orderGroup2" data-bs-parent="#orderGroup" class="accordion-collapse collapse">
+                <div class="input-group mb-2">
+                    <input class="form-control" type="text" placeholder="請輸入訂購狀態">
+                </div>
+            </div>
+            <div id="orderGroup3" data-bs-parent="#orderGroup" class="accordion-collapse collapse">
+                <div class="input-group mb-2">
+                    <input class="form-control" type="text" placeholder="請輸入收件人">
+                </div>
+            </div>
+            <div id="orderGroup4" data-bs-parent="#orderGroup" class="accordion-collapse collapse">
+                <div class="input-group mb-2">
+                    <input class="form-control" type="text" placeholder="請輸入總額">
+                </div>
+            </div>
+            <div id="orderGroup5" data-bs-parent="#orderGroup" class="accordion-collapse collapse">
+                <div class="input-group mb-2">
+                    <input class="form-control" type="text" placeholder="請輸入明細">
+                </div>
+            </div>
+        </div>
+    </div>
+    <section class="container">
+        <form method="get" autocomplete="off" action="@Url.Action("Index", "Teachers")">
+            <div class="row" autocomplete" style="width:100%;">
+                <div class="mb-3 col-md-2">
+                    <label for="s_name">訂購人姓名</label>
+                    <input type="text" class="form-control" name="TeacherName" id="s_name" value="">
+                </div>
+                <div class="mb-3 col-md-2">
+                    <label for="s_name">訂購狀態</label>
+                    <input type="text" class="form-control" name="TeacherStatusText" id="s_name" value="">
+                </div>
+                <div class="mb-3 col-md-2">
+                    <label for="s_name">收件人</label>
+                    <input type="text" class="form-control" name="TeacherStatusText" id="s_name" value="">
+                </div>
+                <div class="mb-3 col-md-2">
+                    <label for="s_name">總額</label>
+                    <input type="text" class="form-control" name="TeacherStatusText" id="s_name" value="">
+                </div>
+                <div class="mb-3 col-md-2">
+                    <label for="s_name">查看明細</label>
+                    <input type="text" class="form-control" name="TeacherStatusText" id="s_name" value="">
+                </div>
+                <div class="mb-3 col-md-8 align-self-end ">
+                    <button class="btn btn-primary">查詢訂購人姓名</button>
+                    <button class="btn btn-outline-success">訂購狀態</button>
+                    <button class="btn btn-outline-warning">收件人</button>
+                    <button class="btn btn-outline-primary">總額</button>
+                    <button class="btn btn-outline-info">查看明細</button>
+                    <button type="button" class="btn btn-outline-secondary" onclick="location.href='@Url.Action("ClearSearch")'">清除搜尋</button>
+
+                </div>
+            </div>
+        </form>
+    </section>
 
     <!-- End Page Title -->
     @*<p>
@@ -47,11 +133,11 @@
                     @Html.DisplayNameFor(model => model.Recipient)
                 </th>
                 @*<th>
-                    @Html.DisplayNameFor(model => model.RecipientPhone)
-                </th>*@
+                        @Html.DisplayNameFor(model => model.RecipientPhone)
+                    </th>*@
                 @*<th>
-                    @Html.DisplayNameFor(model => model.RecipientAddress)
-                </th>*@
+                        @Html.DisplayNameFor(model => model.RecipientAddress)
+                    </th>*@
                 <th>
                     @Html.DisplayNameFor(model => model.ShippingFee)
                 </th>
@@ -65,8 +151,8 @@
                     查看明細
                 </th>
                 @*<th>
-                    @Html.DisplayNameFor(model => model.DessertOrderDetails)
-                </th>*@
+                        @Html.DisplayNameFor(model => model.DessertOrderDetails)
+                    </th>*@
                 @*<th>
                         @Html.DisplayNameFor(model => model.Note)
                     </th>
@@ -103,11 +189,11 @@
                         @Html.DisplayFor(modelItem => item.Recipient)
                     </td>
                     @*<td>
-                        @Html.DisplayFor(modelItem => item.RecipientPhone)
-                    </td>*@
+                            @Html.DisplayFor(modelItem => item.RecipientPhone)
+                        </td>*@
                     @*<td>
-                        @Html.DisplayFor(modelItem => item.RecipientAddress)
-                    </td>*@
+                            @Html.DisplayFor(modelItem => item.RecipientAddress)
+                        </td>*@
                     <td>
                         @Html.DisplayFor(modelItem => item.ShippingFee)
                     </td>
@@ -119,15 +205,16 @@
                     </td>
 
                     @*<td>
-                        @foreach (var detail in item.DessertOrderDetails)
-                        {
-                            @detail.DessertName
-                            @detail.DessertUnitPrice
-                            @detail.Quantity
-                            @detail.Subtotal
-                        }
+                            @foreach (var detail in item.DessertOrderDetails)
+                            {
+                                @detail.DessertName
+                                @detail.DessertUnitPrice
+                                @detail.Quantity
+                                @detail.Subtotal
+                            }
 
-                    </td>*@
+                        </td>*@
+                    @*單筆訂單明細collapse*@
                     <td>
                         <div class="form-check">
                             <input class="form-check-input form-select" name="DessertOrderDetails"
@@ -137,24 +224,25 @@
                     </td>
 
                 </tr>
+                @*單筆訂單明細collapse*@
                 <tr class="collapse" id="DessertOrderId-@item.DessertOrderId">
                     <td colspan="9">
                         <div class="input-group">
                             <div class="row">
                                 <div class="col-md-2 fw-bolder">
-                                        收件人電話
+                                    收件人電話
                                 </div>
                                 <div class="col-md-3 ">
                                     @Html.DisplayFor(modelItem => item.RecipientPhone)
                                 </div>
                                 <div class="col-md-2 fw-bolder">
-                                        收件人地址
+                                    收件人地址
                                 </div>
                                 <div class="col-md-5">
                                     @Html.DisplayFor(modelItem => item.RecipientAddress)
                                 </div>
 
-                        <br />
+                                <br />
 
                                 <table class="table">
                                     <thead>
@@ -178,13 +266,13 @@
                                         }
                                     </tbody>
                                 </table>
-                        </div>
+                            </div>
                     </td>
                 </tr>
 
 
 
-               
+
                 @*<td>
                         @Html.DisplayFor(modelItem => item.Note)
                     </td>
@@ -209,6 +297,7 @@
 
 
     <script>
+        //單筆訂單明細collapse
         document.addEventListener('DOMContentLoaded', function () {
             // Get all the input elements with name "DessertOrderDetails"
             var inputs = document.querySelectorAll('input[name="DessertOrderDetails"]');
