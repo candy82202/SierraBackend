@@ -22,7 +22,7 @@
                 <section class="section">
 
                     <p>
-                        @Html.ActionLink("Create New", "Create")
+                        @Html.ActionLink("新增", "Create", null, new { @class = "btn btn-primary" })
                     </p>
                     <table class="table table-hover datatable">
                         <thead>
@@ -38,6 +38,9 @@
                                 </th>
                                 <th>
                                     @Html.DisplayNameFor(model => model.CreateAt)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.EndAtText)
                                 </th>
                                 <th>
                                     @Html.DisplayNameFor(model => model.StatusText)
@@ -63,11 +66,21 @@
                                     <td>
                                         @Html.DisplayFor(modelItem => item.CreateAt)
                                     </td>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.StatusText)
+                                    <td class="endAt">
+                                        @Html.DisplayFor(modelItem => item.EndAtText)
                                     </td>
                                     <td>
-                                        @Html.ActionLink("Details", "Details", new { id = item.CouponId })
+                                        @if (item.StatusText == "上架")
+                                        {
+                                            <span class="badge bg-success">@Html.DisplayFor(modelItem => item.StatusText)</span>
+                                        }
+                                        else
+                                        {
+                                            <span class="badge bg-danger">@Html.DisplayFor(modelItem => item.StatusText)</span>
+                                        }
+                                    </td>
+                                    <td>
+                                        @Html.ActionLink("詳情", "Details", new { id = item.CouponId }, new { @class = "btn btn-primary" })
                                     </td>
                                 </tr>
 
@@ -79,3 +92,21 @@
         </div>
     </div>
 </main>
+@section Scripts{
+    @Scripts.Render("~/bundles/jqueryval")
+    <script>
+        //這個東西想要把超過結束時間的tr換背景色
+        //但換完之後會被datatable蓋掉
+        $(document).ready(function () {
+            $('.endAt').each(function () {
+                var date = new Date(`${$(this).text().trim()}`)
+                var current = new Date();
+                if (current > date) {
+                    $(this).parent().addClass('endCoupon');
+                }
+            })
+        })
+        
+
+    </script>
+}

@@ -26,15 +26,27 @@ namespace NiceAdmin.Models.ViewModels.PromotionsVM
 		public DateTime CreateAt { get; set; }
 		
 		public DateTime? EndAt { get; set; }
-        [Display(Name = "是否上架")]
+		[Display(Name = "結束時間")]
+		[DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}")]
+		public string EndAtText
+		{
+			get
+			{
+				if (this.EndAt == null) return "無";
+				else
+				{
+					DateTime endAtNotNull = (DateTime)this.EndAt;
+					return endAtNotNull.ToString("yyyy-MM-dd");
+				}
+			}
+		}
+		public bool Status { get; set; }
+		[Display(Name = "是否上架")]
         public string StatusText {
 			get
 			{
-				if (EndAt == null) return "上架中";
-				else { 
-					return this.EndAt > DateTime.Now ? "上架中" : "已下架"; 
-				}
-				
+				if (this.Status) return "上架";
+				else return "下架";
 			}
 		}
 		public virtual CouponCategory CouponCategory { get; set; }

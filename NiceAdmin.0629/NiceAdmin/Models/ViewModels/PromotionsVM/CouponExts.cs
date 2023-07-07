@@ -11,29 +11,17 @@ namespace NiceAdmin.Models.ViewModels.PromotionsVM
         public static CouponIndexVM ToIndexVM(this Coupon entity)
         {
             //因為entity.DiscountGroup有可能是null所以要分兩種，不然會出錯
-            if (entity.DiscountGroupId == null)
-            {
+            
                 return new CouponIndexVM()
                 {
                     CouponId = entity.CouponId,
                     CouponName = entity.CouponName,
                     CouponCategoryName = entity.CouponCategory.CouponCategoryName,
-                    DiscountGroupName = null,
+                    DiscountGroupName = entity.DiscountGroup?.DiscountGroupName,
                     CreateAt = entity.CreateAt,
-                    EndAt = entity.EndAt
+                    EndAt = entity.EndAt,
+                    Status = entity.Status,
                 };
-            }
-            else { 
-                return new CouponIndexVM()
-                {
-                    CouponId = entity.CouponId,
-                    CouponName = entity.CouponName,
-                    CouponCategoryName = entity.CouponCategory.CouponCategoryName,
-                    DiscountGroupName = entity.DiscountGroup.DiscountGroupName,
-                    CreateAt = entity.CreateAt,
-                    EndAt = entity.EndAt
-                };
-            }
         }
 
         public static Coupon ToEntity(this CouponCreateVM vm)

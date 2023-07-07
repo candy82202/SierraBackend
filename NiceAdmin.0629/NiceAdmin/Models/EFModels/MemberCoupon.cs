@@ -14,8 +14,6 @@ namespace NiceAdmin.Models.EFModels
 
         public int CouponId { get; set; }
 
-        public int Status { get; set; }
-
         public DateTime CreateAt { get; set; }
 
         public DateTime? UseAt { get; set; }
