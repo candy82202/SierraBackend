@@ -142,11 +142,12 @@ namespace NiceAdmin.Models.EFModels
                 .WithMany(e => e.Permissions)
                 .Map(m => m.ToTable("RoleToPermissions").MapLeftKey("PermissionId").MapRightKey("RoleId"));
 
-            modelBuilder.Entity<Teacher>()
-                .HasMany(e => e.Lessons)
-                .WithRequired(e => e.Teacher)
-                .WillCascadeOnDelete(false);
-        }
-        public System.Data.Entity.DbSet<NiceAdmin.Models.ViewModels.TeachersVM.UpdateTeacherStatusVM> UpdateTeacherStatusVMs { get; set; }
+			modelBuilder.Entity<Teacher>()
+				.HasMany(e => e.Lessons)
+				.WithRequired(e => e.Teacher)
+				.WillCascadeOnDelete(false);
+		}
+
+       
     }
 }
