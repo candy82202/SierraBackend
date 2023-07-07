@@ -154,6 +154,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\Promotions\DiscountsController.cs" />
     <Compile Include="Controllers\Promotions\MemberCouponsController.cs" />
+    <Compile Include="Filters\CustomAuthorizeAttribute.cs" />
     <Compile Include="Models\DTOs\Desserts\DessertsDto.cs" />
     <Compile Include="Models\Infra\EFRepositories\DessertEFRepository.cs" />
     <Compile Include="Models\Infra\HashUtility.cs" />
@@ -861,7 +862,8 @@
     <Content Include="Views\MemberCoupons\Details.cshtml" />
     <Content Include="Views\Employees\Login.cshtml" />
     <Content Include="Views\Shared\_LayoutLogin.cshtml" />
-	<Content Include="Views\Teachers\DownTeachers.cshtml" />
+    <Content Include="Views\Teachers\DownTeachers.cshtml" />
+    <Content Include="Views\Shared\_Unauthorized.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="Scripts\vendor\chart.js\controllers\controller.bar.d.ts" />

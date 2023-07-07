@@ -115,7 +115,10 @@ Member 部分
 [V] - create & complete LoginVM.cs and Login.cshtml
 [V] - create /Models/Infra/Result.cs & HashUtility.cs
       add salt to Web.config 
-[workingo on] - 角色&權限!
+[working on] - 角色&權限!
+             - create "Filters" folder & CustomAuthorizeAttribute.cs
+             - create _Unauthorized.cshtml
+             - modify Global.asax
 
 ==========================================================
 Lesson 部分

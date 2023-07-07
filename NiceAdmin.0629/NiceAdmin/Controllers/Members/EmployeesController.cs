@@ -9,6 +9,7 @@ using System.Reflection;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
+using NiceAdmin.Filters;
 using NiceAdmin.Models.EFModels;
 using NiceAdmin.Models.Infra;
 using NiceAdmin.Models.ViewModels.MembersVM;
@@ -42,6 +43,7 @@ namespace NiceAdmin.Controllers.Members
 		}
 
 		// GET: Employees/Create
+		[Authorize(Roles="admin")]
 		public ActionResult Create()
 		{
 			//// 原本的寫法
@@ -66,6 +68,8 @@ namespace NiceAdmin.Controllers.Members
 		// 如需詳細資料，請參閱 https://go.microsoft.com/fwlink/?LinkId=317598。
 		[HttpPost]
 		[ValidateAntiForgeryToken]
+		[Authorize(Roles = "admin")]
+		[CustomAuthorize]
 		public ActionResult Create(EmployeeCreateVM vm)
 		{
 			if (ModelState.IsValid == false)
@@ -212,7 +216,7 @@ namespace NiceAdmin.Controllers.Members
 				return View(vm);
 			}
 
-			const bool rememberMe = true; // 泡麵哥證實不一定會記得
+			const bool rememberMe = false; // 泡麵哥證實不一定會記得
 
 			// 驗證正確, 將登入帳號編碼後, 加入cookie
 			var processResult = ProcessLogin(vm.Account, rememberMe);
@@ -233,10 +237,9 @@ namespace NiceAdmin.Controllers.Members
 			// var roles = string.Empty; // 在本範例, 沒有用到角色權限,所以存入空白
 
 			var roles = db.Employees.ToList()
-						.Where(emp => string.Compare(emp.EmployeeName, account, true) == 0)
-						.FirstOrDefault()
+						.FirstOrDefault(emp => string.Compare(emp.EmployeeName, account, true) == 0)
 						.Roles.Select(r=>r.RoleName);
-			var rolesAry = string.Join(",", roles);
+			var rolesStr = string.Join(",", roles);
 
 
 			// 建立一張認證票
@@ -247,7 +250,7 @@ namespace NiceAdmin.Controllers.Members
 					DateTime.Now,   // 發行日
 					DateTime.Now.AddDays(2), // 到期日
 					rememberMe,     // 是否續存
-					rolesAry,          // userdata
+					rolesStr,          // userdata
 					"/" // cookie位置
 				);
 
