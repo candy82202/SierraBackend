@@ -8,6 +8,7 @@ using System.Web;
 using System.Web.Mvc;
 using System.Data.Entity;
 using NiceAdmin.Models.Exts;
+using Microsoft.Ajax.Utilities;
 
 namespace NiceAdmin.Controllers
 {
@@ -20,17 +21,22 @@ namespace NiceAdmin.Controllers
             IEnumerable<DiscountGroupIndexVM> discountGroups = GetDiscountGroup();
             return View(discountGroups);
         }
-        public ActionResult Create()
+        [HttpPost]
+        public JsonResult Create()
         {
 
             var newDiscountGroup = new DiscountGroup()
             {
                 DiscountGroupName = "新的優惠群組"
             };
+            bool haveSame = db.DiscountGroups.Any(dg=>dg.DiscountGroupName == newDiscountGroup.DiscountGroupName);
+            if (haveSame)
+            {
+                return Json("請編輯先前新增的優惠群組");
+            }
             db.DiscountGroups.Add(newDiscountGroup);
             db.SaveChanges();
-
-            return new RedirectResult("Index");
+            return Json("新增成功");
         }
         
         public ActionResult Delete(int discountGroupId)
@@ -80,7 +86,9 @@ namespace NiceAdmin.Controllers
                 Desserts = desserts,
                 DiscountGroupItems = discountGroupItems
             };
-            return View(vm);
+            PrepareCategoryDataSource(null);
+
+			return View(vm);
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -95,6 +103,7 @@ namespace NiceAdmin.Controllers
                 modifiedDiscountGroup.DiscountGroupName = discountGroup.DiscountGroupName;
                 db.SaveChanges();
             }
+
             return new RedirectResult("Index");
         }
         [HttpPost]
@@ -118,6 +127,62 @@ namespace NiceAdmin.Controllers
 			return Json("新增成功");
         }
 		[HttpPost]
+		public JsonResult AddAll(int? discountGroupId, int[] dessertIds)
+		{
+			if (discountGroupId == null) return Json("找不到此群組");
+            if(dessertIds == null) return Json("請輸入適當的搜尋條件");
+			var selectedDiscountGroup = db.DiscountGroups.FirstOrDefault(dg => dg.DiscountGroupId == discountGroupId);
+			if (selectedDiscountGroup == null) return Json("找不到此群組");
+            var dessertIdsInSelectedDiscountGroup= selectedDiscountGroup.DiscountGroupItems?.Select(dgi => dgi.Dessert.DessertId).ToArray();
+            var different = dessertIds.Except(dessertIdsInSelectedDiscountGroup);
+            if (!different.Any()) return Json("此頁面所有產品都已加入群組");
+            List<ReturnDessert> desserts = new List<ReturnDessert>();
+            foreach(int dessertId in different)
+            {
+                var newDiscountGroupItem = new DiscountGroupItem()
+                {
+                    DiscountGroupId = (int)discountGroupId,
+                    DessertId = dessertId
+                };
+				db.DiscountGroupItems.Add(newDiscountGroupItem);
+				
+				var dessertInDb = db.Desserts.Find(dessertId);
+                var returnDessert = new ReturnDessert(dessertInDb.DessertName, dessertId);
+				desserts.Add(returnDessert);
+			}
+			db.SaveChanges();
+			return Json(desserts);
+		}
+		[HttpPost]
+		public JsonResult AddCategory(int? discountGroupId, int? categoryId)
+		{
+			if (discountGroupId == null) return Json("找不到此群組");
+			if (categoryId == null) return Json("請選擇類別");
+			var selectedDiscountGroup = db.DiscountGroups.FirstOrDefault(dg => dg.DiscountGroupId == discountGroupId);
+			if (selectedDiscountGroup == null) return Json("找不到此群組");
+			var dessertIdsInSelectedDiscountGroup = selectedDiscountGroup.DiscountGroupItems?.Select(dgi => dgi.Dessert.DessertId).ToArray();
+            var dessertsInCategory = db.Desserts.Where(d => d.CategoryId == categoryId).Select(d=>d.DessertId);
+			var different = dessertsInCategory.Except(dessertIdsInSelectedDiscountGroup);
+            if(!different.Any()) return Json("此類別所有產品都已加入群組");
+			List<ReturnDessert> desserts = new List<ReturnDessert>();
+			
+			foreach (int dessertId in different)
+		    {
+			    var newDiscountGroupItem = new DiscountGroupItem()
+			    {
+				    DiscountGroupId = (int)discountGroupId,
+				    DessertId = dessertId
+			    };
+			    db.DiscountGroupItems.Add(newDiscountGroupItem);
+				
+			    var dessertInDb = db.Desserts.Find(dessertId);
+			    var returnDessert = new ReturnDessert(dessertInDb.DessertName, dessertId);
+			    desserts.Add(returnDessert);
+			}
+			db.SaveChanges();
+			return Json(desserts);
+		}
+		[HttpPost]
 		public JsonResult Remove(int? discountGroupId, int? dessertId)
 		{
 			if (discountGroupId == null || dessertId == null) return Json("刪除失敗");
@@ -131,17 +196,40 @@ namespace NiceAdmin.Controllers
 			db.SaveChanges();
 			return Json("刪除成功");
 		}
-		private IEnumerable<DiscountGroupIndexVM> GetDiscountGroup()
+		[HttpPost]
+		public JsonResult RemoveAll(int? discountGroupId)
+		{
+			if (discountGroupId == null) return Json("刪除失敗");
+			var selectedDiscountGroup = db.DiscountGroups.FirstOrDefault(dg => dg.DiscountGroupId == discountGroupId);
+			if (selectedDiscountGroup == null) return Json("刪除失敗");
+            var DiscountGroupItems = db.DiscountGroupItems.Where(dgi => dgi.DiscountGroupId == discountGroupId).ToList();
+            for(int i = 0;i< DiscountGroupItems.Count(); i++)
+            {
+				db.DiscountGroupItems.Remove(DiscountGroupItems[i]); 
+			};
+			db.SaveChanges();
+			return Json("刪除成功");
+		}
+		private void PrepareCategoryDataSource(int? categoryId)
+		{
+			ViewBag.CategoryId = new SelectList(db.Categories, "CategoryId", "CategoryName", categoryId);
+		}
+		private class ReturnDessert
         {
-
-
+            public string DessertName { get; set; }
+            public int DessertId { get; set; }
+            public ReturnDessert(string _dessertName, int _dessertId)
+            {
+                this.DessertName = _dessertName;
+                this.DessertId = _dessertId;
+            }
+        }
+		
+        private IEnumerable<DiscountGroupIndexVM> GetDiscountGroup()
+        {
             return db.DiscountGroups
-                .AsNoTracking()
-                .Select(x => new DiscountGroupIndexVM
-                {
-                    DiscountGroupId = x.DiscountGroupId,
-                    DiscountGroupName = x.DiscountGroupName,
-                });
+                .ToList()
+                .Select(x => x.ToIndexVM());
         }
     }
 }

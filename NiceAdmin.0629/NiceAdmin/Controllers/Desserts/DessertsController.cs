@@ -55,6 +55,8 @@ namespace NiceAdmin.Controllers
         // Three Layer - Index
         public ActionResult Index(DessertCriteria criteria)
         {
+            //新增判斷甜點上架時間的方法
+            UpdateScheduledDessertsStatus();
             ViewBag.Criteria = criteria;
             PrepareCategoryDataSource(criteria.CategoryId);
             IEnumerable<DessertsIndexTVM> desserts = GetDesserts(criteria);
@@ -125,12 +127,6 @@ namespace NiceAdmin.Controllers
                     dessertCreateVM.DessertImageName.Add(fileName);
                 }
 
-                //將檔名存入vm裡面
-                //dessertCreateVM.Images = fileName;
-                // 將檔名存入 dessertCreateVM.Images
-                //vm.DessertImageName.Add(fileName);
-
-
                 // 新增一筆記錄
 
                 Dessert dessert = dessertCreateVM.ToEntity();
@@ -143,6 +139,18 @@ namespace NiceAdmin.Controllers
                     };
                     dessert.DessertImages.Add(dessertImage);
                 }
+
+                //判斷預定上架時間
+                if (dessertCreateVM.ScheduledPublishDate.HasValue)
+                {
+                    dessert.ScheduledPublishDate = dessertCreateVM.ScheduledPublishDate.Value;
+                    dessert.Status = false; // 将状态设置为下架
+                }
+                else
+                {
+                    dessert.Status = true; // 将状态设置为上架
+                }
+
                 db.Desserts.Add(dessert);
                 db.SaveChanges();
 
@@ -152,8 +160,8 @@ namespace NiceAdmin.Controllers
                     return RedirectToAction("Sierras", "Home", new { desserts = onShelfDesserts });
                 }
 
-                return RedirectToAction("Sierras");            
-        }
+                return RedirectToAction("Sierras", "Home");
+            }
               
 
             PrepareCategoryDataSource(dessertCreateVM.CategoryId);
@@ -230,47 +238,39 @@ namespace NiceAdmin.Controllers
         //}
         public ActionResult Edit(DessertEditVM vm, List<HttpPostedFileBase> images)
         {
+            //try {
             var dessert = db.Desserts.Include(d => d.DessertImages).FirstOrDefault(d => d.DessertId == vm.DessertId);
             if (dessert == null)
             {
                 return HttpNotFound();
             }
-            var files = images;
-            //Request.Files["file"];
-            if (ModelState.IsValid && files != null)
-            {
 
-                //將file1存檔，用server.MapPath並取得最後存檔的檔案名稱
-                string path = Server.MapPath("/Uploads");//檔案要存放的資料夾位置
-                vm.DessertImageNames = new List<string>();
-                foreach (var file in files)
+            if (ModelState.IsValid)
+            {
+                // 更新其他属性
+                dessert.CategoryId = vm.CategoryId;
+                dessert.Status = vm.Status;
+                dessert.UnitPrice = vm.UnitPrice;
+                dessert.DessertName = vm.DessertName;
+                dessert.Description = vm.Description;
+
+                // 清除现有的图片
+                dessert.DessertImages.Clear();
+                // 处理上传的图片
+                if (images != null && images.Count > 0)
                 {
-                    string fileName = SaveUploadedFile(path, file);
-                    if (!string.IsNullOrEmpty(fileName))
+                    string path = Server.MapPath("/Uploads");
+                    foreach (var file in images)
                     {
-                        vm.DessertImageNames.Add(fileName);
+                        string fileName = SaveUploadedFile(path, file);
+                        if (!string.IsNullOrEmpty(fileName))
+                        {
+                            dessert.DessertImages.Add(new DessertImage { DessertImageName = fileName });
+                        }
                     }
                 }
 
-
-                var dessertInDb = db.Desserts.Find(vm.DessertId);
-                if (dessertInDb == null)
-                {
-                    return HttpNotFound();
-                }
-
-                dessertInDb.CategoryId = vm.CategoryId;
-                dessertInDb.Status = vm.Status;
-                dessertInDb.UnitPrice = vm.UnitPrice;
-                dessertInDb.DessertName = vm.DessertName;
-                dessertInDb.Description = vm.Description;
-
-                dessertInDb.DessertImages.Clear(); // 清除现有的图片
-                foreach (var imageName in vm.DessertImageNames)
-                {
-                    dessertInDb.DessertImages.Add(new DessertImage { DessertImageName = imageName });
-                }
-
+                // 保存更改
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
@@ -410,6 +410,20 @@ namespace NiceAdmin.Controllers
 
             return PartialView("DownDesserts", downDesserts);
 
+        }
+
+        //新增預定上架商品時間判斷方法
+        private void UpdateScheduledDessertsStatus()
+        {
+            var scheduledDesserts = db.Desserts.Where(d => d.ScheduledPublishDate.HasValue && d.Status == false && d.ScheduledPublishDate <= DateTime.Now).ToList();
+
+            foreach (var dessert in scheduledDesserts)
+            {
+                dessert.Status = true; // Set the status to "on shelf"
+                db.Entry(dessert).State = EntityState.Modified;
+            }
+
+            db.SaveChanges();
         }
         protected override void Dispose(bool disposing)
         {

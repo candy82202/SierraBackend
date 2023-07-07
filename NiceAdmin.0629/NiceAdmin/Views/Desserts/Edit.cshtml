@@ -9,106 +9,130 @@
     <div class="row">
         <div class="card">
             <div class="card-body">
-                <div class="pagetitle mt-3">   
-                        <h1>編輯清單</h1>
-                        <nav>
-                            <ol class="breadcrumb">
-                                <li class="breadcrumb-item"><a href="@Url.Action("Index","Home")">首頁</a></li>
-                                <li class="breadcrumb-item"><a href="@Url.Action("Index","Desserts")">甜點管理</a></li>
-                                <li class="breadcrumb-item active"><a href="@Url.Action("Edit","Desserts")">編輯甜點</a></li>
-                            </ol>
-                        </nav>
+                <div class="pagetitle mt-3">
+                    <h1>編輯清單</h1>
+                    <nav>
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="@Url.Action("Index","Home")">首頁</a></li>
+                            <li class="breadcrumb-item"><a href="@Url.Action("Index","Desserts")">甜點管理</a></li>
+                            <li class="breadcrumb-item active"><a href="@Url.Action("Edit","Desserts")">編輯甜點</a></li>
+                        </ol>
+                    </nav>
+                </div>
+                <!-- End Page Title -->
+
+                @using (Html.BeginForm("Edit", "Desserts", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                {
+                    @Html.AntiForgeryToken()
+
+                    <hr />
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                    @Html.HiddenFor(model => model.DessertId)
+
+                    <div class="mb-3">
+                        @Html.LabelFor(model => model.CategoryId, htmlAttributes: new { @class = "form-label" })
+
+                        @Html.DropDownList("CategoryId", null, htmlAttributes: new { @class = "form-select" })
+                        @Html.ValidationMessageFor(model => model.CategoryId, "", new { @class = "text-danger" })
+
                     </div>
-                    <!-- End Page Title -->
 
-                    @using (Html.BeginForm("Edit", "Desserts", FormMethod.Post, new { enctype = "multipart/form-data" }))
-                    {
-                        @Html.AntiForgeryToken()
+                    <div class="mb-3">
+                        @Html.LabelFor(model => model.DessertName, htmlAttributes: new { @class = "form-label" })
 
-                        <hr />
-                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-                        @Html.HiddenFor(model => model.DessertId)
+                        @Html.EditorFor(model => model.DessertName, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.DessertName, "", new { @class = "text-danger" })
 
-                        <div class="mb-3">
-                            @Html.LabelFor(model => model.CategoryId, htmlAttributes: new { @class = "form-label" })
+                    </div>
 
-                            @Html.DropDownList("CategoryId", null, htmlAttributes: new { @class = "form-select" })
-                            @Html.ValidationMessageFor(model => model.CategoryId, "", new { @class = "text-danger" })
+                    <div class="mb-3">
+                        @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "form-label" })
 
+                        @Html.EditorFor(model => model.Description, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
+
+                    </div>
+
+                    <div class="mb-3">
+                        @Html.LabelFor(model => model.UnitPrice, htmlAttributes: new { @class = "form-label" })
+
+                        @Html.EditorFor(model => model.UnitPrice, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.UnitPrice, "", new { @class = "text-danger" })
+                    </div>
+
+                    <div class="mb-3">
+                        @Html.LabelFor(model => model.Status, htmlAttributes: new { @class = "form-label" })
+
+                        <div class="checkbox">
+                            @Html.EditorFor(model => model.Status)
+                            @Html.ValidationMessageFor(model => model.Status, "", new { @class = "text-danger" })
                         </div>
+                    </div>
 
-                        <div class="mb-3">
-                            @Html.LabelFor(model => model.DessertName, htmlAttributes: new { @class = "form-label" })
-
-                            @Html.EditorFor(model => model.DessertName, new { htmlAttributes = new { @class = "form-control" } })
-                            @Html.ValidationMessageFor(model => model.DessertName, "", new { @class = "text-danger" })
-
-                        </div>
-
-                        <div class="mb-3">
-                            @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "form-label" })
-
-                            @Html.EditorFor(model => model.Description, new { htmlAttributes = new { @class = "form-control" } })
-                            @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
-
-                        </div>
-
-                        <div class="mb-3">
-                            @Html.LabelFor(model => model.UnitPrice, htmlAttributes: new { @class = "form-label" })
-
-                            @Html.EditorFor(model => model.UnitPrice, new { htmlAttributes = new { @class = "form-control" } })
-                            @Html.ValidationMessageFor(model => model.UnitPrice, "", new { @class = "text-danger" })
-                        </div>
-
-                        <div class="mb-3">
-                            @Html.LabelFor(model => model.Status, htmlAttributes: new { @class = "form-label" })
-
-                            <div class="checkbox">
-                                @Html.EditorFor(model => model.Status)
-                                @Html.ValidationMessageFor(model => model.Status, "", new { @class = "text-danger" })
-                            </div>
-                        </div>
-
-                        @*<div class="mb-3">
-                                <label for="images" class="form-label">Dessert Images:</label>
-                                <input type="file" name="images" id="images" multiple class="form-control" />
-                            </div>*@
-                        <div class="mb-3">
-                            <label for="images" class="form-label">上傳圖片:</label>
-                            @*@foreach (var imageName in Model.DessertImageNames)
-                                {
-                                    <div>
-                                        <img src="~/Uploads/@imageName" style="width: 25%" />
-                                    </div>
-                                }*@
-                            @foreach (var imageName in Model.DessertImageNames)
+                    @*<div class="mb-3">
+                            <label for="images" class="form-label">Dessert Images:</label>
+                            <input type="file" name="images" id="images" multiple class="form-control" />
+                        </div>*@
+                    <div class="mb-3">
+                        @*<label for="images" class="form-label">上傳圖片:</label>*@
+                        <label for="images" id="previewContainer" class="form-label" style="width: 25%"></label>
+                        @*@foreach (var imageName in Model.DessertImageNames)
                             {
                                 <div>
-                                    <img src="@Url.Content("~/Uploads/" + imageName)" style="width: 25%" />
+                                    <img src="~/Uploads/@imageName" style="width: 25%" />
                                 </div>
-                            }
-                            <input type="file" name="images" id="images" multiple class="form-control" />
-                        </div>
+                            }*@
+                        @foreach (var imageName in Model.DessertImageNames)
+                        {
+                            <div>
+                                <img src="@Url.Content("~/Uploads/" + imageName)" style="width: 25%" />
+                            </div>
+                        }
+                        <input type="file" name="images" id="images" multiple class="form-control" />
+                    </div>
 
-                        @*<div class="mb-3">
-                                <input type="submit" value="儲存" class="btn btn-primary" />
-                            </div>*@
-                        <div class="d-flex">
-                            <input type="submit" value="Save" class="btn btn-outline-primary" />
-                            @Html.ActionLink("Cancel", "Index", "Desserts", null, new { @class = "btn btn-outline-secondary" })
+                    @*<div class="mb-3">
+                            <input type="submit" value="儲存" class="btn btn-primary" />
+                        </div>*@
+                    <div class="d-flex">
+                        <input type="submit" value="Save" class="btn btn-outline-primary" />
+                        @Html.ActionLink("Cancel", "Index", "Desserts", null, new { @class = "btn btn-outline-secondary" })
 
-                        </div>
+                    </div>
 
-                  
+
                 }
 
-                    <div>
-                        @Html.ActionLink("Back to List", "Index")
-                    </div>
+                <div>
+                    @Html.ActionLink("Back to List", "Index")
                 </div>
             </div>
         </div>
-    </main>
+    </div>
+</main>
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
+    <script>
+
+
+
+        $('#images').change(function () {
+            var files = this.files;
+            var container = $('#previewContainer');
+            container.empty(); // 清空預覽容器
+
+            for (var i = 0; i < files.length; i++) {
+                var file = files[i];
+                var reader = new FileReader();
+                reader.onload = (function (file) {
+                    return function (e) {
+                        var img = $('<img>').attr('src', e.target.result).css({ width: '120px', height: '120px' });
+                        container.append(img); // 將圖片加到容器裡面
+                    };
+                })(file);
+                reader.readAsDataURL(file);
+            }
+        });
+
+    </script>
 }

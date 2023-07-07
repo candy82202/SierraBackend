@@ -108,7 +108,7 @@
             })
 
             $('#btn-deliverconfirm').click(function () {
-                var memberId = $(this).data('id')
+                var memberId = this.dataset.id
                 var couponId = $('#CouponId').val();
 
                 $.ajax({
@@ -126,7 +126,7 @@
                     })
                     var membersDeliverBtn = $(`[data-id="${memberId}"].btn-deliver`)
                     membersDeliverBtn.parent().siblings('.NewestCouponName').text(`${data.couponName}`)
-                    
+
                 }).fail(function (err) {
                 });
             })

@@ -104,6 +104,7 @@
 					border-bottom: 3px solid #717ff5;
 				}
 
+<<<<<<< HEAD
 		.autocomplete .autocomplete-active {
 			/*when navigating through the items using the arrow keys:*/
 			background-color: DodgerBlue !important;
@@ -125,6 +126,30 @@
 			text-align: center;
 		}
 	</style>
+=======
+        .autocomplete .autocomplete-active {
+            /*when navigating through the items using the arrow keys:*/
+            background-color: DodgerBlue !important;
+            color: #ffffff;
+        }
+        .height100px{
+            height:100px;
+        }
+        
+        .createPromotionImageSize {
+            width: 80%;
+            height: 250px;
+        }
+        .topsellImg {
+            border-radius: 5px;
+            max-width: 100px;
+            font-size: 22px;
+        }
+         .endCoupon {
+            background-color: #9D9D9D;
+        }
+    </style>
+>>>>>>> 4618cfa84a10531c6501e723071308e89379d067
 
 </head>
 
@@ -641,6 +666,7 @@
 
 			<li class="nav-heading">Pages</li>
 
+<<<<<<< HEAD
 			<li class="nav-item">
 				<a class="nav-link collapsed" href="@Url.Action("UsersProfile","Home")">
 					<i class="bi bi-person"></i>
@@ -648,6 +674,103 @@
 				</a>
 			</li>
 			@*End Profile Page Nav*@
+=======
+                </ul>
+            </li>
+            @*End Orders Nav*@
+            <li class="nav-item">
+                <a class="nav-link collapsed"
+                   data-bs-target="#discounts-nav"
+                   data-bs-toggle="collapse"
+                   href="@Url.Action("Index","Promotions")">
+                    <i class="bi bi-layout-text-window-reverse"></i><span>行銷管理</span><i class="bi bi-chevron-down ms-auto"></i>
+                </a>
+                <ul id="discounts-nav"
+                    class="nav-content collapse"
+                    data-bs-parent="#sidebar-nav">
+
+                    <li>
+                        <a href="@Url.Action("Index","DiscountGroups")">
+                            <i class="bi bi-circle"></i><span>優惠群組清單</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="@Url.Action("Index","Coupons")">
+                            <i class="bi bi-circle"></i><span>優惠券清單</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="@Url.Action("Create","Coupons")">
+                            <i class="bi bi-circle"></i><span>新增優惠券</span>
+                        </a>
+                    </li>
+                    @*<li>
+                        <a href="@Url.Action("Index","Discounts")">
+                            <i class="bi bi-circle"></i><span>折扣清單</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="@Url.Action("Create","Discounts")">
+                            <i class="bi bi-circle"></i><span>新增折扣</span>
+                        </a>
+                    </li>*@
+                    <li>
+                        <a href="@Url.Action("Index","MemberCoupons")">
+                            <i class="bi bi-circle"></i><span>會員優惠券清單</span>
+                        </a>
+                    </li>
+                    @*<li>
+                        <a href="@Url.Action("Create","MemberCoupons")">
+                            <i class="bi bi-circle"></i><span>發送優惠券</span>
+                        </a>
+                    </li>*@
+                    <li>
+                        <a href="@Url.Action("Index","Promotions")">
+                            <i class="bi bi-circle"></i><span>優惠活動清單</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="@Url.Action("Create","Promotions")">
+                            <i class="bi bi-circle"></i><span>新增優惠活動</span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            @*End Discounts Nav*@
+            <!--<li class="nav-item">
+                <a class="nav-link collapsed"
+                   data-bs-target="#blogs-nav"
+                   data-bs-toggle="collapse"
+                   href="@Url.Action("Index","Home")">
+                    <i class="bi bi-layout-text-window-reverse"></i><span>小編管理</span><i class="bi bi-chevron-down ms-auto"></i>
+                </a>
+                <ul id="blogs-nav"
+                    class="nav-content collapse"
+                    data-bs-parent="#sidebar-nav">
+                    <li>
+                        <a href="@Url.Action("FormEdit","Home")">
+                            <i class="bi bi-circle"></i><span>新增貼文</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="@Url.Action("FormsLayouts","Home")">
+                            <i class="bi bi-circle"></i><span>查詢貼文</span>
+                        </a>
+                    </li>
+                </ul>
+            </li>-->
+            @*End blogs Nav*@
+
+            <li class="nav-heading">Pages</li>
+
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="@Url.Action("UsersProfile","Home")">
+                    <i class="bi bi-person"></i>
+                    <span>簡介</span>
+                </a>
+            </li>
+            @*End Profile Page Nav*@
+>>>>>>> 4618cfa84a10531c6501e723071308e89379d067
 
 
 

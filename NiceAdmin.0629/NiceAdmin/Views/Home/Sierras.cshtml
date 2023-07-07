@@ -6,7 +6,7 @@
 
 @model List<NiceAdmin.Models.ViewModels.DessertFrontIndexVM>
 <main>
-    
+
     <div class="container mt-5  ">
         <h2 class="w-25 mb-3">整模蛋糕</h2>
         <div class="row">
@@ -31,13 +31,59 @@
                             </div>
 
                         </div>
+
                     </div>
                 </div>
             }
-        </div>
+        </div>  <button id="btn"><i class="bi bi-arrow-down-circle fz26px"> </i></button>
+        <div id="currentTimeContainer">
 
+        </div>
     </div>
 </main>
+@section scripts{
 
+    <script>
+        var scrollHeight = $(document).height() - $(window).height();
+        $("#btn").click(function () {
+            // $(window).scrollTop(0);
+            $("html,body").animate(
+                {
+                    scrollTop: scrollHeight,
+                },
+                900
+            );
+        });
+    function updateTime() {
+        $.ajax({
+            url: "@Url.Action("CurrentTime", "Home")",
+            type: "GET",
+            success: function (result) {
+                // Update the displayed time
+                $("#currentTimeContainer").html(result);
+
+                // Loop through the desserts and check if their scheduled publish date has passed
+                var currentTime = new Date(result);
+                $(".scheduledPublishDate").each(function () {
+                    var scheduledPublishDate = new Date($(this).data("scheduled-publish-date"));
+                    if (currentTime >= scheduledPublishDate) {
+                        // The scheduled publish date has passed, update the dessert status
+                        var dessertId = $(this).data("dessert-id");
+                        var statusElement = $("#status_" + dessertId);
+                        statusElement.text("Status: On Shelf");
+                        statusElement.removeClass("text-danger").addClass("text-success");
+                    }
+                });
+            }
+        });
+    }
+
+    // Call updateTime initially
+    updateTime();
+
+    // Set interval to call updateTime every second
+    setInterval(updateTime, 1000);
+    </script>
+}
 
 

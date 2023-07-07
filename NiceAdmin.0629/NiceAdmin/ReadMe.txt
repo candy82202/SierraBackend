@@ -38,26 +38,35 @@
 [V] - 修改DataTable 的模板樣式，更改成中文版本
 
 [V] - 加裝sweet alert delete的部分。
-    - 資料庫使用Sierras 0629 (0630 更新資料庫)
     - 版本 4.7.2 
 
-[V] - 新上架的5筆甜點
+[V]- 資料庫使用Sierras 0629 
+        - (0704 更新資料庫)
+        - 資料庫 Members 新增兩個表格
+        - (0706 更新資料庫)
+        - 資料庫新增欄位 Desserts ScheduledPublishDate && Delete MemberCoupon Status
+        - 
 
-[working on] - 針對404錯誤訊息畫面 修改web.config畫面，圖片尚未抓到
+[V] - 首頁 新上架的5筆甜點呈現 熱銷 3 款甜點呈現
+
+[V] - 針對404錯誤訊息畫面 修改web.config畫面，圖片更新完成
+    - 跟其他錯誤頁面的圖片更新畫面
 =========================================================
 前台頁面 部分
-[V] - 新增前台商品上架的頁面 LayoutFront , Sierras.cshtml
+[V] - 新增前台商品上架的頁面 LayoutFront , Sierras.cshtml , NewDesserts.cshtml
     - 新增師資下拉清單
     - 新增Logo
     - 字體顏色調整
-
+    - 顯示CurrentTime去比對
+    - 首頁輪播照片
+    - 3款 熱門銷售甜點
 =========================================================
 Desserts 部分
 
 [V] - 全選 checkbox 的變更事件監聽器 (Desserts & Categories 的 Index 頁面 抓到分頁數量的checkbox )
     - AutoComplete 甜點清單頁面
 
-[V] - Index 更改成
+[V] - Index 更改成 Tags 分頁方式切換 上架5筆 && 全部下架
 
 [V] - 單筆上,下架按鈕
     - Checkbox Dessert Index 一鍵上,下架
@@ -68,15 +77,17 @@ Desserts 部分
 [V] - Add DessertIndexPartVM & DessertExts
     - HomeController Add RecentDesserts method
     - Partial View RecentUpDesserts
+    - Partial View All DownDesserts
 
 [V] - Desserts Index Create Update use card style
 
-[working on] - 新增多張圖顯示， 編輯照片(照片的新增 / 刪除)
+[V] - 新增多張圖顯示
+    - 編輯照片更改成圖示 <img>
 
-[working on] - AJAX 甜點清單頁面
+[V] - AJAX 甜點清單頁面
 
 [working on] - 編輯照片新增欄位(簡易編輯)
-             - 照片更改成圖示 <img>
+             - 
 
 
 ==========================================================
@@ -141,7 +152,9 @@ Lesson 部分
 [V]增加時間判定在Create、Edit中開課時間不能是過去
 [V]Index 進階搜尋可以清空資料
 [working on]Lessons EditImage
-
+===========0706=====================
+[V]Lessons 編輯照片
+[working on]將刪除變成上架或已開課
 ==================================================================
 [working on]完善Course CRUD、Courses的多張照片上傳和修改
 [working on]CRUD頁面需要補上<main> ⇒ 版型調整、table部分更改成datatable(有需要使用的)
@@ -182,7 +195,7 @@ Teacher 部分
 [v]試推orders04
 [v]index查詢
 [v]index變更圖片icon
-[working on]index一鍵上下架
+
 [v]index頁上下架更改圖示
 [v] 所有頁面新增<div class="row">
         <div class="card">
@@ -190,9 +203,10 @@ Teacher 部分
 [v]師資預覽圖片
 [v]改成離職在職
 [v]criteria新增是否在職 controller有改
-[working on]沒有刪除師資，變成老師沒課程(if lessonId==null)和判斷老師開課時間有沒有過期才可以變成上架下架
+[v]沒有刪除師資
 [v]join teacher&lesson
-[working on]上架下架好難qq
+[v]datatable完成
+[working on]下架沒有錯誤訊息
 
 
 
@@ -226,9 +240,11 @@ Order 部分
 [working on]下拉清單寫成一個副程式
 [working on]debug課程訂單明細資料庫錯誤，
 ViewBag.LessonOrderId = new SelectList(db.LessonOrders, "LessonOrderId", "Note", lessonOrderDetail.LessonOrderId);
-[working on]criteria進階搜尋做清除搜尋
+[working on]criteria進階搜尋 做清除搜尋
 [working on]最近熱銷的五筆訂單Partial view最近熱銷的五筆甜點
-[working on]訂單狀態編輯
+[V]手風琴單筆ID做開合
+[working on]button大小間距
+
 
 
 
