@@ -213,6 +213,7 @@
         $(document).ready(function () {
             var dataTable = $('#dessertDatatable').DataTable({
                 "lengthMenu": [5, 10, 20],
+                "stateSave": true,
                 language: {
                     url: '//cdn.datatables.net/plug-ins/1.13.4/i18n/zh-HANT.json',
                 },
@@ -257,6 +258,8 @@
                         title: 'Oops...',
                         text: '此商品已下架!'
                     });
+                    button.addClass('error');
+                    return;
                 } else {
                     Swal.fire({
                         position: 'top-end',
@@ -266,7 +269,8 @@
                         timer: 1500
                     });
                 }
-                location.reload();
+                button.removeClass('error');
+                //location.reload();
             } else {
                 alert("Failed to mark desserts as down. Error: " + result.errorMessage);
             }
@@ -292,6 +296,8 @@
                         title: 'Oops...',
                         text: '此商品已上架!'
                     });
+                    button.addClass('error');
+                    return;
                 } else {
                     Swal.fire({
                         position: 'top-end',
@@ -301,7 +307,8 @@
                         timer: 1500
                     });
                 }
-                location.reload();
+                button.removeClass('error');
+                //location.reload();
             } else {
                 alert("Failed to mark desserts as down. Error: " + result.errorMessage);
             }
@@ -317,7 +324,13 @@
                 }).get();
 
                 if (selectedDessertIds.length === 0) {
-                    alert("請勾選再提交");
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Oops...',
+                        text: '請勾選在提交!'
+                    });
+                    // Add a custom attribute or update the button's class to indicate the error state
+                    button.addClass('error');
                     return;
                 }
 
@@ -334,9 +347,8 @@
                                 showConfirmButton: false,
                                 timer: 1500
                             })
-                           // alert(result.message);
-                            // Refresh the page to reflect the updated status
-                            location.reload();
+                            button.removeClass('error');
+                            //location.reload();
                         } else {
                             alert("Failed to mark desserts as down. Error: " + result.errorMessage);
                         }
@@ -353,7 +365,13 @@
                 }).get();
 
                 if (selectedDessertIds.length === 0) {
-                    alert("請勾選再提交");
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Oops...',
+                        text: '請勾選在提交!'
+                    });
+                    // Add a custom attribute or update the button's class to indicate the error state
+                    button.addClass('error');
                     return;
                 }
 
@@ -370,9 +388,8 @@
                                 showConfirmButton: false,
                                 timer: 1500
                             })
-                           // alert(result.message);
-                            // Refresh the page to reflect the updated status
-                            location.reload();
+                            button.removeClass('error');
+                            //location.reload();
                         } else {
                             alert("Failed to mark desserts as down. Error: " + result.errorMessage);
                         }

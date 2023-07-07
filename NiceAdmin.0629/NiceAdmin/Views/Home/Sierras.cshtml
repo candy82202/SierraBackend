@@ -24,8 +24,8 @@
 
                             </a>
                             @*<div class="card-footer bg-white border-top-0 d-flex">
-                                    <p class="card-text">@dessert.Description</p>
-                                </div>*@
+                                <p class="card-text">@dessert.Description</p>
+                            </div>*@
                             <div class="card-footer bg-white border-top-0 d-flex">
                                 <p class="card-text">@dessert.UnitPrice</p>
                             </div>
@@ -35,7 +35,7 @@
                     </div>
                 </div>
             }
-        </div>
+        </div>  <button id="btn"><i class="bi bi-arrow-down-circle fz26px"> </i></button>
         <div id="currentTimeContainer">
 
         </div>
@@ -44,6 +44,16 @@
 @section scripts{
 
     <script>
+        var scrollHeight = $(document).height() - $(window).height();
+        $("#btn").click(function () {
+            // $(window).scrollTop(0);
+            $("html,body").animate(
+                {
+                    scrollTop: scrollHeight,
+                },
+                900
+            );
+        });
     function updateTime() {
         $.ajax({
             url: "@Url.Action("CurrentTime", "Home")",

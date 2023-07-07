@@ -19,7 +19,8 @@ namespace NiceAdmin.Controllers
 		public ActionResult Index()
 		{
 			ViewBag.CurrentTime = DateTime.Now;
-			return View();
+            ViewBag.HotProducts = GetHotProducts();
+            return View();
 		}
 		private AppDbContext db = new AppDbContext();
 		public ActionResult Sierras(int? cId)
@@ -160,6 +161,44 @@ namespace NiceAdmin.Controllers
             return PartialView("RecentUpDesserts", recentDesserts);
 
         }
+        public ActionResult SierraIndex()
+        {
+
+            ViewBag.HotProducts = GetHotProducts();
+
+            return View();
+        }
+        //抓到熱門銷售甜點
+        private List<DessertFrontIndexVM> GetHotProducts()
+        {
+            using (var dbContext = new AppDbContext())
+            {
+                var hotProductIds = dbContext.DessertOrderDetails
+                    .GroupBy(d => d.DessertId)
+                    .OrderByDescending(g => g.Sum(d => d.Quantity))
+                    .Take(3)
+                    .Select(g => g.Key)
+                    .ToList();
+
+                var hotProductsIdsDict = hotProductIds
+    .Select((id, index) => new { Id = id, Index = index })
+    .ToDictionary(x => x.Id, x => x.Index);
+
+                var hotProducts = dbContext.Desserts
+                    .Where(d => hotProductIds.Contains(d.DessertId))
+                    .AsEnumerable()
+                    .OrderBy(d => hotProductsIdsDict[d.DessertId])
+                    .Select(d => new DessertFrontIndexVM
+                    {
+                        DessertId = d.DessertId,
+                        DessertName = d.DessertName,
+                        DessertImageName = d.DessertImages.FirstOrDefault()?.DessertImageName,
+                        UnitPrice = d.UnitPrice,
+                    })
+                    .ToList();
+                return hotProducts;
+            }
+        }
         public ActionResult Contact()
         {
             ViewBag.Message = "Your contact page.";
@@ -167,7 +206,11 @@ namespace NiceAdmin.Controllers
             return View();
         }
 
-
+        public ActionResult TSDessertsIndexPV()
+        {
+            ViewBag.HotProducts = GetHotProducts();
+            return PartialView("TSDessertsIndexPV", ViewBag.HotProducts);
+        }
 
         public ActionResult FormsLayouts() { return View(); }
         public ActionResult UsersProfile() { return View(); }

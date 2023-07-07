@@ -238,47 +238,39 @@ namespace NiceAdmin.Controllers
         //}
         public ActionResult Edit(DessertEditVM vm, List<HttpPostedFileBase> images)
         {
+            //try {
             var dessert = db.Desserts.Include(d => d.DessertImages).FirstOrDefault(d => d.DessertId == vm.DessertId);
             if (dessert == null)
             {
                 return HttpNotFound();
             }
-            var files = images;
-            //Request.Files["file"];
-            if (ModelState.IsValid && files != null)
-            {
 
-                //將file1存檔，用server.MapPath並取得最後存檔的檔案名稱
-                string path = Server.MapPath("/Uploads");//檔案要存放的資料夾位置
-                vm.DessertImageNames = new List<string>();
-                foreach (var file in files)
+            if (ModelState.IsValid)
+            {
+                // 更新其他属性
+                dessert.CategoryId = vm.CategoryId;
+                dessert.Status = vm.Status;
+                dessert.UnitPrice = vm.UnitPrice;
+                dessert.DessertName = vm.DessertName;
+                dessert.Description = vm.Description;
+
+                // 清除现有的图片
+                dessert.DessertImages.Clear();
+                // 处理上传的图片
+                if (images != null && images.Count > 0)
                 {
-                    string fileName = SaveUploadedFile(path, file);
-                    if (!string.IsNullOrEmpty(fileName))
+                    string path = Server.MapPath("/Uploads");
+                    foreach (var file in images)
                     {
-                        vm.DessertImageNames.Add(fileName);
+                        string fileName = SaveUploadedFile(path, file);
+                        if (!string.IsNullOrEmpty(fileName))
+                        {
+                            dessert.DessertImages.Add(new DessertImage { DessertImageName = fileName });
+                        }
                     }
                 }
 
-
-                var dessertInDb = db.Desserts.Find(vm.DessertId);
-                if (dessertInDb == null)
-                {
-                    return HttpNotFound();
-                }
-
-                dessertInDb.CategoryId = vm.CategoryId;
-                dessertInDb.Status = vm.Status;
-                dessertInDb.UnitPrice = vm.UnitPrice;
-                dessertInDb.DessertName = vm.DessertName;
-                dessertInDb.Description = vm.Description;
-
-                dessertInDb.DessertImages.Clear(); // 清除现有的图片
-                foreach (var imageName in vm.DessertImageNames)
-                {
-                    dessertInDb.DessertImages.Add(new DessertImage { DessertImageName = imageName });
-                }
-
+                // 保存更改
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }

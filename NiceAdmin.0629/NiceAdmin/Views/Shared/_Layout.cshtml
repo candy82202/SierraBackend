@@ -108,7 +108,12 @@
             width: 80%;
             height: 250px;
         }
-        .endCoupon {
+        .topsellImg {
+            border-radius: 5px;
+            max-width: 100px;
+            font-size: 22px;
+        }
+         .endCoupon {
             background-color: #9D9D9D;
         }
     </style>
@@ -548,7 +553,7 @@
                             <i class="bi bi-circle"></i><span>新增優惠券</span>
                         </a>
                     </li>
-                    <li>
+                    @*<li>
                         <a href="@Url.Action("Index","Discounts")">
                             <i class="bi bi-circle"></i><span>折扣清單</span>
                         </a>
@@ -557,17 +562,17 @@
                         <a href="@Url.Action("Create","Discounts")">
                             <i class="bi bi-circle"></i><span>新增折扣</span>
                         </a>
-                    </li>
+                    </li>*@
                     <li>
                         <a href="@Url.Action("Index","MemberCoupons")">
                             <i class="bi bi-circle"></i><span>會員優惠券清單</span>
                         </a>
                     </li>
-                    <li>
+                    @*<li>
                         <a href="@Url.Action("Create","MemberCoupons")">
                             <i class="bi bi-circle"></i><span>發送優惠券</span>
                         </a>
-                    </li>
+                    </li>*@
                     <li>
                         <a href="@Url.Action("Index","Promotions")">
                             <i class="bi bi-circle"></i><span>優惠活動清單</span>
