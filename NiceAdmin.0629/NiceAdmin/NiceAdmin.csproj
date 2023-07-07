@@ -264,6 +264,7 @@
     <Content Include="CodeTemplates\PackageVersions5.2.7.xml" />
     <Content Include="CodeTemplates\PackageVersions5.2.8.xml" />
     <Content Include="CodeTemplates\PackageVersions5.2.9.xml" />
+    <Content Include="Content\animation.css" />
     <Content Include="Content\style.css" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
@@ -871,7 +872,7 @@
     <Content Include="Views\Home\SierraIndex.cshtml" />
     <Content Include="Views\Home\HotDessertsPartialView.cshtml" />
     <Content Include="Views\Home\TSDessertsIndexPV.cshtml" />
-	<Content Include="Views\Shared\_Unauthorized.cshtml" />
+    <Content Include="Views\Shared\_Unauthorized.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="Scripts\vendor\chart.js\controllers\controller.bar.d.ts" />

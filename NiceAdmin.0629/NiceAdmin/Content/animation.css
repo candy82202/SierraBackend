@@ -1,0 +1,79 @@
+﻿.animation {
+    width: 100vw;
+    height: 100vh;
+    background-color: #FCCC9C;
+    position: fixed;
+    top: 0;
+    /*//這時候因為照片的z-index關係，所以要調整這個動畫的z-index避免被蓋上去*/
+    z-index: 10;
+    display: flex;
+    /* //原本字體在左上角，先把字體水平置中（這時候的字雖然置中但還在網頁最上方）*/
+    justify-content: center;
+    /* //再把字體垂直置中，這時候就會在網頁頁面的正中間了*/
+    align-items: center;
+}
+
+.content {
+    opacity: 0;
+}
+
+.content-show {
+    opacity: 1;
+}
+
+#first {
+    /*//這裡需要設定過app.js以後，先知道每個的長度是多哨，經過console.log之後知道第一個的長度是458，所以這裡設定459*/
+    stroke-dasharray: 489px;
+    stroke-dashoffset: 489px;
+    /*  //這裡製作動畫效果出來*/
+    animation: fadeInside 0.6s ease-in forwards;
+}
+
+#second {
+    stroke-dasharray: 225px;
+    stroke-dashoffset: 225px;
+    /* //這裡比第一個還要再多設定最後一個時間，也就是delay的時間，製造一點延遲的感覺*/
+    animation: fadeInside 0.6s ease-in forwards 0.3s;
+}
+
+#third {
+    stroke-dasharray: 483px;
+    stroke-dashoffset: 483px;
+    /*//這裡比第二個delay的時間，就還要再加上0.3s，這樣疊加上去*/
+    animation: fadeInside 0.6s ease-in forwards 0.6s;
+}
+
+#fourth {
+    stroke-dasharray: 505px;
+    stroke-dashoffset: 505px;
+    animation: fadeInside 0.6s ease-in forwards 0.9s;
+}
+
+#fifth {
+    stroke-dasharray: 505px;
+    stroke-dashoffset: 505px;
+    animation: fadeInside 0.6s ease-in forwards 1.2s;
+}
+
+#sixteenth {
+    stroke-dasharray: 431px;
+    stroke-dashoffset: 431px;
+    animation: fadeInside 0.6s ease-in forwards 1.5s;
+}
+
+@keyframes fadeInside {
+    to {
+        stroke-dashoffset: 0px;
+    }
+}
+
+@keyframes fill {
+    from {
+        /*原本的svg裡面fill都是設定none，但如果從無到直接填滿會太過突兀，所以這裡的fill要改成transparent*/
+        fill: transparent;
+    }
+
+    to {
+        fill: white;
+    }
+}
