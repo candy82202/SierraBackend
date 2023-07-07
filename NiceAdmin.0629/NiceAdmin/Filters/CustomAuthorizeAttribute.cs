@@ -15,7 +15,7 @@ namespace NiceAdmin.Filters
 				// 使用者已登入，但角色不符合要求，重新導向至無權使用頁面
 				filterContext.Result = new ViewResult
 				{
-					ViewName = "Unauthorized" // 無權使用頁面的視圖名稱
+					ViewName = "_Unauthorized" // 無權使用頁面的視圖名稱
 				};
 			}
 			else
@@ -25,23 +25,27 @@ namespace NiceAdmin.Filters
 			}
 		}
 
-		//protected override bool AuthorizeCore(HttpContextBase httpContext)
-		//{
-		//	if (httpContext.User.Identity.IsAuthenticated)
-		//	{
-		//		// 檢查使用者是否擁有任一角色
-		//		{
-		//			foreach (var role in Roles)
-		//			{
-		//				if (httpContext.User.IsInRole(role))
-		//				{
-		//					return true; // 具有其中一個角色的使用者被授權存取
-		//				}
-		//			}
-		//		}
+		protected override bool AuthorizeCore(HttpContextBase httpContext)
+		{
+			if (httpContext.User.Identity.IsAuthenticated)
+			{
+				// 檢查使用者是否同時擁有所有指定的角色
+				if (!string.IsNullOrEmpty(Roles))
+				{
+					//以逗號分隔 建立陣列
+					var requiredRoles = Roles.Split(',');
 
-		//		return false; // 角色不符合要求，未授權存取
-		//	}
-		//}
+					foreach (var role in requiredRoles)
+					{
+						if (!httpContext.User.IsInRole(role))
+						{
+							return false; // 若有任一角色不符合要求，未授權存取
+						}
+					}
+					return true; // 同時擁有所有指定的角色的使用者被授權存取
+				}
+			}
+			return false; // 角色不符合要求，未授權存取
+		}
 	}
 }

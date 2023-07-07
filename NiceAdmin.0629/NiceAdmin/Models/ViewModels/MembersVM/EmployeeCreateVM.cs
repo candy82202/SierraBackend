@@ -28,8 +28,8 @@ namespace NiceAdmin.Models.ViewModels.MembersVM
         // [Required]
         public HashSet<Role> Roles { get; set; }
 
-        [Display(Name = "請填選至少一個角色")]
-        [Required]
+        //[Display(Name = "請填選至少一個角色")]
+        [Required(ErrorMessage = "請填選至少一個角色")]
         public int[] RoleIds { get; set; }
     }
 }

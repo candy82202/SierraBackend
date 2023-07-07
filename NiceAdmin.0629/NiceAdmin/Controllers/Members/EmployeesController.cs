@@ -43,7 +43,7 @@ namespace NiceAdmin.Controllers.Members
 		}
 
 		// GET: Employees/Create
-		[Authorize(Roles="admin")]
+		[Authorize(Roles= "dessertSale,lessonSale")]
 		public ActionResult Create()
 		{
 			//// 原本的寫法
@@ -68,8 +68,7 @@ namespace NiceAdmin.Controllers.Members
 		// 如需詳細資料，請參閱 https://go.microsoft.com/fwlink/?LinkId=317598。
 		[HttpPost]
 		[ValidateAntiForgeryToken]
-		[Authorize(Roles = "admin")]
-		[CustomAuthorize]
+		[Authorize(Roles = "dessertSale,lessonSale")]
 		public ActionResult Create(EmployeeCreateVM vm)
 		{
 			if (ModelState.IsValid == false)
@@ -166,6 +165,7 @@ namespace NiceAdmin.Controllers.Members
 		}
 
 		// GET: Employees/Delete/5
+		[CustomAuthorize(Roles= "dessertSale,lessonSale")]
 		public ActionResult Delete(int? id)
 		{
 			if (id == null)
@@ -184,6 +184,7 @@ namespace NiceAdmin.Controllers.Members
 		// POST: Employees/Delete/5
 		[HttpPost, ActionName("Delete")]
 		[ValidateAntiForgeryToken]
+		[CustomAuthorize(Roles = "dessertSale,lessonSale")]
 		public ActionResult DeleteConfirmed(int id)
 		{
 			Employee employee = db.Employees.Find(id);

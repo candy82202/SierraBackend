@@ -2,6 +2,34 @@
 	ViewBag.Title = "無權使用";
 }
 
-<h2>您無權使用</h2>
-<p>很抱歉，您沒有足夠的權限來存取此頁面。</p>
+@*<main id="main" class="main ">
+	<div class="pagetitle ">
+		
+		
+	</div>
 
+	<h2 class="text-center">權限不足</h2>
+	<p class="text-center">很抱歉，您沒有足夠的權限來存取此頁面。</p>
+
+
+
+</main>*@
+
+
+<main>
+	<div class="container">
+		<section class="section error-404 min-vh-100 d-flex flex-column align-items-center justify-content-center">
+			<h1>404</h1>
+			<h2>權限不足</h2>
+			<p class="text-center">很抱歉，您沒有足夠的權限來存取此頁面。</p>
+			<a class="btn" href="@Url.Action("Index","Home")">返回首頁</a>
+			<img src="~assets/img/not-found.svg"
+				 class="img-fluid py-5"
+				 alt="Page Not Found" />
+			<div class="credits">
+
+				Designed by <a href="@Url.Action("Index","Home")">Sierra</a>
+			</div>
+		</section>
+	</div>
+</main>
