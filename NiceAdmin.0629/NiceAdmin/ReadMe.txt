@@ -47,7 +47,7 @@
         - 資料庫新增欄位 Desserts ScheduledPublishDate && Delete MemberCoupon Status
         - 
 
-[V] - 首頁 新上架的5筆甜點呈現
+[V] - 首頁 新上架的5筆甜點呈現 熱銷 3 款甜點呈現
 
 [V] - 針對404錯誤訊息畫面 修改web.config畫面，圖片更新完成
     - 跟其他錯誤頁面的圖片更新畫面
@@ -58,7 +58,8 @@
     - 新增Logo
     - 字體顏色調整
     - 顯示CurrentTime去比對
-
+    - 首頁輪播照片
+    - 3款 熱門銷售甜點
 =========================================================
 Desserts 部分
 
@@ -81,11 +82,12 @@ Desserts 部分
 [V] - Desserts Index Create Update use card style
 
 [V] - 新增多張圖顯示
+    - 編輯照片更改成圖示 <img>
 
 [V] - AJAX 甜點清單頁面
 
 [working on] - 編輯照片新增欄位(簡易編輯)
-             - 照片更改成圖示 <img>
+             - 
 
 
 ==========================================================

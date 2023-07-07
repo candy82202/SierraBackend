@@ -941,7 +941,7 @@ h6 {
 
 /* Top Selling */
 .dashboard .top-selling {
-  font-size: 14px;
+  font-size: 22px;
 }
 
 .dashboard .top-selling .table thead {
@@ -958,7 +958,7 @@ h6 {
 
 .dashboard .top-selling img {
   border-radius: 5px;
-  max-width: 60px;
+  max-width: 100px;
 }
 
 /*--------------------------------------------------------------

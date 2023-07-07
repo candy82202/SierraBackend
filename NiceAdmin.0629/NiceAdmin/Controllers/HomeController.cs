@@ -19,7 +19,8 @@ namespace NiceAdmin.Controllers
 		public ActionResult Index()
 		{
 			ViewBag.CurrentTime = DateTime.Now;
-			return View();
+            ViewBag.HotProducts = GetHotProducts();
+            return View();
 		}
 		private AppDbContext db = new AppDbContext();
 		public ActionResult Sierras(int? cId)
@@ -167,7 +168,7 @@ namespace NiceAdmin.Controllers
 
             return View();
         }
-
+        //抓到熱門銷售甜點
         private List<DessertFrontIndexVM> GetHotProducts()
         {
             using (var dbContext = new AppDbContext())
@@ -205,7 +206,11 @@ namespace NiceAdmin.Controllers
             return View();
         }
 
-
+        public ActionResult TSDessertsIndexPV()
+        {
+            ViewBag.HotProducts = GetHotProducts();
+            return PartialView("TSDessertsIndexPV", ViewBag.HotProducts);
+        }
 
         public ActionResult FormsLayouts() { return View(); }
         public ActionResult UsersProfile() { return View(); }
