@@ -19,6 +19,7 @@ namespace NiceAdmin.Models.ViewModels.MembersVM
 				EmployeeId = emp.EmployeeId,
 				EmployeeName = emp.EmployeeName,
 				CreateAt = emp.CreateAt,
+				ImageName = emp.ImageName,
 				Roles = (HashSet<Role>)emp.Roles
 			};
 		}
