@@ -134,7 +134,8 @@ Member 部分
 [V] - fix little bug in EmployeeCreateVM.cs & Employees/Edit.cshtml
 [V] - profile user name
 [working on] - members criteria
-[working on] - modify icon size in /Employees/Index
+[V] - modify icon size in /Employees/Index
+[V] - rememberMe(bug exist)
 
 
 ==========================================================
