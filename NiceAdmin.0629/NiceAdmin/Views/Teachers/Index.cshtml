@@ -7,6 +7,10 @@
     var criteria = ViewBag.Criteria as NiceAdmin.Models.ViewModels.TeachersVM.TeacherCriteria;
 
 }
+@if (!string.IsNullOrEmpty(ViewBag.ErrorMessage))
+{
+    <div class="alert alert-danger">@ViewBag.ErrorMessage</div>
+}
 <main id="main" class="main">
     <div class="row">
         <div class="card">
@@ -21,48 +25,15 @@
                         </ol>
                     </nav>
                 </div>
-                <ul class="nav nav-tabs" id="myTab" role="tablist">
-                    <li class="nav-item" role="presentation">
-                        <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home" type="button" role="tab" aria-controls="home" aria-selected="true"><i class="bi bi-box-arrow-in-up"></i>在職</button>
-                    </li>
-                    <li class="nav-item" role="presentation">
-                        <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile" type="button" role="tab" aria-controls="profile" aria-selected="false"><i class="bi bi-box-arrow-in-down"></i>離職</button>
-                    </li>
-                    <li class="nav-item" role="presentation">
-                        <button class="nav-link" id="contact-tab" data-bs-toggle="tab" data-bs-target="#contact" type="button" role="tab" aria-controls="contact" aria-selected="false">Contact</button>
-                    </li>
-                </ul>
-                <div class="tab-content pt-2" id="myTabContent">
-                    <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
-                        <div class="card-body">
-                            <h5 class="card-title">
-                                最新上架 <span>| 五筆 </span>
-                            </h5>
-                            @*@{ Html.RenderAction("RecentDesserts", "Home"); }*@
-
-                        </div>
-                    </div>
-                    <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-                        <div class="card-body">
-                            <h5 class="card-title">
-                                下架師資 <span>| 全部 </span>
-                            </h5>
-                            @{ Html.RenderAction("DownTeachers", "Teachers"); }
-
-                        </div>
-                    </div>
-                </div>
-                <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
-                    類別
-                </div>
             </div>
         </div>
     </div>
-    <!-- End Page Title -->
+
     <div class="row">
         <div class="card">
             <div class="card-body">
                 <div class="pagetitle mt-3">
+
                     <section class="container">
                         <form method="get" autocomplete="off" action="@Url.Action("Index", "Teachers")">
                             <div class="row" autocomplete" style="width:100%;">
@@ -87,15 +58,6 @@
                         <table class="table table-striped table-hover datatable" id="teacherDatatable">
                             <thead>
                                 <tr>
-                                    <th scope="col">
-                                        <div class="form-check p-0">
-                                            <input type="checkbox" class="selectAllTeacher" name="selectAllTeacher" value="all">
-                                            <input class="form-check-input" type="checkbox" value="" id="selectIndexAllCheckbox" />
-                                            <label class="form-check-label" for="selectAllCheckbox">
-                                                全選
-                                            </label>
-                                        </div>
-                                    </th>
                                     <th class="d-none">
                                         @Html.DisplayNameFor(model => model.TeacherId)
                                     </th>
@@ -129,11 +91,7 @@
                                 @foreach (var item in Model)
                                 {
                                     <tr>
-                                        <td>
-                                            <label class="form-check">
-                                                <input class="form-check-input childCheckboxTeacher" type="checkbox" value="" data-checkbox="childCheckbox" />
-                                            </label>
-                                        </td>
+
                                         <td class="d-none">
                                             @Html.DisplayFor(modelItem => item.TeacherId)
                                         </td>
@@ -173,23 +131,13 @@
                                         <td>
                                             <i class="bi bi-pencil-square">  </i> @Html.ActionLink("Edit", "Edit", new { id = item.TeacherId })|
                                             @Html.ActionLink("變更圖片", "EditImage", new { id = item.TeacherId }) |
-                                            @*@Html.ActionLink("Delete", "Delete", new { id = item.TeacherId })*@
-                                            @Html.ActionLink("下架", "DownTeachers", new { id = item.TeacherId })
-                                            @Html.ActionLink("上架", "UpdateTeacherStatus", new { id = item.TeacherId })
-                                            <button class="btn btn-outline-success btn-sm upDest " data-id="@item.TeacherId">上架</button>
-                                            <button class="btn btn-outline-danger btn-sm dwDest " data-id="@item.TeacherId">下架</button>
-                                            <input type="hidden" name="teacherIds[]" value="@item.TeacherId" />
+                                            @Html.ActionLink("下架", "DownTeachers", new { id = item.TeacherId }) 
                                         </td>
                                     </tr>
                                 }
                             </tbody>
                         </table>
-                        <form id="downForm" action="@Url.Action("DownTeachers", "Teachers")" method="post">
-                            <div class="me-3">
-                                <button type="button" class="btn btn-outline-success" id="upButton">上架</button>
-                                <button type="button" class="btn btn-outline-danger" id="downButton">下架</button>
-                            </div>
-                        </form>
+
                     </div>
                 </div>
             </div>
@@ -198,7 +146,7 @@
 </main>
 @section Scripts{
     <script>
-         $(document).ready(function () {
+        $(document).ready(function () {
             var dataTable = $('#teacherDatatable').DataTable({
                 "lengthMenu": [5, 10, 20],
                 language: {
@@ -206,281 +154,123 @@
                 },
 
             });
+            
 
-            var selectAllCheckboxTeacher = $('.selectAllTeacher');
-            var checkboxesTeacher = $('tbody .childCheckboxTeacher');
 
-            // 全選 checkbox 的變更事件監聽器
-            //當全選組件的選中狀態更改時，該事件處理程序將所有子組件的選中狀態與全選組件保持一致。
-            selectAllCheckboxTeacher.on('change', function () {
-                checkboxesTeacher.prop('checked', $(this).is(':checked'));
-            });
+            //這段是要做AutoComplete
+            var teachers = ["老師", "甜點", "專家", "證書", "學位", "課程", "烘焙", "吳", "糕點", "巧克力", "法式", "張"]
+            /*function autocomplete(inp, arr) { ... }：這是一個自訂的自動完成函式。
+            它接收兩個參數，inp代表文字輸入框的元素，arr代表建議項目的陣列。*/
+            function autocompleteTeachers(inp, arr) {
 
-            // 下方 checkbox 的变更事件监听器
-            checkboxesTeacher.on('change', function () {
-                var currentPageRecords = dataTable.rows({ page: 'current' }).nodes();
-                var allRecordsSelected = Array.from(currentPageRecords).every(function (record) {
-                    return !record.querySelector('.childCheckboxTeacher:not(:checked)');
-                });
+                var currentFocus;
 
-                selectAllCheckboxTeacher.prop('checked', allRecordsSelected);
-            });
+                /*inp.addEventListener("input", function (e) { ... })：
+                這是一個事件監聽器，當使用者在輸入框中輸入文字時觸發。它會根據輸入的文字篩選建議項目並顯示。*/
+                inp.addEventListener("input", function (e) {
+                    var a, b, i, val = this.value;
 
-            $('.dwDest').click(function () {
-    var teacherId = $(this).data('id');
-
-    $.ajax({
-        url: '@Url.Action("UpdateTeacherStatus", "Teachers")',
-        type: 'POST',
-        data: { teacherId: teacherId, status: false }, // Pass the status as false for down
-        success: function (result) {
-            if (result.success) {
-                if (result.message === "此課程已下架") {
-                    Swal.fire({
-                        icon: 'error',
-                        title: 'Oops...',
-                        text: '此課程已下架!'
-                    });
-                } else {
-                    Swal.fire({
-                        position: 'top-end',
-                        icon: 'success',
-                        title: `${result.message}`,
-                        showConfirmButton: false,
-                        timer: 1500
-                    });
-                }
-                location.reload();
-            } else {
-                alert("Failed to mark trachers as down. Error: " + result.errorMessage);
-            }
-        },
-        error: function () {
-            alert("An error occurred while marking trachers as down.");
-        }
-    });
-});
-
-    $('.upDest').click(function () {
-    var teacherId = $(this).data('id');
-
-    $.ajax({
-        url: '@Url.Action("UpdateTeacherStatus", "Teachers")',
-        type: 'POST',
-        data: { teacherId: teacherId, status: true }, // Pass the status as true for up
-        success: function (result) {
-            if (result.success) {
-                if (result.message === "此課程已上架") {
-                    Swal.fire({
-                        icon: 'error',
-                        title: 'Oops...',
-                        text: '此課程已上架!'
-                    });
-                } else {
-                    Swal.fire({
-                        position: 'top-end',
-                        icon: 'success',
-                        title: `${result.message}`,
-                        showConfirmButton: false,
-                        timer: 1500
-                    });
-                }
-                location.reload();
-            } else {
-                alert("Failed to mark teachers as down. Error: " + result.errorMessage);
-            }
-        },
-        error: function () {
-            alert("An error occurred while marking teachers as down.");
-        }
-    });
-});
-            $('#downButton').click(function () {
-                var selectedTeachersIds = $('.childCheckboxTeacher:checked').map(function () {
-                    return parseInt($(this).closest('tr').find('.teacherId').text());
-                }).get();
-
-                if (selectedTeachersIds.length === 0) {
-                    alert("請勾選再提交");
-                    return;
-                }
-
-                $.ajax({
-                    url: '@Url.Action("DownTeachers", "Teachers")',
-                    type: 'POST',
-                    data: { teacherIds: selectedTeachersIds },
-                    success: function (result) {
-                        if (result.success) {
-                            Swal.fire({
-                                position: 'top-end',
-                                icon: 'success',
-                                title: `${result.message}`,
-                                showConfirmButton: false,
-                                timer: 1500
-                            })
-                           // alert(result.message);
-                            // Refresh the page to reflect the updated status
-                            location.reload();
-                        } else {
-                            alert("Failed to mark desserts as down. Error: " + result.errorMessage);
+                    /*closeAllLists() 函式：
+                    這個函式用於關閉所有已打開的建議清單，以便在選擇建議項目後或點擊其他地方時關閉它們。*/
+                    closeAllLists();
+                    if (!val) { return false; }
+                    currentFocus = -1;
+                    /*create a DIV element that will contain the items (values):*/
+                    a = document.createElement("DIV");
+                    a.setAttribute("id", this.id + "autocomplete-list");
+                    a.setAttribute("class", "autocomplete-items");
+                    /*append the DIV element as a child of the autocomplete container:*/
+                    this.parentNode.appendChild(a);
+                    /*for each item in the array...*/
+                    for (i = 0; i < arr.length; i++) {
+                        /*check if the item starts with the same letters as the text field value:*/
+                        if (arr[i].substr(0, val.length).toUpperCase() == val.toUpperCase()) {
+                            /*create a DIV element for each matching element:*/
+                            b = document.createElement("DIV");
+                            /*make the matching letters bold:*/
+                            b.innerHTML = "<strong>" + arr[i].substr(0, val.length) + "</strong>";
+                            b.innerHTML += arr[i].substr(val.length);
+                            /*insert a input field that will hold the current array item's value:*/
+                            b.innerHTML += "<input type='hidden' value='" + arr[i] + "'>";
+                            /*execute a function when someone clicks on the item value (DIV element):*/
+                            b.addEventListener("click", function (e) {
+                                /*insert the value for the autocomplete text field:*/
+                                inp.value = this.getElementsByTagName("input")[0].value;
+                                /*close the list of autocompleted values,
+                                (or any other open lists of autocompleted values:*/
+                                closeAllLists();
+                            });
+                            a.appendChild(b);
                         }
-                    },
-                    error: function () {
-                        alert("An error occurred while marking teachers as down.");
                     }
                 });
-            });
+                /*execute a function presses a key on the keyboard:*/
+                inp.addEventListener("keydown", function (e) {
+                    var x = document.getElementById(this.id + "autocomplete-list");
+                    if (x) x = x.getElementsByTagName("div");
+                    if (e.keyCode == 40) {
+                        /*If the arrow DOWN key is pressed,
+                        increase the currentFocus variable:*/
+                        currentFocus++;
 
-            $('#upButton').click(function () {
-                var selectedTeachersIds = $('.childCheckboxTeacher:checked').map(function () {
-                    return parseInt($(this).closest('tr').find('.teacherId').text());
-                }).get();
 
-                if (selectedTeachersIds.length === 0) {
-                    alert("請勾選再提交");
-                    return;
-                }
-
-                $.ajax({
-                    url: '@Url.Action("UpTeachers", "Teachers")',
-                    type: 'POST',
-                    data: { teacherIds: selectedTeachersIds },
-                    success: function (result) {
-                        if (result.success) {
-                            Swal.fire({
-                                position: 'top-end',
-                                icon: 'success',
-                                title: `${result.message}`,
-                                showConfirmButton: false,
-                                timer: 1500
-                            })
-                           // alert(result.message);
-                            // Refresh the page to reflect the updated status
-                            location.reload();
-                        } else {
-                            alert("Failed to mark teachers as down. Error: " + result.errorMessage);
+                        /*and and make the current item more visible:*/
+                        addActive(x);
+                    } else if (e.keyCode == 38) { //up
+                        /*If the arrow UP key is pressed,
+                        decrease the currentFocus variable:*/
+                        currentFocus--;
+                        /*and and make the current item more visible:*/
+                        addActive(x);
+                    } else if (e.keyCode == 13) {
+                        /*If the ENTER key is pressed, prevent the form from being submitted,*/
+                        e.preventDefault();
+                        if (currentFocus > -1) {
+                            /*and simulate a click on the "active" item:*/
+                            if (x) x[currentFocus].click();
                         }
-                    },
-                    error: function () {
-                        alert("An error occurred while marking teachers as down.");
                     }
                 });
-            });
-        });
-        //這段是要做AutoComplete
-        var teachers = ["老師", "甜點", "專家", "證書", "學位", "課程", "烘焙", "吳", "糕點", "巧克力", "法式", "張"]
-        /*function autocomplete(inp, arr) { ... }：這是一個自訂的自動完成函式。
-        它接收兩個參數，inp代表文字輸入框的元素，arr代表建議項目的陣列。*/
-        function autocompleteTeachers(inp, arr) {
 
-            var currentFocus;
+                //addActive() 函式：這個函式用於將某個建議項目標記為選中狀態，以便使用者可以使用鍵盤的上下鍵選擇不同的項目。
+                function addActive(x) {
+                    /*a function to classify an item as "active":*/
+                    if (!x) return false;
 
-            /*inp.addEventListener("input", function (e) { ... })：
-            這是一個事件監聽器，當使用者在輸入框中輸入文字時觸發。它會根據輸入的文字篩選建議項目並顯示。*/
-            inp.addEventListener("input", function (e) {
-                var a, b, i, val = this.value;
 
-                /*closeAllLists() 函式：
-                這個函式用於關閉所有已打開的建議清單，以便在選擇建議項目後或點擊其他地方時關閉它們。*/
-                closeAllLists();
-                if (!val) { return false; }
-                currentFocus = -1;
-                /*create a DIV element that will contain the items (values):*/
-                a = document.createElement("DIV");
-                a.setAttribute("id", this.id + "autocomplete-list");
-                a.setAttribute("class", "autocomplete-items");
-                /*append the DIV element as a child of the autocomplete container:*/
-                this.parentNode.appendChild(a);
-                /*for each item in the array...*/
-                for (i = 0; i < arr.length; i++) {
-                    /*check if the item starts with the same letters as the text field value:*/
-                    if (arr[i].substr(0, val.length).toUpperCase() == val.toUpperCase()) {
-                        /*create a DIV element for each matching element:*/
-                        b = document.createElement("DIV");
-                        /*make the matching letters bold:*/
-                        b.innerHTML = "<strong>" + arr[i].substr(0, val.length) + "</strong>";
-                        b.innerHTML += arr[i].substr(val.length);
-                        /*insert a input field that will hold the current array item's value:*/
-                        b.innerHTML += "<input type='hidden' value='" + arr[i] + "'>";
-                        /*execute a function when someone clicks on the item value (DIV element):*/
-                        b.addEventListener("click", function (e) {
-                            /*insert the value for the autocomplete text field:*/
-                            inp.value = this.getElementsByTagName("input")[0].value;
-                            /*close the list of autocompleted values,
-                            (or any other open lists of autocompleted values:*/
-                            closeAllLists();
-                        });
-                        a.appendChild(b);
+                    /*start by removing the "active" class on all items:*/
+                    removeActive(x);
+                    if (currentFocus >= x.length) currentFocus = 0;
+                    if (currentFocus < 0) currentFocus = (x.length - 1);
+                    /*add class "autocomplete-active":*/
+                    x[currentFocus].classList.add("autocomplete-active");
+                }
+
+                //removeActive() 函式：這個函式用於移除所有建議項目的選中狀態。
+                function removeActive(x) {
+                    /*a function to remove the "active" class from all autocomplete items:*/
+                    for (var i = 0; i < x.length; i++) {
+                        x[i].classList.remove("autocomplete-active");
                     }
                 }
-            });
-            /*execute a function presses a key on the keyboard:*/
-            inp.addEventListener("keydown", function (e) {
-                var x = document.getElementById(this.id + "autocomplete-list");
-                if (x) x = x.getElementsByTagName("div");
-                if (e.keyCode == 40) {
-                    /*If the arrow DOWN key is pressed,
-                    increase the currentFocus variable:*/
-                    currentFocus++;
-
-
-                    /*and and make the current item more visible:*/
-                    addActive(x);
-                } else if (e.keyCode == 38) { //up
-                    /*If the arrow UP key is pressed,
-                    decrease the currentFocus variable:*/
-                    currentFocus--;
-                    /*and and make the current item more visible:*/
-                    addActive(x);
-                } else if (e.keyCode == 13) {
-                    /*If the ENTER key is pressed, prevent the form from being submitted,*/
-                    e.preventDefault();
-                    if (currentFocus > -1) {
-                        /*and simulate a click on the "active" item:*/
-                        if (x) x[currentFocus].click();
+                function closeAllLists(elmnt) {
+                    /*close all autocomplete lists in the document,
+                    except the one passed as an argument:*/
+                    var x = document.getElementsByClassName("autocomplete-items");
+                    for (var i = 0; i < x.length; i++) {
+                        if (elmnt != x[i] && elmnt != inp) {
+                            x[i].parentNode.removeChild(x[i]);
+                        }
                     }
                 }
-            });
-
-            //addActive() 函式：這個函式用於將某個建議項目標記為選中狀態，以便使用者可以使用鍵盤的上下鍵選擇不同的項目。
-            function addActive(x) {
-                /*a function to classify an item as "active":*/
-                if (!x) return false;
-
-
-                /*start by removing the "active" class on all items:*/
-                removeActive(x);
-                if (currentFocus >= x.length) currentFocus = 0;
-                if (currentFocus < 0) currentFocus = (x.length - 1);
-                /*add class "autocomplete-active":*/
-                x[currentFocus].classList.add("autocomplete-active");
+                /*execute a function when someone clicks in the document:*/
+                document.addEventListener("click", function (e) {
+                    closeAllLists(e.target);
+                });
             }
 
-            //removeActive() 函式：這個函式用於移除所有建議項目的選中狀態。
-            function removeActive(x) {
-                /*a function to remove the "active" class from all autocomplete items:*/
-                for (var i = 0; i < x.length; i++) {
-                    x[i].classList.remove("autocomplete-active");
-                }
-            }
-            function closeAllLists(elmnt) {
-                /*close all autocomplete lists in the document,
-                except the one passed as an argument:*/
-                var x = document.getElementsByClassName("autocomplete-items");
-                for (var i = 0; i < x.length; i++) {
-                    if (elmnt != x[i] && elmnt != inp) {
-                        x[i].parentNode.removeChild(x[i]);
-                    }
-                }
-            }
-            /*execute a function when someone clicks in the document:*/
-            document.addEventListener("click", function (e) {
-                closeAllLists(e.target);
-            });
-        }
-
-        //autocomplete() 函式的餘下部分處理事件監聽和與建議項目相關的邏輯，包括創建建議項目的 DIV 元素、將它們添加到 DOM 中、監聽建議項目的點擊事件等。
-        autocompleteTeachers(document.getElementById("s_name"), teachers);
+            //autocomplete() 函式的餘下部分處理事件監聽和與建議項目相關的邏輯，包括創建建議項目的 DIV 元素、將它們添加到 DOM 中、監聽建議項目的點擊事件等。
+            autocompleteTeachers(document.getElementById("s_name"), teachers);
     </script>
 }
 

@@ -246,6 +246,7 @@
     <Compile Include="Models\ViewModels\TeachersVM\TeacherExts.cs" />
     <Compile Include="Models\ViewModels\TeachersVM\TeacherIndexPartVM.cs" />
     <Compile Include="Models\ViewModels\TeachersVM\TeacherIndexVM.cs" />
+    <Compile Include="Models\ViewModels\TeachersVM\UpdateTeacherStatusVM.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -865,7 +866,6 @@
     <Content Include="Views\Teachers\DownTeachers.cshtml" />
     <Content Include="Views\Lessons\EditImg.cshtml" />
     <Content Include="Views\Shared\_LayoutLogin.cshtml" />
-    <Content Include="Views\Teachers\DownTeachers.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="Scripts\vendor\chart.js\controllers\controller.bar.d.ts" />

@@ -16,8 +16,9 @@ namespace NiceAdmin.Controllers.Orders
         private AppDbContext db = new AppDbContext();
 
         // GET: DessertOrders
-        public ActionResult Index()
+        public ActionResult Index(int page = 1, string sortColumn = "DessertOrderId", string sortOrder = "asc")
         {
+
             var dessertOrders = db.DessertOrders.Include(d=>d.DessertOrderDetails).Include(d => d.Member).Include(d => d.OrderStatus)
                 .ToList()
                 .Select(d => d.TOIndexVM());

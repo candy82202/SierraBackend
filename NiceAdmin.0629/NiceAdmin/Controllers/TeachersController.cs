@@ -7,6 +7,7 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.UI.WebControls;
 using NiceAdmin.Models.EFModels;
 using NiceAdmin.Models.ViewModels;
 using NiceAdmin.Models.ViewModels.TeachersVM;
@@ -20,13 +21,13 @@ namespace NiceAdmin.Controllers
         // GET: Teachers
         public ActionResult Index(TeacherCriteria criteria)
         {
-           
+
             ViewBag.Criteria = criteria;
             //查詢紀錄，由於第一次進到網頁時，criteria是沒有值的
-            var query = db.Teachers.ToList().Select(t=>t.TOIndexVM());//T指ENTITY
+            var query = db.Teachers.ToList().Select(t => t.TOIndexVM());//T指ENTITY
             if (string.IsNullOrEmpty(criteria.TeacherName) == false)
             {
-                query = query.Where(t=>t.TeacherName.Contains(criteria.TeacherName)).ToList();
+                query = query.Where(t => t.TeacherName.Contains(criteria.TeacherName)).ToList();
             }
             if (string.IsNullOrEmpty(criteria.TeacherStatusText) == false)
             {
@@ -39,7 +40,8 @@ namespace NiceAdmin.Controllers
             }
             //var teachers = db.Teachers.ToList();
             //var teacherViewModels = teachers.Select(t => t.TOIndexVM()).ToList();
-
+            // 從 TempData 中讀取錯誤訊息
+            ViewBag.ErrorMessage = TempData["ErrorMessage"];
             return View(query);
         }
         // 清除搜尋條件的動作方法
@@ -73,7 +75,7 @@ namespace NiceAdmin.Controllers
         // 如需詳細資料，請參閱 https://go.microsoft.com/fwlink/?LinkId=317598。
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(TeacherCreateVM vm,HttpPostedFileBase file1)
+        public ActionResult Create(TeacherCreateVM vm, HttpPostedFileBase file1)
         {
             if (ModelState.IsValid)
             {
@@ -90,32 +92,32 @@ namespace NiceAdmin.Controllers
                 db.Teachers.Add(teacher);
                 db.SaveChanges();
 
-                
+
                 return RedirectToAction("Index");
                 //如果驗證失敗，停留在本網頁
 
-                
+
             }
 
-            
+
             return View(vm);
         }
 
         private string SaveUploadedFile(string path, HttpPostedFileBase file1)
         {
             //如果沒有上傳檔案或檔案是空的，就不處理，傳回string.empty
-            if(file1 == null ||file1.ContentLength == 0) return string.Empty;
+            if (file1 == null || file1.ContentLength == 0) return string.Empty;
             //取得上傳檔案的副檔名
-            string ext =System.IO.Path.GetExtension(file1.FileName);
-            
+            string ext = System.IO.Path.GetExtension(file1.FileName);
+
 
             //如果副檔名不在允許的範圍裡，表示上傳不合理的檔案類型，就不處理，傳回string.empty
-            string[] allowedExts = new string[] { ".jpg",".jpeg",".png",".tif"};
-            if(allowedExts.Contains(ext.ToLower())==false) return string.Empty;
+            string[] allowedExts = new string[] { ".jpg", ".jpeg", ".png", ".tif" };
+            if (allowedExts.Contains(ext.ToLower()) == false) return string.Empty;
             //生成一個不會重複的檔名(newFileName檔案)
-            string newFileName =Guid.NewGuid().ToString("N")+ext;
-           
-            string fullName =System.IO.Path.Combine(path,newFileName);
+            string newFileName = Guid.NewGuid().ToString("N") + ext;
+
+            string fullName = System.IO.Path.Combine(path, newFileName);
             //將上傳檔案存放到指定位置(fullName路徑)
             file1.SaveAs(fullName);
             //傳回存放的檔名(檔案)
@@ -134,7 +136,7 @@ namespace NiceAdmin.Controllers
             {
                 return HttpNotFound();
             }
-            
+
 
             return View(teacher.TOEditVM());
         }
@@ -211,7 +213,7 @@ namespace NiceAdmin.Controllers
             return View(vm);
         }
 
-        
+
 
 
 
@@ -228,7 +230,7 @@ namespace NiceAdmin.Controllers
                 return HttpNotFound();
             }
 
-            TeacherDeleteVM vm = teacher.TODeleteVM(); 
+            TeacherDeleteVM vm = teacher.TODeleteVM();
             return View(vm);
         }
 
@@ -242,136 +244,32 @@ namespace NiceAdmin.Controllers
             db.SaveChanges();
             return RedirectToAction("Index");
         }
-        [HttpPost]
-        public ActionResult UpTeachers(List<int> teacherIds)
+        
+        public ActionResult DownTeachers(int? id)
         {
-            if (teacherIds == null || teacherIds.Count == 0)
-            {
-                return View("Error");
-                // 如果沒有選擇任何老師，可以在這裡給出提示或執行相應處理             
-            }
-            else
-            {
-                try
-                {
-                    // 根据选择的teacherIds进行在職处理
-                    var teachesToUpdate = db.Teachers.Where(t => teacherIds.Contains(t.TeacherId)).ToList();
-                    foreach (var teacher in teachesToUpdate)
-                    {
-                        teacher.TeacherStatus = true; // 在職
-                    }
-                    // 更新数据库
-                    db.SaveChanges();
-                    // 重新導向回教師清單
-                    //return RedirectToAction("Index");
-                    //return Json(new { success = true });
-                    return Json(new { success = true, message = "上架成功" });
-                }
-                catch
-                {
-                    return Json(new { success = false, errorMessage = "查無教師資料" });
-                }
-            }
-        }
-        [HttpPost]
-        public ActionResult DownTeachers(List<int> teacherIds)
-        {
-            if (teacherIds == null || teacherIds.Count == 0)
-            {
-                return View("Error");
-                // 如果沒有選擇任何教師，可以在這裡給出提示或執行相應處理             
-            }
-            else
-            {
-                try
-                {
-                    // 根据选择的teacherIds进行下架处理
-                    var teachersToUpdate = db.Teachers.Where(t => teacherIds.Contains(t.TeacherId)).ToList();
-                    foreach (var teacher in teachersToUpdate)
-                    {
-                        teacher.TeacherStatus = false; // 離職
-                    }
-                    // 更新数据库
-                    db.SaveChanges();
-                    // 重新導向回師資清單
-                    //return RedirectToAction("Index");
-                    //return Json(new { success = true });
-                    return Json(new { success = true, message = "下架成功" });
-                }
-                catch
-                {
-                    return Json(new { success = false, errorMessage = "查無教師資料" });
-                }
-            }
-        }
-       
-        public ActionResult UpdateTeacherStatus(int teacherId, bool teacherStatus)
-        {
-            try
-            {
-                var teacherToUpdate = db.Teachers.Find(teacherId);
-                if (teacherToUpdate == null)
-                {
-                    return Json(new { success = false, errorMessage = "Invalid teacher ID." });
-                }
+            if (id == null) return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            var teacherInDb = db.Teachers.Find(id);
+            if (teacherInDb == null) return HttpNotFound();
 
-                bool previousStatus = teacherToUpdate.TeacherStatus; // Get the previous status
-                teacherToUpdate.TeacherStatus = teacherStatus; // Set status based on the parameter
-
-                // Join Lessons table to retrieve LessonTitle
-                var teacherWithLessons = from teacher in db.Teachers
-                                         join lesson in db.Lessons on teacher.TeacherId equals lesson.TeacherId
-                                         where teacher.TeacherId == teacherId
-                                         select new
-                                         {
-                                             Teacher = teacher,
-                                             LessonTitle = lesson.LessonTitle
-                                         };
-
-                // Retrieve the LessonTitle from the joined result
-                string lessonTitle = teacherWithLessons.FirstOrDefault()?.LessonTitle;
+            // if (vm.TeacherStatus == false) { }
+            var lessonsTime = db.Lessons.ToList().Where(l => l.TeacherId == id).Select(tl => tl.LessonTime);
+            var isLessonsOver = lessonsTime.All(t => t < new DateTime(2023, 12, 31));
+            if (isLessonsOver)
+            {
+                teacherInDb.TeacherStatus = false;
 
                 db.SaveChanges();
-
-                string message = teacherStatus ? "上架成功" : "下架成功";
-
-                if (teacherStatus && previousStatus)
-                {
-                    message = "此教師已在職";
-                }
-                else if (!teacherStatus && !previousStatus)
-                {
-                    message = "此教師已離職";
-                }
-
-                return Json(new { success = true, message, lessonTitle });
+                return RedirectToAction("Index");
             }
-            catch
+            else
             {
-                return Json(new { success = false, errorMessage = "查無教師資料" });
+                ModelState.AddModelError("", "發生錯誤訊息");
+                TempData["ErrorMessage"] = "發生錯誤訊息"; // 將錯誤訊息存入 TempData
+
+
+                return RedirectToAction("Index");
             }
         }
-
-
-        public ActionResult DownTeachers()
-        {
-            var downTeachers = db.Teachers
-        .Join(db.Lessons,
-            teacher => teacher.TeacherId,
-            lesson => lesson.TeacherId,
-            (teacher, lesson) => new { Teacher = teacher, Lesson = lesson })
-        .Where(joinResult => joinResult.Teacher.TeacherStatus == false)
-        .OrderByDescending(joinResult => joinResult.Lesson.CreateTime)
-        .ToList() // 执行查询并将结果映射到内存中的列表
-        .Select(joinResult => joinResult.Teacher.ToIndexPartVM(joinResult.Lesson.CreateTime))
-        .ToList();
-
-            return PartialView("DownTeachers", downTeachers);
-            
-        }
-
-
-
         protected override void Dispose(bool disposing)
         {
             if (disposing)
@@ -381,7 +279,7 @@ namespace NiceAdmin.Controllers
             base.Dispose(disposing);
         }
     }
-    
 
-    
+
+
 }
