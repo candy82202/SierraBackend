@@ -147,6 +147,5 @@ namespace NiceAdmin.Models.EFModels
                 .WithRequired(e => e.Teacher)
                 .WillCascadeOnDelete(false);
         }
-        public System.Data.Entity.DbSet<NiceAdmin.Models.ViewModels.TeachersVM.UpdateTeacherStatusVM> UpdateTeacherStatusVMs { get; set; }
     }
 }
