@@ -1,93 +1,111 @@
 ﻿@model NiceAdmin.Models.ViewModels.MembersVM.EmployeeCreateVM
 
 @{
-	ViewBag.Title = "Create";
+    ViewBag.Title = "Create";
 }
 
 <main id="main" class="main">
-	<div class="pagetitle">
-		<h1>新增員工</h1>
-		<nav>
-			<ol class="breadcrumb">
-				<li class="breadcrumb-item"><a href="@Url.Action("Index","Home")">首頁</a></li>
-				<li class="breadcrumb-item"><a href="@Url.Action("Index","Members")">會員清單</a></li>
-				<li class="breadcrumb-item"><a href="@Url.Action("Index","Employees")">員工清單</a></li>
-				<li class="breadcrumb-item"><a href="@Url.Action("Index","Roles")">角色清單</a></li>
-				<li class="breadcrumb-item"><a href="@Url.Action("Index","Permissions")">權限清單</a></li>
-			</ol>
-		</nav>
-	</div>
+    <div class="pagetitle">
+        <h1>新增員工</h1>
+        <nav>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="@Url.Action("Index","Home")">首頁</a></li>
+                <li class="breadcrumb-item"><a href="@Url.Action("Index","Members")">會員清單</a></li>
+                <li class="breadcrumb-item"><a href="@Url.Action("Index","Employees")">員工清單</a></li>
+                <li class="breadcrumb-item"><a href="@Url.Action("Index","Roles")">角色清單</a></li>
+                <li class="breadcrumb-item"><a href="@Url.Action("Index","Permissions")">權限清單</a></li>
+            </ol>
+        </nav>
+    </div>
 
-	@using (Html.BeginForm())
-	{
-		@Html.AntiForgeryToken()
+    @using (Html.BeginForm("Create", "Employees", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        @Html.AntiForgeryToken()
 
-		<div class="row">
-			<hr />
-			@Html.ValidationSummary(true, "", new { @class = "text-danger" })
-			<div class="mb-3">
-				@Html.LabelFor(model => model.EmployeeName, htmlAttributes: new { @class = "form-label" })
-				@Html.EditorFor(model => model.EmployeeName, new { htmlAttributes = new { @class = "form-control" } })
-				@Html.ValidationMessageFor(model => model.EmployeeName, "", new { @class = "text-danger" })
-			</div>
+        <hr />
+        <div class="row">
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <div class="mb-3">
+                @Html.LabelFor(model => model.EmployeeName, htmlAttributes: new { @class = "form-label" })
+                @Html.EditorFor(model => model.EmployeeName, new { htmlAttributes = new { @class = "form-control", style = "width:200px" } })
+                @Html.ValidationMessageFor(model => model.EmployeeName, "", new { @class = "text-danger" })
+            </div>
 
-			<div class="mb-3">
-				@Html.LabelFor(model => model.EncryptedPassword, htmlAttributes: new { @class = "form-label" })
+            <div class="mb-3">
+                @Html.LabelFor(model => model.EncryptedPassword, htmlAttributes: new { @class = "form-label" })
 
-				<span id="toggle-password" onclick="togglePasswordVisibility()">
-					<i class="fas fa-eye"></i>
-				</span>
-				@Html.EditorFor(model => model.EncryptedPassword, new { htmlAttributes = new { @class = "form-control" } })
-				@Html.ValidationMessageFor(model => model.EncryptedPassword, "", new { @class = "text-danger" })
-			</div>
+                <span id="toggle-password" onclick="togglePasswordVisibility()">
+                    <i class="fas fa-eye"></i>
+                </span>
+                @Html.EditorFor(model => model.EncryptedPassword, new { htmlAttributes = new { @class = "form-control", style = "width:200px" } })
+                @Html.ValidationMessageFor(model => model.EncryptedPassword, "", new { @class = "text-danger" })
+            </div>
 
-			@*<div class="mb-3">
-					@Html.LabelFor(model => model.RoleId, htmlAttributes: new { @class = "form-label" })
-					@Html.DropDownList("RoleId", null, htmlAttributes: new { @class = "form-select" })
-					@Html.ValidationMessageFor(model => model.RoleId, "", new { @class = "text-danger" })
-				</div>*@
+            @*<div class="mb-3">
+                    @Html.LabelFor(model => model.RoleId, htmlAttributes: new { @class = "form-label" })
+                    @Html.DropDownList("RoleId", null, htmlAttributes: new { @class = "form-select" })
+                    @Html.ValidationMessageFor(model => model.RoleId, "", new { @class = "text-danger" })
+                </div>*@
 
-			<div class="mb-3">
-				@Html.LabelFor(model => model.Roles, htmlAttributes: new { @class = "form-label" })
-				@foreach (var role in ViewBag.Roles)
-				{
-					<div>
-						<label>
-							<input type="checkbox" name="RoleIds" value="@(@role.RoleId)" />
-							@role.RoleName
-						</label>
-					</div>
-				}
-				@Html.ValidationMessageFor(model => model.RoleIds, "", new { @class = "text-danger" })
-			</div>
+            <div class="mb-3">
+                @Html.LabelFor(model => model.Roles, htmlAttributes: new { @class = "form-label" })
+                @foreach (var role in ViewBag.Roles)
+                {
+                    <div>
+                        <label class="mb-2 ms-1">
+                            <input type="checkbox" name="RoleIds" value="@(@role.RoleId)" style="transform:scale(1.5)" class="me-2"/>
+                            @role.RoleName
+                        </label>
+                    </div>
+                }
+                @Html.ValidationMessageFor(model => model.RoleIds, "", new { @class = "text-danger" })
+            </div>
+            <div class="mb-3">
+                @Html.LabelFor(model => model.ImageName, htmlAttributes: new { @class = "form-label mb-3" })
+                <br />
+                <input type="file" id="uploadFile" name="imageFile" class="form-control mb-2" style="width:500px" accept="image/*" />
+                <img id="previewImage" src="#" alt="Preview" style="display: none; max-width: 300px; max-height: 300px; ">
 
-			<div class="mb-3">
-				<input type="submit" value="新增" class="btn btn-primary" />
-			</div>
-		</div>
-	}
-	<div>
-		@Html.ActionLink("返回頁面", "Index")
-	</div>
+            </div>
+
+            <div class="mb-3">
+                <input type="submit" value="新增" class="btn btn-primary" />
+            </div>
+        </div>
+    }
+    <div>
+        @Html.ActionLink("返回頁面", "Index")
+    </div>
 </main>
 
 @section Scripts {
-	@Scripts.Render("~/bundles/jqueryval")
-	<script src="https://kit.fontawesome.com/d6092fcff6.js" crossorigin="anonymous"></script>
-	<script>
-		function togglePasswordVisibility() {
-			var passwordInput = $("#EncryptedPassword");
-			var toggleIcon = $("#toggle-password i");
+    @Scripts.Render("~/bundles/jqueryval")
+    <script src="https://kit.fontawesome.com/d6092fcff6.js" crossorigin="anonymous"></script>
+    <script>
+        function togglePasswordVisibility() {
+            var passwordInput = $("#EncryptedPassword");
+            var toggleIcon = $("#toggle-password i");
 
-			if (passwordInput.attr("type") === "password") {
-				passwordInput.attr("type", "text");
-				toggleIcon.removeClass("fa-eye");
-				toggleIcon.addClass("fa-eye-slash");
-			} else {
-				passwordInput.attr("type", "password");
-				toggleIcon.removeClass("fa-eye-slash");
-				toggleIcon.addClass("fa-eye");
-			}
-		}
-	</script>
+            if (passwordInput.attr("type") === "password") {
+                passwordInput.attr("type", "text");
+                toggleIcon.removeClass("fa-eye");
+                toggleIcon.addClass("fa-eye-slash");
+            } else {
+                passwordInput.attr("type", "password");
+                toggleIcon.removeClass("fa-eye-slash");
+                toggleIcon.addClass("fa-eye");
+            }
+        }
+        $('#uploadFile').on('change', function () {
+            var file = this.files[0];
+            var preImg = $('#previewImage');
+            var reader = new FileReader();
+
+            reader.onload = function (e) {
+                preImg.attr('src', e.target.result);
+                preImg.show();
+            };
+            reader.readAsDataURL(file);
+        })
+    </script>
 }

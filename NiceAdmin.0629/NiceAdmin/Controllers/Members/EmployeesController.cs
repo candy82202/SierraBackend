@@ -13,6 +13,7 @@ using NiceAdmin.Filters;
 using NiceAdmin.Models.EFModels;
 using NiceAdmin.Models.Infra;
 using NiceAdmin.Models.ViewModels.MembersVM;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace NiceAdmin.Controllers.Members
 {
@@ -69,7 +70,8 @@ namespace NiceAdmin.Controllers.Members
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Authorize(Roles = "dessertSale,lessonSale")]
-        public ActionResult Create(EmployeeCreateVM vm)
+        public ActionResult Create(EmployeeCreateVM vm, HttpPostedFileBase imageFile
+            )
         {
             if (ModelState.IsValid == false)
             {
@@ -77,8 +79,9 @@ namespace NiceAdmin.Controllers.Members
                 ViewBag.Roles = roles;
                 return View();
             }
-            // bool isNameExist = db.Employees.ToList().Any(e => e.EmployeeName.ToLower() == vm.EmployeeName.ToLower());
+            
             bool isNameExist = db.Employees.Any(e => e.EmployeeName.Equals(vm.EmployeeName, StringComparison.OrdinalIgnoreCase));
+
             if (isNameExist)
             {
                 ModelState.AddModelError("EmployeeName", "帳號重複");
@@ -86,21 +89,14 @@ namespace NiceAdmin.Controllers.Members
                 ViewBag.Roles = roles;
                 return View(vm);
             }
-            // bool isNameExist = db.Employees.ToList().Select(x => x.EmployeeName).Contains(vm.EmployeeName);
-            //bool isNameExist = db.Employees.ToList().Any(e => e.EmployeeName == vm.EmployeeName);
-            //if (ModelState.IsValid == false || isNameExist)
-            //{
-            //	ModelState.AddModelError("Employee", "帳號重複");
-            //	HashSet<Role> roles = db.Roles.ToHashSet();
-            //	ViewBag.Roles = roles;
-            //	return View(vm);
-            //}
+
+            string path = Server.MapPath("/img/Members");
+            string fileName= SaveUploadedFile(path, imageFile);
+            vm.ImageName = fileName;
 
             var emp = vm.ToEntity();
             emp.Roles = db.Roles.Where(r => vm.RoleIds.Contains(r.RoleId)).ToList();
             db.Employees.Add(emp);
-            //var newEmp = db.Employees.OrderByDescending(e => e.EmployeeId).FirstOrDefault();
-            //         newEmp.Roles = db.Roles.Where(r=> vm.RoleIds.Contains(r.RoleId)).ToList();
 
             db.SaveChanges();
             return RedirectToAction("Index");
@@ -225,6 +221,27 @@ namespace NiceAdmin.Controllers.Members
             Session.Abandon();
             FormsAuthentication.SignOut();
             return Redirect("/Employees/Login");
+        }
+
+        private string SaveUploadedFile(string path, HttpPostedFileBase image)
+        {
+            // precondition
+            if (image == null || image.ContentLength == 0) return string.Empty;
+            // 取得上傳檔案的副檔名,".jpg"而不是"jpg"
+            string ext = System.IO.Path.GetExtension(image.FileName);
+            // 如果副檔名不在允許的範圍裡,表示上傳不合理的檔案類型,就不處理,傳回string.Empty
+            string[] allowedExts = new string[] { ".jpg", ".jpeg", ".png", ".tif" };
+            if (allowedExts.Contains(ext.ToLower()) == false) return string.Empty;
+
+            // 生成亂數檔名
+            string newFileName = Guid.NewGuid().ToString("N") + ext;
+            string fullName = System.IO.Path.Combine(path, newFileName);
+
+            //將上傳的檔案存放到指定位置
+            image.SaveAs(fullName);
+
+            //傳回存放的檔名
+            return newFileName;
         }
 
         private (string returnUrl, HttpCookie cookie) ProcessLogin(string account, bool rememberMe)

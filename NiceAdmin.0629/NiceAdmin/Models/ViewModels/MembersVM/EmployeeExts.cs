@@ -50,7 +50,8 @@ namespace NiceAdmin.Models.ViewModels.MembersVM
 				EmployeeId = vm.EmployeeId,
 				EmployeeName = vm.EmployeeName,
 				EncryptedPassword = vm.EncryptedPassword,
-				CreateAt = DateTime.Now,
+                ImageName = vm.ImageName,
+                CreateAt = DateTime.Now,
 				Roles = vm.Roles
 			};
 		}
