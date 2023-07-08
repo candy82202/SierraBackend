@@ -20,7 +20,11 @@ namespace NiceAdmin.Models.ViewModels.MembersVM
         public string EmployeeName { get; set; }
 
         [Display(Name = "創建時間")]
-        public DateTime CreateAt { get; set; }
+		[DisplayFormat(DataFormatString = "{0:yyyy/MM/dd HH:mm:ss}")]
+		public DateTime CreateAt { get; set; }
+		[Display(Name = "大頭貼")]
+		[StringLength(255)]
+		public string ImageName { get; set; }
 
 		[Display(Name = "角色")]
 		public HashSet<Role> Roles{ get; set; }

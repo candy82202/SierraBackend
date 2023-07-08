@@ -5,9 +5,9 @@
 }
 
 <main id="main" class="main">
-    <div class="pagetitle">
-        <h1>員工管理</h1>
-        <nav>
+	<div class="pagetitle">
+		<h1>員工清單</h1>
+		<nav>
 			<ol class="breadcrumb">
 				<li class="breadcrumb-item"><a href="@Url.Action("Index","Home")">首頁</a></li>
 				<li class="breadcrumb-item"><a href="@Url.Action("Index","Members")">會員清單</a></li>
@@ -15,72 +15,74 @@
 				<li class="breadcrumb-item"><a href="@Url.Action("Index","Roles")">角色清單</a></li>
 				<li class="breadcrumb-item"><a href="@Url.Action("Index","Permissions")">權限清單</a></li>
 			</ol>
-        </nav>
-    </div>
-
-	<p>
-		@Html.ActionLink("新增員工", "Create")
-	</p>
-	<table class="table table-striped table-hover datatable">
-		<thead>
-			<tr>
-				<th>
-					@Html.DisplayNameFor(model => model.EmployeeId)
-				</th>
-				<th>
-					@Html.DisplayNameFor(model => model.EmployeeName)
-				</th>
-				<th>
-					@Html.DisplayNameFor(model => model.CreateAt)
-				</th>
-				<th>
-					@Html.DisplayNameFor(model => model.Roles)
-				</th>
-				<th>
-					操作
-				</th>
-			</tr>
-		</thead>
-		<tbody>
-			@foreach (var item in Model)
-			{
+		</nav>
+	</div>
+	
+<a class="btn btn-secondary" href="@Url.Action("Create", "Employees")">
+	新增員工
+	<img src="~/img/Members/adduser4.png" />
+</a>
+	<hr />
+		<table class="table table-striped table-hover datatable">
+			<thead>
 				<tr>
-					<td>
-						@Html.DisplayFor(modelItem => item.EmployeeId)
-					</td>
-					<td>
-						@Html.DisplayFor(modelItem => item.EmployeeName)
-					</td>
-					<td>
-						@Html.DisplayFor(modelItem => item.CreateAt)
-					</td>
-					<td>
-						@foreach (var role in item.Roles)
-						{
-							@role.RoleName<br />
-						}
-					</td>
-					<td>
-
-						<a href="@Url.Action("Edit", new { id = item.EmployeeId })">
-							<i class="fa-solid fa-pen-to-square"></i>
-						</a>
-						<a href="@Url.Action("Delete", new { id = item.EmployeeId })">
-							<i class="fa-solid fa-trash-can"></i>
-						</a>
-
-						@*@Html.ActionLink("編輯", "Edit", new { id = item.EmployeeId }) |
-							@Html.ActionLink("細節", "Details", new { id = item.EmployeeId }) |
-							@Html.ActionLink("刪除", "Delete", new { id = item.EmployeeId })*@
-					</td>
+					<th>
+						@Html.DisplayNameFor(model => model.ImageName)
+					</th>
+					<th>
+						@Html.DisplayNameFor(model => model.EmployeeId)
+					</th>
+					<th>
+						@Html.DisplayNameFor(model => model.EmployeeName)
+					</th>
+					<th>
+						@Html.DisplayNameFor(model => model.CreateAt)
+					</th>
+					<th>
+						@Html.DisplayNameFor(model => model.Roles)
+					</th>
+					<th>
+						操作
+					</th>
 				</tr>
-			}
-		<tbody>
-	</table>
+			</thead>
+			<tbody>
+				@foreach (var item in Model)
+				{
+					<tr>
+						<td>
+							<img src="~/Uploads/Members/@item.ImageName" style=" width:50px ;height:50px" class="rounded-circle" />
+						</td>
+						<td>
+							@Html.DisplayFor(modelItem => item.EmployeeId)
+						</td>
+						<td>
+							@Html.DisplayFor(modelItem => item.EmployeeName)
+						</td>
+						<td>
+							@Html.DisplayFor(modelItem => item.CreateAt)
+						</td>
+						<td>
+							@foreach (var role in item.Roles)
+							{
+								<em>[@role.RoleDisplayName]</em>
+							}
+						</td>
+						<td>
+
+							<a href="@Url.Action("Edit", new { id = item.EmployeeId })">
+								<img src="~/img/Members/edit.png" />
+							</a>
+							<a href="@Url.Action("Delete", new { id = item.EmployeeId })">
+								<img src="~/img/Members/delete.png" />
+							</a>
+
+							@*@Html.ActionLink("編輯", "Edit", new { id = item.EmployeeId }) |
+			@Html.ActionLink("細節", "Details", new { id = item.EmployeeId }) |
+			@Html.ActionLink("刪除", "Delete", new { id = item.EmployeeId })*@
+						</td>
+					</tr>
+				}
+			<tbody>
+		</table>
 </main>
-
-@section Scripts
-{
-	<script src="https://kit.fontawesome.com/d6092fcff6.js" crossorigin="anonymous"></script>
-
-}

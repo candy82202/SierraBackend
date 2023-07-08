@@ -15,5 +15,7 @@ namespace NiceAdmin.Models.ViewModels.MembersVM
 		[Required]
 		[DataType(DataType.Password)]
 		public string Password { get; set; }
+        [Display(Name = "記住我")]
+        public bool RememberMe { get; set; }
     }
 }

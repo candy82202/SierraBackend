@@ -23,7 +23,9 @@ namespace NiceAdmin.Models.ViewModels.MembersVM
         [Required]
         [StringLength(200)]
         public string EncryptedPassword { get; set; }
-
+        [Display(Name = "頭像")]
+        [StringLength(255)]
+        public string ImageName { get; set; }
         [Display(Name = "角色")]
         // [Required]
         public HashSet<Role> Roles { get; set; }

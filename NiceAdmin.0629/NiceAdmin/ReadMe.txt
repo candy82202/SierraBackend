@@ -122,7 +122,7 @@ Member 部分
 [V] - modify Members/Index（修改MemberIndexVM）
 [V] - complete Employee CRUD
 [V] - bug fix(Employee/Delete取消也會刪除)
-    - bug fix(帳號唯一不會跳錯)
+    - bug fix(新建重複帳號不會跳錯)
 [V] - create & complete Login() and Logout() in EmployeesController
 [V] - create & complete LoginVM.cs and Login.cshtml
 [V] - create /Models/Infra/Result.cs & HashUtility.cs
@@ -133,8 +133,14 @@ Member 部分
     - modify Global.asax
     - create Shared/_Unauthorized.cshtml
 [V] - fix little bug in EmployeeCreateVM.cs & Employees/Edit.cshtml
-[working on] - profile user name
-[working on] - members criteria
+[V] - profile user name
+[V] - modify icon size in /Employees/Index
+[V] - rememberMe(bug exist)
+[V] - profiles link to every list page
+[V] - members criteria
+[V] - after add images, modify members' CURD
+[working on] - Home/Index's paritial view(let newest emp appear)
+
 
 ==========================================================
 Lesson 部分

@@ -13,286 +13,306 @@ using NiceAdmin.Filters;
 using NiceAdmin.Models.EFModels;
 using NiceAdmin.Models.Infra;
 using NiceAdmin.Models.ViewModels.MembersVM;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace NiceAdmin.Controllers.Members
 {
-	public class EmployeesController : Controller
-	{
-		private AppDbContext db = new AppDbContext();
+    public class EmployeesController : Controller
+    {
+        private AppDbContext db = new AppDbContext();
 
-		// GET: Employees
-		public ActionResult Index()
-		{
-			var vm = db.Employees.ToList().Select(e => e.ToIndexVM());
-			return View(vm);
-		}
+        // GET: Employees
+        public ActionResult Index()
+        {
+            var vm = db.Employees.ToList().Select(e => e.ToIndexVM());
+            return View(vm);
+        }
 
-		// GET: Employees/Details/5
-		public ActionResult Details(int? id)
-		{
-			if (id == null)
-			{
-				return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-			}
-			Employee employee = db.Employees.Find(id);
-			if (employee == null)
-			{
-				return HttpNotFound();
-			}
-			return View(employee);
-		}
+        // GET: Employees/Details/5
+        //public ActionResult Details(int? id)
+        //{
+        //    if (id == null)
+        //    {
+        //        return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+        //    }
+        //    Employee employee = db.Employees.Find(id);
+        //    if (employee == null)
+        //    {
+        //        return HttpNotFound();
+        //    }
+        //    return View(employee);
+        //}
 
-		// GET: Employees/Create
-		[Authorize(Roles= "dessertSale,lessonSale")]
-		public ActionResult Create()
-		{
-			//// 原本的寫法
-			//ViewBag.RoleId = db.Roles.Select(r => new SelectListItem
-			//{
-			//    Value = r.RoleId.ToString(),
-			//    Text = r.RoleName
-			//});
+        // GET: Employees/Create
+        [Authorize(Roles = "dessertSale,lessonSale")]
+        public ActionResult Create()
+        {
+            //// 原本的寫法
+            //ViewBag.RoleId = db.Roles.Select(r => new SelectListItem
+            //{
+            //    Value = r.RoleId.ToString(),
+            //    Text = r.RoleName
+            //});
 
-			//// 後來的寫法
-			//PrepareRolesDataSource(null);
+            //// 後來的寫法
+            //PrepareRolesDataSource(null);
 
-			// 最後的寫法
-			HashSet<Role> roles = db.Roles.ToHashSet();
-			ViewBag.Roles = roles;
+            // 最後的寫法
+            HashSet<Role> roles = db.Roles.ToHashSet();
+            ViewBag.Roles = roles;
 
-			return View();
-		}
+            return View();
+        }
 
-		// POST: Employees/Create
-		// 若要免於大量指派 (overposting) 攻擊，請啟用您要繫結的特定屬性，
-		// 如需詳細資料，請參閱 https://go.microsoft.com/fwlink/?LinkId=317598。
-		[HttpPost]
-		[ValidateAntiForgeryToken]
-		[Authorize(Roles = "dessertSale,lessonSale")]
-		public ActionResult Create(EmployeeCreateVM vm)
-		{
-			if (ModelState.IsValid == false)
-			{
-				HashSet<Role> roles = db.Roles.ToHashSet();
-				ViewBag.Roles = roles;
-				return View(); 
-			}
-			// bool isNameExist = db.Employees.ToList().Any(e => e.EmployeeName.ToLower() == vm.EmployeeName.ToLower());
-			bool isNameExist = db.Employees.Any(e => e.EmployeeName.Equals(vm.EmployeeName, StringComparison.OrdinalIgnoreCase));
-			if (isNameExist)
-			{
-				ModelState.AddModelError("EmployeeName", "帳號重複");
-				HashSet<Role> roles = db.Roles.ToHashSet();
-				ViewBag.Roles = roles;
-				return View(vm);
-			}
-			// bool isNameExist = db.Employees.ToList().Select(x => x.EmployeeName).Contains(vm.EmployeeName);
-			//bool isNameExist = db.Employees.ToList().Any(e => e.EmployeeName == vm.EmployeeName);
-			//if (ModelState.IsValid == false || isNameExist)
-			//{
-			//	ModelState.AddModelError("Employee", "帳號重複");
-			//	HashSet<Role> roles = db.Roles.ToHashSet();
-			//	ViewBag.Roles = roles;
-			//	return View(vm);
-			//}
+        // POST: Employees/Create
+        // 若要免於大量指派 (overposting) 攻擊，請啟用您要繫結的特定屬性，
+        // 如需詳細資料，請參閱 https://go.microsoft.com/fwlink/?LinkId=317598。
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        [Authorize(Roles = "dessertSale,lessonSale")]
+        public ActionResult Create(EmployeeCreateVM vm, HttpPostedFileBase imageFile
+            )
+        {
+            if (ModelState.IsValid == false)
+            {
+                HashSet<Role> roles = db.Roles.ToHashSet();
+                ViewBag.Roles = roles;
+                return View();
+            }
+            
+            bool isNameExist = db.Employees.Any(e => e.EmployeeName.Equals(vm.EmployeeName, StringComparison.OrdinalIgnoreCase));
 
-			var emp = vm.ToEntity();
-			emp.Roles = db.Roles.Where(r => vm.RoleIds.Contains(r.RoleId)).ToList();
-			db.Employees.Add(emp);
-			//var newEmp = db.Employees.OrderByDescending(e => e.EmployeeId).FirstOrDefault();
-			//         newEmp.Roles = db.Roles.Where(r=> vm.RoleIds.Contains(r.RoleId)).ToList();
+            if (isNameExist)
+            {
+                ModelState.AddModelError("EmployeeName", "帳號重複");
+                HashSet<Role> roles = db.Roles.ToHashSet();
+                ViewBag.Roles = roles;
+                return View(vm);
+            }
 
-			db.SaveChanges();
-			return RedirectToAction("Index");
-		}
+            string path = Server.MapPath("/img/Members");
+            string fileName= SaveUploadedFile(path, imageFile);
+            vm.ImageName = fileName;
 
-		// GET: Employees/Edit/5
-		public ActionResult Edit(int? id)
-		{
-			var LT = db.Lessons.ToList();
-			var LT2 = db.Lessons.ToList().Where(l => l.TeacherId == id);
-			var LT22 = db.Lessons.ToList().Select(l => l.LessonTime);
-			var LT23 = db.Lessons.ToList().Select(l => l.TeacherId);
-			var LT3 = db.Lessons.Where(l => l.TeacherId == id).ToList();
+            var emp = vm.ToEntity();
+            emp.Roles = db.Roles.Where(r => vm.RoleIds.Contains(r.RoleId)).ToList();
+            db.Employees.Add(emp);
 
-			if (id == null)
-			{
-				return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-			}
+            db.SaveChanges();
+            return RedirectToAction("Index");
+        }
 
-			var vm = db.Employees.Find(id).ToEditVM();
-			if (vm == null)
-			{
-				return HttpNotFound();
-			}
+        // GET: Employees/Edit/5
+        public ActionResult Edit(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
 
-			HashSet<Role> roles = db.Roles.ToHashSet();
-			ViewBag.Roles = roles;
+            var vm = db.Employees.Find(id).ToEditVM();
+            if (vm == null)
+            {
+                return HttpNotFound();
+            }
 
-			return View(vm);
-		}
+            HashSet<Role> roles = db.Roles.ToHashSet();
+            ViewBag.Roles = roles;
 
-		// POST: Employees/Edit/5
-		// 若要免於大量指派 (overposting) 攻擊，請啟用您要繫結的特定屬性，
-		// 如需詳細資料，請參閱 https://go.microsoft.com/fwlink/?LinkId=317598。
-		[HttpPost]
-		[ValidateAntiForgeryToken]
-		public ActionResult Edit(EmployeeEditVM vm)
-		{
-			if (ModelState.IsValid == false)
-			{
-				HashSet<Role> roles = db.Roles.ToHashSet();
-				ViewBag.Roles = roles;
-				return View(vm);
-			}
-			var empInDb = db.Employees.Find(vm.EmployeeId);
+            return View(vm);
+        }
 
-			if (empInDb == null) return HttpNotFound();
-			// 之後補上Result類別後改成下面這行
-			// if (empInDb == null) return Result.Fail("找不到要修改的會員記錄");
+        // POST: Employees/Edit/5
+        // 若要免於大量指派 (overposting) 攻擊，請啟用您要繫結的特定屬性，
+        // 如需詳細資料，請參閱 https://go.microsoft.com/fwlink/?LinkId=317598。
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Edit(EmployeeEditVM vm)
+        {
+            if (ModelState.IsValid == false)
+            {
+                HashSet<Role> roles = db.Roles.ToHashSet();
+                ViewBag.Roles = roles;
+                return View(vm);
+            }
+            var empInDb = db.Employees.Find(vm.EmployeeId);
 
-			// 因可能被主鍵約束限制,先清除,再塞資料
-			empInDb.Roles.Clear();
-			empInDb.Roles = db.Roles.Where(r => vm.RoleIds.Contains(r.RoleId)).ToList();
-			db.SaveChanges();
+            if (empInDb == null) return HttpNotFound();
+            // 之後補上Result類別後改成下面這行
+            // if (empInDb == null) return Result.Fail("找不到要修改的會員記錄");
 
-			return RedirectToAction("Index");
+            // 因可能被主鍵約束限制,先清除,再塞資料
+            empInDb.Roles.Clear();
+            empInDb.Roles = db.Roles.Where(r => vm.RoleIds.Contains(r.RoleId)).ToList();
+            db.SaveChanges();
 
-			// 因post back後, vm繫結不到表單傳回來的RoleId, 因此自己宣告一個來繫結
-			// 也因此下面的原來寫法是不行的(也沒有先Clear掉)
-			// empInDb.Roles = vm.Roles;
+            return RedirectToAction("Index");
 
-		}
+            // 因post back後, vm繫結不到表單傳回來的RoleId, 因此自己宣告一個來繫結
+            // 也因此下面的原來寫法是不行的(也沒有先Clear掉)
+            // empInDb.Roles = vm.Roles;
 
-		// GET: Employees/Delete/5
-		[CustomAuthorize(Roles= "dessertSale,lessonSale")]
-		public ActionResult Delete(int? id)
-		{
-			if (id == null)
-			{
-				return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-			}
-			Employee emp = db.Employees.Find(id);
-			if (emp == null)
-			{
-				return HttpNotFound();
-			}
-			var vm = emp.ToIndexVM();
-			return View(vm);
-		}
+        }
 
-		// POST: Employees/Delete/5
-		[HttpPost, ActionName("Delete")]
-		[ValidateAntiForgeryToken]
-		[CustomAuthorize(Roles = "dessertSale,lessonSale")]
-		public ActionResult DeleteConfirmed(int id)
-		{
-			Employee employee = db.Employees.Find(id);
-			db.Employees.Remove(employee);
-			db.SaveChanges();
-			return RedirectToAction("Index");
-		}
-		[HttpGet]
-		[AllowAnonymous]
-		public ActionResult Login()
-		{
-			var vm = new LoginVM() { Account = "Admin", Password = "123" };
-			return View(vm);
-		}
-		
-		[HttpPost]
-		[ValidateAntiForgeryToken]
-		[AllowAnonymous]
-		public ActionResult Login(LoginVM vm)
-		{
-			if (ModelState.IsValid == false) return View(vm);
+        // GET: Employees/Delete/5
+        [CustomAuthorize(Roles = "dessertSale,lessonSale")]
+        public ActionResult Delete(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Employee emp = db.Employees.Find(id);
+            if (emp == null)
+            {
+                return HttpNotFound();
+            }
+            var vm = emp.ToIndexVM();
+            return View(vm);
+        }
 
-			// 驗證帳密
-			Result result = ValidLogin(vm);
+        // POST: Employees/Delete/5
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        [CustomAuthorize(Roles = "dessertSale,lessonSale")]
+        public ActionResult DeleteConfirmed(int id)
+        {
+            Employee employee = db.Employees.Find(id);
+            db.Employees.Remove(employee);
+            db.SaveChanges();
+            return RedirectToAction("Index");
+        }
+        [HttpGet]
+        [AllowAnonymous]
+        public ActionResult Login()
+        {
+            var vm = new LoginVM() { Account = "Admin", Password = "123" };
+            return View(vm);
+        }
 
-			// 驗證失敗
-			if (result.ISuccess == false)
-			{
-				ModelState.AddModelError(string.Empty, result.ErrorMessage);
-				return View(vm);
-			}
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        [AllowAnonymous]
+        public ActionResult Login(LoginVM vm, bool rememberMe)
+        {
+            if (ModelState.IsValid == false) return View(vm);
 
-			const bool rememberMe = false; // 泡麵哥證實不一定會記得
+            // 驗證帳密
+            Result result = ValidLogin(vm);
 
-			// 驗證正確, 將登入帳號編碼後, 加入cookie
-			var processResult = ProcessLogin(vm.Account, rememberMe);
+            // 驗證失敗
+            if (result.ISuccess == false)
+            {
+                ModelState.AddModelError(string.Empty, result.ErrorMessage);
+                return View(vm);
+            }
 
-			Response.Cookies.Add(processResult.cookie);
-			return Redirect(processResult.returnUrl);
-		}
+            // const bool rememberMe = false; // 泡麵哥證實不一定會記得
 
-		public ActionResult Logout()
-		{
-			Session.Abandon();
-			FormsAuthentication.SignOut();
-			return Redirect("/Employees/Login");
-		}
+            // 驗證正確, 將登入帳號編碼後, 加入cookie
+            var processResult = ProcessLogin(vm.Account, rememberMe);
 
-		private (string returnUrl, HttpCookie cookie) ProcessLogin(string account, bool rememberMe)
-		{
-			// var roles = string.Empty; // 在本範例, 沒有用到角色權限,所以存入空白
+            Response.Cookies.Add(processResult.cookie);
+            return Redirect(processResult.returnUrl);
+        }
 
-			var roles = db.Employees.ToList()
-						.FirstOrDefault(emp => string.Compare(emp.EmployeeName, account, true) == 0)
-						.Roles.Select(r=>r.RoleName);
-			var rolesStr = string.Join(",", roles);
+        public ActionResult Logout()
+        {
+            Session.Abandon();
+            FormsAuthentication.SignOut();
+            return Redirect("/Employees/Login");
+        }
+
+        private string SaveUploadedFile(string path, HttpPostedFileBase image)
+        {
+            // precondition
+            if (image == null || image.ContentLength == 0) return string.Empty;
+            // 取得上傳檔案的副檔名,".jpg"而不是"jpg"
+            string ext = System.IO.Path.GetExtension(image.FileName);
+            // 如果副檔名不在允許的範圍裡,表示上傳不合理的檔案類型,就不處理,傳回string.Empty
+            string[] allowedExts = new string[] { ".jpg", ".jpeg", ".png", ".tif" };
+            if (allowedExts.Contains(ext.ToLower()) == false) return string.Empty;
+
+            // 生成亂數檔名
+            string newFileName = Guid.NewGuid().ToString("N") + ext;
+            string fullName = System.IO.Path.Combine(path, newFileName);
+
+            //將上傳的檔案存放到指定位置
+            image.SaveAs(fullName);
+
+            //傳回存放的檔名
+            return newFileName;
+        }
+
+        private (string returnUrl, HttpCookie cookie) ProcessLogin(string account, bool rememberMe)
+        {
+            // var roles = string.Empty; // 在本範例, 沒有用到角色權限,所以存入空白
+
+            var roles = db.Employees.ToList()
+                        .FirstOrDefault(emp => string.Compare(emp.EmployeeName, account, true) == 0)
+                        .Roles.Select(r => r.RoleName);
+            var rolesStr = string.Join(",", roles);
 
 
-			// 建立一張認證票
-			var ticket =
-				new FormsAuthenticationTicket(
-					1,          // 版本別, 沒特別用處
-					account,
-					DateTime.Now,   // 發行日
-					DateTime.Now.AddDays(2), // 到期日
-					rememberMe,     // 是否續存
-					rolesStr,          // userdata
-					"/" // cookie位置
-				);
+            // 建立一張認證票
+            var ticket =
+                new FormsAuthenticationTicket(
+                    1,          // 版本別, 沒特別用處
+                    account,
+                    DateTime.Now,   // 發行日
+                    DateTime.Now.AddDays(10), // 到期日
+                    false,     // 是否續存
+                    rolesStr,          // userdata
+                    "/" // cookie位置
+                );
 
-			// 將它加密
-			var value = FormsAuthentication.Encrypt(ticket);
+            // 將它加密
+            var value = FormsAuthentication.Encrypt(ticket);
 
-			// 存入cookie
-			var cookie = new HttpCookie(FormsAuthentication.FormsCookieName, value);
-			cookie.Expires = DateTime.Now.AddDays(3);
+            // 存入cookie
+            var cookie = new HttpCookie(FormsAuthentication.FormsCookieName, value);
+            if (rememberMe)
+            {
+                cookie.Expires = DateTime.Now.AddMinutes(10);
+            }
+            else
+            {
+                cookie.Expires = DateTime.MinValue;
+            }
 
-			// 取得return url
-			var url = FormsAuthentication.GetRedirectUrl(account, true); //第二個引數沒有用處
+            // 取得return url
+            var url = FormsAuthentication.GetRedirectUrl(account, true); //第二個引數沒有用處
 
-			return (url, cookie);
-		}
+            return (url, cookie);
+        }
 
-		private Result ValidLogin(LoginVM vm)
-		{
-			var emp = db.Employees.FirstOrDefault(e => e.EmployeeName == vm.Account);
-			if (emp == null) return Result.Fail("帳密有誤");
+        private Result ValidLogin(LoginVM vm)
+        {
+            var emp = db.Employees.FirstOrDefault(e => e.EmployeeName == vm.Account);
+            if (emp == null) return Result.Fail("帳密有誤");
 
-			var salt = HashUtility.GetSalt();
-			var hashPwd = HashUtility.ToSHA256(vm.Password, salt);
+            var salt = HashUtility.GetSalt();
+            var hashPwd = HashUtility.ToSHA256(vm.Password, salt);
 
-			return string.Compare(emp.EncryptedPassword, hashPwd) == 0
-					? Result.Success()
-					: Result.Fail("帳密有誤");
-		}
+            return string.Compare(emp.EncryptedPassword, hashPwd) == 0
+                    ? Result.Success()
+                    : Result.Fail("帳密有誤");
+        }
 
-		protected override void Dispose(bool disposing)
-		{
-			if (disposing)
-			{
-				db.Dispose();
-			}
-			base.Dispose(disposing);
-		}
-		private void PrepareRolesDataSource(int? roleId)
-		{
-			var roleList = db.Roles.ToList().Prepend(new Role());
-			ViewBag.RoleId = new SelectList(roleList, "RoleId", "RoleName", roleId);
-		}
-	}
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing)
+            {
+                db.Dispose();
+            }
+            base.Dispose(disposing);
+        }
+
+        // 角色限制為單個時才會用到
+        private void PrepareRolesDataSource(int? roleId)
+        {
+            var roleList = db.Roles.ToList().Prepend(new Role());
+            ViewBag.RoleId = new SelectList(roleList, "RoleId", "RoleName", roleId);
+        }
+    }
 }

@@ -1,4 +1,32 @@
-﻿<!DOCTYPE html>
+﻿@using System.Security.Claims
+@using System.Web
+@{
+    var user = Context.User as ClaimsPrincipal;
+    bool isAdmin = user.IsInRole("admin");
+    bool isManager = user.IsInRole("manager");
+    bool isDessertSale = user.IsInRole("dessertSale");
+    bool isLessonSale = user.IsInRole("lessonSale");
+    bool isStaff = user.IsInRole("staff");
+
+    //var imageName = ""; // 儲存目前員工的圖片檔案名稱
+    //if (user.Identity.IsAuthenticated)
+    //{
+    //    // 從ClaimsPrincipal中擷取目前員工的圖片檔案名稱
+    //    var imageClaim = user.FindFirst(c => c.Type == "EmployeeId");
+    //    if (imageClaim != null)
+    //    {
+    //        imageName = imageClaim.Value;
+    //    }
+    //}
+
+    //var imagePath = ""; // 圖片的完整路徑
+    //if (!string.IsNullOrEmpty(imageName))
+    //{
+    //    // 組合圖片的完整路徑
+    //    imagePath = Url.Content("~/img/" + imageName);
+    //}
+}
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -119,6 +147,15 @@
         .endCoupon {
             background-color: #9D9D9D;
         }
+
+        .fz30 {
+            font-size: 30px;
+        }
+        /*水平置中*/
+        .jcc {
+            display: flex;
+            justify-content: center;
+        }
     </style>
 
 </head>
@@ -171,56 +208,136 @@
                     <a class="nav-link nav-profile d-flex align-items-center pe-0"
                        href="#"
                        data-bs-toggle="dropdown">
-                        <img src="~/img/profile-img.jpg"
+                        @*<img src="~/img/profile-img.jpg"
                              alt="Profile"
-                             class="rounded-circle" />
-                        <span class="d-none d-md-block dropdown-toggle ps-2">K. Anderson</span>
+                             class="rounded-circle" />*@
+                        @*@if (!string.IsNullOrEmpty(imagePath))
+                        {
+                            <img src="@imagePath" alt="員工照片" />
+                        }*@
+                        <span class="d-none d-md-block dropdown-toggle ps-2">你好,@User.Identity.Name</span>
                     </a><!-- End Profile Iamge Icon -->
 
                     <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
                         <li class="dropdown-header">
-                            <h6>Kevin Anderson</h6>
-                            <span>全端網頁工程師</span>
+                            <h6>@User.Identity.Name</h6>
+                            <div>
+                                @{
+                                    if (isAdmin)
+                                    {
+                                        <em>[最高管理者]</em>
+                                    }
+                                    if (isManager)
+                                    {
+                                        <em>[管理者]</em>
+                                    }
+                                    if (isDessertSale)
+                                    {
+                                        <em>[甜點銷售]</em>
+                                    }
+                                    if (isLessonSale)
+                                    {
+                                        <em>[課程銷售]</em>
+                                    }
+                                    if (isStaff)
+                                    {
+                                        <em>[一般員工]</em>
+                                    }
+                                }
+                            </div>
                         </li>
                         <li>
                             <hr class="dropdown-divider" />
                         </li>
 
                         <li>
-                            <a class="dropdown-item d-flex align-items-center"
-                               href="users-profile.html">
-                                <i class="bi bi-person"></i>
-                                <span>個人簡介</span>
+                            <a class="jcc dropdown-item" href="/Employees/Index/">
+                                <img src="~/img/Members/team.png" class="me-2" />
+                                <span>員工清單</span>
                             </a>
                         </li>
                         <li>
-                            <hr class="dropdown-divider" />
-                        </li>
-
-                        <li>
-                            <a class="dropdown-item d-flex align-items-center"
-                               href="users-profile.html">
-                                <i class="bi bi-gear"></i>
-                                <span>帳戶設定</span>
+                            <a class="jcc dropdown-item" href="/Members/Index/">
+                                <img src="~/img/Members/team-outline.png" class="me-2" />
+                                <span>會員清單</span>
                             </a>
                         </li>
                         <li>
-                            <hr class="dropdown-divider" />
-                        </li>
-
-                        <li>
-                            <a class="dropdown-item d-flex align-items-center"
-                               href="pages-faq.html">
-                                <i class="bi bi-question-circle"></i>
-                                <span>需要幫助?</span>
+                            <a class="jcc dropdown-item" href="/Desserts/Index/">
+                                <img src="~/img/Members/dessert.png" class="me-2" />
+                                <span>甜點清單</span>
                             </a>
                         </li>
                         <li>
-                            <hr class="dropdown-divider" />
+                            <a class="jcc dropdown-item" href="/Lessons/Index/">
+                                <img src="~/img/Members/lesson.png" class="me-2" />
+                                <span>課程清單</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="jcc dropdown-item" href="/Teachers/Index/">
+                                <img src="~/img/Members/teacher.png" class="me-2" />
+                                <span>師資清單</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="jcc dropdown-item" href="/LessonOrders/Index/">
+                                <img src="~/img/Members/checkout01.png" class="me-2" />
+                                <span>課程訂單</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="jcc dropdown-item" href="/DessertOrders/Index/">
+                                <img src="~/img/Members/checkout02.png" class="me-2" />
+                                <span>甜點訂單</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="jcc dropdown-item" href="/Coupons/Index/">
+                                <img src="~/img/Members/coupon.png" class="me-2" />
+                                <span>優惠清單</span>
+                            </a>
                         </li>
 
                         <li>
-                            <a class="dropdown-item d-flex align-items-center" href="/Employees/Logout/">
+                            <hr class="dropdown-divider" />
+                        </li>
+
+                        @*<li>
+                                <a class="dropdown-item d-flex align-items-center"
+                                   href="users-profile.html">
+                                    <i class="bi bi-person"></i>
+                                    <span>個人簡介</span>
+                                </a>
+                            </li>
+                            <li>
+                                <hr class="dropdown-divider" />
+                            </li>
+
+                            <li>
+                                <a class="dropdown-item d-flex align-items-center"
+                                   href="users-profile.html">
+                                    <i class="bi bi-gear"></i>
+                                    <span>帳戶設定</span>
+                                </a>
+                            </li>
+                            <li>
+                                <hr class="dropdown-divider" />
+                            </li>
+
+                            <li>
+                                <a class="dropdown-item d-flex align-items-center"
+                                   href="pages-faq.html">
+                                    <i class="bi bi-question-circle"></i>
+                                    <span>需要幫助?</span>
+                                </a>
+                            </li>
+                            <li>
+                                <hr class="dropdown-divider" />
+                            </li>*@
+
+                        <li>
+                            <a class="jcc dropdown-item d-flex align-items-center" href="/Employees/Logout/">
                                 <i class="bi bi-box-arrow-right"></i>
                                 <span>登出</span>
                             </a>
