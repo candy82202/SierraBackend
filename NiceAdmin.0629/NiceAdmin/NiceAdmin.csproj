@@ -757,10 +757,6 @@
     <Content Include="Views\DessertImages\Details.cshtml" />
     <Content Include="Views\DessertImages\Edit.cshtml" />
     <Content Include="Views\DessertImages\Index.cshtml" />
-    <Content Include="Views\Home\FormsLayouts.cshtml" />
-    <Content Include="Views\Home\UsersProfile.cshtml" />
-    <Content Include="Views\Home\FormEdit.cshtml" />
-    <Content Include="Views\Home\DataTable.cshtml" />
     <Content Include="Views\ErrorHandler\NotFound.cshtml" />
     <Content Include="Views\Shared\_LayoutError.cshtml" />
     <Content Include="Views\DiscountGroups\Edit.cshtml" />
@@ -878,6 +874,7 @@
     <Content Include="Views\Home\HotDessertsPartialView.cshtml" />
     <Content Include="Views\Home\TSDessertsIndexPV.cshtml" />
     <Content Include="Views\Shared\_Unauthorized.cshtml" />
+    <Content Include="Views\Home\TotalDesserts.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="Scripts\vendor\chart.js\controllers\controller.bar.d.ts" />

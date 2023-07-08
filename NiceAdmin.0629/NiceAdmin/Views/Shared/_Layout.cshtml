@@ -100,20 +100,23 @@
             background-color: DodgerBlue !important;
             color: #ffffff;
         }
-        .height100px{
-            height:100px;
+
+        .height100px {
+            height: 100px;
         }
-        
+
         .createPromotionImageSize {
             width: 80%;
             height: 250px;
         }
+
         .topsellImg {
             border-radius: 5px;
             max-width: 100px;
             font-size: 22px;
         }
-         .endCoupon {
+
+        .endCoupon {
             background-color: #9D9D9D;
         }
     </style>
@@ -137,8 +140,8 @@
                   method="POST"
                   action="#">
                 @*<button type="submit" title="Search">
-                    <i class="bi bi-search"></i>
-                </button>*@
+                        <i class="bi bi-search"></i>
+                    </button>*@
                 <div class="autocomplete">
                     <input type="text" name="query" placeholder="Search" title="Enter search keyword" id="tags" />
 
@@ -157,161 +160,12 @@
                 <!-- End Search Icon-->
 
                 <li>
-                    <a class="nav-link nav-icon" href="@Url.Action("SierraIndex","Home",new { cId = "" })" data-bs-toggle="dropdown">                        
+                    <a class="nav-link nav-icon" href="@Url.Action("SierraIndex","Home",new { cId = "" })" data-bs-toggle="dropdown">
                         <i class="bi bi-arrow-up-left-square"></i>
                         @*<span class="badge bg-primary badge-number">4</span>*@
                     </a>
-                   @*連結前台頁面連結*@
                 </li>
 
-                @*<li class="nav-item dropdown">
-                    <a class="nav-link nav-icon" href="#" data-bs-toggle="dropdown">
-                        <i class="bi bi-bell"></i>
-                        <span class="badge bg-primary badge-number">4</span>
-                    </a>*@<!-- End Notification Icon -->
-
-                    <!--<ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow notifications">
-                        <li class="dropdown-header">
-                            您有4條新通知
-                            <a href="#">
-                                <span class="badge rounded-pill bg-primary p-2 ms-2">查看全部</span>
-                            </a>
-                        </li>
-                        <li>
-                            <hr class="dropdown-divider" />
-                        </li>
-
-                        <li class="notification-item">
-                            <i class="bi bi-exclamation-circle text-warning"></i>
-                            <div>
-                                <h4>登入警告</h4>
-                                <p>有人意圖登入您的帳戶，請確保您帳戶的安全</p>
-                                <p>30 min. ago</p>
-                            </div>
-                        </li>
-
-                        <li>
-                            <hr class="dropdown-divider" />
-                        </li>
-
-                        <li class="notification-item">
-                            <i class="bi bi-x-circle text-danger"></i>
-                            <div>
-                                <h4>產品上架失敗</h4>
-                                <p>請重新上架</p>
-                                <p>1 hr. ago</p>
-                            </div>
-                        </li>
-
-                        <li>
-                            <hr class="dropdown-divider" />
-                        </li>
-
-                        <li class="notification-item">
-                            <i class="bi bi-check-circle text-success"></i>
-                            <div>
-                                <h4>9487號訂單已完成</h4>
-                                <p>確認詳細9487號訂單</p>
-                                <p>2 hrs. ago</p>
-                            </div>
-                        </li>
-
-                        <li>
-                            <hr class="dropdown-divider" />
-                        </li>
-
-                        <li class="notification-item">
-                            <i class="bi bi-info-circle text-primary"></i>
-                            <div>
-                                <h4>訂單資訊</h4>
-                                <p>查詢訂單資訊</p>
-                                <p>4 hrs. ago</p>
-                            </div>
-                        </li>
-
-                        <li>
-                            <hr class="dropdown-divider" />
-                        </li>
-                        <li class="dropdown-footer">
-                            <a href="#">顯示所有通知</a>
-                        </li>
-                    </ul>-->
-                    <!-- End Notification Dropdown Items -->
-                <!--</li>-->
-                <!-- End Notification Nav -->
-
-                <!--<li class="nav-item dropdown">
-                    <a class="nav-link nav-icon" href="#" data-bs-toggle="dropdown">
-                        <i class="bi bi-chat-left-text"></i>
-                        <span class="badge bg-success badge-number">3</span>
-                    </a>--><!-- End Messages Icon -->
-
-                    <!--<ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow messages">
-                        <li class="dropdown-header">
-                            您有新的3筆訊息
-                            <a href="#">
-                                <span class="badge rounded-pill bg-primary p-2 ms-2">查看全部</span>
-                            </a>
-                        </li>
-                        <li>
-                            <hr class="dropdown-divider" />
-                        </li>
-
-                        <li class="message-item">
-                            <a href="#">
-                                <img src="assets/img/messages-1.jpg"
-                                     alt=""
-                                     class="rounded-circle" />
-                                <div>
-                                    <h4>Maria Hudson</h4>
-                                    <p>今晚有空嗎?</p>
-                                    <p>4 hrs. ago</p>
-                                </div>
-                            </a>
-                        </li>
-                        <li>
-                            <hr class="dropdown-divider" />
-                        </li>
-
-                        <li class="message-item">
-                            <a href="#">
-                                <img src="assets/img/messages-2.jpg"
-                                     alt=""
-                                     class="rounded-circle" />
-                                <div>
-                                    <h4>Anna Nelson</h4>
-                                    <p>晚上吃飯嗎?</p>
-                                    <p>6 hrs. ago</p>
-                                </div>
-                            </a>
-                        </li>
-                        <li>
-                            <hr class="dropdown-divider" />
-                        </li>
-
-                        <li class="message-item">
-                            <a href="#">
-                                <img src="assets/img/messages-3.jpg"
-                                     alt=""
-                                     class="rounded-circle" />
-                                <div>
-                                    <h4>David Muldon</h4>
-                                    <p>兄弟 晚上吃飯先取消，有兩個漂亮妹子約我吃飯</p>
-                                    <p>8 hrs. ago</p>
-                                </div>
-                            </a>
-                        </li>
-                        <li>
-                            <hr class="dropdown-divider" />
-                        </li>
-
-                        <li class="dropdown-footer">
-                            <a href="#">顯示全部訊息</a>
-                        </li>
-                    </ul>-->
-                    <!-- End Messages Dropdown Items -->
-                <!--</li>-->
-                <!-- End Messages Nav -->
 
                 <li class="nav-item dropdown pe-3">
                     <a class="nav-link nav-profile d-flex align-items-center pe-0"
@@ -553,26 +407,13 @@
                             <i class="bi bi-circle"></i><span>新增優惠券</span>
                         </a>
                     </li>
-                    @*<li>
-                        <a href="@Url.Action("Index","Discounts")">
-                            <i class="bi bi-circle"></i><span>折扣清單</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="@Url.Action("Create","Discounts")">
-                            <i class="bi bi-circle"></i><span>新增折扣</span>
-                        </a>
-                    </li>*@
+
                     <li>
                         <a href="@Url.Action("Index","MemberCoupons")">
                             <i class="bi bi-circle"></i><span>會員優惠券清單</span>
                         </a>
                     </li>
-                    @*<li>
-                        <a href="@Url.Action("Create","MemberCoupons")">
-                            <i class="bi bi-circle"></i><span>發送優惠券</span>
-                        </a>
-                    </li>*@
+
                     <li>
                         <a href="@Url.Action("Index","Promotions")">
                             <i class="bi bi-circle"></i><span>優惠活動清單</span>
@@ -585,42 +426,9 @@
                     </li>
                 </ul>
             </li>
-            @*End Discounts Nav*@
-            <!--<li class="nav-item">
-                <a class="nav-link collapsed"
-                   data-bs-target="#blogs-nav"
-                   data-bs-toggle="collapse"
-                   href="@Url.Action("Index","Home")">
-                    <i class="bi bi-layout-text-window-reverse"></i><span>小編管理</span><i class="bi bi-chevron-down ms-auto"></i>
-                </a>
-                <ul id="blogs-nav"
-                    class="nav-content collapse"
-                    data-bs-parent="#sidebar-nav">
-                    <li>
-                        <a href="@Url.Action("FormEdit","Home")">
-                            <i class="bi bi-circle"></i><span>新增貼文</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="@Url.Action("FormsLayouts","Home")">
-                            <i class="bi bi-circle"></i><span>查詢貼文</span>
-                        </a>
-                    </li>
-                </ul>
-            </li>-->
-            @*End blogs Nav*@
+
 
             <li class="nav-heading">Pages</li>
-
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="@Url.Action("UsersProfile","Home")">
-                    <i class="bi bi-person"></i>
-                    <span>簡介</span>
-                </a>
-            </li>
-            @*End Profile Page Nav*@
-
-
 
             <li class="nav-item">
                 <a class="nav-link collapsed" href="@Url.Action("Contact","Home")">
@@ -630,10 +438,10 @@
             </li>
             @*End Contact Page Nav*@
 
-          
-                      
+
+
             <li>
-            <div id="currentTimeContainer"></div>
+                <div id="currentTimeContainer"></div>
             </li>
             @*End CurrentTime*@
         </ul>
@@ -660,18 +468,9 @@
        class="back-to-top d-flex align-items-center justify-content-center">
         <i class="bi bi-arrow-up-short"></i>
     </a>
-    @*@RenderSection("scripts", required: false)*@
-    @*AutoComplete*@
-    @*<script src="//apps.bdimg.com/libs/jquery/1.10.2/jquery.min.js"></script>
-        <script src="//apps.bdimg.com/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>*@
-
-
-
-
-
 
     <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
-        <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
     <!-- Vendor JS Files -->
     <script src="~/Scripts/vendor/apexcharts/apexcharts.amd.js"></script>
     <script src="~/Scripts/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
@@ -691,7 +490,7 @@
     <script src="~/Scripts/js/main.js"></script>
     @RenderSection("scripts", required: false)
 
-<script>
+    <script>
         //$(document).ready(function () {
 
         $(document).ready(function () {
@@ -736,35 +535,6 @@
                 buttonsStyling: false
             });
 
-
-            //顯示英文版內容
-            //調用SweetAlert2的fire方法，配置對話框的標題、消息內容、圖標和按鈕。
-            //swalWithBootstrapButtons.fire({
-            //    title: 'Are you sure?',
-            //    text: "You won't be able to revert this!",
-            //    icon: 'warning',
-            //    showCancelButton: true,
-            //    confirmButtonText: 'Yes, delete it!',
-            //    cancelButtonText: 'No, cancel!',
-            //    reverseButtons: true
-            //})
-            //    //.then((result) => {...})：使用 Promise 的then方法，當用戶點擊對話框上的按鈕後執行相應的操作。
-            //    .then((result) => {
-
-            //        //result.isConfirmed：如果用戶點擊了確認按鈕，則執行提交表單的操作。
-            //        if (result.isConfirmed) {
-            //            $('form').submit();
-            //        } //result.dismiss === Swal.DismissReason.cancel：如果用戶點擊了取消按鈕，則顯示一個取消的提示消息。
-            //        else if (result.dismiss === Swal.DismissReason.cancel) {
-            //            swalWithBootstrapButtons.fire(
-            //                'Cancelled',
-            //                'Your imaginary file is safe :)',
-            //                'error'
-            //            );
-            //        }
-            //    });
-
-
             //顯示中文內容
             swalWithBootstrapButtons.fire({
                 title: '你確定嗎？',
@@ -793,7 +563,7 @@
                 });
         }
         //主頁面的AutoComplete
-    var sierras = ["會員清單", "權限清單", "員工清單", "新增員工","角色清單", "甜點清單", "新增甜點", "甜點類別", "課程管理", "新增課程", "課程類別", "師資管理", "新增教師", "教師清單", "訂單管理", "課程訂單", "甜點訂單", "行銷管理", "優惠群組清單", "優惠券清單", "新增優惠券", "折扣清單", "新增折扣", "會員優惠券清單", "發送優惠券", "優惠活動清單", "新增優惠活動"];
+    var sierras = ["會員清單", "權限清單", "員工清單", "新增員工","角色清單", "甜點清單", "新增甜點", "甜點類別", "課程管理", "新增課程", "課程類別", "師資管理", "新增教師", "教師清單", "訂單管理", "課程訂單", "甜點訂單", "行銷管理", "優惠群組清單", "優惠券清單", "新增優惠券", "會員優惠券清單", "發送優惠券", "優惠活動清單", "新增優惠活動"];
 
         function autocomplete(inp, arr) {
             var currentFocus;
@@ -853,10 +623,6 @@
                         autocompleteItem.innerHTML = "<a class='text-dark text-decoration-none' href='https://localhost:44320/Coupons/Index'>" + matches[i] + "</a>";
                     } else if (matches[i] === "新增優惠券") {
                         autocompleteItem.innerHTML = "<a class='text-dark text-decoration-none' href='https://localhost:44320/Coupons/Create'>" + matches[i] + "</a>";
-                    } else if (matches[i] === "折扣清單") {
-                        autocompleteItem.innerHTML = "<a class='text-dark text-decoration-none' href='https://localhost:44320/Discounts/Index'>" + matches[i] + "</a>";
-                    } else if (matches[i] === "新增折扣") {
-                        autocompleteItem.innerHTML = "<a class='text-dark text-decoration-none' href='https://localhost:44320/Discounts/Create'>" + matches[i] + "</a>";
                     } else if (matches[i] === "會員優惠券清單") {
                         autocompleteItem.innerHTML = "<a class='text-dark text-decoration-none' href='https://localhost:44320/MemberCoupons/Index'>" + matches[i] + "</a>";
                     } else if (matches[i] === "發送優惠券") {
@@ -937,6 +703,6 @@
             var input = document.getElementById("tags");
             autocomplete(input, sierras);
         });
-</script>
+    </script>
 </body>
 </html>

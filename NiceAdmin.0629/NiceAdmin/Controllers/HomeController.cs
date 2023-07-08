@@ -20,6 +20,7 @@ namespace NiceAdmin.Controllers
 		{
 			ViewBag.CurrentTime = DateTime.Now;
             ViewBag.HotProducts = GetHotProducts();
+            ViewBag.TotalDessertsCount = GetTotalDessertsCount();
             return View();
 		}
 		private AppDbContext db = new AppDbContext();
@@ -211,12 +212,20 @@ namespace NiceAdmin.Controllers
             ViewBag.HotProducts = GetHotProducts();
             return PartialView("TSDessertsIndexPV", ViewBag.HotProducts);
         }
-
-        public ActionResult FormsLayouts() { return View(); }
-        public ActionResult UsersProfile() { return View(); }
-        public ActionResult FormEdit() { return View(); }
-        public ActionResult DataTable() { return View(); }
-	public ActionResult Login()
+        public ActionResult TotalDesserts()
+        {
+            ViewBag.totalDessertsCount = GetTotalDessertsCount();
+            return PartialView("TotalDesserts", ViewBag.TotalDessertsCount);
+        }
+        private int GetTotalDessertsCount()
+        {
+            using (var dbContext = new AppDbContext())
+            {
+                int totalDessertsCount = dbContext.Desserts.Count();
+                return totalDessertsCount;
+            }
+        }
+        public ActionResult Login()
 		{
 			return View();
 		}
