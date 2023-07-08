@@ -18,6 +18,7 @@ namespace NiceAdmin.Models.ViewModels.OrdersVM
                 DessertOrderId = entiey.DessertOrderId,
                 MemberName = entiey.Member.MemberName,
                 StatusName = entiey.OrderStatus.StatusName,
+                OrderStatusId= entiey.OrderStatus.OrderStatusId,
                 CreateTime = entiey.CreateTime,
                 Recipient = entiey.Recipient,
                 RecipientPhone = entiey.RecipientPhone,

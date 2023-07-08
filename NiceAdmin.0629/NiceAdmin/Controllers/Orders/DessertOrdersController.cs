@@ -8,6 +8,7 @@ using System.Web;
 using System.Web.Mvc;
 using NiceAdmin.Models.EFModels;
 using NiceAdmin.Models.ViewModels.OrdersVM;
+using NiceAdmin.Models.ViewModels.TeachersVM;
 
 namespace NiceAdmin.Controllers.Orders
 {
@@ -16,14 +17,49 @@ namespace NiceAdmin.Controllers.Orders
         private AppDbContext db = new AppDbContext();
 
         // GET: DessertOrders
-        public ActionResult Index(int page = 1, string sortColumn = "DessertOrderId", string sortOrder = "asc")
+        public ActionResult Index(DessertOrderCriteria criteria)
         {
-
-            var dessertOrders = db.DessertOrders.Include(d=>d.DessertOrderDetails).Include(d => d.Member).Include(d => d.OrderStatus)
-                .ToList()
-                .Select(d => d.TOIndexVM());
+            PrepareOrderDataSource(criteria.OrderStatusId);
+            ViewBag.Criteria = criteria;
+           
+            //查詢紀錄
+            var query = db.DessertOrders.Include(d => d.DessertOrderDetails).Include(d => d.Member).Include(d => d.OrderStatus);
+            if (string.IsNullOrEmpty(criteria.MemberName) == false)
+            {
+                query = query.Where(d => d.Member.MemberName.Contains(criteria.MemberName));
+            }
+            if(criteria.OrderStatusId!=null && criteria.OrderStatusId.Value > 0) 
+            {
+                query = query.Where(d => d.OrderStatus.OrderStatusId == criteria.OrderStatusId.Value);
+            }
+            if (string.IsNullOrEmpty(criteria.Recipient) == false) 
+            {
+                query = query.Where(d=>d.Recipient.Contains(criteria.Recipient));
+            }
+            if (criteria.MinPrice.HasValue) 
+            {
+                query =query.Where(d=>d.DessertOrderTotal>=criteria.MinPrice.Value);
+            }
+            if (criteria.MaxPrice.HasValue) 
+            {
+                query = query.Where(d=>d.DessertOrderTotal<=criteria.MaxPrice.Value);
+            }
+            var dessertOrders = query.ToList().Select(d => d.TOIndexVM());
             return View(dessertOrders);
+          
+
+            //var dessertOrders = db.DessertOrders.Include(d=>d.DessertOrderDetails).Include(d => d.Member).Include(d => d.OrderStatus)
+            //    .ToList()
+            //    .Select(d => d.TOIndexVM());
+            //return View(dessertOrders);
         }
+
+        private void PrepareOrderDataSource(int? orderStatusId)
+        {
+            var status = db.OrderStatuses.ToList().Prepend(new OrderStatus());
+            ViewBag.OrderStatusId = new SelectList(status, "OrderStatusId", "StatusName", orderStatusId);
+        }
+
 
         // GET: DessertOrders/Details/5
         public ActionResult Details(int? id)
