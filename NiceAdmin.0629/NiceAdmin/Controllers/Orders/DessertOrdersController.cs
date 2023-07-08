@@ -9,6 +9,7 @@ using System.Web.Mvc;
 using NiceAdmin.Models.EFModels;
 using NiceAdmin.Models.ViewModels.OrdersVM;
 using NiceAdmin.Models.ViewModels.TeachersVM;
+using NiceAdmin.Views.DessertOrders;
 
 namespace NiceAdmin.Controllers.Orders
 {
@@ -21,8 +22,9 @@ namespace NiceAdmin.Controllers.Orders
         {
             PrepareOrderDataSource(criteria.OrderStatusId);
             ViewBag.Criteria = criteria;
-           
+
             //查詢紀錄
+            #region where
             var query = db.DessertOrders.Include(d => d.DessertOrderDetails).Include(d => d.Member).Include(d => d.OrderStatus);
             if (string.IsNullOrEmpty(criteria.MemberName) == false)
             {
@@ -44,6 +46,7 @@ namespace NiceAdmin.Controllers.Orders
             {
                 query = query.Where(d=>d.DessertOrderTotal<=criteria.MaxPrice.Value);
             }
+            #endregion
             var dessertOrders = query.ToList().Select(d => d.TOIndexVM());
             return View(dessertOrders);
           
@@ -59,7 +62,32 @@ namespace NiceAdmin.Controllers.Orders
             var status = db.OrderStatuses.ToList().Prepend(new OrderStatus());
             ViewBag.OrderStatusId = new SelectList(status, "OrderStatusId", "StatusName", orderStatusId);
         }
+        public PartialViewResult TopSellingDesserts()//最熱銷前五名甜點
+        {
+            var topDesserts = db.DessertOrders
+                .SelectMany(o => o.DessertOrderDetails)
+                .GroupBy(d => d.DessertName)
+                .Select(g => new DessertOrderDetailStats { DessertName = g.Key, Quantity = g.Sum(d => d.Quantity) })
+                .OrderByDescending(d => d.Quantity)
+                .Take(5)
+                .ToList();
 
+            return PartialView("TopSellingDesserts", topDesserts);
+        }
+        public PartialViewResult TopSellingDessertsOrder()//前十熱銷的甜點訂單
+        {
+            var topSellingOrders = db.DessertOrders
+                .OrderByDescending(o => o.DessertOrderTotal)
+                .Take(10)
+                .Select(o => new TopSellingDessertsOrder
+                {
+                    OrderID = o.DessertOrderId,
+                    TotalAmount = o.DessertOrderTotal
+                })
+                .ToList();
+
+            return PartialView("TopSellingDessertsOrder", topSellingOrders);
+        }
 
         // GET: DessertOrders/Details/5
         public ActionResult Details(int? id)

@@ -11,22 +11,25 @@ namespace NiceAdmin.Models.ViewModels.OrdersVM
 {
     public static class DessertOrderExts
     {
-        public static DessertOrderIndexVM TOIndexVM(this DessertOrder entiey)//ENTITY(資料庫的資料)轉成VM
+        public static DessertOrderIndexVM TOIndexVM(this DessertOrder entity)//ENTITY(資料庫的資料)轉成VM
         {
+            var dessertOrderDetails = entity.DessertOrderDetails.ToList();
             return new DessertOrderIndexVM
             {
-                DessertOrderId = entiey.DessertOrderId,
-                MemberName = entiey.Member.MemberName,
-                StatusName = entiey.OrderStatus.StatusName,
-                OrderStatusId= entiey.OrderStatus.OrderStatusId,
-                CreateTime = entiey.CreateTime,
-                Recipient = entiey.Recipient,
-                RecipientPhone = entiey.RecipientPhone,
-                RecipientAddress = entiey.RecipientAddress,
-                ShippingFee = entiey.ShippingFee,
-                DessertOrderTotal = entiey.DessertOrderTotal,
-                DeliveryMethod = entiey.DeliveryMethod,
-                DessertOrderDetails = entiey.DessertOrderDetails.ToList(),
+                DessertOrderId = entity.DessertOrderId,
+                MemberName = entity.Member.MemberName,
+                StatusName = entity.OrderStatus.StatusName,
+                OrderStatusId= entity.OrderStatus.OrderStatusId,
+                CreateTime = entity.CreateTime,
+                Recipient = entity.Recipient,
+                RecipientPhone = entity.RecipientPhone,
+                RecipientAddress = entity.RecipientAddress,
+                ShippingFee = entity.ShippingFee,
+                DessertOrderTotal = entity.DessertOrderTotal,
+                DeliveryMethod = entity.DeliveryMethod,
+                DessertOrderDetails = entity.DessertOrderDetails.ToList(),
+                Quantity = entity.DessertOrderDetails.Sum(d => d.Quantity),
+                DessertName = entity.DessertOrderDetails.Select(d => d.DessertName).FirstOrDefault()
             };
         }
 

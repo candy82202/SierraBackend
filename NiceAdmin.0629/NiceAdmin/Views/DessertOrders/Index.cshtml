@@ -1,4 +1,5 @@
-﻿@model IEnumerable<NiceAdmin.Models.ViewModels.OrdersVM.DessertOrderIndexVM>
+﻿@using NiceAdmin.Models.ViewModels.OrdersVM
+@model IEnumerable<NiceAdmin.Models.ViewModels.OrdersVM.DessertOrderIndexVM>
 
 @{
     var status = ViewBag.OrderStatusId as SelectList;
@@ -19,6 +20,8 @@
             </ol>
         </nav>
     </div>
+    @{Html.RenderAction("TopSellingDesserts", "DessertOrders");}
+    @{Html.RenderAction("TopSellingDessertsOrder", "DessertOrders");}
     <section class="container">
         <form method="get" id="searchForm">
             <div id="orderGroup" class="accordion">

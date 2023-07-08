@@ -1,0 +1,26 @@
+﻿@using NiceAdmin.Models.ViewModels.OrdersVM
+@model List<DessertOrderDetailStats>
+@{
+    ViewBag.Title = "TopSellingDesserts";
+}
+
+<h2>最熱銷前五名甜點</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>甜點名稱</th>
+            <th>數量</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var dessert in Model)
+        {
+            <tr>
+                <td>@dessert.DessertName</td>
+                <td>@dessert.Quantity</td>
+            </tr>
+        }
+    </tbody>
+</table>
+

@@ -239,7 +239,9 @@ Order 部分
 [working on]debug課程訂單明細資料庫錯誤，
 ViewBag.LessonOrderId = new SelectList(db.LessonOrders, "LessonOrderId", "Note", lessonOrderDetail.LessonOrderId);
 [v]criteria進階搜尋 做清除搜尋
-[working on]最近熱銷的五筆訂單Partial view最近熱銷的五筆甜點
+[v]Partial View
+已甜點訂單的總額(DessertOrderTotal)做前十熱銷的甜點訂單
+已甜點訂單明細(DessertOrderDetail)的數量(Quantity)做最熱銷前五名甜點(DessertName)
 [V]手風琴單筆ID做開合
 [v]button大小間距
 
