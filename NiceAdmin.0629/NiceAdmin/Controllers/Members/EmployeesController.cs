@@ -28,19 +28,19 @@ namespace NiceAdmin.Controllers.Members
         }
 
         // GET: Employees/Details/5
-        public ActionResult Details(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Employee employee = db.Employees.Find(id);
-            if (employee == null)
-            {
-                return HttpNotFound();
-            }
-            return View(employee);
-        }
+        //public ActionResult Details(int? id)
+        //{
+        //    if (id == null)
+        //    {
+        //        return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+        //    }
+        //    Employee employee = db.Employees.Find(id);
+        //    if (employee == null)
+        //    {
+        //        return HttpNotFound();
+        //    }
+        //    return View(employee);
+        //}
 
         // GET: Employees/Create
         [Authorize(Roles = "dessertSale,lessonSale")]
@@ -109,12 +109,6 @@ namespace NiceAdmin.Controllers.Members
         // GET: Employees/Edit/5
         public ActionResult Edit(int? id)
         {
-            var LT = db.Lessons.ToList();
-            var LT2 = db.Lessons.ToList().Where(l => l.TeacherId == id);
-            var LT22 = db.Lessons.ToList().Select(l => l.LessonTime);
-            var LT23 = db.Lessons.ToList().Select(l => l.TeacherId);
-            var LT3 = db.Lessons.Where(l => l.TeacherId == id).ToList();
-
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -296,6 +290,8 @@ namespace NiceAdmin.Controllers.Members
             }
             base.Dispose(disposing);
         }
+
+        // 角色限制為單個時才會用到
         private void PrepareRolesDataSource(int? roleId)
         {
             var roleList = db.Roles.ToList().Prepend(new Role());

@@ -192,7 +192,7 @@
     <Compile Include="Models\ViewModels\LessonsVM\LessonEditImgVM.cs" />
     <Compile Include="Models\ViewModels\LessonsVM\LessonEditVM.cs" />
     <Compile Include="Models\ViewModels\MembersVM\MemberExts.cs" />
-	  <Compile Include="Models\ViewModels\MembersVM\MemberCriteria.cs" />
+    <Compile Include="Models\ViewModels\MembersVM\MemberCriteria.cs" />
     <Compile Include="Models\ViewModels\OrdersVM\DessertOrderDetailIndexVM.cs" />
     <Compile Include="Models\ViewModels\PromotionsVM\MemberCouponDeliverVM.cs" />
     <Compile Include="Models\ViewModels\PromotionsVM\MemberCouponDetailVM.cs" />
@@ -276,8 +276,14 @@
     <Content Include="img\Members\adduser2.png" />
     <Content Include="img\Members\adduser3.png" />
     <Content Include="img\Members\adduser4.png" />
+    <Content Include="img\Members\lesson.png" />
+    <Content Include="img\Members\checkout02.png" />
+    <Content Include="img\Members\checkout01.png" />
     <Content Include="img\Members\delete.png" />
+    <Content Include="img\Members\dessert.png" />
     <Content Include="img\Members\edit.png" />
+    <Content Include="img\Members\group-chat.png" />
+    <Content Include="img\Members\group.png" />
     <Content Include="img\Members\MemberImage001.png" />
     <Content Include="img\Members\MemberImage002.png" />
     <Content Include="img\Members\MemberImage003.png" />
@@ -328,6 +334,11 @@
     <Content Include="img\Members\MemberImage048.png" />
     <Content Include="img\Members\MemberImage049.png" />
     <Content Include="img\Members\MemberImage050.png" />
+    <Content Include="img\Members\promo-code.png" />
+    <Content Include="img\Members\teacher.png" />
+    <Content Include="img\Members\team-outline.png" />
+    <Content Include="img\Members\team.png" />
+    <Content Include="img\Members\coupon.png" />
     <Content Include="img\not-found.svg" />
     <Content Include="img\profile-img.jpg" />
     <Content Include="ReadMe.txt" />
@@ -878,7 +889,7 @@
     <Content Include="Views\Home\SierraIndex.cshtml" />
     <Content Include="Views\Home\HotDessertsPartialView.cshtml" />
     <Content Include="Views\Home\TSDessertsIndexPV.cshtml" />
-	<Content Include="Views\Shared\_Unauthorized.cshtml" />
+    <Content Include="Views\Shared\_Unauthorized.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="Scripts\vendor\chart.js\controllers\controller.bar.d.ts" />

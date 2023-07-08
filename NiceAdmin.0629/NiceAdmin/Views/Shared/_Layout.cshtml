@@ -1,575 +1,660 @@
 ﻿@using System.Security.Claims
+@using System.Web
 @{
-	var user = Context.User as ClaimsPrincipal;
-	bool isAdmin = user.IsInRole("admin");
-	bool isManager = user.IsInRole("manager");
-	bool isDessertSale = user.IsInRole("dessertSale");
-	bool isLessonSale = user.IsInRole("lessonSale");
-	bool isStaff = user.IsInRole("staff");
+    var user = Context.User as ClaimsPrincipal;
+    bool isAdmin = user.IsInRole("admin");
+    bool isManager = user.IsInRole("manager");
+    bool isDessertSale = user.IsInRole("dessertSale");
+    bool isLessonSale = user.IsInRole("lessonSale");
+    bool isStaff = user.IsInRole("staff");
+
+    //var imageName = ""; // 儲存目前員工的圖片檔案名稱
+    //if (user.Identity.IsAuthenticated)
+    //{
+    //    // 從ClaimsPrincipal中擷取目前員工的圖片檔案名稱
+    //    var imageClaim = user.FindFirst(c => c.Type == "EmployeeId");
+    //    if (imageClaim != null)
+    //    {
+    //        imageName = imageClaim.Value;
+    //    }
+    //}
+
+    //var imagePath = ""; // 圖片的完整路徑
+    //if (!string.IsNullOrEmpty(imageName))
+    //{
+    //    // 組合圖片的完整路徑
+    //    imagePath = Url.Content("~/img/" + imageName);
+    //}
 }
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="utf-8" />
-	<meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
 
-	<title>Sierra 甜點</title>
-	<meta content="" name="description" />
-	<meta content="" name="keywords" />
+    <title>Sierra 甜點</title>
+    <meta content="" name="description" />
+    <meta content="" name="keywords" />
 
-	<!-- Favicons -->
-	<link href="~/img/favicon.png" rel="icon" />
-	<link href="~/img/apple-touch-icon.png" rel="apple-touch-icon" />
+    <!-- Favicons -->
+    <link href="~/img/favicon.png" rel="icon" />
+    <link href="~/img/apple-touch-icon.png" rel="apple-touch-icon" />
 
-	<!-- Google Fonts -->
-	<link href="https://fonts.gstatic.com" rel="preconnect" />
-	<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
-		  rel="stylesheet" />
+    <!-- Google Fonts -->
+    <link href="https://fonts.gstatic.com" rel="preconnect" />
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
+          rel="stylesheet" />
 
-	<!-- Vendor CSS Files -->
-	<link href="~/Scripts/vendor/bootstrap/css/bootstrap.min.css"
-		  rel="stylesheet" />
-	<link href="~/Scripts/vendor/bootstrap-icons/bootstrap-icons.css"
-		  rel="stylesheet" />
-	<link href="~/Scripts/vendor/boxicons/css/boxicons.min.css" rel="stylesheet" />
-	<link href="~/Scripts/vendor/quill/quill.snow.css" rel="stylesheet" />
-	<link href="~/Scripts/vendor/quill/quill.bubble.css" rel="stylesheet" />
-	<link href="~/Scripts/vendor/remixicon/remixicon.css" rel="stylesheet" />
-	<link href="~/Scripts/vendor/simple-datatables/style.css" rel="stylesheet" />
+    <!-- Vendor CSS Files -->
+    <link href="~/Scripts/vendor/bootstrap/css/bootstrap.min.css"
+          rel="stylesheet" />
+    <link href="~/Scripts/vendor/bootstrap-icons/bootstrap-icons.css"
+          rel="stylesheet" />
+    <link href="~/Scripts/vendor/boxicons/css/boxicons.min.css" rel="stylesheet" />
+    <link href="~/Scripts/vendor/quill/quill.snow.css" rel="stylesheet" />
+    <link href="~/Scripts/vendor/quill/quill.bubble.css" rel="stylesheet" />
+    <link href="~/Scripts/vendor/remixicon/remixicon.css" rel="stylesheet" />
+    <link href="~/Scripts/vendor/simple-datatables/style.css" rel="stylesheet" />
 
-	@*dataTable Css*@
+    @*dataTable Css*@
 
-	@*<link rel="stylesheet" href="https://cdn.datatables.net/1.11.3/css/jquery.dataTables.min.css">*@
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.2.0/css/bootstrap.min.css">
-	<link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/dataTables.bootstrap5.min.css">
-	<link rel="stylesheet" href="https://cdn.datatables.net/select/1.6.2/css/select.dataTables.min.css">
+    @*<link rel="stylesheet" href="https://cdn.datatables.net/1.11.3/css/jquery.dataTables.min.css">*@
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.2.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/dataTables.bootstrap5.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/select/1.6.2/css/select.dataTables.min.css">
 
-	@* sweetalert *@
-	<link href="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.3/dist/sweetalert2.min.css" rel="stylesheet">
-	@*<link href="https://cdn.jsdelivr.net/npm/@sweetalert2/theme-dark@4/dark.css" rel="stylesheet">*@
-	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.js"></script>
+    @* sweetalert *@
+    <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.3/dist/sweetalert2.min.css" rel="stylesheet">
+    @*<link href="https://cdn.jsdelivr.net/npm/@sweetalert2/theme-dark@4/dark.css" rel="stylesheet">*@
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.js"></script>
 
-	<!-- Template Main CSS File -->
-	<link href="~/Content/style.css" rel="stylesheet" />
-	<style>
-		* {
-			box-sizing: border-box;
-		}
+    <!-- Template Main CSS File -->
+    <link href="~/Content/style.css" rel="stylesheet" />
+    <style>
+        * {
+            box-sizing: border-box;
+        }
 
-		.autocomplete {
-			/*the container must be positioned relative:*/
-			position: relative;
-			/* display: inline-block;*/
-		}
+        .autocomplete {
+            /*the container must be positioned relative:*/
+            position: relative;
+            /* display: inline-block;*/
+        }
 
-		#s_name {
-			border: 1px solid transparent;
-			background-color: #f1f1f1;
-			padding: 10px;
-			font-size: 16px;
-		}
+        #s_name {
+            border: 1px solid transparent;
+            background-color: #f1f1f1;
+            padding: 10px;
+            font-size: 16px;
+        }
 
-		.autocomplete input[type=text] {
-			/*background-color: #f1f1f1;*/
-			width: 100%;
-		}
+        .autocomplete input[type=text] {
+            /*background-color: #f1f1f1;*/
+            width: 100%;
+        }
 
-		.autocomplete input[type=submit] {
-			background-color: DodgerBlue;
-			color: #fff;
-		}
+        .autocomplete input[type=submit] {
+            background-color: DodgerBlue;
+            color: #fff;
+        }
 
-		.autocomplete .autocomplete-items {
-			position: absolute;
-			border: 1px solid #d4d4d4;
-			border-bottom: none;
-			border-top: none;
-			z-index: 99;
-			/*position the autocomplete items to be the same width as the container:*/
-			top: 100%;
-			left: 0;
-			right: 0;
-		}
+        .autocomplete .autocomplete-items {
+            position: absolute;
+            border: 1px solid #d4d4d4;
+            border-bottom: none;
+            border-top: none;
+            z-index: 99;
+            /*position the autocomplete items to be the same width as the container:*/
+            top: 100%;
+            left: 0;
+            right: 0;
+        }
 
-			.autocomplete .autocomplete-items div {
-				padding: 10px;
-				cursor: pointer;
-				background-color: #fff;
-				border-bottom: 1px solid #d4d4d4;
-			}
+            .autocomplete .autocomplete-items div {
+                padding: 10px;
+                cursor: pointer;
+                background-color: #fff;
+                border-bottom: 1px solid #d4d4d4;
+            }
 
-				.autocomplete .autocomplete-items div:hover {
-					/*when hovering an item:*/
-					background-color: #e9e9e9;
-					border-bottom: 3px solid #717ff5;
-				}
+                .autocomplete .autocomplete-items div:hover {
+                    /*when hovering an item:*/
+                    background-color: #e9e9e9;
+                    border-bottom: 3px solid #717ff5;
+                }
 
         .autocomplete .autocomplete-active {
             /*when navigating through the items using the arrow keys:*/
             background-color: DodgerBlue !important;
             color: #ffffff;
         }
-        .height100px{
-            height:100px;
+
+        .height100px {
+            height: 100px;
         }
-        
+
         .createPromotionImageSize {
             width: 80%;
             height: 250px;
         }
+
         .topsellImg {
             border-radius: 5px;
             max-width: 100px;
             font-size: 22px;
         }
-         .endCoupon {
+
+        .endCoupon {
             background-color: #9D9D9D;
         }
-		.fz30{
-			font-size:30px;
-		}
+
+        .fz30 {
+            font-size: 30px;
+        }
+        /*水平置中*/
+        .jcc {
+            display: flex;
+            justify-content: center;
+        }
     </style>
 
 </head>
 
 <body>
-	<!-- ======= Header ======= -->
-	<header id="header" class="header fixed-top d-flex align-items-center">
-		<div class="d-flex align-items-center justify-content-between">
-			<a href="@Url.Action("Index","Home")" class="logo d-flex align-items-center">
-				<img src="~/img/logeExtraShadow.png" alt="" />
-				<span class="d-none d-lg-block">Sierra</span>
-			</a>
-			<i class="bi bi-list toggle-sidebar-btn"></i>
-		</div>
-		<!-- End Logo -->
+    <!-- ======= Header ======= -->
+    <header id="header" class="header fixed-top d-flex align-items-center">
+        <div class="d-flex align-items-center justify-content-between">
+            <a href="@Url.Action("Index","Home")" class="logo d-flex align-items-center">
+                <img src="~/img/logeExtraShadow.png" alt="" />
+                <span class="d-none d-lg-block">Sierra</span>
+            </a>
+            <i class="bi bi-list toggle-sidebar-btn"></i>
+        </div>
+        <!-- End Logo -->
 
-		<div class="search-bar">
-			<form class="search-form align-items-center"
-				  method="POST"
-				  action="#">
-				@*<button type="submit" title="Search">
-						<i class="bi bi-search"></i>
-					</button>*@
-				<div class="autocomplete">
-					<input type="text" name="query" placeholder="Search" title="Enter search keyword" id="tags" />
+        <div class="search-bar">
+            <form class="search-form align-items-center"
+                  method="POST"
+                  action="#">
+                @*<button type="submit" title="Search">
+                        <i class="bi bi-search"></i>
+                    </button>*@
+                <div class="autocomplete">
+                    <input type="text" name="query" placeholder="Search" title="Enter search keyword" id="tags" />
 
-				</div>
-			</form>
-		</div>
-		<!-- End Search Bar -->
+                </div>
+            </form>
+        </div>
+        <!-- End Search Bar -->
 
-		<nav class="header-nav ms-auto">
-			<ul class="d-flex align-items-center">
-				<li class="nav-item d-block d-lg-none">
-					<a class="nav-link nav-icon search-bar-toggle" href="#">
-						<i class="bi bi-search"></i>
-					</a>
-				</li>
-				<!-- End Search Icon-->
+        <nav class="header-nav ms-auto">
+            <ul class="d-flex align-items-center">
+                <li class="nav-item d-block d-lg-none">
+                    <a class="nav-link nav-icon search-bar-toggle" href="#">
+                        <i class="bi bi-search"></i>
+                    </a>
+                </li>
+                <!-- End Search Icon-->
 
-				<li>
-					<a class="nav-link nav-icon" href="@Url.Action("Sierras","Home",new { cId = "" })" data-bs-toggle="dropdown">
-						<i class="bi bi-arrow-up-left-square"></i>
-						@*<span class="badge bg-primary badge-number">4</span>*@
-					</a>
-					@*連結前台頁面連結*@
-				</li>
+                <li>
+                    <a class="nav-link nav-icon" href="@Url.Action("Sierras","Home",new { cId = "" })" data-bs-toggle="dropdown">
+                        <i class="bi bi-arrow-up-left-square"></i>
+                        @*<span class="badge bg-primary badge-number">4</span>*@
+                    </a>
+                    @*連結前台頁面連結*@
+                </li>
 
-				@*<li class="nav-item dropdown">
-					<a class="nav-link nav-icon" href="#" data-bs-toggle="dropdown">
-						<i class="bi bi-bell"></i>
-						<span class="badge bg-primary badge-number">4</span>
-					</a>*@<!-- End Notification Icon -->
-				<!--<ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow notifications">
-					<li class="dropdown-header">
-						您有4條新通知
-						<a href="#">
-							<span class="badge rounded-pill bg-primary p-2 ms-2">查看全部</span>
-						</a>
-					</li>
-					<li>
-						<hr class="dropdown-divider" />
-					</li>
+                @*<li class="nav-item dropdown">
+                    <a class="nav-link nav-icon" href="#" data-bs-toggle="dropdown">
+                        <i class="bi bi-bell"></i>
+                        <span class="badge bg-primary badge-number">4</span>
+                    </a>*@<!-- End Notification Icon -->
+                <!--<ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow notifications">
+                    <li class="dropdown-header">
+                        您有4條新通知
+                        <a href="#">
+                            <span class="badge rounded-pill bg-primary p-2 ms-2">查看全部</span>
+                        </a>
+                    </li>
+                    <li>
+                        <hr class="dropdown-divider" />
+                    </li>
 
-					<li class="notification-item">
-						<i class="bi bi-exclamation-circle text-warning"></i>
-						<div>
-							<h4>登入警告</h4>
-							<p>有人意圖登入您的帳戶，請確保您帳戶的安全</p>
-							<p>30 min. ago</p>
-						</div>
-					</li>
+                    <li class="notification-item">
+                        <i class="bi bi-exclamation-circle text-warning"></i>
+                        <div>
+                            <h4>登入警告</h4>
+                            <p>有人意圖登入您的帳戶，請確保您帳戶的安全</p>
+                            <p>30 min. ago</p>
+                        </div>
+                    </li>
 
-					<li>
-						<hr class="dropdown-divider" />
-					</li>
+                    <li>
+                        <hr class="dropdown-divider" />
+                    </li>
 
-					<li class="notification-item">
-						<i class="bi bi-x-circle text-danger"></i>
-						<div>
-							<h4>產品上架失敗</h4>
-							<p>請重新上架</p>
-							<p>1 hr. ago</p>
-						</div>
-					</li>
+                    <li class="notification-item">
+                        <i class="bi bi-x-circle text-danger"></i>
+                        <div>
+                            <h4>產品上架失敗</h4>
+                            <p>請重新上架</p>
+                            <p>1 hr. ago</p>
+                        </div>
+                    </li>
 
-					<li>
-						<hr class="dropdown-divider" />
-					</li>
+                    <li>
+                        <hr class="dropdown-divider" />
+                    </li>
 
-					<li class="notification-item">
-						<i class="bi bi-check-circle text-success"></i>
-						<div>
-							<h4>9487號訂單已完成</h4>
-							<p>確認詳細9487號訂單</p>
-							<p>2 hrs. ago</p>
-						</div>
-					</li>
+                    <li class="notification-item">
+                        <i class="bi bi-check-circle text-success"></i>
+                        <div>
+                            <h4>9487號訂單已完成</h4>
+                            <p>確認詳細9487號訂單</p>
+                            <p>2 hrs. ago</p>
+                        </div>
+                    </li>
 
-					<li>
-						<hr class="dropdown-divider" />
-					</li>
+                    <li>
+                        <hr class="dropdown-divider" />
+                    </li>
 
-					<li class="notification-item">
-						<i class="bi bi-info-circle text-primary"></i>
-						<div>
-							<h4>訂單資訊</h4>
-							<p>查詢訂單資訊</p>
-							<p>4 hrs. ago</p>
-						</div>
-					</li>
+                    <li class="notification-item">
+                        <i class="bi bi-info-circle text-primary"></i>
+                        <div>
+                            <h4>訂單資訊</h4>
+                            <p>查詢訂單資訊</p>
+                            <p>4 hrs. ago</p>
+                        </div>
+                    </li>
 
-					<li>
-						<hr class="dropdown-divider" />
-					</li>
-					<li class="dropdown-footer">
-						<a href="#">顯示所有通知</a>
-					</li>
-				</ul>-->
-				<!-- End Notification Dropdown Items -->
-				<!--</li>-->
-				<!-- End Notification Nav -->
-				<!--<li class="nav-item dropdown">
-					<a class="nav-link nav-icon" href="#" data-bs-toggle="dropdown">
-						<i class="bi bi-chat-left-text"></i>
-						<span class="badge bg-success badge-number">3</span>
-					</a>-->
-				<!-- End Messages Icon -->
-				<!--<ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow messages">
-					<li class="dropdown-header">
-						您有新的3筆訊息
-						<a href="#">
-							<span class="badge rounded-pill bg-primary p-2 ms-2">查看全部</span>
-						</a>
-					</li>
-					<li>
-						<hr class="dropdown-divider" />
-					</li>
+                    <li>
+                        <hr class="dropdown-divider" />
+                    </li>
+                    <li class="dropdown-footer">
+                        <a href="#">顯示所有通知</a>
+                    </li>
+                </ul>-->
+                <!-- End Notification Dropdown Items -->
+                <!--</li>-->
+                <!-- End Notification Nav -->
+                <!--<li class="nav-item dropdown">
+                    <a class="nav-link nav-icon" href="#" data-bs-toggle="dropdown">
+                        <i class="bi bi-chat-left-text"></i>
+                        <span class="badge bg-success badge-number">3</span>
+                    </a>-->
+                <!-- End Messages Icon -->
+                <!--<ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow messages">
+                    <li class="dropdown-header">
+                        您有新的3筆訊息
+                        <a href="#">
+                            <span class="badge rounded-pill bg-primary p-2 ms-2">查看全部</span>
+                        </a>
+                    </li>
+                    <li>
+                        <hr class="dropdown-divider" />
+                    </li>
 
-					<li class="message-item">
-						<a href="#">
-							<img src="assets/img/messages-1.jpg"
-								 alt=""
-								 class="rounded-circle" />
-							<div>
-								<h4>Maria Hudson</h4>
-								<p>今晚有空嗎?</p>
-								<p>4 hrs. ago</p>
-							</div>
-						</a>
-					</li>
-					<li>
-						<hr class="dropdown-divider" />
-					</li>
+                    <li class="message-item">
+                        <a href="#">
+                            <img src="assets/img/messages-1.jpg"
+                                 alt=""
+                                 class="rounded-circle" />
+                            <div>
+                                <h4>Maria Hudson</h4>
+                                <p>今晚有空嗎?</p>
+                                <p>4 hrs. ago</p>
+                            </div>
+                        </a>
+                    </li>
+                    <li>
+                        <hr class="dropdown-divider" />
+                    </li>
 
-					<li class="message-item">
-						<a href="#">
-							<img src="assets/img/messages-2.jpg"
-								 alt=""
-								 class="rounded-circle" />
-							<div>
-								<h4>Anna Nelson</h4>
-								<p>晚上吃飯嗎?</p>
-								<p>6 hrs. ago</p>
-							</div>
-						</a>
-					</li>
-					<li>
-						<hr class="dropdown-divider" />
-					</li>
+                    <li class="message-item">
+                        <a href="#">
+                            <img src="assets/img/messages-2.jpg"
+                                 alt=""
+                                 class="rounded-circle" />
+                            <div>
+                                <h4>Anna Nelson</h4>
+                                <p>晚上吃飯嗎?</p>
+                                <p>6 hrs. ago</p>
+                            </div>
+                        </a>
+                    </li>
+                    <li>
+                        <hr class="dropdown-divider" />
+                    </li>
 
-					<li class="message-item">
-						<a href="#">
-							<img src="assets/img/messages-3.jpg"
-								 alt=""
-								 class="rounded-circle" />
-							<div>
-								<h4>David Muldon</h4>
-								<p>兄弟 晚上吃飯先取消，有兩個漂亮妹子約我吃飯</p>
-								<p>8 hrs. ago</p>
-							</div>
-						</a>
-					</li>
-					<li>
-						<hr class="dropdown-divider" />
-					</li>
+                    <li class="message-item">
+                        <a href="#">
+                            <img src="assets/img/messages-3.jpg"
+                                 alt=""
+                                 class="rounded-circle" />
+                            <div>
+                                <h4>David Muldon</h4>
+                                <p>兄弟 晚上吃飯先取消，有兩個漂亮妹子約我吃飯</p>
+                                <p>8 hrs. ago</p>
+                            </div>
+                        </a>
+                    </li>
+                    <li>
+                        <hr class="dropdown-divider" />
+                    </li>
 
-					<li class="dropdown-footer">
-						<a href="#">顯示全部訊息</a>
-					</li>
-				</ul>-->
-				<!-- End Messages Dropdown Items -->
-				<!--</li>-->
-				<!-- End Messages Nav -->
+                    <li class="dropdown-footer">
+                        <a href="#">顯示全部訊息</a>
+                    </li>
+                </ul>-->
+                <!-- End Messages Dropdown Items -->
+                <!--</li>-->
+                <!-- End Messages Nav -->
 
-				<li class="nav-item dropdown pe-3">
-					<a class="nav-link nav-profile d-flex align-items-center pe-0"
-					   href="#"
-					   data-bs-toggle="dropdown">
-						<img src="~/img/profile-img.jpg"
-							 alt="Profile"
-							 class="rounded-circle" />
-						<span class="d-none d-md-block dropdown-toggle ps-2">你好,@User.Identity.Name</span>
-					</a><!-- End Profile Iamge Icon -->
+                <li class="nav-item dropdown pe-3">
+                    <a class="nav-link nav-profile d-flex align-items-center pe-0"
+                       href="#"
+                       data-bs-toggle="dropdown">
+                        @*<img src="~/img/profile-img.jpg"
+                             alt="Profile"
+                             class="rounded-circle" />*@
+                        @*@if (!string.IsNullOrEmpty(imagePath))
+                        {
+                            <img src="@imagePath" alt="員工照片" />
+                        }*@
+                        <span class="d-none d-md-block dropdown-toggle ps-2">你好,@User.Identity.Name</span>
+                    </a><!-- End Profile Iamge Icon -->
 
-					<ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
-						<li class="dropdown-header">
-							<h6>@User.Identity.Name</h6>
-							<div>
-								@{
-									if (isAdmin)
-									{
-										<em>[最高管理者]</em>
-									}
-									if (isManager)
-									{
-										<em>[管理者]</em>
-									}
-									if (isDessertSale)
-									{
-										<em>[甜點銷售]</em>
-									}
-									if (isLessonSale)
-									{
-										<em>[課程銷售]</em>
-									}
-									if (isStaff)
-									{
-										<em>[一般員工]</em>
-									}
-								}
-							</div>
-						</li>
-						<li>
-							<hr class="dropdown-divider" />
-						</li>
+                    <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
+                        <li class="dropdown-header">
+                            <h6>@User.Identity.Name</h6>
+                            <div>
+                                @{
+                                    if (isAdmin)
+                                    {
+                                        <em>[最高管理者]</em>
+                                    }
+                                    if (isManager)
+                                    {
+                                        <em>[管理者]</em>
+                                    }
+                                    if (isDessertSale)
+                                    {
+                                        <em>[甜點銷售]</em>
+                                    }
+                                    if (isLessonSale)
+                                    {
+                                        <em>[課程銷售]</em>
+                                    }
+                                    if (isStaff)
+                                    {
+                                        <em>[一般員工]</em>
+                                    }
+                                }
+                            </div>
+                        </li>
+                        <li>
+                            <hr class="dropdown-divider" />
+                        </li>
 
-						@*<li>
-							<a class="dropdown-item d-flex align-items-center"
-							   href="users-profile.html">
-								<i class="bi bi-person"></i>
-								<span>個人簡介</span>
-							</a>
-						</li>
-						<li>
-							<hr class="dropdown-divider" />
-						</li>
+                        <li>
+                            <a class="jcc dropdown-item" href="/Employees/Index/">
+                                <img src="~/img/Members/team.png" class="me-2" />
+                                <span>員工清單</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="jcc dropdown-item" href="/Members/Index/">
+                                <img src="~/img/Members/team-outline.png" class="me-2" />
+                                <span>會員清單</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="jcc dropdown-item" href="/Desserts/Index/">
+                                <img src="~/img/Members/dessert.png" class="me-2" />
+                                <span>甜點清單</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="jcc dropdown-item" href="/Lessons/Index/">
+                                <img src="~/img/Members/lesson.png" class="me-2" />
+                                <span>課程清單</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="jcc dropdown-item" href="/Teachers/Index/">
+                                <img src="~/img/Members/teacher.png" class="me-2" />
+                                <span>師資清單</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="jcc dropdown-item" href="/LessonOrders/Index/">
+                                <img src="~/img/Members/checkout01.png" class="me-2" />
+                                <span>課程訂單</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="jcc dropdown-item" href="/DessertOrders/Index/">
+                                <img src="~/img/Members/checkout02.png" class="me-2" />
+                                <span>甜點訂單</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="jcc dropdown-item" href="/Coupons/Index/">
+                                <img src="~/img/Members/coupon.png" class="me-2" />
+                                <span>優惠清單</span>
+                            </a>
+                        </li>
 
-						<li>
-							<a class="dropdown-item d-flex align-items-center"
-							   href="users-profile.html">
-								<i class="bi bi-gear"></i>
-								<span>帳戶設定</span>
-							</a>
-						</li>
-						<li>
-							<hr class="dropdown-divider" />
-						</li>
+                        <li>
+                            <hr class="dropdown-divider" />
+                        </li>
 
-						<li>
-							<a class="dropdown-item d-flex align-items-center"
-							   href="pages-faq.html">
-								<i class="bi bi-question-circle"></i>
-								<span>需要幫助?</span>
-							</a>
-						</li>
-						<li>
-							<hr class="dropdown-divider" />
-						</li>*@
+                        @*<li>
+                                <a class="dropdown-item d-flex align-items-center"
+                                   href="users-profile.html">
+                                    <i class="bi bi-person"></i>
+                                    <span>個人簡介</span>
+                                </a>
+                            </li>
+                            <li>
+                                <hr class="dropdown-divider" />
+                            </li>
 
-						<li>
-							<a class="dropdown-item d-flex align-items-center" href="/Employees/Logout/">
-								<i class="bi bi-box-arrow-right"></i>
-								<span>登出</span>
-							</a>
-						</li>
-					</ul>
-					<!-- End Profile Dropdown Items -->
-				</li>
-				<!-- End Profile Nav -->
-			</ul>
-		</nav>
-		<!-- End Icons Navigation -->
-	</header>
-	<!-- End Header -->
-	<!-- ======= Sidebar ======= -->
-	<aside id="sidebar" class="sidebar">
-		<ul class="sidebar-nav" id="sidebar-nav">
-			<li class="nav-item">
-				<a class="nav-link collapsed" href="@Url.Action("Index","Home")">
-					<i class="bi bi-grid"></i>
-					<span>首頁</span>
-				</a>
-			</li>
-			@*End Dashboard Nav*@
-			<li class="nav-item">
-				<a class="nav-link collapsed"
-				   data-bs-target="#members-nav"
-				   data-bs-toggle="collapse"
-				   href="@Url.Action("Index","Members")">
-					<i class="bi bi-layout-text-window-reverse"></i><span>會員管理</span><i class="bi bi-chevron-down ms-auto"></i>
-				</a>
-				<ul id="members-nav"
-					class="nav-content collapse"
-					data-bs-parent="#sidebar-nav">
-					<li>
-						<a href="@Url.Action("Index","Members")">
-							<i class="bi bi-circle"></i><span>會員清單</span>
-						</a>
-					</li>
-					<li>
-						<a href="@Url.Action("Index","Employees")">
-							<i class="bi bi-circle"></i><span>員工清單</span>
-						</a>
-					</li>
-					<li>
-						<a href="@Url.Action("Index","Roles")">
-							<i class="bi bi-circle"></i><span>角色清單</span>
-						</a>
-					</li>
-					<li>
-						<a href="@Url.Action("Index","Permissions")">
-							<i class="bi bi-circle"></i><span>權限清單</span>
-						</a>
-					</li>
+                            <li>
+                                <a class="dropdown-item d-flex align-items-center"
+                                   href="users-profile.html">
+                                    <i class="bi bi-gear"></i>
+                                    <span>帳戶設定</span>
+                                </a>
+                            </li>
+                            <li>
+                                <hr class="dropdown-divider" />
+                            </li>
 
-				</ul>
-			</li>
-			@*End Members Nav*@
-			<li class="nav-item">
-				<a class="nav-link collapsed"
-				   data-bs-target="#tables-nav"
-				   data-bs-toggle="collapse"
-				   href="@Url.Action("Index","Desserts")">
-					<i class="bi bi-layout-text-window-reverse"></i><span>甜點管理</span><i class="bi bi-chevron-down ms-auto"></i>
-				</a>
-				<ul id="tables-nav"
-					class="nav-content collapse"
-					data-bs-parent="#sidebar-nav">
-					<li>
-						<a href="@Url.Action("Create","Desserts")">
-							<i class="bi bi-circle"></i><span>新增甜點</span>
-						</a>
-					</li>
-					<li>
-						<a href="@Url.Action("Index","Desserts")">
-							<i class="bi bi-circle"></i><span>甜點清單</span>
-						</a>
-					</li>
-					<li>
-						<a href="@Url.Action("Index","Categories")">
-							<i class="bi bi-circle"></i><span>甜點類別</span>
-						</a>
-					</li>
-				</ul>
-			</li>
-			@*End Tables Nav*@
-			<li class="nav-item">
-				<a class="nav-link collapsed"
-				   data-bs-target="#class-nav"
-				   data-bs-toggle="collapse"
-				   href="@Url.Action("Index","Lessons")">
-					<i class="bi bi-layout-text-window-reverse"></i><span>課程管理</span><i class="bi bi-chevron-down ms-auto"></i>
-				</a>
-				<ul id="class-nav"
-					class="nav-content collapse"
-					data-bs-parent="#sidebar-nav">
-					<li>
-						<a href="@Url.Action("Create","Lessons")">
-							<i class="bi bi-circle"></i><span>新增課程</span>
-						</a>
-					</li>
-					<li>
-						<a href="@Url.Action("Index","Lessons")">
-							<i class="bi bi-circle"></i><span>課程清單</span>
-						</a>
-					</li>
-					<li>
-						<a href="@Url.Action("Index","LessonCategories")">
-							<i class="bi bi-circle"></i><span>課程類別</span>
-						</a>
-					</li>
-				</ul>
-			</li>
-			@*End Class Nav*@
-			<li class="nav-item">
-				<a class="nav-link collapsed"
-				   data-bs-target="#teacher-nav"
-				   data-bs-toggle="collapse"
-				   href="@Url.Action("Index","Teacher")">
-					<i class="bi bi-layout-text-window-reverse"></i><span>師資管理</span><i class="bi bi-chevron-down ms-auto"></i>
-				</a>
-				<ul id="teacher-nav"
-					class="nav-content collapse"
-					data-bs-parent="#sidebar-nav">
-					<li>
-						<a href="@Url.Action("Create","Teachers")">
-							<i class="bi bi-circle"></i><span>新增教師</span>
-						</a>
-					</li>
-					<li>
-						<a href="@Url.Action("Index","Teachers")">
-							<i class="bi bi-circle"></i><span>教師清單</span>
-						</a>
-					</li>
-				</ul>
-			</li>
-			@*End Teacher Nav*@
-			<li class="nav-item">
-				<a class="nav-link collapsed"
-				   data-bs-target="#orders-nav"
-				   data-bs-toggle="collapse"
-				   href="#">
-					<i class="bi bi-layout-text-window-reverse"></i><span>訂單管理</span><i class="bi bi-chevron-down ms-auto"></i>
-				</a>
-				<ul id="orders-nav"
-					class="nav-content collapse"
-					data-bs-parent="#sidebar-nav">
-					<li>
-						<a href="@Url.Action("Index","LessonOrders")">
-							<i class="bi bi-circle"></i><span>課程訂單</span>
-						</a>
-					</li>
-					<li>
-						<a href="@Url.Action("Index","DessertOrders")">
-							<i class="bi bi-circle"></i><span>甜點訂單</span>
-						</a>
-					</li>
+                            <li>
+                                <a class="dropdown-item d-flex align-items-center"
+                                   href="pages-faq.html">
+                                    <i class="bi bi-question-circle"></i>
+                                    <span>需要幫助?</span>
+                                </a>
+                            </li>
+                            <li>
+                                <hr class="dropdown-divider" />
+                            </li>*@
 
-				</ul>
-			</li>
-			@*End Orders Nav*@
-			<li class="nav-item">
-				<a class="nav-link collapsed"
-				   data-bs-target="#discounts-nav"
-				   data-bs-toggle="collapse"
-				   href="@Url.Action("Index","Promotions")">
-					<i class="bi bi-layout-text-window-reverse"></i><span>行銷管理</span><i class="bi bi-chevron-down ms-auto"></i>
-				</a>
-				<ul id="discounts-nav"
-					class="nav-content collapse"
-					data-bs-parent="#sidebar-nav">
+                        <li>
+                            <a class="jcc dropdown-item d-flex align-items-center" href="/Employees/Logout/">
+                                <i class="bi bi-box-arrow-right"></i>
+                                <span>登出</span>
+                            </a>
+                        </li>
+                    </ul>
+                    <!-- End Profile Dropdown Items -->
+                </li>
+                <!-- End Profile Nav -->
+            </ul>
+        </nav>
+        <!-- End Icons Navigation -->
+    </header>
+    <!-- End Header -->
+    <!-- ======= Sidebar ======= -->
+    <aside id="sidebar" class="sidebar">
+        <ul class="sidebar-nav" id="sidebar-nav">
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="@Url.Action("Index","Home")">
+                    <i class="bi bi-grid"></i>
+                    <span>首頁</span>
+                </a>
+            </li>
+            @*End Dashboard Nav*@
+            <li class="nav-item">
+                <a class="nav-link collapsed"
+                   data-bs-target="#members-nav"
+                   data-bs-toggle="collapse"
+                   href="@Url.Action("Index","Members")">
+                    <i class="bi bi-layout-text-window-reverse"></i><span>會員管理</span><i class="bi bi-chevron-down ms-auto"></i>
+                </a>
+                <ul id="members-nav"
+                    class="nav-content collapse"
+                    data-bs-parent="#sidebar-nav">
+                    <li>
+                        <a href="@Url.Action("Index","Members")">
+                            <i class="bi bi-circle"></i><span>會員清單</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="@Url.Action("Index","Employees")">
+                            <i class="bi bi-circle"></i><span>員工清單</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="@Url.Action("Index","Roles")">
+                            <i class="bi bi-circle"></i><span>角色清單</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="@Url.Action("Index","Permissions")">
+                            <i class="bi bi-circle"></i><span>權限清單</span>
+                        </a>
+                    </li>
+
+                </ul>
+            </li>
+            @*End Members Nav*@
+            <li class="nav-item">
+                <a class="nav-link collapsed"
+                   data-bs-target="#tables-nav"
+                   data-bs-toggle="collapse"
+                   href="@Url.Action("Index","Desserts")">
+                    <i class="bi bi-layout-text-window-reverse"></i><span>甜點管理</span><i class="bi bi-chevron-down ms-auto"></i>
+                </a>
+                <ul id="tables-nav"
+                    class="nav-content collapse"
+                    data-bs-parent="#sidebar-nav">
+                    <li>
+                        <a href="@Url.Action("Create","Desserts")">
+                            <i class="bi bi-circle"></i><span>新增甜點</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="@Url.Action("Index","Desserts")">
+                            <i class="bi bi-circle"></i><span>甜點清單</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="@Url.Action("Index","Categories")">
+                            <i class="bi bi-circle"></i><span>甜點類別</span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            @*End Tables Nav*@
+            <li class="nav-item">
+                <a class="nav-link collapsed"
+                   data-bs-target="#class-nav"
+                   data-bs-toggle="collapse"
+                   href="@Url.Action("Index","Lessons")">
+                    <i class="bi bi-layout-text-window-reverse"></i><span>課程管理</span><i class="bi bi-chevron-down ms-auto"></i>
+                </a>
+                <ul id="class-nav"
+                    class="nav-content collapse"
+                    data-bs-parent="#sidebar-nav">
+                    <li>
+                        <a href="@Url.Action("Create","Lessons")">
+                            <i class="bi bi-circle"></i><span>新增課程</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="@Url.Action("Index","Lessons")">
+                            <i class="bi bi-circle"></i><span>課程清單</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="@Url.Action("Index","LessonCategories")">
+                            <i class="bi bi-circle"></i><span>課程類別</span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            @*End Class Nav*@
+            <li class="nav-item">
+                <a class="nav-link collapsed"
+                   data-bs-target="#teacher-nav"
+                   data-bs-toggle="collapse"
+                   href="@Url.Action("Index","Teacher")">
+                    <i class="bi bi-layout-text-window-reverse"></i><span>師資管理</span><i class="bi bi-chevron-down ms-auto"></i>
+                </a>
+                <ul id="teacher-nav"
+                    class="nav-content collapse"
+                    data-bs-parent="#sidebar-nav">
+                    <li>
+                        <a href="@Url.Action("Create","Teachers")">
+                            <i class="bi bi-circle"></i><span>新增教師</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="@Url.Action("Index","Teachers")">
+                            <i class="bi bi-circle"></i><span>教師清單</span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            @*End Teacher Nav*@
+            <li class="nav-item">
+                <a class="nav-link collapsed"
+                   data-bs-target="#orders-nav"
+                   data-bs-toggle="collapse"
+                   href="#">
+                    <i class="bi bi-layout-text-window-reverse"></i><span>訂單管理</span><i class="bi bi-chevron-down ms-auto"></i>
+                </a>
+                <ul id="orders-nav"
+                    class="nav-content collapse"
+                    data-bs-parent="#sidebar-nav">
+                    <li>
+                        <a href="@Url.Action("Index","LessonOrders")">
+                            <i class="bi bi-circle"></i><span>課程訂單</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="@Url.Action("Index","DessertOrders")">
+                            <i class="bi bi-circle"></i><span>甜點訂單</span>
+                        </a>
+                    </li>
+
+                </ul>
+            </li>
+            @*End Orders Nav*@
+            <li class="nav-item">
+                <a class="nav-link collapsed"
+                   data-bs-target="#discounts-nav"
+                   data-bs-toggle="collapse"
+                   href="@Url.Action("Index","Promotions")">
+                    <i class="bi bi-layout-text-window-reverse"></i><span>行銷管理</span><i class="bi bi-chevron-down ms-auto"></i>
+                </a>
+                <ul id="discounts-nav"
+                    class="nav-content collapse"
+                    data-bs-parent="#sidebar-nav">
 
                     <li>
                         <a href="@Url.Action("Index","DiscountGroups")">
@@ -587,25 +672,25 @@
                         </a>
                     </li>
                     @*<li>
-                        <a href="@Url.Action("Index","Discounts")">
-                            <i class="bi bi-circle"></i><span>折扣清單</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="@Url.Action("Create","Discounts")">
-                            <i class="bi bi-circle"></i><span>新增折扣</span>
-                        </a>
-                    </li>*@
+                            <a href="@Url.Action("Index","Discounts")">
+                                <i class="bi bi-circle"></i><span>折扣清單</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="@Url.Action("Create","Discounts")">
+                                <i class="bi bi-circle"></i><span>新增折扣</span>
+                            </a>
+                        </li>*@
                     <li>
                         <a href="@Url.Action("Index","MemberCoupons")">
                             <i class="bi bi-circle"></i><span>會員優惠券清單</span>
                         </a>
                     </li>
                     @*<li>
-                        <a href="@Url.Action("Create","MemberCoupons")">
-                            <i class="bi bi-circle"></i><span>發送優惠券</span>
-                        </a>
-                    </li>*@
+                            <a href="@Url.Action("Create","MemberCoupons")">
+                                <i class="bi bi-circle"></i><span>發送優惠券</span>
+                            </a>
+                        </li>*@
                     <li>
                         <a href="@Url.Action("Index","Promotions")">
                             <i class="bi bi-circle"></i><span>優惠活動清單</span>
@@ -643,100 +728,100 @@
             </li>-->
             @*End blogs Nav*@
 
-			<li class="nav-heading">Pages</li>
+            <li class="nav-heading">Pages</li>
 
-			<li class="nav-item">
-				<a class="nav-link collapsed" href="@Url.Action("UsersProfile","Home")">
-					<i class="bi bi-person"></i>
-					<span>簡介</span>
-				</a>
-			</li>
-			@*End Profile Page Nav*@
-
-
-
-			<li class="nav-item">
-				<a class="nav-link collapsed" href="@Url.Action("Contact","Home")">
-					<i class="bi bi-envelope"></i>
-					<span>聯絡我們</span>
-				</a>
-			</li>
-			@*End Contact Page Nav*@
-
-			<li class="nav-item">
-				<a class="nav-link collapsed" href="pages-register.html">
-					<i class="bi bi-card-list"></i>
-					<span>註冊</span>
-				</a>
-			</li>
-			@*End Register Page Nav*@
-
-			<li class="nav-item">
-				<a class="nav-link collapsed" href="pages-login.html">
-					<i class="bi bi-box-arrow-in-right"></i>
-					<span>登入</span>
-				</a>
-			</li>
-			<li>
-				<div id="currentTimeContainer"></div>
-			</li>
-			@*End CurrentTime*@
-		</ul>
-	</aside>
-
-	<!-- End Sidebar-->
-
-	@RenderBody()
-
-	<!-- End #main -->
-	<!-- ======= Footer ======= -->
-	<footer id="footer" class="footer">
-		<div class="copyright">
-			&copy; 2023 Copyright <strong><span>Sierra</span></strong>. All Rights Reserved
-		</div>
-		<div class="credits">
-			<!-- All the links in the footer should remain intact. -->
-			Designed by <a href="@Url.Action("Index","Home")">Sierra</a>
-		</div>
-	</footer>
-	<!-- End Footer -->
-
-	<a href="#"
-	   class="back-to-top d-flex align-items-center justify-content-center">
-		<i class="bi bi-arrow-up-short"></i>
-	</a>
-	@*@RenderSection("scripts", required: false)*@
-	@*AutoComplete*@
-	@*<script src="//apps.bdimg.com/libs/jquery/1.10.2/jquery.min.js"></script>
-		<script src="//apps.bdimg.com/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>*@
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="@Url.Action("UsersProfile","Home")">
+                    <i class="bi bi-person"></i>
+                    <span>簡介</span>
+                </a>
+            </li>
+            @*End Profile Page Nav*@
 
 
+
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="@Url.Action("Contact","Home")">
+                    <i class="bi bi-envelope"></i>
+                    <span>聯絡我們</span>
+                </a>
+            </li>
+            @*End Contact Page Nav*@
+
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="pages-register.html">
+                    <i class="bi bi-card-list"></i>
+                    <span>註冊</span>
+                </a>
+            </li>
+            @*End Register Page Nav*@
+
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="pages-login.html">
+                    <i class="bi bi-box-arrow-in-right"></i>
+                    <span>登入</span>
+                </a>
+            </li>
+            <li>
+                <div id="currentTimeContainer"></div>
+            </li>
+            @*End CurrentTime*@
+        </ul>
+    </aside>
+
+    <!-- End Sidebar-->
+
+    @RenderBody()
+
+    <!-- End #main -->
+    <!-- ======= Footer ======= -->
+    <footer id="footer" class="footer">
+        <div class="copyright">
+            &copy; 2023 Copyright <strong><span>Sierra</span></strong>. All Rights Reserved
+        </div>
+        <div class="credits">
+            <!-- All the links in the footer should remain intact. -->
+            Designed by <a href="@Url.Action("Index","Home")">Sierra</a>
+        </div>
+    </footer>
+    <!-- End Footer -->
+
+    <a href="#"
+       class="back-to-top d-flex align-items-center justify-content-center">
+        <i class="bi bi-arrow-up-short"></i>
+    </a>
+    @*@RenderSection("scripts", required: false)*@
+    @*AutoComplete*@
+    @*<script src="//apps.bdimg.com/libs/jquery/1.10.2/jquery.min.js"></script>
+        <script src="//apps.bdimg.com/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>*@
 
 
 
 
-	<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
-	<script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
-	<!-- Vendor JS Files -->
-	<script src="~/Scripts/vendor/apexcharts/apexcharts.amd.js"></script>
-	<script src="~/Scripts/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-	<script src="~/Scripts/vendor/chart.js/chart.umd.js"></script>
-	<script src="~/Scripts/vendor/echarts/echarts.min.js"></script>
-	<script src="~/Scripts/vendor/quill/quill.min.js"></script>
-	@*<script src="~/Scripts/vendor/simple-datatables/simple-datatables.js"></script>*@
-	<script src="~/Scripts/vendor/tinymce/tinymce.min.js"></script>
-	<script src="~/Scripts/vendor/php-email-form/validate.js"></script>
 
-	@*連結DataTable*@
-	@*<script src="https://code.jquery.com/jquery-3.5.1.js"></script>*@
-	<script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
-	<script src="https://cdn.datatables.net/1.13.4/js/dataTables.bootstrap5.min.js"></script>
-	<script src="https://cdn.datatables.net/select/1.6.2/js/dataTables.select.min.js"></script>
-	<!-- Template Main JS File -->
-	<script src="~/Scripts/js/main.js"></script>
-	@RenderSection("scripts", required: false)
 
-	<script>
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+    <!-- Vendor JS Files -->
+    <script src="~/Scripts/vendor/apexcharts/apexcharts.amd.js"></script>
+    <script src="~/Scripts/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="~/Scripts/vendor/chart.js/chart.umd.js"></script>
+    <script src="~/Scripts/vendor/echarts/echarts.min.js"></script>
+    <script src="~/Scripts/vendor/quill/quill.min.js"></script>
+    @*<script src="~/Scripts/vendor/simple-datatables/simple-datatables.js"></script>*@
+    <script src="~/Scripts/vendor/tinymce/tinymce.min.js"></script>
+    <script src="~/Scripts/vendor/php-email-form/validate.js"></script>
+
+    @*連結DataTable*@
+    @*<script src="https://code.jquery.com/jquery-3.5.1.js"></script>*@
+    <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.4/js/dataTables.bootstrap5.min.js"></script>
+    <script src="https://cdn.datatables.net/select/1.6.2/js/dataTables.select.min.js"></script>
+    <!-- Template Main JS File -->
+    <script src="~/Scripts/js/main.js"></script>
+    @RenderSection("scripts", required: false)
+
+    <script>
         //$(document).ready(function () {
 
         $(document).ready(function () {
@@ -982,6 +1067,6 @@
             var input = document.getElementById("tags");
             autocomplete(input, sierras);
         });
-	</script>
+    </script>
 </body>
 </html>

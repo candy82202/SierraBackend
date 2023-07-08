@@ -135,8 +135,8 @@ Member 部分
 [V] - profile user name
 [V] - modify icon size in /Employees/Index
 [V] - rememberMe(bug exist)
-[working on] - profiles link to every list page
-[working on] - members criteria
+[V] - profiles link to every list page
+[V] - members criteria
 [working on] - after add images, modify members' CURD
 [working on] - Home/Index's paritial view(let newest emp appear)
 
