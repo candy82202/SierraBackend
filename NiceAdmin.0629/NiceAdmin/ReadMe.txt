@@ -137,7 +137,7 @@ Member 部分
 [V] - rememberMe(bug exist)
 [V] - profiles link to every list page
 [V] - members criteria
-[working on] - after add images, modify members' CURD
+[V] - after add images, modify members' CURD
 [working on] - Home/Index's paritial view(let newest emp appear)
 
 
