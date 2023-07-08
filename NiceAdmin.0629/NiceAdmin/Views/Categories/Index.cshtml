@@ -22,22 +22,14 @@
                 <!-- End Page Title -->
                 <button class="btn btn-outline-primary text-light fw-bold mb-3"> @Html.ActionLink("新增類別", "Create")</button>
                 <div class="container">
-                    @*<input type="checkbox" class="selectAll" name="selectAll" value="all"> Select All*@
                     <table class="table datatable table-striped table-hover" id="searchDessert">
                         <thead>
                             <tr>
-                                @*<th scope="col">
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" value="" id="selectAllCheckbox" />
-                                        <label class="form-check-label" for="selectAllCheckbox">
-                                            下架
-                                        </label>
-                                    </div>
-                                </th>*@
+
 
                                 <th class="w-50">
                                     類別名稱
-                                    @*@Html.DisplayNameFor(model => model.CategoryName)*@
+
                                 </th>
                                 <th>
                                     功能
@@ -48,26 +40,42 @@
                             @foreach (var item in Model)
                             {
                                 <tr>
-                                    <!--<td>
-                                        <label class="form-check">
-                                            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault1" data-checkbox="childCheckbox" />
-                                        </label>-->
-                                        @*<div class="form-check">
-                                                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault1" data-checkbox="childCheckbox" />
-                                            </div>*@
-                                    <!--</td>-->
-                                    <td>
+
+                                    <td  class="NewCateName">
                                         @Html.DisplayFor(modelItem => item.CategoryName)
                                     </td>
                                     <td>
-                                        @Html.ActionLink("編輯", "Edit", new { id = item.CategoryId }) |
-                                        @*@Html.ActionLink("Details", "Details", new { id = item.CategoryId }) |*@
-                                        @Html.ActionLink("刪除", "Delete", new { id = item.CategoryId })
+                                        @*<button class="btn btn-outline-primary btn-sm custom-button">@Html.ActionLink("編輯", "Edit", new { id = item.CategoryId })</button>*@
+                                        <button type="button" class="btn btn-outline-primary btnEditName" data-bs-toggle="modal" data-bs-target="#EditCateName" data-name="@item.CategoryName" data-id="@item.CategoryId">
+                                            @*編輯類別名稱*@<i class="bi bi-pencil-square"></i>
+                                        </button>                                       
+                                        @*@Html.ActionLink("刪除", "Delete", new { id = item.CategoryId })*@
                                     </td>
                                 </tr>
                             }
                         </tbody>
                     </table>
+                    <!-- Vertically centered Modal -->
+                    <div class="modal fade" id="EditCateName" tabindex="-1" aria-hidden="true">
+                        <!-- Modal content -->
+                        <div class="modal-dialog modal-dialog-centered">
+                            <!-- Modal body -->
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h1 class="modal-title fs-5" id="EditTitle">Modal title</h1>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <h4>新甜點類別名稱</h4>
+                                    <input type="text" id="inputNewName" class="form-control" />
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-outline-primary btnSave">更新</button>
+                                    <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">關閉</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div><!-- End Vertically centered Modal-->
                 </div>
             </div>
         </div>
@@ -75,19 +83,37 @@
 </main>
 @section scripts{
    <script>
+       $(document).ready(function () {
+           $('.btnEditName').click(function () {
+               var id = $(this).data('id');
+               var name = $(this).data('name');
+               $('#EditTitle').text(`類別:  ${name}`);
+               $('.btnSave').data('id', id);
+           });
 
-       var selectAllCheckbox = $('#selectAllCheckbox');
-       var checkboxes = $('tbody input[type="checkbox"][data-checkbox="childCheckbox"]');
+           $('.btnSave').click(function () {
+               var categoryId = $(this).data('id');
+               var categoryName = $('#inputNewName').val();
 
-       // 全選 checkbox 的變更事件監聽器
-       selectAllCheckbox.on('change', function () {
-           checkboxes.prop('checked', $(this).is(':checked'));
+               $.ajax({
+                   type: "POST",
+                   url: "/Categories/EditName",
+                   data: { categoryId: categoryId, categoryName: categoryName },
+               }).done(function (data) {
+                   $('#EditCateName').modal('hide');
+                   Swal.fire({
+                       position: 'center',
+                       icon: 'success',
+                       title: '名稱修改成功!',
+                       showConfirmButton: false,
+                       timer: 1500
+                   });
+                   var saveBtn = $(`.btnEditName[data-id="${categoryId}"]`);
+                   saveBtn.parent().siblings('.NewCateName').text(data.categoryName);
+               }).fail(function (err) {
+                   console.log(err);
+               });
+           });
        });
-
-       // 下方 checkbox 的變更事件監聽器
-       checkboxes.on('change', function () {
-           selectAllCheckbox.prop('checked', checkboxes.length === checkboxes.filter(':checked').length);
-       });
-
     </script>
     }

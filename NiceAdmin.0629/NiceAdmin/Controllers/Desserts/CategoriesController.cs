@@ -131,7 +131,22 @@ namespace NiceAdmin.Controllers
             db.SaveChanges();
             return RedirectToAction("Index");
         }
+        public JsonResult EditName(int categoryId, string categoryName)
+        {
+            var categoryInDb = db.Categories.FirstOrDefault(c => c.CategoryId == categoryId);
+            if (categoryInDb == null)
+            {
+                return Json("無此類別");
+            }
 
+            categoryInDb.CategoryName = categoryName;
+            db.SaveChanges();
+
+            return Json(new
+            {
+                categoryName = categoryInDb.CategoryName,
+            });
+        }
         protected override void Dispose(bool disposing)
         {
             if (disposing)

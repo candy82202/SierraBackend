@@ -1,8 +1,8 @@
 ﻿@model NiceAdmin.Models.ViewModels.DessertFrontIndexVM
 
-<div class="col-xl-3 col-lg-6 col-md-12">
+@*<div class="col-xl-3 col-lg-6 col-md-12">
     <div class="card card1 border-0 mb-3">
-        <div class="card-img h200px overflow-hidden object-fit-cover">
+        <div class="card-img h200px w-200px overflow-hidden object-fit-cover">
             <img src="~/Uploads/@Model.DessertImageName" alt="" />
         </div>
         <div class="card-body">
@@ -16,5 +16,19 @@
 
         </div>
 
+    </div>
+</div>*@
+
+<div class="card card1 border-0 mb-3 ">
+    <div class="card-img h200px w-200px overflow-hidden object-fit-cover">
+        <img src="~/Uploads/@Model.DessertImageName" alt="" />
+    </div>
+    <div class="card-body">
+        <a href="" class="cardlink text-decoration-none text-dark stretched-link">
+            <h5 class="card-title">@Model.DessertName</h5>
+        </a>
+        <div class="card-footer bg-white border-top-0 d-flex">
+            <p class="card-text">@Model.UnitPrice</p>
+        </div>
     </div>
 </div>

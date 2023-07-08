@@ -14,58 +14,48 @@
         <div class="carousel-inner h-100 carousel-fade">
             <div class="carousel-item h-100 active">
                 <img class="d-block w-100 object-fit-cover"
-                     src="~/img/Desserts/mocha.jpg"
+                     src="~/img/Desserts/orangeSlice.jpg"
+                     alt="" />
+                <div class="carousel-caption position-absolute start-0 fs-4 fw-bold text-white txt-shadow w-50">
+                    香橙檸檬蛋糕
+                </div>
+            </div>
+            <div class="carousel-item h-100">
+                <img class="d-block w-100 object-fit-cover"
+                     src="~/img/Desserts/caraMocha.png"
                      alt="" />
                 <div class="carousel-caption position-absolute start-0 fs-4 fw-bold text-white txt-shadow w-50">
                     抹茶草莓千層
                 </div>
             </div>
             <div class="carousel-item h-100">
-                <img class="d-block w-100 object-fit-cover"
-                     src="~/img/Desserts/blueberry.jpg"
-                     alt="" />
+                <img class="d-block w-100 object-fit-cover" src="~/img/Desserts/mochaSlice.jpg" />
                 <div class="carousel-caption position-absolute start-0 fs-4 fw-bold text-white txt-shadow w-50">
-                    藍莓乳酪蛋糕
-                </div>
-            </div>
-            <div class="carousel-item h-100">
-                <img class="d-block w-100 object-fit-cover"
-                     src="~/img/Desserts/brownii.jpeg"
-                     alt="" />
-                <div class="carousel-caption position-absolute start-0 fs-4 fw-bold text-white txt-shadow w-50">
-                    巧克力布朗尼
-                </div>
-            </div>
-            <div class="carousel-item h-100">
-                <img class="d-block w-100 object-fit-cover"
-                     src="~/img/Desserts/Canele.jpg"
-                     alt="" />
-                <div class="carousel-caption position-absolute start-0 fs-4 fw-bold text-white txt-shadow w-50">
-                    大溪地香草可麗露
-                </div>
-            </div>
-            <div class="carousel-item h-100">
-                <img class="d-block w-100 object-fit-cover"
-                     src="~/img/Desserts/caramel.jpg"
-                     alt="" />
-                <div class="carousel-caption position-absolute start-0 fs-4 fw-bold text-white txt-shadow w-50">
-                    焦糖肉桂捲
+                    抹茶巴斯克
                 </div>
             </div>
             <div class="carousel-item h-100">
                 <img class="d-block w-100 object-fit-cover"
                      src="~/img/Desserts/lemon.jpg"
                      alt="" />
-                <div class="carousel-caption position-absolute start-0 fs-4 fw-bold txt-shadow text-white w-50">
-                    老奶奶檸檬蛋糕
+                <div class="carousel-caption position-absolute start-0 fs-4 fw-bold text-white txt-shadow w-50">
+                    檸檬蛋糕
                 </div>
             </div>
             <div class="carousel-item h-100">
-                <img class="d-block w-100 h-100 object-fit-cover"
-                     src="~/img/Desserts/earlcheese.jpg"
+                <img class="d-block w-100 object-fit-cover"
+                     src="~/img/Desserts/taro.jpg"
                      alt="" />
-                <div class="carousel-caption position-absolute start-0 txt-shadow fs-4 fw-bold text-white w-50">
-                    伯爵起司蛋糕
+                <div class="carousel-caption position-absolute start-0 fs-4 fw-bold text-white txt-shadow w-50">
+                    芋香蛋糕
+                </div>
+            </div>
+            <div class="carousel-item h-100">
+                <img class="d-block w-100 object-fit-cover"
+                     src="~/img/Desserts/stawberry.jpg"
+                     alt="" />
+                <div class="carousel-caption position-absolute start-0 fs-4 fw-bold txt-shadow text-white w-50">
+                    草莓蛋糕
                 </div>
             </div>
 
@@ -100,11 +90,7 @@
                     data-bs-target="#slide1"
                     data-bs-slide-to="6"
                     class="text-bg-dark opacity-50"></button>
-            <button type="button"
-                    data-bs-target="#slide1"
-                    data-bs-slide-to="7"
-                    class="text-bg-dark opacity-50"></button>
-
+          
 
             <div class="ctrl position-absolute end-0 bottom-50 text-white me-2 z-1"
                  data-bs-target="#slide1"
@@ -117,13 +103,15 @@
                 <i class="fa-solid fa-circle-left fz30px opacity-75"></i>
             </div>
         </div>
-        <div class="row mt-3 justify-content-center align-items-center">
-            <div class="col-md-4">
+        <div class="row mt-3  justify-content-center align-items-center">
+            <div class="col ">
                 <h2 class="hotProd">熱門商品</h2>
-                <div class="row hotProd ms-2">
+                <div class="d-flex hotProd justify-content-center">
                     @foreach (var prod in hotProducts)
-                    {
-                        Html.RenderPartial("HotDessertsPartialView", prod);
+                    {<div class="col mb-3">
+    @Html.Partial("HotDessertsPartialView", prod)
+                </div>
+                        
                     }
                 </div>
             </div>

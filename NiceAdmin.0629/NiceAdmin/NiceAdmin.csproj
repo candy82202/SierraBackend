@@ -268,6 +268,12 @@
     <Content Include="Content\style.css" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
+    <Content Include="img\Desserts\caraMocha.png" />
+    <Content Include="img\Desserts\lemon.jpg" />
+    <Content Include="img\Desserts\mochaSlice.jpg" />
+    <Content Include="img\Desserts\orangeSlice.jpg" />
+    <Content Include="img\Desserts\stawberry.jpg" />
+    <Content Include="img\Desserts\taro.jpg" />
     <Content Include="img\favicon.png" />
     <Content Include="img\logeExtraShadow.png" />
     <Content Include="img\logo.png" />
@@ -662,7 +668,6 @@
     <Content Include="Views\Desserts\Index.cshtml" />
     <Content Include="Views\Categories\Create.cshtml" />
     <Content Include="Views\Categories\Delete.cshtml" />
-    <Content Include="Views\Categories\Details.cshtml" />
     <Content Include="Views\Categories\Edit.cshtml" />
     <Content Include="Views\Categories\Index.cshtml" />
   </ItemGroup>
