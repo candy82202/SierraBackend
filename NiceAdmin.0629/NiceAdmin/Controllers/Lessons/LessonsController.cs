@@ -327,6 +327,38 @@ namespace NiceAdmin.Controllers.Lessons {
             return RedirectToAction("Index");
         }
 
+
+        // Lessons/OffShelve/5
+
+        public ActionResult OffShelveLesson(int lessonId)
+        {
+            
+            try
+            {
+                Lesson lesson = db.Lessons.Find(lessonId);
+                if (lesson == null)
+                {
+                    return HttpNotFound();
+                }
+
+                bool previousStatus = lesson.LessonStatus;
+                lesson.LessonStatus = false;
+                db.SaveChanges();
+
+                string message = "下架成功";
+
+                if (!previousStatus)
+                {
+                    message = "此課程已經是下架成功";
+                }
+
+                return Json(new { success = true, message });
+            }
+            catch
+            {
+                return Json(new { success = false, errorMessage = "在將課程標記為下架時發生錯誤。請稍後再試。" });
+            }
+        }
         protected override void Dispose(bool disposing)
         {
             if (disposing)
