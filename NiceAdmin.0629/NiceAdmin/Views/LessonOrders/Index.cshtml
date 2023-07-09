@@ -19,14 +19,17 @@
 
 
 
-    <p>
+    @*<p>
         @Html.ActionLink("Create New", "Create")
-    </p>
-    <table class="table table-striped table-hover datatable" id="example">
+    </p>*@
+    <table class="table table-striped table-hover " id="example">
         <thead>
             <tr>
-                <th>
+                @*<th>
                     @Html.DisplayNameFor(model => model.Coupon.CouponName)
+                </th>*@
+                <th>
+                    @Html.DisplayNameFor(model => model.LessonOrderId)
                 </th>
                 <th>
                     @Html.DisplayNameFor(model => model.Member.MemberName)
@@ -40,15 +43,15 @@
                 <th>
                     @Html.DisplayNameFor(model => model.LessonOrderTotal)
                 </th>
-                <th>
+                @*<th>
                     @Html.DisplayNameFor(model => model.Note)
-                </th>
-                <th>
+                </th>*@
+                @*<th>
                     @Html.DisplayNameFor(model => model.OrderCancellationReason)
-                </th>
-                <th>
+                </th>*@
+                @*<th>
                     @Html.DisplayNameFor(model => model.DiscountInfo)
-                </th>
+                </th>*@
                 <th></th>
             </tr>
         </thead>
@@ -57,8 +60,11 @@
             @foreach (var item in Model)
             {
                 <tr>
-                    <td>
+                    @*<td>
                         @Html.DisplayFor(modelItem => item.Coupon.CouponName)
+                    </td>*@
+                    <td>
+                        @Html.DisplayFor(modelItem => item.LessonOrderId)
                     </td>
                     <td>
                         @Html.DisplayFor(modelItem => item.Member.MemberName)
@@ -72,15 +78,15 @@
                     <td>
                         @Html.DisplayFor(modelItem => item.LessonOrderTotal)
                     </td>
-                    <td>
+                    @*<td>
                         @Html.DisplayFor(modelItem => item.Note)
-                    </td>
-                    <td>
+                    </td>*@
+                    @*<td>
                         @Html.DisplayFor(modelItem => item.OrderCancellationReason)
-                    </td>
-                    <td>
+                    </td>*@
+                    @*<td>
                         @Html.DisplayFor(modelItem => item.DiscountInfo)
-                    </td>
+                    </td>*@
                     <td>
                         @Html.ActionLink("Edit", "Edit", new { id = item.LessonOrderId }) |
                         @Html.ActionLink("Details", "Details", new { id = item.LessonOrderId }) |

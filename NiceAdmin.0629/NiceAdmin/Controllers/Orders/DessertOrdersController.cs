@@ -77,6 +77,7 @@ namespace NiceAdmin.Controllers.Orders
         public PartialViewResult TopSellingDessertsOrder()//前十熱銷的甜點訂單
         {
             var topSellingOrders = db.DessertOrders
+                .Where(os=>os.DessertOrderStatusId == 3)
                 .OrderByDescending(o => o.DessertOrderTotal)
                 .Take(10)
                 .Select(o => new TopSellingDessertsOrder

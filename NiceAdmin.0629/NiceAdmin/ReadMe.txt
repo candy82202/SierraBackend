@@ -244,6 +244,7 @@ ViewBag.LessonOrderId = new SelectList(db.LessonOrders, "LessonOrderId", "Note",
 已甜點訂單明細(DessertOrderDetail)的數量(Quantity)做最熱銷前五名甜點(DessertName)
 [V]手風琴單筆ID做開合
 [v]button大小間距
+[v]更新DessertOrderTotal加上DessertOrderStatusId == 3
 
 
 

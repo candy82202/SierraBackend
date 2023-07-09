@@ -267,7 +267,7 @@ namespace NiceAdmin.Controllers
                 TempData["ErrorMessage"] = "發生錯誤訊息"; // 將錯誤訊息存入 TempData
 
 
-                return RedirectToAction("Index");
+                return RedirectToAction("Index", TempData);
             }
         }
         protected override void Dispose(bool disposing)

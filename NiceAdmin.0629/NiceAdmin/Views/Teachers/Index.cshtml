@@ -5,12 +5,13 @@
 
     ViewBag.Title = "Index";
     var criteria = ViewBag.Criteria as NiceAdmin.Models.ViewModels.TeachersVM.TeacherCriteria;
+    var error = ViewBag.ErrorMessag;
 
 }
-@if (!string.IsNullOrEmpty(ViewBag.ErrorMessage))
-{
-    <div class="alert alert-danger">@ViewBag.ErrorMessage</div>
-}
+@*@if (!string.IsNullOrEmpty(ViewBag.ErrorMessage))*@
+
+    @*<div class="alert alert-danger">@ViewBag.ErrorMessage</div>*@
+
 <main id="main" class="main">
     <div class="row">
         <div class="card">
@@ -131,7 +132,7 @@
                                         <td>
                                             <i class="bi bi-pencil-square">  </i> @Html.ActionLink("Edit", "Edit", new { id = item.TeacherId })|
                                             @Html.ActionLink("變更圖片", "EditImage", new { id = item.TeacherId }) |
-                                            @Html.ActionLink("下架", "DownTeachers", new { id = item.TeacherId }) 
+                                            @Html.ActionLink("離職", "DownTeachers", new { id = item.TeacherId }) 
                                         </td>
                                     </tr>
                                 }
@@ -146,7 +147,15 @@
 </main>
 @section Scripts{
     <script>
+        
         $(document).ready(function () {
+            console.log(Swal.fire)
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: '此商品已下架!'
+            });
+            button.addClass('error');
             var dataTable = $('#teacherDatatable').DataTable({
                 "lengthMenu": [5, 10, 20],
                 language: {
@@ -154,6 +163,7 @@
                 },
 
             });
+            
             
 
 
@@ -271,6 +281,8 @@
 
             //autocomplete() 函式的餘下部分處理事件監聽和與建議項目相關的邏輯，包括創建建議項目的 DIV 元素、將它們添加到 DOM 中、監聽建議項目的點擊事件等。
             autocompleteTeachers(document.getElementById("s_name"), teachers);
+
+            
     </script>
 }
 
