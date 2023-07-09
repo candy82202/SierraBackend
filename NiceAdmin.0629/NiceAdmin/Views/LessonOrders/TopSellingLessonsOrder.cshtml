@@ -1,0 +1,29 @@
+﻿@model List<NiceAdmin.Models.ViewModels.OrdersVM.TopSellingLessonsOrder>
+@{
+    ViewBag.Title = "TopSellingLessonsOrder";
+}
+
+<h2>前十熱銷的課程訂單</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+           
+            <th>課程編號</th>
+            <th>課程名稱</th>
+            <th>總金額排序</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var order in Model)
+        {
+            <tr>
+                
+                <td>@order.LessonId</td>
+                <td>@order.LessonTitle</td>
+                <td>@order.TotalAmount</td>
+            </tr>
+        }
+    </tbody>
+</table>
+

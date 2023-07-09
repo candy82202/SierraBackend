@@ -8,6 +8,7 @@ using System.Web;
 using System.Web.Mvc;
 using NiceAdmin.Models.EFModels;
 using NiceAdmin.Models.ViewModels.OrdersVM;
+using NiceAdmin.Views.DessertOrders;
 
 namespace NiceAdmin.Controllers.Orders
 {
@@ -18,8 +19,7 @@ namespace NiceAdmin.Controllers.Orders
         // GET: LessonOrders
         public ActionResult Index(LessonOrderCriteria criteria)
         {
-            var topSellingLessons = TopSellingLessons();
-            ViewBag.TopSellingLessons = topSellingLessons;
+            
             PrepareOrderDataSource(criteria.OrderStatusId);
             ViewBag.Criteria = criteria;
             //查詢紀錄
@@ -82,6 +82,28 @@ namespace NiceAdmin.Controllers.Orders
 
             //return PartialView("TopSellingLessons", lessonIndexVMList);
 
+        }
+        public PartialViewResult TopSellingLessonsOrder()//前十熱銷的課程訂單
+        {
+            var topSellingOrders = db.LessonOrderDetails
+                            .Where(x => x.LessonOrder.LessonOrderStatusId == 3)
+                            .GroupBy(x => x.LessonId)
+                            .Select((g) => new TopSellingLessonsOrder
+                            {
+                               
+                                LessonId = g.Key,
+                                LessonTitle = g.FirstOrDefault().LessonTitle,
+                                TotalNumberOfPeople = g.Sum(x => x.NumberOfPeople),
+                                TotalAmount = g.Sum(x => x.LessonOrder.LessonOrderTotal),
+                            })
+                        .OrderByDescending(x => x.TotalAmount)
+                        .ThenByDescending(x => x.TotalNumberOfPeople)
+                         .Take(10).ToList();
+
+
+
+
+            return PartialView("TopSellingLessonsOrder", topSellingOrders);
         }
         // GET: LessonOrders/Details/5
         public ActionResult Details(int? id)
