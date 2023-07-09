@@ -5,7 +5,7 @@
 
     ViewBag.Title = "Index";
     var criteria = ViewBag.Criteria as NiceAdmin.Models.ViewModels.TeachersVM.TeacherCriteria;
-    var error = ViewBag.ErrorMessag;
+    
 
 }
 @*@if (!string.IsNullOrEmpty(ViewBag.ErrorMessage))*@
@@ -153,10 +153,17 @@
                     text: errMsg
                 });
            }
-          
-         
-            
-            
+           var succMsg = "@ViewBag.SucceMessage";
+           if (succMsg) {
+                Swal.fire({
+                    icon: 'success',
+                    title: '離職成功',
+                    text: succMsg
+                });
+           }
+
+
+
 
 
 

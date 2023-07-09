@@ -42,6 +42,8 @@ namespace NiceAdmin.Controllers
             //var teacherViewModels = teachers.Select(t => t.TOIndexVM()).ToList();
             // 從 TempData 中讀取錯誤訊息
             ViewBag.ErrorMessage = TempData["ErrorMessage"];
+            //從 TempData 中讀取成功訊息
+            ViewBag.SucceMessage = TempData["SucceMessage"];
             return View(query);
         }
         // 清除搜尋條件的動作方法
@@ -257,14 +259,15 @@ namespace NiceAdmin.Controllers
             if (isLessonsOver)
             {
                 teacherInDb.TeacherStatus = false;
-
+                
                 db.SaveChanges();
+                TempData["SucceMessage"] = "沒有課程或課程已結束";
                 return RedirectToAction("Index");
                 
             }
             else
             {
-                ModelState.AddModelError("", "無法離職");
+                
                 TempData["ErrorMessage"] = "無法離職"; // 將錯誤訊息存入 TempData
 
 

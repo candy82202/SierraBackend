@@ -204,7 +204,7 @@ Teacher 部分
 [v]沒有刪除師資
 [v]join teacher&lesson
 [v]datatable完成
-[working on]下架有的有錯誤訊息，有的可以直接離職，資料庫老師就被刪掉，但畫面還顯示著老師資料
+[v]sweetalert沒有課程或課程上完可以離職他
 
 
 
