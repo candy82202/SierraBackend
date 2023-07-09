@@ -53,6 +53,8 @@ namespace NiceAdmin.Models.EFModels
 
         public virtual DiscountGroup DiscountGroup { get; set; }
 
+        public virtual CouponSetting CouponSetting { get; set; }
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<DessertOrder> DessertOrders { get; set; }
 

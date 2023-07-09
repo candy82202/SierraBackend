@@ -160,6 +160,7 @@
     <Compile Include="Models\EFModels\Category.cs" />
     <Compile Include="Models\EFModels\Coupon.cs" />
     <Compile Include="Models\EFModels\CouponCategory.cs" />
+    <Compile Include="Models\EFModels\CouponSetting.cs" />
     <Compile Include="Models\EFModels\Dessert.cs" />
     <Compile Include="Models\EFModels\DessertImage.cs" />
     <Compile Include="Models\EFModels\DessertOrder.cs" />
@@ -193,7 +194,7 @@
     <Compile Include="Models\ViewModels\LessonsVM\LessonEditVM.cs" />
     <Compile Include="Models\ViewModels\MembersVM\MemberExts.cs" />
     <Compile Include="Models\ViewModels\MembersVM\MemberCriteria.cs" />
-	  <Compile Include="Models\ViewModels\OrdersVM\DessertOrderCriteria.cs" />
+    <Compile Include="Models\ViewModels\OrdersVM\DessertOrderCriteria.cs" />
     <Compile Include="Models\ViewModels\OrdersVM\DessertOrderDetailIndexVM.cs" />
     <Compile Include="Models\ViewModels\OrdersVM\DessertOrderDetailStats.cs" />
     <Compile Include="Models\ViewModels\OrdersVM\LessonOrderCriteria.cs" />
@@ -910,10 +911,10 @@
     <Content Include="Views\Home\RecentUpMembers.cshtml" />
     <Content Include="Views\Home\FAQ.cshtml" />
     <Content Include="Views\Home\TotalLessons.cshtml" />
-	  <Content Include="Views\DessertOrders\TopSellingDesserts.cshtml" />
-	  <Content Include="Views\DessertOrders\TopSellingDessertsOrder.cshtml" />
-	  <Content Include="Views\LessonOrders\TopSellingLessons.cshtml" />
-	  <Content Include="Views\LessonOrders\TopSellingLessonsOrder.cshtml" />
+    <Content Include="Views\DessertOrders\TopSellingDesserts.cshtml" />
+    <Content Include="Views\DessertOrders\TopSellingDessertsOrder.cshtml" />
+    <Content Include="Views\LessonOrders\TopSellingLessons.cshtml" />
+    <Content Include="Views\LessonOrders\TopSellingLessonsOrder.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="Scripts\vendor\chart.js\controllers\controller.bar.d.ts" />

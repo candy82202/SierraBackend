@@ -15,6 +15,7 @@ namespace NiceAdmin.Models.EFModels
         public virtual DbSet<Category> Categories { get; set; }
         public virtual DbSet<CouponCategory> CouponCategories { get; set; }
         public virtual DbSet<Coupon> Coupons { get; set; }
+        public virtual DbSet<CouponSetting> CouponSettings { get; set; }
         public virtual DbSet<DessertImage> DessertImages { get; set; }
         public virtual DbSet<DessertOrderDetail> DessertOrderDetails { get; set; }
         public virtual DbSet<DessertOrder> DessertOrders { get; set; }
@@ -50,6 +51,10 @@ namespace NiceAdmin.Models.EFModels
                 .HasMany(e => e.Coupons)
                 .WithRequired(e => e.CouponCategory)
                 .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<Coupon>()
+                .HasOptional(e => e.CouponSetting)
+                .WithRequired(e => e.Coupon);
 
             modelBuilder.Entity<Coupon>()
                 .HasMany(e => e.MemberCoupons)
