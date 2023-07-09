@@ -135,12 +135,7 @@ namespace NiceAdmin.Controllers
             return View(dvm);
         }
 
-        public ActionResult About()
-        {
-            ViewBag.Message = "Your application description page.";
-
-            return View();
-        }
+       
 
         public ActionResult CurrentTime()
         {
@@ -168,6 +163,36 @@ namespace NiceAdmin.Controllers
             ViewBag.HotProducts = GetHotProducts();
 
             return View();
+        }              
+        public ActionResult Contact()
+        {
+            ViewBag.Message = "Your contact page.";
+
+            return View();
+        }
+        public ActionResult FAQ()
+        {
+            ViewBag.Message = "Your contact page.";
+
+            return View();
+        }
+        public ActionResult TSDessertsIndexPV()
+        {
+            ViewBag.HotProducts = GetHotProducts();
+            return PartialView("TSDessertsIndexPV", ViewBag.HotProducts);
+        }
+        public ActionResult TotalDesserts()
+        {
+            ViewBag.totalDessertsCount = GetTotalDessertsCount();
+            return PartialView("TotalDesserts", ViewBag.TotalDessertsCount);
+        }
+        private int GetTotalDessertsCount()
+        {
+            using (var dbContext = new AppDbContext())
+            {
+                int totalDessertsCount = dbContext.Desserts.Count();
+                return totalDessertsCount;
+            }
         }
         //抓到熱門銷售甜點
         private List<DessertFrontIndexVM> GetHotProducts()
@@ -200,31 +225,6 @@ namespace NiceAdmin.Controllers
                 return hotProducts;
             }
         }
-        public ActionResult Contact()
-        {
-            ViewBag.Message = "Your contact page.";
-
-            return View();
-        }
-
-        public ActionResult TSDessertsIndexPV()
-        {
-            ViewBag.HotProducts = GetHotProducts();
-            return PartialView("TSDessertsIndexPV", ViewBag.HotProducts);
-        }
-        public ActionResult TotalDesserts()
-        {
-            ViewBag.totalDessertsCount = GetTotalDessertsCount();
-            return PartialView("TotalDesserts", ViewBag.TotalDessertsCount);
-        }
-        private int GetTotalDessertsCount()
-        {
-            using (var dbContext = new AppDbContext())
-            {
-                int totalDessertsCount = dbContext.Desserts.Count();
-                return totalDessertsCount;
-            }
-        }
         public ActionResult Login()
 		{
 			return View();
@@ -234,9 +234,15 @@ namespace NiceAdmin.Controllers
 		{
 			return View();
 		}
+        public ActionResult About()
+        {
+            ViewBag.Message = "Your application description page.";
+
+            return View();
+        }
     }
 
 
 	
-	}
+}
 
