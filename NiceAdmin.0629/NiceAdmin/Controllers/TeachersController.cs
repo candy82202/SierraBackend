@@ -7,18 +7,23 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Security;
 using System.Web.UI.WebControls;
+using NiceAdmin.Filters;
 using NiceAdmin.Models.EFModels;
 using NiceAdmin.Models.ViewModels;
 using NiceAdmin.Models.ViewModels.TeachersVM;
 
 namespace NiceAdmin.Controllers
 {
+    [DirectToUnAuthorize(Roles = "admin,manager")]
     public class TeachersController : Controller
     {
         private AppDbContext db = new AppDbContext();
 
         // GET: Teachers
+        [OverrideAuthorization]
+        [DirectToUnAuthorize(Roles = "admin,manager,staff")]
         public ActionResult Index(TeacherCriteria criteria)
         {
 

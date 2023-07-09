@@ -10,6 +10,7 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.UI.WebControls;
 using System.Xml.Linq;
+using NiceAdmin.Filters;
 using NiceAdmin.Models.EFModels;
 using NiceAdmin.Models.Infra.EFRepositories;
 using NiceAdmin.Models.Interfaces;
@@ -20,11 +21,14 @@ using WebGrease;
 
 namespace NiceAdmin.Controllers
 {
+    [DirectToUnAuthorize(Roles = "admin,manager")]
     public class DessertsController : Controller
     {
         private AppDbContext db = new AppDbContext();
 
         // GET: Desserts
+        [OverrideAuthorization]
+        [DirectToUnAuthorize(Roles = "admin,manager,dessertSale,staff")]
         public ActionResult Index1(DessertCriteria dessertCriteria)
         {
             PrepareCategoryDataSource(dessertCriteria.CategoryId);
@@ -53,6 +57,8 @@ namespace NiceAdmin.Controllers
 
         }
         // Three Layer - Index
+        [OverrideAuthorization]
+        [DirectToUnAuthorize(Roles = "admin,manager,dessertSale,staff")]
         public ActionResult Index(DessertCriteria criteria)
         {
             //新增判斷甜點上架時間的方法

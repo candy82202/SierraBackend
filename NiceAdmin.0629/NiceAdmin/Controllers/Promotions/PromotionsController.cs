@@ -8,17 +8,21 @@ using System.Web;
 using System.Web.Mvc;
 using Microsoft.Ajax.Utilities;
 using NiceAdmin.Controllers.Promotions;
+using NiceAdmin.Filters;
 using NiceAdmin.Models.EFModels;
 using NiceAdmin.Models.ViewModels.PromotionsVM;
 
 namespace NiceAdmin.Controllers
 {
-	public class PromotionsController : Controller
+    [DirectToUnAuthorize(Roles = "admin,manager,dessertSale,lessonSale")]
+    public class PromotionsController : Controller
 	{
 		private AppDbContext db = new AppDbContext();
 
-		// GET: Promotions
-		public ActionResult Index()
+        // GET: Promotions
+        [OverrideAuthorization]
+        [DirectToUnAuthorize(Roles = "admin,manager,dessertSale,lessonSale,staff")]
+        public ActionResult Index()
 		{
 			var promotions = db.Promotions.Include(p => p.Coupon).ToList();
 			IEnumerable<PromotionIndexVM> vms = promotions.Select(p => p.ToIndexVM());

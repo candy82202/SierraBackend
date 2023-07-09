@@ -6,15 +6,19 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using NiceAdmin.Filters;
 using NiceAdmin.Models.EFModels;
 
 namespace NiceAdmin.Controllers.Lessons
 {
+    [DirectToUnAuthorize(Roles = "admin,manager")]
     public class LessonTagsController : Controller
     {
         private AppDbContext db = new AppDbContext();
 
         // GET: LessonTags
+        [OverrideAuthorization]
+        [DirectToUnAuthorize(Roles = "admin,manager,lessonSale,staff")]
         public ActionResult Index()
         {
             var lessonTags = db.LessonTags.Include(l => l.Lesson);

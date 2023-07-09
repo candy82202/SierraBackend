@@ -9,13 +9,18 @@ using System.Web.Mvc;
 using System.Data.Entity;
 using NiceAdmin.Models.Exts;
 using Microsoft.Ajax.Utilities;
+using NiceAdmin.Filters;
 
 namespace NiceAdmin.Controllers
 {
+    [DirectToUnAuthorize(Roles = "admin,manager,dessertSale,lessonSale")]
     public class DiscountGroupsController : Controller
     {
-        // GET: DiscountGroup
         private AppDbContext db = new AppDbContext();
+
+        // GET: DiscountGroup
+        [OverrideAuthorization]
+        [Authorize(Roles = "admin,manager,dessertSale,lessonSale,staff")]
         public ActionResult Index()
         {
             IEnumerable<DiscountGroupIndexVM> discountGroups = GetDiscountGroup();
