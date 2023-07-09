@@ -22,6 +22,7 @@ namespace NiceAdmin.Controllers
             ViewBag.CurrentTime = DateTime.Now;
             ViewBag.HotProducts = GetHotProducts();
             ViewBag.TotalDessertsCount = GetTotalDessertsCount();
+            ViewBag.TotalLessonsCount = GetTotalDessertsCount();
             return View();
         }
         private AppDbContext db = new AppDbContext();
@@ -204,12 +205,25 @@ namespace NiceAdmin.Controllers
             ViewBag.totalDessertsCount = GetTotalDessertsCount();
             return PartialView("TotalDesserts", ViewBag.TotalDessertsCount);
         }
+        public ActionResult TotalLessons()
+        {
+            ViewBag.totalLessonsCount = GetTotalLessonsCount();
+            return PartialView("TotalLessons", ViewBag.TotalLessonsCount);
+        }
         private int GetTotalDessertsCount()
         {
             using (var dbContext = new AppDbContext())
             {
                 int totalDessertsCount = dbContext.Desserts.Count();
                 return totalDessertsCount;
+            }
+        }
+        private int GetTotalLessonsCount()
+        {
+            using (var dbContext = new AppDbContext())
+            {
+                int totalLessonsCount = dbContext.Lessons.Count();
+                return totalLessonsCount;
             }
         }
         //抓到熱門銷售甜點

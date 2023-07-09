@@ -901,7 +901,8 @@
     <Content Include="Views\Employees\Profiles.cshtml" />
     <Content Include="Views\Home\RecentUpEmployees.cshtml" />
     <Content Include="Views\Home\RecentUpMembers.cshtml" />
-	<Content Include="Views\Home\FAQ.cshtml" />
+    <Content Include="Views\Home\FAQ.cshtml" />
+    <Content Include="Views\Home\TotalLessons.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="Scripts\vendor\chart.js\controllers\controller.bar.d.ts" />
