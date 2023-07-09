@@ -79,7 +79,7 @@ namespace NiceAdmin.Controllers.Members
                 ViewBag.Roles = roles;
                 return View();
             }
-            
+
             bool isNameExist = db.Employees.Any(e => e.EmployeeName.Equals(vm.EmployeeName, StringComparison.OrdinalIgnoreCase));
 
             if (isNameExist)
@@ -91,7 +91,7 @@ namespace NiceAdmin.Controllers.Members
             }
 
             string path = Server.MapPath("/img/Members");
-            string fileName= SaveUploadedFile(path, imageFile);
+            string fileName = SaveUploadedFile(path, imageFile);
             vm.ImageName = fileName;
 
             var emp = vm.ToEntity();
@@ -222,7 +222,19 @@ namespace NiceAdmin.Controllers.Members
             FormsAuthentication.SignOut();
             return Redirect("/Employees/Login");
         }
+        public ActionResult Profiles()
+        {
+            return View(); 
+        }
         public ActionResult ResetPassword()
+        {
+            return View();
+        }
+        public ActionResult Setting()
+        {
+            return View();
+        }
+        public ActionResult Info()
         {
             return View();
         }

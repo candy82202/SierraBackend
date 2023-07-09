@@ -913,6 +913,9 @@
     <Content Include="Views\Shared\_Unauthorized.cshtml" />
     <Content Include="Views\Home\TotalDesserts.cshtml" />
     <Content Include="Views\Employees\ResetPassword.cshtml" />
+    <Content Include="Views\Employees\Info.cshtml" />
+    <Content Include="Views\Employees\Setting.cshtml" />
+    <Content Include="Views\Employees\Profiles.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="Scripts\vendor\chart.js\controllers\controller.bar.d.ts" />
