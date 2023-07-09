@@ -222,6 +222,10 @@ namespace NiceAdmin.Controllers.Members
             FormsAuthentication.SignOut();
             return Redirect("/Employees/Login");
         }
+        public ActionResult ResetPassword()
+        {
+            return View();
+        }
 
         private string SaveUploadedFile(string path, HttpPostedFileBase image)
         {

@@ -912,6 +912,7 @@
     <Content Include="Views\Home\TSDessertsIndexPV.cshtml" />
     <Content Include="Views\Shared\_Unauthorized.cshtml" />
     <Content Include="Views\Home\TotalDesserts.cshtml" />
+    <Content Include="Views\Employees\ResetPassword.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="Scripts\vendor\chart.js\controllers\controller.bar.d.ts" />
