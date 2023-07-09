@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using NiceAdmin.Models.EFModels;
+using NiceAdmin.Models.ViewModels.OrdersVM;
 
 namespace NiceAdmin.Controllers.Orders
 {
@@ -15,10 +16,43 @@ namespace NiceAdmin.Controllers.Orders
         private AppDbContext db = new AppDbContext();
 
         // GET: LessonOrders
-        public ActionResult Index()
+        public ActionResult Index(LessonOrderCriteria criteria)
         {
-            var lessonOrders = db.LessonOrders.Include(l => l.Coupon).Include(l => l.Member).Include(l => l.OrderStatus);
-            return View(lessonOrders.ToList());
+            PrepareOrderDataSource(criteria.OrderStatusId);
+            ViewBag.Criteria = criteria;
+            //查詢紀錄
+            #region where
+            var query = db.LessonOrders.Include(l => l.LessonOrderDetails).Include(l => l.Coupon).Include(l => l.Member).Include(l => l.OrderStatus);
+            if (string.IsNullOrEmpty(criteria.MemberName) == false)
+            {
+                query = query.Where(l => l.Member.MemberName.Contains(criteria.MemberName));
+            }
+            if (criteria.OrderStatusId != null && criteria.OrderStatusId.Value > 0)
+            {
+                query = query.Where(l => l.OrderStatus.OrderStatusId == criteria.OrderStatusId.Value);
+            }
+            if (criteria.MinPrice.HasValue)
+            {
+                query = query.Where(l => l.LessonOrderTotal >= criteria.MinPrice.Value);
+            }
+            if (criteria.MaxPrice.HasValue)
+            {
+                query = query.Where(l => l.LessonOrderTotal <= criteria.MaxPrice.Value);
+            }
+            #endregion
+            var lessonOrders = query.ToList().Select(l => l.TOIndexVM());
+            return View(lessonOrders);
+
+            //var lessonOrders = db.LessonOrders.Include(l => l.LessonOrderDetails).Include(l => l.Coupon).Include(l => l.Member).Include(l => l.OrderStatus)
+            //    .ToList()
+            //    .Select(l => l.TOIndexVM());
+            //return View(lessonOrders);
+        }
+
+        private void PrepareOrderDataSource(int? orderStatusId)
+        {
+            var status = db.OrderStatuses.ToList().Prepend(new OrderStatus());
+            ViewBag.OrderStatusId = new SelectList(status, "OrderStatusId", "StatusName", orderStatusId);
         }
 
         // GET: LessonOrders/Details/5

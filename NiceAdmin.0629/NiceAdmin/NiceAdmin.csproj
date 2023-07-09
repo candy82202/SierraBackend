@@ -195,6 +195,8 @@
     <Compile Include="Models\ViewModels\OrdersVM\DessertOrderCriteria.cs" />
     <Compile Include="Models\ViewModels\OrdersVM\DessertOrderDetailIndexVM.cs" />
     <Compile Include="Models\ViewModels\OrdersVM\DessertOrderDetailStats.cs" />
+    <Compile Include="Models\ViewModels\OrdersVM\LessonOrderCriteria.cs" />
+    <Compile Include="Models\ViewModels\OrdersVM\LessonOrderExts.cs" />
     <Compile Include="Models\ViewModels\PromotionsVM\MemberCouponDeliverVM.cs" />
     <Compile Include="Models\ViewModels\PromotionsVM\MemberCouponDetailVM.cs" />
     <Compile Include="Models\ViewModels\PromotionsVM\MemberCouponExts.cs" />

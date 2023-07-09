@@ -25,7 +25,11 @@ namespace NiceAdmin.Models.ViewModels.OrdersVM
         [Display(Name = "總額")]
         public int LessonOrderTotal { get; set; }
         [Display(Name = "訂單詳情")]
-        public List<LessonOrderDetail> DessertOrderDetails { get; set; }
+        public List<LessonOrderDetail> LessonOrderDetails { get; set; }
+        [Display(Name = "人數")]
+        public int NumberOfPeople { get; set; }
+        [Display(Name = "課程名稱")]
+        public string LessonTitle { get; set; }
 
 
     }

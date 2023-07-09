@@ -1,7 +1,10 @@
-﻿@model IEnumerable<NiceAdmin.Models.EFModels.LessonOrder>
+﻿@model IEnumerable<NiceAdmin.Models.ViewModels.OrdersVM.LessonOrderIndexVM>
 
 @{
+    var status = ViewBag.OrderStatusId as SelectList;
     ViewBag.Title = "Index";
+    var criteria = ViewBag.Criteria as NiceAdmin.Models.ViewModels.OrdersVM.LessonOrderCriteria;
+    string s_orderStatusId = criteria.OrderStatusId.HasValue ? criteria.OrderStatusId.Value.ToString() : "";
 }
 
 <main id="main" class="main">
@@ -15,27 +18,75 @@
             </ol>
         </nav>
     </div>
+    <section class="container">
+        <form method="get" id="searchForm">
+            <div id="orderGroup" class="accordion">
+                <div id="orderMain">
+                    <div class="input-group  d-flex align-items-center mb-3">
+                        <div class="me-2 mb-2">
+                            <input id="order1" name="order" type="button" class="btn btn-primary "
+                                   data-bs-toggle="collapse" data-bs-target="#orderGroup1" value="查詢訂購人姓名" />
+                        </div>
+                        <div class="me-2 mb-2">
+                            <input id="order2" name="order" type="button" class="btn btn-success "
+                                   data-bs-toggle="collapse" data-bs-target="#orderGroup2" value="訂單狀態" />
+                        </div>
+                        <div class="me-2 mb-2">
+                            <input id="order4" name="order" type="button" class="btn btn-warning "
+                                   data-bs-toggle="collapse" data-bs-target="#orderGroup4" value="總額" />
+                        </div>
+                    </div>
+                </div>
+                <div id="orderGroup1" data-bs-parent="#orderGroup" class="accordion-collapse collapse">
+                    <div class="input-group mb-2">
+                        <input class="form-control" type="text" name="MemberName" placeholder="請輸入訂購人姓名" value="@criteria.MemberName" />
+                    </div>
+                </div>
+                <div id="orderGroup2" data-bs-parent="#orderGroup" class="accordion-collapse collapse">
+                    <div class="input-group mb-2">
+                        <select name="OrderStatusId" id="s_StatusName" class="form-select">
+                            @foreach (var item in status)
+                            {
+                                <option value="@item.Value" @(s_orderStatusId == item.Value ? "selected" : "")>@item.Text</option>
+                            }
+                        </select>
+                    </div>
+                </div>
+                <div id="orderGroup4" data-bs-parent="#orderGroup" class="accordion-collapse collapse">
+                    <div class="input-group mb-2">
+                        <input type="number" class="form-control" name="MinPrice" id="s_minPrice" style="width:40%;display:inline" value="@criteria.MinPrice">~
+                        <input type="number" class="form-control" name="MaxPrice" id="s_maxPrice" style="width:40%; display:inline" value="@criteria.MaxPrice">
+                    </div>
+                </div>
+                <div class=" align-items-center me-2 mb-3">
+
+                    <button class=" btn btn-primary">Search</button>
+                    <button class=" btn btn-secondary" onclick="clearSearch()">Reset</button>
+                </div>
+            </div>
+        </form>
+    </section>
     <!-- End Page Title -->
-
-
-
     @*<p>
-        @Html.ActionLink("Create New", "Create")
-    </p>*@
+            @Html.ActionLink("Create New", "Create")
+        </p>*@
     <table class="table table-striped table-hover " id="example">
         <thead>
             <tr>
                 @*<th>
-                    @Html.DisplayNameFor(model => model.Coupon.CouponName)
-                </th>*@
+                        @Html.DisplayNameFor(model => model.Coupon.CouponName)
+                    </th>*@
                 <th>
                     @Html.DisplayNameFor(model => model.LessonOrderId)
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.Member.MemberName)
+                    @Html.DisplayNameFor(model => model.MemberName)
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.OrderStatus.StatusName)
+                    @Html.DisplayNameFor(model => model.StatusName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.OrderStatusId)
                 </th>
                 <th>
                     @Html.DisplayNameFor(model => model.CreateTime)
@@ -44,15 +95,18 @@
                     @Html.DisplayNameFor(model => model.LessonOrderTotal)
                 </th>
                 @*<th>
-                    @Html.DisplayNameFor(model => model.Note)
-                </th>*@
+                        @Html.DisplayNameFor(model => model.Note)
+                    </th>*@
                 @*<th>
-                    @Html.DisplayNameFor(model => model.OrderCancellationReason)
-                </th>*@
+                        @Html.DisplayNameFor(model => model.OrderCancellationReason)
+                    </th>*@
                 @*<th>
-                    @Html.DisplayNameFor(model => model.DiscountInfo)
-                </th>*@
-                <th></th>
+                        @Html.DisplayNameFor(model => model.DiscountInfo)
+                    </th>*@
+                <th>
+                    查看明細
+                </th>
+
             </tr>
         </thead>
         <tbody>
@@ -61,16 +115,19 @@
             {
                 <tr>
                     @*<td>
-                        @Html.DisplayFor(modelItem => item.Coupon.CouponName)
-                    </td>*@
+                            @Html.DisplayFor(modelItem => item.Coupon.CouponName)
+                        </td>*@
                     <td>
                         @Html.DisplayFor(modelItem => item.LessonOrderId)
                     </td>
                     <td>
-                        @Html.DisplayFor(modelItem => item.Member.MemberName)
+                        @Html.DisplayFor(modelItem => item.MemberName)
                     </td>
                     <td>
-                        @Html.DisplayFor(modelItem => item.OrderStatus.StatusName)
+                        @Html.DisplayFor(modelItem => item.StatusName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.OrderStatusId)
                     </td>
                     <td>
                         @Html.DisplayFor(modelItem => item.CreateTime)
@@ -79,26 +136,103 @@
                         @Html.DisplayFor(modelItem => item.LessonOrderTotal)
                     </td>
                     @*<td>
-                        @Html.DisplayFor(modelItem => item.Note)
-                    </td>*@
+                            @Html.DisplayFor(modelItem => item.Note)
+                        </td>*@
                     @*<td>
-                        @Html.DisplayFor(modelItem => item.OrderCancellationReason)
-                    </td>*@
+                            @Html.DisplayFor(modelItem => item.OrderCancellationReason)
+                        </td>*@
                     @*<td>
-                        @Html.DisplayFor(modelItem => item.DiscountInfo)
-                    </td>*@
+                            @Html.DisplayFor(modelItem => item.DiscountInfo)
+                        </td>*@
+                    @*<td>
+                            @foreach (var detail in item.LessonOrderDetails)
+                            {
+                                @detail.LessonTitle
+                                @detail.LessonUnitPrice
+                                @detail.NumberOfPeople
+                                @detail.Subtotal
+                            }
+                        </td>*@
+                    @*單筆訂單明細collapse*@
                     <td>
-                        @Html.ActionLink("Edit", "Edit", new { id = item.LessonOrderId }) |
-                        @Html.ActionLink("Details", "Details", new { id = item.LessonOrderId }) |
-                        @Html.ActionLink("Delete", "Delete", new { id = item.LessonOrderId })
+                        <div class="form-check">
+                            <input class="form-check-input form-select" name="LessonOrderDetails"
+                                   value="LessonOrderDetails" data-bs-toggle="collapse" data-bs-target="#DessertOrderId-@item.LessonOrderId">
+
+                        </div>
                     </td>
                 </tr>
+                @*單筆訂單明細collapse*@
+                <tr class="collapse" id="DessertOrderId-@item.LessonOrderId">
+                    <td colspan="9">
+                        <div class="row">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>課程名稱</th>
+                                        <th>單價</th>
+                                        <th>人數</th>
+                                        <th>小計</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var detail in item.LessonOrderDetails)
+                                    {
+                                        <tr>
+                                            <td>@detail.LessonTitle </td>
+                                            <td>@detail.LessonUnitPrice</td>
+                                            <td>@detail.NumberOfPeople</td>
+                                            <td>@detail.Subtotal</td>
+
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    </td>
+                </tr>
+
             }
         </tbody>
     </table>
 </main>
 @section Scripts{
     <script>
+        //單筆訂單明細collapse
+        document.addEventListener('DOMContentLoaded', function () {
+            // Get all the input elements with name "LessonOrderDetails"
+            var inputs = document.querySelectorAll('input[name="LessonOrderDetails"]');
+
+            // Add click event listener to each input element
+            inputs.forEach(function (input) {
+                input.addEventListener('click', function () {
+                    // Get the target collapse element ID
+                    var targetId = this.getAttribute('data-bs-target');
+
+                    // Get all the collapse elements
+                    var collapses = document.querySelectorAll('.collapse');
+
+                    // Close all other collapse elements except the target one
+                    collapses.forEach(function (collapse) {
+                        if (collapse.id !== targetId) {
+                            collapse.classList.remove('show');
+                        }
+                    });
+                });
+            });
+        });
+        //清除搜尋
+
+        function clearSearch() {
+            // Clear the form values
+            document.getElementById("searchForm").querySelectorAll("input[type='text'], input[type='number'], select").forEach(function (el) {
+                if (el.tagName === 'SELECT') {
+                    el.selectedIndex = 0; // Reset the selected option to the first option
+                } else {
+                    el.value = ''; // Clear the input value
+                }
+            });
+        }
         //這段是要做AutoComplete
         var teachers = ["訂單", "甜點", "宅配", "明細", "課程", "烘焙", "吳", "糕點", "巧克力", "法式"]
         /*function autocomplete(inp, arr) { ... }：這是一個自訂的自動完成函式。

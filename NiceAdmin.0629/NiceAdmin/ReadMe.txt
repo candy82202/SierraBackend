@@ -245,6 +245,7 @@ ViewBag.LessonOrderId = new SelectList(db.LessonOrders, "LessonOrderId", "Note",
 [V]手風琴單筆ID做開合
 [v]button大小間距
 [v]更新DessertOrderTotal加上DessertOrderStatusId == 3
+[v]課程criteria進階搜尋 清除搜尋
 
 
 
