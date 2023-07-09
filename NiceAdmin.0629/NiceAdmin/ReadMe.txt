@@ -223,7 +223,7 @@ Teacher 部分
 [v]沒有刪除師資
 [v]join teacher&lesson
 [v]datatable完成
-[working on]下架沒有錯誤訊息
+[v]sweetalert沒有課程或課程上完可以離職他
 
 
 
@@ -257,10 +257,18 @@ Order 部分
 [working on]下拉清單寫成一個副程式
 [working on]debug課程訂單明細資料庫錯誤，
 ViewBag.LessonOrderId = new SelectList(db.LessonOrders, "LessonOrderId", "Note", lessonOrderDetail.LessonOrderId);
-[working on]criteria進階搜尋 做清除搜尋
-[working on]最近熱銷的五筆訂單Partial view最近熱銷的五筆甜點
+[v]criteria進階搜尋 做清除搜尋
+[v]Partial View
+已甜點訂單的總額(DessertOrderTotal)做前十熱銷的甜點訂單
+已甜點訂單明細(DessertOrderDetail)的數量(Quantity)做最熱銷前五名甜點(DessertName)
 [V]手風琴單筆ID做開合
-[working on]button大小間距
+[v]button大小間距
+[v]更新DessertOrderTotal加上DessertOrderStatusId == 3
+[v]課程criteria進階搜尋 清除搜尋
+[v]最熱銷前五名課程
+[v]前十熱銷的課程訂單
+[v]更新最熱銷前五名甜點程式
+
 
 
 

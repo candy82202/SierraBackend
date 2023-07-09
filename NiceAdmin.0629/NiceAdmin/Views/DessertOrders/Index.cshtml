@@ -1,7 +1,11 @@
-﻿@model IEnumerable<NiceAdmin.Models.ViewModels.OrdersVM.DessertOrderIndexVM>
+﻿@using NiceAdmin.Models.ViewModels.OrdersVM
+@model IEnumerable<NiceAdmin.Models.ViewModels.OrdersVM.DessertOrderIndexVM>
 
 @{
+    var status = ViewBag.OrderStatusId as SelectList;
     ViewBag.Title = "Index";
+    var criteria = ViewBag.Criteria as NiceAdmin.Models.ViewModels.OrdersVM.DessertOrderCriteria;
+    string s_orderStatusId = criteria.OrderStatusId.HasValue ? criteria.OrderStatusId.Value.ToString() : "";
 }
 
 
@@ -16,59 +20,65 @@
             </ol>
         </nav>
     </div>
-    
-        <div id="orderGroup" class="accordion">
-            <div id="orderMain" >
-                <div class="input-group  d-flex align-items-center mb-3">
-                    <div class="me-2 mb-2">
-                        <input id="order1" name="order" type="button" class="btn btn-primary "
-                               data-bs-toggle="collapse" data-bs-target="#orderGroup1" value="查詢訂購人姓名" />
+    @{Html.RenderAction("TopSellingDesserts", "DessertOrders");}
+    @{Html.RenderAction("TopSellingDessertsOrder", "DessertOrders");}
+    <section class="container">
+        <form method="get" id="searchForm">
+            <div id="orderGroup" class="accordion">
+                <div id="orderMain">
+                    <div class="input-group  d-flex align-items-center mb-3">
+                        <div class="me-2 mb-2">
+                            <input id="order1" name="order" type="button" class="btn btn-primary "
+                                   data-bs-toggle="collapse" data-bs-target="#orderGroup1" value="查詢訂購人姓名" />
+                        </div>
+                        <div class="me-2 mb-2">
+                            <input id="order2" name="order" type="button" class="btn btn-success "
+                                   data-bs-toggle="collapse" data-bs-target="#orderGroup2" value="訂單狀態" />
+                        </div>
+                        <div class="me-2 mb-2">
+                            <input id="order3" name="order" type="button" class="btn btn-danger"
+                                   data-bs-toggle="collapse" data-bs-target="#orderGroup3" value="收件人" />
+                        </div>
+                        <div class="me-2 mb-2">
+                            <input id="order4" name="order" type="button" class="btn btn-warning "
+                                   data-bs-toggle="collapse" data-bs-target="#orderGroup4" value="總額" />
+                        </div>
                     </div>
-                    <div class="me-2 mb-2">
-                        <input id="order2" name="order" type="button" class="btn btn-success "
-                               data-bs-toggle="collapse" data-bs-target="#orderGroup2" value="訂購狀態" />
-                    </div>
-                    <div class="me-2 mb-2">
-                        <input id="order3" name="order" type="button" class="btn btn-danger"
-                               data-bs-toggle="collapse" data-bs-target="#orderGroup3" value="收件人" />
-                    </div>
-                    <div class="me-2 mb-2">
-                        <input id="order4" name="order" type="button" class="btn btn-warning "
-                               data-bs-toggle="collapse" data-bs-target="#orderGroup4" value="總額" />
-                    </div>
-                    <div class="me-2 mb-2">
-                        <input id="order5" name="order" type="button" class="btn btn-info"
-                               data-bs-toggle="collapse" data-bs-target="#orderGroup5" value="查看明細" />
+                </div>
+                <div id="orderGroup1" data-bs-parent="#orderGroup" class="accordion-collapse collapse">
+                    <div class="input-group mb-2">
+                        <input class="form-control" type="text" name="MemberName" placeholder="請輸入訂購人姓名" value="@criteria.MemberName" />
                     </div>
                 </div>
-            </div>
-            <div id="orderGroup1" data-bs-parent="#orderGroup" class="accordion-collapse collapse">
-                <div class="input-group mb-2">
-                    <input class="form-control" type="text" placeholder="請輸入訂購人姓名">
+                <div id="orderGroup2" data-bs-parent="#orderGroup" class="accordion-collapse collapse">
+                    <div class="input-group mb-2">
+                        <select name="OrderStatusId" id="s_StatusName" class="form-select">
+                            @foreach (var item in status)
+                            {
+                                <option value="@item.Value" @(s_orderStatusId == item.Value ? "selected" : "")>@item.Text</option>
+                            }
+                        </select>
+                    </div>
+                </div>
+                <div id="orderGroup3" data-bs-parent="#orderGroup" class="accordion-collapse collapse">
+                    <div class="input-group mb-2">
+                        <input class="form-control" type="text" name="Recipient" placeholder="請輸入收件人" value="@criteria.Recipient">
+                    </div>
+                </div>
+                <div id="orderGroup4" data-bs-parent="#orderGroup" class="accordion-collapse collapse">
+                    <div class="input-group mb-2">
+                        <input type="number" class="form-control" name="MinPrice" id="s_minPrice" style="width:40%;display:inline" value="@criteria.MinPrice">~
+                        <input type="number" class="form-control" name="MaxPrice" id="s_maxPrice" style="width:40%; display:inline" value="@criteria.MaxPrice">
+                    </div>
+                </div>
+                <div class=" align-items-center me-2 mb-3">
+
+                    <button class=" btn btn-primary">Search</button>
+                    <button class=" btn btn-secondary" onclick="clearSearch()">Reset</button>
                 </div>
             </div>
-            <div id="orderGroup2" data-bs-parent="#orderGroup" class="accordion-collapse collapse">
-                <div class="input-group mb-2">
-                    <input class="form-control" type="text" placeholder="請輸入訂購狀態">
-                </div>
-            </div>
-            <div id="orderGroup3" data-bs-parent="#orderGroup" class="accordion-collapse collapse">
-                <div class="input-group mb-2">
-                    <input class="form-control" type="text" placeholder="請輸入收件人">
-                </div>
-            </div>
-            <div id="orderGroup4" data-bs-parent="#orderGroup" class="accordion-collapse collapse">
-                <div class="input-group mb-2">
-                    <input class="form-control" type="text" placeholder="請輸入總額">
-                </div>
-            </div>
-            <div id="orderGroup5" data-bs-parent="#orderGroup" class="accordion-collapse collapse">
-                <div class="input-group mb-2">
-                    <input class="form-control" type="text" placeholder="請輸入明細">
-                </div>
-            </div>
-        </div>
-    
+        </form>
+    </section>
 
     <!-- End Page Title -->
     @*<p>
@@ -285,7 +295,18 @@
                 });
             });
         });
+        //清除搜尋
 
+        function clearSearch() {
+            // Clear the form values
+            document.getElementById("searchForm").querySelectorAll("input[type='text'], input[type='number'], select").forEach(function (el) {
+                if (el.tagName === 'SELECT') {
+                    el.selectedIndex = 0; // Reset the selected option to the first option
+                } else {
+                    el.value = ''; // Clear the input value
+                }
+            });
+        }
         //這段是要做AutoComplete
         var DessertOrders = ["訂單", "甜點", "專家", "證書", "宅配", "課程", "烘焙", "吳", "糕點", "巧克力", "法式"]
         /*function autocomplete(inp, arr) { ... }：這是一個自訂的自動完成函式。

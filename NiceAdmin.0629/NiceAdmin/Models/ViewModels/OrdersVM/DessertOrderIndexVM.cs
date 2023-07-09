@@ -13,9 +13,10 @@ namespace NiceAdmin.Models.ViewModels.OrdersVM
         public int DessertOrderId { get; set; }
         [Display(Name = "訂購人姓名")]
         public string MemberName { get; set; }
-        [Display(Name = "訂購狀態")]
+        [Display(Name = "訂單狀態")]
         public string StatusName { get; set; }
-
+        [Display(Name = "訂單狀態")]
+        public int? OrderStatusId { get; set; }
         //public int? CouponId { get; set; }
         [Display(Name = "訂單成立時間")]
         public DateTime CreateTime { get; set; }
@@ -56,5 +57,11 @@ namespace NiceAdmin.Models.ViewModels.OrdersVM
         //public string DiscountInfo { get; set; }
         [Display(Name = "訂單詳情")]
         public List <DessertOrderDetail> DessertOrderDetails { get; set; }
+        [Display(Name = "數量")]
+        public int Quantity { get; set; }
+
+        [Display(Name = "甜點名稱")]
+        public string DessertName { get; set; }
+
     }
 }

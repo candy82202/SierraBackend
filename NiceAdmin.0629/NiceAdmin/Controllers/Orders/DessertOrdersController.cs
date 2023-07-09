@@ -8,6 +8,8 @@ using System.Web;
 using System.Web.Mvc;
 using NiceAdmin.Models.EFModels;
 using NiceAdmin.Models.ViewModels.OrdersVM;
+using NiceAdmin.Models.ViewModels.TeachersVM;
+using NiceAdmin.Views.DessertOrders;
 
 namespace NiceAdmin.Controllers.Orders
 {
@@ -16,13 +18,88 @@ namespace NiceAdmin.Controllers.Orders
         private AppDbContext db = new AppDbContext();
 
         // GET: DessertOrders
-        public ActionResult Index(int page = 1, string sortColumn = "DessertOrderId", string sortOrder = "asc")
+        public ActionResult Index(DessertOrderCriteria criteria)
         {
+            PrepareOrderDataSource(criteria.OrderStatusId);
+            ViewBag.Criteria = criteria;
 
-            var dessertOrders = db.DessertOrders.Include(d=>d.DessertOrderDetails).Include(d => d.Member).Include(d => d.OrderStatus)
-                .ToList()
-                .Select(d => d.TOIndexVM());
+            //查詢紀錄
+            #region where
+            var query = db.DessertOrders.Include(d => d.DessertOrderDetails).Include(d => d.Member).Include(d => d.OrderStatus);
+            if (string.IsNullOrEmpty(criteria.MemberName) == false)
+            {
+                query = query.Where(d => d.Member.MemberName.Contains(criteria.MemberName));
+            }
+            if(criteria.OrderStatusId!=null && criteria.OrderStatusId.Value > 0) 
+            {
+                query = query.Where(d => d.OrderStatus.OrderStatusId == criteria.OrderStatusId.Value);
+            }
+            if (string.IsNullOrEmpty(criteria.Recipient) == false) 
+            {
+                query = query.Where(d=>d.Recipient.Contains(criteria.Recipient));
+            }
+            if (criteria.MinPrice.HasValue) 
+            {
+                query =query.Where(d=>d.DessertOrderTotal>=criteria.MinPrice.Value);
+            }
+            if (criteria.MaxPrice.HasValue) 
+            {
+                query = query.Where(d=>d.DessertOrderTotal<=criteria.MaxPrice.Value);
+            }
+            #endregion
+            var dessertOrders = query.ToList().Select(d => d.TOIndexVM());
             return View(dessertOrders);
+          
+
+            //var dessertOrders = db.DessertOrders.Include(d=>d.DessertOrderDetails).Include(d => d.Member).Include(d => d.OrderStatus)
+            //    .ToList()
+            //    .Select(d => d.TOIndexVM());
+            //return View(dessertOrders);
+        }
+
+        private void PrepareOrderDataSource(int? orderStatusId)
+        {
+            var status = db.OrderStatuses.ToList().Prepend(new OrderStatus());
+            ViewBag.OrderStatusId = new SelectList(status, "OrderStatusId", "StatusName", orderStatusId);
+        }
+        public PartialViewResult TopSellingDesserts()//最熱銷前五名甜點
+        {
+            //var topDesserts = db.DessertOrders
+            //    .SelectMany(o => o.DessertOrderDetails)
+            //    .GroupBy(d => d.DessertName)
+            //    .Select(g => new DessertOrderDetailStats { DessertName = g.Key, Quantity = g.Sum(d => d.Quantity) })
+            //    .OrderByDescending(d => d.Quantity)
+            //    .Take(5)
+            //    .ToList();
+            var topDesserts = db.DessertOrderDetails
+        .Join(db.Desserts, od => od.DessertId, l => l.DessertId, (od, l) => new { od, l })
+        .GroupBy(g => new { g.l.DessertName })
+        .Select(g => new DessertOrderDetailStats
+        {
+            DessertName = g.Key.DessertName,
+            Quantity = g.Sum(x => x.od.Quantity)
+        })
+        .OrderByDescending(x => x.Quantity)
+        .ThenBy(x => x.DessertName)
+        .Take(5)
+        .ToList();
+
+            return PartialView("TopSellingDesserts", topDesserts);
+        }
+        public PartialViewResult TopSellingDessertsOrder()//前十熱銷的甜點訂單
+        {
+            var topSellingOrders = db.DessertOrders
+                .Where(os=>os.DessertOrderStatusId == 3)
+                .OrderByDescending(o => o.DessertOrderTotal)
+                .Take(10)
+                .Select(o => new TopSellingDessertsOrder
+                {
+                    OrderID = o.DessertOrderId,
+                    TotalAmount = o.DessertOrderTotal
+                })
+                .ToList();
+
+            return PartialView("TopSellingDessertsOrder", topSellingOrders);
         }
 
         // GET: DessertOrders/Details/5
