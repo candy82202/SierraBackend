@@ -248,6 +248,7 @@ ViewBag.LessonOrderId = new SelectList(db.LessonOrders, "LessonOrderId", "Note",
 [v]課程criteria進階搜尋 清除搜尋
 [v]最熱銷前五名課程
 [v]前十熱銷的課程訂單
+[v]更新最熱銷前五名甜點程式
 
 
 

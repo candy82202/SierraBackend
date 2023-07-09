@@ -64,13 +64,25 @@ namespace NiceAdmin.Controllers.Orders
         }
         public PartialViewResult TopSellingDesserts()//最熱銷前五名甜點
         {
-            var topDesserts = db.DessertOrders
-                .SelectMany(o => o.DessertOrderDetails)
-                .GroupBy(d => d.DessertName)
-                .Select(g => new DessertOrderDetailStats { DessertName = g.Key, Quantity = g.Sum(d => d.Quantity) })
-                .OrderByDescending(d => d.Quantity)
-                .Take(5)
-                .ToList();
+            //var topDesserts = db.DessertOrders
+            //    .SelectMany(o => o.DessertOrderDetails)
+            //    .GroupBy(d => d.DessertName)
+            //    .Select(g => new DessertOrderDetailStats { DessertName = g.Key, Quantity = g.Sum(d => d.Quantity) })
+            //    .OrderByDescending(d => d.Quantity)
+            //    .Take(5)
+            //    .ToList();
+            var topDesserts = db.DessertOrderDetails
+        .Join(db.Desserts, od => od.DessertId, l => l.DessertId, (od, l) => new { od, l })
+        .GroupBy(g => new { g.l.DessertName })
+        .Select(g => new DessertOrderDetailStats
+        {
+            DessertName = g.Key.DessertName,
+            Quantity = g.Sum(x => x.od.Quantity)
+        })
+        .OrderByDescending(x => x.Quantity)
+        .ThenBy(x => x.DessertName)
+        .Take(5)
+        .ToList();
 
             return PartialView("TopSellingDesserts", topDesserts);
         }
