@@ -146,6 +146,7 @@ Member 部分
 [V] - default image for create emp
 [V] - bug fix(encrypt create emp's pwd, it doesn't encrypt before)
 [V] - modify variable name(EncryptedPassword->Password)
+[V] - modify "rememberMe"
 [working on] - add authorization rules to every controllers
 
 ==========================================================

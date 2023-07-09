@@ -197,7 +197,7 @@ namespace NiceAdmin.Controllers.Members
         [HttpPost]
         [ValidateAntiForgeryToken]
         [AllowAnonymous]
-        public ActionResult Login(LoginVM vm, bool rememberMe)
+        public ActionResult Login(LoginVM vm)
         {
             if (ModelState.IsValid == false) return View(vm);
 
@@ -214,7 +214,7 @@ namespace NiceAdmin.Controllers.Members
             // const bool rememberMe = false; // 泡麵哥證實不一定會記得
 
             // 驗證正確, 將登入帳號編碼後, 加入cookie
-            var processResult = ProcessLogin(vm.Account, rememberMe);
+            var processResult = ProcessLogin(vm.Account, vm.RememberMe);
 
             Response.Cookies.Add(processResult.cookie);
             return Redirect(processResult.returnUrl);
@@ -281,7 +281,7 @@ namespace NiceAdmin.Controllers.Members
                     account,
                     DateTime.Now,   // 發行日
                     DateTime.Now.AddDays(10), // 到期日
-                    false,     // 是否續存
+                    rememberMe,     // 是否續存
                     rolesStr,          // userdata
                     "/" // cookie位置
                 );
@@ -293,7 +293,7 @@ namespace NiceAdmin.Controllers.Members
             var cookie = new HttpCookie(FormsAuthentication.FormsCookieName, value);
             if (rememberMe)
             {
-                cookie.Expires = DateTime.Now.AddMinutes(10);
+                cookie.Expires = DateTime.Now.AddDays(3);
             }
             else
             {
