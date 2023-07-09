@@ -147,7 +147,8 @@ Member 部分
 [V] - bug fix(encrypt create emp's pwd, it doesn't encrypt before)
 [V] - modify variable name(EncryptedPassword->Password)
 [V] - modify "rememberMe"
-[working on] - add authorization rules to every controllers
+[V] - modify emp edit
+[bug fixing] - add authorization rules to every controllers
 
 ==========================================================
 Lesson 部分

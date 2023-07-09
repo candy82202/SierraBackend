@@ -46,7 +46,7 @@
 					<div>
 						<label>
 							<input type="checkbox" name="RoleIds" value="@(@role.RoleId)" @(Model.Roles != null && Model.Roles.Contains(role) ? "checked" : "" ) />
-							@role.RoleName
+							@role.RoleDisplayName
 						</label>
 					</div>
 				}
