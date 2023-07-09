@@ -1,0 +1,55 @@
+﻿@model IEnumerable<NiceAdmin.Models.ViewModels.PromotionsVM.PromotionSlideVM>
+@{ 
+    var count = Model.Count();
+    var promotionArr = Model.ToArray();
+    
+}
+@* swipper版本不相容 *@
+@*<div class="swiper mySwiper">
+    <div class="swiper-wrapper">
+        @foreach (var item in Model)
+        {
+            <div class="swiper-slide">
+                <img src="~/Uploads/@item.PromotionImage" alt="@item.PromotionImage">
+            </div>
+        }
+    </div>
+    <div class="swiper-button-next"></div>
+    <div class="swiper-button-prev"></div>
+    <div class="swiper-pagination"></div>
+</div>*@
+<div id="slide1" class="carousel slide promotionDetailImg carousel-fade mb-4" data-bs-interval="3000" data-bs-ride="carousel">
+    <div class="carousel-inner h-100">
+        <div class="carousel-item h-100 active">
+            <img class="d-block w-100 h-100" src="~/Uploads/@Model.First().PromotionImage" alt="">
+        </div>
+        @*@foreach (var item in Model)
+        {
+
+            <div class="carousel-item h-100 active">
+                <img class="d-block w-100 h-100" src="~/Uploads/@item.PromotionImage" alt="">
+            </div>
+
+        }*@
+        @for (int i = 1; i < count; i++)
+        {
+            <div class="carousel-item h-100">
+                <img class="d-block w-100 h-100" src="~/Uploads/@promotionArr[i].PromotionImage" alt="">
+            </div>
+        }
+    </div>
+<div class="carousel-indicators">
+    <button type="button" data-bs-target="#slide1" data-bs-slide-to="0" class="active"></button>
+    @for (int i = 1; i <= count - 1; i++)
+    {
+        <button type="button" data-bs-target="#slide1" data-bs-slide-to="@i" aria-label="Slide 2"></button>
+    }
+</div>
+    <div class="ctrl position-absolute end-0 bottom-50 me-4 z-1" data-bs-target="#slide1" data-bs-slide="next">
+        <i class="bx bxs-chevron-right fzCarousel"></i>
+    </div>
+    <div class="ctrl position-absolute start-0 bottom-50 ms-4 z-1" data-bs-target="#slide1" data-bs-slide="prev">
+        <i class="bx bxs-chevron-left fzCarousel"></i>
+    </div>
+</div>
+

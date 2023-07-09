@@ -119,7 +119,7 @@
                             </div>
 
                             <div class="mb-3">
-                                <input type="submit" value="新增" class="btn btn-primary" />
+                                <input type="submit" value="新增" class="btn btn-primary" id="create"/>
                             </div>
                         </div>
                         }
@@ -184,27 +184,68 @@
                 const popoverTriggerList = document.querySelectorAll('[data-bs-toggle="popover"]')
                 const popoverList = [...popoverTriggerList].map(popoverTriggerEl => new bootstrap.Popover(popoverTriggerEl))
 
+                $("#StartAt").click(function () {
+                    var now = new Date();
+                    var year = now.getFullYear();
+                    var month = ("0" + (now.getMonth() + 1)).slice(-2);
+                    var day = ("0" + now.getDate()).slice(-2);
+                    var hour = ("0" + now.getHours()).slice(-2);
+                    var minute = ("0" + now.getMinutes()).slice(-2);
+                    var currentDateTime = year + "-" + month + "-" + day + "T" + hour + ":" + minute;
 
-                var now = new Date();
-                var year = now.getFullYear();
-                var month = ("0" + (now.getMonth() + 1)).slice(-2);
-                var day = ("0" + now.getDate()).slice(-2);
-                var hour = ("0" + now.getHours()).slice(-2);
-                var minute = ("0" + now.getMinutes()).slice(-2);
-                var currentDateTime = year + "-" + month + "-" + day + "T" + hour + ":" + minute;
+                    $("#StartAt").attr("min", currentDateTime);
 
-                $("#StartAt").attr("min", currentDateTime);
-                
-                $("#StartAt").change(function () {
-                    var startAtValue = $(this).val();
-                    var endAtValue = $('#EndAt').val();
-                    if (startAtValue > endAtValue) {
-                        $('#EndAt').val("");
-                    }
-                    // 設定 EndAt 欄位的最小可選擇時間
-                    $("#EndAt").attr("min", startAtValue);
+                    $("#StartAt").change(function () {
+                        var startAtValue = $(this).val();
+                        var endAtValue = $('#EndAt').val();
+                        if (startAtValue > endAtValue) {
+                            $('#EndAt').val("");
+                        }
+                        // 設定 EndAt 欄位的最小可選擇時間
+                        $("#EndAt").attr("min", startAtValue);
 
+                    })
                 })
+                
+
+                //送出時先檢查時間
+
+                $('#create').click(function (event) {
+                    event.preventDefault();
+                    if ($('#CouponCategoryId').val() == 2 || $('#CouponCategoryId').val() == 4) {
+                        var startAt = $('#StartAt').val()
+                        var endAt = $('#EndAt').val()
+                        var now = new Date();
+                        var year = now.getFullYear();
+                        var month = ("0" + (now.getMonth() + 1)).slice(-2);
+                        var day = ("0" + now.getDate()).slice(-2);
+                        var hour = ("0" + now.getHours()).slice(-2);
+                        var minute = ("0" + now.getMinutes()).slice(-2);
+                        var second = ("0" + now.getSeconds()).slice(-2);
+                        var currentDateTime = year + "-" + month + "-" + day + "T" + hour + ":" + minute + ":" + second;
+                        if (startAt < currentDateTime) {
+                            Swal.fire({
+                                icon: 'error',
+                                title: '請輸入適當時間',
+                                text: '開始時間不可小於當前時間'
+                            })
+                        }
+                        else if (startAt >= endAt) {
+                            Swal.fire({
+                                icon: 'error',
+                                title: '請輸入適當時間',
+                                text: '結束時間不可小於或等於開始時間'
+                            })
+                        }
+                        else {
+                            $('form').submit();
+                        }
+                    }
+                    else {
+                        $('form').submit();
+                    }
+                })
+
 
                 //好像是版本問題  樣式會跑掉
                 //$('#EndAt').datepicker()

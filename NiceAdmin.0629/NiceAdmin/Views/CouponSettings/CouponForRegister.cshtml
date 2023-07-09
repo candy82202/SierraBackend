@@ -1,0 +1,6 @@
+﻿@model IEnumerable<NiceAdmin.Models.ViewModels.PromotionsVM.CouponDragVM>
+
+@foreach (var item in Model)
+{
+    <div class="btn btn-warning me-2 mb-2 move" data-id="@item.CouponId" data-category="@item.CouponCategoryId" draggable="true">@item.CouponName</div>
+}

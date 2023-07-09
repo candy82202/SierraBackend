@@ -119,6 +119,7 @@
                             </div>
                         </div>
                     </div>
+                    @{Html.RenderAction("ExistingPromotions");}
                     <!-- End Customers Card -->
                     <!-- Recent Sales 新品上架-->
                     <div class="col-12">
@@ -170,13 +171,13 @@
 
                             <div class="card-body">
                                 <h5 class="card-title">
-                                    熱門銷售甜點 
-                                </h5>                         
+                                    熱門銷售甜點
+                                </h5>
 
                                 @Html.Partial("TSDessertsIndexPV", hotProducts)
                             </div>
                         </div>
-                    </div>                  
+                    </div>
                     <!-- End Top Selling -->
                 </div>
             </div>
@@ -432,3 +433,8 @@
         </div>
     </section>
 </main>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    
+}

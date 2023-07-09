@@ -37,7 +37,8 @@ namespace NiceAdmin.Controllers
 			{
 				return HttpNotFound();
 			}
-			return View(promotion);
+			var vm = promotion.ToDetailVM();
+			return View(vm);
 		}
 
 		// GET: Promotions/Create
@@ -59,9 +60,13 @@ namespace NiceAdmin.Controllers
 				string path = Server.MapPath("/Uploads");//檔案要存放的資料夾位置
 				string fileName = SaveUploadFile(path, PromotionImage);
 				vm.PromotionImage = fileName;
-				vm.CouponId=vm.CouponId==0?null:vm.CouponId;
 				var promotion = vm.ToEntity();
 				db.Promotions.Add(promotion);
+				if (promotion.Coupon != null)
+				{
+					var connCoupon = db.Coupons.Find(promotion.CouponId);
+					connCoupon.Status = true;
+				}
 				db.SaveChanges();
 				return RedirectToAction("Index");
 			}
@@ -82,10 +87,15 @@ namespace NiceAdmin.Controllers
 			{
 				return HttpNotFound();
 			}
+			if (promotion.EndAt < DateTime.Now)
+			{
+                return HttpNotFound();
+            }
 			PromotionEditVM vm = promotion.ToEditVM();
 
-			ViewBag.CouponId = new SelectList(db.Coupons, "CouponId", "CouponName", vm.CouponId);
-			return View(vm);
+            PrepareEditPromotionCouponDataSource(vm.CouponId);
+
+            return View(vm);
 		}
 
 		// POST: Promotions/Edit/5
@@ -107,7 +117,7 @@ namespace NiceAdmin.Controllers
 				db.SaveChanges();
 				return RedirectToAction("Index");
 			}
-			ViewBag.CouponId = new SelectList(db.Coupons, "CouponId", "CouponName", vm.CouponId);
+            PrepareEditPromotionCouponDataSource(vm.CouponId);
 			return View(vm);
 		}
 
@@ -143,7 +153,7 @@ namespace NiceAdmin.Controllers
 			
 			var coupon = db.Coupons.Find(couponId);
 			if(coupon.CouponCategoryId!=2)return Json("請選擇類別為'活動'之優惠券");
-			//if (coupon.EndAt < DateTime.Now) return Json("此優惠券已過期");
+			if (coupon.EndAt < DateTime.Now) return Json("此優惠券已過期");
 			if (coupon == null) return Json("找不到此優惠券");
 			else
 			{
@@ -155,7 +165,17 @@ namespace NiceAdmin.Controllers
 			};
             
         }
-		public ActionResult EditImage(int? id)
+        [HttpPost]
+        public JsonResult Recall(int? promotionId)
+        {
+            if (promotionId == null) return Json("找不到此促銷活動");
+
+            var promotionInDb = db.Promotions.Find(promotionId);
+			promotionInDb.EndAt = DateTime.Now;
+			db.SaveChanges();
+			return Json(true);
+        }
+        public ActionResult EditImage(int? id)
 		{
 			if (id == null)
 			{
@@ -166,20 +186,51 @@ namespace NiceAdmin.Controllers
 			{
 				return HttpNotFound();
 			}
-			PromotionEditImageVM vm = promotion.ToEditImageVM();
+            if (promotion.EndAt < DateTime.Now)
+            {
+                return HttpNotFound();
+            }
+            PromotionEditImageVM vm = promotion.ToEditImageVM();
 
 			return View(vm);
 		}
-		private void PrepareCouponDataSource(int? couponId)
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult EditImage(PromotionEditImageVM vm, HttpPostedFileBase PromotionImage)
+        {
+            if (ModelState.IsValid)
+            {
+                string path = Server.MapPath("/Uploads");//檔案要存放的資料夾位置
+                string fileName = SaveUploadFile(path, PromotionImage);
+
+				var promotionInDb = db.Promotions.FirstOrDefault(p=>p.PromotionId==vm.PromotionId);
+				if (promotionInDb == null) { return HttpNotFound(); }
+				promotionInDb.PromotionImage = fileName;
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+
+            return View(vm);
+        }
+        private void PrepareCouponDataSource(int? couponId)
 		{
 			var coupons = db.Coupons.Where(c=>c.CouponCategoryId==2)
+									.Where(c=>c.EndAt>DateTime.Now)
 									.ToList()
 									.Prepend(new Coupon());
 			ViewBag.CouponId = new SelectList(coupons, "couponId", "couponName", couponId);
 
 		}
-		
-		private string SaveUploadFile(string path, HttpPostedFileBase file1)
+        private void PrepareEditPromotionCouponDataSource(int? couponId)
+        {
+			var coupons = db.Coupons.Where(c => c.CouponCategoryId == 2)
+									.Where(c => c.EndAt > DateTime.Now)
+									.ToList();
+            ViewBag.CouponId = new SelectList(coupons, "couponId", "couponName", couponId);
+
+        }
+
+        private string SaveUploadFile(string path, HttpPostedFileBase file1)
 		{
 			//如果沒上船或檔案室空的   回傳string.empty
 			if (file1 == null || file1.ContentLength == 0) return string.Empty;

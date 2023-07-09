@@ -10,6 +10,7 @@ using System.Xml.Linq;
 using NiceAdmin.Models.ViewModels;
 using NiceAdmin.Models.ViewModels.DessertsVM;
 using System.Runtime.InteropServices.ComTypes;
+using NiceAdmin.Models.ViewModels.PromotionsVM;
 
 namespace NiceAdmin.Controllers
 {
@@ -159,7 +160,13 @@ namespace NiceAdmin.Controllers
               .ToList();
 
             return PartialView("RecentUpDesserts", recentDesserts);
-
+        }
+        public ActionResult ExistingPromotions()
+        {
+            IEnumerable<PromotionSlideVM> existPromotions = db.Promotions.Where(p => p.StartAt < DateTime.Now && p.EndAt > DateTime.Now)
+                                                                         .ToList()
+                                                                         .Select(p=>p.ToSlideVM());
+            return PartialView("ExistingPromotions", existPromotions);
         }
         public ActionResult SierraIndex()
         {

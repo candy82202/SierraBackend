@@ -16,7 +16,7 @@ namespace NiceAdmin.Models.ViewModels.PromotionsVM
                 PromotionImage=entity.PromotionImage,
                 PromotionId=entity.PromotionId,
                 PromotionName=entity.PromotionName,
-                CouponName = entity.Coupon==null?null:entity.Coupon.CouponName,
+                CouponName = entity.Coupon==null?"無":entity.Coupon.CouponName,
                 Description=entity.Description,
                 LaunchAt=entity.LaunchAt,
                 StartAt=entity.StartAt,
@@ -30,7 +30,7 @@ namespace NiceAdmin.Models.ViewModels.PromotionsVM
             {
                 PromotionImage = vm.PromotionImage,
                 PromotionName = vm.PromotionName,
-                CouponId = vm.CouponId,
+                CouponId = vm.CouponId==0?null: vm.CouponId,
                 Description = vm.Description,
                 LaunchAt = vm.LaunchAt,
                 StartAt = vm.StartAt,
@@ -43,7 +43,7 @@ namespace NiceAdmin.Models.ViewModels.PromotionsVM
 			return new PromotionEditVM()
 			{
 				PromotionImage = entity.PromotionImage,
-                //CouponId= entity.Coupon==null?null:entity.Coupon.CouponId,
+                CouponId= entity.Coupon==null?0: entity.Coupon.CouponId,
 				PromotionId = entity.PromotionId,
 				PromotionName = entity.PromotionName,
 				
@@ -63,5 +63,27 @@ namespace NiceAdmin.Models.ViewModels.PromotionsVM
 				
 			};
 		}
-	}
+        public static PromotionDetailVM ToDetailVM(this Promotion entity)
+        {
+            return new PromotionDetailVM()
+            {
+                PromotionImage = entity.PromotionImage,
+                PromotionId = entity.PromotionId,
+                PromotionName = entity.PromotionName,
+                CouponName = entity.Coupon == null ? "無" : entity.Coupon.CouponName,
+                Description = entity.Description,
+                LaunchAt = entity.LaunchAt,
+                StartAt = entity.StartAt,
+                EndAt = entity.EndAt
+            };
+        }
+        public static PromotionSlideVM ToSlideVM(this Promotion entity)
+        {
+            return new PromotionSlideVM()
+            {
+                PromotionImage = entity.PromotionImage,
+                PromotionId = entity.PromotionId
+            };
+        }
+    }
 }

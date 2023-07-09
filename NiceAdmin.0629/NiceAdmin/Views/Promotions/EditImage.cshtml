@@ -9,7 +9,7 @@
         <div class="card">
             <div class="card-body">
                 <div class="pagetitle mt-3">
-                    <h1>編輯促銷活動</h1>
+                    <h1>編輯促銷活動圖片</h1>
                     <nav>
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item"><a href="@Url.Action("Index","Home")">首頁</a></li>
@@ -21,29 +21,37 @@
                 </div>
                 <!-- End Page Title -->
                 <section class="section">
-                    @using (Html.BeginForm())
+                    @using (Html.BeginForm("EditImage", "Promotions", FormMethod.Post, new { enctype = "multipart/form-data" }))
                     {
                         @Html.AntiForgeryToken()
 
                         <div class="row">
-                            <h4>PromotionEditImageVM</h4>
                             <hr />
                             @Html.ValidationSummary(true, "", new { @class = "text-danger" })
                             @Html.HiddenFor(model => model.PromotionId)
 
                             <div class="mb-3">
-                                @Html.LabelFor(model => model.PromotionImage, htmlAttributes: new { @class = "form-label" })
-                                @Html.EditorFor(model => model.PromotionImage, new { htmlAttributes = new { @class = "form-control" } })
+                                <label class="form-label">原圖片</label>
+                                <div class="mb-3">
+                                    <img src="~/Uploads/@Model.PromotionImage" alt="@Model.PromotionImage" class="createPromotionImageSize">
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <label for="PromotionImage" class="form-label">新圖片</label>
+                                <div id="previewImages" class="mb-3">
+
+                                </div>
+                                <input type="file" name="PromotionImage" value="" class="form-control" id="PromotionImage" style="width: 300px" />
                                 @Html.ValidationMessageFor(model => model.PromotionImage, "", new { @class = "text-danger" })
                             </div>
                             <div class="mb-3">
-                                <input type="submit" value="Save" class="btn btn-primary" />
+                                <input type="submit" value="儲存" class="btn btn-primary" />
                             </div>
                         </div>
                     }
 
                     <div>
-                        @Html.ActionLink("Back to List", "Index")
+                        @Html.ActionLink("回到列表", "Index")
                     </div>
                 </section>
             </div><!-- End Default Tabs -->
@@ -52,4 +60,39 @@
 </main>
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
+    <script>
+        checkImg();
+        $('#previewImages').addClass('d-none')
+
+        function checkImg() {
+            var maxSize = 2 * 1024 * 1024;
+            $('input[type="file"]').change(function (e) {
+
+                var files = e.target.files;
+                if (files && files.length > 0) {
+                    $('#previewImages').empty(); // 清空預覽區域
+                    for (var i = 0; i < files.length; i++) {
+                        if (files[i].size < maxSize) {
+                            var reader = new FileReader();
+                            reader.onload = function (e) {
+                                var image = $('<img>');
+                                image.attr('src', e.target.result);
+                                image.attr('alt', 'Preview');
+                                image.addClass("createPromotionImageSize")
+                                $('#previewImages').append(image);
+                                $('#previewImages').removeClass('d-none');
+                            };
+                            reader.readAsDataURL(files[i]);
+                        }
+                        else {
+                            alert("照片檔案超過2MB");
+                        }
+                    }
+                }
+                else {
+                    $('#previewImages').empty(); // 清空預覽區域
+                }
+            })
+        }
+    </script>
 }

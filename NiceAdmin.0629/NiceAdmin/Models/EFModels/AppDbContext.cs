@@ -15,6 +15,7 @@ namespace NiceAdmin.Models.EFModels
         public virtual DbSet<Category> Categories { get; set; }
         public virtual DbSet<CouponCategory> CouponCategories { get; set; }
         public virtual DbSet<Coupon> Coupons { get; set; }
+        public virtual DbSet<CouponSetting> CouponSettings { get; set; }
         public virtual DbSet<DessertImage> DessertImages { get; set; }
         public virtual DbSet<DessertOrderDetail> DessertOrderDetails { get; set; }
         public virtual DbSet<DessertOrder> DessertOrders { get; set; }
@@ -147,6 +148,5 @@ namespace NiceAdmin.Models.EFModels
                 .WithRequired(e => e.Teacher)
                 .WillCascadeOnDelete(false);
         }
-        public System.Data.Entity.DbSet<NiceAdmin.Models.ViewModels.TeachersVM.UpdateTeacherStatusVM> UpdateTeacherStatusVMs { get; set; }
     }
 }
