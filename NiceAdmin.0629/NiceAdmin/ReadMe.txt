@@ -139,8 +139,10 @@ Member 部分
 [V] - profiles link to every list page
 [V] - members criteria
 [V] - after add images, modify members' CURD
-[working on] - Home/Index's paritial view(let newest emp appear)
-
+[v] - Home/Index's paritial view(newest emps & members)
+    - modify HomeController.cs
+    - modify Views\Home\Index.cshtml
+    - add 2 partial views in Views\Home\RecentUpEmployees.cshtml & RecentUpMembers.cshtml
 
 ==========================================================
 Lesson 部分

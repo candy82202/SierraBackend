@@ -9,7 +9,7 @@ namespace NiceAdmin.Models.ViewModels.MembersVM
 {
     public class MemberIndexVM
     {
-		[Display(Name ="會員Id")]
+		[Display(Name ="會員ID")]
 		public int MemberId { get; set; }
 
 		[Display(Name = "會員帳號")]
