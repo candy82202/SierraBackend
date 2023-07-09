@@ -21,43 +21,54 @@
     @*<p>
             @Html.ActionLink("Create New", "Create")
         </p>*@
-    <hr />
-    <table class="table table-striped table-hover" style="width: 30%;text-align: center ">
-        <thead>
-            <tr>
-                <th>
-                    編號
-                </th>
-                <th>
-                    角色英文
-                </th>
-                <th>
-                    角色中文
-                </th>
-                @*<th></th>*@
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var item in Model)
-            {
-                <tr>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.RoleId)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.RoleName)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.RoleDisplayName)
-                    </td>
-                    @*<td>
-                        @Html.ActionLink("Edit", "Edit", new { id = item.RoleId }) |
-                        @Html.ActionLink("Details", "Details", new { id = item.RoleId }) |
-                        @Html.ActionLink("Delete", "Delete", new { id = item.RoleId })
-                    </td>*@
-                </tr>
-            }
-        </tbody>
 
-    </table>
+
+    <div class="row mt-4">
+        <div class="card col-6" >
+            <div class="card-body">
+                <div class="pagetitle mt-3">
+                    <div class="table-responsive">
+                        <table class="table table-striped table-hover" style="width: 30%;text-align: center ">
+                            <thead>
+                                <tr>
+                                    <th>
+                                        編號
+                                    </th>
+                                    <th>
+                                        角色英文
+                                    </th>
+                                    <th>
+                                        角色中文
+                                    </th>
+                                    @*<th></th>*@
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model)
+                                {
+                                    <tr>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.RoleId)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.RoleName)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.RoleDisplayName)
+                                        </td>
+                                        @*<td>
+                                                @Html.ActionLink("Edit", "Edit", new { id = item.RoleId }) |
+                                                @Html.ActionLink("Details", "Details", new { id = item.RoleId }) |
+                                                @Html.ActionLink("Delete", "Delete", new { id = item.RoleId })
+                                            </td>*@
+                                    </tr>
+                                }
+                            </tbody>
+
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </main>

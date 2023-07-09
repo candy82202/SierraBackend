@@ -6,12 +6,10 @@
 }
 
 <main id="main" class="main">
-    <div class="row">
-        <div class="card">
-            <div class="card-body">
+    
                 <div class="pagetitle mt-3">
                     <h1>類別清單</h1>
-                    <nav>
+                    <nav class="mt">
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item"><a href="@Url.Action("Index","Home")">首頁</a></li>
                             <li class="breadcrumb-item"><a href="@Url.Action("Index","Desserts")">甜點管理</a></li>
@@ -20,66 +18,69 @@
                     </nav>
                 </div>
                 <!-- End Page Title -->
-                <button class="btn btn-outline-primary text-light fw-bold mb-3"> @Html.ActionLink("新增類別", "Create")</button>
-                <div class="container">
-                    <table class="table datatable table-striped table-hover" id="searchDessert">
-                        <thead>
-                            <tr>
+                <div class="row">
+                    <div class="card">
+                        <div class="card-body">
+                            <button class="btn btn-outline-primary text-light fw-bold mt-3 mb-3"> @Html.ActionLink("新增類別", "Create")</button>
+                            <div class="container">
+                                <table class="table datatable table-striped table-hover" id="searchDessert">
+                                    <thead>
+                                        <tr>
 
 
-                                <th class="w-50">
-                                    類別名稱
+                                            <th class="w-50">
+                                                類別名稱
 
-                                </th>
-                                <th>
-                                    功能
-                                </th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach (var item in Model)
-                            {
-                                <tr>
+                                            </th>
+                                            <th>
+                                                功能
+                                            </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach (var item in Model)
+                                        {
+                                            <tr>
 
-                                    <td  class="NewCateName">
-                                        @Html.DisplayFor(modelItem => item.CategoryName)
-                                    </td>
-                                    <td>
-                                        @*<button class="btn btn-outline-primary btn-sm custom-button">@Html.ActionLink("編輯", "Edit", new { id = item.CategoryId })</button>*@
-                                        <button type="button" class="btn btn-outline-primary btnEditName" data-bs-toggle="modal" data-bs-target="#EditCateName" data-name="@item.CategoryName" data-id="@item.CategoryId">
-                                            @*編輯類別名稱*@<i class="bi bi-pencil-square"></i>
-                                        </button>                                       
-                                        @*@Html.ActionLink("刪除", "Delete", new { id = item.CategoryId })*@
-                                    </td>
-                                </tr>
-                            }
-                        </tbody>
-                    </table>
-                    <!-- Vertically centered Modal -->
-                    <div class="modal fade" id="EditCateName" tabindex="-1" aria-hidden="true">
-                        <!-- Modal content -->
-                        <div class="modal-dialog modal-dialog-centered">
-                            <!-- Modal body -->
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h1 class="modal-title fs-5" id="EditTitle">Modal title</h1>
-                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                </div>
-                                <div class="modal-body">
-                                    <h4>新甜點類別名稱</h4>
-                                    <input type="text" id="inputNewName" class="form-control" />
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-outline-primary btnSave">更新</button>
-                                    <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">關閉</button>
-                                </div>
+                                                <td class="NewCateName">
+                                                    @Html.DisplayFor(modelItem => item.CategoryName)
+                                                </td>
+                                                <td>
+                                                    @*<button class="btn btn-outline-primary btn-sm custom-button">@Html.ActionLink("編輯", "Edit", new { id = item.CategoryId })</button>*@
+                                                    <button type="button" class="btn btn-outline-primary btnEditName" data-bs-toggle="modal" data-bs-target="#EditCateName" data-name="@item.CategoryName" data-id="@item.CategoryId">
+                                                        @*編輯類別名稱*@<i class="bi bi-pencil-square"></i>
+                                                    </button>
+                                                    @*@Html.ActionLink("刪除", "Delete", new { id = item.CategoryId })*@
+                                                </td>
+                                            </tr>
+                                        }
+                                    </tbody>
+                                </table>
+                                <!-- Vertically centered Modal -->
+                                <div class="modal fade" id="EditCateName" tabindex="-1" aria-hidden="true">
+                                    <!-- Modal content -->
+                                    <div class="modal-dialog modal-dialog-centered">
+                                        <!-- Modal body -->
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h1 class="modal-title fs-5" id="EditTitle">Modal title</h1>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <h4>新甜點類別名稱</h4>
+                                                <input type="text" id="inputNewName" class="form-control" />
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-outline-primary btnSave">更新</button>
+                                                <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">關閉</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div><!-- End Vertically centered Modal-->
                             </div>
                         </div>
-                    </div><!-- End Vertically centered Modal-->
+                    </div>
                 </div>
-            </div>
-        </div>
-    </div>
 </main>
 @section scripts{
    <script>
