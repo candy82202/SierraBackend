@@ -90,7 +90,7 @@
                     data-bs-target="#slide1"
                     data-bs-slide-to="6"
                     class="text-bg-dark opacity-50"></button>
-          
+
 
             <div class="ctrl position-absolute end-0 bottom-50 text-white me-2 z-1"
                  data-bs-target="#slide1"
@@ -103,15 +103,54 @@
                 <i class="fa-solid fa-circle-left fz30px opacity-75"></i>
             </div>
         </div>
+        <div class="Grid-row-wrapper mt-5">
+            <div class="Grid-row">
+               <div id="page-item-5de9c320b3d99f003c980f1c" class="Grid-item Grid-text-item">
+                    <div class="Grid-item-title primary-border-color-after">                <!---->                              </div>                                      
+                   <div class="Grid-item-content">
+                      
+
+                        <p style="text-align: center;">
+                            <span style="color: rgb(0, 0, 0); font-weight: 700; text-align: center; font-size:20px; margin-top:20px;">SIERRA嚴選優質食材，簡單純粹的自然美味</span><br>
+                            <br>
+                            &nbsp;
+                        </p>
+
+                        <p style="text-align: center;"><span style="font-size: 16px;"><span style="font-weight: 700;">日本海藻糖</span></span></p>
+
+                        <p style="text-align: center;"><span style="font-size:14px;">低糖度、低熱量，爽口不膩的清爽新選擇</span></p>
+
+                        <p style="text-align: center;">&nbsp;</p>
+
+                        <p style="text-align: center;">
+                            <strong>日本菓子粉</strong><br>
+                            <span style="font-size:14px;">純小麥製作，100%純天然、無人工添加物</span>
+                        </p>
+
+                        <p style="text-align: center;">&nbsp;</p>
+
+                        <p style="text-align: center;">
+                            <strong>法國發酵奶油</strong><br>
+                            <span style="font-size:14px;">濃郁奶香，柔順絲滑的頂級奶油</span>
+                        </p>
+
+                        <p style="text-align: center;">&nbsp;</p>
+
+                        @*<p style="text-align: center;">&nbsp;</p>*@
+                    </div>
+                </div>
+            </div>
+        </div>
+      
         <div class="row mt-3  justify-content-center align-items-center">
-            <div class="col ">
-                <h2 class="hotProd">熱門商品</h2>
-                <div class="d-flex hotProd justify-content-center">
+            <div class="col col-sm-12">
+                <h2 class="hotProd mb-4" style="margin-left:300px">熱銷商品</h2>
+                <div class="d-flex hotProd justify-content-center" style="margin-left: 220px">
                     @foreach (var prod in hotProducts)
                     {<div class="col mb-3">
-    @Html.Partial("HotDessertsPartialView", prod)
-                </div>
-                        
+                            @Html.Partial("HotDessertsPartialView", prod)
+                        </div>
+
                     }
                 </div>
             </div>

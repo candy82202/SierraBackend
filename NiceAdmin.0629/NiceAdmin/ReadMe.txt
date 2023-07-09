@@ -90,6 +90,8 @@ Desserts 部分
 
 [V] - CategoryName AJAX 更新類別名稱
 
+[V] - Create UnitPrice 甜點售價範圍限制
+
 
 ==========================================================
 Member 部分

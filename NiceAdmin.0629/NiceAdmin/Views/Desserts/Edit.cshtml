@@ -29,37 +29,49 @@
                     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
                     @Html.HiddenFor(model => model.DessertId)
 
-                    <div class="mb-3">
-                        @Html.LabelFor(model => model.CategoryId, htmlAttributes: new { @class = "form-label" })
+                    <div class="col d-flex">
+                        <div class="col-3 me-3">
+                            <div class="mb-3">
+                                @Html.LabelFor(model => model.DessertName, htmlAttributes: new { @class = "form-label" })
 
-                        @Html.DropDownList("CategoryId", null, htmlAttributes: new { @class = "form-select" })
-                        @Html.ValidationMessageFor(model => model.CategoryId, "", new { @class = "text-danger" })
+                                @Html.EditorFor(model => model.DessertName, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.DessertName, "", new { @class = "text-danger" })
+
+                            </div>
+                        </div>
+
+                        <div class="col-3 me-3">
+
+                            <div class="mb-3">
+                                @Html.LabelFor(model => model.CategoryId, htmlAttributes: new { @class = "form-label" })
+
+                                @Html.DropDownList("CategoryId", null, htmlAttributes: new { @class = "form-select" })
+                                @Html.ValidationMessageFor(model => model.CategoryId, "", new { @class = "text-danger" })
+
+                            </div>
+                        </div>
+                        <div class="col-3">
+                            <div class="mb-3">
+                                @Html.LabelFor(model => model.UnitPrice, htmlAttributes: new { @class = "form-label" })
+
+                                @Html.EditorFor(model => model.UnitPrice, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.UnitPrice, "", new { @class = "text-danger" })
+                            </div>
+
+                        </div>
 
                     </div>
+                    <div class="col-10">
+                        <div class="mb-3">
+                            @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "form-label" })
 
-                    <div class="mb-3">
-                        @Html.LabelFor(model => model.DessertName, htmlAttributes: new { @class = "form-label" })
+                            @*@Html.EditorFor(model => model.Description, new { htmlAttributes = new { @class = "form-control" } })*@
+                            @Html.TextAreaFor(model => model.Description, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
 
-                        @Html.EditorFor(model => model.DessertName, new { htmlAttributes = new { @class = "form-control" } })
-                        @Html.ValidationMessageFor(model => model.DessertName, "", new { @class = "text-danger" })
-
-                    </div>
-
-                    <div class="mb-3">
-                        @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "form-label" })
-
-                        @Html.EditorFor(model => model.Description, new { htmlAttributes = new { @class = "form-control" } })
-                        @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
+                        </div>
 
                     </div>
-
-                    <div class="mb-3">
-                        @Html.LabelFor(model => model.UnitPrice, htmlAttributes: new { @class = "form-label" })
-
-                        @Html.EditorFor(model => model.UnitPrice, new { htmlAttributes = new { @class = "form-control" } })
-                        @Html.ValidationMessageFor(model => model.UnitPrice, "", new { @class = "text-danger" })
-                    </div>
-
                     <div class="mb-3">
                         @Html.LabelFor(model => model.Status, htmlAttributes: new { @class = "form-label" })
 
@@ -69,45 +81,37 @@
                         </div>
                     </div>
 
-                    @*<div class="mb-3">
-                            <label for="images" class="form-label">Dessert Images:</label>
-                            <input type="file" name="images" id="images" multiple class="form-control" />
-                        </div>*@
-                    <div class="mb-3">
-                        @*<label for="images" class="form-label">上傳圖片:</label>*@
-                        <label for="images" id="previewContainer" class="form-label" style="width: 25%"></label>
-                        @*@foreach (var imageName in Model.DessertImageNames)
+                    <div class="col-10">
+                        <div class="mb-3">
+                            @*<label for="images" class="form-label">上傳圖片:</label>*@
+                            <label for="images" id="previewContainer" class="form-label" style="width: 25%"></label>
+
+                            @foreach (var imageName in Model.DessertImageNames)
                             {
                                 <div>
-                                    <img src="~/Uploads/@imageName" style="width: 25%" />
+                                    <img src="@Url.Content("~/Uploads/" + imageName)" style="width: 25%" />
                                 </div>
-                            }*@
-                        @foreach (var imageName in Model.DessertImageNames)
-                        {
-                            <div>
-                                <img src="@Url.Content("~/Uploads/" + imageName)" style="width: 25%" />
-                            </div>
+                            }
+                            <input type="file" name="images" id="images" multiple class="form-control" />
+                        </div>
+                    </div>
+                        @*<div class="mb-3">
+                    <input type="submit" value="儲存" class="btn btn-primary" />
+                </div>*@
+                        <div class="d-flex">
+                            <input type="submit" value="Save" class="btn btn-outline-primary me-2" />
+                            @Html.ActionLink("Cancel", "Index", "Desserts", null, new { @class = "btn btn-outline-secondary" })
+
+                        </div>
+
+
                         }
-                        <input type="file" name="images" id="images" multiple class="form-control" />
+
+                        <div>
+                            @Html.ActionLink("Back to List", "Index")
+                        </div>
                     </div>
-
-                    @*<div class="mb-3">
-                            <input type="submit" value="儲存" class="btn btn-primary" />
-                        </div>*@
-                    <div class="d-flex">
-                        <input type="submit" value="Save" class="btn btn-outline-primary" />
-                        @Html.ActionLink("Cancel", "Index", "Desserts", null, new { @class = "btn btn-outline-secondary" })
-
-                    </div>
-
-
-                }
-
-                <div>
-                    @Html.ActionLink("Back to List", "Index")
                 </div>
-            </div>
-        </div>
     </div>
 </main>
 @section Scripts {

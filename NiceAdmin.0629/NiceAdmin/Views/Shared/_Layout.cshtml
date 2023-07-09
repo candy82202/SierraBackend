@@ -76,58 +76,40 @@
         }
 
         .autocomplete {
-            /*the container must be positioned relative:*/
             position: relative;
-            /* display: inline-block;*/
         }
 
-        #s_name {
-            border: 1px solid transparent;
-            background-color: #f1f1f1;
-            padding: 10px;
-            font-size: 16px;
-        }
-
-        .autocomplete input[type=text] {
-            /*background-color: #f1f1f1;*/
-            width: 100%;
-        }
-
-        .autocomplete input[type=submit] {
-            background-color: DodgerBlue;
-            color: #fff;
-        }
-
-        .autocomplete .autocomplete-items {
-            position: absolute;
-            border: 1px solid #d4d4d4;
-            border-bottom: none;
-            border-top: none;
-            z-index: 99;
-            /*position the autocomplete items to be the same width as the container:*/
-            top: 100%;
-            left: 0;
-            right: 0;
-        }
-
-            .autocomplete .autocomplete-items div {
-                padding: 10px;
-                cursor: pointer;
-                background-color: #fff;
-                border-bottom: 1px solid #d4d4d4;
+            .autocomplete input[type="text"] {
+                width: 100%;
             }
 
-                .autocomplete .autocomplete-items div:hover {
-                    /*when hovering an item:*/
-                    background-color: #e9e9e9;
-                    border-bottom: 3px solid #717ff5;
+            .autocomplete .autocomplete-items {
+                position: absolute;
+                border: 1px solid #d4d4d4;
+                border-bottom: none;
+                border-top: none;
+                z-index: 99;
+                top: 100%;
+                left: 0;
+                right: 0;
+            }
+
+                .autocomplete .autocomplete-items div {
+                    padding: 10px;
+                    cursor: pointer;
+                    background-color: #fff;
+                    border-bottom: 1px solid #d4d4d4;
                 }
 
-        .autocomplete .autocomplete-active {
-            /*when navigating through the items using the arrow keys:*/
-            background-color: DodgerBlue !important;
-            color: #ffffff;
-        }
+                    .autocomplete .autocomplete-items div:hover {
+                        background-color: #e9e9e9;
+                        border-bottom: 3px solid #717ff5;
+                    }
+
+            .autocomplete .autocomplete-active {
+                background-color: DodgerBlue !important;
+                color: #ffffff;
+            }
 
         .height100px {
             height: 100px;
@@ -173,15 +155,9 @@
         <!-- End Logo -->
 
         <div class="search-bar">
-            <form class="search-form align-items-center"
-                  method="POST"
-                  action="#">
-                @*<button type="submit" title="Search">
-                        <i class="bi bi-search"></i>
-                    </button>*@
+            <form class="search-form align-items-center" method="POST" action="#">
                 <div class="autocomplete">
                     <input type="text" name="query" placeholder="Search" title="Enter search keyword" id="tags" />
-
                 </div>
             </form>
         </div>
@@ -209,13 +185,13 @@
                        href="#"
                        data-bs-toggle="dropdown">
                         @*<img src="~/img/profile-img.jpg"
-                             alt="Profile"
-                             class="rounded-circle" />*@
+                        alt="Profile"
+                        class="rounded-circle" />*@
                         @*@if (!string.IsNullOrEmpty(imagePath))
                         {
                             <img src="@imagePath" alt="員工照片" />
                         }*@
-                        <span class="d-none d-md-block dropdown-toggle ps-2">你好,@User.Identity.Name</span>
+                        <span class="d-none d-md-block dropdown-toggle ps-2 " style="font-size:15px">你好,@User.Identity.Name</span>
                     </a><!-- End Profile Iamge Icon -->
 
                     <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
@@ -304,37 +280,37 @@
                         </li>
 
                         @*<li>
-                                <a class="dropdown-item d-flex align-items-center"
-                                   href="users-profile.html">
-                                    <i class="bi bi-person"></i>
-                                    <span>個人簡介</span>
-                                </a>
-                            </li>
-                            <li>
-                                <hr class="dropdown-divider" />
-                            </li>
+                            <a class="dropdown-item d-flex align-items-center"
+                               href="users-profile.html">
+                                <i class="bi bi-person"></i>
+                                <span>個人簡介</span>
+                            </a>
+                        </li>
+                        <li>
+                            <hr class="dropdown-divider" />
+                        </li>
 
-                            <li>
-                                <a class="dropdown-item d-flex align-items-center"
-                                   href="users-profile.html">
-                                    <i class="bi bi-gear"></i>
-                                    <span>帳戶設定</span>
-                                </a>
-                            </li>
-                            <li>
-                                <hr class="dropdown-divider" />
-                            </li>
+                        <li>
+                            <a class="dropdown-item d-flex align-items-center"
+                               href="users-profile.html">
+                                <i class="bi bi-gear"></i>
+                                <span>帳戶設定</span>
+                            </a>
+                        </li>
+                        <li>
+                            <hr class="dropdown-divider" />
+                        </li>
 
-                            <li>
-                                <a class="dropdown-item d-flex align-items-center"
-                                   href="pages-faq.html">
-                                    <i class="bi bi-question-circle"></i>
-                                    <span>需要幫助?</span>
-                                </a>
-                            </li>
-                            <li>
-                                <hr class="dropdown-divider" />
-                            </li>*@
+                        <li>
+                            <a class="dropdown-item d-flex align-items-center"
+                               href="pages-faq.html">
+                                <i class="bi bi-question-circle"></i>
+                                <span>需要幫助?</span>
+                            </a>
+                        </li>
+                        <li>
+                            <hr class="dropdown-divider" />
+                        </li>*@
 
                         <li>
                             <a class="jcc dropdown-item d-flex align-items-center" href="/Employees/Logout/">
@@ -545,8 +521,17 @@
             </li>
 
 
-            <li class="nav-heading">Pages</li>
 
+            <li class="nav-heading">其他</li>
+
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="/Home/FAQ">
+                    <i class="bi bi-question-circle"></i>
+                    <span>F.A.Q</span>
+                </a>
+            </li>
+
+         <!-- End F.A.Q Page Nav -->
             <li class="nav-item">
                 <a class="nav-link collapsed" href="@Url.Action("Contact","Home")">
                     <i class="bi bi-envelope"></i>
@@ -594,7 +579,6 @@
     <script src="~/Scripts/vendor/chart.js/chart.umd.js"></script>
     <script src="~/Scripts/vendor/echarts/echarts.min.js"></script>
     <script src="~/Scripts/vendor/quill/quill.min.js"></script>
-    @*<script src="~/Scripts/vendor/simple-datatables/simple-datatables.js"></script>*@
     <script src="~/Scripts/vendor/tinymce/tinymce.min.js"></script>
     <script src="~/Scripts/vendor/php-email-form/validate.js"></script>
 
@@ -680,109 +664,90 @@
                 });
         }
         //主頁面的AutoComplete
-    var sierras = ["會員清單", "權限清單", "員工清單", "新增員工","角色清單", "甜點清單", "新增甜點", "甜點類別", "課程管理", "新增課程", "課程類別", "師資管理", "新增教師", "教師清單", "訂單管理", "課程訂單", "甜點訂單", "行銷管理", "優惠群組清單", "優惠券清單", "新增優惠券", "會員優惠券清單", "發送優惠券", "優惠活動清單", "新增優惠活動"];
+        var sierras = ["會員清單", "權限清單", "員工清單", "新增員工", "角色清單", "甜點清單", "新增甜點", "甜點類別", "課程管理", "新增課程", "課程類別", "師資管理", "新增教師", "教師清單", "訂單管理", "課程訂單", "甜點訂單", "行銷管理", "優惠群組清單", "優惠券清單", "新增優惠券", "會員優惠券清單", "發送優惠券", "優惠活動清單", "新增優惠活動"];
 
-        function autocomplete(inp, arr) {
+        function autocomplete(input, arr) {
             var currentFocus;
+            var autocompleteItemsContainer;
 
-            inp.addEventListener("input", function (e) {
+            input.addEventListener("input", function (e) {
                 var val = this.value;
                 closeAllLists();
 
                 if (!val) {
-                    return false;
+                    return;
                 }
 
                 currentFocus = -1;
+                //在input的input事件處理函式中，獲取輸入框的值(val)，並根據該值從字詞陣列中過濾出符合條件的項目(matches)。
                 var matches = arr.filter(function (item) {
                     return item.substr(0, val.length).toUpperCase() === val.toUpperCase();
                 });
 
-                var autocompleteList = document.createElement("div");
-                autocompleteList.setAttribute("class", "autocomplete-items");
-                this.parentNode.appendChild(autocompleteList);
+                //創建一個div元素(autocompleteItemsContainer)，作為顯示自動完成清單的容器。
+                autocompleteItemsContainer = document.createElement("div");
 
+               
+                autocompleteItemsContainer.classList.add("autocomplete-items");
+                this.parentNode.appendChild(autocompleteItemsContainer);
+
+                //找出全部過濾的項目
                 for (var i = 0; i < matches.length; i++) {
+
+                    //為每個項目創建一個div元素(autocompleteItem)
                     var autocompleteItem = document.createElement("div");
-                    if (matches[i] === "會員清單") {
-                        autocompleteItem.innerHTML = "<a class='text-dark text-decoration-none' href='https://localhost:44320/Members/Index'>" + matches[i] + "</a>";
-                    } else if (matches[i] === "權限清單") {
-                        autocompleteItem.innerHTML = "<a  class='text-dark text-decoration-none' href='https://localhost:44320/Permissions/Index'>" + matches[i] + "</a>";
-                    } else if (matches[i] === "員工清單") {
-                        autocompleteItem.innerHTML = "<a  class='text-dark text-decoration-none' href='https://localhost:44320/Employees/Index'>" + matches[i] + "</a>";
-                    } else if (matches[i] === "新增員工") {
-                        autocompleteItem.innerHTML = "<a  class='text-dark text-decoration-none' href='https://localhost:44320/Employees/Create'>" + matches[i] + "</a>";
-                    } else if (matches[i] === "角色清單") {
-                        autocompleteItem.innerHTML = "<a  class='text-dark text-decoration-none' href='https://localhost:44320/Roles/Index'>" + matches[i] + "</a>";
-                    } else if (matches[i] === "甜點清單") {
-                        autocompleteItem.innerHTML = "<a  class='text-dark text-decoration-none' href='https://localhost:44320/Desserts/Index'>" + matches[i] + "</a>";
-                    } else if (matches[i] === "甜點類別") {
-                        autocompleteItem.innerHTML = "<a  class='text-dark text-decoration-none' href='https://localhost:44320/Categories/Index'>" + matches[i] + "</a>";
-                    } else if (matches[i] === "新增甜點") {
-                        autocompleteItem.innerHTML = "<a class='text-dark text-decoration-none' href='https://localhost:44320/Desserts/Create'>" + matches[i] + "</a>";
-                    } else if (matches[i] === "課程清單") {
-                        autocompleteItem.innerHTML = "<a class='text-dark text-decoration-none' href='https://localhost:44320/Lessons/Index'>" + matches[i] + "</a>";
-                    } else if (matches[i] === "新增課程") {
-                        autocompleteItem.innerHTML = "<a class='text-dark text-decoration-none' href='https://localhost:44320/Lessons/Create'>" + matches[i] + "</a>";
-                    } else if (matches[i] === "課程類別") {
-                        autocompleteItem.innerHTML = "<a class='text-dark text-decoration-none' href='https://localhost:44320/LessonCategories/Index'>" + matches[i] + "</a>";
-                    } else if (matches[i] === "教師清單") {
-                        autocompleteItem.innerHTML = "<a class='text-dark text-decoration-none' href='https://localhost:44320/Teachers/Index'>" + matches[i] + "</a>";
-                    } else if (matches[i] === "新增教師") {
-                        autocompleteItem.innerHTML = "<a class='text-dark text-decoration-none' href='https://localhost:44320/Teachers/Create'>" + matches[i] + "</a>";
-                    } else if (matches[i] === "課程訂單") {
-                        autocompleteItem.innerHTML = "<a class='text-dark text-decoration-none' href='https://localhost:44320/LessonOrders/Index'>" + matches[i] + "</a>";
-                    } else if (matches[i] === "甜點訂單") {
-                        autocompleteItem.innerHTML = "<a class='text-dark text-decoration-none' href='https://localhost:44320/DessertOrders/Index'>" + matches[i] + "</a>";
-                    } else if (matches[i] === "優惠群組清單") {
-                        autocompleteItem.innerHTML = "<a class='text-dark text-decoration-none' href='https://localhost:44320/DiscountGroups/Index'>" + matches[i] + "</a>";
-                    } else if (matches[i] === "優惠券清單") {
-                        autocompleteItem.innerHTML = "<a class='text-dark text-decoration-none' href='https://localhost:44320/Coupons/Index'>" + matches[i] + "</a>";
-                    } else if (matches[i] === "新增優惠券") {
-                        autocompleteItem.innerHTML = "<a class='text-dark text-decoration-none' href='https://localhost:44320/Coupons/Create'>" + matches[i] + "</a>";
-                    } else if (matches[i] === "會員優惠券清單") {
-                        autocompleteItem.innerHTML = "<a class='text-dark text-decoration-none' href='https://localhost:44320/MemberCoupons/Index'>" + matches[i] + "</a>";
-                    } else if (matches[i] === "發送優惠券") {
-                        autocompleteItem.innerHTML = "<a class='text-dark text-decoration-none' href='https://localhost:44320/MemberCoupons/Create'>" + matches[i] + "</a>";
-                    } else if (matches[i] === "優惠活動清單") {
-                        autocompleteItem.innerHTML = "<a class='text-dark text-decoration-none' href='https://localhost:44320/Promotions/Index'>" + matches[i] + "</a>";
-                    } else if (matches[i] === "新增優惠活動") {
-                        autocompleteItem.innerHTML = "<a class='text-dark text-decoration-none' href='https://localhost:44320/Promotions/Create'>" + matches[i] + "</a>";
-                    } else {
-                        autocompleteItem.innerHTML = "<a class='text-dark text-decoration-none' href='#'>" + matches[i] + "</a>";
-                    }
+
+                    //使用createLink函式創建包含i的連結元素(link)。
+                    var link = createLink(matches[i]);
+
+                    //將連結元素和一個隱藏的input元素添加到autocompleteItem中。
+                    autocompleteItem.appendChild(link);
                     autocompleteItem.innerHTML += "<input type='hidden' value='" + matches[i] + "'>";
+
+                    //監聽autocompleteItem的click事件，當用戶點擊項目時
                     autocompleteItem.addEventListener("click", function (e) {
-                        inp.value = this.getElementsByTagName("input")[0].value;
+
+                        //將項目的值設置為輸入框的值
+                        input.value = this.getElementsByTagName("input")[0].value;
+
+                        //關閉自動完成清單。
                         closeAllLists();
                     });
-                    autocompleteList.appendChild(autocompleteItem);
+                    autocompleteItemsContainer.appendChild(autocompleteItem);
                 }
             });
 
+            //當按鍵事件發生在輸入框中時（keydown 事件）
+            input.addEventListener("keydown", function (e) {
+                var autocompleteItems = autocompleteItemsContainer ? autocompleteItemsContainer.children : [];
 
-            inp.addEventListener("keydown", function (e) {
-                var autocompleteItems = document.getElementsByClassName("autocomplete-items");
-
+                //如果按下的是向下箭頭（ArrowDown），currentFocus 增加 1，然後調用 addActive 函式以在下拉選單中突顯新的選項。                
                 if (e.key === "ArrowDown") {
                     currentFocus++;
                     addActive(autocompleteItems);
-                } else if (e.key === "ArrowUp") {
+                }
+
+                //如果按下的是向上箭頭（ArrowUp），currentFocus 減少 1，然後調用 addActive 函式以在下拉選單中突顯新的選項。
+                else if (e.key === "ArrowUp") {
                     currentFocus--;
                     addActive(autocompleteItems);
-                } else if (e.key === "Enter") {
+                }
+
+                //如果按下的是 Enter 鍵，會阻止預設行為（防止提交表單）並檢查 currentFocus 的值。如果 currentFocus 大於 - 1 且存在 autocompleteItems[currentFocus]，則模擬點擊該選項。
+                if (e.key === "Enter") {
                     e.preventDefault();
-                    if (currentFocus > -1) {
-                        if (autocompleteItems) {
-                            autocompleteItems[currentFocus].click();
+                    if (currentFocus > -1 && autocompleteItems[currentFocus]) {
+                        var link = autocompleteItems[currentFocus].querySelector("a");
+                        if (link) {
+                            link.click();
                         }
                     }
                 }
             });
 
             function addActive(autocompleteItems) {
-                if (!autocompleteItems) {
-                    return false;
+                if (!autocompleteItems || autocompleteItems.length === 0) {
+                    return;
                 }
 
                 removeActive(autocompleteItems);
@@ -803,16 +768,64 @@
                     autocompleteItems[i].classList.remove("autocomplete-active");
                 }
             }
-            function closeAllLists() {
-                var autocompleteItems = document.getElementsByClassName("autocomplete-items");
 
-                for (var i = 0; i < autocompleteItems.length; i++) {
-                    autocompleteItems[i].parentNode.removeChild(autocompleteItems[i]);
+            function closeAllLists() {
+                if (autocompleteItemsContainer) {
+                    autocompleteItemsContainer.parentNode.removeChild(autocompleteItemsContainer);
+                    autocompleteItemsContainer = null;
                 }
             }
 
+            function createLink(text) {
+                var link = document.createElement("a");
+                link.classList.add("text-dark", "text-decoration-none");
+                link.href = getLinkUrl(text);
+                link.textContent = text;
+                return link;
+            }
+
+
+            //getLinkUrl 函式是根據指定的文字內容返回對應的 URL。
+            function getLinkUrl(text) {
+                var baseUrl = "https://localhost:44320/";
+                var linkUrls = {
+                    "會員清單": "Members/Index",
+                    "權限清單": "Permissions/Index",
+                    "員工清單": "Employees/Index",
+                    "新增員工": "Employees/Create",
+                    "角色清單": "Roles/Index",
+                    "甜點清單": "Desserts/Index",
+                    "新增甜點": "Desserts/Create",
+                    "甜點類別": "Categories/Index",
+                    "課程管理": "Lessons/Index",
+                    "新增課程": "Lessons/Create",
+                    "課程類別": "LessonCategories/Index",
+                    "新增教師": "Teachers/Create",
+                    "教師清單": "Teachers/Index",
+                    "課程訂單": "LessonOrders/Index",
+                    "甜點訂單": "DessertOrders/Index",
+                    "優惠群組清單": "DiscountGroups/Index",
+                    "優惠券清單": "Coupons/Index",
+                    "新增優惠券": "Coupons/Create",
+                    "會員優惠券清單": "MemberCoupons/Index",
+                    "發送優惠券": "MemberCoupons/Create",
+                    "優惠活動清單": "Promotions/Index",
+                    "新增優惠活動": "Promotions/Create"
+                };
+            //如果找到對應的 URL，則連結到那個網址。
+                if (linkUrls.hasOwnProperty(text)) {
+                    return baseUrl + linkUrls[text];
+                }
+            //如果找不到對應的 URL，則返回 "#"。
+                return "#";
+            }
+            //document.addEventListener 函式用於監聽整個點擊事件。
             document.addEventListener("click", function (e) {
-                closeAllLists(e.target);
+
+                //如果點擊事件發生在輸入框以外的任何地方，將調用 closeAllLists 函式以關閉下拉選單。
+                if (!input.contains(e.target)) {
+                    closeAllLists();
+                }
             });
         }
 
