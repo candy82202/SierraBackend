@@ -18,6 +18,8 @@ namespace NiceAdmin.Controllers.Orders
         // GET: LessonOrders
         public ActionResult Index(LessonOrderCriteria criteria)
         {
+            var topSellingLessons = TopSellingLessons();
+            ViewBag.TopSellingLessons = topSellingLessons;
             PrepareOrderDataSource(criteria.OrderStatusId);
             ViewBag.Criteria = criteria;
             //查詢紀錄
@@ -40,8 +42,10 @@ namespace NiceAdmin.Controllers.Orders
                 query = query.Where(l => l.LessonOrderTotal <= criteria.MaxPrice.Value);
             }
             #endregion
+        
             var lessonOrders = query.ToList().Select(l => l.TOIndexVM());
             return View(lessonOrders);
+       
 
             //var lessonOrders = db.LessonOrders.Include(l => l.LessonOrderDetails).Include(l => l.Coupon).Include(l => l.Member).Include(l => l.OrderStatus)
             //    .ToList()
@@ -57,25 +61,27 @@ namespace NiceAdmin.Controllers.Orders
         public PartialViewResult TopSellingLessons()//最熱銷前五名課程
         {
             var topLessons = db.LessonOrderDetails
-         .GroupBy(l => new { l.LessonId, l.LessonTitle })
-         .Select(g => new
-         {
-             LessonId = g.Key.LessonId,
-             LessonTitle = g.Key.LessonTitle,
-             NumberOfPeople = g.Sum(l => l.NumberOfPeople)
-         })
-         .OrderByDescending(l => l.NumberOfPeople)
-         .Take(5)
-         .ToList();
+        .Join(db.Lessons, od => od.LessonId, l => l.LessonId, (od, l) => new { od, l })
+        .GroupBy(g => new { g.l.LessonTitle })
+        .Select(g => new TopSellingLessonsVM
+        {
+            LessonTitle = g.Key.LessonTitle,
+            NumberOfPeople = g.Sum(x => x.od.NumberOfPeople)
+        })
+        .OrderByDescending(x => x.NumberOfPeople)
+        .ThenBy(x => x.LessonTitle)
+        .Take(5)
+        .ToList();
 
-            // Transform the result to a list of LessonOrderDetail objects
-            var topLessonsList = topLessons.Select(l => new LessonOrderDetail
-            {
-                LessonId = l.LessonId,
-                LessonTitle = l.LessonTitle,
-                NumberOfPeople = l.NumberOfPeople
-            }).ToList();
+            //var lessonIndexVMList = topLessons.Select(l => new TopSellingLessonsVM
+            //{
+            //    LessonTitle = l.LessonTitle,
+            //    NumberOfPeople = l.NumberOfPeople
+            //}).ToList();
             return PartialView("TopSellingLessons", topLessons);
+
+            //return PartialView("TopSellingLessons", lessonIndexVMList);
+
         }
         // GET: LessonOrders/Details/5
         public ActionResult Details(int? id)

@@ -30,6 +30,7 @@ namespace NiceAdmin.Models.ViewModels.OrdersVM
         public int NumberOfPeople { get; set; }
         [Display(Name = "課程名稱")]
         public string LessonTitle { get; set; }
+       
 
 
     }

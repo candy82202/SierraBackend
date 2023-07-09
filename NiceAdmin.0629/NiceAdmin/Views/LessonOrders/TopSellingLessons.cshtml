@@ -1,0 +1,19 @@
+﻿@model IEnumerable <NiceAdmin.Models.ViewModels.OrdersVM.TopSellingLessonsVM>
+@{
+    ViewBag.Title = "TopSellingLessons";
+}
+<h2>最熱銷前五名課程</h2>
+<table class="table">
+    <tr>
+        <th>課程名稱</th>
+        <th>參與人數</th>
+    </tr>
+    @foreach (var lesson in Model)
+    {
+        <tr>
+            <td>@lesson.LessonTitle</td>
+            <td>@lesson.NumberOfPeople</td>
+        </tr>
+    }
+</table>
+

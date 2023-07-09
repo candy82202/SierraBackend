@@ -197,6 +197,7 @@
     <Compile Include="Models\ViewModels\OrdersVM\DessertOrderDetailStats.cs" />
     <Compile Include="Models\ViewModels\OrdersVM\LessonOrderCriteria.cs" />
     <Compile Include="Models\ViewModels\OrdersVM\LessonOrderExts.cs" />
+    <Compile Include="Models\ViewModels\OrdersVM\TopSellingLessonsVM.cs" />
     <Compile Include="Models\ViewModels\PromotionsVM\MemberCouponDeliverVM.cs" />
     <Compile Include="Models\ViewModels\PromotionsVM\MemberCouponDetailVM.cs" />
     <Compile Include="Models\ViewModels\PromotionsVM\MemberCouponExts.cs" />
@@ -879,6 +880,7 @@
     <Content Include="Views\Shared\_Unauthorized.cshtml" />
     <Content Include="Views\DessertOrders\TopSellingDesserts.cshtml" />
     <Content Include="Views\DessertOrders\TopSellingDessertsOrder.cshtml" />
+    <Content Include="Views\LessonOrders\TopSellingLessons.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="Scripts\vendor\chart.js\controllers\controller.bar.d.ts" />
