@@ -143,6 +143,10 @@ Member 部分
     - modify HomeController.cs
     - modify Views\Home\Index.cshtml
     - add 2 partial views in Views\Home\RecentUpEmployees.cshtml & RecentUpMembers.cshtml
+[V] - default image for create emp
+[V] - bug fix(encrypt create emp's pwd, it doesn't encrypt before)
+[V] - modify variable name(EncryptedPassword->Password)
+[working on] - add authorization rules to every controllers
 
 ==========================================================
 Lesson 部分

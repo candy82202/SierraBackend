@@ -90,9 +90,13 @@ namespace NiceAdmin.Controllers.Members
                 return View(vm);
             }
 
-            string path = Server.MapPath("/img/Members");
+            var salt = HashUtility.GetSalt();
+            var hashPassword = HashUtility.ToSHA256(vm.Password, salt);
+            vm.Password = hashPassword;
+
+            string path = Server.MapPath("/Uploads/Members/");
             string fileName = SaveUploadedFile(path, imageFile);
-            vm.ImageName = fileName;
+            vm.ImageName = (fileName == string.Empty) ? "default.png" : fileName;
 
             var emp = vm.ToEntity();
             emp.Roles = db.Roles.Where(r => vm.RoleIds.Contains(r.RoleId)).ToList();
@@ -224,7 +228,7 @@ namespace NiceAdmin.Controllers.Members
         }
         public ActionResult Profiles()
         {
-            return View(); 
+            return View();
         }
         public ActionResult ResetPassword()
         {

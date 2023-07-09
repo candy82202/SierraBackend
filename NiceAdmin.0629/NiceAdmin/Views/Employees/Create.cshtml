@@ -32,13 +32,13 @@
             </div>
 
             <div class="mb-3">
-                @Html.LabelFor(model => model.EncryptedPassword, htmlAttributes: new { @class = "form-label" })
+                @Html.LabelFor(model => model.Password, htmlAttributes: new { @class = "form-label" })
 
                 <span id="toggle-password" onclick="togglePasswordVisibility()">
                     <i class="fas fa-eye"></i>
                 </span>
-                @Html.EditorFor(model => model.EncryptedPassword, new { htmlAttributes = new { @class = "form-control", style = "width:200px" } })
-                @Html.ValidationMessageFor(model => model.EncryptedPassword, "", new { @class = "text-danger" })
+                @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control", style = "width:200px" } })
+                @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
             </div>
 
             @*<div class="mb-3">
@@ -54,7 +54,7 @@
                     <div>
                         <label class="mb-2 ms-1">
                             <input type="checkbox" name="RoleIds" value="@(@role.RoleId)" style="transform:scale(1.5)" class="me-2"/>
-                            @role.RoleName
+                            @role.RoleDisplayName
                         </label>
                     </div>
                 }

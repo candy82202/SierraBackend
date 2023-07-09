@@ -30,7 +30,7 @@ namespace NiceAdmin.Models.ViewModels.MembersVM
 			{
 				EmployeeId = emp.EmployeeId,
 				EmployeeName = emp.EmployeeName,
-				EncryptedPassword = emp.EncryptedPassword,
+				Password = emp.EncryptedPassword,
                 Roles = (HashSet<Role>)emp.Roles
             };
 		}
@@ -49,7 +49,7 @@ namespace NiceAdmin.Models.ViewModels.MembersVM
 			{
 				EmployeeId = vm.EmployeeId,
 				EmployeeName = vm.EmployeeName,
-				EncryptedPassword = vm.EncryptedPassword,
+				EncryptedPassword = vm.Password,
                 ImageName = vm.ImageName,
                 CreateAt = DateTime.Now,
 				Roles = vm.Roles

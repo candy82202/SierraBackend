@@ -22,7 +22,7 @@ namespace NiceAdmin.Models.ViewModels.MembersVM
 		[Display(Name = "密碼")]
         [Required]
         [StringLength(200)]
-        public string EncryptedPassword { get; set; }
+        public string Password { get; set; }
         [Display(Name = "頭像")]
         [StringLength(255)]
         public string ImageName { get; set; }
