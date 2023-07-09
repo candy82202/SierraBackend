@@ -260,14 +260,16 @@ namespace NiceAdmin.Controllers
 
                 db.SaveChanges();
                 return RedirectToAction("Index");
+                
             }
             else
             {
-                ModelState.AddModelError("", "發生錯誤訊息");
-                TempData["ErrorMessage"] = "發生錯誤訊息"; // 將錯誤訊息存入 TempData
+                ModelState.AddModelError("", "無法離職");
+                TempData["ErrorMessage"] = "無法離職"; // 將錯誤訊息存入 TempData
 
 
                 return RedirectToAction("Index", TempData);
+                
             }
         }
         protected override void Dispose(bool disposing)

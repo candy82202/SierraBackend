@@ -54,7 +54,29 @@ namespace NiceAdmin.Controllers.Orders
             var status = db.OrderStatuses.ToList().Prepend(new OrderStatus());
             ViewBag.OrderStatusId = new SelectList(status, "OrderStatusId", "StatusName", orderStatusId);
         }
+        public PartialViewResult TopSellingLessons()//最熱銷前五名課程
+        {
+            var topLessons = db.LessonOrderDetails
+         .GroupBy(l => new { l.LessonId, l.LessonTitle })
+         .Select(g => new
+         {
+             LessonId = g.Key.LessonId,
+             LessonTitle = g.Key.LessonTitle,
+             NumberOfPeople = g.Sum(l => l.NumberOfPeople)
+         })
+         .OrderByDescending(l => l.NumberOfPeople)
+         .Take(5)
+         .ToList();
 
+            // Transform the result to a list of LessonOrderDetail objects
+            var topLessonsList = topLessons.Select(l => new LessonOrderDetail
+            {
+                LessonId = l.LessonId,
+                LessonTitle = l.LessonTitle,
+                NumberOfPeople = l.NumberOfPeople
+            }).ToList();
+            return PartialView("TopSellingLessons", topLessons);
+        }
         // GET: LessonOrders/Details/5
         public ActionResult Details(int? id)
         {
