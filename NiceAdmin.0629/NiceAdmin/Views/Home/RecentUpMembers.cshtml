@@ -1,0 +1,35 @@
+﻿@model IEnumerable<NiceAdmin.Models.ViewModels.MembersVM.MemberIndexVM>
+<div class="">
+    <table class="table table-striped table-hover">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.MemberId)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.MemberName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.CreateAt)
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+
+                    <td>
+                        @Html.DisplayFor(modelItem => item.MemberId)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.MemberName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CreateAt)
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

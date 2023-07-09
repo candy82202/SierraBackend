@@ -79,7 +79,7 @@ namespace NiceAdmin.Controllers.Members
                 ViewBag.Roles = roles;
                 return View();
             }
-            
+
             bool isNameExist = db.Employees.Any(e => e.EmployeeName.Equals(vm.EmployeeName, StringComparison.OrdinalIgnoreCase));
 
             if (isNameExist)
@@ -90,9 +90,13 @@ namespace NiceAdmin.Controllers.Members
                 return View(vm);
             }
 
-            string path = Server.MapPath("/img/Members");
-            string fileName= SaveUploadedFile(path, imageFile);
-            vm.ImageName = fileName;
+            var salt = HashUtility.GetSalt();
+            var hashPassword = HashUtility.ToSHA256(vm.Password, salt);
+            vm.Password = hashPassword;
+
+            string path = Server.MapPath("/Uploads/Members/");
+            string fileName = SaveUploadedFile(path, imageFile);
+            vm.ImageName = (fileName == string.Empty) ? "default.png" : fileName;
 
             var emp = vm.ToEntity();
             emp.Roles = db.Roles.Where(r => vm.RoleIds.Contains(r.RoleId)).ToList();
@@ -221,6 +225,22 @@ namespace NiceAdmin.Controllers.Members
             Session.Abandon();
             FormsAuthentication.SignOut();
             return Redirect("/Employees/Login");
+        }
+        public ActionResult Profiles()
+        {
+            return View();
+        }
+        public ActionResult ResetPassword()
+        {
+            return View();
+        }
+        public ActionResult Setting()
+        {
+            return View();
+        }
+        public ActionResult Info()
+        {
+            return View();
         }
 
         private string SaveUploadedFile(string path, HttpPostedFileBase image)

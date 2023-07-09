@@ -10,23 +10,24 @@ using System.Xml.Linq;
 using NiceAdmin.Models.ViewModels;
 using NiceAdmin.Models.ViewModels.DessertsVM;
 using System.Runtime.InteropServices.ComTypes;
+using NiceAdmin.Models.ViewModels.MembersVM;
 
 namespace NiceAdmin.Controllers
 {
-	[Authorize]
-	public class HomeController : Controller
-	{
-		public ActionResult Index()
-		{
-			ViewBag.CurrentTime = DateTime.Now;
+    [Authorize]
+    public class HomeController : Controller
+    {
+        public ActionResult Index()
+        {
+            ViewBag.CurrentTime = DateTime.Now;
             ViewBag.HotProducts = GetHotProducts();
             ViewBag.TotalDessertsCount = GetTotalDessertsCount();
             return View();
-		}
-		private AppDbContext db = new AppDbContext();
-		public ActionResult Sierras(int? cId)
-		{
-			List<DessertFrontIndexVM> dvm = new List<DessertFrontIndexVM>();
+        }
+        private AppDbContext db = new AppDbContext();
+        public ActionResult Sierras(int? cId)
+        {
+            List<DessertFrontIndexVM> dvm = new List<DessertFrontIndexVM>();
 
 
             // 判斷如果有傳入類別編號，就篩選那個類別的商品出來
@@ -44,7 +45,7 @@ namespace NiceAdmin.Controllers
                             DessertId = dessert.DessertId,
                             DessertName = dessert.DessertName,
                             CategoryName = result.CategoryName,
-                            UnitPrice= dessert.UnitPrice,
+                            UnitPrice = dessert.UnitPrice,
                             Description = dessert.Description,
                             DessertImageName = db.DessertImages.FirstOrDefault(di => di.DessertId == dessert.DessertId)?.DessertImageName
                         };
@@ -65,7 +66,7 @@ namespace NiceAdmin.Controllers
                         DessertId = dessert.DessertId,
                         DessertName = dessert.DessertName,
                         CategoryName = dessert.Category.CategoryName,
-                        UnitPrice= dessert.UnitPrice,
+                        UnitPrice = dessert.UnitPrice,
                         Description = dessert.Description,
                         DessertImageName = dessert.DessertImages.FirstOrDefault()?.DessertImageName
                     };
@@ -90,7 +91,7 @@ namespace NiceAdmin.Controllers
                 {
                     var currentTime = DateTime.Now;
                     var desserts = result.Desserts
-                        .Where(d => d.Status== true &&  d.CreateTime <= currentTime)
+                        .Where(d => d.Status == true && d.CreateTime <= currentTime)
                         .ToList();
                     foreach (var dessert in desserts)
                     {
@@ -101,7 +102,7 @@ namespace NiceAdmin.Controllers
                             CategoryName = result.CategoryName,
                             UnitPrice = dessert.UnitPrice,
                             //Description = dessert.Description,
-                          DessertImageName = db.DessertImages.FirstOrDefault(di => di.DessertId == dessert.DessertId)?.DessertImageName
+                            DessertImageName = db.DessertImages.FirstOrDefault(di => di.DessertId == dessert.DessertId)?.DessertImageName
                         };
                         dvm.Add(item);
                     }
@@ -111,7 +112,7 @@ namespace NiceAdmin.Controllers
             {
                 var desserts = db.Desserts.Include("Category")
                                          .Include("DessertImages")
-                                         .Where(d => d.Status==true)
+                                         .Where(d => d.Status == true)
                                          .OrderByDescending(d => d.CreateTime)
                                          .Take(5)
                                          .ToList();
@@ -123,8 +124,8 @@ namespace NiceAdmin.Controllers
                         DessertName = dessert.DessertName,
                         CategoryName = dessert.Category.CategoryName,
                         UnitPrice = dessert.UnitPrice,
-                       // Description = dessert.Description,
-                      DessertImageName = dessert.DessertImages.FirstOrDefault()?.DessertImageName
+                        // Description = dessert.Description,
+                        DessertImageName = dessert.DessertImages.FirstOrDefault()?.DessertImageName
                     };
                     dvm.Add(item);
                 }
@@ -155,7 +156,24 @@ namespace NiceAdmin.Controllers
               .ToList();
 
             return PartialView("RecentUpDesserts", recentDesserts);
-
+        }
+        public ActionResult RecentEmployees()
+        {
+            var vm = db.Employees
+                    .OrderByDescending(e => e.CreateAt)
+                    .Take(3)
+                    .ToList()
+                    .Select(e => e.ToIndexVM());
+            return PartialView("RecentUpEmployees", vm);
+        }
+        public ActionResult RecentMembers()
+        {
+            var vm = db.Members
+                    .OrderByDescending(e => e.CreateAt)
+                    .Take(3)
+                    .ToList()
+                    .Select(e => e.ToIndexVM());
+            return PartialView("RecentUpMembers", vm);
         }
         public ActionResult SierraIndex()
         {
