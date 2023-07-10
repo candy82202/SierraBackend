@@ -150,7 +150,9 @@ Member 部分
 [V] - modify variable name(EncryptedPassword->Password)
 [V] - modify "rememberMe"
 [V] - modify emp edit
-[bug fixing] - add authorization rules to every controllers
+[V] - add authorization rules to every controllers 
+     (solve:add authorization to /DessertsController/DownDesserts())
+[V] - modify [Display(Name = "創建時間")]->[Display(Name = "入職時間")]
 
 ==========================================================
 Lesson 部分
