@@ -21,7 +21,7 @@ using WebGrease;
 
 namespace NiceAdmin.Controllers
 {
-    [DirectToUnAuthorize(Roles = "admin,manager")]
+    [DirectToUnAuthorize(Roles = "admin,dessertSale")]
     public class DessertsController : Controller
     {
         private AppDbContext db = new AppDbContext();

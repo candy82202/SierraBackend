@@ -11,7 +11,7 @@ using NiceAdmin.Models.EFModels;
 
 namespace NiceAdmin.Controllers
 {
-    [DirectToUnAuthorize(Roles = "admin,manager")]
+    [DirectToUnAuthorize(Roles = "admin,dessertSale")]
     public class DessertImagesController : Controller
     {
         private AppDbContext db = new AppDbContext();
