@@ -202,8 +202,8 @@
     <Compile Include="Models\ViewModels\OrdersVM\LessonOrderExts.cs" />
     <Compile Include="Models\ViewModels\OrdersVM\TopSellingLessonsOrder.cs" />
     <Compile Include="Models\ViewModels\OrdersVM\TopSellingLessonsVM.cs" />
-	<Compile Include="Models\ViewModels\PromotionsVM\CouponDragVM.cs" />
-	<Compile Include="Models\ViewModels\PromotionsVM\CouponSettingIndexVM.cs" />
+    <Compile Include="Models\ViewModels\PromotionsVM\CouponDragVM.cs" />
+    <Compile Include="Models\ViewModels\PromotionsVM\CouponSettingIndexVM.cs" />
     <Compile Include="Models\ViewModels\PromotionsVM\MemberCouponDeliverVM.cs" />
     <Compile Include="Models\ViewModels\PromotionsVM\MemberCouponDetailVM.cs" />
     <Compile Include="Models\ViewModels\PromotionsVM\MemberCouponExts.cs" />
@@ -920,16 +920,16 @@
     <Content Include="Views\DessertOrders\TopSellingDessertsOrder.cshtml" />
     <Content Include="Views\LessonOrders\TopSellingLessons.cshtml" />
     <Content Include="Views\LessonOrders\TopSellingLessonsOrder.cshtml" />
-	  <Content Include="Views\Promotions\Details.cshtml" />
-	  <Content Include="Views\Home\ExistingPromotions.cshtml" />
-	  <Content Include="Views\CouponSettings\Create.cshtml" />
-	  <Content Include="Views\CouponSettings\Delete.cshtml" />
-	  <Content Include="Views\CouponSettings\Details.cshtml" />
-	  <Content Include="Views\CouponSettings\Edit.cshtml" />
-	  <Content Include="Views\CouponSettings\Index.cshtml" />
-	  <Content Include="Views\CouponSettings\CouponForBirthday.cshtml" />
-	  <Content Include="Views\CouponSettings\CouponForRegister.cshtml" />
-	  <Content Include="Views\CouponSettings\CouponForGame.cshtml" />
+    <Content Include="Views\Promotions\Details.cshtml" />
+    <Content Include="Views\Home\ExistingPromotions.cshtml" />
+    <Content Include="Views\CouponSettings\Create.cshtml" />
+    <Content Include="Views\CouponSettings\Delete.cshtml" />
+    <Content Include="Views\CouponSettings\Details.cshtml" />
+    <Content Include="Views\CouponSettings\Edit.cshtml" />
+    <Content Include="Views\CouponSettings\Index.cshtml" />
+    <Content Include="Views\CouponSettings\CouponForBirthday.cshtml" />
+    <Content Include="Views\CouponSettings\CouponForRegister.cshtml" />
+    <Content Include="Views\CouponSettings\CouponForGame.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="Scripts\vendor\chart.js\controllers\controller.bar.d.ts" />

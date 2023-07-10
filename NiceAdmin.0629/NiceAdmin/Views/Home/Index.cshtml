@@ -10,6 +10,8 @@
 
     <section class="section dashboard">
         <div class="row">
+            @{Html.RenderAction("ExistingPromotions");}
+
             <!-- Left side columns -->
             <div class="col-lg-8">
                 <div class="row">
@@ -93,21 +95,7 @@
                                 </h5>
                                 @{ Html.RenderAction("RecentDesserts", "Home"); }
 
-                                <div class="d-flex align-items-center">
-                                    <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                                        <i class="bi bi-people"></i>
-                                    </div>
-                                    <div class="ps-3">
-                                        <h6>1244</h6>
-                                        <span class="text-danger small pt-1 fw-bold">12%</span>
-                                        <span class="text-muted small pt-2 ps-1">decrease</span>
-                                    </div>
-                                </div>
                             </div>
-                        </div>
-                    </div>
-                    @{Html.RenderAction("ExistingPromotions");}
-                  </div>
                         </div>
                     </div>
                     <!-- End Recent Sales -->
@@ -212,8 +200,8 @@
                     </div>
                     <!-- End Total Lessons Card -->
                 </div>
-                    <!-- Recent Activity -->
-                    <!--<div class="card">
+                <!-- Recent Activity -->
+                <!--<div class="card">
         <div class="filter">
             <a class="icon" href="#" data-bs-toggle="dropdown">
                 <i class="bi bi-three-dots"></i>
@@ -242,24 +230,24 @@
                         beatae
                     </div>
                 </div>-->
-                    <!-- End activity item-->
-                    <!--<div class="activity-item d-flex">
+                <!-- End activity item-->
+                <!--<div class="activity-item d-flex">
             <div class="activite-label">56 min</div>
             <i class="bi bi-circle-fill activity-badge text-danger align-self-start"></i>
             <div class="activity-content">
                 Voluptatem blanditiis blanditiis eveniet
             </div>
         </div>-->
-                    <!-- End activity item-->
-                    <!--<div class="activity-item d-flex">
+                <!-- End activity item-->
+                <!--<div class="activity-item d-flex">
             <div class="activite-label">2 hrs</div>
             <i class="bi bi-circle-fill activity-badge text-primary align-self-start"></i>
             <div class="activity-content">
                 Voluptates corrupti molestias voluptatem
             </div>
         </div>-->
-                    <!-- End activity item-->
-                    <!--<div class="activity-item d-flex">
+                <!-- End activity item-->
+                <!--<div class="activity-item d-flex">
             <div class="activite-label">1 day</div>
             <i class="bi bi-circle-fill activity-badge text-info align-self-start"></i>
             <div class="activity-content">
@@ -268,106 +256,108 @@
                 tempore
             </div>
         </div>-->
-                    <!-- End activity item-->
-                    <!--<div class="activity-item d-flex">
+                <!-- End activity item-->
+                <!--<div class="activity-item d-flex">
             <div class="activite-label">2 days</div>
             <i class="bi bi-circle-fill activity-badge text-warning align-self-start"></i>
             <div class="activity-content">
                 Est sit eum reiciendis exercitationem
             </div>
         </div>-->
-                    <!-- End activity item-->
-                    <!--<div class="activity-item d-flex">
+                <!-- End activity item-->
+                <!--<div class="activity-item d-flex">
             <div class="activite-label">4 weeks</div>
             <i class="bi bi-circle-fill activity-badge text-muted align-self-start"></i>
             <div class="activity-content">
                 Dicta dolorem harum nulla eius. Ut quidem quidem sit quas
             </div>
         </div>-->
-                    <!-- End activity item-->
-                    <!--</div>
+                <!-- End activity item-->
+                <!--</div>
             </div>
         </div>-->
-                    <!-- End Recent Activity -->
-                    <!-- News & Updates Traffic -->
-                    <div class="card">
-                        <div class="filter">
-                            <a class="icon" href="#" data-bs-toggle="dropdown">
-                                <i class="bi bi-three-dots"></i>
-                            </a>
-                            <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-                                <li class="dropdown-header text-start">
-                                    <h6>Filter</h6>
-                                </li>
+                <!-- End Recent Activity -->
+                <!-- News & Updates Traffic -->
+                <div class="card">
+                    <div class="filter">
+                        <a class="icon" href="#" data-bs-toggle="dropdown">
+                            <i class="bi bi-three-dots"></i>
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
+                            <li class="dropdown-header text-start">
+                                <h6>Filter</h6>
+                            </li>
 
-                                <li><a class="dropdown-item" href="#">Today</a></li>
-                                <li><a class="dropdown-item" href="#">This Month</a></li>
-                                <li><a class="dropdown-item" href="#">This Year</a></li>
-                            </ul>
-                        </div>
-
-                        <div class="card-body pb-0">
-                            <h5 class="card-title">新聞 &amp; 更新 <span>| 今日</span></h5>
-
-                            <div class="news">
-                                <div class="post-item clearfix">
-                                    <img src="assets/img/news-1.jpg" alt="" />
-                                    <h4>
-                                        <a href="#">平安夜下午三四點開喝，嘉士伯各種品牌啤酒來一輪，先微醺再上席</a>
-                                    </h4>
-                                    <p>
-                                        丹麥聖誕平安夜大餐中的各大要素裡，烤鴨、脆皮豬肉、甜馬鈴薯、酸甜紅捲心菜，頗有幾樣是最近兩三百年才興起的舶來品，是貴族時代結束後方登大雅之堂的的窮人食物。許多丹麥人以為自己恪守的「傳統」，其實是集歐洲各國農耕遊民篳路藍縷心血之大成...
-                                    </p>
-                                </div>
-
-                                <div class="post-item clearfix">
-                                    <img src="assets/img/news-2.jpg" alt="" />
-                                    <h4>
-                                        <a href="#">5點還沒下班要不要團購下午茶？阿根廷人會告訴你要，享受你的「梅林恩達」吧！</a>
-                                    </h4>
-                                    <p>
-                                        在阿根廷人們一天習慣吃四餐，其中歷久不衰的午茶時光「梅林恩達」（merienda），正反映出當地人的社交模式和時間管理。而這原先是羅馬帝國的軍事用語，給士兵們在中午後吃的食物「merenda」，這個用詞又和拉丁文的動詞「merere」有關，意思是「你值得」或者「經過努力獲得」的食物...
-                                    </p>
-                                </div>
-
-                                <div class="post-item clearfix">
-                                    <img src="assets/img/news-3.jpg" alt="" />
-                                    <h4>
-                                        <a href="#">老字號甜點店「不二家」的魅力，為什麼日本人節慶時都要吃「草莓鮮奶油蛋糕」？</a>
-                                    </h4>
-                                    <p>
-                                        「草莓鮮奶油蛋糕」有著蓬鬆柔軟的海綿蛋糕、入口綿密即化的鮮奶油、酸甜滋味的草莓，三者間的平衡正是這款蛋糕受到男女老少歡迎的原因。白色的鮮奶油和艷紅色草莓的配色，日本又稱作「日の丸」，象徵「慶祝」、「祝福」，因此草莓鮮奶油蛋糕也成了日本各個慶祝場合裡不考或缺的美食...
-                                    </p>
-                                </div>
-
-                                <div class="post-item clearfix">
-                                    <img src="assets/img/news-4.jpg" alt="" />
-                                    <h4>
-                                        <a href="#">英國國民小點「司康」：歐美的下午茶配角，到了台灣躋身專門店主角</a>
-                                    </h4>
-                                    <p>
-                                        司康進入台灣並非近兩年的事，只是現在現身於台灣的司康版本多，且以更精緻的姿態出現...
-                                    </p>
-                                </div>
-
-                                <div class="post-item clearfix">
-                                    <img src="assets/img/news-5.jpg" alt="" />
-                                    <h4>
-                                        <a href="#">台灣「肉桂捲」搜尋量達近五年新高，仔細觀察爆紅是有跡可循的</a>
-                                    </h4>
-                                    <p>
-                                        最近大家有在瘋肉桂捲嗎？有人認為「肉桂捲風潮」只是人們一時跟風，但我不那麼認為，因爲肉桂捲愛好者一直都有...
-                                    </p>
-                                </div>
-                            </div>
-                            <!-- End sidebar recent posts-->
-                        </div>
+                            <li><a class="dropdown-item" href="#">Today</a></li>
+                            <li><a class="dropdown-item" href="#">This Month</a></li>
+                            <li><a class="dropdown-item" href="#">This Year</a></li>
+                        </ul>
                     </div>
-                    <!-- End News & Updates -->
+
+                    <div class="card-body pb-0">
+                        <h5 class="card-title">新聞 &amp; 更新 <span>| 今日</span></h5>
+
+                        <div class="news">
+                            <div class="post-item clearfix">
+                                <img src="assets/img/news-1.jpg" alt="" />
+                                <h4>
+                                    <a href="#">平安夜下午三四點開喝，嘉士伯各種品牌啤酒來一輪，先微醺再上席</a>
+                                </h4>
+                                <p>
+                                    丹麥聖誕平安夜大餐中的各大要素裡，烤鴨、脆皮豬肉、甜馬鈴薯、酸甜紅捲心菜，頗有幾樣是最近兩三百年才興起的舶來品，是貴族時代結束後方登大雅之堂的的窮人食物。許多丹麥人以為自己恪守的「傳統」，其實是集歐洲各國農耕遊民篳路藍縷心血之大成...
+                                </p>
+                            </div>
+
+                            <div class="post-item clearfix">
+                                <img src="assets/img/news-2.jpg" alt="" />
+                                <h4>
+                                    <a href="#">5點還沒下班要不要團購下午茶？阿根廷人會告訴你要，享受你的「梅林恩達」吧！</a>
+                                </h4>
+                                <p>
+                                    在阿根廷人們一天習慣吃四餐，其中歷久不衰的午茶時光「梅林恩達」（merienda），正反映出當地人的社交模式和時間管理。而這原先是羅馬帝國的軍事用語，給士兵們在中午後吃的食物「merenda」，這個用詞又和拉丁文的動詞「merere」有關，意思是「你值得」或者「經過努力獲得」的食物...
+                                </p>
+                            </div>
+
+                            <div class="post-item clearfix">
+                                <img src="assets/img/news-3.jpg" alt="" />
+                                <h4>
+                                    <a href="#">老字號甜點店「不二家」的魅力，為什麼日本人節慶時都要吃「草莓鮮奶油蛋糕」？</a>
+                                </h4>
+                                <p>
+                                    「草莓鮮奶油蛋糕」有著蓬鬆柔軟的海綿蛋糕、入口綿密即化的鮮奶油、酸甜滋味的草莓，三者間的平衡正是這款蛋糕受到男女老少歡迎的原因。白色的鮮奶油和艷紅色草莓的配色，日本又稱作「日の丸」，象徵「慶祝」、「祝福」，因此草莓鮮奶油蛋糕也成了日本各個慶祝場合裡不考或缺的美食...
+                                </p>
+                            </div>
+
+                            <div class="post-item clearfix">
+                                <img src="assets/img/news-4.jpg" alt="" />
+                                <h4>
+                                    <a href="#">英國國民小點「司康」：歐美的下午茶配角，到了台灣躋身專門店主角</a>
+                                </h4>
+                                <p>
+                                    司康進入台灣並非近兩年的事，只是現在現身於台灣的司康版本多，且以更精緻的姿態出現...
+                                </p>
+                            </div>
+
+                            <div class="post-item clearfix">
+                                <img src="assets/img/news-5.jpg" alt="" />
+                                <h4>
+                                    <a href="#">台灣「肉桂捲」搜尋量達近五年新高，仔細觀察爆紅是有跡可循的</a>
+                                </h4>
+                                <p>
+                                    最近大家有在瘋肉桂捲嗎？有人認為「肉桂捲風潮」只是人們一時跟風，但我不那麼認為，因爲肉桂捲愛好者一直都有...
+                                </p>
+                            </div>
+                        </div>
+                        <!-- End sidebar recent posts-->
+                    </div>
                 </div>
-                <!-- End Right side columns -->
+                <!-- End News & Updates -->
             </div>
-    </section>
+            <!-- End Right side columns -->
+
+
+        </div>
+</section>
 </main>
 
 @section Scripts {

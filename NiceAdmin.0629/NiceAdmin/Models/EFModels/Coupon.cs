@@ -11,11 +11,11 @@ namespace NiceAdmin.Models.EFModels
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Coupon()
         {
+            CouponSettings = new HashSet<CouponSetting>();
             DessertOrders = new HashSet<DessertOrder>();
             LessonOrders = new HashSet<LessonOrder>();
             MemberCoupons = new HashSet<MemberCoupon>();
             Promotions = new HashSet<Promotion>();
-            CouponSettings = new HashSet<CouponSetting>();
         }
 
         public int CouponId { get; set; }
@@ -54,7 +54,8 @@ namespace NiceAdmin.Models.EFModels
 
         public virtual DiscountGroup DiscountGroup { get; set; }
 
-        public virtual CouponSetting CouponSetting { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<CouponSetting> CouponSettings { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<DessertOrder> DessertOrders { get; set; }
@@ -67,8 +68,5 @@ namespace NiceAdmin.Models.EFModels
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Promotion> Promotions { get; set; }
-
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<CouponSetting> CouponSettings { get; set; }
     }
 }
