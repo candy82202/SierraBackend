@@ -13,14 +13,14 @@ using NiceAdmin.Models.ViewModels.DessertsVM;
 
 namespace NiceAdmin.Controllers
 {
-    [DirectToUnAuthorize(Roles = "admin,manager")]
+    [DirectToUnAuthorize(Roles = "admin,dessertSale")]
     public class CategoriesController : Controller
     {
         private AppDbContext db = new AppDbContext();
 
         // GET: Categories
         [OverrideAuthorization]
-        [DirectToUnAuthorize(Roles = "admin,manager,dessertSale,staff")]
+        [DirectToUnAuthorize(Roles = "admin,dessertSale,staff")]
         public ActionResult Index()
         {
             var categories = db.Categories.ToList();

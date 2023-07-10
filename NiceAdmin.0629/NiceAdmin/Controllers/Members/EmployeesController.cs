@@ -17,14 +17,12 @@ using static System.Net.Mime.MediaTypeNames;
 
 namespace NiceAdmin.Controllers.Members
 {
-    [DirectToUnAuthorize(Roles = "admin")]
+    [DirectToUnAuthorize(Roles = "admin,humanResources")]
     public class EmployeesController : Controller
     {
         private AppDbContext db = new AppDbContext();
 
         // GET: Employees
-        [OverrideAuthorization]
-        [DirectToUnAuthorize(Roles = "admin,manager")]
         public ActionResult Index()
         {
             var vm = db.Employees.ToList().Select(e => e.ToIndexVM());
@@ -115,13 +113,15 @@ namespace NiceAdmin.Controllers.Members
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
 
-            var vm = db.Employees.Find(id).ToEditVM();
-            if (vm == null)
+            var empInDb = db.Employees.Find(id);
+            if (empInDb == null)
             {
                 return HttpNotFound();
             }
 
-            HashSet<Role> roles = db.Roles.ToHashSet();
+            var vm = empInDb.ToEditVM();
+
+			HashSet<Role> roles = db.Roles.ToHashSet();
             ViewBag.Roles = roles;
 
             return View(vm);
@@ -160,7 +160,7 @@ namespace NiceAdmin.Controllers.Members
         }
 
         // GET: Employees/Delete/5
-        [CustomAuthorize(Roles = "admin,manager")]
+        //[CustomAuthorize(Roles = "admin,manager")]
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -179,7 +179,7 @@ namespace NiceAdmin.Controllers.Members
         // POST: Employees/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        [CustomAuthorize(Roles = "admin,manager")]
+        //[CustomAuthorize(Roles = "admin,manager")]
         public ActionResult DeleteConfirmed(int id)
         {
             Employee employee = db.Employees.Find(id);

@@ -11,14 +11,14 @@ using NiceAdmin.Models.EFModels;
 
 namespace NiceAdmin.Controllers.Lessons
 {
-    [DirectToUnAuthorize(Roles = "admin,manager")]
+    [DirectToUnAuthorize(Roles = "admin,lessonSale")]
     public class LessonCategoriesController : Controller
     {
         private AppDbContext db = new AppDbContext();
 
         // GET: LessonCategories
         [OverrideAuthorization]
-        [DirectToUnAuthorize(Roles = "admin,manager,lessonSale,staff")]
+        [DirectToUnAuthorize(Roles = "admin,lessonSale,staff")]
         public ActionResult Index()
         {
             return View(db.LessonCategories.ToList());

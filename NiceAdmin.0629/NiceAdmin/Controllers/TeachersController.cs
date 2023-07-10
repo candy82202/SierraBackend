@@ -16,14 +16,14 @@ using NiceAdmin.Models.ViewModels.TeachersVM;
 
 namespace NiceAdmin.Controllers
 {
-    [DirectToUnAuthorize(Roles = "admin,manager")]
+    [DirectToUnAuthorize(Roles = "admin,humanResources")]
     public class TeachersController : Controller
     {
         private AppDbContext db = new AppDbContext();
 
         // GET: Teachers
         [OverrideAuthorization]
-        [DirectToUnAuthorize(Roles = "admin,manager,staff")]
+        [DirectToUnAuthorize(Roles = "admin,humanResources,staff")]
         public ActionResult Index(TeacherCriteria criteria)
         {
 

@@ -11,14 +11,14 @@ using NiceAdmin.Models.EFModels;
 
 namespace NiceAdmin.Controllers.Desserts
 {
-    [DirectToUnAuthorize(Roles = "admin,manager")]
+    [DirectToUnAuthorize(Roles = "admin,dessertSale")]
     public class DessertTagsController : Controller
     {
         private AppDbContext db = new AppDbContext();
 
         // GET: DessertTags
         [OverrideAuthorization]
-        [DirectToUnAuthorize(Roles = "admin,manager,dessertSale,staff")]
+        [DirectToUnAuthorize(Roles = "admin,dessertSale,staff")]
         public ActionResult Index()
         {
             var dessertTags = db.DessertTags.Include(d => d.Dessert);

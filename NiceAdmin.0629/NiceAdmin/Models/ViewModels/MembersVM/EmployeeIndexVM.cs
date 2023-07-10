@@ -19,7 +19,7 @@ namespace NiceAdmin.Models.ViewModels.MembersVM
         [StringLength(50)]
         public string EmployeeName { get; set; }
 
-        [Display(Name = "創建時間")]
+        [Display(Name = "入職時間")]
         [DisplayFormat(DataFormatString = "{0:yyyy/MM/dd HH:mm:ss}")]
         public DateTime CreateAt { get; set; }
 

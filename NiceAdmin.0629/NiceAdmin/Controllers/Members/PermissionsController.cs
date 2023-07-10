@@ -17,8 +17,6 @@ namespace NiceAdmin.Controllers.Members
         private AppDbContext db = new AppDbContext();
 
         // GET: Permissions
-        [OverrideAuthorization]
-        [DirectToUnAuthorize(Roles = "admin,manager")]
         public ActionResult Index()
         {
             return View(db.Permissions.ToList());
