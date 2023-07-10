@@ -95,8 +95,8 @@ namespace NiceAdmin.Models.ViewModels
                 Description=dessert.Description,
                 UnitPrice=dessert.UnitPrice,
                 Status=dessert.Status,
+                ScheduledPublishDate = dessert.ScheduledPublishDate,
 
-            
             };
         
         }

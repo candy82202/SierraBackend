@@ -260,9 +260,9 @@ namespace NiceAdmin.Controllers
                 dessert.DessertName = vm.DessertName;
                 dessert.Description = vm.Description;
 
-                // 清除现有的图片
+                // 清除現有的图片
                 dessert.DessertImages.Clear();
-                // 处理上传的图片
+                // 處理上傳的圖片
                 if (images != null && images.Count > 0)
                 {
                     string path = Server.MapPath("/Uploads");
@@ -275,7 +275,16 @@ namespace NiceAdmin.Controllers
                         }
                     }
                 }
-
+                //判斷預定上架時間
+                if (vm.ScheduledPublishDate.HasValue)
+                {
+                    dessert.ScheduledPublishDate = vm.ScheduledPublishDate.Value;
+                    dessert.Status = false; // 将状态设置为下架
+                }
+                else
+                {
+                    dessert.Status = true; // 将状态设置为上架
+                }
                 // 保存更改
                 db.SaveChanges();
                 return RedirectToAction("Index");

@@ -26,6 +26,10 @@ namespace NiceAdmin.Models.ViewModels
         //public List<string> DessertImageName { get; set; }
         [Display(Name = "是否上架")]
         public bool Status { get; set; }
+        [Display(Name = "預定上架日期")]
+        [DataType(DataType.DateTime)]
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-ddTHH:mm}", ApplyFormatInEditMode = true)]
+        public DateTime? ScheduledPublishDate { get; set; }
         public DessertEditVM()
         {
             DessertImageNames = new List<string>();
