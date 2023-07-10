@@ -3,9 +3,10 @@
 @{
     var user = Context.User as ClaimsPrincipal;
     bool isAdmin = user.IsInRole("admin");
-    bool isManager = user.IsInRole("manager");
     bool isDessertSale = user.IsInRole("dessertSale");
     bool isLessonSale = user.IsInRole("lessonSale");
+    bool isMarketing = user.IsInRole("marketing");
+    bool isHR = user.IsInRole("humanResources");
     bool isStaff = user.IsInRole("staff");
 
     //var imageName = ""; // 儲存目前員工的圖片檔案名稱
@@ -207,10 +208,6 @@
                                     {
                                         <em>[最高管理者]</em>
                                     }
-                                    if (isManager)
-                                    {
-                                        <em>[管理者]</em>
-                                    }
                                     if (isDessertSale)
                                     {
                                         <em>[甜點銷售]</em>
@@ -218,6 +215,14 @@
                                     if (isLessonSale)
                                     {
                                         <em>[課程銷售]</em>
+                                    }
+                                    if (isMarketing)
+                                    {
+                                        <em>[行銷管理]</em>
+                                    }
+                                    if (isHR)
+                                    {
+                                        <em>[人資]</em>
                                     }
                                     if (isStaff)
                                     {
