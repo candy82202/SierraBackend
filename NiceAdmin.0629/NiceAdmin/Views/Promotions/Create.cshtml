@@ -106,8 +106,7 @@
                 var day = ("0" + now.getDate()).slice(-2);
                 var hour = ("0" + now.getHours()).slice(-2);
                 var minute = ("0" + now.getMinutes()).slice(-2);
-                var second = ("0" + now.getSeconds()).slice(-2);
-                var currentDateTime = year + "-" + month + "-" + day + "T" + hour + ":" + minute + ":" + second;
+                var currentDateTime = year + "-" + month + "-" + day + "T" + hour + ":" + minute ;
 
                 $("#LaunchAt").attr("min", currentDateTime);
             })
