@@ -83,7 +83,7 @@ namespace NiceAdmin.Controllers.Orders
             //return PartialView("TopSellingLessons", lessonIndexVMList);
 
         }
-        public PartialViewResult TopSellingLessonsOrder()//前十熱銷的課程訂單
+        public PartialViewResult TopSellingLessonsOrder()//前十熱銷的課程訂單chang
         {
             var topSellingOrders = db.LessonOrderDetails
                             .Where(x => x.LessonOrder.LessonOrderStatusId == 3)

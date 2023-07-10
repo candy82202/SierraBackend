@@ -8,8 +8,8 @@
 <table class="table">
     <thead>
         <tr>
-            <th>訂單編號</th>
- 
+            <th>甜點編號</th>
+            <th>甜點名稱</th>
             <th>總金額排序</th>
         </tr>
     </thead>
@@ -17,8 +17,8 @@
         @foreach (var order in Model)
         {
             <tr>
-                <td>@order.OrderID</td>
-               
+                <td>@order.DessertId</td>
+               <td>@order.DessertName</td>
                 <td>@order.TotalAmount</td>
             </tr>
         }
