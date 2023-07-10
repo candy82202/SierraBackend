@@ -148,7 +148,9 @@ namespace NiceAdmin.Controllers.Promotions
 
             var CouponSettingInDb = db.CouponSettings.FirstOrDefault(cs=>cs.CouponSettingId== couponSettingId);
             if (CouponSettingInDb == null) return Json("刪除失敗");
-            CouponSettingInDb.CouponId = null;
+			var couponInDb = db.Coupons.Find(CouponSettingInDb.CouponId);
+			couponInDb.Status = false;
+			CouponSettingInDb.CouponId = null;
             
             db.SaveChanges();
             return Json(true);
@@ -158,13 +160,21 @@ namespace NiceAdmin.Controllers.Promotions
         {
             if (couponSettingId == null|| couponId==null) return Json("加入失敗");
 
-            var CouponSettingInDb = db.CouponSettings.FirstOrDefault(cs => cs.CouponSettingId == couponSettingId);
-            if (CouponSettingInDb.Coupon!=null) return Json("加入失敗");
-            CouponSettingInDb.CouponId = couponId;
+            var couponSettingInDb = db.CouponSettings.FirstOrDefault(cs => cs.CouponSettingId == couponSettingId);
+            if (couponSettingInDb.Coupon!=null) return Json("加入失敗");
             var couponInDb = db.Coupons.Find(couponId);
-            var couponName = couponInDb.CouponName;
+			if (couponSettingInDb.CouponType == 1 && couponInDb.CouponCategoryId!=5) return Json("加入失敗");
+            if(couponSettingInDb.CouponType == 2 && couponInDb.CouponCategoryId != 6) return Json("加入失敗");
+            if(couponSettingInDb.CouponType == 3 && couponInDb.CouponCategoryId != 3) return Json("加入失敗");
+			couponSettingInDb.CouponId = couponId;
+            couponInDb.Status = true;
+			var couponName = couponInDb.CouponName;
             db.SaveChanges();
-            return Json(couponName);
+            return Json(
+                new {
+                couponName = couponName,
+                couponCategoryId = couponInDb.CouponCategoryId
+            });
         }
         protected override void Dispose(bool disposing)
         {
