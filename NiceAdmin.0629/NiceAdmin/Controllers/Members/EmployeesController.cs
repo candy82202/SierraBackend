@@ -160,7 +160,7 @@ namespace NiceAdmin.Controllers.Members
         }
 
         // GET: Employees/Delete/5
-        [CustomAuthorize(Roles = "admin,manager")]
+        //[CustomAuthorize(Roles = "admin,manager")]
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -179,7 +179,7 @@ namespace NiceAdmin.Controllers.Members
         // POST: Employees/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        [CustomAuthorize(Roles = "admin,manager")]
+        //[CustomAuthorize(Roles = "admin,manager")]
         public ActionResult DeleteConfirmed(int id)
         {
             Employee employee = db.Employees.Find(id);
