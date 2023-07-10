@@ -1,0 +1,175 @@
+﻿@model IEnumerable<NiceAdmin.Models.EFModels.CouponSetting>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<main id="main" class="main">
+    <div class="row">
+        <div class="card">
+            <div class="card-body">
+                <div class="pagetitle mt-3">
+                    <h1>優惠券設定</h1>
+                    <nav>
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="@Url.Action("Index","Home")">首頁</a></li>
+                            <li class="breadcrumb-item">   行銷管理  </li>
+                            <li class="breadcrumb-item"> <a href="@Url.Action("Index","Coupons")"> 優惠券清單</a>  </li>
+                            <li class="breadcrumb-item active">  優惠券設定  </li>
+                        </ol>
+                    </nav>
+                </div>
+                <!-- End Page Title -->
+                <section class="section">
+                    <p>
+                        @Html.ActionLink("Create New", "Create")
+                    </p>
+                    <div class="d-flex">
+                        <div>
+                            @foreach (var item in Model)
+                            {
+
+                                <div class="d-flex align-items-center mb-3">
+                                    <label class="me-2">@item.CouponSettingName:</label>
+                                    @if (item.CouponId == null)
+                                    {
+                                        <div class="box d-flex justify-content-around align-items-center couponSettingBox">
+
+                                        </div>
+                                    }
+                                    else
+                                    {
+                                        if (item.Coupon.CouponCategoryId == 5)
+                                        {
+                                            <div class="box d-flex justify-content-around align-items-center couponSettingBox" data-id="@item.CouponSettingId">
+                                                <button class="remove btn btn-primary">@item.Coupon.CouponName<i class="bi bi-x-lg ms-2"></i></button>
+                                            </div>
+                                        }
+                                        else if (item.Coupon.CouponCategoryId == 6)
+                                        {
+                                            <div class="box d-flex justify-content-around align-items-center couponSettingBox " data-id="@item.CouponSettingId">
+                                                <button class="remove btn btn-warning">@item.Coupon.CouponName<i class="bi bi-x-lg ms-2"></i></button>
+                                            </div>
+                                        }
+                                        else
+                                        {
+                                            <div class="box d-flex justify-content-around align-items-center couponSettingBox " data-id="@item.CouponSettingId">
+                                                <button class="remove btn btn-success">@item.Coupon.CouponName<i class="bi bi-x-lg ms-2"></i></button>
+                                            </div>
+                                        }
+                                    }
+                                </div>
+                            }
+                        </div>
+                        @* 要拖動的東西 *@
+                        <div>
+                            @* 分頁 *@
+                            <ul class="nav nav-tabs" id="myTab" role="tablist">
+                                <li class="nav-item" role="presentation">
+                                    <button class="nav-link active" id="birthday-tab" data-bs-toggle="tab" data-bs-target="#birthday" type="button" role="tab" aria-controls="birthday" aria-selected="true">生日</button>
+                                </li>
+                                <li class="nav-item" role="presentation">
+                                    <button class="nav-link" id="register-tab" data-bs-toggle="tab" data-bs-target="#register" type="button" role="tab" aria-controls="register" aria-selected="false">註冊</button>
+                                </li>
+                                <li class="nav-item" role="presentation">
+                                    <button class="nav-link" id="game-tab" data-bs-toggle="tab" data-bs-target="#game" type="button" role="tab" aria-controls="game" aria-selected="false">遊戲</button>
+                                </li>
+                            </ul>
+                            <div class="tab-content pt-2" id="myTabContent">
+                                <div class="tab-pane fade show active" id="birthday" role="tabpanel" aria-labelledby="birthday-tab">
+                                    <div class="card-body">
+                                        <h5 class="card-title">
+                                            生日優惠券
+                                        </h5>
+                                        @{Html.RenderAction("CouponForBirthday");}
+
+                                    </div>
+                                </div>
+                                <div class="tab-pane fade" id="register" role="tabpanel" aria-labelledby="register-tab">
+                                    <div class="card-body">
+                                        <h5 class="card-title">
+                                            新註冊會員優惠券
+                                        </h5>
+                                        @{ Html.RenderAction("CouponForRegister"); }
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tab-pane fade" id="game" role="tabpanel" aria-labelledby="game-tab">
+                                <div class="card-body">
+                                    <h5 class="card-title">
+                                        遊戲優惠券
+                                    </h5>
+                                    @{ Html.RenderAction("CouponForGame"); }
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </section>
+            </div><!-- End Default Tabs -->
+        </div>
+    </div>
+</main>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+<script>
+        $(document).ready(function () {
+            $('.remove').click(function () {
+                var couponSettingId = $(this).parent().data('id')
+                $.ajax({
+                    type: 'post',
+                    url: '/CouponSettings/Remove',
+                    data: {
+                        couponSettingId: couponSettingId
+                    }
+                }).done(data => {
+                    if (typeof (data) == "boolean") {
+                        $(this).remove();
+                    }
+                    else {
+                        Swal.fire({
+                            icon: 'error',
+                            title: '錯誤',
+                            text: data
+                        })
+                    }
+                })
+            })
+            debugger;
+            $('.move').bind('dragstart', function (e) { 
+                var data = e.originalEvent.dataTransfer
+                data.setData('couponId',$(this).data('id'))
+            })
+            $('.box').bind('drag', function (e) {
+                e.originalEvent.preventDefault();
+            })
+            $('.box').bind('drop', function (e) {
+                var couponId = e.originalEvent.dataTransfer.getData('couponId')
+                var couponSettingId = $(this).data('id')
+                $.ajax({
+                    typr: 'post',
+                    url: '/CouponSettings/Add',
+                    data: {
+                        couponSettingId: couponSettingId,
+                        couponId: couponId
+                    }
+                }).done(data => {
+                    if (data != "加入失敗") {
+                        var newItem = `<button class="remove btn btn-success">${data}<i class="bi bi-x-lg ms-2"></i></button>`
+                        $(this).append(newItem);
+                    }
+                    else {
+                        Swal.fire({
+                            icon: 'error',
+                            title: '錯誤',
+                            text: data
+                        })
+                    }
+                })
+            })
+        })
+</script>
+}

@@ -1,0 +1,42 @@
+﻿@model NiceAdmin.Models.EFModels.CouponSetting
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>CouponSetting</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Coupon.CouponName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Coupon.CouponName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CouponSettingName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CouponSettingName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CouponType)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CouponType)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.CouponSettingId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

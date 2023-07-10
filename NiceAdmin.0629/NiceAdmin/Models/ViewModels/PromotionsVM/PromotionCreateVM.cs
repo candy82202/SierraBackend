@@ -26,10 +26,16 @@ namespace NiceAdmin.Models.ViewModels.PromotionsVM
         [Display(Name = "活動詳情")]
         public string Description { get; set; }
         [Display(Name = "發布時間")]
+        [Required]
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-ddTHH:mm}", ApplyFormatInEditMode = true)]
         public DateTime LaunchAt { get; set; }
         [Display(Name = "開始時間")]
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-ddTHH:mm}", ApplyFormatInEditMode = true)]
+        [Required]
         public DateTime StartAt { get; set; }
         [Display(Name = "結束時間")]
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-ddTHH:mm}", ApplyFormatInEditMode = true)]
+        [Required]
         public DateTime EndAt { get; set; }
     }
 }

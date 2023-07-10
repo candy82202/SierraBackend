@@ -86,6 +86,14 @@ namespace NiceAdmin.Models.ViewModels.PromotionsVM
                     CreateAt = entity.CreateAt
                 };
         }
-
+        public static CouponDragVM ToDragVM(this Coupon entity)
+        {
+            return new CouponDragVM()
+            {
+                CouponId = entity.CouponId,
+                CouponName = entity.CouponName,
+                CouponCategoryId = entity.CouponCategoryId
+            };
+        }
     }
 }

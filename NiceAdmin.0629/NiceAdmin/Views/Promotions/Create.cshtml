@@ -30,62 +30,62 @@
                             @Html.ValidationSummary(true, "", new { @class = "text-danger" })
                             <div class="mb-3">
                                 @Html.LabelFor(model => model.PromotionName, htmlAttributes: new { @class = "form-label" })
-                                @Html.EditorFor(model => model.PromotionName, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.EditorFor(model => model.PromotionName, new { htmlAttributes = new { @class = "form-control", style = "width: 200px" } })
                                 @Html.ValidationMessageFor(model => model.PromotionName, "", new { @class = "text-danger" })
 
                             </div>
                             <div class="mb-3">
                                 @Html.LabelFor(model => model.CouponId, htmlAttributes: new { @class = "form-label" })
-                                @Html.DropDownList("CouponId", null, htmlAttributes: new { @class = "form-select" })
+                                @Html.DropDownList("CouponId", null, htmlAttributes: new { @class = "form-select", style = "width: 200px" })
                                 @Html.ValidationMessageFor(model => model.CouponId, "", new { @class = "text-danger" })
 
                             </div>
 
                             <div class="mb-3">
                                 @Html.LabelFor(model => model.PromotionImage, htmlAttributes: new { @class = "form-label" })
-                                <div id="previewImages" class="d-flex justify-content-center mb-3">
+                                <div id="previewImages" class="mb-3">
 
                                 </div>
-                                <input type="file" name="PromotionImage" value="" class="form-control" id="PromotionImage" />
+                                <input type="file" name="PromotionImage" value="" class="form-control" id="PromotionImage"style = "width: 300px" />
                                 @Html.ValidationMessageFor(model => model.PromotionImage, "", new { @class = "text-danger" })
                             </div>
 
                             <div class="mb-3">
                                 @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "form-label" })
-                                @Html.TextAreaFor(model => model.Description, new { @class = "form-control" })
+                                @Html.TextAreaFor(model => model.Description, new { @class = "form-control", style = "width: 500px" })
                                 @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
 
                             </div>
 
                             <div class="mb-3">
                                 @Html.LabelFor(model => model.LaunchAt, htmlAttributes: new { @class = "form-label" })
-                                @Html.EditorFor(model => model.LaunchAt, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.TextBoxFor(model => model.LaunchAt, new { @class = "form-control", type = "datetime-local", style = "width: 300px" })
                                 @Html.ValidationMessageFor(model => model.LaunchAt, "", new { @class = "text-danger" })
 
                             </div>
 
                             <div class="mb-3">
                                 @Html.LabelFor(model => model.StartAt, htmlAttributes: new { @class = "form-label" })
-                                @Html.EditorFor(model => model.StartAt, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.TextBoxFor(model => model.StartAt, new { @class = "form-control", type = "datetime-local", style = "width: 300px" })
                                 @Html.ValidationMessageFor(model => model.StartAt, "", new { @class = "text-danger" })
 
                             </div>
 
                             <div class="mb-3">
                                 @Html.LabelFor(model => model.EndAt, htmlAttributes: new { @class = "form-label" })
-                                @Html.EditorFor(model => model.EndAt, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.TextBoxFor(model => model.EndAt, new { @class = "form-control", type = "datetime-local", style = "width: 300px" })
                                 @Html.ValidationMessageFor(model => model.EndAt, "", new { @class = "text-danger" })
 
                             </div>
 
                             <div class="mb-3">
-                                <input type="submit" value="Create" class="btn btn-primary" />
+                                <input type="submit" value="新增" class="btn btn-primary" />
                             </div>
                         </div>
                     }
 
                     <div>
-                        @Html.ActionLink("Back to List", "Index")
+                        @Html.ActionLink("回到列表", "Index")
                     </div>
                 </section>
             </div><!-- End Default Tabs -->
@@ -94,36 +94,59 @@
 </main>
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
-    <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js" integrity="sha256-6XMVI0zB8cRzfZjqKcD01PBsAy3FlDASrlC8SxCpInY=" crossorigin="anonymous"></script>
     <script>
         document.addEventListener("DOMContentLoaded", function () {
             checkImg();
-            
-            $('#LaunchAt').datepicker({
-                minDate: 0,
-                dateFormat: "yy-mm-dd",
-            });
-            $('#StartAt').datepicker({
-                dateFormat: "yy-mm-dd",
-            });
-            $('#EndAt').datepicker({
-                dateFormat: "yy-mm-dd"
-            });
-            
-            $('#StartAt').change(function () {
-                var starAt = $('#StartAt').val()
-                $('#EndAt').datepicker("option", "minDate", starAt);
+            $('#previewImages').addClass('d-none')
+
+            $("#LaunchAt").click(function () {
+                var now = new Date();
+                var year = now.getFullYear();
+                var month = ("0" + (now.getMonth() + 1)).slice(-2);
+                var day = ("0" + now.getDate()).slice(-2);
+                var hour = ("0" + now.getHours()).slice(-2);
+                var minute = ("0" + now.getMinutes()).slice(-2);
+                var second = ("0" + now.getSeconds()).slice(-2);
+                var currentDateTime = year + "-" + month + "-" + day + "T" + hour + ":" + minute + ":" + second;
+
+                $("#LaunchAt").attr("min", currentDateTime);
             })
             
+
+            $("#LaunchAt").change(function () {
+                var launchAtValue = $(this).val();
+                var startAtValue = $("#StartAt").val();
+
+
+                $("#StartAt").attr("min", launchAtValue);
+
+
+                if (startAtValue < launchAtValue) {
+                    $("#StartAt").val("");
+                }
+            });
+            $("#StartAt").change(function () {
+                var startAtValue = $(this).val();
+                var endAtValue = $("#EndAt").val();
+
+                // 設定 EndAt 欄位的最小可選擇時間
+                $("#EndAt").attr("min", startAtValue);
+
+                // 檢查 EndAt 欄位的值是否小於 StartAt 欄位的值
+                if (endAtValue < startAtValue) {
+                    $("#EndAt").val(""); // 清空 EndAt 欄位的值
+                }
+            });
 
 
             var firstOption = $('#CouponId').children().first();
             firstOption.text("無");
-            
-            
+
+
             function checkImg() {
                 var maxSize = 2 * 1024 * 1024;
                 $('input[type="file"]').change(function (e) {
+                    
                     var files = e.target.files;
                     if (files && files.length > 0) {
                         $('#previewImages').empty(); // 清空預覽區域
@@ -136,6 +159,7 @@
                                     image.attr('alt', 'Preview');
                                     image.addClass("createPromotionImageSize")
                                     $('#previewImages').append(image);
+                                    $('#previewImages').removeClass('d-none');
                                 };
                                 reader.readAsDataURL(files[i]);
                             }
@@ -168,15 +192,21 @@
                             $('#CouponId').val(0);
                         }
                         else {
-                            var ary = data.split(',')
-                            start.val(ary[0]);
-                            end.val(ary[1]);
+                            var ary = data.split(',');
+                            var startDate = formatDate(ary[0]);
+                            var endDate = formatDate(ary[1]);
+                            start.val(startDate);
+                            end.val(endDate);
                         }
                     })
                 }
             })
+            function formatDate(dateString) {
+                var date = new Date(dateString);
+                var formattedDate = date.toISOString().slice(0, 16); // Format as "yyyy-MM-ddThh:mm"
+                return formattedDate;
+            }
 
-            })
-        
+        })
     </script>
 }

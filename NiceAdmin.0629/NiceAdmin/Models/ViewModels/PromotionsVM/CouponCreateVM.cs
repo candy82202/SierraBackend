@@ -36,13 +36,13 @@ namespace NiceAdmin.Models.ViewModels.PromotionsVM
         [Display(Name = "開始時間")]
 		[RequiredIf("CouponCategoryId", 2,4, ErrorMessage = "開始時間為必填")]
 		[DataType(DataType.DateTime)]
-		[DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
-		public DateTime? StartAt { get; set; }
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-ddTHH:mm}", ApplyFormatInEditMode = true)]
+        public DateTime? StartAt { get; set; }
         [Display(Name = "結束時間")]
 		[RequiredIf("CouponCategoryId", 2, 4, ErrorMessage = "結束時間為必填")]
 		[DataType(DataType.DateTime)]
-		[DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
-		public DateTime? EndAt { get; set; }
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-ddTHH:mm}", ApplyFormatInEditMode = true)]
+        public DateTime? EndAt { get; set; }
         [Display(Name = "使用期限")]
 		[RequiredIf("CouponCategoryId", 1,3,4,5,6, ErrorMessage = "使用期限為必填")]
 		public int? Expiration { get; set; }

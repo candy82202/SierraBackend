@@ -15,6 +15,7 @@ namespace NiceAdmin.Models.EFModels
             LessonOrders = new HashSet<LessonOrder>();
             MemberCoupons = new HashSet<MemberCoupon>();
             Promotions = new HashSet<Promotion>();
+            CouponSettings = new HashSet<CouponSetting>();
         }
 
         public int CouponId { get; set; }
@@ -66,5 +67,8 @@ namespace NiceAdmin.Models.EFModels
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Promotion> Promotions { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<CouponSetting> CouponSettings { get; set; }
     }
 }

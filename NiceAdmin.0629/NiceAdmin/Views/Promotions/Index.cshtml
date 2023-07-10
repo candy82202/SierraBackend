@@ -77,8 +77,10 @@
                                         }
                                     </td>
                                     <td>
-                                        @Html.ActionLink("編輯", "Edit", new { id = item.PromotionId }, new { @class = "btn btn-primary" }) 
-                                        @Html.ActionLink("變更圖片", "EditImage", new { id = item.PromotionId },new { @class = "btn btn-primary" })
+                                        @Html.ActionLink("詳情", "Details", new { id = item.PromotionId }, new { @class = "btn btn-primary me-1 mb-1" })
+                                        @Html.ActionLink("編輯", "Edit", new { id = item.PromotionId }, new { @class = "btn btn-primary expire me-1 mb-1", data_status = item.Status })
+                                        @Html.ActionLink("變更圖片", "EditImage", new { id = item.PromotionId }, new { @class = "btn btn-primary expire me-1 mb-1", data_status = item.Status })
+                                        <button class="btn btn-danger recall me-1" data-status="@item.Status" data-id="@item.PromotionId">下架</button>
                                     </td>
                                 </tr>
                             }
@@ -107,6 +109,45 @@
                     if (text == "") {
                         $(this).text("無")
                     }
+                })
+                $('.recall').each(function () {
+                    var status = $(this).data('status')
+                    if (status != "上架中") {
+                        $(this).hide()
+                    }
+                })
+                $('.expire').each(function () {
+                    var status = $(this).data('status')
+                    if (status == "已下架") {
+                        $(this).hide()
+                    }
+                })
+                $('.recall').click(function () {
+                    var promotionId = $(this).data('id')
+                    $.ajax({
+                        type: "post",
+                        url: "/Promotions/Recall",
+                        data: { promotionId: promotionId }
+                    }).done(data => {
+                        if (data === true) {
+                            Swal.fire({
+                                position: 'center',
+                                icon: 'success',
+                                title: '下架成功',
+                                showConfirmButton: false,
+                                timer: 1500
+                            })
+                            $(this).hide();
+                            var siblingsWithExpire = $(this).parent().find('.expire')
+                            siblingsWithExpire.each(function () {
+                                $(this).hide();
+                            })
+                            var statusSpan = $(this).parent().prev().children()
+                            statusSpan.removeClass('bg-success');
+                            statusSpan.addClass('bg-danger');
+                            statusSpan.text('已下架');
+                        }
+                    })
                 })
             })
     </script>

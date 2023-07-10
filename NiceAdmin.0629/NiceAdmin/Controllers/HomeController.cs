@@ -11,7 +11,7 @@ using NiceAdmin.Models.ViewModels;
 using NiceAdmin.Models.ViewModels.DessertsVM;
 using System.Runtime.InteropServices.ComTypes;
 using NiceAdmin.Models.ViewModels.MembersVM;
-
+using NiceAdmin.Models.ViewModels.PromotionsVM;
 namespace NiceAdmin.Controllers
 {
     [Authorize]
@@ -175,6 +175,13 @@ namespace NiceAdmin.Controllers
                     .ToList()
                     .Select(e => e.ToIndexVM());
             return PartialView("RecentUpMembers", vm);
+        }
+        public ActionResult ExistingPromotions()
+        {
+            IEnumerable<PromotionSlideVM> existPromotions = db.Promotions.Where(p => p.StartAt < DateTime.Now && p.EndAt > DateTime.Now)
+                                                                         .ToList()
+                                                                         .Select(p => p.ToSlideVM());
+            return PartialView("ExistingPromotions", existPromotions);
         }
         public ActionResult SierraIndex()
         {

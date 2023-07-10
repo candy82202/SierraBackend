@@ -58,7 +58,10 @@ namespace NiceAdmin.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "CouponCategoryId,DiscountGroupId,CouponName,CouponCode,LimitType,LimitValue,DiscountType,DiscountValue,StartAt,EndAt,Expiration")] CouponCreateVM vm)
         {
-
+            //
+            // ModelState.AddModelError()
+            // return View(vm);
+            // 都會在網頁那邊跳出錯誤
             if (ModelState.IsValid)
             {
                 if (vm.DiscountGroupId == 4)
@@ -66,22 +69,25 @@ namespace NiceAdmin.Controllers
 					bool sameCouponCode = db.Coupons.Any(c => c.CouponCode == vm.CouponCode);
                     if (sameCouponCode)
                     {
-						ModelState.AddModelError(string.Empty, "此優惠碼已經被使用");
-						return View(vm);
+                        //ModelState.AddModelError(string.Empty, "此優惠碼已經被使用");
+                        //return View(vm);
+                        return HttpNotFound();
 					}
 				}
                 if (vm.StartAt != null)
                 {
                     if (vm.StartAt < DateTime.Now)
                     {
-						ModelState.AddModelError(string.Empty, "開始時間不可小於現在時間");
-						return View(vm);
-					}
+                        //ModelState.AddModelError(string.Empty, "開始時間不可小於現在時間");
+                        //return View(vm);
+                        return HttpNotFound();
+                    }
                     if (vm.StartAt > vm.EndAt)
                     {
-						ModelState.AddModelError(string.Empty, "開始時間不可在結束時間以後");
-						return View(vm);
-					}
+                        //ModelState.AddModelError(string.Empty, "開始時間不可在結束時間以後");
+                        //return View(vm);
+                        return HttpNotFound();
+                    }
                 }
                 Coupon coupon = vm.ToEntity();
                 bool haveSameCouponCode = db.Coupons.Any(c => c.CouponCode== coupon.CouponCode);
