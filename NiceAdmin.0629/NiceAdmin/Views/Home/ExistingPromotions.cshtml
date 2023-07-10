@@ -21,7 +21,7 @@
 <div id="slide1" class="carousel slide promotionDetailImg carousel-fade mb-4" data-bs-interval="3000" data-bs-ride="carousel">
     <div class="carousel-inner h-100">
         <div class="carousel-item h-100 active">
-            <img class="d-block w-100 h-100" src="~/Uploads/@Model.First().PromotionImage" alt="">
+            <img class="d-block w-100 h-100" src="~/Uploads/@promotionArr[0].PromotionImage" alt="">
         </div>
         @*@foreach (var item in Model)
         {
@@ -31,7 +31,7 @@
             </div>
 
         }*@
-        @for (int i = 1; i < count; i++)
+        @for (int i = 1; i <= count-1; i++)
         {
             <div class="carousel-item h-100">
                 <img class="d-block w-100 h-100" src="~/Uploads/@promotionArr[i].PromotionImage" alt="">

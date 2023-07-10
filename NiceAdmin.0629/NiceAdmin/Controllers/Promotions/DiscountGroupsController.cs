@@ -47,7 +47,12 @@ namespace NiceAdmin.Controllers
         public ActionResult Delete(int discountGroupId)
         {
             var discountGroupInDb = db.DiscountGroups.FirstOrDefault(d => d.DiscountGroupId == discountGroupId);
-            db.DiscountGroups.Remove(discountGroupInDb);
+            var discountGroupItems = discountGroupInDb.DiscountGroupItems.ToArray();
+            for(int i = 0; i < discountGroupItems.Length; i++)
+            {
+                db.DiscountGroupItems.Remove(discountGroupItems[i]);
+            }
+			db.DiscountGroups.Remove(discountGroupInDb);
             db.SaveChanges();
             return new EmptyResult();
         }
