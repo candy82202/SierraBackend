@@ -62,7 +62,9 @@ namespace NiceAdmin.Controllers.Orders
             var status = db.OrderStatuses.ToList().Prepend(new OrderStatus());
             ViewBag.OrderStatusId = new SelectList(status, "OrderStatusId", "StatusName", orderStatusId);
         }
-        public PartialViewResult TopSellingLessons()//最熱銷前五名課程
+		[OverrideAuthorization]
+		[DirectToUnAuthorize(Roles = "admin,staff")]
+		public PartialViewResult TopSellingLessons()//最熱銷前五名課程
         {
             var topLessons = db.LessonOrderDetails
         .Join(db.Lessons, od => od.LessonId, l => l.LessonId, (od, l) => new { od, l })
@@ -87,7 +89,9 @@ namespace NiceAdmin.Controllers.Orders
             //return PartialView("TopSellingLessons", lessonIndexVMList);
 
         }
-        public PartialViewResult TopSellingLessonsOrder()//前十熱銷的課程訂單chang
+		[OverrideAuthorization]
+		[DirectToUnAuthorize(Roles = "admin,staff")]
+		public PartialViewResult TopSellingLessonsOrder()//前十熱銷的課程訂單chang
         {
             var topSellingOrders = db.LessonOrderDetails
                             .Where(x => x.LessonOrder.LessonOrderStatusId == 3)
