@@ -5,24 +5,25 @@
 }
 
 <main id="main" class="main">
+
+    <div class="pagetitle mt-3">
+        <h1>促銷活動清單</h1>
+        <nav>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="@Url.Action("Index","Home")">首頁</a></li>
+                <li class="breadcrumb-item">   行銷管理  </li>
+                <li class="breadcrumb-item active"><a href="@Url.Action("Index","Promotions")">促銷活動清單</a>    </li>
+            </ol>
+        </nav>
+    </div>
     <div class="row">
         <div class="card">
             <div class="card-body">
-                <div class="pagetitle mt-3">
-                    <h1>促銷活動清單</h1>
-                    <nav>
-                        <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="@Url.Action("Index","Home")">首頁</a></li>
-                            <li class="breadcrumb-item">   行銷管理  </li>
-                            <li class="breadcrumb-item active">  促銷活動清單  </li>
-                        </ol>
-                    </nav>
-                </div>
                 <!-- End Page Title -->
-                <section class="section">
+                <section class="section mt-3">
 
                     <p>
-                        @Html.ActionLink("新增", "Create", null, new {@class="btn btn-primary"})
+                        @Html.ActionLink("新增", "Create", null, new { @class = "btn btn-primary" })
                     </p>
                     <table class="table table-hover datatable">
                         <thead>

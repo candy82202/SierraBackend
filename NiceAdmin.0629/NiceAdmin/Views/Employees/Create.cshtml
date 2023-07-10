@@ -17,64 +17,69 @@
             </ol>
         </nav>
     </div>
-
-    @using (Html.BeginForm("Create", "Employees", FormMethod.Post, new { enctype = "multipart/form-data" }))
-    {
-        @Html.AntiForgeryToken()
-
-        <hr />
-        <div class="row">
-            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-            <div class="mb-3">
-                @Html.LabelFor(model => model.EmployeeName, htmlAttributes: new { @class = "form-label" })
-                @Html.EditorFor(model => model.EmployeeName, new { htmlAttributes = new { @class = "form-control", style = "width:200px" } })
-                @Html.ValidationMessageFor(model => model.EmployeeName, "", new { @class = "text-danger" })
-            </div>
-
-            <div class="mb-3">
-                @Html.LabelFor(model => model.Password, htmlAttributes: new { @class = "form-label" })
-
-                <span id="toggle-password" onclick="togglePasswordVisibility()">
-                    <i class="fas fa-eye"></i>
-                </span>
-                @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control", style = "width:200px" } })
-                @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
-            </div>
-
-            @*<div class="mb-3">
-                    @Html.LabelFor(model => model.RoleId, htmlAttributes: new { @class = "form-label" })
-                    @Html.DropDownList("RoleId", null, htmlAttributes: new { @class = "form-select" })
-                    @Html.ValidationMessageFor(model => model.RoleId, "", new { @class = "text-danger" })
-                </div>*@
-
-            <div class="mb-3">
-                @Html.LabelFor(model => model.Roles, htmlAttributes: new { @class = "form-label" })
-                @foreach (var role in ViewBag.Roles)
+    <div class="row">
+        <div class="card  col-4">
+            <div class="card-body">
+                @using (Html.BeginForm("Create", "Employees", FormMethod.Post, new { enctype = "multipart/form-data" }))
                 {
-                    <div>
-                        <label class="mb-2 ms-1">
-                            <input type="checkbox" name="RoleIds" value="@(@role.RoleId)" style="transform:scale(1.5)" class="me-2"/>
-                            @role.RoleDisplayName
-                        </label>
+                    @Html.AntiForgeryToken()
+
+                  
+                    <div class="row mt-3">
+                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                        <div class="mb-3">
+                            @Html.LabelFor(model => model.EmployeeName, htmlAttributes: new { @class = "form-label" })
+                            @Html.EditorFor(model => model.EmployeeName, new { htmlAttributes = new { @class = "form-control", style = "width:200px" } })
+                            @Html.ValidationMessageFor(model => model.EmployeeName, "", new { @class = "text-danger" })
+                        </div>
+
+                        <div class="mb-3">
+                            @Html.LabelFor(model => model.Password, htmlAttributes: new { @class = "form-label" })
+
+                            <span id="toggle-password" onclick="togglePasswordVisibility()">
+                                <i class="fas fa-eye"></i>
+                            </span>
+                            @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control", style = "width:200px" } })
+                            @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+                        </div>
+
+                        @*<div class="mb-3">
+                                @Html.LabelFor(model => model.RoleId, htmlAttributes: new { @class = "form-label" })
+                                @Html.DropDownList("RoleId", null, htmlAttributes: new { @class = "form-select" })
+                                @Html.ValidationMessageFor(model => model.RoleId, "", new { @class = "text-danger" })
+                            </div>*@
+
+                        <div class="mb-3">
+                            @Html.LabelFor(model => model.Roles, htmlAttributes: new { @class = "form-label" })
+                            @foreach (var role in ViewBag.Roles)
+                            {
+                                <div>
+                                    <label class="mb-2 ms-1">
+                                        <input type="checkbox" name="RoleIds" value="@(@role.RoleId)" style="transform:scale(1.5)" class="me-2" />
+                                        @role.RoleDisplayName
+                                    </label>
+                                </div>
+                            }
+                            @Html.ValidationMessageFor(model => model.RoleIds, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="mb-3">
+                            @Html.LabelFor(model => model.ImageName, htmlAttributes: new { @class = "form-label mb-3" })
+                            <br />
+                            <img id="previewImage" src="#" alt="Preview" style="display: none; max-width: 300px; max-height: 300px; ">
+                            <input type="file" id="uploadFile" name="imageFile" class="form-control mt-3 mb-2" style="width:300px" accept="image/*" />
+
+                        </div>
+
+                        <div class="mb-3">
+                            <input type="submit" value="新增" class="btn btn-primary" />
+                        </div>
                     </div>
                 }
-                @Html.ValidationMessageFor(model => model.RoleIds, "", new { @class = "text-danger" })
-            </div>
-            <div class="mb-3">
-                @Html.LabelFor(model => model.ImageName, htmlAttributes: new { @class = "form-label mb-3" })
-                <br />
-                <input type="file" id="uploadFile" name="imageFile" class="form-control mb-2" style="width:500px" accept="image/*" />
-                <img id="previewImage" src="#" alt="Preview" style="display: none; max-width: 300px; max-height: 300px; ">
-
-            </div>
-
-            <div class="mb-3">
-                <input type="submit" value="新增" class="btn btn-primary" />
+                @*<div>
+                    @Html.ActionLink("返回頁面", "Index")
+                </div>*@
             </div>
         </div>
-    }
-    <div>
-        @Html.ActionLink("返回頁面", "Index")
     </div>
 </main>
 
