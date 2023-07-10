@@ -66,9 +66,9 @@ namespace NiceAdmin.Controllers.Orders
             var status = db.OrderStatuses.ToList().Prepend(new OrderStatus());
             ViewBag.OrderStatusId = new SelectList(status, "OrderStatusId", "StatusName", orderStatusId);
         }
-        [OverrideAuthorization]
-        [DirectToUnAuthorize(Roles = "admin,staff")]
-        public PartialViewResult TopSellingDesserts()//最熱銷前五名甜點
+		[OverrideAuthorization]
+		[DirectToUnAuthorize(Roles = "admin,staff")]
+		public PartialViewResult TopSellingDesserts()//最熱銷前五名甜點
         {
             //var topDesserts = db.DessertOrders
             //    .SelectMany(o => o.DessertOrderDetails)
@@ -92,9 +92,9 @@ namespace NiceAdmin.Controllers.Orders
 
             return PartialView("TopSellingDesserts", topDesserts);
         }
-        [OverrideAuthorization]
-        [DirectToUnAuthorize(Roles = "admin,staff")]
-        public PartialViewResult TopSellingDessertsOrder()//前十熱銷的甜點訂單
+		[OverrideAuthorization]
+		[DirectToUnAuthorize(Roles = "admin,staff")]
+		public PartialViewResult TopSellingDessertsOrder()//前十熱銷的甜點訂單
         {
             //var topSellingOrders = db.DessertOrders
             //    .Where(os => os.DessertOrderStatusId == 3)
