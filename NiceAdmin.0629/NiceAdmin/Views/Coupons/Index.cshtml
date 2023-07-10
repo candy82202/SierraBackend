@@ -23,9 +23,10 @@
                 <!-- End Page Title -->
                 <section class="section mt-3">
 
-                    <p>
-                        @Html.ActionLink("新增", "Create", null, new { @class = "btn btn-primary" })
-                    </p>
+                    
+                    <a href="@Url.Action("Create","Coupons")"class="btn btn-primary me-2 mb-2">新增</a>
+                    <a href="@Url.Action("Index","CouponSettings")" class="btn btn-primary mb-2">優惠券設定</a>    
+                    
                     <table class="table table-hover datatable table-striped">
                         <thead>
                             <tr>

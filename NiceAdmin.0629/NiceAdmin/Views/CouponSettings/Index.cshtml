@@ -21,11 +21,13 @@
                 </div>
                 <!-- End Page Title -->
                 <section class="section">
-                    <p>
-                        @Html.ActionLink("Create New", "Create")
-                    </p>
+                    @*<p>
+            @Html.ActionLink("Create New", "Create")
+        </p>*@
+                    <a href="@Url.Action("Index","Coupons")" class="btn btn-primary me-2 ">回到清單</a>
+                    <hr />
                     <div class="d-flex">
-                        <div>
+                        <div class="me-5">
                             @foreach (var item in Model)
                             {
 
@@ -33,7 +35,7 @@
                                     <label class="me-2">@item.CouponSettingName:</label>
                                     @if (item.CouponId == null)
                                     {
-                                        <div class="box d-flex justify-content-around align-items-center couponSettingBox">
+                                        <div class="box d-flex justify-content-around align-items-center couponSettingBox" data-id="@item.CouponSettingId">
 
                                         </div>
                                     }
@@ -117,7 +119,8 @@
     @Scripts.Render("~/bundles/jqueryval")
 <script>
         $(document).ready(function () {
-            $('.remove').click(function () {
+
+            $('.box').on('click', '.remove', function () {
                 var couponSettingId = $(this).parent().data('id')
                 $.ajax({
                     type: 'post',
@@ -142,22 +145,32 @@
                 var data = e.originalEvent.dataTransfer
                 data.setData('couponId',$(this).data('id'))
             })
-            $('.box').bind('drag', function (e) {
+            $('.box').bind('dragover', function (e) {
                 e.originalEvent.preventDefault();
             })
             $('.box').bind('drop', function (e) {
+                e.originalEvent.preventDefault();
                 var couponId = e.originalEvent.dataTransfer.getData('couponId')
                 var couponSettingId = $(this).data('id')
                 $.ajax({
-                    typr: 'post',
+                    type: 'post',
                     url: '/CouponSettings/Add',
                     data: {
                         couponSettingId: couponSettingId,
                         couponId: couponId
                     }
                 }).done(data => {
+                    console.log(data)
                     if (data != "加入失敗") {
-                        var newItem = `<button class="remove btn btn-success">${data}<i class="bi bi-x-lg ms-2"></i></button>`
+                        if (data.couponCategoryId == 5) {
+                            var newItem = `<button class="remove btn btn-primary">${data.couponName}<i class="bi bi-x-lg ms-2"></i></button>`
+                        }
+                        else if (data.couponCategoryId == 6) {
+                            var newItem = `<button class="remove btn btn-warning">${data.couponName}<i class="bi bi-x-lg ms-2"></i></button>`
+                        }
+                        else {
+                            var newItem = `<button class="remove btn btn-success">${data.couponName}<i class="bi bi-x-lg ms-2"></i></button>`
+                        }
                         $(this).append(newItem);
                     }
                     else {

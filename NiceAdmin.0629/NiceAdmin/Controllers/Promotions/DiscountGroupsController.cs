@@ -132,6 +132,25 @@ namespace NiceAdmin.Controllers
 			return Json("新增成功");
         }
 		[HttpPost]
+		public JsonResult ConfirmCanDiscountGroupBeDeleted(int? discountGroupId)
+		{
+			if (discountGroupId == null )
+            {
+				return Json("找不到此優惠群組");
+			}
+			var selectedDiscountGroup = db.DiscountGroups.FirstOrDefault(dg => dg.DiscountGroupId == discountGroupId);
+            if (selectedDiscountGroup == null) {
+				return Json("找不到此優惠群組");
+			}
+            if (selectedDiscountGroup.Coupons.Count() != 0 || selectedDiscountGroup.Discounts.Count() != 0)
+            {
+              return Json("有使用此群組的優惠券或折扣");
+			}
+            return Json(true);
+			
+			
+		}
+		[HttpPost]
 		public JsonResult AddAll(int? discountGroupId, int[] dessertIds)
 		{
 			if (discountGroupId == null) return Json("找不到此群組");

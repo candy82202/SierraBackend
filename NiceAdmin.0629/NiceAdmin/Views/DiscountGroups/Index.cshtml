@@ -88,29 +88,47 @@
             })
             $('.delCI').click(function () {
                 var self = $(this);
-                var DiscountGroupId = self.attr('data-id');
-                Swal.fire({
-                    title: '確定要刪除這個群組嗎?',
-                    text: "刪除後不可復原!",
-                    icon: 'warning',
-                    showCancelButton: true,
-                    confirmButtonColor: '#3085d6',
-                    cancelButtonColor: '#d33',
-                    confirmButtonText: '刪除!',
-                    cancelButtonText: '取消'
-                }).then((result) => {
-                    if (result.isConfirmed) {
-                        $.get("/DiscountGroups/Delete?discountGroupId=" + DiscountGroupId, null,
-                            function () {
-                                Swal.fire(
-                                    '刪除成功!',
-                                    '這個群組再也不會回來了',
-                                    'success'
-                                )
-                                location.reload();
-                            })
+                var discountGroupId = self.attr('data-id');
+                $.ajax({
+                    type: 'post',
+                    url: '/DiscountGroups/ConfirmCanDiscountGroupBeDeleted',
+                    data: {
+                        discountGroupId: discountGroupId
+                    }
+                }).done(data => {
+                    if (data === true) {
+                        Swal.fire({
+                            title: '確定要刪除這個群組嗎?',
+                            text: "刪除後不可復原!",
+                            icon: 'warning',
+                            showCancelButton: true,
+                            confirmButtonColor: '#3085d6',
+                            cancelButtonColor: '#d33',
+                            confirmButtonText: '刪除!',
+                            cancelButtonText: '取消'
+                        }).then((result) => {
+                            if (result.isConfirmed) {
+                                $.get("/DiscountGroups/Delete?discountGroupId=" + discountGroupId, null,
+                                    function () {
+                                        Swal.fire(
+                                            '刪除成功!',
+                                            '這個群組再也不會回來了',
+                                            'success'
+                                        )
+                                        location.reload();
+                                    })
+                            }
+                        })
+                    }
+                    else {
+                        Swal.fire({
+                            icon: 'error',
+                            title: '錯誤',
+                            text: data
+                        })
                     }
                 })
+                
             })
             $('.DiscountGroupItems').each(function () {
                 
