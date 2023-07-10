@@ -14,7 +14,7 @@ using NiceAdmin.Models.ViewModels.MembersVM;
 using NiceAdmin.Models.ViewModels.PromotionsVM;
 namespace NiceAdmin.Controllers
 {
-    [Authorize]
+    //[Authorize]
     public class HomeController : Controller
     {
         public ActionResult Index()

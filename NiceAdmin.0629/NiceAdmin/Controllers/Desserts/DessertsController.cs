@@ -404,6 +404,8 @@ namespace NiceAdmin.Controllers
                 return Json(new { success = false, errorMessage = "An error occurred while updating the dessert status. Please try again later." });
             }
         }
+        [OverrideAuthorization]
+        [DirectToUnAuthorize(Roles = "admin,manager,dessertSale,staff")]
         public ActionResult DownDesserts()
         {
             var currentTime = DateTime.Now;
