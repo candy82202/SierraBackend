@@ -258,6 +258,7 @@ namespace NiceAdmin.Controllers
                         DessertName = d.DessertName,
                         DessertImageName = d.DessertImages.FirstOrDefault()?.DessertImageName,
                         UnitPrice = d.UnitPrice,
+                        Description = d.Description,
                     })
                     .ToList();
                 return hotProducts;

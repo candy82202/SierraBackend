@@ -4,17 +4,20 @@
     var hotProducts = ViewBag.HotProducts as List<NiceAdmin.Models.ViewModels.DessertFrontIndexVM>;
 }
 <div class="table-responsive">
-    <table class="table table-striped table-hover" id="TopSell">
+    <table class="table table-striped table-hover " id="TopSell">
         <thead>
             <tr>
-                <th>
-                    甜點圖片
+                <th >
+                    <span class="fw-bolder" style="font-size:16px">甜點圖片</span>
                 </th>
-                <th>
-                    甜點名稱
+                <th  >
+                    <span class="fw-bolder" style="font-size:16px">甜點名稱</span>
                 </th>
-                <th>
-                    售價
+                <th  style="text-align:center;">
+                    <span class="fw-bolder" style="font-size:16px">描述</span>
+                </th>
+                <th  >
+                    <span class="fw-bolder" style="font-size:16px">售價</span>
                 </th>
             </tr>
         </thead>
@@ -27,14 +30,21 @@
                         @*@Html.DisplayFor(modelItem => item.Category.CategoryName)*@
                         @*@Html.DisplayFor(modelItem => item.CategoryName)*@
                         <img src="~/Uploads/@prod.DessertImageName" width="100" height="100" />
+
+                    </td>
+                    <td>
+                        <br />
+                        <span  style="font-size:15px">@prod.DessertName</span>
                         
                     </td>
-                    <td>
-                        @prod.DessertName
-                    </td>
-                    <td>
-                         @prod.UnitPrice  
+                    <td style="width:40% " >
+                        <br />
+                        <span  style="font-size:15px"> @prod.Description</span>
 </td>
+                    <td>
+                        <br />
+                        <span style="font-size:15px"> $ @prod.UnitPrice</span> 
+                    </td>
 
 
                 </tr>
