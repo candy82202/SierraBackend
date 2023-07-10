@@ -177,7 +177,7 @@ namespace NiceAdmin.Controllers
         }
         public ActionResult ExistingPromotions()
         {
-            IEnumerable<PromotionSlideVM> existPromotions = db.Promotions.Where(p => p.StartAt < DateTime.Now && p.EndAt > DateTime.Now)
+            IEnumerable<PromotionSlideVM> existPromotions = db.Promotions.Where(p => p.LaunchAt <= DateTime.Now && p.EndAt > DateTime.Now)
                                                                          .ToList()
                                                                          .Select(p => p.ToSlideVM());
             return PartialView("ExistingPromotions", existPromotions);
