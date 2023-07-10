@@ -1,77 +1,81 @@
 ﻿@model NiceAdmin.Models.ViewModels.MembersVM.EmployeeIndexVM
 
 @{
-    ViewBag.Title = "Delete";
+	ViewBag.Title = "Delete";
 }
 
 <main id="main" class="main">
-    <div class="pagetitle">
-        <h1>刪除員工</h1>
-        <nav>
-            <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="@Url.Action("Index","Home")">首頁</a></li>
-                <li class="breadcrumb-item"><a href="@Url.Action("Index","Members")">會員清單</a></li>
-                <li class="breadcrumb-item"><a href="@Url.Action("Index","Employees")">員工清單</a></li>
-                <li class="breadcrumb-item"><a href="@Url.Action("Index","Roles")">角色清單</a></li>
-                <li class="breadcrumb-item"><a href="@Url.Action("Index","Permissions")">權限清單</a></li>
-            </ol>
-        </nav>
-    </div>
+	<div class="pagetitle">
+		<h1>刪除員工</h1>
+		<nav>
+			<ol class="breadcrumb">
+				<li class="breadcrumb-item"><a href="@Url.Action("Index","Home")">首頁</a></li>
+				<li class="breadcrumb-item"><a href="@Url.Action("Index","Members")">會員清單</a></li>
+				<li class="breadcrumb-item"><a href="@Url.Action("Index","Employees")">員工清單</a></li>
+				<li class="breadcrumb-item"><a href="@Url.Action("Index","Roles")">角色清單</a></li>
+				<li class="breadcrumb-item"><a href="@Url.Action("Index","Permissions")">權限清單</a></li>
+			</ol>
+		</nav>
+	</div>
 
-    <h3>Are you sure you about that?</h3>
-    <div>
-        <hr />
-        <dl class="dl-horizontal">
-            <dt>
-                @Html.DisplayNameFor(model => model.EmployeeId)
-            </dt>
+	<div class="row">
 
-            <dd>
-                @Html.DisplayFor(model => model.EmployeeId)
-            </dd>
+		<div class="card col-3">
+			<div class="card-body mt-4">
+				<h3 style="font-weight: bold; font-style: italic ">Are you sure about that?</h3>
+				<dl class="dl-horizontal">
+					<dt>
+						@Html.DisplayNameFor(model => model.EmployeeId)
+					</dt>
 
-            <dt>
-                @Html.DisplayNameFor(model => model.EmployeeName)
-            </dt>
+					<dd>
+						@Html.DisplayFor(model => model.EmployeeId)
+					</dd>
 
-            <dd>
-                @Html.DisplayFor(model => model.EmployeeName)
-            </dd>
+					<dt>
+						@Html.DisplayNameFor(model => model.EmployeeName)
+					</dt>
 
-            <dt>
-                @Html.DisplayNameFor(model => model.CreateAt)
-            </dt>
+					<dd>
+						@Html.DisplayFor(model => model.EmployeeName)
+					</dd>
 
-            <dd>
-                @Html.DisplayFor(model => model.CreateAt)
-            </dd>
+					<dt>
+						@Html.DisplayNameFor(model => model.CreateAt)
+					</dt>
 
-            <dt>
-                @Html.DisplayNameFor(model => model.Roles)
-            </dt>
+					<dd>
+						@Html.DisplayFor(model => model.CreateAt)
+					</dd>
 
-            @*<dd>
-                    @Html.DisplayFor(model => model.Roles)
-                </dd>*@
+					<dt>
+						@Html.DisplayNameFor(model => model.Roles)
+					</dt>
 
-            <dd>
-                @foreach (var role in Model.Roles)
-                {
-                    @role.RoleName<br />
-                }
-            </dd>
+					@*<dd>
+							@Html.DisplayFor(model => model.Roles)
+						</dd>*@
 
-        </dl>
+					<dd>
+						@foreach (var role in Model.Roles)
+						{
+							@role.RoleDisplayName<br />
+						}
+					</dd>
 
-        @using (Html.BeginForm())
-        {
-            @Html.AntiForgeryToken()
+				</dl>
 
-            <div class="form-actions no-color">
-                <input type="submit" value="刪除" class="btn btn-default btn-danger" />
-               @* @Html.ActionLink("返回", "Index")*@
-                <a class="btn btn-primary" href="@Url.Action("Index", "Employees")">返回</a>
-            </div>
-        }
-    </div>
+				@using (Html.BeginForm())
+				{
+					@Html.AntiForgeryToken()
+
+					<div class="form-actions no-color">
+						<input type="submit" value="刪除" class="btn btn-default btn-danger" />
+						@* @Html.ActionLink("返回", "Index")*@
+						@*<a class="btn btn-primary" href="@Url.Action("Index", "Employees")">返回</a>*@
+					</div>
+				}
+			</div>
+		</div>
+	</div>
 </main>
