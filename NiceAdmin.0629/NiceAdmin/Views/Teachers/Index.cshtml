@@ -124,9 +124,9 @@
 
                                                 </td>
                                                 <td>
-                                                    <i class="bi bi-pencil-square">  </i> @Html.ActionLink("Edit", "Edit", new { id = item.TeacherId })|
-                                                    @Html.ActionLink("變更圖片", "EditImage", new { id = item.TeacherId }) |
-                                                    @Html.ActionLink("離職", "DownTeachers", new { id = item.TeacherId })
+                                                    @*<i class="bi bi-pencil-square">  </i>*@ @Html.ActionLink("編輯", "Edit", new { id = item.TeacherId }, new { @class = "btn btn-outline-primary" })
+                                                    @Html.ActionLink("變更圖片", "EditImage", new { id = item.TeacherId }, new { @class = "btn btn-outline-primary" })
+                                                    @Html.ActionLink("離職", "DownTeachers", new { id = item.TeacherId }, new { @class = "btn btn-outline-danger" })
                                                 </td>
                                             </tr>
                                         }

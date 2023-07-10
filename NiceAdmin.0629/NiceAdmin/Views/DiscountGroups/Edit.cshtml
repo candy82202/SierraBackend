@@ -72,16 +72,16 @@
                                     @Html.DisplayFor(modelItem => item.UnitPrice)
                                 </td>
                                 <td>
-                                    <button class="btn btn-primary add" data-id="@item.DessertId" data-name="@item.DessertName">加入</button>
+                                    <button class="btn btn-outline-primary add" data-id="@item.DessertId" data-name="@item.DessertName">加入</button>
                                 </td>
                             </tr>
                         }
                     </tbody>
                 </table>
                 <div class="d-flex">
-                    <button class="btn btn-primary m-3" id="addAll">搜尋畫面全部加入</button>
+                    <button class="btn btn-outline-primary m-3" id="addAll">搜尋畫面全部加入</button>
                     @Html.DropDownList("CategoryId", null, htmlAttributes: new { @class = "form-select mt-3", style = "width: 200px;height:40px" })
-                    <button class="btn btn-primary m-3 ms-0" id="addCategory">加入類別</button>
+                    <button class="btn btn-outline-primary m-3 ms-2" id="addCategory">加入類別</button>
                 </div>
                 <hr />
                 <h5 class="text-primary-emphasis fw-bold">群組中的商品</h5>
@@ -89,7 +89,7 @@
                 <div class="dessertBox">
                     @foreach (var item in Model.DiscountGroupItems)
                     {
-                        <button class="btn btn-success m-1 remove" data-id="@item.DessertId">@item.Dessert.DessertName<i class="bi bi-x-lg ms-2"></i></button>
+                        <button class="btn btn-outline-success m-1 remove" data-id="@item.DessertId">@item.Dessert.DessertName<i class="bi bi-x-lg ms-2"></i></button>
                     }
                 </div>
                 <div class="d-flex justify-content-end">
