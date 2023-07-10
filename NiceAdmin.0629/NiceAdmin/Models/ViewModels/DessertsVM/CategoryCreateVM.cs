@@ -12,6 +12,7 @@ namespace NiceAdmin.Models.ViewModels.DessertsVM
         public int CategoryId { get; set; }
         [Display(Name = "類別名稱")]
         [StringLength(50)]
+        [Required]
         public string CategoryName { get; set; }
     }
 }

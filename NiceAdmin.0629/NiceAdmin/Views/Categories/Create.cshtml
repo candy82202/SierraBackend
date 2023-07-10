@@ -17,34 +17,38 @@
         </nav>
     </div>
     <!-- End Page Title -->
+    <div class="row">
+        <div class="card col-5">
+            <div class="card-body">
+                @using (Html.BeginForm())
+                {
+                    @Html.AntiForgeryToken()
 
-    @using (Html.BeginForm())
-    {
-        @Html.AntiForgeryToken()
+                    <div class="row mt-3">
 
-        <div class="row">
-           
-            <hr />
-            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-            <div class="mb-3">
-                @Html.LabelFor(model => model.CategoryName, htmlAttributes: new { @class = "form-label col-md-2" })
-              
-                    @Html.EditorFor(model => model.CategoryName, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.CategoryName, "", new { @class = "text-danger" })
-              
-            </div>
+                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                        <div class="mb-3">
+                            @Html.LabelFor(model => model.CategoryName, htmlAttributes: new { @class = "form-label col-md-2" })
 
-            <div class="mb-3">
-                
+                            @Html.EditorFor(model => model.CategoryName, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.CategoryName, "", new { @class = "text-danger" })
 
-                    <input type="submit" value="Create" class="btn btn-outline-primary" />
-                
+                        </div>
+
+                        <div class="mb-3">
+
+
+                            <input type="submit" value="新增" class="btn btn-outline-primary" />
+
+                        </div>
+                    </div>
+                }
+
+                @*<div>
+                    @Html.ActionLink("Back to List", "Index")
+                </div>*@
             </div>
         </div>
-    }
-
-    <div>
-        @Html.ActionLink("Back to List", "Index")
     </div>
 </main>
     @section Scripts {

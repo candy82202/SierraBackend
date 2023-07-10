@@ -16,9 +16,11 @@ namespace NiceAdmin.Models.ViewModels
         [Display(Name = "甜點類別")]
         public int CategoryId { get; set; }
         [Display(Name = "售價")]
+        [Required]
         [Range(1, 3000, ErrorMessage = "售價要在{1}元到{2}元之间")]
         public int UnitPrice { get; set; }
         [Display(Name = "描述")]
+        [Required]
         [StringLength(200)]
         public string Description { get; set; }
         [Display(Name = "圖片")]
