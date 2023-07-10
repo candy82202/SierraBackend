@@ -13,13 +13,14 @@ using NiceAdmin.Views.DessertOrders;
 
 namespace NiceAdmin.Controllers.Orders
 {
-    [DirectToUnAuthorize(Roles = "admin,manager,dessertSale,lessonSale")]
+    [DirectToUnAuthorize(Roles = "admin")]
     public class LessonOrdersController : Controller
     {
         private AppDbContext db = new AppDbContext();
-        [OverrideAuthorization]
-        [DirectToUnAuthorize(Roles = "admin,manager,dessertSale,lessonSale,staff")]
+
         // GET: LessonOrders
+        [OverrideAuthorization]
+        [DirectToUnAuthorize(Roles = "admin,staff")]
         public ActionResult Index(LessonOrderCriteria criteria)
         {
             

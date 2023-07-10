@@ -20,7 +20,7 @@ namespace NiceAdmin.Controllers
 
         // GET: Categories
         [OverrideAuthorization]
-        [DirectToUnAuthorize(Roles = "admin,manager,dessertSale,staff")]
+        [DirectToUnAuthorize(Roles = "admin,dessertSale,staff")]
         public ActionResult Index()
         {
             var categories = db.Categories.ToList();

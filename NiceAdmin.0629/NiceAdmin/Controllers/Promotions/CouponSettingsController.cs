@@ -6,17 +6,22 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using NiceAdmin.Filters;
+using System.Web.Security;
 using NiceAdmin.Models.EFModels;
 using NiceAdmin.Models.ViewModels.PromotionsVM;
 
 namespace NiceAdmin.Controllers.Promotions
 {
-    public class CouponSettingsController : Controller
+	[DirectToUnAuthorize(Roles = "admin,marketing")]
+	public class CouponSettingsController : Controller
     {
         private AppDbContext db = new AppDbContext();
 
-        // GET: CouponSettings
-        public ActionResult Index()
+		// GET: CouponSettings
+		[OverrideAuthorization]
+		[DirectToUnAuthorize(Roles = "admin,marketing,staff")]
+		public ActionResult Index()
         {
             var couponSettings = db.CouponSettings.Include(c => c.Coupon);
             return View(couponSettings.ToList());

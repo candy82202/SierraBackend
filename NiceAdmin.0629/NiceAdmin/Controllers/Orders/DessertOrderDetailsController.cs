@@ -12,14 +12,14 @@ using NiceAdmin.Models.ViewModels.OrdersVM;
 
 namespace NiceAdmin.Controllers.Orders
 {
-    [DirectToUnAuthorize(Roles = "admin,manager,dessertSale,lessonSale")]
+    [DirectToUnAuthorize(Roles = "admin")]
     public class DessertOrderDetailsController : Controller
     {
         private AppDbContext db = new AppDbContext();
 
         // GET: DessertOrderDetails
         [OverrideAuthorization]
-        [DirectToUnAuthorize(Roles = "admin,manager,dessertSale,lessonSale,staff")]
+        [DirectToUnAuthorize(Roles = "admin,staff")]
         public ActionResult Index()
         {
             var dessertOrderDetails = db.DessertOrderDetails.Include(d => d.Dessert).Include(d => d.DessertOrder)

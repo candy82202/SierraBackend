@@ -14,14 +14,14 @@ using NiceAdmin.Models.ViewModels.PromotionsVM;
 
 namespace NiceAdmin.Controllers
 {
-    [DirectToUnAuthorize(Roles = "admin,manager,dessertSale,lessonSale")]
+    [DirectToUnAuthorize(Roles = "admin,marketing")]
     public class PromotionsController : Controller
 	{
 		private AppDbContext db = new AppDbContext();
 
         // GET: Promotions
         [OverrideAuthorization]
-        [DirectToUnAuthorize(Roles = "admin,manager,dessertSale,lessonSale,staff")]
+        [DirectToUnAuthorize(Roles = "admin,marketing,staff")]
         public ActionResult Index()
 		{
 			var promotions = db.Promotions.Include(p => p.Coupon).ToList();

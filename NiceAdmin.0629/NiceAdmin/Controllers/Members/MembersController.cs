@@ -12,14 +12,12 @@ using NiceAdmin.Models.ViewModels.MembersVM;
 
 namespace NiceAdmin.Controllers.Members
 {
-    [DirectToUnAuthorize(Roles = "admin")]
+    [DirectToUnAuthorize(Roles = "admin,humanResources")]
     public class MembersController : Controller
     {
         private AppDbContext db = new AppDbContext();
 
         // GET: Members
-        [OverrideAuthorization]
-        [DirectToUnAuthorize(Roles = "admin,manager")]
         public ActionResult Index(MemberCriteria criteria)
         {
             ViewBag.Criteria = criteria;

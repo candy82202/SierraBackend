@@ -18,7 +18,7 @@ namespace NiceAdmin.Controllers.Desserts
 
         // GET: DessertTags
         [OverrideAuthorization]
-        [DirectToUnAuthorize(Roles = "admin,manager,dessertSale,staff")]
+        [DirectToUnAuthorize(Roles = "admin,dessertSale,staff")]
         public ActionResult Index()
         {
             var dessertTags = db.DessertTags.Include(d => d.Dessert);

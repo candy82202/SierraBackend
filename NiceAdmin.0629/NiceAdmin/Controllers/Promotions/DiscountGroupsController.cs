@@ -13,14 +13,14 @@ using NiceAdmin.Filters;
 
 namespace NiceAdmin.Controllers
 {
-    [DirectToUnAuthorize(Roles = "admin,manager,dessertSale,lessonSale")]
+    [DirectToUnAuthorize(Roles = "admin,dessertSale,marketing")]
     public class DiscountGroupsController : Controller
     {
         private AppDbContext db = new AppDbContext();
 
         // GET: DiscountGroup
         [OverrideAuthorization]
-        [Authorize(Roles = "admin,manager,dessertSale,lessonSale,staff")]
+        [DirectToUnAuthorize(Roles = "admin,dessertSale,marketing,staff")]
         public ActionResult Index()
         {
             IEnumerable<DiscountGroupIndexVM> discountGroups = GetDiscountGroup();

@@ -28,7 +28,7 @@ namespace NiceAdmin.Controllers
 
         // GET: Desserts
         [OverrideAuthorization]
-        [DirectToUnAuthorize(Roles = "admin,manager,dessertSale,staff")]
+        [DirectToUnAuthorize(Roles = "admin,dessertSale,staff")]
         public ActionResult Index1(DessertCriteria dessertCriteria)
         {
             PrepareCategoryDataSource(dessertCriteria.CategoryId);
@@ -58,7 +58,7 @@ namespace NiceAdmin.Controllers
         }
         // Three Layer - Index
         [OverrideAuthorization]
-        [DirectToUnAuthorize(Roles = "admin,manager,dessertSale,staff")]
+        [DirectToUnAuthorize(Roles = "admin,dessertSale,staff")]
         public ActionResult Index(DessertCriteria criteria)
         {
             //新增判斷甜點上架時間的方法
@@ -405,7 +405,7 @@ namespace NiceAdmin.Controllers
             }
         }
         [OverrideAuthorization]
-        [DirectToUnAuthorize(Roles = "admin,manager,dessertSale,staff")]
+        [DirectToUnAuthorize(Roles = "admin,dessertSale,staff")]
         public ActionResult DownDesserts()
         {
             var currentTime = DateTime.Now;

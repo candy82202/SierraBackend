@@ -15,14 +15,14 @@ using NiceAdmin.Models.ViewModels.LessonsVM;
 
 namespace NiceAdmin.Controllers.Lessons 
 {
-    [DirectToUnAuthorize(Roles = "admin,manager")]
+    [DirectToUnAuthorize(Roles = "admin,lessonSale")]
     public class LessonsController : Controller 
     {
         private AppDbContext db = new AppDbContext();
 
         // GET: Lessons
         [OverrideAuthorization]
-        [DirectToUnAuthorize(Roles = "admin,manager,lessonSale,staff")]
+        [DirectToUnAuthorize(Roles = "admin,lessonSale,staff")]
         public ActionResult Index(LessonCriteria lessonCriteria)
         {
             PrepareCategoryDataSource(lessonCriteria.LessonCategoryId);
