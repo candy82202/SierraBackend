@@ -17,11 +17,14 @@ using static System.Net.Mime.MediaTypeNames;
 
 namespace NiceAdmin.Controllers.Members
 {
+    [DirectToUnAuthorize(Roles = "admin")]
     public class EmployeesController : Controller
     {
         private AppDbContext db = new AppDbContext();
 
         // GET: Employees
+        [OverrideAuthorization]
+        [DirectToUnAuthorize(Roles = "admin,manager")]
         public ActionResult Index()
         {
             var vm = db.Employees.ToList().Select(e => e.ToIndexVM());
@@ -44,7 +47,6 @@ namespace NiceAdmin.Controllers.Members
         //}
 
         // GET: Employees/Create
-        [Authorize(Roles = "dessertSale,lessonSale")]
         public ActionResult Create()
         {
             //// 原本的寫法
@@ -69,7 +71,6 @@ namespace NiceAdmin.Controllers.Members
         // 如需詳細資料，請參閱 https://go.microsoft.com/fwlink/?LinkId=317598。
         [HttpPost]
         [ValidateAntiForgeryToken]
-        [Authorize(Roles = "dessertSale,lessonSale")]
         public ActionResult Create(EmployeeCreateVM vm, HttpPostedFileBase imageFile
             )
         {
@@ -159,7 +160,7 @@ namespace NiceAdmin.Controllers.Members
         }
 
         // GET: Employees/Delete/5
-        [CustomAuthorize(Roles = "dessertSale,lessonSale")]
+        [CustomAuthorize(Roles = "admin,manager")]
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -178,7 +179,7 @@ namespace NiceAdmin.Controllers.Members
         // POST: Employees/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        [CustomAuthorize(Roles = "dessertSale,lessonSale")]
+        [CustomAuthorize(Roles = "admin,manager")]
         public ActionResult DeleteConfirmed(int id)
         {
             Employee employee = db.Employees.Find(id);
@@ -197,7 +198,7 @@ namespace NiceAdmin.Controllers.Members
         [HttpPost]
         [ValidateAntiForgeryToken]
         [AllowAnonymous]
-        public ActionResult Login(LoginVM vm, bool rememberMe)
+        public ActionResult Login(LoginVM vm)
         {
             if (ModelState.IsValid == false) return View(vm);
 
@@ -214,12 +215,12 @@ namespace NiceAdmin.Controllers.Members
             // const bool rememberMe = false; // 泡麵哥證實不一定會記得
 
             // 驗證正確, 將登入帳號編碼後, 加入cookie
-            var processResult = ProcessLogin(vm.Account, rememberMe);
+            var processResult = ProcessLogin(vm.Account, vm.RememberMe);
 
             Response.Cookies.Add(processResult.cookie);
             return Redirect(processResult.returnUrl);
         }
-
+        [AllowAnonymous]
         public ActionResult Logout()
         {
             Session.Abandon();
@@ -281,7 +282,7 @@ namespace NiceAdmin.Controllers.Members
                     account,
                     DateTime.Now,   // 發行日
                     DateTime.Now.AddDays(10), // 到期日
-                    false,     // 是否續存
+                    rememberMe,     // 是否續存
                     rolesStr,          // userdata
                     "/" // cookie位置
                 );
@@ -293,7 +294,7 @@ namespace NiceAdmin.Controllers.Members
             var cookie = new HttpCookie(FormsAuthentication.FormsCookieName, value);
             if (rememberMe)
             {
-                cookie.Expires = DateTime.Now.AddMinutes(10);
+                cookie.Expires = DateTime.Now.AddDays(3);
             }
             else
             {

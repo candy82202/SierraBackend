@@ -6,6 +6,7 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using NiceAdmin.Filters;
 using NiceAdmin.Models.EFModels;
 using NiceAdmin.Models.ViewModels.OrdersVM;
 using NiceAdmin.Models.ViewModels.TeachersVM;
@@ -13,11 +14,14 @@ using NiceAdmin.Views.DessertOrders;
 
 namespace NiceAdmin.Controllers.Orders
 {
+    [DirectToUnAuthorize(Roles = "admin,manager,dessertSale,lessonSale")]
     public class DessertOrdersController : Controller
     {
         private AppDbContext db = new AppDbContext();
 
         // GET: DessertOrders
+        [OverrideAuthorization]
+        [DirectToUnAuthorize(Roles = "admin,manager,dessertSale,lessonSale,staff")]
         public ActionResult Index(DessertOrderCriteria criteria)
         {
             PrepareOrderDataSource(criteria.OrderStatusId);

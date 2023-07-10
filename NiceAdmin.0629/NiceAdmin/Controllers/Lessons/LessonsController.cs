@@ -8,15 +8,21 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using NiceAdmin.Filters;
 using NiceAdmin.Models.EFModels;
 using NiceAdmin.Models.ViewModels;
 using NiceAdmin.Models.ViewModels.LessonsVM;
 
-namespace NiceAdmin.Controllers.Lessons {
-    public class LessonsController : Controller {
+namespace NiceAdmin.Controllers.Lessons 
+{
+    [DirectToUnAuthorize(Roles = "admin,manager")]
+    public class LessonsController : Controller 
+    {
         private AppDbContext db = new AppDbContext();
 
         // GET: Lessons
+        [OverrideAuthorization]
+        [DirectToUnAuthorize(Roles = "admin,manager,lessonSale,staff")]
         public ActionResult Index(LessonCriteria lessonCriteria)
         {
             PrepareCategoryDataSource(lessonCriteria.LessonCategoryId);

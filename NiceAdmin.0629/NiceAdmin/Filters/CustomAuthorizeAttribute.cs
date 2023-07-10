@@ -6,6 +6,7 @@ using System.Web.Mvc;
 
 namespace NiceAdmin.Filters
 {
+	// 需要符合所有角色才授權
 	public class CustomAuthorizeAttribute : AuthorizeAttribute
 	{
 		protected override void HandleUnauthorizedRequest(AuthorizationContext filterContext)

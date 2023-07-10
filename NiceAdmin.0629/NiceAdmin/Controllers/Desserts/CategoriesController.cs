@@ -6,17 +6,21 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using NiceAdmin.Filters;
 using NiceAdmin.Models.EFModels;
 using NiceAdmin.Models.ViewModels;
 using NiceAdmin.Models.ViewModels.DessertsVM;
 
 namespace NiceAdmin.Controllers
 {
+    [DirectToUnAuthorize(Roles = "admin,manager")]
     public class CategoriesController : Controller
     {
         private AppDbContext db = new AppDbContext();
 
         // GET: Categories
+        [OverrideAuthorization]
+        [DirectToUnAuthorize(Roles = "admin,manager,dessertSale,staff")]
         public ActionResult Index()
         {
             var categories = db.Categories.ToList();
